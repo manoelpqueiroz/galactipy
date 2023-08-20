@@ -24,7 +24,7 @@
 1. Initialize `git` inside your repo:
 
 ```bash
-cd {{ cookiecutter.project_name }} && git init
+cd {{ cookiecutter.repo_name }} && git init
 ```
 
 2. If you don't have `Poetry` installed run:
@@ -52,7 +52,7 @@ make codestyle
 git add .
 git commit -m ":tada: Initial commit"
 git branch -M main
-git remote add origin https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}.git
+git remote add origin {{ cookiecutter.scm_base_url }}.git
 git push -u origin main
 ```
 
@@ -141,25 +141,25 @@ Articles:
 ## Installation
 
 ```bash
-pip install -U {{ cookiecutter.project_name }}
+pip install -U {{ cookiecutter.repo_name }}
 ```
 
 or install with `Poetry`
 
 ```bash
-poetry add {{ cookiecutter.project_name }}
+poetry add {{ cookiecutter.repo_name }}
 ```
 
 {% if cookiecutter.create_example_template == 'cli' -%}Then you can run
 
 ```bash
-{{ cookiecutter.project_name }} --help
+{{ cookiecutter.repo_name }} --help
 ```
 
 or with `Poetry`:
 
 ```bash
-poetry run {{ cookiecutter.project_name }} --help
+poetry run {{ cookiecutter.repo_name }} --help
 ```
 {%- endif %}
 
@@ -389,14 +389,18 @@ This project is licenced under the terms of the `{{ cookiecutter.licence }}` lic
 
 ## 📃 Citation
 
+{%- set scm_pretty_name = {
+    'gitlab': 'GitLab',
+    'github': 'GitHub',
+} -%}
 ```bibtex
 {% raw %}@misc{{% endraw %}{{ cookiecutter.project_name }},
   author = {% raw %}{{% endraw %}{{ cookiecutter.author }}{% raw %}}{% endraw %},
   title = {% raw %}{{% endraw %}{{ cookiecutter.project_description }}{% raw %}}{% endraw %},
   year = {% raw %}{{% endraw %}{% now 'utc', '%Y' %}{% raw %}}{% endraw %},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}{% raw %}}}{% endraw %}
+  publisher = {% raw %}{{% endraw %}{{ scm_pretty_name[cookiecutter.scm_platform] }}{% raw %}}{% endraw %},
+  journal = {% raw %}{{% endraw %}{{ scm_pretty_name[cookiecutter.scm_platform] }} repository{% raw %}}{% endraw %},
+  howpublished = {\url{https://github.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.project_name }}{% raw %}}}{% endraw %}
 }
 ```
 
@@ -404,22 +408,25 @@ This project is licenced under the terms of the `{{ cookiecutter.licence }}` lic
 
 This project was generated with [`galactipy`][79]
 
-[1]: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/workflows/build/badge.svg?branch=master&event=push
-[2]: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/actions?query=workflow%3Abuild
-[3]: https://img.shields.io/pypi/pyversions/{{ cookiecutter.project_name }}.svg
-[4]: https://pypi.org/project/{{ cookiecutter.project_name }}/
+<!-- apenas para GH -->
+[1]: {{ cookiecutter.scm_link_url }}/workflows/build/badge.svg?branch=master&event=push
+<!-- apenas para GH -->
+[2]: {{ cookiecutter.sc_link_url }}/actions?query=workflow%3Abuild
+[3]: https://img.shields.io/pypi/pyversions/{{ cookiecutter.repo_name }}.svg
+[4]: https://pypi.org/project/{{ cookiecutter.repo_name }}/
 [5]: https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg
-[6]: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/pulls?utf8=%E2%9C%93&q=is%3Apr%20author%3Aapp%2Fdependabot
+<!-- apenas para GH -->
+[6]: {{ cookiecutter.scm_link_url }}/pulls?utf8=%E2%9C%93&q=is%3Apr%20author%3Aapp%2Fdependabot
 [7]: https://img.shields.io/badge/code%20style-black-000000.svg
 [8]: https://github.com/psf/black
 [9]: https://img.shields.io/badge/security-bandit-green.svg
 [10]: https://github.com/PyCQA/bandit
 [11]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
-[12]: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/blob/master/.pre-commit-config.yaml
+[12]: {{ cookiecutter.scm_link_url }}/blob/master/.pre-commit-config.yaml
 [13]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--versions-e10079.svg
-[14]: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/releases
-[15]: https://img.shields.io/github/license/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}
-[16]: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/blob/master/LICENCE
+[14]: {{ cookiecutter.scm_link_url }}/releases
+[15]: https://img.shields.io/{{ cookiecutter.scm_platform }}/license/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}
+[16]: {{ cookiecutter.scm_link_url }}/blob/master/LICENCE
 [17]: ./assets/images/coverage.svg
 [18]: https://docs.github.com/en/github/administering-a-repository/enabling-and-disabling-version-updates#enabling-github-dependabot-version-updates
 [19]: https://github.com/apps/stale
@@ -441,8 +448,8 @@ This project was generated with [`galactipy`][79]
 [35]: https://help.github.com/en/actions
 [36]: https://gitmoji.carloscuesta.me/
 [37]: https://python-poetry.org/
-[38]: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/blob/master/pyproject.toml
-[39]: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/blob/master/setup.cfg
+[38]: {{ cookiecutter.scm_link_url }}/blob/master/pyproject.toml
+[39]: {{ cookiecutter.scm_link_url }}/blob/master/setup.cfg
 [40]: https://github.com/psf/black
 [41]: https://github.com/timothycrosley/isort
 [42]: https://github.com/asottile/pyupgrade
@@ -452,34 +459,40 @@ This project was generated with [`galactipy`][79]
 [46]: https://github.com/pyupio/safety
 [47]: https://github.com/PyCQA/bandit
 [48]: https://docs.pytest.org/en/latest/
-[49]: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/blob/master/.editorconfig
-[50]: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/blob/master/.dockerignore
-[51]: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/blob/master/.gitignore
-[52]: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/blob/master/.github/workflows/build.yml
-[53]: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/blob/master/Makefile#L89
+[49]: {{ cookiecutter.scm_link_url }}/blob/master/.editorconfig
+[50]: {{ cookiecutter.scm_link_url }}/blob/master/.dockerignore
+[51]: {{ cookiecutter.scm_link_url }}/blob/master/.gitignore
+<!-- apenas para GH -->
+[52]: {{ cookiecutter.scm_link_url }}/blob/master/.github/workflows/build.yml
+[53]: {{ cookiecutter.scm_link_url }}/blob/master/Makefile#L89
 [54]: #makefile-usage
-[55]: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/blob/master/docker/Dockerfile
+[55]: {{ cookiecutter.scm_link_url }}/blob/master/docker/Dockerfile
 [56]: https://dependabot.com/
 [57]: https://docs.github.com/en/github/administering-a-repository/enabling-and-disabling-version-updates#enabling-github-dependabot-version-updates
 [58]: https://github.com/marketplace/actions/release-drafter
-[59]: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/blob/master/.github/release-drafter.yml
+<!-- apenas para GH -->
+[59]: {{ cookiecutter.scm_link_url }}/blob/master/.github/release-drafter.yml
 [60]: https://semver.org/
-[61]: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/blob/master/.github/PULL_REQUEST_TEMPLATE.md
-[62]: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/tree/master/.github/ISSUE_TEMPLATE
+<!-- condicional a depender da plataforma -->
+[61]: {{ cookiecutter.scm_link_url }}/blob/master/.github/PULL_REQUEST_TEMPLATE.md
+<!-- condicional a depender da plataforma -->
+[62]: {{ cookiecutter.scm_link_url }}/tree/master/.github/ISSUE_TEMPLATE
 [63]: https://github.com/apps/stale
 [64]: https://github.com/marketplace/stale
-[65]: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/blob/master/.github/.stale.yml
+<!-- aepans para GH -->
+[65]: {{ cookiecutter.scm_link_url }}/blob/master/.github/.stale.yml
 [66]: https://semver.org/
 [67]: https://github.com/marketplace/actions/release-drafter
-[68]: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/blob/master/Makefile
-[69]: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/tree/master/docker
-[70]: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/releases
+[68]: {{ cookiecutter.scm_link_url }}/blob/master/Makefile
+[69]: {{ cookiecutter.scm_link_url }}/tree/master/docker
+[70]: {{ cookiecutter.scm_link_url }}/releases
 [71]: https://semver.org/
 [72]: https://github.com/marketplace/actions/release-drafter
-[73]: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/blob/master/.github/release-drafter.yml
-[74]: https://img.shields.io/github/license/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}
-[75]: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/blob/master/LICENCE
-[76]: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/blob/master/LICENCE
+<!-- apenas para GH -->
+[73]: {{ cookiecutter.scm_link_url }}/blob/master/.github/release-drafter.yml
+[74]: https://img.shields.io/{{ cookiecutter.scm_platform }}/license/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}
+[75]: {{ cookiecutter.scm_link_url }}/blob/master/LICENCE
+[76]: {{ cookiecutter.scm_link_url }}/blob/master/LICENCE
 [77]: https://img.shields.io/badge/python--package--template-%F0%9F%9A%80-brightgreen
 [78]: https://gitlab.com/manoelpqueiroz/galactipy
 [79]: https://gitlab.com/manoelpqueiroz/galactipy

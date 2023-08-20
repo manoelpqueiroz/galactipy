@@ -7,8 +7,8 @@ from random import choice
 import typer
 from rich.console import Console
 
-from {{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }} import version
-from {{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}.example import hello
+from {{ cookiecutter.package_name }} import version
+from {{ cookiecutter.package_name }}.example import hello
 
 
 class Color(str, Enum):

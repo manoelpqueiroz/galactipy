@@ -4,7 +4,7 @@ PYTHON := python
 PYTHONPATH := `pwd`
 
 #* Docker variables
-IMAGE := {{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}
+IMAGE := {{ cookiecutter.package_name }}
 VERSION := latest
 
 #* Poetry
@@ -40,14 +40,14 @@ formatting: codestyle
 #* Linting
 .PHONY: test
 test:
-	PYTHONPATH=$(PYTHONPATH) poetry run pytest -c pyproject.toml --cov-report=html --cov={{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }} tests/
+	PYTHONPATH=$(PYTHONPATH) poetry run pytest -c pyproject.toml --cov-report=html --cov={{ cookiecutter.package_name }} tests/
 	poetry run coverage-badge -o assets/images/coverage.svg -f
 
 .PHONY: check-codestyle
 check-codestyle:
 	poetry run isort --diff --check-only --settings-path pyproject.toml ./
 	poetry run black --diff --check --config pyproject.toml ./
-	poetry run darglint --verbosity 2 {{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }} tests
+	poetry run darglint --verbosity 2 {{ cookiecutter.package_name }} tests
 
 .PHONY: mypy
 mypy:
@@ -57,7 +57,7 @@ mypy:
 check-safety:
 	poetry check
 	poetry run safety check --full-report
-	poetry run bandit -ll --recursive {{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }} tests
+	poetry run bandit -ll --recursive {{ cookiecutter.package_name }} tests
 
 .PHONY: lint
 lint: test check-codestyle mypy check-safety

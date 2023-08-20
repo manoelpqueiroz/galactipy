@@ -8,7 +8,8 @@ from shutil import move, rmtree
 # Project root directory
 PROJECT_DIRECTORY = Path.cwd().absolute()
 PROJECT_NAME = "{{ cookiecutter.project_name }}"
-PROJECT_MODULE = "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}"
+PROJECT_REPO = "{{ cookiecutter.repo_name }}"
+PROJECT_PACKAGE = "{{ cookiecutter.package_name }}"
 CREATE_EXAMPLE_TEMPLATE = "{{ cookiecutter.create_example_template }}"
 
 # Values to generate correct licence
@@ -16,7 +17,9 @@ LICENCE = "{{ cookiecutter.licence }}"
 AUTHOR = "{{ cookiecutter.author }}"
 
 # Values to generate github repository
-GITHUB_USER = "{{ cookiecutter.github_name }}"
+SCM_PLATFORM = "{{ cookiecutter.scm_platform }}"
+SCM_USERNAME = "{{ cookiecutter.scm_username }}"
+SCM_BASE_URL = "{{ cookiecutter.scm_base_url }}"
 
 licences_dict = {
     "MIT": "mit",
@@ -26,6 +29,12 @@ licences_dict = {
     "GNU LGPL v3.0": "lgpl3",
     "Mozilla Public License 2.0": "mozilla",
     "Apache Software License 2.0": "apache",
+}
+
+
+platforms_dict = {
+    "gitlab": "GitLab",
+    "github": "GitHub",
 }
 
 
@@ -60,7 +69,7 @@ def remove_unused_files(directory: Path, module_name: str, need_to_remove_cli: b
         path.unlink()
 
 
-def print_futher_instuctions(project_name: str, github: str) -> None:
+def print_futher_instuctions(project_name: str, project_repo: str, scm_platform: str, scm_base_url: str) -> None:
     """Show user what to do next after project creation.
 
     Args:
@@ -72,7 +81,7 @@ def print_futher_instuctions(project_name: str, github: str) -> None:
 
     1) Now you can start working on it:
 
-        $ cd {project_name} && git init
+        $ cd {project_repo} && git init
 
     2) If you don't have Poetry installed run:
 
@@ -87,13 +96,12 @@ def print_futher_instuctions(project_name: str, github: str) -> None:
 
         $ make codestyle
 
-    5) Upload initial code to GitHub:
+    5) Upload initial code to {scm_platform}:
 
         $ git add .
         $ git commit -m ":tada: Initial commit"
-        $ git branch -M main
-        $ git remote add origin https://github.com/{github}/{project_name}.git
-        $ git push -u origin main
+        $ git remote add origin {scm_base_url}.git
+        $ git push -u origin master
     """
     print(textwrap.dedent(message))
 
@@ -102,10 +110,15 @@ def main() -> None:
     generate_licence(directory=PROJECT_DIRECTORY, licence=licences_dict[LICENCE])
     remove_unused_files(
         directory=PROJECT_DIRECTORY,
-        module_name=PROJECT_MODULE,
+        module_name=PROJECT_PACKAGE,
         need_to_remove_cli=CREATE_EXAMPLE_TEMPLATE != "cli",
     )
-    print_futher_instuctions(project_name=PROJECT_NAME, github=GITHUB_USER)
+    print_futher_instuctions(
+        project_name=PROJECT_NAME,
+        project_repo=PROJECT_REPO,
+        scm_platform=platforms_dict[SCM_PLATFORM],
+        scm_base_url=SCM_BASE_URL
+    )
 
 
 if __name__ == "__main__":

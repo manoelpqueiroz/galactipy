@@ -18,7 +18,7 @@ Your next Python package needs a bleeding-edge project structure.
 ## TL;DR
 
 ```bash
-cookiecutter gh:TezRomacH/python-package-template --checkout v1.1.1
+cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.1.0
 ```
 
 > All you need is the latest version of cookiecutter 😉
@@ -82,7 +82,7 @@ The input variables, with their default values:
 | `organization`           | based on the `project_name` | Name of the organization. We need to generate LICENCE and to specify ownership in `pyproject.toml`. |
 | `licence`                | `MIT`                       | One of `MIT`, `BSD-3`, `GNU GPL v3.0` and `Apache Software License 2.0`. |
 | `minimal_python_version` | `3.7`                       | Minimal Python version. One of `3.7`, `3.8` and `3.9`. It is used for builds, GitHub workflow and formatters (`black`, `isort` and `pyupgrade`). |
-| `github_name`            | based on the `organization` | GitHub or GitLab username for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for GitHub. |
+| `scm_username`            | based on the `organization` | GitHub or GitLab username for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for GitHub. |
 | `email`                  | based on the `organization` | Email for `CODE_OF_CONDUCT.md`, `SECURITY.md` files and to specify the ownership of the project in `pyproject.toml`. |
 | `version`                | `0.1.0`                     | Initial version of the package. Make sure it follows the [Semantic Versions][49] specification. |
 | `line_length`            | 88                         | The max length per line (used for codestyle with `black` and `isort`). NOTE: This value must be between 50 and 300. |
@@ -433,13 +433,13 @@ Give them your ⭐️, these resources are amazing! 😉
 ## 📃 Citation
 
 ```bibtex
-@misc{python-package-template,
-  author = {Roman Tezikov},
-  title = {Python Packages Project Generator},
-  year = {2020},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/TezRomacH/python-package-template}}
+@misc{galactipy,
+  author = {Manoel Pereira de Queiroz},
+  title = {Galactipy Python Package Project Generator},
+  year = {2023},
+  publisher = {GitLab},
+  journal = {GitLab repository},
+  howpublished = {\url{https://gitlab.com/manoelpqueiroz/galactipy}}
 }
 ```
 

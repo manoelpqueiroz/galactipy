@@ -20,8 +20,8 @@ description = "{{ cookiecutter.project_description }}"
 readme = "README.md"
 authors = ["{{ cookiecutter.author }} <{{ cookiecutter.email }}>"]
 license = "{{ cookiecutter.licence }}"
-repository = "https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}"
-homepage = "https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}"
+repository = "{{ cookiecutter.scm_base_url }}"
+homepage = "{{ cookiecutter.scm_base_url }}"
 
 # Keywords description https://python-poetry.org/docs/pyproject/#keywords
 keywords = []  #! Update me
@@ -36,11 +36,12 @@ classifiers = [  #! Update me
   "Programming Language :: Python :: 3",
   {%- for minor_version in cookiecutter._all_python_minor_version if minor_version >= python_version_splitted[1] %}
   "Programming Language :: Python :: 3.{{ minor_version }}",{% endfor %}
+  "Private :: Do Not Upload",
 ]
 
 {% if cookiecutter.create_example_template == 'cli' -%}[tool.poetry.scripts]
 # Entry points for the package https://python-poetry.org/docs/pyproject/#scripts
-"{{ cookiecutter.project_name }}" = "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}.__main__:app"{%- endif %}
+"{{ cookiecutter.repo_name }}" = "{{ cookiecutter.package_name }}.__main__:app"{%- endif %}
 
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.minimal_python_version }}"
@@ -51,7 +52,7 @@ rich = "^10.14.0"
 {% endif %}
 [tool.poetry.dev-dependencies]
 bandit = "^1.7.1"
-black = {version = "^21.10b0", allow-prereleases = true}
+black = {version = "^22.1.0"}
 darglint = "^1.8.1"
 isort = {extras = ["colors"], version = "^5.10.1"}
 mypy = "^0.910"
