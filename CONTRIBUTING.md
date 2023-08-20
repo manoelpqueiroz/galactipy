@@ -2,10 +2,10 @@
 
 ## Dependencies
 
-We use `poetry` to manage the [dependencies](https://github.com/python-poetry/poetry).
+We use `poetry` to manage the [dependencies][1].
 If you dont have `poetry`, you should install with `make poetry-download`.
 
-To install dependencies and prepare [`pre-commit`](https://pre-commit.com/) hooks you would need to run `install` command:
+To install dependencies and prepare [`pre-commit`][2] hooks you would need to run `install` command:
 
 ```bash
 make install
@@ -45,3 +45,6 @@ You can contribute by spreading a word about this library.
 It would also be a huge contribution to write
 a short article on how you are using this project.
 You can also share your best practices with us.
+
+[1]: https://github.com/python-poetry/poetry
+[2]: https://pre-commit.com/

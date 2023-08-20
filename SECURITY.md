@@ -7,7 +7,7 @@
 
 Vulnerabilities can be reported by emailing core members:
 
-- Roman Tezikov [tez.romach@gmail.com](mailto:tez.romach@gmail.com)
+- Manoel Pereira de Queiroz <[mpq.dev@pm.me][1]>
 
 Please include the requested information listed below (as much as you can provide) to help us better understand the nature and scope of the possible issue:
 
@@ -25,3 +25,5 @@ This information will help us triage your report more quickly.
 ## Preferred Languages
 
 We prefer all communications to be in English.
+
+[1]: mailto:mpq.dev@pm.me

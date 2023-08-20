@@ -11,3 +11,5 @@ default_context:
   version: "{{ cookiecutter.version }}"
   line_length: "{{ cookiecutter.line_length }}"
   create_example_template: "{{ cookiecutter.create_example_template }}"
+  scm_base_url: "https://{{ cookiecutter.scm_platform }}.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}"
+  scm_link_url: "https://{{ cookiecutter.scm_platform }}.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}{% if cookiecutter.scm_platform == 'gitlab' %}/-{% endif %}"

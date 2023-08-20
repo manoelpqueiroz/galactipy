@@ -10,7 +10,8 @@ assignees:
 
 <!-- Mark with an `x` all the checkboxes that apply (like `[x]`) -->
 
-- [ ] I've searched the project's [`issues`](https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}/issues?q=is%3Aissue).
+- [ ] I've searched the project's [`issues`][1], looking for the following terms:
+  - [...]
 
 ## ❓ Question
 
@@ -23,3 +24,5 @@ Is it possible to [...]?
 ## 📎 Additional context
 
 <!-- Add any other context or screenshots about the feature request here. -->
+
+[1]: {{ cookiecutter.scm_link_url }}/issues
