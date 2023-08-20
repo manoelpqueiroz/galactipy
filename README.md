@@ -9,7 +9,7 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/TezRomacH/python-package-template/blob/master/.pre-commit-config.yaml)
 [![Semantic Versions](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--versions-e10079.svg)](https://github.com/TezRomacH/python-package-template/releases)
-[![License](https://img.shields.io/github/license/TezRomacH/python-package-template)](https://github.com/TezRomacH/python-package-template/blob/master/LICENSE)
+[![Licence](https://img.shields.io/github/license/TezRomacH/python-package-template)](https://github.com/TezRomacH/python-package-template/blob/master/LICENCE)
 ![Coverage Report](assets/images/coverage.svg)
 
 Your next Python package needs a bleeding-edge project structure.
@@ -49,7 +49,7 @@ In this [cookiecutter 🍪](https://github.com/cookiecutter/cookiecutter) templa
 ### Open source community features
 
 - Ready-to-use [Pull Requests templates](https://github.com/TezRomacH/python-package-template/blob/master/%7B%7B%20cookiecutter.project_name%20%7D%7D/.github/PULL_REQUEST_TEMPLATE.md) and several [Issue templates](https://github.com/TezRomacH/python-package-template/tree/master/%7B%7B%20cookiecutter.project_name%20%7D%7D/.github/ISSUE_TEMPLATE).
-- Files such as: `LICENSE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically.
+- Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically.
 - [`Stale bot`](https://github.com/apps/stale) that closes abandoned issues after a period of inactivity. (You will only [need to setup free plan](https://github.com/marketplace/stale)). Configuration is [here](https://github.com/TezRomacH/python-package-template/blob/master/%7B%7B%20cookiecutter.project_name%20%7D%7D/.github/.stale.yml).
 - [Semantic Versions](https://semver.org/) specification with [`Release Drafter`](https://github.com/marketplace/actions/release-drafter).
 
@@ -80,9 +80,9 @@ The input variables, with their default values:
 | `project_name`           | `python-project`            | [Check the availability of possible name](http://ivantomic.com/projects/ospnc/) before creating the project. |
 | `project_description`    | based on the `project_name` | Brief description of your project. |
 | `organization`           | based on the `project_name` | Name of the organization. We need to generate LICENCE and to specify ownership in `pyproject.toml`. |
-| `license`                | `MIT`                       | One of `MIT`, `BSD-3`, `GNU GPL v3.0` and `Apache Software License 2.0`. |
+| `licence`                | `MIT`                       | One of `MIT`, `BSD-3`, `GNU GPL v3.0` and `Apache Software License 2.0`. |
 | `minimal_python_version` | `3.7`                       | Minimal Python version. One of `3.7`, `3.8` and `3.9`. It is used for builds, GitHub workflow and formatters (`black`, `isort` and `pyupgrade`). |
-| `github_name`            | based on the `organization` | GitHub username for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for GitHub. |
+| `github_name`            | based on the `organization` | GitHub or GitLab username for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for GitHub. |
 | `email`                  | based on the `organization` | Email for `CODE_OF_CONDUCT.md`, `SECURITY.md` files and to specify the ownership of the project in `pyproject.toml`. |
 | `version`                | `0.1.0`                     | Initial version of the package. Make sure it follows the [Semantic Versions](https://semver.org/) specification. |
 | `line_length`            | 88                         | The max length per line (used for codestyle with `black` and `isort`). NOTE: This value must be between 50 and 300. |
@@ -405,11 +405,11 @@ Here is a list of things that have yet to be implemented:
 - Add [`Invoke`](http://www.pyinvoke.org/)
 - Add [`Earthly`](https://earthly.dev/)
 
-## 🛡 License
+## 🛡 Licence
 
-[![License](https://img.shields.io/github/license/TezRomacH/python-package-template)](https://github.com/TezRomacH/python-package-template/blob/master/LICENSE)
+[![Licence](https://img.shields.io/github/license/TezRomacH/python-package-template)](https://github.com/TezRomacH/python-package-template/blob/master/LICENCE)
 
-This project is licensed under the terms of the `MIT` license. See [LICENSE](https://github.com/TezRomacH/python-package-template/blob/master/LICENSE) for more details.
+This project is licenced under the terms of the `MIT` licence. See [LICENCE](https://github.com/TezRomacH/python-package-template/blob/master/LICENCE) for more details.
 
 ## 🏅 Acknowledgements
 

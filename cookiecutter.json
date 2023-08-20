@@ -1,16 +1,34 @@
 {
-  "project_name": "python-project",
-  "project_description": "Awesome `{{ cookiecutter.project_name.lower().replace(' ', '-') }}` is a Python cli/package created with https://github.com/TezRomacH/python-package-template",
-  "organization": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
-  "license": ["MIT", "BSD-3", "GNU GPL v3.0", "Apache Software License 2.0"],
-  "_all_python_minor_version": [7, 8, 9],
-  "minimal_python_version": [3.7, 3.8, 3.9],
-  "github_name": "{{ cookiecutter.organization.lower().replace(' ', '_').replace('-', '_') }}",
-  "email": "hello@{{ cookiecutter.organization.lower().replace(' ', '-') }}.com",
+  "project_name": "Python Project",
+  "repo_name": "{{ cookiecutter.project_name.replace(' ', '-').lower().strip('-') }}",
+  "package_name": "{{ cookiecutter.project_name.replace(' ', '_').replace('-', '_').lower() }}",
+  "project_description": "Awesome `{{ cookiecutter.repo_name }}` is a Python cli/package created with https://gitlab.com/manoelpqueiroz/galactipy",
   "version": "0.1.0",
+  "author": "Manoel Pereira de Queiroz",
+  "scm_platform": ["gitlab", "github"],
+  "scm_username": "manoelpqueiroz",
+  "email": "contact@{{ cookiecutter.scm_username.lower().replace(' ', '-') }}.com",
+  "licence": [
+    "MIT",
+    "BSD-3",
+    "GNU GPL v3.0",
+    "GNU AGPL v3.0",
+    "GNU LGPL v3.0",
+    "Mozilla Public License 2.0",
+    "Apache Software License 2.0",
+    "Not open source"
+  ],
+  "minimal_python_version": [3.7, 3.8, 3.9, 3.10, 3.11],
+  "use_pytest": true,
+  "use_black": true,
   "line_length": 88,
+  "docstring_style": ["numpy", "sphinx", "google", "dismiss"],
   "create_example_template": ["cli", "none"],
+  "create_docker": true,
+  "create_authors": true,
+  "create_docs": true,
 
+  "_all_python_minor_version": [7, 8, 9, 10, 11],
   "_copy_without_render": [
     "poetry.lock"
   ]

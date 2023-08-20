@@ -4,14 +4,14 @@ requires = ["poetry_core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "python-package-template"
-version = "1.1.1"
+name = "galactipy"
+version = "0.1.0"
 description = "Cookiecutter template for Python cli/packages"
 readme = "README.md"
-authors = ["Roman Tezikov <tez.romach@gmail.com>"]
+authors = ["Manoel Pereira de Queiroz <mpq.dev@pm.me>"]
 license = "MIT"
-repository = "https://github.com/TezRomacH/python-package-template"
-homepage = "https://github.com/TezRomacH/python-package-template"
+repository = "https://gitlab.com/manoelpqueiroz/galactipy"
+homepage = "https://gitlab.com/manoelpqueiroz/galactipy"
 keywords = [
     "python",
     "cookiecutter",
