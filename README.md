@@ -75,18 +75,26 @@ Template generator will ask you to fill some variables.
 
 The input variables, with their default values:
 
-|     **Parameter**     |      **Default value**      | **Description**                                                                                                                                                               |
-|:---------------------:|:---------------------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `project_name`           | `python-project`            | [Check the availability of possible name][48] before creating the project. |
-| `project_description`    | based on the `project_name` | Brief description of your project. |
-| `organization`           | based on the `project_name` | Name of the organization. We need to generate LICENCE and to specify ownership in `pyproject.toml`. |
-| `licence`                | `MIT`                       | One of `MIT`, `BSD-3`, `GNU GPL v3.0` and `Apache Software License 2.0`. |
-| `minimal_python_version` | `3.7`                       | Minimal Python version. One of `3.7`, `3.8` and `3.9`. It is used for builds, GitHub workflow and formatters (`black`, `isort` and `pyupgrade`). |
-| `scm_username`            | based on the `organization` | GitHub or GitLab username for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for GitHub. |
-| `email`                  | based on the `organization` | Email for `CODE_OF_CONDUCT.md`, `SECURITY.md` files and to specify the ownership of the project in `pyproject.toml`. |
-| `version`                | `0.1.0`                     | Initial version of the package. Make sure it follows the [Semantic Versions][49] specification. |
-| `line_length`            | 88                         | The max length per line (used for codestyle with `black` and `isort`). NOTE: This value must be between 50 and 300. |
-| `create_example_template` | `cli`                      | If `cli` is chosen generator will create simple CLI application with [`Typer`][50] and [`Rich`][51] libraries. One of `cli`, `none` |
+|       **Parameter**       |      **Default value**      | **Description**                                                                                                                                                |
+|:-------------------------:|:---------------------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `project_name`            | `Python Project`            | [Check the availability of possible name][48] before creating the project. |
+| `repo_name`               | based on `project_name`     | Name of the repository to develop the project on. |
+| `package_name`            | based on `project_name`     | PyPI-compliant Python package name. |
+| `project_description`     | based on `project_name`     | Brief description of your project. |
+| `version`                 | `0.1.0`                     | Initial version of the package. Make sure it follows the [Semantic Versions][49] specification. |
+| `author`                  | `Manoel Pereira de Queiroz` | Name of the author or organisation. We need to generate LICENCE and to specify ownership in `pyproject.toml`. |
+| `scm_platform`            | `gitlab`                    | One of `gitlab` and `github`. |
+| `scm_username`            | `manoelpqueiroz`            | GitHub or GitLab username for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for either platform. |
+| `email`                   | based on `scm_username`     | Email for `CODE_OF_CONDUCT.md`, `SECURITY.md` files and to specify the ownership of the project in `pyproject.toml`. |
+| `licence`                 | `MIT`                       | One of `MIT`, `BSD-3`, `GNU GPL v3.0`, `GNU AGLP v3.0`, `GNU LGPL v3.0`, `Mozilla Public License 2.0` and `Apache Software License 2.0`, or `Not open source`. |
+| `minimal_python_version`  | `3.7`                       | Minimal Python version. One of `3.7`, `3.8`, `3.9`, `3.10` and `3.11`. It is used for builds, pipelines and formatters (`black`, `isort` and `pyupgrade`). |
+| `use_black`               | `True`                      | Option to use [`black`][20] as the code formatter. You can dismiss it by typing `0`, `false`, `f`, `no`, `n` or `off`. |
+| `line_length`             | 88                          | The max length per line (used for codestyle with `black` and `isort`). NOTE: This value must be between 50 and 300. |
+| `docstring_style`         | `numpy`                     | One of `numpy`, `sphinx` or `google`. You can ignore by choosing `dismiss`. |
+| `create_example_template` | `cli`                       | If `cli` is chosen generator will create simple CLI application with [`Typer`][50] and [`Rich`][51] libraries. One of `cli`, `none` |
+| `create_docker`           | `True`                      | Option to create a [Dockerfile][1] to build an image for your projeto. You can dismiss it by typing `0`, `false`, `f`, `no`, `n` or `off`. |
+| `create_authors`          | `True`                      | Option to create a [AUTHORS.md][1] file. You can dismiss it by typing `0`, `false`, `f`, `no`, `n` or `off`. |
+| `create_docs`             | `True`                      | Option to create documentation files with [Sphinx][1]. You can dismiss it by typing `0`, `false`, `f`, `no`, `n` or `off`. |
 
 All input values will be saved in the `cookiecutter-config-file.yml` file so that you won't lose them. 😉
 
@@ -553,5 +561,3 @@ Markdown source for the badge [![🚀 Your next Python package needs a bleeding-
 [102]: https://github.com/crplab/cdst
 [103]: https://img.shields.io/badge/python--package--template-%F0%9F%9A%80-brightgreen
 [104]: https://github.com/TezRomacH/python-package-template
-[105]: https://img.shields.io/badge/python--package--template-%F0%9F%9A%80-brightgreen
-[106]: https://github.com/TezRomacH/python-package-template
