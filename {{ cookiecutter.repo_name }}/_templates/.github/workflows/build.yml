@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["{% endraw %}{{ cookiecutter.minimal_python_version }}"{%- if cookiecutter.minimal_python_version != '3.9' -%}, "3.9"{% endif %}]{% raw %}
+        python-version: [{% endraw %}{% for version in cookiecutter._all_python_version if version >= cookiecutter.minimal_python_version %}"{{ version }}"{% if not loop.last %}, {% endif %}{% endfor %}{% raw %}]
 
     steps:
     - uses: actions/checkout@v2

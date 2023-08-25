@@ -18,7 +18,7 @@
     "Apache Software License 2.0",
     "Not open source"
   ],
-  "minimal_python_version": [3.7, 3.8, 3.9, 3.10, 3.11],
+  "minimal_python_version": [3.8, 3.9, 3.10, 3.11],
   "use_pytest": true,
   "use_black": true,
   "line_length": 88,
@@ -28,7 +28,7 @@
   "create_authors": true,
   "create_docs": true,
 
-  "_all_python_minor_version": [7, 8, 9, 10, 11],
+  "_all_python_version": [3.8, 3.9, 3.10, 3.11],
   "_copy_without_render": [
     "poetry.lock"
   ]
