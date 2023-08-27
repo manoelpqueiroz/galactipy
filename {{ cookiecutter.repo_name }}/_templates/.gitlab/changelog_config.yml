@@ -1,0 +1,37 @@
+{% raw %}---
+# Settings for generating changelogs using the GitLab API. See
+# https://docs.gitlab.com/ee/api/repositories.html#generate-changelog-data for
+# more information.
+categories:
+  enhancement: ":rocket: Features"
+  feature: ":rocket: Features"
+  bug: ":wrench: Fixes & Refactoring"
+  refactoring: ":wrench: Fixes & Refactoring"
+  bugfix: ":wrench: Fixes & Refactoring"
+  fix: ":wrench: Fixes & Refactoring"
+  build: ":package: Build System & CI/CD"
+  ci: ":package: Build System & CI/CD"
+  testing: ":package: Build System & CI/CD"
+  breaking: ":collision: Breaking Changes"
+  documentation: ":memo: Documentation"
+  dependencies: ":arrow_up: Dependencies Updates"
+template: |
+  {% if categories %}
+  {% each categories %}
+  ### {{ title }} ({% if single_change %}1 change{% else %}{{ count }} changes{% end %})
+
+  {% each entries %}
+  - [{{ title }}]({{ commit.reference }})\
+  {% if author.credit %} by {{ author.reference }}{% end %}\
+  {% if commit.trailers.MR %} ([merge request]({{ commit.trailers.MR }}))\
+  {% else %}\
+  {% if merge_request %} ([merge request]({{ merge_request.reference }}))\
+  {% end %}\
+  {% end %}
+
+  {% end %}
+
+  {% end %}
+  {% else %}
+  No changes.
+  {% end %}{% endraw %}
