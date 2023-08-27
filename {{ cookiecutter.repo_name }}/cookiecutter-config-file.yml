@@ -12,12 +12,11 @@ default_context:
   email: "{{ cookiecutter.email }}"
   licence: "{{ cookiecutter.licence }}"
   minimal_python_version: {{ cookiecutter.minimal_python_version }}
-  use_black: "{{ cookiecutter.use_black }}"
-  line_length: "{{ cookiecutter.line_length }}"
+  use_formatters: {{ cookiecutter.use_formatters }}
+  line_length: {{ cookiecutter.line_length }}
+  use_linters: {{ cookiecutter.use_linters }}
   docstring_style: "{{ cookiecutter.docstring_style }}"
   create_example_template: "{{ cookiecutter.create_example_template }}"
-  create_docker: "{{ cookiecutter.create_docker }}"
-  create_authors: "{{ cookiecutter.create_authors }}"
-  create_docs: "{{ cookiecutter.create_docs }}"
-  scm_base_url: "https://{{ cookiecutter.scm_platform }}.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}"
-  scm_link_url: "https://{{ cookiecutter.scm_platform }}.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}{% if cookiecutter.scm_platform == 'gitlab' %}/-{% endif %}"
+  create_docker: {{ cookiecutter.create_docker }}
+  create_authors: {{ cookiecutter.create_authors }}
+  create_docs: {{ cookiecutter.create_docs }}

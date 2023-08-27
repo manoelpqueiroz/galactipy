@@ -82,17 +82,18 @@ The input variables, with their default values:
 | `package_name`            | based on `project_name`     | PyPI-compliant Python package name. |
 | `project_description`     | based on `project_name`     | Brief description of your project. |
 | `version`                 | `0.1.0`                     | Initial version of the package. Make sure it follows the [Semantic Versions][49] specification. |
-| `author`                  | `Manoel Pereira de Queiroz` | Name of the author or organisation. We need to generate LICENCE and to specify ownership in `pyproject.toml`. |
+| `author`                  | `Manoel Pereira de Queiroz` | Name of the author or organisation. Used to generate LICENCE and to specify ownership in `pyproject.toml`. |
 | `scm_platform`            | `gitlab`                    | One of `gitlab` and `github`. |
 | `scm_username`            | `manoelpqueiroz`            | GitHub or GitLab username for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for either platform. |
 | `email`                   | based on `scm_username`     | Email for `CODE_OF_CONDUCT.md`, `SECURITY.md` files and to specify the ownership of the project in `pyproject.toml`. |
 | `licence`                 | `MIT`                       | One of `MIT`, `BSD-3`, `GNU GPL v3.0`, `GNU AGLP v3.0`, `GNU LGPL v3.0`, `Mozilla Public License 2.0` and `Apache Software License 2.0`, or `Not open source`. |
-| `minimal_python_version`  | `3.7`                       | Minimal Python version. One of `3.7`, `3.8`, `3.9`, `3.10` and `3.11`. It is used for builds, pipelines and formatters (`black`, `isort` and `pyupgrade`). |
-| `use_black`               | `True`                      | Option to use [`black`][20] as the code formatter. You can dismiss it by typing `0`, `false`, `f`, `no`, `n` or `off`. |
-| `line_length`             | 88                          | The max length per line (used for codestyle with `black` and `isort`). NOTE: This value must be between 50 and 300. |
-| `docstring_style`         | `numpy`                     | One of `numpy`, `sphinx` or `google`. You can ignore by choosing `dismiss`. |
+| `minimal_python_version`  | `3.8`                       | Minimal Python version. All versions since `3.8` are available to choose. It is used for builds, pipelines and formatters (`black`, `isort` and `pyupgrade`). |
+| `use_formatters`          | `True`                      | Option to use code formatters [`black`][20], [`isort`][21] and [`pyupgrade`][22] as pre-commit hooks. You can dismiss it by typing `0`, `false`, `f`, `no`, `n` or `off`. |
+| `line_length`             | 88                          | The max length per line, dismiss if `use_formatters` is not used. NOTE: This value must be between 50 and 300. |
+| `use_linters`             | `True`                      | Option to use linters [`flake8`][105] and [`pydocstyle`][106]. Depending on the value of `docstring_style`, will also use [`pydoclint`][107]. You can dismiss it by typing `0`, `false`, `f`, `no`, `n` or `off`. |
+| `docstring_style`         | `numpy`                     | One of `numpy`, `pep257` or `google`, dismiss if `use_linters` is not used. You can choose `other` to tell `pydoclint` to dismiss checks on your docstrings. |
 | `create_example_template` | `cli`                       | If `cli` is chosen generator will create simple CLI application with [`Typer`][50] and [`Rich`][51] libraries. One of `cli`, `none` |
-| `create_docker`           | `True`                      | Option to create a [Dockerfile][1] to build an image for your projeto. You can dismiss it by typing `0`, `false`, `f`, `no`, `n` or `off`. |
+| `create_docker`           | `True`                      | Option to create a [Dockerfile][1] to build an image for your project. You can dismiss it by typing `0`, `false`, `f`, `no`, `n` or `off`. |
 | `create_authors`          | `True`                      | Option to create a [AUTHORS.md][1] file. You can dismiss it by typing `0`, `false`, `f`, `no`, `n` or `off`. |
 | `create_docs`             | `True`                      | Option to create documentation files with [Sphinx][1]. You can dismiss it by typing `0`, `false`, `f`, `no`, `n` or `off`. |
 
@@ -561,3 +562,7 @@ Markdown source for the badge [![🚀 Your next Python package needs a bleeding-
 [102]: https://github.com/crplab/cdst
 [103]: https://img.shields.io/badge/python--package--template-%F0%9F%9A%80-brightgreen
 [104]: https://github.com/TezRomacH/python-package-template
+[105]: https://github.com/PyCQA/flake8
+[106]: https://github.com/PyCQA/pydocstyle
+[107]: https://github.com/jsh9/pydoclint
+[108]: https://github.com/nedbat/coveragepy

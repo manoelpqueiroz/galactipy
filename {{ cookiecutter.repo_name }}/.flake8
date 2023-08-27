@@ -1,0 +1,18 @@
+[flake8]
+# https://github.com/PyCQA/flake8
+# https://flake8.pycqa.org/en/latest/user/configuration.html
+# https://flake8.pycqa.org/en/latest/user/options.html
+extend-ignore = E501 #! Update me
+exclude =
+    .git,
+    .hg,
+    __pycache__,
+    .mypy_cache,
+    .tox,
+    .venv,
+    _build,
+    buck-out,
+    build,
+    dist,
+    env,
+    venv

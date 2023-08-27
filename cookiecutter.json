@@ -19,16 +19,18 @@
     "Not open source"
   ],
   "minimal_python_version": [3.8, 3.9, 3.10, 3.11],
-  "use_pytest": true,
-  "use_black": true,
+  "use_formatters": true,
   "line_length": 88,
-  "docstring_style": ["numpy", "sphinx", "google", "dismiss"],
+  "use_linters": true,
+  "docstring_style": ["numpy", "pep257", "google", "other"],
   "create_example_template": ["cli", "none"],
   "create_docker": true,
   "create_authors": true,
   "create_docs": true,
 
   "_all_python_version": [3.8, 3.9, 3.10, 3.11],
+  "_scm_base_url": "https://{{ cookiecutter.scm_platform }}.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}",
+  "_scm_link_url": "https://{{ cookiecutter.scm_platform }}.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}{% if cookiecutter.scm_platform == 'gitlab' %}/-{% endif %}",
   "_copy_without_render": [
     "poetry.lock"
   ]
