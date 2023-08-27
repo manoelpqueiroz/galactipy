@@ -3,7 +3,7 @@
 import re
 import sys
 
-PROJECT_NAME = "{{ cookiecutter.project_name }}"
+PACKAGE_NAME = "{{ cookiecutter.package_name }}"
 PROJECT_VERSION = "{{ cookiecutter.version }}"
 LINE_LENGTH_PARAMETER = "{{ cookiecutter.line_length }}"
 
@@ -31,7 +31,7 @@ SEMVER_REGEX = re.compile(
 )
 
 
-def validate_project_name(project_name: str) -> None:
+def validate_package_name(package_name: str) -> None:
     """Ensure that `project_name` parameter is valid.
 
     Valid inputs starts with the lowercase letter.
@@ -43,8 +43,8 @@ def validate_project_name(project_name: str) -> None:
     Raises:
         ValueError: If project_name is not a valid Python module name
     """
-    if MODULE_REGEX.fullmatch(project_name) is None:
-        message = f"ERROR: The project name `{project_name}` is not a valid Python module name."
+    if MODULE_REGEX.fullmatch(package_name) is None:
+        message = f"ERROR: The project name `{package_name}` is not a valid Python module name."
         raise ValueError(message)
 
 
@@ -78,7 +78,7 @@ def validate_line_length(line_length: int) -> None:
 
 def main() -> None:
     try:
-        validate_project_name(project_name=PROJECT_NAME)
+        validate_package_name(package_name=PACKAGE_NAME)
         validate_semver(version=PROJECT_VERSION)
         validate_line_length(line_length=int(LINE_LENGTH_PARAMETER))
     except ValueError as ex:
