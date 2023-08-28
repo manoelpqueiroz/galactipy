@@ -25,7 +25,6 @@
   "docstring_style": ["numpy", "pep257", "google", "other"],
   "create_example_template": ["cli", "none"],
   "create_docker": true,
-  "create_authors": true,
   "create_docs": true,
 
   "_all_python_version": [3.8, 3.9, 3.10, 3.11],

@@ -18,5 +18,4 @@ default_context:
   docstring_style: "{{ cookiecutter.docstring_style }}"
   create_example_template: "{{ cookiecutter.create_example_template }}"
   create_docker: {{ cookiecutter.create_docker }}
-  create_authors: {{ cookiecutter.create_authors }}
   create_docs: {{ cookiecutter.create_docs }}

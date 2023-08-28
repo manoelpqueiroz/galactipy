@@ -1,3 +1,7 @@
+{%- set scm_pretty_name = {
+    'gitlab': 'GitLab',
+    'github': 'GitHub',
+} -%}
 # {{ cookiecutter.project_name }}
 
 <div align="center">
@@ -33,7 +37,7 @@ cd {{ cookiecutter.repo_name }} && git init
 make poetry-download
 ```
 
-3. Initialize poetry and install `pre-commit` hooks:
+3. Initialize Poetry and install `pre-commit` hooks:
 
 ```bash
 make install
@@ -46,7 +50,7 @@ make pre-commit-install
 make codestyle
 ```
 
-5. Upload initial code to GitHub:
+5. Upload initial code to {{ scm_pretty_name[cookiecutter.scm_platform] }}:
 
 ```bash
 git add .
@@ -56,10 +60,12 @@ git remote add origin {{ cookiecutter._scm_base_url }}.git
 git push -u origin main
 ```
 
+{%- if cookiecutter.scm_platform = 'github' %}
 ### Set up bots
 
 - Set up [Dependabot][18] to ensure you have the latest dependencies.
 - Set up [Stale bot][19] for automatic issue closing.
+{%- endif %}
 
 ### Poetry
 
@@ -128,15 +134,21 @@ Articles:
 - `Github Actions` with predefined [build workflow][52] as the default CI/CD.
 - Everything is already set up for security checks, codestyle checks, code formatting, testing, linting, docker builds, etc with [`Makefile`][53]. More details in [makefile-usage][54].
 - [Dockerfile][55] for your package.
+{% if cookiecutter.scm_platform = 'gitlab' %}
+- Automatic [`CHANGELOG`][80] updated via [GitLab API][81] and [template][82].
+{% if cookiecutter.scm_platform = 'github' %}
 - Always up-to-date dependencies with [`@dependabot`][56]. You will only [enable it][57].
 - Automatic drafts of new releases with [`Release Drafter`][58]. You may see the list of labels in [`release-drafter.yml`][59]. Works perfectly with [Semantic Versions][60] specification.
+{% endif %}
 
 ### Open source community features
 
 - Ready-to-use [Pull Requests templates][61] and several [Issue templates][62].
 - Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically.
+{% if cookiecutter.scm_platform = 'github' }
 - [`Stale bot`][63] that closes abandoned issues after a period of inactivity. (You will only [need to setup free plan][64]). Configuration is [here][65].
 - [Semantic Versions][66] specification with [`Release Drafter`][67].
+{% endif %}
 
 ## Installation
 
@@ -389,10 +401,6 @@ This project is licenced under the terms of the `{{ cookiecutter.licence }}` lic
 
 ## 📃 Citation
 
-{%- set scm_pretty_name = {
-    'gitlab': 'GitLab',
-    'github': 'GitHub',
-} -%}
 ```bibtex
 {% raw %}@misc{{% endraw %}{{ cookiecutter.project_name }},
   author = {% raw %}{{% endraw %}{{ cookiecutter.author }}{% raw %}}{% endraw %},
@@ -496,3 +504,6 @@ This project was generated with [`galactipy`][79]
 [77]: https://img.shields.io/badge/python--package--template-%F0%9F%9A%80-brightgreen
 [78]: https://gitlab.com/manoelpqueiroz/galactipy
 [79]: https://gitlab.com/manoelpqueiroz/galactipy
+[80]: {{ cookiecutter._scm_link_url }}/blob/master/CHANGELOG.md
+[81]: https://docs.gitlab.com/ee/user/project/changelogs.html
+[82]: {{ cookiecutter._scm_link_url }}/blob/master/.gitlab/changelog_config.yml

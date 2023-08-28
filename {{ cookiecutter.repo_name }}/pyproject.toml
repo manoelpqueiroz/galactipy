@@ -24,10 +24,10 @@ repository = "{{ cookiecutter._scm_base_url }}"
 homepage = "{{ cookiecutter._scm_base_url }}"
 
 # Keywords description https://python-poetry.org/docs/pyproject/#keywords
-keywords = []  #! Update me
+keywords = []  # UPDATEME
 
 # Pypi classifiers: https://pypi.org/classifiers/
-classifiers = [  #! Update me
+classifiers = [  # UPDATEME
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Developers",
   "Operating System :: OS Independent",
@@ -66,7 +66,7 @@ pyupgrade = "^2.29.1"
 flake8 = "^6.0.0"
 {% endif %}
 {%+ if cookiecutter.use_linters and cookiecutter.docstring_style != 'dismiss' %}
-pydocstyle = "^6.1.1"
+pydocstyle = {extras = ["toml"], version = "^6.1.1"}
 {% endif %}
 {%+ if cookiecutter.use_linters and cookiecutter.docstring_style not in ['pep257', 'dismiss'] %}
 pydoclint = "^0.2.0"

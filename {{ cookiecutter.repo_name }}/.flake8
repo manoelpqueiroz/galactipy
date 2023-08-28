@@ -2,7 +2,7 @@
 # https://github.com/PyCQA/flake8
 # https://flake8.pycqa.org/en/latest/user/configuration.html
 # https://flake8.pycqa.org/en/latest/user/options.html
-extend-ignore = E501 #! Update me
+extend-ignore = E501 # UPDATEME
 exclude =
     .git,
     .hg,

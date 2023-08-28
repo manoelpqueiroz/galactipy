@@ -3,18 +3,20 @@ SHELL := /usr/bin/env bash
 PYTHON := python
 PYTHONPATH := `pwd`
 
+{% if not cookiecutter.create_docker %}
 #* Docker variables
 IMAGE := {{ cookiecutter.package_name }}
 VERSION := latest
+{% endif %}
 
 #* Poetry
 .PHONY: poetry-download
 poetry-download:
-	curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | $(PYTHON) -
+	curl -sSL https://install.python-poetry.org | $(PYTHON) -
 
 .PHONY: poetry-remove
 poetry-remove:
-	curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | $(PYTHON) - --uninstall
+	curl -sSL https://install.python-poetry.org | $(PYTHON) - --uninstall
 
 #* Installation
 .PHONY: install
@@ -47,7 +49,9 @@ test:
 check-codestyle:
 	poetry run isort --diff --check-only --settings-path pyproject.toml ./
 	poetry run black --diff --check --config pyproject.toml ./
-	poetry run darglint --verbosity 2 {{ cookiecutter.package_name }} tests
+
+.PHONE: check-formatting
+check-formatting: check-codestyle
 
 .PHONY: mypy
 mypy:
@@ -59,14 +63,25 @@ check-safety:
 	poetry run safety check --full-report
 	poetry run bandit -ll --recursive {{ cookiecutter.package_name }} tests
 
-.PHONY: lint
-lint: test check-codestyle mypy check-safety
+.PHONE: lint
+lint:
+	poetry run flake8 --count --config=.flake8 ./
+{%- if cookiecutter.use_linters and cookiecutter.docstring_style != 'dismiss' %}
+	poetry run pydocstyle --count --config=pyproject.toml ./
+{%- endif %}
+{%- if cookiecutter.use_linters and cookiecutter.docstring_style not in ['pep257', 'dismiss'] %}
+	poetry run pydoclint --config=pyproject.toml ./
+{% endif %}
+
+.PHONY: lint-all
+lint: test check-codestyle lint mypy check-safety
 
 .PHONY: update-dev-deps
 update-dev-deps:
 	poetry add -D bandit@latest darglint@latest "isort[colors]@latest" mypy@latest pre-commit@latest pydocstyle@latest pylint@latest pytest@latest pyupgrade@latest safety@latest coverage@latest coverage-badge@latest pytest-html@latest pytest-cov@latest
 	poetry add -D --allow-prereleases black@latest
 
+{% if not cookiecutter.create_docker %}
 #* Docker
 # Example: make docker-build VERSION=latest
 # Example: make docker-build IMAGE=some_name VERSION={{ cookiecutter.version }}
@@ -83,6 +98,7 @@ docker-build:
 docker-remove:
 	@echo Removing docker $(IMAGE):$(VERSION) ...
 	docker rmi -f $(IMAGE):$(VERSION)
+{% endif %}
 
 #* Cleaning
 .PHONY: pycache-remove
