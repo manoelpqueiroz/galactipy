@@ -5,7 +5,10 @@
   "project_description": "Awesome `{{ cookiecutter.repo_name }}` is a Python cli/package created with https://gitlab.com/manoelpqueiroz/galactipy",
   "version": "0.1.0",
   "author": "Manoel Pereira de Queiroz",
-  "scm_platform": ["gitlab", "github"],
+  "scm_platform": [
+    "gitlab",
+    "github"
+  ],
   "scm_username": "manoelpqueiroz",
   "email": "contact@{{ cookiecutter.scm_username.lower().replace(' ', '-') }}.com",
   "licence": [
@@ -18,16 +21,69 @@
     "Apache Software License 2.0",
     "Not open source"
   ],
-  "minimal_python_version": [3.8, 3.9, 3.10, 3.11],
+  "minimal_python_version": [
+    3.8,
+    3.9,
+    3.10,
+    3.11
+  ],
   "use_formatters": true,
   "line_length": 88,
   "use_linters": true,
-  "docstring_style": ["numpy", "pep257", "google", "other"],
-  "create_example_template": ["cli", "none"],
+  "docstring_style": [
+    "numpy",
+    "google",
+    "pep257",
+    "other"
+  ],
+  "create_example_template": [
+    "cli",
+    "none"
+  ],
   "create_docker": true,
   "create_docs": true,
 
-  "_all_python_version": [3.8, 3.9, 3.10, 3.11],
+  "__prompts__": {
+    "project_name": "Project name",
+    "repo_name": "Project slug",
+    "package_name": "Package name",
+    "project_description": "Short description of the project",
+    "version": "Project version",
+    "author": "Author or Organisation",
+    "scm_platform": {
+      "__prompt__": "In which platform would you like to host your code?",
+      "gitlab": "GitLab",
+      "github": "GitHub"
+    },
+    "scm_username": "Platform username",
+    "email": "e-Mail",
+    "licence": {
+      "__prompt__": "Which licence would you like to use for your project?",
+      "MIT": "MIT Licence",
+      "BSD-3": "3-Clause BSD",
+      "GNU GPL v3.0": "GNU General Public License version 3",
+      "GNU AGPL v3.0": "GNU Affero General Public License version 3",
+      "GNU LGPL v3.0": "GNU Lesser General Public License version 3",
+      "Mozilla Public License 2.0": "Mozilla Public License 2.0",
+      "Apache Software License 2.0": "Apache Software License 2.0",
+      "Not open source": "Not open source"
+    },
+    "minimal_python_version": "Minimal Python version",
+    "use_formatters": "Use Black, isort and pyupgrade for formatting?",
+    "line_length": "Maximum line length",
+    "use_linters": "Use flake8 and pydocstyle for linting?",
+    "docstring_style": "Which docstring style would you like to use? \"numpy\" and \"google\" styles will add pydoclint as a dependency.",
+    "create_example_template": "Which example template would you like to create?",
+    "create_docker": "Containerize your application with Docker?",
+    "create_docs": "Create project documentation with Sphinx?"
+  },
+
+  "_all_python_version": [
+    3.8,
+    3.9,
+    3.10,
+    3.11
+  ],
   "__scm_base_url": "https://{{ cookiecutter.scm_platform }}.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}",
   "__scm_link_url": "https://{{ cookiecutter.scm_platform }}.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}{% if cookiecutter.scm_platform == 'gitlab' %}/-{% endif %}",
   "_copy_without_render": [
