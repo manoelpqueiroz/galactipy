@@ -19,7 +19,7 @@ AUTHOR = "{{ cookiecutter.author }}"
 # Values to generate github repository
 SCM_PLATFORM = "{{ cookiecutter.scm_platform }}"
 SCM_USERNAME = "{{ cookiecutter.scm_username }}"
-SCM_BASE_URL = "{{ cookiecutter._scm_base_url }}"
+SCM_BASE_URL = "{{ cookiecutter.__scm_base_url }}"
 
 licences_dict = {
     "MIT": "mit",

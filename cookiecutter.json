@@ -28,8 +28,8 @@
   "create_docs": true,
 
   "_all_python_version": [3.8, 3.9, 3.10, 3.11],
-  "_scm_base_url": "https://{{ cookiecutter.scm_platform }}.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}",
-  "_scm_link_url": "https://{{ cookiecutter.scm_platform }}.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}{% if cookiecutter.scm_platform == 'gitlab' %}/-{% endif %}",
+  "__scm_base_url": "https://{{ cookiecutter.scm_platform }}.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}",
+  "__scm_link_url": "https://{{ cookiecutter.scm_platform }}.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}{% if cookiecutter.scm_platform == 'gitlab' %}/-{% endif %}",
   "_copy_without_render": [
     "poetry.lock"
   ]

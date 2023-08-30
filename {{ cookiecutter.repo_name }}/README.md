@@ -56,11 +56,11 @@ make codestyle
 git add .
 git commit -m ":tada: Initial commit"
 git branch -M main
-git remote add origin {{ cookiecutter._scm_base_url }}.git
+git remote add origin {{ cookiecutter.__scm_base_url }}.git
 git push -u origin main
 ```
 
-{%- if cookiecutter.scm_platform = 'github' %}
+{% if cookiecutter.scm_platform == 'github' -%}
 ### Set up bots
 
 - Set up [Dependabot][18] to ensure you have the latest dependencies.
@@ -134,21 +134,20 @@ Articles:
 - `Github Actions` with predefined [build workflow][52] as the default CI/CD.
 - Everything is already set up for security checks, codestyle checks, code formatting, testing, linting, docker builds, etc with [`Makefile`][53]. More details in [makefile-usage][54].
 - [Dockerfile][55] for your package.
-{% if cookiecutter.scm_platform = 'gitlab' %}
+{% if cookiecutter.scm_platform == 'gitlab' -%}
 - Automatic [`CHANGELOG`][80] updated via [GitLab API][81] and [template][82].
-{% if cookiecutter.scm_platform = 'github' %}
+{% elif cookiecutter.scm_platform == 'github' -%}
 - Always up-to-date dependencies with [`@dependabot`][56]. You will only [enable it][57].
 - Automatic drafts of new releases with [`Release Drafter`][58]. You may see the list of labels in [`release-drafter.yml`][59]. Works perfectly with [Semantic Versions][60] specification.
-{% endif %}
+{%- endif %}
 
 ### Open source community features
 
 - Ready-to-use [Pull Requests templates][61] and several [Issue templates][62].
 - Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically.
-{% if cookiecutter.scm_platform = 'github' }
-- [`Stale bot`][63] that closes abandoned issues after a period of inactivity. (You will only [need to setup free plan][64]). Configuration is [here][65].
+{% if cookiecutter.scm_platform == 'github' -%}- [`Stale bot`][63] that closes abandoned issues after a period of inactivity. (You will only [need to setup free plan][64]). Configuration is [here][65].
 - [Semantic Versions][66] specification with [`Release Drafter`][67].
-{% endif %}
+{%- endif %}
 
 ## Installation
 
@@ -417,24 +416,24 @@ This project is licenced under the terms of the `{{ cookiecutter.licence }}` lic
 This project was generated with [`galactipy`][79]
 
 <!-- apenas para GH -->
-[1]: {{ cookiecutter._scm_link_url }}/workflows/build/badge.svg?branch=master&event=push
+[1]: {{ cookiecutter.__scm_link_url }}/workflows/build/badge.svg?branch=master&event=push
 <!-- apenas para GH -->
-[2]: {{ cookiecutter.sc_link_url }}/actions?query=workflow%3Abuild
+[2]: {{ cookiecutter.__scm_link_url }}/actions?query=workflow%3Abuild
 [3]: https://img.shields.io/pypi/pyversions/{{ cookiecutter.repo_name }}.svg
 [4]: https://pypi.org/project/{{ cookiecutter.repo_name }}/
 [5]: https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg
 <!-- apenas para GH -->
-[6]: {{ cookiecutter._scm_link_url }}/pulls?utf8=%E2%9C%93&q=is%3Apr%20author%3Aapp%2Fdependabot
+[6]: {{ cookiecutter.__scm_link_url }}/pulls?utf8=%E2%9C%93&q=is%3Apr%20author%3Aapp%2Fdependabot
 [7]: https://img.shields.io/badge/code%20style-black-000000.svg
 [8]: https://github.com/psf/black
 [9]: https://img.shields.io/badge/security-bandit-green.svg
 [10]: https://github.com/PyCQA/bandit
 [11]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
-[12]: {{ cookiecutter._scm_link_url }}/blob/master/.pre-commit-config.yaml
+[12]: {{ cookiecutter.__scm_link_url }}/blob/master/.pre-commit-config.yaml
 [13]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--versions-e10079.svg
-[14]: {{ cookiecutter._scm_link_url }}/releases
-[15]: https://img.shields.io/{{ cookiecutter.scm_platform }}/license/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}
-[16]: {{ cookiecutter._scm_link_url }}/blob/master/LICENCE
+[14]: {{ cookiecutter.__scm_link_url }}/releases
+[15]: https://img.shields.io/{{ cookiecutter.scm_platform }}/license/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}
+[16]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
 [17]: ./assets/images/coverage.svg
 [18]: https://docs.github.com/en/github/administering-a-repository/enabling-and-disabling-version-updates#enabling-github-dependabot-version-updates
 [19]: https://github.com/apps/stale
@@ -456,8 +455,8 @@ This project was generated with [`galactipy`][79]
 [35]: https://help.github.com/en/actions
 [36]: https://gitmoji.carloscuesta.me/
 [37]: https://python-poetry.org/
-[38]: {{ cookiecutter._scm_link_url }}/blob/master/pyproject.toml
-[39]: {{ cookiecutter._scm_link_url }}/blob/master/setup.cfg
+[38]: {{ cookiecutter.__scm_link_url }}/blob/master/pyproject.toml
+[39]: {{ cookiecutter.__scm_link_url }}/blob/master/setup.cfg
 [40]: https://github.com/psf/black
 [41]: https://github.com/timothycrosley/isort
 [42]: https://github.com/asottile/pyupgrade
@@ -467,43 +466,43 @@ This project was generated with [`galactipy`][79]
 [46]: https://github.com/pyupio/safety
 [47]: https://github.com/PyCQA/bandit
 [48]: https://docs.pytest.org/en/latest/
-[49]: {{ cookiecutter._scm_link_url }}/blob/master/.editorconfig
-[50]: {{ cookiecutter._scm_link_url }}/blob/master/.dockerignore
-[51]: {{ cookiecutter._scm_link_url }}/blob/master/.gitignore
+[49]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
+[50]: {{ cookiecutter.__scm_link_url }}/blob/master/.dockerignore
+[51]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitignore
 <!-- apenas para GH -->
-[52]: {{ cookiecutter._scm_link_url }}/blob/master/.github/workflows/build.yml
-[53]: {{ cookiecutter._scm_link_url }}/blob/master/Makefile#L89
+[52]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/workflows/build.yml
+[53]: {{ cookiecutter.__scm_link_url }}/blob/master/Makefile#L89
 [54]: #makefile-usage
-[55]: {{ cookiecutter._scm_link_url }}/blob/master/docker/Dockerfile
+[55]: {{ cookiecutter.__scm_link_url }}/blob/master/docker/Dockerfile
 [56]: https://dependabot.com/
 [57]: https://docs.github.com/en/github/administering-a-repository/enabling-and-disabling-version-updates#enabling-github-dependabot-version-updates
 [58]: https://github.com/marketplace/actions/release-drafter
 <!-- apenas para GH -->
-[59]: {{ cookiecutter._scm_link_url }}/blob/master/.github/release-drafter.yml
+[59]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/release-drafter.yml
 [60]: https://semver.org/
 <!-- condicional a depender da plataforma -->
-[61]: {{ cookiecutter._scm_link_url }}/blob/master/.github/PULL_REQUEST_TEMPLATE.md
+[61]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/PULL_REQUEST_TEMPLATE.md
 <!-- condicional a depender da plataforma -->
-[62]: {{ cookiecutter._scm_link_url }}/tree/master/.github/ISSUE_TEMPLATE
+[62]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/ISSUE_TEMPLATE
 [63]: https://github.com/apps/stale
 [64]: https://github.com/marketplace/stale
 <!-- aepans para GH -->
-[65]: {{ cookiecutter._scm_link_url }}/blob/master/.github/.stale.yml
+[65]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/.stale.yml
 [66]: https://semver.org/
 [67]: https://github.com/marketplace/actions/release-drafter
-[68]: {{ cookiecutter._scm_link_url }}/blob/master/Makefile
-[69]: {{ cookiecutter._scm_link_url }}/tree/master/docker
-[70]: {{ cookiecutter._scm_link_url }}/releases
+[68]: {{ cookiecutter.__scm_link_url }}/blob/master/Makefile
+[69]: {{ cookiecutter.__scm_link_url }}/tree/master/docker
+[70]: {{ cookiecutter.__scm_link_url }}/releases
 [71]: https://semver.org/
 [72]: https://github.com/marketplace/actions/release-drafter
 <!-- apenas para GH -->
-[73]: {{ cookiecutter._scm_link_url }}/blob/master/.github/release-drafter.yml
-[74]: https://img.shields.io/{{ cookiecutter.scm_platform }}/license/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}
-[75]: {{ cookiecutter._scm_link_url }}/blob/master/LICENCE
-[76]: {{ cookiecutter._scm_link_url }}/blob/master/LICENCE
+[73]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/release-drafter.yml
+[74]: https://img.shields.io/{{ cookiecutter.scm_platform }}/license/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}
+[75]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
+[76]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
 [77]: https://img.shields.io/badge/python--package--template-%F0%9F%9A%80-brightgreen
 [78]: https://gitlab.com/manoelpqueiroz/galactipy
 [79]: https://gitlab.com/manoelpqueiroz/galactipy
-[80]: {{ cookiecutter._scm_link_url }}/blob/master/CHANGELOG.md
+[80]: {{ cookiecutter.__scm_link_url }}/blob/master/CHANGELOG.md
 [81]: https://docs.gitlab.com/ee/user/project/changelogs.html
-[82]: {{ cookiecutter._scm_link_url }}/blob/master/.gitlab/changelog_config.yml
+[82]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/changelog_config.yml

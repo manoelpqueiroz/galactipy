@@ -27,5 +27,5 @@
 - [ ] I've written tests for all new methods and classes that I created;
 - [ ] I've written the docstring in `{{ cookiecutter.docstring_style.capitalize() }}` format for all the methods and classes that I used.
 
-[1]: {{ cookiecutter._scm_link_url }}/blob/master/CODE_OF_CONDUCT.md
-[2]: {{ cookiecutter._scm_link_url }}/blob/master/CONTRIBUTING.md
+[1]: {{ cookiecutter.__scm_link_url }}/blob/master/CODE_OF_CONDUCT.md
+[2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md

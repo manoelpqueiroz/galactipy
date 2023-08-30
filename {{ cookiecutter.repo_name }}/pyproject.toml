@@ -8,6 +8,7 @@
     'Apache Software License 2.0': 'License :: OSI Approved :: Apache Software License',
     'Not open source': 'License :: Other/Proprietary License'
 } -%}
+{%- set float_python_version = cookiecutter.minimal_python_version | float -%}
 # Poetry pyproject.toml: https://python-poetry.org/docs/pyproject/
 [build-system]
 requires = ["poetry_core>=1.0.0"]
@@ -20,8 +21,8 @@ description = "{{ cookiecutter.project_description }}"
 readme = "README.md"
 authors = ["{{ cookiecutter.author }} <{{ cookiecutter.email }}>"]
 license = "{{ cookiecutter.licence }}"
-repository = "{{ cookiecutter._scm_base_url }}"
-homepage = "{{ cookiecutter._scm_base_url }}"
+repository = "{{ cookiecutter.__scm_base_url }}"
+homepage = "{{ cookiecutter.__scm_base_url }}"
 
 # Keywords description https://python-poetry.org/docs/pyproject/#keywords
 keywords = []  # UPDATEME
@@ -34,7 +35,7 @@ classifiers = [  # UPDATEME
   "Topic :: Software Development :: Libraries :: Python Modules",
   "{{ licence_classifiers[cookiecutter.licence] }}",
   "Programming Language :: Python :: 3",
-  {%- for version in cookiecutter._all_python_version if version >= cookiecutter.minimal_python_version %}
+  {%- for version in cookiecutter._all_python_version if version >= float_python_version %}
   "Programming Language :: Python :: {{ version }}",{% endfor %}
   "Private :: Do Not Upload",
 ]

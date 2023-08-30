@@ -19,6 +19,6 @@ Is it possible to [...]?
 
 <!-- Add any other context or screenshots about the feature request here. -->
 
-[1]: {{ cookiecutter._scm_link_url }}/issues
+[1]: {{ cookiecutter.__scm_link_url }}/issues
 
 /label ~"question" ~"needs-triage"
