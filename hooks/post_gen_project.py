@@ -4,7 +4,7 @@ from typing import List
 
 import textwrap
 from pathlib import Path
-from shutil import move, rmtree
+from shutil import move
 
 # Project root directory
 PROJECT_DIRECTORY = Path.cwd().absolute()
@@ -17,10 +17,14 @@ CREATE_EXAMPLE_TEMPLATE = "{{ cookiecutter.create_example_template }}"
 LICENCE = "{{ cookiecutter.licence }}"
 AUTHOR = "{{ cookiecutter.author }}"
 
-# Values to generate github repository
+# Values to generate repository information
 SCM_PLATFORM = "{{ cookiecutter.scm_platform }}"
+SCM_PLATFORM_LC = "{{ cookiecutter.__scm_platform_lc }}"
 SCM_USERNAME = "{{ cookiecutter.scm_username }}"
 SCM_BASE_URL = "{{ cookiecutter.__scm_base_url }}"
+
+CREATE_DOCKER = {{ cookiecutter.create_docker }}
+CREATE_DOCS = {{ cookiecutter.create_docs }}
 
 licences_dict = {
     "MIT": "mit",
@@ -30,13 +34,27 @@ licences_dict = {
     "GNU LGPL v3.0": "lgpl3",
     "Mozilla Public License 2.0": "mozilla",
     "Apache Software License 2.0": "apache",
+    "Not open source": None
 }
 
 
-platforms_dict = {
-    "gitlab": "GitLab",
-    "github": "GitHub",
-}
+def rmdir(path: Path) -> None:
+    if path.is_dir():
+        for item in path.iterdir():
+            if item.is_dir():
+                rmdir(item)
+
+            else:
+                item.unlink()
+
+        path.rmdir()
+
+    elif path.is_file():
+        path.unlink()
+
+    else:
+        message = f"{path} is neither a file nor a directory to remove."
+        raise ValueError(message)
 
 
 def generate_licence(directory: Path, licence: str) -> None:
@@ -46,11 +64,33 @@ def generate_licence(directory: Path, licence: str) -> None:
         directory: path to the project directory
         licence: chosen licence
     """
-    move(str(directory / "_licences" / f"{licence}.txt"), str(directory / "LICENCE"))
-    rmtree(str(directory / "_licences"))
+    if licence is not None:
+        licence_origin = directory / "_licences" / f"{licence}.txt"
+
+        licence_origin.rename(directory / "LICENCE")
+
+    rmdir(directory / "_licences")
 
 
-def remove_unused_files(directory: Path, module_name: str, need_to_remove_cli: bool) -> None:
+def generate_templates(directory: Path, scm_platform: str) -> None:
+    template_dir = f".{scm_platform}"
+
+    move(
+        directory / "_templates" / template_dir,
+        directory / template_dir
+    )
+
+    rmdir(directory / "_templates")
+
+
+def remove_unused_files(
+    directory: Path,
+    package_name: str,
+    remove_cli: bool,
+    remove_gitlab: bool,
+    remove_docker: bool,
+    remove_docs: bool
+) -> None:
     """Remove unused files.
 
     Args:
@@ -61,13 +101,31 @@ def remove_unused_files(directory: Path, module_name: str, need_to_remove_cli: b
     files_to_delete: List[Path] = []
 
     def _cli_specific_files() -> List[Path]:
-        return [directory / module_name / "__main__.py"]
+        return [directory / package_name / "__main__.py"]
 
-    if need_to_remove_cli:
+    def _gitlab_specific_files() -> List[Path]:
+        return [directory / ".gitlab-ci.yml"]
+
+    def _docker_specific_files() -> List[Path]:
+        return [directory / ".dockerignore", directory / "docker"]
+
+    def _docs_specific_files() -> List[Path]:
+        return [directory / "docs"]
+
+    if remove_cli:
         files_to_delete.extend(_cli_specific_files())
 
+    if remove_gitlab:
+        files_to_delete.extend(_gitlab_specific_files())
+
+    if remove_docker:
+        files_to_delete.extend(_docker_specific_files())
+
+    if remove_docs:
+        files_to_delete.extend(_docs_specific_files())
+
     for path in files_to_delete:
-        path.unlink()
+        rmdir(path)
 
 
 def print_futher_instuctions(project_name: str, project_repo: str, scm_platform: str, scm_base_url: str) -> None:
@@ -108,16 +166,28 @@ def print_futher_instuctions(project_name: str, project_repo: str, scm_platform:
 
 
 def main() -> None:
+    REMOVE_CLI = CREATE_EXAMPLE_TEMPLATE != 'cli'
+    REMOVE_GITLAB = SCM_PLATFORM_LC != 'gitlab'
+    REMOVE_DOCKER = not CREATE_DOCKER
+    REMOVE_DOCS = not CREATE_DOCS
+
     generate_licence(directory=PROJECT_DIRECTORY, licence=licences_dict[LICENCE])
+
+    generate_templates(directory=PROJECT_DIRECTORY, scm_platform=SCM_PLATFORM_LC)
+
     remove_unused_files(
         directory=PROJECT_DIRECTORY,
-        module_name=PROJECT_PACKAGE,
-        need_to_remove_cli=CREATE_EXAMPLE_TEMPLATE != "cli",
+        package_name=PROJECT_PACKAGE,
+        remove_cli=REMOVE_CLI,
+        remove_gitlab=REMOVE_GITLAB,
+        remove_docker=REMOVE_DOCKER,
+        remove_docs=REMOVE_DOCS,
     )
+
     print_futher_instuctions(
         project_name=PROJECT_NAME,
         project_repo=PROJECT_REPO,
-        scm_platform=platforms_dict[SCM_PLATFORM],
+        scm_platform=SCM_PLATFORM,
         scm_base_url=SCM_BASE_URL
     )
 
