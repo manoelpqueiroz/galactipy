@@ -22,10 +22,10 @@
     "Not open source"
   ],
   "minimal_python_version": [
-    3.8,
-    3.9,
-    3.10,
-    3.11
+    "3.8",
+    "3.9",
+    "3.10",
+    "3.11"
   ],
   "use_formatters": true,
   "line_length": 88,
@@ -71,11 +71,12 @@
   },
 
   "_all_python_version": [
-    3.8,
-    3.9,
-    3.10,
-    3.11
+    [3, 8],
+    [3, 9],
+    [3, 10],
+    [3, 11]
   ],
+  "__mpvr": "{{ cookiecutter.minimal_python_version.replace('.', '') }}",
   "__scm_platform_lc": "{{ cookiecutter.scm_platform.lower() }}",
   "__scm_base_url": "https://{{ cookiecutter.__scm_platform_lc }}.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}",
   "__scm_link_url": "https://{{ cookiecutter.__scm_platform_lc }}.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}{% if cookiecutter.__scm_platform_lc == 'gitlab' %}/-{% endif %}",

@@ -8,7 +8,7 @@
     'Apache Software License 2.0': 'License :: OSI Approved :: Apache Software License',
     'Not open source': 'License :: Other/Proprietary License'
 } -%}
-{%- set float_python_version = cookiecutter.minimal_python_version | float -%}
+{%- set list_python_version = cookiecutter.minimal_python_version.split('.') | map('int') | list %}
 # Poetry pyproject.toml: https://python-poetry.org/docs/pyproject/
 [build-system]
 requires = ["poetry_core>=1.0.0"]
@@ -38,8 +38,8 @@ classifiers = [  # UPDATEME
   "Topic :: Software Development :: Libraries :: Python Modules",
   "{{ licence_classifiers[cookiecutter.licence] }}",
   "Programming Language :: Python :: 3",
-  {%- for version in cookiecutter._all_python_version if version >= float_python_version %}
-  "Programming Language :: Python :: {{ version }}",{% endfor %}
+  {%- for version in cookiecutter._all_python_version if version[0] >= list_python_version[0] and version[1] >= list_python_version[1] %}
+  "Programming Language :: Python :: {{ version[0] }}.{{ version[1] }}",{% endfor %}
   "Private :: Do Not Upload",
 ]
 
@@ -86,7 +86,7 @@ coverage-badge = "^1.1.0"
 [tool.black]
 # https://github.com/psf/black
 # https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-via-a-file
-target-version = ["py{{ cookiecutter.minimal_python_version.replace('.', '') }}"]
+target-version = ["py{{ cookiecutter.__mpvr }}"]
 line-length = {{ cookiecutter.line_length }}
 color = true
 
@@ -111,7 +111,7 @@ exclude = '''
 [tool.isort]
 # https://github.com/PyCQA/isort
 # https://pycqa.github.io/isort/docs/configuration/options.html
-py_version = {{ cookiecutter.minimal_python_version.replace('.', '') }}
+py_version = {{ cookiecutter.__mpvr }}
 line_length = {{ cookiecutter.line_length }}
 
 known_typing = ["typing", "types", "typing_extensions", "mypy", "mypy_extensions"]

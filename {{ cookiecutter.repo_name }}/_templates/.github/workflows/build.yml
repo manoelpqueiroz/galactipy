@@ -1,4 +1,4 @@
-{%- set float_python_version = cookiecutter.minimal_python_version | float -%}
+{%- set list_python_version = cookiecutter.minimal_python_version.split('.') | map('int') | list %}
 {% raw %}name: build
 
 on: [push, pull_request]
@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [{% endraw %}{% for version in cookiecutter._all_python_version if version >= float_python_version %}"{{ version }}"{% if not loop.last %}, {% endif %}{% endfor %}{% raw %}]
+        python-version: [{% endraw %}{% for version in cookiecutter._all_python_version if version[0] >= list_python_version[0] and version[1] >= list_python_version[1] %}"{{ version[0] }}.{{ version[1] }}"{% if not loop.last %}, {% endif %}{% endfor %}{% raw %}]
 
     steps:
     - uses: actions/checkout@v2

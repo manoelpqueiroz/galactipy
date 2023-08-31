@@ -115,7 +115,7 @@ Articles:
 
 ### Development features
 
-- Supports for `Python {{ cookiecutter.minimal_python_version }}` and higher.
+- Support for `Python {{ cookiecutter.minimal_python_version }}` and higher.
 - [`Poetry`][37] as the dependencies manager. See configuration in [`pyproject.toml`][38] and [`setup.cfg`][39].
 - Automatic codestyle with [`black`][40], [`isort`][41] and [`pyupgrade`][42].
 - Ready-to-use [`pre-commit`][43] hooks with code-formatting.
