@@ -1,7 +1,3 @@
-{%- set scm_pretty_name = {
-    'gitlab': 'GitLab',
-    'github': 'GitHub',
-} -%}
 # {{ cookiecutter.project_name }}
 
 <div align="center">
@@ -50,7 +46,7 @@ make pre-commit-install
 make codestyle
 ```
 
-5. Upload initial code to {{ scm_pretty_name[cookiecutter.scm_platform] }}:
+1. Upload initial code to {{ cookiecutter.scm_platform }}:
 
 ```bash
 git add .
@@ -59,8 +55,7 @@ git branch -M main
 git remote add origin {{ cookiecutter.__scm_base_url }}.git
 git push -u origin main
 ```
-
-{% if cookiecutter.scm_platform == 'github' -%}
+{%- if cookiecutter.__scm_platform_lc == 'github' -%}
 ### Set up bots
 
 - Set up [Dependabot][18] to ensure you have the latest dependencies.
@@ -134,9 +129,9 @@ Articles:
 - `Github Actions` with predefined [build workflow][52] as the default CI/CD.
 - Everything is already set up for security checks, codestyle checks, code formatting, testing, linting, docker builds, etc with [`Makefile`][53]. More details in [makefile-usage][54].
 - [Dockerfile][55] for your package.
-{% if cookiecutter.scm_platform == 'gitlab' -%}
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 - Automatic [`CHANGELOG`][80] updated via [GitLab API][81] and [template][82].
-{% elif cookiecutter.scm_platform == 'github' -%}
+{%- elif cookiecutter.__scm_platform_lc == 'github' -%}
 - Always up-to-date dependencies with [`@dependabot`][56]. You will only [enable it][57].
 - Automatic drafts of new releases with [`Release Drafter`][58]. You may see the list of labels in [`release-drafter.yml`][59]. Works perfectly with [Semantic Versions][60] specification.
 {%- endif %}
@@ -145,7 +140,8 @@ Articles:
 
 - Ready-to-use [Pull Requests templates][61] and several [Issue templates][62].
 - Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically.
-{% if cookiecutter.scm_platform == 'github' -%}- [`Stale bot`][63] that closes abandoned issues after a period of inactivity. (You will only [need to setup free plan][64]). Configuration is [here][65].
+{%- if cookiecutter.__scm_platform_lc == 'github' %}
+- [`Stale bot`][63] that closes abandoned issues after a period of inactivity. (You will only [need to setup free plan][64]). Configuration is [here][65].
 - [Semantic Versions][66] specification with [`Release Drafter`][67].
 {%- endif %}
 
@@ -161,7 +157,8 @@ or install with `Poetry`
 poetry add {{ cookiecutter.repo_name }}
 ```
 
-{% if cookiecutter.create_example_template == 'cli' -%}Then you can run
+{%- if cookiecutter.create_example_template == 'cli' %}
+Then you can run
 
 ```bash
 {{ cookiecutter.repo_name }} --help
@@ -405,8 +402,8 @@ This project is licenced under the terms of the `{{ cookiecutter.licence }}` lic
   author = {% raw %}{{% endraw %}{{ cookiecutter.author }}{% raw %}}{% endraw %},
   title = {% raw %}{{% endraw %}{{ cookiecutter.project_description }}{% raw %}}{% endraw %},
   year = {% raw %}{{% endraw %}{% now 'utc', '%Y' %}{% raw %}}{% endraw %},
-  publisher = {% raw %}{{% endraw %}{{ scm_pretty_name[cookiecutter.scm_platform] }}{% raw %}}{% endraw %},
-  journal = {% raw %}{{% endraw %}{{ scm_pretty_name[cookiecutter.scm_platform] }} repository{% raw %}}{% endraw %},
+  publisher = {% raw %}{{% endraw %}{{ cookiecutter.scm_platform }}{% raw %}}{% endraw %},
+  journal = {% raw %}{{% endraw %}{{ cookiecutter.scm_platform }} repository{% raw %}}{% endraw %},
   howpublished = {\url{https://github.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.project_name }}{% raw %}}}{% endraw %}
 }
 ```
@@ -432,7 +429,7 @@ This project was generated with [`galactipy`][79]
 [12]: {{ cookiecutter.__scm_link_url }}/blob/master/.pre-commit-config.yaml
 [13]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--versions-e10079.svg
 [14]: {{ cookiecutter.__scm_link_url }}/releases
-[15]: https://img.shields.io/{{ cookiecutter.scm_platform }}/license/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}
+[15]: https://img.shields.io/{{ cookiecutter.__scm_platform_lc }}/license/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}
 [16]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
 [17]: ./assets/images/coverage.svg
 [18]: https://docs.github.com/en/github/administering-a-repository/enabling-and-disabling-version-updates#enabling-github-dependabot-version-updates
@@ -497,7 +494,7 @@ This project was generated with [`galactipy`][79]
 [72]: https://github.com/marketplace/actions/release-drafter
 <!-- apenas para GH -->
 [73]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/release-drafter.yml
-[74]: https://img.shields.io/{{ cookiecutter.scm_platform }}/license/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}
+[74]: https://img.shields.io/{{ cookiecutter.__scm_platform_lc }}/license/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}
 [75]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
 [76]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
 [77]: https://img.shields.io/badge/python--package--template-%F0%9F%9A%80-brightgreen

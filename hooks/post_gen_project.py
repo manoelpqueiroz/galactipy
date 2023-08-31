@@ -1,4 +1,5 @@
-"""This module is called after project is created."""
+"""This module is called after the project is created."""
+
 from typing import List
 
 import textwrap

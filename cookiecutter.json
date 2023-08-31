@@ -6,8 +6,8 @@
   "version": "0.1.0",
   "author": "Manoel Pereira de Queiroz",
   "scm_platform": [
-    "gitlab",
-    "github"
+    "GitLab",
+    "GitHub"
   ],
   "scm_username": "manoelpqueiroz",
   "email": "contact@{{ cookiecutter.scm_username.lower().replace(' ', '-') }}.com",
@@ -51,22 +51,14 @@
     "version": "Project version",
     "author": "Author or Organisation",
     "scm_platform": {
-      "__prompt__": "In which platform would you like to host your code?",
-      "gitlab": "GitLab",
-      "github": "GitHub"
+      "__prompt__": "In which platform would you like to host your code?"
     },
     "scm_username": "Platform username",
     "email": "e-Mail",
     "licence": {
       "__prompt__": "Which licence would you like to use for your project?",
       "MIT": "MIT Licence",
-      "BSD-3": "3-Clause BSD",
-      "GNU GPL v3.0": "GNU General Public License version 3",
-      "GNU AGPL v3.0": "GNU Affero General Public License version 3",
-      "GNU LGPL v3.0": "GNU Lesser General Public License version 3",
-      "Mozilla Public License 2.0": "Mozilla Public License 2.0",
-      "Apache Software License 2.0": "Apache Software License 2.0",
-      "Not open source": "Not open source"
+      "BSD-3": "3-Clause BSD"
     },
     "minimal_python_version": "Minimal Python version",
     "use_formatters": "Use Black, isort and pyupgrade for formatting?",
@@ -84,8 +76,9 @@
     3.10,
     3.11
   ],
-  "__scm_base_url": "https://{{ cookiecutter.scm_platform }}.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}",
-  "__scm_link_url": "https://{{ cookiecutter.scm_platform }}.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}{% if cookiecutter.scm_platform == 'gitlab' %}/-{% endif %}",
+  "__scm_platform_lc": "{{ cookiecutter.scm_platform.lower() }}",
+  "__scm_base_url": "https://{{ cookiecutter.__scm_platform_lc }}.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}",
+  "__scm_link_url": "https://{{ cookiecutter.__scm_platform_lc }}.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}{% if cookiecutter.__scm_platform_lc == 'gitlab' %}/-{% endif %}",
   "_copy_without_render": [
     "poetry.lock"
   ]

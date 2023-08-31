@@ -18,6 +18,7 @@ poetry-download:
 poetry-remove:
 	curl -sSL https://install.python-poetry.org | $(PYTHON) - --uninstall
 
+
 #* Installation
 .PHONY: install
 install:
@@ -29,6 +30,7 @@ install:
 pre-commit-install:
 	poetry run pre-commit install
 
+
 #* Formatters
 .PHONY: codestyle
 codestyle:
@@ -38,6 +40,7 @@ codestyle:
 
 .PHONY: formatting
 formatting: codestyle
+
 
 #* Linting
 .PHONY: test
@@ -71,7 +74,7 @@ lint:
 {%- endif %}
 {%- if cookiecutter.use_linters and cookiecutter.docstring_style not in ['pep257', 'dismiss'] %}
 	poetry run pydoclint --config=pyproject.toml ./
-{% endif %}
+{%- endif %}
 
 .PHONY: lint-all
 lint: test check-codestyle lint mypy check-safety
@@ -81,7 +84,7 @@ update-dev-deps:
 	poetry add -D bandit@latest darglint@latest "isort[colors]@latest" mypy@latest pre-commit@latest pydocstyle@latest pylint@latest pytest@latest pyupgrade@latest safety@latest coverage@latest coverage-badge@latest pytest-html@latest pytest-cov@latest
 	poetry add -D --allow-prereleases black@latest
 
-{% if not cookiecutter.create_docker %}
+{%+ if not cookiecutter.create_docker %}
 #* Docker
 # Example: make docker-build VERSION=latest
 # Example: make docker-build IMAGE=some_name VERSION={{ cookiecutter.version }}
@@ -98,7 +101,7 @@ docker-build:
 docker-remove:
 	@echo Removing docker $(IMAGE):$(VERSION) ...
 	docker rmi -f $(IMAGE):$(VERSION)
-{% endif %}
+{%+ endif %}
 
 #* Cleaning
 .PHONY: pycache-remove
