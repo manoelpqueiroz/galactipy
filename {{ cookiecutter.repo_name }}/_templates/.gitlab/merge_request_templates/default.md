@@ -4,7 +4,7 @@
 
 ## Related Issue
 
-<!-- If your PR refers to a related issue, link it here. -->
+<!-- If your MR refers to a related issue, link it here. -->
 
 ## Type of Change
 

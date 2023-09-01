@@ -11,9 +11,9 @@ categories:
     labels: [bug, refactoring, bugfix, fix]
   - title: ":package: Build System & CI/CD"
     labels: [build, ci, testing]
-  - title: ":boom: Breaking Changes"
+  - title: ":collision: Breaking Changes"
     labels: [breaking]
-  - title: ":pencil: Documentation"
+  - title: ":memo: Documentation"
     labels: [documentation]
   - title: ":arrow_up: Dependencies updates"
     labels: [dependencies]

@@ -420,6 +420,19 @@ You can see the list of available releases on the [GitLab Releases][77] page.
 
 We follow [Semantic Versions][78] specification.
 
+We use [`GitLab Changelog`][110] entries to track changes. You can categorise commits and Merge Requests made to this project using [git trailers][122] in your commit messages.
+
+### List of trailers and corresponding categories
+
+|            **Git trailer**            |    **Category in CHANGELOG**    |
+| :-----------------------------------: | :-----------------------------: |
+| `enhancement`, `feature`              | :rocket: Features               |
+| `bug`, `refactoring`, `bugfix`, `fix` | :wrench: Fixes & Refactoring    |
+| `build`, `ci`, `testing`              | :package: Build System & CI/CD  |
+| `breaking`                            | :collision: Breaking Changes    |
+| `documentation`                       | :memo: Documentation            |
+| `dependencies`                        | :arrow_up: Dependencies updates |
+
 ## 🧪 TODOs
 
 This template will continue to develop and follow the bleeding edge new tools and best practices to improve the Python development experience.
@@ -605,3 +618,4 @@ Markdown source for the badge [![🚀 Your next Python package needs a bleeding-
 [119]: https://github.com/TezRomacH/python-package-template
 [120]: https://patreon.com/tezikov
 [121]: https://docs.kedro.org/en/stable/kedro_project_setup/starters.html
+[122]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
