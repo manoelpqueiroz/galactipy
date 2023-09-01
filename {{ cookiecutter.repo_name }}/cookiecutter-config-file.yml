@@ -16,6 +16,6 @@ default_context:
   line_length: {{ cookiecutter.line_length }}
   use_linters: {{ cookiecutter.use_linters }}
   docstring_style: "{{ cookiecutter.docstring_style }}"
-  create_example_template: "{{ cookiecutter.create_example_template }}"
+  create_cli: {{ cookiecutter.create_cli }}
   create_docker: {{ cookiecutter.create_docker }}
   create_docs: {{ cookiecutter.create_docs }}

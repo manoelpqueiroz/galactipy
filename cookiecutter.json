@@ -36,10 +36,7 @@
     "pep257",
     "other"
   ],
-  "create_example_template": [
-    "cli",
-    "none"
-  ],
+  "create_cli": true,
   "create_docker": true,
   "create_docs": true,
 

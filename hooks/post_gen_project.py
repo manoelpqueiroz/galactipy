@@ -11,7 +11,6 @@ PROJECT_DIRECTORY = Path.cwd().absolute()
 PROJECT_NAME = "{{ cookiecutter.project_name }}"
 PROJECT_REPO = "{{ cookiecutter.repo_name }}"
 PROJECT_PACKAGE = "{{ cookiecutter.package_name }}"
-CREATE_EXAMPLE_TEMPLATE = "{{ cookiecutter.create_example_template }}"
 
 # Values to generate correct licence
 LICENCE = "{{ cookiecutter.licence }}"
@@ -23,6 +22,7 @@ SCM_PLATFORM_LC = "{{ cookiecutter.__scm_platform_lc }}"
 SCM_USERNAME = "{{ cookiecutter.scm_username }}"
 SCM_BASE_URL = "{{ cookiecutter.__scm_base_url }}"
 
+CREATE_CLI = {{ cookiecutter.create_cli }}
 CREATE_DOCKER = {{ cookiecutter.create_docker }}
 CREATE_DOCS = {{ cookiecutter.create_docs }}
 
@@ -166,8 +166,8 @@ def print_futher_instuctions(project_name: str, project_repo: str, scm_platform:
 
 
 def main() -> None:
-    REMOVE_CLI = CREATE_EXAMPLE_TEMPLATE != 'cli'
     REMOVE_GITLAB = SCM_PLATFORM_LC != 'gitlab'
+    REMOVE_CLI = not CREATE_CLI
     REMOVE_DOCKER = not CREATE_DOCKER
     REMOVE_DOCS = not CREATE_DOCS
 

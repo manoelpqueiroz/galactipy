@@ -43,7 +43,7 @@ classifiers = [  # UPDATEME
   "Private :: Do Not Upload",
 ]
 
-{%+ if cookiecutter.create_example_template == 'cli' %}
+{%+ if cookiecutter.create_cli %}
 [tool.poetry.scripts]
 # Entry points for the package https://python-poetry.org/docs/pyproject/#scripts
 "{{ cookiecutter.repo_name }}" = "{{ cookiecutter.package_name }}.__main__:app"
@@ -51,7 +51,7 @@ classifiers = [  # UPDATEME
 
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.minimal_python_version }}"
-{%+ if cookiecutter.create_example_template == 'cli' %}
+{%+ if cookiecutter.create_cli %}
 typer = {extras = ["all"], version = "^0.7.0"}
 rich = "^12.6.0"
 {%+ endif %}
