@@ -33,6 +33,8 @@ cd {{ cookiecutter.repo_name }} && git init
 make poetry-download
 ```
 
+> This installs Poetry as a [standalone application][t1]. If you prefer, you can simply install it inside your virtual environment.
+
 3. Initialize Poetry and install `pre-commit` hooks:
 
 ```bash
@@ -58,25 +60,25 @@ git push -u origin main
 {%- if cookiecutter.__scm_platform_lc == 'github' -%}
 ### Set up bots
 
-- Set up [Dependabot][18] to ensure you have the latest dependencies.
-- Set up [Stale bot][19] for automatic issue closing.
+- Set up [Dependabot][h1] to ensure you have the latest dependencies.
+- Set up [Stale bot][h2] for automatic issue closing.
 {%- endif %}
 
 ### Poetry
 
-Want to know more about Poetry? Check [its documentation][20].
+Want to know more about Poetry? Check [its documentation][t2].
 
 <details>
 <summary>Details about Poetry</summary>
 <p>
 
-Poetry's [commands][21] are very intuitive and easy to learn, like:
+Poetry's [commands][t3] are very intuitive and easy to learn, like:
 
 - `poetry add numpy@latest`
 - `poetry run pytest`
 - `poetry publish --build`
 
-etc
+etc.
 </p>
 </details>
 
@@ -84,65 +86,86 @@ etc
 
 Building a new version of the application contains steps:
 
-- Bump the version of your package `poetry version <version>`. You can pass the new version explicitly, or a rule such as `major`, `minor`, or `patch`. For more details, refer to the [Semantic Versions][22] standard.
-- Make a commit to `GitHub`.
-- Create a `GitHub release`.
-- And... publish 🙂 `poetry publish --build`
+- Bump the version of your package `poetry version <version>`. You can pass the new version explicitly, or a rule such as `major`, `minor`, or `patch`. For more details, refer to the [Semantic Versions][t4] standard;
+- Make a commit to `{{ cookiecutter.scm_platform }}`;
+- Create a `{{ cookiecutter.scm_platform }} release`;
+- And... publish :slightly_smiling_face: `poetry publish --build`
 
-## 🎯 What's next
+## :bullseye: What's next
 
-Well, that's up to you 💪🏻. I can only recommend the packages and articles that helped me.
+Well, that's up to you :flexed_biceps:.
 
-- [`Typer`][23] is great for creating CLI applications.
-- [`Rich`][24] makes it easy to add beautiful formatting in the terminal.
-- [`Pydantic`][25] – data validation and settings management using Python type hinting.
-- [`Loguru`][26] makes logging (stupidly) simple.
-- [`tqdm`][27] – fast, extensible progress bar for Python and CLI.
-- [`IceCream`][28] is a little library for sweet and creamy debugging.
-- [`orjson`][29] – ultra fast JSON parsing library.
-- [`Returns`][30] makes you function's output meaningful, typed, and safe!
-- [`Hydra`][31] is a framework for elegantly configuring complex applications.
-- [`FastAPI`][32] is a type-driven asynchronous web framework.
+For further setting up your project:
 
-Articles:
+- Look for files and sections marked with `UPDATEME`, these should be updated according to the needs and characteristics of your project;
+  - **Tip:** If you use VS Code's [Todo Tree][t5] extension, you can even set a specific tag to quickly locate these marks;
+- This template assumes your main git branch is `master`. If you wish to use another branch name for development, be aware of changes you will have to make in the Issue and Merge Request templates so links won't break when you push them to your repo;
+- Make sure to create your desired Issue labels on your platform so it ensures you will start tracking them accordingly.
 
-- [Open Source Guides][33].
-- [A handy guide to financial support for open source][34]
-- [GitHub Actions Documentation][35].
-- Maybe you would like to add [gitmoji][36] to commit names. This is really funny. 😄
+If you want to put your project on steroids, here are a few Python tools which can help you depending on what you want to achieve with your application:
 
-## 🚀 Features
+- [`Typer`][t6] is great for creating CLI applications;
+- [`Rich`][t7] makes it easy to add beautiful formatting in the terminal;
+- [`tqdm`][t8] is a fast, extensible progress bar for Python and CLI;
+- [`Python Prompt Toolkit`][t9] allows you to create more advanced terminal applications, such as a text editor or even your own shell;
+- [`orjson`][t10], an ultra fast JSON parsing library;
+- [`Pydantic`][t11] is data validation and settings management using Python type hinting;
+- [`Returns`][t12] makes you function's output meaningful, typed, and safe;
+- [`Loguru`][t13] makes logging (stupidly) simple;
+- [`IceCream`][t14] is a little library for sweet and creamy debugging;
+- [`Hydra`][t15] is a framework for elegantly configuring complex applications;
+- [`FastAPI`][t16] is a type-driven asynchronous web framework.
+
+And here are a few articles which may help you:
+
+- [Open Source Guides][t17];
+- [A handy guide to financial support for open source][t18];
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+- [GitLab CI Documentation][l1];
+{%- elif cookiecutter.__scm_platform_lc == 'github' %}
+- [GitHub Actions Documentation][h3];
+{%- endif %}
+- [Makefile tutorial][t19];
+- Maybe you would like to add [gitmoji][t20] to commit names. This is really funny. :grinning_face_with_smiling_eyes:
+
+## :rocket: Features
 
 ### Development features
 
-- Support for `Python {{ cookiecutter.minimal_python_version }}` and higher.
-- [`Poetry`][37] as the dependencies manager. See configuration in [`pyproject.toml`][38] and [`setup.cfg`][39].
-- Automatic codestyle with [`black`][40], [`isort`][41] and [`pyupgrade`][42].
-- Ready-to-use [`pre-commit`][43] hooks with code-formatting.
-- Type checks with [`mypy`][44]; docstring checks with [`darglint`][45]; security checks with [`safety`][46] and [`bandit`][47]
-- Testing with [`pytest`][48].
-- Ready-to-use [`.editorconfig`][49], [`.dockerignore`][50], and [`.gitignore`][51]. You don't have to worry about those things.
+- Support for `Python {{ cookiecutter.minimal_python_version }}` and higher;
+- [`Poetry`][t21] as a dependencies manager. See configuration in [`pyproject.toml`][t22];
+{%- if cookiecutter.use_formatters %}
+- Automatic code formatting with [`black`][f1], [`isort`][f2] and [`pyupgrade`][f3], with ready-to-use [`pre-commit`][f4] hooks;
+{%- endif %}
+{%- if cookiecutter.use_linters %}
+- Code and docstring linting with [`flake8`][s1]{% if cookiecutter.docstring_style not in ['pep257', 'dismiss'] %}, [`pydocstyle`][s2] and [`pydoclint`][s3]{% elif cookiecutter.docstring_style != 'dismiss' %} and [`pydocstyle`][s2]{% endif %};
+{% endif %}
+- Type checks with [`mypy`][t23], security checks with [`safety`][t24] and [`bandit`][t25];
+- Testing with [`pytest`][t26];
+- Ready-to-use [`.editorconfig`][t27]{% if cookiecutter.create_docker %}, [`.dockerignore`][d1]{% endif %} and [`.gitignore`][t28] files. You don't have to worry about those things.
 
 ### Deployment features
 
-- `GitHub` integration: issue and pr templates.
-- `Github Actions` with predefined [build workflow][52] as the default CI/CD.
-- Everything is already set up for security checks, codestyle checks, code formatting, testing, linting, docker builds, etc with [`Makefile`][53]. More details in [makefile-usage][54].
-- [Dockerfile][55] for your package.
+- Issue and {% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates for easy integration with {{ cookiecutter.scm_platform }};
+- Predefined CI/CD build workflow for {% if cookiecutter.__scm_platform_lc == 'gitlab' %}[`GitLab CI`][l2]{% elif cookiecutter.__scm_platform_lc == 'github' %}[`Github Actions`][h4]{% endif %};
+- Everything is already set up for security checks, {% if cookiecutter.use_formatters %}codestyle checks, code formatting,{% endif %} testing, linting{% if cookiecutter.create_docker %}, docker builds{% endif %} etc with [`Makefile`][t29]. More details in [makefile-usage][t30];
+{%- if cookiecutter.create_docker %}
+- [Dockerfile][d2] for your package;
+{%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' -%}
-- Automatic [`CHANGELOG`][80] updated via [GitLab API][81] and [template][82].
+- Automatic [`Changelog entries`][l3] updated via [GitLab API][l4] and [template][l5].
 {%- elif cookiecutter.__scm_platform_lc == 'github' -%}
-- Always up-to-date dependencies with [`@dependabot`][56]. You will only [enable it][57].
-- Automatic drafts of new releases with [`Release Drafter`][58]. You may see the list of labels in [`release-drafter.yml`][59]. Works perfectly with [Semantic Versions][60] specification.
+- Always up-to-date dependencies with [`Dependabot`][h5]. You will only need to [enable it][h1];
+- Automatic drafts of new releases with [`Release Drafter`][h6]. You may see the list of labels in [`release-drafter.yml`][h7]. Works perfectly with [Semantic Versions][t4] specification.
 {%- endif %}
 
 ### Open source community features
 
-- Ready-to-use [Pull Requests templates][61] and several [Issue templates][62].
-- Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically.
+- Ready-to-use [{% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates][t31] and several [Issue templates][t32].
+- Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically{% if cookiecutter.__scm_platform_lc == 'github' %};{% else %}.{% endif %}
 {%- if cookiecutter.__scm_platform_lc == 'github' %}
-- [`Stale bot`][63] that closes abandoned issues after a period of inactivity. (You will only [need to setup free plan][64]). Configuration is [here][65].
-- [Semantic Versions][66] specification with [`Release Drafter`][67].
+- [`Stale bot`][h2] closes abandoned issues after a period of inactivity. Configuration is [here][h8];
+- [Semantic Versions][t4] specification with [`Release Drafter`][h6].
 {%- endif %}
 
 ## Installation
@@ -151,13 +174,13 @@ Articles:
 pip install -U {{ cookiecutter.repo_name }}
 ```
 
-or install with `Poetry`
+or install with `Poetry`:
 
 ```bash
 poetry add {{ cookiecutter.repo_name }}
 ```
 
-{%- if cookiecutter.create_example_template == 'cli' %}
+{%- if cookiecutter.create_cli %}
 Then you can run
 
 ```bash
@@ -173,13 +196,13 @@ poetry run {{ cookiecutter.repo_name }} --help
 
 ### Makefile usage
 
-[`Makefile`][68] contains a lot of functions for faster development.
+[`Makefile`][t29] contains a lot of functions for faster development.
 
 <details>
 <summary>1. Download and remove Poetry</summary>
 <p>
 
-To download and install Poetry run:
+To download and install Poetry as a [standalone application][t1] run:
 
 ```bash
 make poetry-download
@@ -191,6 +214,8 @@ To uninstall
 make poetry-remove
 ```
 
+Or you can install it with `pip` inside your virtual environment if you prefer.
+
 </p>
 </details>
 
@@ -198,13 +223,13 @@ make poetry-remove
 <summary>2. Install all dependencies and pre-commit hooks</summary>
 <p>
 
-Install requirements:
+Install requirements with
 
 ```bash
 make install
 ```
 
-Pre-commit hooks coulb be installed after `git init` via
+Pre-commit hooks could be installed after `git init` via
 
 ```bash
 make pre-commit-install
@@ -213,11 +238,12 @@ make pre-commit-install
 </p>
 </details>
 
+{%- if cookiecutter.use_formatters %}
 <details>
 <summary>3. Codestyle</summary>
 <p>
 
-Automatic formatting uses `pyupgrade`, `isort` and `black`.
+Automatic formatting uses `pyupgrade`, `isort` and `black`, and can be run with
 
 ```bash
 make codestyle
@@ -226,15 +252,13 @@ make codestyle
 make formatting
 ```
 
-Codestyle checks only, without rewriting files:
+For codestyle checks only, without rewriting files:
 
 ```bash
 make check-codestyle
 ```
 
-> Note: `check-codestyle` uses `isort`, `black` and `darglint` library
-
-Update all dev libraries to the latest version using one comand
+Update all dev libraries to the latest version using one command
 
 ```bash
 make update-dev-deps
@@ -242,9 +266,10 @@ make update-dev-deps
 
 </p>
 </details>
+{%- endif %}
 
 <details>
-<summary>4. Code security</summary>
+<summary>{% if cookiecutter.use_formatters %}4{% else %}3{% endif %}. Code security</summary>
 <p>
 
 ```bash
@@ -261,10 +286,10 @@ make check-safety
 </details>
 
 <details>
-<summary>5. Type checks</summary>
+<summary>{% if cookiecutter.use_formatters %}5{% else %}4{% endif %}. Type checks</summary>
 <p>
 
-Run `mypy` static type checker
+Run `mypy` static type checker with
 
 ```bash
 make mypy
@@ -274,10 +299,10 @@ make mypy
 </details>
 
 <details>
-<summary>6. Tests with coverage badges</summary>
+<summary>{% if cookiecutter.use_formatters %}6{% else %}5{% endif %}. Tests with coverage badges</summary>
 <p>
 
-Run `pytest`
+Run `pytest` with all essential parameters predefined with
 
 ```bash
 make test
@@ -286,27 +311,43 @@ make test
 </p>
 </details>
 
+{%- if cookiecutter.use_linters %}
 <details>
-<summary>7. All linters</summary>
+<summary>{% if cookiecutter.use_formatters %}7{% else %}6{% endif %}. Linters</summary>
 <p>
 
-Of course there is a command to ~~rule~~ run all linters in one:
+Run code and docstring linters with `flake8`{% if cookiecutter.docstring_style not in ['pep257', 'dismiss'] %}, `pydocstyle` and `pydoclint`{% elif cookiecutter.docstring_style != 'dismiss' %} and `pydocstyle`{% endif %}.
 
 ```bash
 make lint
 ```
 
+</p>
+</details>
+{%- endif %}
+
+<details>
+<summary>{% if cookiecutter.use_formatters and cookiecutter.use_linters %}8{% elif cookiecutter.use_formatters or cookiecutter.use_linters %}7{% else %}6{% endif %}. All linters</summary>
+<p>
+
+Of course there is a command to ~~rule~~ run all linters in one:
+
+```bash
+make lint-all
+```
+
 the same as:
 
 ```bash
-make test && make check-codestyle && make mypy && make check-safety
+make test && make check-codestyle && {% if cookiecutter.use_linters %}make lint && {% endif %}make mypy && make check-safety
 ```
 
 </p>
 </details>
 
+{%- if cookiecutter.create_docker %}
 <details>
-<summary>8. Docker</summary>
+<summary>{% if cookiecutter.use_formatters and cookiecutter.use_linters %}9{% elif cookiecutter.use_formatters or cookiecutter.use_linters %}8{% else %}7{% endif %}. Docker</summary>
 <p>
 
 ```bash
@@ -325,14 +366,16 @@ Remove docker image with
 make docker-remove
 ```
 
-More information [about docker][69].
+More information [about docker][d3].
 
 </p>
 </details>
+{%- endif %}
 
 <details>
-<summary>9. Cleanup</summary>
+<summary>{% if cookiecutter.use_formatters and cookiecutter.use_linters %}10{% elif cookiecutter.use_formatters or cookiecutter.use_linters %}9{% else %}8{% endif %}. Cleanup</summary>
 <p>
+
 Delete pycache files
 
 ```bash
@@ -366,36 +409,46 @@ make cleanup
 </p>
 </details>
 
-## 📈 Releases
+## :chart_increasing: Releases
 
-You can see the list of available releases on the [GitHub Releases][70] page.
+You can see the list of available releases on the [{{ cookiecutter.scm_platform }} Releases][t33] page.
 
-We follow [Semantic Versions][71] specification.
+We follow [Semantic Versions][t4] specification.
 
-We use [`Release Drafter`][72]. As pull requests are merged, a draft release is kept up-to-date listing the changes, ready to publish when you’re ready. With the categories option, you can categorize pull requests in release notes using labels.
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+We use [`GitLab Changelog`][l4] entries to track changes. You can categorise commits and Merge Requests made to this project using [git trailers][l6] in your commit messages.
+{%- elif cookiecutter.__scm_platform_lc == 'github' %}
+We use [`Release Drafter`][h6]. As pull requests are merged, a draft release is kept up-to-date listing the changes, ready to publish when you’re ready. With the categories option, you can categorize pull requests in release notes using labels.
+{%- endif %}
 
-### List of labels and corresponding titles
+### List of {% if cookiecutter.__scm_platform_lc == 'gitlab' %}trailers and corresponding categories{% elif cookiecutter.__scm_platform_lc == 'github' %}labels and corresponding titles{% endif %}
 
-|               **Label**               |  **Title in Releases**  |
-| :-----------------------------------: | :---------------------: |
-|       `enhancement`, `feature`        |       🚀 Features       |
-| `bug`, `refactoring`, `bugfix`, `fix` | 🔧 Fixes & Refactoring  |
-|       `build`, `ci`, `testing`        | 📦 Build System & CI/CD |
-|              `breaking`               |   💥 Breaking Changes   |
-|            `documentation`            |    📝 Documentation     |
-|            `dependencies`             | ⬆️ Dependencies updates |
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+|            **Git trailer**            |    **Category in CHANGELOG**    |
+{%- elif cookiecutter.__scm_platform_lc == 'github' %}
+|               **Label**               |      **Title in Releases**      |
+{%- endif %}
+| :-----------------------------------: | :-----------------------------: |
+| `enhancement`, `feature`              | :rocket: Features               |
+| `bug`, `refactoring`, `bugfix`, `fix` | :wrench: Fixes & Refactoring    |
+| `build`, `ci`, `testing`              | :package: Build System & CI/CD  |
+| `breaking`                            | :collision: Breaking Changes    |
+| `documentation`                       | :memo: Documentation            |
+| `dependencies`                        | :arrow_up: Dependencies updates |
 
-You can update it in [`release-drafter.yml`][73].
+{%- if cookiecutter.__scm_platform_lc == 'github' %}
+You can update it in [`release-drafter.yml`][h7].
 
 GitHub creates the `bug`, `enhancement`, and `documentation` labels for you. Dependabot creates the `dependencies` label. Create the remaining labels on the Issues tab of your GitHub repository, when you need them.
 
-## 🛡 Licence
+{%- endif %}
+## :shield: Licence
 
-[![Licence][74]][75]
+[![Licence][t34]][t35]
 
-This project is licenced under the terms of the `{{ cookiecutter.licence }}` licence. See [LICENCE][76] for more details.
+This project is licenced under the terms of the `{{ cookiecutter.licence }}` licence. See [LICENCE][t35] for more details.
 
-## 📃 Citation
+## :page_with_curl: Citation
 
 ```bibtex
 {% raw %}@misc{{% endraw %}{{ cookiecutter.project_name }},
@@ -408,9 +461,9 @@ This project is licenced under the terms of the `{{ cookiecutter.licence }}` lic
 }
 ```
 
-## Credits [![🚀 Your next Python package needs a bleeding-edge project structure.][77]][78]
+## Credits [![:rocket: Your next Python package needs a bleeding-edge project structure.][t36]][t37]
 
-This project was generated with [`galactipy`][79]
+This project was generated with [`galactipy`][t37]
 
 <!-- apenas para GH -->
 [1]: {{ cookiecutter.__scm_link_url }}/workflows/build/badge.svg?branch=master&event=push
@@ -432,74 +485,92 @@ This project was generated with [`galactipy`][79]
 [15]: https://img.shields.io/{{ cookiecutter.__scm_platform_lc }}/license/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}
 [16]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
 [17]: ./assets/images/coverage.svg
-[18]: https://docs.github.com/en/github/administering-a-repository/enabling-and-disabling-version-updates#enabling-github-dependabot-version-updates
-[19]: https://github.com/apps/stale
-[20]: https://python-poetry.org/docs/
-[21]: https://python-poetry.org/docs/cli/#commands
-[22]: https://semver.org/
-[23]: https://github.com/tiangolo/typer
-[24]: https://github.com/willmcgugan/rich
-[25]: https://github.com/samuelcolvin/pydantic/
-[26]: https://github.com/Delgan/loguru
-[27]: https://github.com/tqdm/tqdm
-[28]: https://github.com/gruns/icecream
-[29]: https://github.com/ijl/orjson
-[30]: https://github.com/dry-python/returns
-[31]: https://github.com/facebookresearch/hydra
-[32]: https://github.com/tiangolo/fastapi
-[33]: https://opensource.guide/
-[34]: https://github.com/nayafia/lemonade-stand
-[35]: https://help.github.com/en/actions
-[36]: https://gitmoji.carloscuesta.me/
-[37]: https://python-poetry.org/
-[38]: {{ cookiecutter.__scm_link_url }}/blob/master/pyproject.toml
-[39]: {{ cookiecutter.__scm_link_url }}/blob/master/setup.cfg
-[40]: https://github.com/psf/black
-[41]: https://github.com/timothycrosley/isort
-[42]: https://github.com/asottile/pyupgrade
-[43]: https://pre-commit.com/
-[44]: https://mypy.readthedocs.io
-[45]: https://github.com/terrencepreilly/darglint
-[46]: https://github.com/pyupio/safety
-[47]: https://github.com/PyCQA/bandit
-[48]: https://docs.pytest.org/en/latest/
-[49]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
-[50]: {{ cookiecutter.__scm_link_url }}/blob/master/.dockerignore
-[51]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitignore
-<!-- apenas para GH -->
-[52]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/workflows/build.yml
-[53]: {{ cookiecutter.__scm_link_url }}/blob/master/Makefile#L89
-[54]: #makefile-usage
-[55]: {{ cookiecutter.__scm_link_url }}/blob/master/docker/Dockerfile
-[56]: https://dependabot.com/
-[57]: https://docs.github.com/en/github/administering-a-repository/enabling-and-disabling-version-updates#enabling-github-dependabot-version-updates
-[58]: https://github.com/marketplace/actions/release-drafter
-<!-- apenas para GH -->
-[59]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/release-drafter.yml
-[60]: https://semver.org/
-<!-- condicional a depender da plataforma -->
-[61]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/PULL_REQUEST_TEMPLATE.md
-<!-- condicional a depender da plataforma -->
-[62]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/ISSUE_TEMPLATE
-[63]: https://github.com/apps/stale
-[64]: https://github.com/marketplace/stale
-<!-- aepans para GH -->
-[65]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/.stale.yml
-[66]: https://semver.org/
-[67]: https://github.com/marketplace/actions/release-drafter
-[68]: {{ cookiecutter.__scm_link_url }}/blob/master/Makefile
-[69]: {{ cookiecutter.__scm_link_url }}/tree/master/docker
-[70]: {{ cookiecutter.__scm_link_url }}/releases
-[71]: https://semver.org/
-[72]: https://github.com/marketplace/actions/release-drafter
-<!-- apenas para GH -->
-[73]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/release-drafter.yml
-[74]: https://img.shields.io/{{ cookiecutter.__scm_platform_lc }}/license/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}
-[75]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
-[76]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
-[77]: https://img.shields.io/badge/python--package--template-%F0%9F%9A%80-brightgreen
-[78]: https://gitlab.com/manoelpqueiroz/galactipy
-[79]: https://gitlab.com/manoelpqueiroz/galactipy
-[80]: {{ cookiecutter.__scm_link_url }}/blob/master/CHANGELOG.md
-[81]: https://docs.gitlab.com/ee/user/project/changelogs.html
-[82]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/changelog_config.yml
+
+[t1]: https://github.com/python-poetry/install.python-poetry.org
+[t2]: https://python-poetry.org/docs/
+[t3]: https://python-poetry.org/docs/cli/#commands
+[t4]: https://semver.org/
+[t5]: https://github.com/Gruntfuggly/todo-tree
+[t6]: https://github.com/tiangolo/typer
+[t7]: https://github.com/willmcgugan/rich
+[t8]: https://github.com/tqdm/tqdm
+[t9]: https://github.com/prompt-toolkit/python-prompt-toolkit
+[t10]: https://github.com/ijl/orjson
+[t11]: https://github.com/samuelcolvin/pydantic/
+[t12]: https://github.com/dry-python/returns
+[t13]: https://github.com/Delgan/loguru
+[t14]: https://github.com/gruns/icecream
+[t15]: https://github.com/facebookresearch/hydra
+[t16]: https://github.com/tiangolo/fastapi
+[t17]: https://opensource.guide/
+[t18]: https://github.com/nayafia/lemonade-stand
+[t19]: https://makefiletutorial.com/
+[t20]: https://gitmoji.carloscuesta.me/
+[t21]: https://python-poetry.org/
+[t22]: {{ cookiecutter.__scm_link_url }}/blob/master/pyproject.toml
+[t23]: https://mypy.readthedocs.io
+[t24]: https://docs.safetycli.com/safety-2/
+[t25]: https://bandit.readthedocs.io/en/latest/
+[t26]: https://docs.pytest.org/en/latest/
+[t27]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
+[t28]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitignore
+[t29]: {{ cookiecutter.__scm_link_url }}/blob/master/Makefile
+[t30]: #makefile-usage
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+[t31]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/merge_request_templates/default.md
+{%- elif cookiecutter.__scm_platform_lc == 'github' %}
+[t31]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/PULL_REQUEST_TEMPLATE.md
+{%- endif %}
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+[t32]: {{ cookiecutter.__scm_link_url }}/tree/master/.gitlab/issue_templates
+{%- elif cookiecutter.__scm_platform_lc == 'github' %}
+[t32]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/ISSUE_TEMPLATE
+{%- endif %}
+[t33]: {{ cookiecutter.__scm_link_url }}/releases
+[t34]: https://img.shields.io/{{ cookiecutter.__scm_platform_lc }}/license/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}
+[t35]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
+[t36]: https://img.shields.io/badge/galactipy-%F0%9F%9A%80-brightgreen
+[t37]: https://gitlab.com/manoelpqueiroz/galactipy
+
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+[l1]: https://docs.gitlab.com/ee/ci/
+[l2]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab-ci.yml
+[l3]: {{ cookiecutter.__scm_link_url }}/blob/master/CHANGELOG.md
+[l4]: https://docs.gitlab.com/ee/user/project/changelogs.html
+[l5]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/changelog_config.yml
+[l6]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
+{%- endif %}
+
+{%- if cookiecutter.__scm_platform_lc == 'github' %}
+[h1]: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates#enabling-dependabot-version-updates
+[h2]: https://github.com/marketplace/actions/close-stale-issues
+[h3]: https://help.github.com/en/actions
+[h4]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/workflows/build.yml
+[h5]: https://docs.github.com/en/code-security/dependabot
+[h6]: https://github.com/marketplace/actions/release-drafter
+[h7]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/release-drafter.yml
+[h8]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/.stale.yml
+{%- endif %}
+
+{%- if cookiecutter.create_docker %}
+[d1]: {{ cookiecutter.__scm_link_url }}/blob/master/.dockerignore
+[d2]: {{ cookiecutter.__scm_link_url }}/blob/master/docker/Dockerfile
+[d3]: {{ cookiecutter.__scm_link_url }}/tree/master/docker
+{%- endif %}
+
+{%- if cookiecutter.use_formatters %}
+[f1]: https://black.readthedocs.io/en/stable/
+[f2]: https://pycqa.github.io/isort/
+[f3]: https://github.com/asottile/pyupgrade
+[f4]: https://pre-commit.com/
+{%- endif %}
+
+{%- if cookiecutter.use_linters %}
+[s1]: https://flake8.pycqa.org/en/latest/
+{%- elif cookiecutter.docstring_style != 'dismiss' %}
+[s2]: http://www.pydocstyle.org/en/stable/
+{%- endif %}
+{%- if cookiecutter.docstring_style not in ['pep257', 'dismiss'] %}
+[s3]: https://github.com/jsh9/pydoclint
+{%- endif %}
+{%- endif %}
