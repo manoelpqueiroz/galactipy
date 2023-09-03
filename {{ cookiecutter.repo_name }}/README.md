@@ -144,8 +144,7 @@ For further setting up your project:
     "UPDATEME",
     "TODO",
     "XXX",
-    "[ ]",
-    "[x]"
+    "[ ]"
 ]
 ```
 
@@ -173,7 +172,7 @@ For taking development and exposition of your project to the next level:
   - You can look at dynamic badges available at [`Shields.io`][t17];
   - There is a myriad of standardised static badges at [`Simple Badges`][t18];
   - [`awesome-badges`][t19] provides a lot of useful resources to help you deal with badges;
-- Add your project to [`OpenSSF Best Practices`][t20] and [`OSSRank`][t21] indexes, if you have greater ambitions for your project and/or expects it to scale at some point, it's worth considering adding it to these services;
+- Add your project to [`OpenSSF Best Practices`][t20] and [`OSSRank`][t21] indexes. If you have greater ambitions for your project and/or expects it to scale at some point, it's worth considering adding it to these trackers;
   - There are already badges for those set up in your `README.md` file, just waiting for you to update their URLs with your project's index in both services :beaming_face_with_smiling_eyes:
 - Setup a code coverage service for your tests, popular options include:
   - [`Coveralls`][t22] and [`Codecov`][t23] if you need solely test coverage;
@@ -694,10 +693,9 @@ This project was generated with [`galactipy`][bp7].
 {%- endif %}
 
 [s1]: https://flake8.pycqa.org/en/latest/
-{%- elif cookiecutter.docstring_style != 'dismiss' %}
+{%- if cookiecutter.docstring_style != 'dismiss' %}
 [s2]: http://www.pydocstyle.org/en/stable/
-{%- endif %}
-{%- if cookiecutter.docstring_style not in ['pep257', 'dismiss'] %}
+{%- elif cookiecutter.docstring_style != 'pep257' %}
 [s3]: https://github.com/jsh9/pydoclint
 {%- endif %}
 {%+ endif %}

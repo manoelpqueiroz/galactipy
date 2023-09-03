@@ -127,11 +127,84 @@ All input values will be saved in the `cookiecutter-config-file.yml` file so tha
 
 #### Demo
 
-[![Demo of github.com/TezRomacH/python-package-template][n42]][n43]
+<div class="termy">
+
+```console
+$ cookiecutter gl:manoelpqueiroz/galactipy
+  [1/24] Project name (Python Project): A Decent Python Project
+  [2/24] Project slug (a-decent-python-project): a-different-slug
+  [3/24] Package name (a_decent_python_project): a_viable_package
+  [4/24] Short description of the project (Awesome `a-different-slug` is a Python cli/package created with
+https://gitlab.com/manoelpqueiroz/galactipy): Let's try a cool description
+  [5/24] Project version (0.1.0): 1.100.9-rc7+build.456893a
+  [6/24] Author or Organisation (Manoel Pereira de Queiroz):
+  [7/24] In which platform would you like to host your code?
+    1 - GitLab
+    2 - GitHub
+    Choose from [1/2] (1): 2
+  [8/24] Platform username (manoelpqueiroz): myuniqueusername
+  [9/24] e-Mail (contact@myuniqueusername.com): g@mail.com
+  [10/24] Which licence would you like to use for your project?
+    1 - MIT Licence
+    2 - 3-Clause BSD
+    3 - GNU GPL v3.0
+    4 - GNU AGPL v3.0
+    5 - GNU LGPL v3.0
+    6 - Mozilla Public License 2.0
+    7 - Apache Software License 2.0
+    8 - Not open source
+    Choose from [1/2/3/4/5/6/7/8] (1): 4
+  [11/24] Minimal Python version
+    1 - 3.8
+    2 - 3.9
+    3 - 3.10
+    4 - 3.11
+    Choose from [1/2/3/4] (1): 3
+  [12/24] Use Black, isort and pyupgrade for formatting? [y/n] (y): yes
+  [13/24] Maximum line length (88):
+  [14/24] Use flake8 and pydocstyle for linting? [y/n] (y): true
+  [15/24] Which docstring style would you like to use? "numpy" and "google" styles will add pydoclint as a dependency.
+    1 - numpy
+    2 - google
+    3 - pep257
+    4 - other
+    Choose from [1/2/3/4] (1): 4
+  [16/24] create_cli [y/n] (y): on
+  [17/24] Containerize your application with Docker? [y/n] (y): no
+  [18/24] Create project documentation with Sphinx? [y/n] (y): false
+
+Your project A Decent Python Project is created.
+
+1) Now you can start working on it:
+
+    $ cd a-different-slug && git init
+
+2) If you don't have Poetry installed run:
+
+    $ make poetry-download
+
+3) Initialize poetry and install pre-commit hooks:
+
+    $ make install
+    $ make pre-commit-install
+
+4) Run codestyle:
+
+    $ make codestyle
+
+5) Upload initial code to GitHub:
+
+    $ git add .
+    $ git commit -m ":tada: Initial commit"
+    $ git remote add origin https://github.com/myuniqueusername/a-different-slug.git
+    $ git push -u origin master
+```
+
+</div>
 
 ### More details
 
-Your project will contain `README.md` file with instructions for development, deployment etc. You can read [the project README.md template][n44] before.
+Your project will contain `README.md` file with instructions for development, deployment etc. You can read [the project README.md template][n42] before.
 
 ### Initial set up
 
@@ -139,7 +212,7 @@ Your project will contain `README.md` file with instructions for development, de
 
 By running `make install`
 
-After you create a project, it will appear in your directory, and will display [a message about how to initialize the project][n45].
+After you create a project, it will appear in your directory, and will display [a message about how to initialize the project][n43].
 
 #### Initialize `pre-commit`
 
@@ -147,13 +220,13 @@ By running `make pre-commit-install`. Make sure to set up git first via `git ini
 
 ### Package example
 
-Want to know more about Poetry? Check [its documentation][n46].
+Want to know more about Poetry? Check [its documentation][n44].
 
 <details>
 <summary>Details about Poetry</summary>
 <p>
 
-Poetry's [commands][n47] are very intuitive and easy to learn, like:
+Poetry's [commands][n45] are very intuitive and easy to learn, like:
 
 - `poetry add numpy@latest`
 - `poetry run pytest`
@@ -188,13 +261,13 @@ Building a new version of the application contains steps:
 
 ### Makefile usage
 
-[`Makefile`][n48] contains a lot of functions for faster development.
+[`Makefile`][n46] contains a lot of functions for faster development.
 
 <details>
 <summary>1. Download and remove Poetry</summary>
 <p>
 
-To download and install Poetry as a [standalone application][n49] run:
+To download and install Poetry as a [standalone application][n47] run:
 
 ```bash
 make poetry-download
@@ -353,7 +426,7 @@ Remove docker image with
 make docker-remove
 ```
 
-More information [about docker][n50].
+More information [about docker][n48].
 
 </p>
 </details>
@@ -402,7 +475,7 @@ Well, that's up to you :flexed_biceps:.
 For further setting up your project:
 
 - Look for files and sections marked with `UPDATEME`, these should be updated according to the needs and characteristics of your project;
-  - **Tip:** If you use VS Code's [`Todo Tree`][n51] extension, you can even set a specific tag to quickly locate these marks. Update your `settings.json` with:
+  - **Tip:** If you use VS Code's [`Todo Tree`][n49] extension, you can even set a specific tag to quickly locate these marks. Update your `settings.json` with:
 
 ```json
 "todo-tree.highlights.customHighlight": {
@@ -418,8 +491,7 @@ For further setting up your project:
     "UPDATEME",
     "TODO",
     "XXX",
-    "[ ]",
-    "[x]"
+    "[ ]"
 ]
 ```
 
@@ -429,52 +501,52 @@ For further setting up your project:
 
 If you want to put your project on steroids, here are a few Python tools which can help you depending on what you want to achieve with your application:
 
-- [`Typer`][n52] is great for creating CLI applications. If you chose to generate a CLI example during the Cookiecutter setup, `Typer` will already be among your dependencies;
-- [`Rich`][n53] makes it easy to add beautiful formatting in the terminal. If you chose to generate a CLI example during the Cookiecutter setup, `Rich` will already be among your dependencies;
-- [`tqdm`][n54] is a fast, extensible progress bar for Python and CLI;
-- [`Python Prompt Toolkit`][n55] allows you to create more advanced terminal applications, such as a text editor or even your own shell;
-- [`orjson`][n56], an ultra fast JSON parsing library;
-- [`Pydantic`][n57] is data validation and settings management using Python type hinting;
-- [`Returns`][n58] makes you function's output meaningful, typed, and safe;
-- [`Loguru`][n59] makes logging (stupidly) simple;
-- [`IceCream`][n60] is a little library for sweet and creamy debugging;
-- [`Hydra`][n61] is a framework for elegantly configuring complex applications;
-- [`FastAPI`][n62] is a type-driven asynchronous web framework.
+- [`Typer`][n50] is great for creating CLI applications. If you chose to generate a CLI example during the Cookiecutter setup, `Typer` will already be among your dependencies;
+- [`Rich`][n51] makes it easy to add beautiful formatting in the terminal. If you chose to generate a CLI example during the Cookiecutter setup, `Rich` will already be among your dependencies;
+- [`tqdm`][n52] is a fast, extensible progress bar for Python and CLI;
+- [`Python Prompt Toolkit`][n53] allows you to create more advanced terminal applications, such as a text editor or even your own shell;
+- [`orjson`][n54], an ultra fast JSON parsing library;
+- [`Pydantic`][n55] is data validation and settings management using Python type hinting;
+- [`Returns`][n56] makes you function's output meaningful, typed, and safe;
+- [`Loguru`][n57] makes logging (stupidly) simple;
+- [`IceCream`][n58] is a little library for sweet and creamy debugging;
+- [`Hydra`][n59] is a framework for elegantly configuring complex applications;
+- [`FastAPI`][n60] is a type-driven asynchronous web framework.
 
 For taking development and exposition of your project to the next level:
 
 - Try out some more badges, not only it looks good, but it also helps people better understand some intricate details on how your project works:
-  - You can look at dynamic badges available at [`Shields.io`][n63];
-  - There is a myriad of standardised static badges at [`Simple Badges`][n64];
-  - [`awesome-badges`][n65] provides a lot of useful resources to help you deal with badges;
-- Add your project to [`OpenSSF Best Practices`][n66] and [`OSSRank`][n67] indexes, if you have greater ambitions for your project and/or expects it to scale at some point, it's worth considering adding it to these services;
+  - You can look at dynamic badges available at [`Shields.io`][n61];
+  - There is a myriad of standardised static badges at [`Simple Badges`][n62];
+  - [`awesome-badges`][n63] provides a lot of useful resources to help you deal with badges;
+- Add your project to [`OpenSSF Best Practices`][n64] and [`OSSRank`][n65] indexes. If you have greater ambitions for your project and/or expects it to scale at some point, it's worth considering adding it to these trackers;
   - There are already badges for those set up in your `README.md` file, just waiting for you to update their URLs with your project's index in both services :beaming_face_with_smiling_eyes:
 - Setup a code coverage service for your tests, popular options include:
-  - [`Coveralls`][n68] and [`Codecov`][n69] if you need solely test coverage;
-  - [`Code Climate`][n70] and [`Codacy`][n71] for fully-featured code analysis;
+  - [`Coveralls`][n66] and [`Codecov`][n67] if you need solely test coverage;
+  - [`Code Climate`][n68] and [`Codacy`][n69] for fully-featured code analysis;
 - Setup a sponsorship page and allow users and organisations who appreciate your project to help raise for its development (and add a badge in the process! :smiling_face_with_sunglasses:). Popular platforms are:
-  - [`Liberapay`][n72];
-  - [`Open Collective`][n73];
-  - [`Ko-fi`][n74];
-  - If you host on GitHub, you can set a [Sponsors account][n75] directly integrated into the platform;
+  - [`Liberapay`][n70];
+  - [`Open Collective`][n71];
+  - [`Ko-fi`][n72];
+  - If you host on GitHub, you can set a [Sponsors account][n73] directly integrated into the platform;
   - Of course, you can also set any kind of gateway you wish, what works best for you and your project!
 
 And here are a few articles which may help you:
 
-- [Open Source Guides][n76];
-- [A handy guide to financial support for open source][n77];
-- [GitLab CI Documentation][n78];
-- [GitHub Actions Documentation][n79];
-- [Makefile tutorial][n80];
-- Maybe you would like to add [gitmoji][n81] to commit names. This is really funny. :grinning_face_with_smiling_eyes:
+- [Open Source Guides][n74];
+- [A handy guide to financial support for open source][n75];
+- [GitLab CI Documentation][n76];
+- [GitHub Actions Documentation][n77];
+- [Makefile tutorial][n78];
+- Maybe you would like to add [gitmoji][n79] to commit names. This is really funny. :grinning_face_with_smiling_eyes:
 
 ## :chart_increasing: Releases
 
-You can see the list of available releases on the [GitLab Releases][n82] page.
+You can see the list of available releases on the [GitLab Releases][n80] page.
 
 We follow [Semantic Versions][n28] specification.
 
-We use [`GitLab Changelog`][n29] entries to track changes. You can categorise commits and Merge Requests made to this project using [git trailers][n83] in your commit messages.
+We use [`GitLab Changelog`][n29] entries to track changes. You can categorise commits and Merge Requests made to this project using [git trailers][n81] in your commit messages.
 
 ### List of trailers and corresponding categories
 
@@ -493,17 +565,17 @@ This template will continue to develop and follow the bleeding edge new tools an
 
 Here is a list of things that have yet to be implemented:
 
-- Tests coverage reporting with [`Coveralls`][n84];
-- Auto uploading your package to [`PyPI`][n85] when new release is created;
-- Automatic creation of documentation. We will be using [`Sphinx`][n86] with [`Furo`][n87] design;
-- Code metrics with [`Radon`][n88];
-- Docstring coverage with [`interrogate`][n89];
-- `Dockerfile` linting with [`dockerfilelint`][n90];
-- [Hall of fame][n91] from `Sourcerer`;
+- Tests coverage reporting with [`Coveralls`][n82];
+- Auto uploading your package to [`PyPI`][n83] when new release is created;
+- Automatic creation of documentation. We will be using [`Sphinx`][n84] with [`Furo`][n85] design;
+- Code metrics with [`Radon`][n86];
+- Docstring coverage with [`interrogate`][n87];
+- `Dockerfile` linting with [`dockerfilelint`][n88];
+- [Hall of fame][n89] from `Sourcerer`;
 - Some advanced Python linting (?);
 - End-to-end testing and validation of the cookiecutter template;
-- Add [`Invoke`][n92];
-- Add [`Earthly`][n93].
+- Add [`Invoke`][n90];
+- Add [`Earthly`][n91].
 
 ## :shield: Licence
 
@@ -513,22 +585,22 @@ This project is licenced under the terms of the `MIT` licence. See [LICENCE][b7]
 
 ## :sports_medal: Acknowledgements
 
-Firstly, there is no way this template would exist without the previous phenomenal work by [Roman Tezikov][n94] and his fully-featured [`python-package-template`][n23]. If there is anyone more deserving of a :glowing_star: and acknowledgement, it's him! Please give a shoutout and [support][n95] if possible.
+Firstly, there is no way this template would exist without the previous phenomenal work by [Roman Tezikov][n92] and his fully-featured [`python-package-template`][n23]. If there is anyone more deserving of a :glowing_star: and acknowledgement, it's him! Please give a shoutout and [support][n93] if possible.
 
 The original template was inspired by several articles that might be helpful if you are starting out managing projects:
 
-- [Hypermodern Python][n96];
-- [Ultimate Setup for Your Next Python Project][n97];
-- [Nine simple steps for better-looking python code][n98];
-- [Modern Python developer's toolkit][n99].
+- [Hypermodern Python][n94];
+- [Ultimate Setup for Your Next Python Project][n95];
+- [Nine simple steps for better-looking python code][n96];
+- [Modern Python developer's toolkit][n97].
 
 And also there are some projects which can be studied as references in project management and template design:
 
-- [`Cookiecutter`][n100];
-- [Audreyr's `cookiecutter-pypackage`][n101];
-- [Cookiecutter Data Science Template: `cdst`][n102];
-- [Full Stack FastAPI and PostgreSQL - Base Project Generator][n103];
-- [The importance of layered thinking in data engineering][n104].
+- [`Cookiecutter`][n98];
+- [Audreyr's `cookiecutter-pypackage`][n99];
+- [Cookiecutter Data Science Template: `cdst`][n100];
+- [Full Stack FastAPI and PostgreSQL - Base Project Generator][n101];
+- [The importance of layered thinking in data engineering][n102].
 
 Give them your :star:, these resources are amazing! :winking_face:
 
@@ -545,7 +617,9 @@ Give them your :star:, these resources are amazing! :winking_face:
 }
 ```
 
-Markdown source for the badge [![Expand your project structure from atoms of code to galactic dimensions.][b33]][b34]
+Add the badge [![Expand your project structure from atoms of code to galactic dimensions.][b33]][b34] to your project! It would be really appreciated to spread the word of this template.
+
+Here is the Markdown source for it:
 
 ```markdown
 [![Expand your project structure from atoms of code to galactic dimensions.](https://img.shields.io/badge/made%20with-galactipy%20%F0%9F%8C%8C-179287?style=for-the-badge&labelColor=193A3E)](https://kutt.it/7fYqQl)
@@ -627,66 +701,64 @@ Markdown source for the badge [![Expand your project structure from atoms of cod
 [n39]: https://rich.readthedocs.io/en/latest/
 [n40]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker/Dockerfile
 [n41]: https://www.sphinx-doc.org/en/master/
-[n42]: https://asciinema.org/a/422052.svg
-[n43]: https://asciinema.org/a/422052
-[n44]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D
-[n45]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D#very-first-steps
-[n46]: https://python-poetry.org/docs/
-[n47]: https://python-poetry.org/docs/cli/#commands
-[n48]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/Makefile
-[n49]: https://github.com/python-poetry/install.python-poetry.org
-[n50]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker
-[n51]: https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
-[n52]: https://github.com/tiangolo/typer
-[n53]: https://github.com/willmcgugan/rich
-[n54]: https://github.com/tqdm/tqdm
-[n55]: https://github.com/prompt-toolkit/python-prompt-toolkit
-[n56]: https://github.com/ijl/orjson
-[n57]: https://github.com/samuelcolvin/pydantic/
-[n58]: https://github.com/dry-python/returns
-[n59]: https://github.com/Delgan/loguru
-[n60]: https://github.com/gruns/icecream
-[n61]: https://github.com/facebookresearch/hydra
-[n62]: https://github.com/tiangolo/fastapi
-[n63]: https://shields.io/badges/static-badge
-[n64]: https://badges.pages.dev/
-[n65]: https://github.com/badges/awesome-badges
-[n66]: https://www.bestpractices.dev/en
-[n67]: https://ossrank.com/
-[n68]: https://coveralls.io/
-[n69]: https://about.codecov.io/
-[n70]: https://codeclimate.com/velocity/what-is-velocity
-[n71]: https://www.codacy.com/
-[n72]: https://liberapay.com/
-[n73]: https://opencollective.com/
-[n74]: https://ko-fi.com/
-[n75]: https://github.com/sponsors
-[n76]: https://opensource.guide/
-[n77]: https://github.com/nayafia/lemonade-stand
-[n78]: https://docs.gitlab.com/ee/ci/
-[n79]: https://help.github.com/en/actions
-[n80]: https://makefiletutorial.com/
-[n81]: https://gitmoji.carloscuesta.me/
-[n82]: https://gitlab.com/manoelpqueiroz/galactipy/-/releases
-[n83]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
-[n84]: https://coveralls.io
-[n85]: https://pypi.org/
-[n86]: https://github.com/sphinx-doc/sphinx
-[n87]: https://github.com/pradyunsg/furo
-[n88]: https://github.com/rubik/radon
-[n89]: https://github.com/econchick/interrogate
-[n90]: https://github.com/replicatedhq/dockerfilelint
-[n91]: https://github.com/sourcerer-io/hall-of-fame
-[n92]: http://www.pyinvoke.org/
-[n93]: https://earthly.dev/
-[n94]: https://github.com/TezRomacH
-[n95]: https://patreon.com/tezikov
-[n96]: https://cjolowicz.github.io/posts/hypermodern-python-01-setup/
-[n97]: https://martinheinz.dev/blog/14
-[n98]: https://towardsdatascience.com/nine-simple-steps-for-better-looking-python-code-87e5d9d3b1cf
-[n99]: https://pycon.switowski.com/
-[n100]: https://github.com/cookiecutter/cookiecutter
-[n101]: https://github.com/audreyr/cookiecutter-pypackage
-[n102]: https://github.com/crplab/cdst
-[n103]: https://github.com/tiangolo/full-stack-fastapi-postgresql
-[n104]: https://towardsdatascience.com/the-importance-of-layered-thinking-in-data-engineering-a09f685edc71
+[n42]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D
+[n43]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D#very-first-steps
+[n44]: https://python-poetry.org/docs/
+[n45]: https://python-poetry.org/docs/cli/#commands
+[n46]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/Makefile
+[n47]: https://github.com/python-poetry/install.python-poetry.org
+[n48]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker
+[n49]: https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
+[n50]: https://github.com/tiangolo/typer
+[n51]: https://github.com/willmcgugan/rich
+[n52]: https://github.com/tqdm/tqdm
+[n53]: https://github.com/prompt-toolkit/python-prompt-toolkit
+[n54]: https://github.com/ijl/orjson
+[n55]: https://github.com/samuelcolvin/pydantic/
+[n56]: https://github.com/dry-python/returns
+[n57]: https://github.com/Delgan/loguru
+[n58]: https://github.com/gruns/icecream
+[n59]: https://github.com/facebookresearch/hydra
+[n60]: https://github.com/tiangolo/fastapi
+[n61]: https://shields.io/badges/static-badge
+[n62]: https://badges.pages.dev/
+[n63]: https://github.com/badges/awesome-badges
+[n64]: https://www.bestpractices.dev/en
+[n65]: https://ossrank.com/
+[n66]: https://coveralls.io/
+[n67]: https://about.codecov.io/
+[n68]: https://codeclimate.com/velocity/what-is-velocity
+[n69]: https://www.codacy.com/
+[n70]: https://liberapay.com/
+[n71]: https://opencollective.com/
+[n72]: https://ko-fi.com/
+[n73]: https://github.com/sponsors
+[n74]: https://opensource.guide/
+[n75]: https://github.com/nayafia/lemonade-stand
+[n76]: https://docs.gitlab.com/ee/ci/
+[n77]: https://help.github.com/en/actions
+[n78]: https://makefiletutorial.com/
+[n79]: https://gitmoji.carloscuesta.me/
+[n80]: https://gitlab.com/manoelpqueiroz/galactipy/-/releases
+[n81]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
+[n82]: https://coveralls.io
+[n83]: https://pypi.org/
+[n84]: https://github.com/sphinx-doc/sphinx
+[n85]: https://github.com/pradyunsg/furo
+[n86]: https://github.com/rubik/radon
+[n87]: https://github.com/econchick/interrogate
+[n88]: https://github.com/replicatedhq/dockerfilelint
+[n89]: https://github.com/sourcerer-io/hall-of-fame
+[n90]: http://www.pyinvoke.org/
+[n91]: https://earthly.dev/
+[n92]: https://github.com/TezRomacH
+[n93]: https://patreon.com/tezikov
+[n94]: https://cjolowicz.github.io/posts/hypermodern-python-01-setup/
+[n95]: https://martinheinz.dev/blog/14
+[n96]: https://towardsdatascience.com/nine-simple-steps-for-better-looking-python-code-87e5d9d3b1cf
+[n97]: https://pycon.switowski.com/
+[n98]: https://github.com/cookiecutter/cookiecutter
+[n99]: https://github.com/audreyr/cookiecutter-pypackage
+[n100]: https://github.com/crplab/cdst
+[n101]: https://github.com/tiangolo/full-stack-fastapi-postgresql
+[n102]: https://towardsdatascience.com/the-importance-of-layered-thinking-in-data-engineering-a09f685edc71
