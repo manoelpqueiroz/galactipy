@@ -9,7 +9,7 @@
 {%- if cookiecutter.create_docker %}
 [![Docker][bdocker1]][bdocker2]
 {%- endif %}
-{%- if cookiecutter.licence != 'Not open source' %}
+{%- if cookiecutter.licence != 'nos' %}
 [![Licence][blic1]][blic2]
 {%- endif %}
 {%- if cookiecutter.create_docs %}
@@ -33,7 +33,7 @@
 [![Docstrings][bli1]][bli2]
 {%- endif %}
 
-{%- if cookiecutter.licence != 'Not open source' %}
+{%- if cookiecutter.licence != 'nos' %}
 <!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
 [![OpenSSF Best Practices][boss1]][boss2] -->
 <!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
@@ -518,7 +518,7 @@ You can update it in [`release-drafter.yml`][hub8].
 GitHub creates the `bug`, `enhancement`, and `documentation` labels for you. Dependabot creates the `dependencies` label. Create the remaining labels on the Issues tab of your GitHub repository, when you need them.
 
 {%- endif %}
-{%- if cookiecutter.licence != 'Not open source' %}
+{%- if cookiecutter.licence != 'nos' %}
 ## :shield: Licence
 
 [![Licence][blic1]][blic2]
@@ -563,7 +563,7 @@ This project was generated with [`galactipy`][bp7].
 [bp16]: {{ cookiecutter.__scm_link_url }}/blob/master/.pre-commit-config.yaml
 [bp17]: https://img.shields.io/badge/Editor%20Config-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
 [bp18]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
-{%+ if cookiecutter.licence != 'Not open source' %}
+{%+ if cookiecutter.licence != 'nos' %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [blic1]: https://img.shields.io/gitlab/license/{{ cookiecutter.scm_username}}/{{ cookiecutter.repo_name }}?style=for-the-badge
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}

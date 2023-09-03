@@ -6,7 +6,7 @@
     'GNU LGPL v3.0': 'License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)',
     'Mozilla Public License 2.0': 'License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)',
     'Apache Software License 2.0': 'License :: OSI Approved :: Apache Software License',
-    'Not open source': 'License :: Other/Proprietary License'
+    'nos': 'License :: Other/Proprietary License'
 } -%}
 {%- set list_python_version = cookiecutter.minimal_python_version.split('.') | map('int') | list %}
 # Poetry pyproject.toml: https://python-poetry.org/docs/pyproject/

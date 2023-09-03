@@ -19,7 +19,7 @@
     "GNU LGPL v3.0",
     "Mozilla Public License 2.0",
     "Apache Software License 2.0",
-    "Not open source"
+    "nos"
   ],
   "minimal_python_version": [
     "3.8",
@@ -55,7 +55,8 @@
     "licence": {
       "__prompt__": "Which licence would you like to use for your project?",
       "MIT": "MIT Licence",
-      "BSD-3": "3-Clause BSD"
+      "BSD-3": "3-Clause BSD",
+      "nos": "Not open source"
     },
     "minimal_python_version": "Minimal Python version",
     "use_formatters": "Use Black, isort and pyupgrade for formatting?",

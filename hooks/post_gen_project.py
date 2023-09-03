@@ -34,7 +34,7 @@ licences_dict = {
     "GNU LGPL v3.0": "lgpl3",
     "Mozilla Public License 2.0": "mozilla",
     "Apache Software License 2.0": "apache",
-    "Not open source": None
+    "nos": None
 }
 
 
