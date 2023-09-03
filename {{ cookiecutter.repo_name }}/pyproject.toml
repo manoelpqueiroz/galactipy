@@ -68,7 +68,7 @@ isort = {extras = ["colors"], version = "^5.11.0"}
 pyupgrade = "^3.0.0"
 {%- endif %}
 {%+ if cookiecutter.use_linters %}
-flake8 = "^6.0.0"
+flake8 = "^5.0.4"
 {%- endif %}
 {%- if cookiecutter.use_linters and cookiecutter.docstring_style != 'dismiss' %}
 pydocstyle = {extras = ["toml"], version = "^6.2.0"}

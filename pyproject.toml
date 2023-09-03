@@ -44,7 +44,7 @@ black = "^22.8.0"
 isort = {extras = ["colors"], version = "^5.11.0"}
 pyupgrade = "^3.0.0"
 
-flake8 = "^6.0.0"
+flake8 = "^5.0.4"
 pydocstyle = {extras = ["toml"], version = "^6.2.0"}
 pydoclint = "^0.3.0"
 
