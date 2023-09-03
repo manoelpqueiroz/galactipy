@@ -4,46 +4,46 @@
 
 [![Python support][bp1]][bp2]
 [![PyPI Release][bp3]][bp2]
-[![Repository][bg1]][bp4]
-[![Releases][bg2]][bp5]
+[![Repository][bscm1]][bp4]
+[![Releases][bscm2]][bp5]
 {%- if cookiecutter.create_docker %}
-[![Docker][bd1]][bd2]
+[![Docker][bdocker1]][bdocker2]
 {%- endif %}
 {%- if cookiecutter.licence != 'Not open source' %}
-[![Licence][bl1]][bl2]
+[![Licence][blic1]][blic2]
 {%- endif %}
 {%- if cookiecutter.create_docs %}
-[![Docs][bc1]][bc2]
+[![Docs][bdoc1]][bdoc2]
 {%- endif %}
 [![Expand your project structure from atoms of code to galactic dimensions.][bp6]][bp7]
 
 [![Contributions Welcome][bp8]][bp9]
-[![Open issues][bg3]][bp10]
-[![Merge Requests][bg4]][bg5]
+[![Open issues][bscm3]][bp10]
+[![Merge Requests][bscm4]][bscm5]
 
 [![Poetry][bp11]][bp12]
 [![Bandit][bp13]][bp14]
 [![Pre-commit][bp15]][bp16]
 [![Editorconfig][bp17]][bp18]
 {%- if cookiecutter.use_formatters %}
-[![Code style: black][bf1]][bf2]
-[![isort][bf3]][bf4]
+[![Code style: black][bfo1]][bfo2]
+[![isort][bfo3]][bfo4]
 {%- endif %}
 {%- if cookiecutter.use_linters and cookiecutter.docstring_style in ['numpy', 'google', 'pep257'] %}
-[![Docstrings][bs1]][bs2]
+[![Docstrings][bli1]][bli2]
 {%- endif %}
 
 {%- if cookiecutter.licence != 'Not open source' %}
 <!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
-[![OpenSSF Best Practices][bo1]][bo2] -->
+[![OpenSSF Best Practices][boss1]][boss2] -->
 <!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
-[![OSSRank][bo3]][bo4] -->
+[![OSSRank][boss3]][boss4] -->
 
 {%- endif %}
-[![Semantic versions][bl3]][bp5]
-[![Pipelines][bg6]][bg7]
+[![Semantic versions][blic3]][bp5]
+[![Pipelines][bscm6]][bscm7]
 
-{{ cookiecutter.project_description }}
+_{{ cookiecutter.project_description }}_
 
 </div>
 
@@ -63,7 +63,7 @@ cd {{ cookiecutter.repo_name }} && git init
 make poetry-download
 ```
 
-> This installs Poetry as a [standalone application][t1]. If you prefer, you can simply install it inside your virtual environment.
+> This installs Poetry as a [standalone application][fs1]. If you prefer, you can simply install it inside your virtual environment.
 
 3. Initialize Poetry and install `pre-commit` hooks:
 
@@ -90,19 +90,19 @@ git push -u origin main
 {%- if cookiecutter.__scm_platform_lc == 'github' -%}
 ### Set up bots
 
-- Set up [Dependabot][h1] to ensure you have the latest dependencies.
-- Set up [Stale bot][h2] for automatic issue closing.
+- Set up [Dependabot][hub1] to ensure you have the latest dependencies.
+- Set up [Stale bot][hub2] for automatic issue closing.
 {%- endif %}
 
 ### Poetry
 
-Want to know more about Poetry? Check [its documentation][t2].
+Want to know more about Poetry? Check [its documentation][fs2].
 
 <details>
 <summary>Details about Poetry</summary>
 <p>
 
-Poetry's [commands][t3] are very intuitive and easy to learn, like:
+Poetry's [commands][fs3] are very intuitive and easy to learn, like:
 
 - `poetry add numpy@latest`
 - `poetry run pytest`
@@ -116,7 +116,7 @@ etc.
 
 Building a new version of the application contains steps:
 
-- Bump the version of your package `poetry version <version>`. You can pass the new version explicitly, or a rule such as `major`, `minor`, or `patch`. For more details, refer to the [Semantic Versions][t4] standard;
+- Bump the version of your package `poetry version <version>`. You can pass the new version explicitly, or a rule such as `major`, `minor`, or `patch`. For more details, refer to the [Semantic Versions][fs4] standard;
 - Make a commit to `{{ cookiecutter.scm_platform }}`;
 - Create a `{{ cookiecutter.scm_platform }} release`;
 - And... publish :slightly_smiling_face: `poetry publish --build`
@@ -128,7 +128,7 @@ Well, that's up to you :flexed_biceps:.
 For further setting up your project:
 
 - Look for files and sections marked with `UPDATEME`, these should be updated according to the needs and characteristics of your project;
-  - **Tip:** If you use VS Code's [`Todo Tree`][t5] extension, you can even set a specific tag to quickly locate these marks. Update your `settings.json` with:
+  - **Tip:** If you use VS Code's [`Todo Tree`][wn1] extension, you can even set a specific tag to quickly locate these marks. Update your `settings.json` with:
 
 ```json
 "todo-tree.highlights.customHighlight": {
@@ -148,93 +148,100 @@ For further setting up your project:
 ]
 ```
 
-- This template assumes your main git branch is `master`. If you wish to use another branch name for development, be aware of changes you will have to make in the Issue and Merge Request templates so links won't break when you push them to your repo;
+- In order to reduce user prompts and keep things effective, the template generates files with a few assumptions:
+  - It assumes your main git branch is `master`. If you wish to use another branch name for development, be aware of changes you will have to make in the Issue and Merge Request templates and `README.md` file so links won't break when you push them to your repo;
+  - It generates a PyPI badge assuming you will be able to publish your project under `{{ cookiecutter.repo_name }}`, change it otherwise;
+{%- if cookiecutter.create_docker %}
+  - It generates a Docker badge assuming you also use `{{ cookiecutter.scm_username }}` for Docker Hub and you will push your image under `{{ cookiecutter.repo_name }}`, change it otherwise;
+{%- endif %}
 - Make sure to create your desired Issue labels on your platform before you start tracking them so it ensures you will be able to filter them from the get-go;
 - Make changes to your CI configurations to better suit your needs.
 
 If you want to put your project on steroids, here are a few Python tools which can help you depending on what you want to achieve with your application:
 
-- [`Typer`][t6] is great for creating CLI applications;
-- [`Rich`][t7] makes it easy to add beautiful formatting in the terminal;
-- [`tqdm`][t8] is a fast, extensible progress bar for Python and CLI;
-- [`Python Prompt Toolkit`][t9] allows you to create more advanced terminal applications, such as a text editor or even your own shell;
-- [`orjson`][t10], an ultra fast JSON parsing library;
-- [`Pydantic`][t11] is data validation and settings management using Python type hinting;
-- [`Returns`][t12] makes you function's output meaningful, typed, and safe;
-- [`Loguru`][t13] makes logging (stupidly) simple;
-- [`IceCream`][t14] is a little library for sweet and creamy debugging;
-- [`Hydra`][t15] is a framework for elegantly configuring complex applications;
-- [`FastAPI`][t16] is a type-driven asynchronous web framework.
+- [`Typer`][wn2] is great for creating CLI applications;
+- [`Rich`][wn3] makes it easy to add beautiful formatting in the terminal;
+- [`tqdm`][wn4] is a fast, extensible progress bar for Python and CLI;
+- [`Python Prompt Toolkit`][wn5] allows you to create more advanced terminal applications, such as a text editor or even your own shell;
+- [`orjson`][wn6], an ultra fast JSON parsing library;
+- [`Pydantic`][wn7] is data validation and settings management using Python type hinting;
+- [`Returns`][wn8] makes you function's output meaningful, typed, and safe;
+- [`Loguru`][wn9] makes logging (stupidly) simple;
+- [`IceCream`][wn10] is a little library for sweet and creamy debugging;
+- [`Hydra`][wn11] is a framework for elegantly configuring complex applications;
+- [`FastAPI`][wn12] is a type-driven asynchronous web framework.
 
 For taking development and exposition of your project to the next level:
 
 - Try out some more badges, not only it looks good, but it also helps people better understand some intricate details on how your project works:
-  - You can look at dynamic badges available at [`Shields.io`][t17];
-  - There is a myriad of standardised static badges at [`Simple Badges`][t18];
-  - [`awesome-badges`][t19] provides a lot of useful resources to help you deal with badges;
-- Add your project to [`OpenSSF Best Practices`][t20] and [`OSSRank`][t21] indexes. If you have greater ambitions for your project and/or expects it to scale at some point, it's worth considering adding it to these trackers;
+  - You can look at dynamic badges available at [`Shields.io`][wn13];
+  - There is a myriad of standardised static badges at [`Simple Badges`][wn14];
+  - [`awesome-badges`][wn15] provides a lot of useful resources to help you deal with badges;
+- Add your project to [`OpenSSF Best Practices`][wn16] and [`OSSRank`][wn17] indexes. If you have greater ambitions for your project and/or expects it to scale at some point, it's worth considering adding it to these trackers;
   - There are already badges for those set up in your `README.md` file, just waiting for you to update their URLs with your project's index in both services :beaming_face_with_smiling_eyes:
 - Setup a code coverage service for your tests, popular options include:
-  - [`Coveralls`][t22] and [`Codecov`][t23] if you need solely test coverage;
-  - [`Code Climate`][t24] and [`Codacy`][t25] for fully-featured code analysis;
+  - [`Coveralls`][wn18] and [`Codecov`][wn19] if you need solely test coverage;
+  - [`Code Climate`][wn20] and [`Codacy`][wn21] for fully-featured code analysis;
 - Setup a sponsorship page and allow users and organisations who appreciate your project to help raise for its development (and add a badge in the process! :smiling_face_with_sunglasses:). Popular platforms are:
-  - [`Liberapay`][t26];
-  - [`Open Collective`][t27];
-  - [`Ko-fi`][t28];
-  - If you host on GitHub, you can set a [Sponsors account][t29] directly integrated into the platform;
+  - [`Liberapay`][wn22];
+  - [`Open Collective`][wn23];
+  - [`Ko-fi`][wn24];
+{%- if cookiecutter.__scm_platform_lc == 'github' %}
+  - You can set a [Sponsors account][hub3] directly integrated into GitHub;
+{%- endif %}
   - Of course, you can also set any kind of gateway you wish, what works best for you and your project!
 
 And here are a few articles which may help you:
 
-- [Open Source Guides][t30];
-- [A handy guide to financial support for open source][t31];
+- [Open Source Guides][wn25];
+- [A handy guide to financial support for open source][wn26];
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-- [GitLab CI Documentation][l1];
+- [GitLab CI Documentation][lab1];
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
-- [GitHub Actions Documentation][h3];
+- [GitHub Actions Documentation][hub4];
 {%- endif %}
-- [Makefile tutorial][t32];
-- Maybe you would like to add [gitmoji][t33] to commit names. This is really funny. :grinning_face_with_smiling_eyes:
+- [Makefile tutorial][wn27];
+- Maybe you would like to add [gitmoji][wn28] to commit names. This is really funny. :grinning_face_with_smiling_eyes:
 
 ## :rocket: Features
 
 ### Development features
 
 - Support for `Python {{ cookiecutter.minimal_python_version }}` and higher;
-- [`Poetry`][t34] as a dependencies manager. See configuration in [`pyproject.toml`][t35];
+- [`Poetry`][ft1] as a dependencies manager. See configuration in [`pyproject.toml`][ft2];
 {%- if cookiecutter.use_formatters %}
-- Automatic code formatting with [`black`][f1], [`isort`][f2] and [`pyupgrade`][f3], with ready-to-use [`pre-commit`][f4] hooks;
+- Automatic code formatting with [`black`][fo1], [`isort`][fo2] and [`pyupgrade`][fo3], with ready-to-use [`pre-commit`][fo4] hooks;
 {%- endif %}
 {%- if cookiecutter.use_linters %}
-- Code and docstring linting with [`flake8`][s1]{% if cookiecutter.docstring_style not in ['pep257', 'dismiss'] %}, [`pydocstyle`][s2] and [`pydoclint`][s3]{% elif cookiecutter.docstring_style != 'dismiss' %} and [`pydocstyle`][s2]{% endif %};
-{% endif %}
-- Type checks with [`mypy`][t36], security checks with [`safety`][t37] and [`bandit`][t38];
-- Testing with [`pytest`][t39];
-- Ready-to-use [`.editorconfig`][t40]{% if cookiecutter.create_docker %}, [`.dockerignore`][d1]{% endif %} and [`.gitignore`][t41] files. You don't have to worry about those things.
+- Code and docstring linting with [`flake8`][li1]{% if cookiecutter.docstring_style not in ['pep257', 'dismiss'] %}, [`pydocstyle`][li2] and [`pydoclint`][li3]{% elif cookiecutter.docstring_style != 'dismiss' %} and [`pydocstyle`][li2]{% endif %};
+{%- endif %}
+- Type checks with [`mypy`][ft3], security checks with [`safety`][ft4] and [`bandit`][ft5];
+- Testing with [`pytest`][ft6];
+- Ready-to-use [`.editorconfig`][ft7]{% if cookiecutter.create_docker %}, [`.dockerignore`][docker1]{% endif %} and [`.gitignore`][ft8] files. You don't have to worry about those things.
 
 ### Deployment features
 
 - Issue and {% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates for easy integration with {{ cookiecutter.scm_platform }};
-- Predefined CI/CD build workflow for {% if cookiecutter.__scm_platform_lc == 'gitlab' %}[`GitLab CI`][l2]{% elif cookiecutter.__scm_platform_lc == 'github' %}[`Github Actions`][h4]{% endif %};
-- Everything is already set up for security checks, {% if cookiecutter.use_formatters %}codestyle checks, code formatting,{% endif %} testing, linting{% if cookiecutter.create_docker %}, docker builds{% endif %} etc with [`Makefile`][t42]. More details in [makefile-usage][t43];
+- Predefined CI/CD build workflow for {% if cookiecutter.__scm_platform_lc == 'gitlab' %}[`GitLab CI`][lab2]{% elif cookiecutter.__scm_platform_lc == 'github' %}[`Github Actions`][hub5]{% endif %};
+- Everything is already set up for security checks, {% if cookiecutter.use_formatters %}codestyle checks, code formatting,{% endif %} testing, linting{% if cookiecutter.create_docker %}, docker builds{% endif %} etc with [`Makefile`][ft9]. More details in [makefile-usage][ft10];
 {%- if cookiecutter.create_docker %}
-- [Dockerfile][d2] for your package;
+- [`Dockerfile`][docker2] for your package;
 {%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' -%}
-- Automatic [`Changelog entries`][l3] updated via [GitLab API][l4] and [template][l5].
+- Automatic [`Changelog entries`][lab3] updated via [GitLab API][lab4] and [template][lab5].
 {%- elif cookiecutter.__scm_platform_lc == 'github' -%}
-- Always up-to-date dependencies with [`Dependabot`][h5]. You will only need to [enable it][h1];
-- Automatic drafts of new releases with [`Release Drafter`][h6]. You may see the list of labels in [`release-drafter.yml`][h7]. Works perfectly with [Semantic Versions][t4] specification.
+- Always up-to-date dependencies with [`Dependabot`][hub6]. You will only need to [enable it][hub1];
+- Automatic drafts of new releases with [`Release Drafter`][hub7]. You may see the list of labels in [`release-drafter.yml`][hub8]. Works perfectly with [Semantic Versions][fs4] specification.
 {%- endif %}
 
 ### Open source community features
 
-- Ready-to-use [{% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates][t44] and several [Issue templates][t45].
+- Ready-to-use [{% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates][ft11] and several [Issue templates][ft12].
 - Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically;
-- **Loads** of predefined [badges][t46] to make your project stand out, you can either keep them, remove as you wish or be welcome to add even more{% if cookiecutter.__scm_platform_lc == 'github' %};{% else %}.{% endif %}
+- **Loads** of predefined [badges][ft13] to make your project stand out, you can either keep them, remove as you wish or be welcome to add even more{% if cookiecutter.__scm_platform_lc == 'github' %};{% else %}.{% endif %}
 {%- if cookiecutter.__scm_platform_lc == 'github' %}
-- [`Stale bot`][h2] closes abandoned issues after a period of inactivity. Configuration is [here][h8];
-- [Semantic Versions][t4] specification with [`Release Drafter`][h6].
+- [`Stale bot`][hub2] closes abandoned issues after a period of inactivity. Configuration is [here][hub9];
+- [Semantic Versions][fs4] specification with [`Release Drafter`][hub7].
 {%- endif %}
 
 ## Installation
@@ -265,13 +272,13 @@ poetry run {{ cookiecutter.repo_name }} --help
 
 ### Makefile usage
 
-[`Makefile`][t42] contains a lot of functions for faster development.
+[`Makefile`][ft9] contains a lot of functions for faster development.
 
 <details>
 <summary>1. Download and remove Poetry</summary>
 <p>
 
-To download and install Poetry as a [standalone application][t1] run:
+To download and install Poetry as a [standalone application][fs1] run:
 
 ```bash
 make poetry-download
@@ -435,7 +442,7 @@ Remove docker image with
 make docker-remove
 ```
 
-More information [about docker][d3].
+More information [about docker][docker3].
 
 </p>
 </details>
@@ -480,14 +487,14 @@ make cleanup
 
 ## :chart_increasing: Releases
 
-You can see the list of available releases on the [{{ cookiecutter.scm_platform }} Releases][t47] page.
+You can see the list of available releases on the [{{ cookiecutter.scm_platform }} Releases][r1] page.
 
-We follow [Semantic Versions][t4] specification.
+We follow [Semantic Versions][fs4] specification.
 
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-We use [`GitLab Changelog`][l4] entries to track changes. You can categorise commits and Merge Requests made to this project using [git trailers][l6] in your commit messages.
+We use [`GitLab Changelog`][lab4] entries to track changes. You can categorise commits and Merge Requests made to this project using [git trailers][lab6] in your commit messages.
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
-We use [`Release Drafter`][h6]. As pull requests are merged, a draft release is kept up-to-date listing the changes, ready to publish when you’re ready. With the categories option, you can categorize pull requests in release notes using labels.
+We use [`Release Drafter`][hub7]. As pull requests are merged, a draft release is kept up-to-date listing the changes, ready to publish when you’re ready. With the categories option, you can categorize pull requests in release notes using labels.
 {%- endif %}
 
 ### List of {% if cookiecutter.__scm_platform_lc == 'gitlab' %}trailers and corresponding categories{% elif cookiecutter.__scm_platform_lc == 'github' %}labels and corresponding titles{% endif %}
@@ -506,7 +513,7 @@ We use [`Release Drafter`][h6]. As pull requests are merged, a draft release is 
 | `dependencies`                        | :arrow_up: Dependencies updates |
 
 {%- if cookiecutter.__scm_platform_lc == 'github' %}
-You can update it in [`release-drafter.yml`][h7].
+You can update it in [`release-drafter.yml`][hub8].
 
 GitHub creates the `bug`, `enhancement`, and `documentation` labels for you. Dependabot creates the `dependencies` label. Create the remaining labels on the Issues tab of your GitHub repository, when you need them.
 
@@ -514,9 +521,9 @@ GitHub creates the `bug`, `enhancement`, and `documentation` labels for you. Dep
 {%- if cookiecutter.licence != 'Not open source' %}
 ## :shield: Licence
 
-[![Licence][bl1]][bl2]
+[![Licence][blic1]][blic2]
 
-This project is licenced under the terms of the `{{ cookiecutter.licence }}` licence. See [LICENCE][bl2] for more details.
+This project is licenced under the terms of the `{{ cookiecutter.licence }}` licence. See [LICENCE][blic2] for more details.
 
 {%- endif %}
 ## :page_with_curl: Citation
@@ -528,13 +535,15 @@ This project is licenced under the terms of the `{{ cookiecutter.licence }}` lic
   year = {% raw %}{{% endraw %}{% now 'utc', '%Y' %}{% raw %}}{% endraw %},
   publisher = {% raw %}{{% endraw %}{{ cookiecutter.scm_platform }}{% raw %}}{% endraw %},
   journal = {% raw %}{{% endraw %}{{ cookiecutter.scm_platform }} repository{% raw %}}{% endraw %},
-  howpublished = {\url{https://github.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.project_name }}{% raw %}}}{% endraw %}
+  howpublished = {% raw %}{{% endraw %}\url{% raw %}{{% endraw %}{{ cookiecutter.__scm_base_url}}{% raw %}}}{% endraw %}
 }
 ```
 
 ## Credits [![Expand your project structure from atoms of code to galactic dimensions.][bp6]][bp7]
 
 This project was generated with [`galactipy`][bp7].
+
+<!-- Anchors -->
 
 [bp1]: https://img.shields.io/pypi/pyversions/{{ cookiecutter.repo_name }}?style=for-the-badge
 [bp2]: https://pypi.org/project/{{ cookiecutter.repo_name }}/
@@ -556,156 +565,150 @@ This project was generated with [`galactipy`][bp7].
 [bp18]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
 {%+ if cookiecutter.licence != 'Not open source' %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[bl1]: https://img.shields.io/gitlab/license/{{ cookiecutter.scm_username}}/{{ cookiecutter.repo_name }}?style=for-the-badge
+[blic1]: https://img.shields.io/gitlab/license/{{ cookiecutter.scm_username}}/{{ cookiecutter.repo_name }}?style=for-the-badge
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
-[bl1]: https://img.shields.io/github/license/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}?style=for-the-badge
+[blic1]: https://img.shields.io/github/license/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}?style=for-the-badge
 {%- endif %}
-[bl2]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
-[bl3]: https://img.shields.io/badge/%F0%9F%93%A6-semantic%20versions-4053D6?style=for-the-badge
+[blic2]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
+[blic3]: https://img.shields.io/badge/%F0%9F%93%A6-semantic%20versions-4053D6?style=for-the-badge
 
 <!-- UPDATEME by replacing `1` with your project's index at https://www.bestpractices.dev/en
-[bo1]: https://img.shields.io/cii/level/1?style=for-the-badge&logo=linux-foundation&label=openssf%20best%20practices
-[bo2]: https://www.bestpractices.dev/en/projects/1 -->
+[boss1]: https://img.shields.io/cii/level/1?style=for-the-badge&logo=linux-foundation&label=openssf%20best%20practices
+[boss2]: https://www.bestpractices.dev/en/projects/1 -->
 <!-- UPDATEME by replacing `1` with your project's index at https://ossrank.com/
-[bo3]: https://shields.io/endpoint?url=https://ossrank.com/shield/1&style=for-the-badge
-[bo4]: https://ossrank.com/p/1 -->
+[boss3]: https://shields.io/endpoint?url=https://ossrank.com/shield/1&style=for-the-badge
+[boss4]: https://ossrank.com/p/1 -->
 {%- endif %}
 
-[t1]: https://github.com/python-poetry/install.python-poetry.org
-[t2]: https://python-poetry.org/docs/
-[t3]: https://python-poetry.org/docs/cli/#commands
-[t4]: https://semver.org/
-[t5]: https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
-[t6]: https://github.com/tiangolo/typer
-[t7]: https://github.com/willmcgugan/rich
-[t8]: https://github.com/tqdm/tqdm
-[t9]: https://github.com/prompt-toolkit/python-prompt-toolkit
-[t10]: https://github.com/ijl/orjson
-[t11]: https://github.com/samuelcolvin/pydantic/
-[t12]: https://github.com/dry-python/returns
-[t13]: https://github.com/Delgan/loguru
-[t14]: https://github.com/gruns/icecream
-[t15]: https://github.com/facebookresearch/hydra
-[t16]: https://github.com/tiangolo/fastapi
-[t17]: https://shields.io/badges/static-badge
-[t18]: https://badges.pages.dev/
-[t19]: https://github.com/badges/awesome-badges
-[t20]: https://www.bestpractices.dev/en
-[t21]: https://ossrank.com/
-[t22]: https://coveralls.io/
-[t23]: https://about.codecov.io/
-[t24]: https://codeclimate.com/velocity/what-is-velocity
-[t25]: https://www.codacy.com/
-[t26]: https://liberapay.com/
-[t27]: https://opencollective.com/
-[t28]: https://ko-fi.com/
-[t29]: https://github.com/sponsors
-[t30]: https://opensource.guide/
-[t31]: https://github.com/nayafia/lemonade-stand
-[t32]: https://makefiletutorial.com/
-[t33]: https://gitmoji.carloscuesta.me/
-[t34]: https://python-poetry.org/
-[t35]: {{ cookiecutter.__scm_link_url }}/blob/master/pyproject.toml
-[t36]: https://mypy.readthedocs.io
-[t37]: https://docs.safetycli.com/safety-2/
-[t38]: https://bandit.readthedocs.io/en/latest/
-[t39]: https://docs.pytest.org/en/latest/
-[t40]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
-[t41]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitignore
-[t42]: {{ cookiecutter.__scm_link_url }}/blob/master/Makefile
-[t43]: #makefile-usage
+[fs1]: https://github.com/python-poetry/install.python-poetry.org
+[fs2]: https://python-poetry.org/docs/
+[fs3]: https://python-poetry.org/docs/cli/#commands
+[fs4]: https://semver.org/
+
+[wn1]: https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
+[wn2]: https://github.com/tiangolo/typer
+[wn3]: https://github.com/willmcgugan/rich
+[wn4]: https://github.com/tqdm/tqdm
+[wn5]: https://github.com/prompt-toolkit/python-prompt-toolkit
+[wn6]: https://github.com/ijl/orjson
+[wn7]: https://github.com/samuelcolvin/pydantic/
+[wn8]: https://github.com/dry-python/returns
+[wn9]: https://github.com/Delgan/loguru
+[wn10]: https://github.com/gruns/icecream
+[wn11]: https://github.com/facebookresearch/hydra
+[wn12]: https://github.com/tiangolo/fastapi
+[wn13]: https://shields.io/badges/static-badge
+[wn14]: https://badges.pages.dev/
+[wn15]: https://github.com/badges/awesome-badges
+[wn16]: https://www.bestpractices.dev/en
+[wn17]: https://ossrank.com/
+[wn18]: https://coveralls.io/
+[wn19]: https://about.codecov.io/
+[wn20]: https://codeclimate.com/velocity/what-is-velocity
+[wn21]: https://www.codacy.com/
+[wn22]: https://liberapay.com/
+[wn23]: https://opencollective.com/
+[wn24]: https://ko-fi.com/
+[wn25]: https://opensource.guide/
+[wn26]: https://github.com/nayafia/lemonade-stand
+[wn27]: https://makefiletutorial.com/
+[wn28]: https://gitmoji.carloscuesta.me/
+
+[ft1]: https://python-poetry.org/
+[ft2]: {{ cookiecutter.__scm_link_url }}/blob/master/pyproject.toml
+[ft3]: https://mypy.readthedocs.io
+[ft4]: https://docs.safetycli.com/safety-2/
+[ft5]: https://bandit.readthedocs.io/en/latest/
+[ft6]: https://docs.pytest.org/en/latest/
+[ft7]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
+[ft8]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitignore
+[ft9]: {{ cookiecutter.__scm_link_url }}/blob/master/Makefile
+[ft10]: #makefile-usage
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[t44]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/merge_request_templates/default.md
-[t45]: {{ cookiecutter.__scm_link_url }}/tree/master/.gitlab/issue_templates
+[ft11]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/merge_request_templates/default.md
+[ft12]: {{ cookiecutter.__scm_link_url }}/tree/master/.gitlab/issue_templates
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
-[t44]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/PULL_REQUEST_TEMPLATE.md
-[t45]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/ISSUE_TEMPLATE
+[ft11]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/PULL_REQUEST_TEMPLATE.md
+[ft12]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/ISSUE_TEMPLATE
 {%- endif %}
-[t46]: https://shields.io/
-[t47]: {{ cookiecutter.__scm_link_url }}/releases
+[ft13]: https://shields.io/
+
+[r1]: {{ cookiecutter.__scm_link_url }}/releases
 
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[bg1]: https://img.shields.io/badge/GitLab-330F63?style=for-the-badge&logo=gitlab&logoColor=white
-[bg2]: https://img.shields.io/gitlab/v/release/{{ cookiecutter.scm_username }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&logo=semantic-release&color=FFCA28
-[bg3]: https://img.shields.io/gitlab/issues/open/{{ cookiecutter.scm_username }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&color=fca326
-[bg4]: https://img.shields.io/gitlab/merge-requests/open/{{ cookiecutter.scm_username }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&color=6fdac9
-[bg5]: {{ cookiecutter.__scm_link_url }}/merge_requests
-[bg6]: https://img.shields.io/gitlab/pipeline-status/{{ cookiecutter.scm_username }}%2F{{ cookiecutter.repo_name }}?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
-[bg7]: {{ cookiecutter.__scm_link_url }}/pipelines
+[bscm1]: https://img.shields.io/badge/GitLab-330F63?style=for-the-badge&logo=gitlab&logoColor=white
+[bscm2]: https://img.shields.io/gitlab/v/release/{{ cookiecutter.scm_username }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&logo=semantic-release&color=FFCA28
+[bscm3]: https://img.shields.io/gitlab/issues/open/{{ cookiecutter.scm_username }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&color=fca326
+[bscm4]: https://img.shields.io/gitlab/merge-requests/open/{{ cookiecutter.scm_username }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&color=6fdac9
+[bscm5]: {{ cookiecutter.__scm_link_url }}/merge_requests
+[bscm6]: https://img.shields.io/gitlab/pipeline-status/{{ cookiecutter.scm_username }}%2F{{ cookiecutter.repo_name }}?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
+[bscm7]: {{ cookiecutter.__scm_link_url }}/pipelines
 
-[l1]: https://docs.gitlab.com/ee/ci/
-[l2]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab-ci.yml
-[l3]: {{ cookiecutter.__scm_link_url }}/blob/master/CHANGELOG.md
-[l4]: https://docs.gitlab.com/ee/user/project/changelogs.html
-[l5]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/changelog_config.yml
-[l6]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
+[lab1]: https://docs.gitlab.com/ee/ci/
+[lab2]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab-ci.yml
+[lab3]: {{ cookiecutter.__scm_link_url }}/blob/master/CHANGELOG.md
+[lab4]: https://docs.gitlab.com/ee/user/project/changelogs.html
+[lab5]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/changelog_config.yml
+[lab6]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
-[bg1]: https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
-[bg2]: https://img.shields.io/github/v/release/{{ cookiecutter.scm_username}}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=semantic-release&color=347d39
-[bg3]: https://img.shields.io/github/issues/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}?style=for-the-badge&color=347d39
-[bg4]: https://img.shields.io/github/issues-pr/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}?style=for-the-badge&color=347d39
-[bg5]: {{ cookiecutter.__scm_link_url }}/pulls
-[bg6]: https://img.shields.io/github/actions/workflow/status/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}/build.yml?style=for-the-badge&logo=github
-[bg7]: {{ cookiecutter.__scm_link_url }}/actions/workflows/build.yml
+[bscm1]: https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
+[bscm2]: https://img.shields.io/github/v/release/{{ cookiecutter.scm_username}}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=semantic-release&color=347d39
+[bscm3]: https://img.shields.io/github/issues/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}?style=for-the-badge&color=347d39
+[bscm4]: https://img.shields.io/github/issues-pr/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}?style=for-the-badge&color=347d39
+[bscm5]: {{ cookiecutter.__scm_link_url }}/pulls
+[bscm6]: https://img.shields.io/github/actions/workflow/status/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}/build.yml?style=for-the-badge&logo=github
+[bscm7]: {{ cookiecutter.__scm_link_url }}/actions/workflows/build.yml
 
-[h1]: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates#enabling-dependabot-version-updates
-[h2]: https://github.com/marketplace/actions/close-stale-issues
-[h3]: https://help.github.com/en/actions
-[h4]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/workflows/build.yml
-[h5]: https://docs.github.com/en/code-security/dependabot
-[h6]: https://github.com/marketplace/actions/release-drafter
-[h7]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/release-drafter.yml
-[h8]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/.stale.yml
+[hub1]: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates#enabling-dependabot-version-updates
+[hub2]: https://github.com/marketplace/actions/close-stale-issues
+[hub3]: https://github.com/sponsors
+[hub4]: https://help.github.com/en/actions
+[hub5]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/workflows/build.yml
+[hub6]: https://docs.github.com/en/code-security/dependabot
+[hub7]: https://github.com/marketplace/actions/release-drafter
+[hub8]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/release-drafter.yml
+[hub9]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/.stale.yml
 {%- endif %}
 {%+ if cookiecutter.create_docker %}
-[bd1]: https://img.shields.io/docker/v/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=docker&logoColor=lightblue&label=image&color=lightblue
-[bd2]: https://hub.docker.com/r/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}
+[bdocker1]: https://img.shields.io/docker/v/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=docker&logoColor=lightblue&label=image&color=lightblue
+[bdocker2]: https://hub.docker.com/r/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}
 
-[d1]: {{ cookiecutter.__scm_link_url }}/blob/master/.dockerignore
-[d2]: {{ cookiecutter.__scm_link_url }}/blob/master/docker/Dockerfile
-[d3]: {{ cookiecutter.__scm_link_url }}/tree/master/docker
+[docker1]: {{ cookiecutter.__scm_link_url }}/blob/master/.dockerignore
+[docker2]: {{ cookiecutter.__scm_link_url }}/blob/master/docker/Dockerfile
+[docker3]: {{ cookiecutter.__scm_link_url }}/tree/master/docker
 {%+ endif %}
 {%- if cookiecutter.create_docs %}
-[bc1]: https://img.shields.io/badge/docs-{{ cookiecutter.__scm_platform_lc }}%20pages-0a507a?style=for-the-badge
-[bc2]: https://{{ cookiecutter.scm_username }}.{{ cookiecutter.__scm_platform_lc }}.io/{{ cookiecutter.repo_name }}
+[bdoc1]: https://img.shields.io/badge/docs-{{ cookiecutter.__scm_platform_lc }}%20pages-0a507a?style=for-the-badge
+[bdoc2]: https://{{ cookiecutter.scm_username }}.{{ cookiecutter.__scm_platform_lc }}.io/{{ cookiecutter.repo_name }}
 {%+ endif %}
 {%- if cookiecutter.use_formatters %}
-[bf1]: https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-badge
-[bf2]: https://black.readthedocs.io/en/stable/
-[bf3]: https://img.shields.io/badge/imports-isort-1674b1?style=for-the-badge&labelColor=ef8336
-[bf4]: https://pycqa.github.io/isort/
+[bfo1]: https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-badge
+[bfo2]: https://black.readthedocs.io/en/stable/
+[bfo3]: https://img.shields.io/badge/imports-isort-1674b1?style=for-the-badge&labelColor=ef8336
+[bfo4]: https://pycqa.github.io/isort/
 
-[f1]: https://black.readthedocs.io/en/stable/
-[f2]: https://pycqa.github.io/isort/
-[f3]: https://github.com/asottile/pyupgrade
-[f4]: https://pre-commit.com/
+[fo1]: https://black.readthedocs.io/en/stable/
+[fo2]: https://pycqa.github.io/isort/
+[fo3]: https://github.com/asottile/pyupgrade
+[fo4]: https://pre-commit.com/
 {%+ endif %}
 {%- if cookiecutter.use_linters %}
-{%- if cookiecutter.docstring_style == 'numpydoc' %}
-[bs1]: https://img.shields.io/badge/docstrings-numpydoc-4dabcf?style=for-the-badge&labelColor=4d77cf
-[bs2]: https://numpydoc.readthedocs.io/en/latest/format.html
+{%- if cookiecutter.docstring_style == 'numpy' %}
+[bli1]: https://img.shields.io/badge/docstrings-numpydoc-4dabcf?style=for-the-badge&labelColor=4d77cf
+[bli2]: https://numpydoc.readthedocs.io/en/latest/format.html
 {%- elif cookiecutter.docstring_style == 'google' %}
-[bs1]: https://img.shields.io/badge/docstrings-google-ffbb00?style=for-the-badge&labelColor=00ac47
-[bs2]: https://google.github.io/styleguide/pyguide.html
+[bli1]: https://img.shields.io/badge/docstrings-google-ffbb00?style=for-the-badge&labelColor=00ac47
+[bli2]: https://google.github.io/styleguide/pyguide.html
 {%- elif cookiecutter.docstring_style == 'pep257' %}
-[bs1]: https://img.shields.io/badge/docstrings-pep257-FFD43B?style=for-the-badge&labelColor=3776ab
-[bs2]: https://peps.python.org/pep-0257/
+[bli1]: https://img.shields.io/badge/docstrings-pep257-FFD43B?style=for-the-badge&labelColor=3776ab
+[bli2]: https://peps.python.org/pep-0257/
 {%- endif %}
 
-[s1]: https://flake8.pycqa.org/en/latest/
+[li1]: https://flake8.pycqa.org/en/latest/
 {%- if cookiecutter.docstring_style != 'dismiss' %}
-[s2]: http://www.pydocstyle.org/en/stable/
-{%- elif cookiecutter.docstring_style != 'pep257' %}
-[s3]: https://github.com/jsh9/pydoclint
+[li2]: http://www.pydocstyle.org/en/stable/
 {%- endif %}
-{%+ endif %}
-{%- if cookiecutter.use_linters and cookiecutter.docstring_style == 'numpydoc' %}
-[bs1]: https://img.shields.io/badge/docstrings-numpydoc-4dabcf?style=for-the-badge&labelColor=4d77cf
-[bs2]: https://numpydoc.readthedocs.io/en/latest/format.html
-{%- elif cookiecutter.use_linters and cookiecutter.docstring_style == 'google' %}
-[bs1]: https://img.shields.io/badge/docstrings-google-ffbb00?style=for-the-badge&labelColor=00ac47
-[bs2]: https://google.github.io/styleguide/pyguide.html
-{%- elif cookiecutter.use_linters and cookiecutter.docstring_style == 'pep257' %}
-[bs1]: https://img.shields.io/badge/docstrings-pep257-FFD43B?style=for-the-badge&labelColor=3776ab
-[bs2]: https://peps.python.org/pep-0257/
+{%- if cookiecutter.docstring_style != 'pep257' %}
+[li3]: https://github.com/jsh9/pydoclint
+{%- endif %}
 {%- endif %}
