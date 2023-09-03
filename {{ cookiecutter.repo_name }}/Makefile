@@ -18,6 +18,10 @@ poetry-download:
 poetry-remove:
 	curl -sSL https://install.python-poetry.org | $(PYTHON) - --uninstall
 
+.PHONY: poetry-plugins
+poetry-plugins:
+	poetry self add poetry-plugin-up
+
 
 #* Installation
 .PHONY: install
@@ -81,8 +85,7 @@ lint: test check-codestyle lint mypy check-safety
 
 .PHONY: update-dev-deps
 update-dev-deps:
-	poetry add -D bandit@latest darglint@latest "isort[colors]@latest" mypy@latest pre-commit@latest pydocstyle@latest pylint@latest pytest@latest pyupgrade@latest safety@latest coverage@latest coverage-badge@latest pytest-html@latest pytest-cov@latest
-	poetry add -D --allow-prereleases black@latest
+	poetry up --only=dev-dependencies --latest
 
 {%+ if not cookiecutter.create_docker %}
 #* Docker

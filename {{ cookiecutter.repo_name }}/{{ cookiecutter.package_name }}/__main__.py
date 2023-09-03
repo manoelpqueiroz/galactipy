@@ -21,7 +21,7 @@ class Color(str, Enum):
 
 
 app = typer.Typer(
-    name="{{ cookiecutter.project_name }}",
+    name="{{ cookiecutter.repo_name }}",
     help="{{ cookiecutter.project_description }}",
     add_completion=False,
 )
