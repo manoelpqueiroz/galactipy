@@ -1,5 +1,7 @@
 {%- set list_python_version = cookiecutter.minimal_python_version.split('.') | map('int') | list %}
-{% raw %}name: build
+{%- raw %}
+# UPDATEME to suit your project's workflow
+name: build
 
 on: [push, pull_request]
 

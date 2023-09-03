@@ -27,11 +27,11 @@ homepage = "{{ cookiecutter.__scm_base_url }}"
 
 
 # Keywords description https://python-poetry.org/docs/pyproject/#keywords
-keywords = []  # UPDATEME
+keywords = []  # UPDATEME with relevant keywords
 
 
 # Pypi classifiers: https://pypi.org/classifiers/
-classifiers = [  # UPDATEME
+classifiers = [  # UPDATEME with additional classifiers; remove last classifier to allow publishing on PyPI
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Developers",
   "Operating System :: OS Independent",
