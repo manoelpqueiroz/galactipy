@@ -116,21 +116,27 @@ RESERVED_USERNAMES = [
 
 
 def validate_repo_name(repo_name: str, reserved_projects: list[str]) -> None:
-    """Ensure that `repo_name` parameter is valid.
+    """Ensure that `repo_name` is valid under GitLab restrictions.
 
-    Valid inputs starts with a digit or letter.
-    Followed by any letters, digits, underscores, dashes, dots or the
-    plus sign.
-    It must not contain any consecutive special characters.
-    It must not end on a special character.
-    It must not end with ".git" or ".atom".
-    It must not be a reserved project name.
+    Valid input starts with a digit or letter, can be comprised of any
+    digits, letters and the special characters dashes, underscores, dots or
+    plus signs, but must not contain any two of those special characters.
+    It must also not end on a special character nor the strings ".git" and
+    ".atom".
 
-    Args:
-        project_name: current project name
+    Also checks for reserved GitLab project names.
 
-    Raises:
-        ValueError: If project_name is not a valid Python module name
+    Parameters
+    ----------
+    repo_name : str
+        Current project repository slug.
+    reserved_projects : list
+        List of reserved project names that can not be used.
+
+    Raises
+    ------
+    ValueError
+        If `repo_name` is not a valid GitLab slug.
     """
     if PROJECT_REGEX.fullmatch(repo_name) is None:
         message = f"ERROR: The project slug `{repo_name}` is not a valid GitLab/GitHub name."
@@ -142,16 +148,21 @@ def validate_repo_name(repo_name: str, reserved_projects: list[str]) -> None:
 
 
 def validate_package_name(package_name: str) -> None:
-    """Ensure that `project_name` parameter is valid.
+    """Ensure that `package_name` is valid under Python restrictions.
 
-    Valid inputs starts with the lowercase letter.
-    Followed by any lowercase letters, digits or underscores.
+    Valid inputs starts with the lowercase letter, followed by any
+    lowercase letters, digits or underscores. It must end on a lowercase
+    letter or digit.
 
-    Args:
-        project_name: current project name
+    Parameters
+    ----------
+    package_name : str
+        Current project package name.
 
-    Raises:
-        ValueError: If project_name is not a valid Python module name
+    Raises
+    ------
+    ValueError
+        If `package_name` is not a valid Python module name.
     """
     if PACKAGE_REGEX.fullmatch(package_name) is None:
         message = f"ERROR: The package name `{package_name}` is not a valid Python module name."
@@ -159,6 +170,20 @@ def validate_package_name(package_name: str) -> None:
 
 
 def validate_username(username: str, reserved_names: list[str]) -> None:
+    """Ensure that `username` is valid under GitLab restrictions.
+
+    Parameters
+    ----------
+    username : str
+        Source control management platform username.
+    reserved_projects : list
+        List of reserved usernames that can not be used.
+
+    Raises
+    ------
+    ValueError
+        If `username` is not a valid GitLab username.
+    """
     if username in reserved_names:
         message = f"ERROR: `{username}` is not a valid name for user or organisation."
         raise ValueError(message)
@@ -167,11 +192,15 @@ def validate_username(username: str, reserved_names: list[str]) -> None:
 def validate_semver(version: str) -> None:
     """Ensure version in semver notation.
 
-    Args:
-        version: string version. For example 0.1.2 or 1.2.4
+    Parameters
+    ----------
+    version : str
+        String version. For example 0.1.2 or 1.2.4
 
-    Raises:
-        ValueError: If version is not in semver notation
+    Raises
+    ------
+    ValueError
+        If version is not in semver notation.
     """
     if SEMVER_REGEX.fullmatch(version) is None:
         message = f"ERROR: `{version}` is not in semver notation (https://semver.org/)"
@@ -181,11 +210,15 @@ def validate_semver(version: str) -> None:
 def validate_line_length(line_length: int) -> None:
     """Validate line_length parameter. Length should be between 50 and 300.
 
-    Args:
-        line_length: integer paramenter for isort and black formatters
+    Parameters
+    ----------
+    line_length : int
+        Integer paramenter for isort and black formatters.
 
-    Raises:
-        ValueError: If line_length isn't between 50 and 300
+    Raises
+    ------
+    ValueError
+        If line_length isn't between 50 and 300.
     """
     if not (50 <= line_length <= 300):
         message = f"ERROR: line_length must be between 50 and 300. Got `{line_length}`."

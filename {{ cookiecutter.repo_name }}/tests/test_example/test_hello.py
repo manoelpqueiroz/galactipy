@@ -4,7 +4,6 @@ import pytest
 
 from {{ cookiecutter.package_name }}.example import hello
 
-
 @pytest.mark.parametrize(
     ("name", "expected"),
     [
@@ -20,5 +19,7 @@ from {{ cookiecutter.package_name }}.example import hello
     ],
 )
 def test_hello(name, expected):
-    """Example test with parametrization."""
+    """Example test with parametrization.
+
+    """
     assert hello(name) == expected

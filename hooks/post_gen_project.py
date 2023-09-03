@@ -39,6 +39,14 @@ licences_dict = {
 
 
 def rmdir(path: Path) -> None:
+    """Recursively remove a directory with Pathlib.
+
+    Parameters
+    ----------
+    path : Path
+        A pathlib Path to remove. If a directory, removes recursively all
+        files and subdirectories. If a file, simply removes the file.
+    """
     if path.is_dir():
         for item in path.iterdir():
             if item.is_dir():
@@ -60,9 +68,12 @@ def rmdir(path: Path) -> None:
 def generate_licence(directory: Path, licence: str) -> None:
     """Generate licence file for the project.
 
-    Args:
-        directory: path to the project directory
-        licence: chosen licence
+    Parameters
+    ----------
+    directory : Path
+        Path to the project directory.
+    licence : str
+        Chosen licence.
     """
     if licence is not None:
         licence_origin = directory / "_licences" / f"{licence}.txt"
@@ -73,6 +84,18 @@ def generate_licence(directory: Path, licence: str) -> None:
 
 
 def generate_templates(directory: Path, scm_platform: str) -> None:
+    """Generate source control management platform structure and templates.
+
+    Removes the "_templates" directory afterwards.
+
+    Parameters
+    ----------
+    directory : Path
+        Path to the project directory.
+    scm_platform : str
+        Name of the project's source control management platform in
+        lowercase.
+    """
     template_dir = f".{scm_platform}"
 
     move(
@@ -93,10 +116,20 @@ def remove_unused_files(
 ) -> None:
     """Remove unused files.
 
-    Args:
-        directory: path to the project directory
-        module_name: project module name
-        need_to_remove_cli: flag for removing CLI related files
+    Parameters
+    ----------
+    directory : Path
+        path to the project directory.
+    package_name : str
+        Project module name.
+    remove_cli : bool
+        Flag for removing CLI related files.
+    remove_gitlab : bool
+        Flag for removing GitLab related files.
+    remove_docker : bool
+        Flag for removing Docker related files.
+    remove_docs : bool
+        Flag for removing documentation related files.
     """
     files_to_delete: List[Path] = []
 
@@ -131,9 +164,18 @@ def remove_unused_files(
 def print_futher_instuctions(project_name: str, project_repo: str, scm_platform: str, scm_base_url: str) -> None:
     """Show user what to do next after project creation.
 
-    Args:
-        project_name: current project name
-        github: GitHub username
+    Parameters
+    ----------
+    project_name : str
+        Current project name.
+    project_repo : str
+        Current project repository slug.
+    scm_platform : str
+        Name of the project's source control management platform in
+        lowercase.
+    scm_base_url : str
+        URL for the project's repository in `scm_platform`, consisting of
+        username and repository slug.
     """
     message = f"""
     Your project {project_name} is created.
