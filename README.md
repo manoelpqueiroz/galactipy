@@ -598,7 +598,7 @@ The original template was inspired by several articles that might be helpful if 
 
 - [Hypermodern Python][ac3];
 - [Ultimate Setup for Your Next Python Project][ac4];
-- [fine simple steps for better-looking python code][ac5];
+- [Nine simple steps for better-looking python code][ac5];
 - [Modern Python developer's toolkit][ac6].
 
 And also there are some projects which can be studied as references in project management and template design:

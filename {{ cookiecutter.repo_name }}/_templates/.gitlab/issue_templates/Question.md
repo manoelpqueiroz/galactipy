@@ -7,7 +7,7 @@
 - [ ] I've searched the project's [`issues`][1], looking for the following terms:
   - [...]
 
-## ❓ Question
+## :red_question_mark: Question
 
 <!-- What is your question -->
 
@@ -15,7 +15,7 @@ How can I [...]?
 
 Is it possible to [...]?
 
-## 📎 Additional context
+## :paperclip: Additional context
 
 <!-- Add any other context or screenshots about the feature request here. -->
 
