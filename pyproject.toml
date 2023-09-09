@@ -3,35 +3,38 @@
 requires = ["poetry_core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
+
 [tool.poetry]
 name = "galactipy"
 version = "0.1.0"
-description = "Cookiecutter template for Python cli/packages"
+description = "Cookiecutter template for Python packages"
 readme = "README.md"
 authors = ["Manoel Pereira de Queiroz <mpq.dev@pm.me>"]
 license = "MIT"
 repository = "https://gitlab.com/manoelpqueiroz/galactipy"
 homepage = "https://gitlab.com/manoelpqueiroz/galactipy"
 keywords = [
-    "python",
-    "cookiecutter",
-    "template",
-    "packages",
-    "makefile",
-    "best-practices",
-    "poetry",
-    "codestyle",
-    "formatters",
-    "python-packages",
-    "semantic-versions"
+  "python",
+  "cookiecutter",
+  "template",
+  "packages",
+  "makefile",
+  "best-practices",
+  "poetry",
+  "codestyle",
+  "formatters",
+  "python-packages",
+  "semantic-versions"
 ]
 
 # Pypi classifiers: https://pypi.org/classifiers/
-classifiers = []
+classifiers = ["Private :: Do Not Upload"]
+
 
 [tool.poetry.dependencies]
 python = "^3.8"
 cookiecutter = "^2.3.0"
+
 
 [tool.poetry.dev-dependencies]
 mypy = "^1.0.0"
@@ -54,45 +57,48 @@ pytest-cov = "^4.1.0"
 coverage = "^7.3.0"
 coverage-badge = "^1.1.0"
 
+
 [tool.black]
 # https://github.com/psf/black
-target-version = ["py37"]
-line-length = 100
+# https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-via-a-file
+target-version = ["py38"]
+line-length = 88
 color = true
 
 exclude = '''
 /(
-    \.git
-    | \.hg
-    | \.mypy_cache
-    | \.tox
-    | \.venv
-    | _build
-    | buck-out
-    | build
-    | dist
-    | env
-    | venv
+  \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | env
+  | venv
 )/
 '''
 
+
 [tool.isort]
-# https://github.com/timothycrosley/isort/
-py_version = 37
-line_length = 100
+# https://github.com/PyCQA/isort
+# https://pycqa.github.io/isort/docs/configuration/options.html
+py_version = 38
+line_length = 88
 
 known_typing = ["typing", "types", "typing_extensions", "mypy", "mypy_extensions"]
 sections = ["FUTURE", "TYPING", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
-profile = "black"
-include_trailing_comma = true
-multi_line_output = 3
 indent = 4
 color_output = true
+profile = "black"
 
 
 [tool.mypy]
+# https://github.com/python/mypy
 # https://mypy.readthedocs.io/en/latest/config_file.html#using-a-pyproject-toml-file
-python_version = 3.7
+python_version = 3.8
 pretty = true
 show_traceback = true
 color_output = true
@@ -117,10 +123,49 @@ warn_unused_configs = true
 warn_unused_ignores = true
 
 
+[tool.pydocstyle]
+# https://github.com/PyCQA/pydocstyle
+# http://www.pydocstyle.org/en/stable/usage.html#available-options
+convention = "numpy"
+
+
+[tool.pydoclint]
+# https://github.com/jsh9/pydoclint
+# https://jsh9.github.io/pydoclint/how_to_config.html
+style = "numpy"
+exclude = '''
+/(
+  \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | __pycache__
+  | _build
+  | buck-out
+  | build
+  | dist
+  | env
+  | venv
+)/
+'''
+
+
 [tool.pytest.ini_options]
 # https://docs.pytest.org/en/6.2.x/customize.html#pyproject-toml
 # Directories that are not visited by pytest collector:
-norecursedirs =["{{ cookiecutter.project_name }}", "hooks", "*.egg", ".eggs", "dist", "build", "docs", ".tox", ".git", "__pycache__"]
+norecursedirs =[
+  "{{ cookiecutter.repo_name }}",
+  "hooks",
+  "*.egg",
+  ".eggs",
+  "dist",
+  "build",
+  "docs",
+  ".tox",
+  ".git",
+  "__pycache__"
+]
 doctest_optionflags = ["NUMBER", "NORMALIZE_WHITESPACE", "IGNORE_EXCEPTION_DETAIL"]
 
 # Extra options:
@@ -135,11 +180,14 @@ addopts = [
 [tool.coverage.run]
 source = ["tests"]
 
+
 [coverage.paths]
 source = "hooks"
 
+
 [coverage.run]
 branch = true
+
 
 [coverage.report]
 fail_under = 50

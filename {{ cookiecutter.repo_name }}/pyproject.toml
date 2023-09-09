@@ -43,7 +43,7 @@ classifiers = [  # UPDATEME with additional classifiers; remove last classifier 
   "Programming Language :: Python :: 3",
   {%- for version in cookiecutter._all_python_version if version[0] >= list_python_version[0] and version[1] >= list_python_version[1] %}
   "Programming Language :: Python :: {{ version[0] }}.{{ version[1] }}",{% endfor %}
-  "Private :: Do Not Upload",
+  "Private :: Do Not Upload"
 ]
 
 {%+ if cookiecutter.create_cli %}
@@ -95,18 +95,18 @@ color = true
 
 exclude = '''
 /(
-    \.git
-    | \.hg
-    | \.mypy_cache
-    | \.tox
-    | \.venv
-    | __pycache__
-    | _build
-    | buck-out
-    | build
-    | dist
-    | env
-    | venv
+  \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | __pycache__
+  | _build
+  | buck-out
+  | build
+  | dist
+  | env
+  | venv
 )/
 '''
 
@@ -165,18 +165,18 @@ convention = "{{ cookiecutter.docstring_style }}"
 style = "{{ cookiecutter.docstring_style }}"
 exclude = '''
 /(
-    \.git
-    | \.hg
-    | \.mypy_cache
-    | \.tox
-    | \.venv
-    | __pycache__
-    | _build
-    | buck-out
-    | build
-    | dist
-    | env
-    | venv
+  \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | __pycache__
+  | _build
+  | buck-out
+  | build
+  | dist
+  | env
+  | venv
 )/
 '''
 {%+ endif %}
@@ -185,7 +185,17 @@ exclude = '''
 # https://github.com/pytest-dev/pytest
 # https://docs.pytest.org/en/6.2.x/customize.html#pyproject-toml
 # Directories that are not visited by pytest collector:
-norecursedirs =["hooks", "*.egg", ".eggs", "dist", "build", "docs", ".tox", ".git", "__pycache__"]
+norecursedirs =[
+  "hooks",
+  "*.egg",
+  ".eggs",
+  "dist",
+  "build",
+  "docs",
+  ".tox",
+  ".git",
+  "__pycache__"
+]
 doctest_optionflags = ["NUMBER", "NORMALIZE_WHITESPACE", "IGNORE_EXCEPTION_DETAIL"]
 
 # Extra options:

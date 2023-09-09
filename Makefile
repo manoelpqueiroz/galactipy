@@ -12,6 +12,11 @@ poetry-download:
 poetry-remove:
 	curl -sSL https://install.python-poetry.org | $(PYTHON) - --uninstall
 
+.PHONY: poetry-plugins
+poetry-plugins:
+	poetry self add poetry-plugin-up
+
+
 #* Installation
 .PHONY: install
 install:
@@ -23,15 +28,17 @@ install:
 pre-commit-install:
 	poetry run pre-commit install
 
+
 #* Formatters
 .PHONY: codestyle
 codestyle:
-	poetry run pyupgrade --exit-zero-even-if-changed --py37-plus **/*.py
+	poetry run pyupgrade --exit-zero-even-if-changed --py38-plus **/*.py
 	poetry run isort --settings-path pyproject.toml hooks tests
 	poetry run black --config pyproject.toml hooks tests
 
 .PHONY: formatting
 formatting: codestyle
+
 
 #* Linting
 .PHONY: test
@@ -43,7 +50,9 @@ test:
 check-codestyle:
 	poetry run isort --diff --check-only --settings-path pyproject.toml hooks tests
 	poetry run black --diff --check --config pyproject.toml hooks tests
-	poetry run darglint --verbosity 2 hooks tests
+
+.PHONE: check-formatting
+check-formatting: check-codestyle
 
 .PHONY: mypy
 mypy:
@@ -55,13 +64,18 @@ check-safety:
 	poetry run safety check --full-report
 	poetry run bandit -ll --recursive hooks
 
-.PHONY: lint
-lint: test check-codestyle mypy check-safety
+.PHONE: lint
+lint:
+	poetry run flake8 --count --config=.flake8 hooks tests
+	poetry run pydocstyle --count --config=pyproject.toml hooks tests
+	poetry run pydoclint --config=pyproject.toml hooks tests
+
+.PHONY: lint-all
+lint: test check-codestyle lint mypy check-safety
 
 .PHONY: update-dev-deps
 update-dev-deps:
-	poetry add -D bandit@latest darglint@latest "isort[colors]@latest" mypy@latest pre-commit@latest pydocstyle@latest pylint@latest pytest@latest pyupgrade@latest safety@latest coverage@latest coverage-badge@latest pytest-html@latest pytest-cov@latest
-	poetry add -D --allow-prereleases black@latest
+	poetry up --only=dev-dependencies --latest
 
 #* Cleaning
 .PHONY: pycache-remove
