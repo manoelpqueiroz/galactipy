@@ -7,7 +7,7 @@ REPO_NAME = "{{ cookiecutter.repo_name }}"
 PACKAGE_NAME = "{{ cookiecutter.package_name }}"
 USERNAME = "{{ cookiecutter.scm_username }}"
 PROJECT_VERSION = "{{ cookiecutter.version }}"
-LINE_LENGTH_PARAMETER = "{{ cookiecutter.line_length }}"
+LINE_LENGTH_PARAMETER = {{ cookiecutter.line_length }}
 
 
 PROJECT_REGEX = re.compile(
@@ -15,7 +15,7 @@ PROJECT_REGEX = re.compile(
         ^
         [a-zA-Z0-9]             # Must begin with letter or number
         (?!.*([._+-]){2})       # Must not have any two consecutive of + . - _ ahead
-        [a-zA-Z0-9\.\_\+\-]*    # Can contain any letters, number or + . - _
+        [a-zA-Z0-9\.\_\+\-]*    # Can contain any letters, numbers or + . - _
         [a-zA-Z0-9]             # Must end with letter or number
         (?<!\.atom)             # Must not end with .atom
         (?<!\.git)              # Must not end with .git
@@ -24,6 +24,16 @@ PROJECT_REGEX = re.compile(
     re.VERBOSE,
 )
 PACKAGE_REGEX = re.compile(r"^[a-z][a-z0-9\_]+[a-z0-9]$")
+USERNAME_REGEX = re.compile(
+    r"""
+        ^[a-zA-Z0-9]            # Must begin with letter or number
+        (?!.*(-){2})            # Must not have any two consecutive - ahead
+        [a-zA-Z0-9\-]*          # Can contain any letters, numbers or -
+        [a-zA-Z0-9]             # Must end with letter or number
+        $
+    """,
+    re.VERBOSE
+)
 SEMVER_REGEX = re.compile(
     r"""
         ^
@@ -170,7 +180,7 @@ def validate_package_name(package_name: str) -> None:
 
 
 def validate_username(username: str, reserved_names: list[str]) -> None:
-    """Ensure that `username` is valid under GitLab restrictions.
+    """Ensure that `username` is valid under GitLab and GitHub restrictions.
 
     Parameters
     ----------
@@ -182,10 +192,16 @@ def validate_username(username: str, reserved_names: list[str]) -> None:
     Raises
     ------
     ValueError
-        If `username` is not a valid GitLab username.
+        If `username` is not a valid GitLab or GitHub username.
     """
+    if not (2 <= len(username) <= 255):
+        message = f"ERROR: scm_username must be between 2 and 255. Got `{len(username)}`."
+
+    message = f"ERROR: `{username}` is not a valid name for user or organisation."
+
+    if USERNAME_REGEX.fullmatch(username) is None:
+        raise ValueError(message)
     if username in reserved_names:
-        message = f"ERROR: `{username}` is not a valid name for user or organisation."
         raise ValueError(message)
 
 
