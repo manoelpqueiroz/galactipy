@@ -22,9 +22,11 @@ SCM_PLATFORM_LC = "{{ cookiecutter.__scm_platform_lc }}"
 SCM_USERNAME = "{{ cookiecutter.scm_username }}"
 SCM_BASE_URL = "{{ cookiecutter.__scm_base_url }}"
 
-CREATE_CLI = {{ cookiecutter.create_cli }}
-CREATE_DOCKER = {{ cookiecutter.create_docker }}
-CREATE_DOCS = {{ cookiecutter.create_docs }}
+# Boolean variables for additional project structures
+# Values wrapped inside strings to avoid raising errors when testing
+CREATE_CLI = "{{ cookiecutter.create_cli }}"
+CREATE_DOCKER = "{{ cookiecutter.create_docker }}"
+CREATE_DOCS = "{{ cookiecutter.create_docs }}"
 
 licences_dict = {
     "MIT": "mit",
@@ -34,7 +36,7 @@ licences_dict = {
     "GNU LGPL v3.0": "lgpl3",
     "Mozilla Public License 2.0": "mozilla",
     "Apache Software License 2.0": "apache",
-    "nos": None
+    "nos": None,
 }
 
 
@@ -98,10 +100,7 @@ def generate_templates(directory: Path, scm_platform: str) -> None:
     """
     template_dir = f".{scm_platform}"
 
-    move(
-        directory / "_templates" / template_dir,
-        directory / template_dir
-    )
+    move(directory / "_templates" / template_dir, directory / template_dir)
 
     rmdir(directory / "_templates")
 
@@ -112,7 +111,7 @@ def remove_unused_files(
     remove_cli: bool,
     remove_gitlab: bool,
     remove_docker: bool,
-    remove_docs: bool
+    remove_docs: bool,
 ) -> None:
     """Remove unused files.
 
@@ -161,7 +160,9 @@ def remove_unused_files(
         rmdir(path)
 
 
-def print_futher_instuctions(project_name: str, project_repo: str, scm_platform: str, scm_base_url: str) -> None:
+def print_futher_instuctions(
+    project_name: str, project_repo: str, scm_platform: str, scm_base_url: str
+) -> None:
     """Show user what to do next after project creation.
 
     Parameters
@@ -208,7 +209,7 @@ def print_futher_instuctions(project_name: str, project_repo: str, scm_platform:
 
 
 def main() -> None:
-    REMOVE_GITLAB = SCM_PLATFORM_LC != 'gitlab'
+    REMOVE_GITLAB = SCM_PLATFORM_LC != "gitlab"
     REMOVE_CLI = not CREATE_CLI
     REMOVE_DOCKER = not CREATE_DOCKER
     REMOVE_DOCS = not CREATE_DOCS
@@ -230,7 +231,7 @@ def main() -> None:
         project_name=PROJECT_NAME,
         project_repo=PROJECT_REPO,
         scm_platform=SCM_PLATFORM,
-        scm_base_url=SCM_BASE_URL
+        scm_base_url=SCM_BASE_URL,
     )
 
 

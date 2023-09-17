@@ -1,5 +1,7 @@
 """This module is called before the project is created."""
 
+from typing import List
+
 import re
 import sys
 
@@ -7,7 +9,8 @@ REPO_NAME = "{{ cookiecutter.repo_name }}"
 PACKAGE_NAME = "{{ cookiecutter.package_name }}"
 USERNAME = "{{ cookiecutter.scm_username }}"
 PROJECT_VERSION = "{{ cookiecutter.version }}"
-LINE_LENGTH_PARAMETER = {{ cookiecutter.line_length }}
+# Integer value wrapped inside strings to avoid raising errors when testing
+LINE_LENGTH_PARAMETER = "{{ cookiecutter.line_length }}"
 
 
 PROJECT_REGEX = re.compile(
@@ -32,7 +35,7 @@ USERNAME_REGEX = re.compile(
         [a-zA-Z0-9]             # Must end with letter or number
         $
     """,
-    re.VERBOSE
+    re.VERBOSE,
 )
 SEMVER_REGEX = re.compile(
     r"""
@@ -125,7 +128,7 @@ RESERVED_USERNAMES = [
 ]
 
 
-def validate_repo_name(repo_name: str, reserved_projects: list[str]) -> None:
+def validate_repo_name(repo_name: str, reserved_projects: List[str]) -> None:
     """Ensure that `repo_name` is valid under GitLab restrictions.
 
     Valid input starts with a digit or letter, can be comprised of any
@@ -149,7 +152,9 @@ def validate_repo_name(repo_name: str, reserved_projects: list[str]) -> None:
         If `repo_name` is not a valid GitLab slug.
     """
     if PROJECT_REGEX.fullmatch(repo_name) is None:
-        message = f"ERROR: The project slug `{repo_name}` is not a valid GitLab/GitHub name."
+        message = (
+            f"ERROR: The project slug `{repo_name}` is not a valid GitLab/GitHub name."
+        )
         raise ValueError(message)
 
     if repo_name in reserved_projects:
@@ -175,11 +180,14 @@ def validate_package_name(package_name: str) -> None:
         If `package_name` is not a valid Python module name.
     """
     if PACKAGE_REGEX.fullmatch(package_name) is None:
-        message = f"ERROR: The package name `{package_name}` is not a valid Python module name."
+        message = (
+            f"ERROR: The package name `{package_name}` "
+            "is not a valid Python module name."
+        )
         raise ValueError(message)
 
 
-def validate_username(username: str, reserved_names: list[str]) -> None:
+def validate_username(username: str, reserved_names: List[str]) -> None:
     """Ensure that `username` is valid under GitLab and GitHub restrictions.
 
     Parameters
@@ -195,7 +203,9 @@ def validate_username(username: str, reserved_names: list[str]) -> None:
         If `username` is not a valid GitLab or GitHub username.
     """
     if not (2 <= len(username) <= 255):
-        message = f"ERROR: scm_username must be between 2 and 255. Got `{len(username)}`."
+        message = (
+            f"ERROR: scm_username must be between 2 and 255. Got `{len(username)}`."
+        )
 
     message = f"ERROR: `{username}` is not a valid name for user or organisation."
 
