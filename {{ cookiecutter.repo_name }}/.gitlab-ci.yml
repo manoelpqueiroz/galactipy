@@ -1,0 +1,38 @@
+# To contribute improvements to CI/CD templates, please follow the Development guide at:
+# https://docs.gitlab.com/ee/development/cicd/templates.html
+
+# Official language image. Look for the different tagged releases at:
+# https://hub.docker.com/r/library/python/tags/
+# UPDATEME to suit your project's workflow
+stages:
+  - test
+
+default:
+  before_script:
+    - make poetry-download
+    - export PATH="/root/.local/bin:$PATH"
+    - python3 -m venv .venv
+    - source .venv/bin/activate
+    - make install
+  cache:
+    key: venv-$CI_COMMIT_REF_NAME-$CI_JOB_STAGE-$CI_COMMIT_SHA
+    paths:
+      - $CI_PROJECT_DIR/.cache/pip
+
+.default_scripts: &default_scripts
+  - make check-codestyle
+  - make test
+  - make check-safety
+
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+{%- set list_python_version = cookiecutter.minimal_python_version.split('.') | map('int') | list %}
+{%- for version in cookiecutter._all_python_version if version[0] >= list_python_version[0] and version[1] >= list_python_version[1] %}
+
+test-py{{ version[0] }}{{ version[1] }}:
+  stage: test
+  image: python:{{ version[0] }}.{{ version[1] }}
+  script:
+    - *default_scripts
+{%- endfor %}
