@@ -545,7 +545,7 @@ And here are a few articles which may help you:
 - [GitLab CI Documentation][wn28];
 - [GitHub Actions Documentation][wn29];
 - [Makefile tutorial][wn30];
-- Maybe you would like to add [gitmoji][wn30] to commit names. This is really funny. :grinning_face_with_smiling_eyes:
+- Maybe you would like to add [gitmoji][wn31] to commit names. This is really funny. :grinning_face_with_smiling_eyes:
 
 ## :chart_increasing: Releases
 
@@ -747,7 +747,7 @@ Here is the Markdown source for it:
 [wn28]: https://docs.gitlab.com/ee/ci/
 [wn29]: https://help.github.com/en/actions
 [wn30]: https://makefiletutorial.com/
-[wn30]: https://gitmoji.carloscuesta.me/
+[wn31]: https://gitmoji.carloscuesta.me/
 
 [r1]: https://gitlab.com/manoelpqueiroz/galactipy/-/releases
 [r2]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit

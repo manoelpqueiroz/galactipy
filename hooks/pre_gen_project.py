@@ -239,7 +239,7 @@ def validate_line_length(line_length: int) -> None:
     Parameters
     ----------
     line_length : int
-        Integer paramenter for isort and black formatters.
+        Integer parameter for isort and black formatters.
 
     Raises
     ------
