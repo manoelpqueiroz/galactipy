@@ -61,7 +61,7 @@ SEMVER_REGEX = re.compile(
 # Reserved project and group names in GitLab
 # https://docs.gitlab.com/ee/user/reserved_names.html#reserved-project-names
 RESERVED_PROJECTS = [
-    "\-",
+    r"\-",
     "badges",
     "blame",
     "blob",
@@ -86,7 +86,7 @@ RESERVED_PROJECTS = [
 
 # https://docs.gitlab.com/ee/user/reserved_names.html#reserved-group-names
 RESERVED_USERNAMES = [
-    "\-",
+    r"\-",
     ".well-known",
     "404.html",
     "422.html",
