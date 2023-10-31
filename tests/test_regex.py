@@ -1,6 +1,10 @@
 import pytest
 
-from hooks.pre_gen_project import RESERVED_PROJECTS, validate_repo_name
+from hooks.pre_gen_project import (
+    RESERVED_PROJECTS,
+    validate_package_name,
+    validate_repo_name,
+)
 
 
 @pytest.mark.parametrize(
@@ -138,3 +142,54 @@ def test_doubly_invalid_repo_names(invalid_slug):
 
     with pytest.raises(ValueError):
         validate_repo_name(invalid_slug, RESERVED_PROJECTS)
+
+
+@pytest.mark.parametrize(
+    "valid_package",
+    [
+        "uqp0w",
+        "odjl5igrx",
+        "naqntv",
+        "zd9lwp9",
+        "ul6w25ra8",
+        "tp7",
+        "qwtokmypv",
+        "b538efggk_t6h7",
+        "isifkzsot4q6ikq",
+        "ffvd9iqnj63",
+        "qvpfy13ia1d18",
+        "krsrlo8zvhc9",
+        "pq_bqb",
+        "em_g6_rqq_e5",
+        "s95__eas33",
+    ],
+)
+def test_valid_package_names(valid_package):
+
+    assert validate_package_name(valid_package) is None
+
+
+@pytest.mark.parametrize(
+    "invalid_package",
+    [
+        "6iig7ot",
+        "-oxclb3f",
+        "l!kzh76wq1uq-",
+        "+!ro-9_@",
+        "813ddy/zosoq8h",
+        "-6#p66",
+        "61txxnrpi#1x7",
+        "g9hzu1ia_",
+        "sysfeq.ywbw",
+        "jFC1",
+        "NHKs",
+        "DAc9_",
+        "h0CKQF",
+        "s_nGo7mR6",
+        "@4cjsO#VB3jn",
+    ],
+)
+def test_invalid_package_names(invalid_package):
+
+    with pytest.raises(ValueError):
+        validate_package_name(invalid_package)
