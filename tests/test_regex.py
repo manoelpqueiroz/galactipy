@@ -2,8 +2,10 @@ import pytest
 
 from hooks.pre_gen_project import (
     RESERVED_PROJECTS,
+    RESERVED_USERNAMES,
     validate_package_name,
     validate_repo_name,
+    validate_username,
 )
 
 
@@ -193,3 +195,51 @@ def test_invalid_package_names(invalid_package):
 
     with pytest.raises(ValueError):
         validate_package_name(invalid_package)
+
+
+@pytest.mark.parametrize(
+    "valid_username",
+    [
+        "15SV",
+        "vIOh",
+        "jO5Obrfq6aR8b",
+        "t5cfEsgM3hhV90",
+        "GKeYlsUOT",
+        "75e6R",
+        "VgCaS7mOIzikWJJ",
+        "K-fpQC",
+        "A-zn-ET-K-k-k-3I",
+        "MvkWGKFKj-qRFT",
+    ],
+)
+def test_valid_usernames(valid_username):
+
+    assert validate_username(valid_username, RESERVED_USERNAMES) is None
+
+
+@pytest.mark.parametrize(
+    "invalid_username",
+    [
+        "robots.txt",
+        "groups",
+        "500.html",
+        "v2",
+        "projects",
+        "7w--StBkn8Pk5s",
+        "7wezIt1ets-",
+        "-sxSfLvkK",
+        "b--5DLF--hueyK3G",
+        "Y9ih5!!SjHPus",
+        "!HXk8A",
+        "c@N9hPPCWoronAm",
+        "OL+UjzQ_C.Z",
+        "Af8.uH",
+        "Go!b",
+        "#4FeBLTCDd@",
+        "dhsqWL/d",
+    ],
+)
+def test_invalid_usernames(invalid_username):
+
+    with pytest.raises(ValueError):
+        validate_username(invalid_username, RESERVED_USERNAMES)
