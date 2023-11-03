@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pytest
 
 from hooks.post_gen_project import rmdir
@@ -49,3 +51,32 @@ class TestRmDir:
         assert not file_alpha.exists()
         assert not file_alpha.exists()
         assert not file_gaga.exists()
+
+    def test_remove_directories_recursively(self, tmp_path):
+        directory = tmp_path / "test_directory"
+        directory.mkdir()
+
+        subdirectory = directory / "subdirectory"
+        subdirectory.mkdir()
+
+        file_alpha = directory / "alpha.txt"
+        file_beta = subdirectory / "beta.txt"
+        file_gaga = subdirectory / "gaga.txt"
+
+        file_alpha.touch()
+        file_beta.touch()
+        file_gaga.touch()
+
+        rmdir(directory)
+
+        assert not directory.exists()
+        assert not subdirectory.exists()
+        assert not file_alpha.exists()
+        assert not file_beta.exists()
+        assert not file_gaga.exists()
+
+    def test_remove_nonexistent_path(self):
+        nonexistent_path = Path("nonexistent_file_or_dir")
+
+        with pytest.raises(ValueError):
+            rmdir(nonexistent_path)
