@@ -5,6 +5,7 @@ from hooks.pre_gen_project import (
     RESERVED_USERNAMES,
     validate_package_name,
     validate_repo_name,
+    validate_semver,
     validate_username,
 )
 
@@ -243,3 +244,44 @@ def test_invalid_usernames(invalid_username):
 
     with pytest.raises(ValueError):
         validate_username(invalid_username, RESERVED_USERNAMES)
+
+
+@pytest.mark.parametrize(
+    "valid_semver",
+    [
+        "170.0.12-alpha-00-b73ts",
+        "1.8.5+build-7.8.9",
+        "0.0.0+b",
+        "100.0.0-0.0.0+0.0.0-0.0.0",
+        "170.0.1-0b97-07-b",
+        "4823.8585.846133-alpha+rc.uu.723-lpt.13",
+    ],
+)
+def test_valid_semver(valid_semver):
+
+    assert validate_semver(valid_semver) is None
+
+
+@pytest.mark.parametrize(
+    "invalid_semver",
+    [
+        "00.0.0",
+        "0.00.0",
+        "0.0.00",
+        "00.00.00",
+        "01.0.0",
+        "0.02.0",
+        "0.0.06",
+        "07.08.09",
+        "1.2.3-",
+        "1.2.3-01",
+        "1.2.3-13b7.01",
+        "1.2.3-7_beta",
+        "1.2.3-alpha.68+pre..test",
+        "1.2.3-0b00+t.549.000.tst.",
+    ],
+)
+def test_invalid_semvers(invalid_semver):
+
+    with pytest.raises(ValueError):
+        validate_semver(invalid_semver)
