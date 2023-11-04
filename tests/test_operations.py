@@ -8,27 +8,13 @@ LICENCES_TO_CHECK.remove(None)
 
 
 @pytest.mark.parametrize("chosen_licence", LICENCES_TO_CHECK)
-def test_generate_licence(tmp_path, chosen_licence):
-    licence_file = tmp_path / "LICENCE"
-    licence_directory = tmp_path / "_licences"
+def test_generate_licence(licence_tree, chosen_licence):
+    project_root, licence_root, licence_file = licence_tree
 
-    bulk_file_creation(
-        tmp_path,
-        _licences=[
-            "agpl3.txt",
-            "apache.txt",
-            "bsd3.txt",
-            "gpl3.txt",
-            "lgpl3.txt",
-            "mit.txt",
-            "mozilla.txt",
-        ],
-    )
-
-    generate_licence(tmp_path, chosen_licence)
+    generate_licence(project_root, chosen_licence)
 
     assert licence_file.exists()
-    assert not licence_directory.exists()
+    assert not licence_root.exists()
 
 
 class TestTemplateGeneration:

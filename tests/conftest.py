@@ -4,6 +4,27 @@ from tests.test_helpers import bulk_file_creation
 
 
 @pytest.fixture
+def licence_tree(tmp_path):
+    licence_file = tmp_path / "LICENCE"
+    licence_root = tmp_path / "_licences"
+
+    bulk_file_creation(
+        tmp_path,
+        _licences=[
+            "agpl3.txt",
+            "apache.txt",
+            "bsd3.txt",
+            "gpl3.txt",
+            "lgpl3.txt",
+            "mit.txt",
+            "mozilla.txt",
+        ],
+    )
+
+    return tmp_path, licence_root, licence_file
+
+
+@pytest.fixture
 def template_tree(tmp_path):
     template_root = tmp_path / "_templates"
     template_root.mkdir()
