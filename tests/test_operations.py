@@ -7,14 +7,23 @@ LICENCES_TO_CHECK = list(licences_dict.values())
 LICENCES_TO_CHECK.remove(None)
 
 
-@pytest.mark.parametrize("chosen_licence", LICENCES_TO_CHECK)
-def test_generate_licence(licence_tree, chosen_licence):
-    project_root, licence_root, licence_file = licence_tree
+class TestLicenceGeneration:
+    @pytest.mark.parametrize("chosen_licence", LICENCES_TO_CHECK)
+    def test_generate_licence(self, licence_tree, chosen_licence):
+        project_root, licence_root, licence_file = licence_tree
 
-    generate_licence(project_root, chosen_licence)
+        generate_licence(project_root, chosen_licence)
 
-    assert licence_file.exists()
-    assert not licence_root.exists()
+        assert licence_file.exists()
+        assert not licence_root.exists()
+
+    def test_non_oss_licence(self, licence_tree):
+        project_root, licence_root, licence_file = licence_tree
+
+        generate_licence(project_root, None)
+
+        assert not licence_file.exists()
+        assert not licence_root.exists()
 
 
 class TestTemplateGeneration:
