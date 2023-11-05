@@ -1,6 +1,11 @@
 import pytest
 
-from hooks.post_gen_project import generate_licence, generate_templates, licences_dict
+from hooks.post_gen_project import (
+    generate_licence,
+    generate_templates,
+    licences_dict,
+    remove_unused_files,
+)
 from tests.test_helpers import bulk_file_creation
 
 LICENCES_TO_CHECK = list(licences_dict.values())
@@ -43,3 +48,76 @@ class TestTemplateGeneration:
 
         with pytest.raises(FileNotFoundError):
             generate_templates(project_root, invalid_scm)
+
+
+class TestFileRemoval:
+    def test_remove_cli(self, removal_tree):
+        project_root, pyproject_file, tests_root, test_file, package_name = removal_tree
+        cli_file = project_root / package_name / "__main__.py"
+
+        remove_unused_files(project_root, package_name, True, False, False, False)
+
+        assert not cli_file.exists()
+
+        assert pyproject_file.exists()
+        assert tests_root.exists()
+        assert test_file.exists()
+
+    def test_remove_gitlab(self, removal_tree):
+        project_root, pyproject_file, tests_root, test_file, package_name = removal_tree
+        ci_file = project_root / ".gitlab-ci.yml"
+
+        remove_unused_files(project_root, package_name, False, True, False, False)
+
+        assert not ci_file.exists()
+
+        assert pyproject_file.exists()
+        assert tests_root.exists()
+        assert test_file.exists()
+
+    def test_remove_docker(self, removal_tree):
+        project_root, pyproject_file, tests_root, test_file, package_name = removal_tree
+        docker_directory = project_root / "docker"
+        dockerignore = project_root / ".dockerignore"
+
+        remove_unused_files(project_root, package_name, False, False, True, False)
+
+        assert not docker_directory.exists()
+        assert not dockerignore.exists()
+
+        assert pyproject_file.exists()
+        assert tests_root.exists()
+        assert test_file.exists()
+
+    def test_remove_docs(self, removal_tree):
+        project_root, pyproject_file, tests_root, test_file, package_name = removal_tree
+        docs_directory = project_root / "docs"
+
+        remove_unused_files(project_root, package_name, False, False, False, True)
+
+        assert not docs_directory.exists()
+
+        assert pyproject_file.exists()
+        assert tests_root.exists()
+        assert test_file.exists()
+
+    def test_remove_all(self, removal_tree):
+        project_root, pyproject_file, tests_root, test_file, package_name = removal_tree
+
+        cli_file = project_root / package_name / "__main__.py"
+        ci_file = project_root / ".gitlab-ci.yml"
+        docker_directory = project_root / "docker"
+        dockerignore = project_root / ".dockerignore"
+        docs_directory = project_root / "docs"
+
+        remove_unused_files(project_root, package_name, True, True, True, True)
+
+        assert not cli_file.exists()
+        assert not ci_file.exists()
+        assert not docker_directory.exists()
+        assert not dockerignore.exists()
+        assert not docs_directory.exists()
+
+        assert pyproject_file.exists()
+        assert tests_root.exists()
+        assert test_file.exists()

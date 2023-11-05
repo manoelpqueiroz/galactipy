@@ -56,3 +56,25 @@ def template_tree(tmp_path):
     )
 
     return tmp_path, template_root
+
+
+@pytest.fixture
+def removal_tree(tmp_path):
+    bulk_file_creation(
+        tmp_path,
+        ".gitlab-ci.yml",
+        ".dockerignore",
+        "pyproject.toml",
+        package_test=["__main__.py"],
+        docker=["Dockerfile", "README.md"],
+        docs=[".gitkeep"],
+        tests=["test_hello.py"],
+    )
+
+    pyproject_file = tmp_path / "pyproject.toml"
+    tests_directory = tmp_path / "tests"
+    test_file = tests_directory / "test_hello.py"
+
+    package_name = "package_test"
+
+    return tmp_path, pyproject_file, tests_directory, test_file, package_name
