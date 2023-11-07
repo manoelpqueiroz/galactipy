@@ -5,8 +5,10 @@
 # https://hub.docker.com/r/library/python/tags/
 stages:
   - test
+  - coverage
 
 default:
+  image: python:3.11
   before_script:
     - make poetry-download
     - export PATH="/root/.local/bin:$PATH"
@@ -47,6 +49,17 @@ test-py310:
 
 test-py311:
   stage: test
-  image: python:3.11
+  artifacts:
+    name: coverage-$CI_COMMIT_REF_NAME-$CI_JOB_NAME-$CI_JOB_STARTED_AT
+    paths:
+      - coverage.xml
+    expire_in: 1 week
   script:
     - *default_scripts
+    - coverage xml
+
+coveralls-report:
+  stage: coverage
+  script:
+    - curl -L https://coveralls.io/coveralls-linux.tar.gz | tar -xz -C /usr/local/bin
+    - coveralls -f coverage.xml -r $COVERALLS_TOKEN
