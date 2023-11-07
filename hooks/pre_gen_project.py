@@ -17,8 +17,8 @@ PROJECT_REGEX = re.compile(
     r"""
         ^
         [a-zA-Z0-9]             # Must begin with letter or number
-        (?!.*([._+-]){2})       # Must not have any two consecutive of + . - _ ahead
-        [a-zA-Z0-9\.\_\+\-]*    # Can contain any letters, numbers or + . - _
+        (?!.*([._-]){2})        # Must not have any two consecutive of . - _ ahead
+        [a-zA-Z0-9\.\_\-]*      # Can contain any letters, numbers or . - _
         [a-zA-Z0-9]             # Must end with letter or number
         (?<!\.atom)             # Must not end with .atom
         (?<!\.git)              # Must not end with .git
@@ -61,7 +61,7 @@ SEMVER_REGEX = re.compile(
 # Reserved project and group names in GitLab
 # https://docs.gitlab.com/ee/user/reserved_names.html#reserved-project-names
 RESERVED_PROJECTS = [
-    "\-",
+    r"\-",
     "badges",
     "blame",
     "blob",
@@ -86,7 +86,7 @@ RESERVED_PROJECTS = [
 
 # https://docs.gitlab.com/ee/user/reserved_names.html#reserved-group-names
 RESERVED_USERNAMES = [
-    "\-",
+    r"\-",
     ".well-known",
     "404.html",
     "422.html",
