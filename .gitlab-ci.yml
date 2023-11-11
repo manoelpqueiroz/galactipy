@@ -60,6 +60,7 @@ test-py311:
     expire_in: 1 week
   script:
     - *default_scripts
+    - coverage xml
 
 coveralls-report:
   stage: coverage
