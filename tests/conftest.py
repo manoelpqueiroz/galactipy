@@ -1,3 +1,5 @@
+import textwrap
+
 import pytest
 
 from tests.test_helpers import bulk_file_creation
@@ -78,3 +80,36 @@ def removal_tree(tmp_path):
     package_name = "package_test"
 
     return tmp_path, pyproject_file, tests_directory, test_file, package_name
+
+
+@pytest.fixture
+def galactipy_instructions():
+    message = f"""
+    Your project Galactipy is created.
+
+    1) Now you can start working on it:
+
+        $ cd galactipy && git init
+
+    2) If you don't have Poetry installed run:
+
+        $ make poetry-download
+
+    3) Initialize poetry and install pre-commit hooks:
+
+        $ make install
+        $ make pre-commit-install
+
+    4) Run codestyle:
+
+        $ make codestyle
+
+    5) Upload initial code to GitLab:
+
+        $ git add .
+        $ git commit -m ":tada: Initial commit"
+        $ git remote add origin https://www.gitlab.com/manoelpqueiroz/galactipy.git
+        $ git push -u origin master
+    """
+
+    return textwrap.dedent(message)

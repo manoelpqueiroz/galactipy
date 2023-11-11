@@ -209,16 +209,17 @@ addopts = [
 
 [tool.coverage.run]
 source = ["tests"]
-
-
-[coverage.paths]
-source = "{{ cookiecutter.package_name }}"
-
-
-[coverage.run]
 branch = true
 
 
-[coverage.report]
+[tool.coverage.report]
+exclude_also = [
+  "def main",
+  "if __name__ == .__main__.:"
+]
 fail_under = 50
 show_missing = true
+
+
+[tool.coverage.paths]
+source = ["{{ cookiecutter.package_name }}"]

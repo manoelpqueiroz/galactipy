@@ -246,6 +246,20 @@ def test_invalid_usernames(invalid_username):
         validate_username(invalid_username, RESERVED_USERNAMES)
 
 
+def test_username_length():
+
+    string = "a"
+
+    for n in range(260):
+        username = string * n
+
+        if 2 <= n <= 255:
+            assert validate_username(username, RESERVED_USERNAMES) is None
+        else:
+            with pytest.raises(ValueError):
+                validate_username(username, RESERVED_USERNAMES)
+
+
 @pytest.mark.parametrize(
     "valid_semver",
     [

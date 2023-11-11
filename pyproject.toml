@@ -179,16 +179,17 @@ addopts = [
 
 [tool.coverage.run]
 source = ["tests"]
-
-
-[coverage.paths]
-source = "hooks"
-
-
-[coverage.run]
 branch = true
 
 
-[coverage.report]
-fail_under = 50
+[tool.coverage.report]
+exclude_also = [
+  "def main",
+  "if __name__ == .__main__.:"
+]
+fail_under = 90
 show_missing = true
+
+
+[tool.coverage.paths]
+source = ["hooks"]
