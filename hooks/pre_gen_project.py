@@ -206,6 +206,7 @@ def validate_username(username: str, reserved_names: List[str]) -> None:
         message = (
             f"ERROR: scm_username must be between 2 and 255. Got `{len(username)}`."
         )
+        raise ValueError(message)
 
     message = f"ERROR: `{username}` is not a valid name for user or organisation."
 

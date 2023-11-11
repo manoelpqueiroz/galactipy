@@ -87,7 +87,7 @@ class TestRmDir:
         file_path = tmp_path / "protected_file.txt"
         file_path.touch()
 
-        # TODO chmod fails given there is no user or group "galactipy-pytest"
+        # TODO chown fails given there is no user or group "galactipy-pytest"
         # Consider implementation through CI/CD
         chown(file_path, "galactipy-pytest", "galactipy-pytest")
 
@@ -99,7 +99,7 @@ class TestRmDir:
         protected_dir = tmp_path / "protected_dir"
         protected_dir.mkdir()
 
-        # TODO chmod fails given there is no user or group "galactipy-pytest"
+        # TODO chown fails given there is no user or group "galactipy-pytest"
         # Consider implementation through CI/CD
         chown(protected_dir, "galactipy-pytest", "galactipy-pytest")
 

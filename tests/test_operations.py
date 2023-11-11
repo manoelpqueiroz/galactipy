@@ -4,6 +4,7 @@ from hooks.post_gen_project import (
     generate_licence,
     generate_templates,
     licences_dict,
+    print_further_instructions,
     remove_unused_files,
 )
 from tests.test_helpers import bulk_file_creation
@@ -121,3 +122,16 @@ class TestFileRemoval:
         assert pyproject_file.exists()
         assert tests_root.exists()
         assert test_file.exists()
+
+
+def test_print_further_instructions(capsys, galactipy_instructions):
+    print_further_instructions(
+        "Galactipy",
+        "galactipy",
+        "GitLab",
+        "https://www.gitlab.com/manoelpqueiroz/galactipy",
+    )
+    captured = capsys.readouterr()
+
+    # STDOUT always finishes with a newline, hence the addition on the right side
+    assert captured.out == galactipy_instructions + "\n"
