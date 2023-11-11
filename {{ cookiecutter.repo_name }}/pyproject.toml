@@ -83,6 +83,7 @@ pytest = "^7.2.1"
 pytest-html = "^3.2.0"
 pytest-cov = "^4.1.0"
 pytest-mock = "^3.10.0"
+pytest-timeout = "^2.2.0"
 coverage = "^7.3.0"
 
 {%+ if cookiecutter.use_formatters %}
@@ -197,6 +198,7 @@ norecursedirs =[
   "__pycache__"
 ]
 doctest_optionflags = ["NUMBER", "NORMALIZE_WHITESPACE", "IGNORE_EXCEPTION_DETAIL"]
+timeout = 10
 
 # Extra options:
 addopts = [
