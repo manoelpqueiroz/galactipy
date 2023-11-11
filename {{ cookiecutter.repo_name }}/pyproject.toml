@@ -83,7 +83,6 @@ pytest = "^7.2.1"
 pytest-html = "^3.2.0"
 pytest-cov = "^4.1.0"
 coverage = "^7.3.0"
-coverage-badge = "^1.1.0"
 
 {%+ if cookiecutter.use_formatters %}
 [tool.black]
