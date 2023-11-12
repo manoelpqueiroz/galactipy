@@ -84,6 +84,7 @@ pytest-html = "^3.2.0"
 pytest-cov = "^4.1.0"
 pytest-mock = "^3.10.0"
 pytest-timeout = "^2.2.0"
+pytest-sugar = "^0.9.7"
 coverage = "^7.3.0"
 
 {%+ if cookiecutter.use_formatters %}

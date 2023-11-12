@@ -54,6 +54,7 @@ pydoclint = "^0.3.0"
 pytest = "^7.2.1"
 pytest-cov = "^4.1.0"
 pytest-timeout = "^2.2.0"
+pytest-sugar = "^0.9.7"
 coverage = "^7.3.0"
 
 
