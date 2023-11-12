@@ -85,6 +85,7 @@ pytest-cov = "^4.1.0"
 pytest-mock = "^3.10.0"
 pytest-timeout = "^2.2.0"
 pytest-sugar = "^0.9.7"
+pytest-pikachu = "^1.0.0"
 coverage = "^7.3.0"
 
 {%+ if cookiecutter.use_formatters %}
@@ -207,6 +208,7 @@ addopts = [
   "--tb=short",
   "--doctest-modules",
   "--doctest-continue-on-failure",
+  "--pikachu"
 ]
 
 
