@@ -84,6 +84,7 @@ pytest-html = "^3.2.0"
 pytest-cov = "^4.1.0"
 pytest-mock = "^3.10.0"
 pytest-timeout = "^2.2.0"
+pytest-benchmark = "^4.0.0"
 pytest-sugar = "^0.9.7"
 {%- if cookiecutter.create_cli %}
 pytest-click = "^1.1.0"
