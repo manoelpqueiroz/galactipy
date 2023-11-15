@@ -82,8 +82,15 @@ pydoclint = "^0.3.0"
 pytest = "^7.2.1"
 pytest-html = "^3.2.0"
 pytest-cov = "^4.1.0"
+pytest-mock = "^3.10.0"
+pytest-timeout = "^2.2.0"
+pytest-benchmark = "^4.0.0"
+pytest-sugar = "^0.9.7"
+{%- if cookiecutter.create_cli %}
+pytest-click = "^1.1.0"
+{%- endif %}
+pytest-pikachu = "^1.0.0"
 coverage = "^7.3.0"
-coverage-badge = "^1.1.0"
 
 {%+ if cookiecutter.use_formatters %}
 [tool.black]
@@ -197,6 +204,7 @@ norecursedirs =[
   "__pycache__"
 ]
 doctest_optionflags = ["NUMBER", "NORMALIZE_WHITESPACE", "IGNORE_EXCEPTION_DETAIL"]
+timeout = 10
 
 # Extra options:
 addopts = [
@@ -204,6 +212,7 @@ addopts = [
   "--tb=short",
   "--doctest-modules",
   "--doctest-continue-on-failure",
+  "--pikachu"
 ]
 
 

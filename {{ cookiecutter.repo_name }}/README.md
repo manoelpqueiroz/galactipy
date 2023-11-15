@@ -201,7 +201,8 @@ And here are a few articles which may help you:
 - [GitHub Actions Documentation][hub4];
 {%- endif %}
 - [Makefile tutorial][wn27];
-- Maybe you would like to add [gitmoji][wn28] to commit names. This is really funny. :grinning_face_with_smiling_eyes:
+- [A Comprehensive Look at Testing in Software Development][wn28] is an article that lays out why testing is crucial for development success. Eric's blog is actually a great reference, covering topics ranging from the basics to advanced techniques and best practices;
+- Maybe you would like to add [gitmoji][wn29] to commit names. This is really funny. :grinning_face_with_smiling_eyes:
 
 ## :rocket: Features
 
@@ -612,7 +613,8 @@ This project was generated with [`galactipy`][bp7].
 [wn25]: https://opensource.guide/
 [wn26]: https://github.com/nayafia/lemonade-stand
 [wn27]: https://makefiletutorial.com/
-[wn28]: https://gitmoji.carloscuesta.me/
+[wn28]: https://pytest-with-eric.com/introduction/types-of-software-testing/
+[wn29]: https://gitmoji.dev/
 
 [ft1]: https://python-poetry.org/
 [ft2]: {{ cookiecutter.__scm_link_url }}/blob/master/pyproject.toml

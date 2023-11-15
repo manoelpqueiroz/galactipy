@@ -52,10 +52,10 @@ pydocstyle = {extras = ["toml"], version = "^6.2.0"}
 pydoclint = "^0.3.0"
 
 pytest = "^7.2.1"
-pytest-html = "^4.0.2"
 pytest-cov = "^4.1.0"
+pytest-timeout = "^2.2.0"
+pytest-sugar = "^0.9.7"
 coverage = "^7.3.0"
-coverage-badge = "^1.1.0"
 
 
 [tool.black]
@@ -167,6 +167,7 @@ norecursedirs =[
   "__pycache__"
 ]
 doctest_optionflags = ["NUMBER", "NORMALIZE_WHITESPACE", "IGNORE_EXCEPTION_DETAIL"]
+timeout = 10
 
 # Extra options:
 addopts = [

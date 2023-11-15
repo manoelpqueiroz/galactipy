@@ -545,7 +545,8 @@ And here are a few articles which may help you:
 - [GitLab CI Documentation][wn28];
 - [GitHub Actions Documentation][wn29];
 - [Makefile tutorial][wn30];
-- Maybe you would like to add [gitmoji][wn31] to commit names. This is really funny. :grinning_face_with_smiling_eyes:
+- [A Comprehensive Look at Testing in Software Development][wn31] is an article that lays out why testing is crucial for development success. Eric's blog is actually a great reference, covering topics ranging from the basics to advanced techniques and best practices;
+- Maybe you would like to add [gitmoji][wn32] to commit names. This is really funny. :grinning_face_with_smiling_eyes:
 
 ## :chart_increasing: Releases
 
@@ -747,7 +748,8 @@ Here is the Markdown source for it:
 [wn28]: https://docs.gitlab.com/ee/ci/
 [wn29]: https://help.github.com/en/actions
 [wn30]: https://makefiletutorial.com/
-[wn31]: https://gitmoji.carloscuesta.me/
+[wn31]: https://pytest-with-eric.com/introduction/types-of-software-testing/
+[wn32]: https://gitmoji.dev/
 
 [r1]: https://gitlab.com/manoelpqueiroz/galactipy/-/releases
 [r2]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
