@@ -7,7 +7,7 @@
 - [ ] I've searched the project's [`issues`][1], looking for the following terms:
   - [...]
 
-## :red_question_mark: Question
+## :question: Question
 
 <!-- What is your question -->
 

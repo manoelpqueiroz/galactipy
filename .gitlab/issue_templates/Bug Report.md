@@ -27,7 +27,7 @@ python --version
 
 <!-- If applicable, add screenshots to help explain your problem. -->
 
-## :chart_increasing: Expected behavior
+## :chart_with_upwards_trend: Expected behavior
 
 <!-- A clear and concise description of what you expected to happen. -->
 
