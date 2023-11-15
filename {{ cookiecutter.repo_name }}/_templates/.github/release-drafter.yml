@@ -11,7 +11,7 @@ categories:
     labels: [bug, refactoring, bugfix, fix]
   - title: ":package: Build System & CI/CD"
     labels: [build, ci, testing]
-  - title: ":collision: Breaking Changes"
+  - title: ":boom: Breaking Changes"
     labels: [breaking]
   - title: ":memo: Documentation"
     labels: [documentation]

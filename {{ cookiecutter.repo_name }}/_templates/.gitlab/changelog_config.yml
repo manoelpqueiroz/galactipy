@@ -12,7 +12,7 @@ categories:
   build: ":package: Build System & CI/CD"
   ci: ":package: Build System & CI/CD"
   testing: ":package: Build System & CI/CD"
-  breaking: ":collision: Breaking Changes"
+  breaking: ":boom: Breaking Changes"
   documentation: ":memo: Documentation"
   dependencies: ":arrow_up: Dependencies Updates"
 template: |

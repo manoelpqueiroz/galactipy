@@ -32,7 +32,7 @@ _Expand your project structure from atoms of code to **galactic** dimensions._ :
 cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.1.0
 ```
 
-> All you need is the latest version of cookiecutter! :winking_face:
+> All you need is the latest version of cookiecutter! :wink:
 
 ## :rocket: Features
 
@@ -63,16 +63,16 @@ However, not everything that is available for GitHub users is available to GitLa
 
 Below is a comparison between the features available in this package depending on which platform you choose to host your project:
 
-|          **Feature**          |     **GitLab**      |     **GitHub**      | **Observations**                                                                                                                                                                                       |
-|:-----------------------------:|:-------------------:|:-------------------:|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Issue templates               | :check_mark_button: | :check_mark_button: | Both options feature automatic labels, but GitHub has an extra configuration to prevent the creation of empty issues. |
-| Merge/pull requests templates | :check_mark_button: | :check_mark_button: | |
-| Stale issues                  | :cross_mark:        | :check_mark_button: | A specific configuration is available for GitHub to mark and automatically close stale issues. |
-| Build workflow                | :check_mark_button: | :check_mark_button: | A basic workflow to install the package and run tests, check codestyle and safety. |
-| Greetings workflow            | :cross_mark:        | :check_mark_button: | |
-| Dependabot                    | :cross_mark:        | :check_mark_button: | [Dependabot][ft24] is a feature now incorporated into GitHub Security. See [here][ft25] how to enable it. |
-| Release drafter               | :cross_mark:        | :check_mark_button: | [Release Drafter][ft26] is a custom workflow available on GitHub Marketplace. You may see the list of labels in [`release-drafter.yml`][ft27]. Works perfectly with [Semantic Versions][ft28] specification. |
-| Changelog configuration       | :check_mark_button: | :cross_mark:        | GitLab provides automatic changelog updates through their [API][ft29]. You may modify the template in [`changelog_config.yml`][ft30]. |
+|          **Feature**          |     **GitLab**     |     **GitHub**     | **Observations**                                                                                                                                                                                             |
+|:-----------------------------:|:------------------:|:------------------:|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Issue templates               | :white_check_mark: | :white_check_mark: | Both options feature automatic labels, but GitHub has an extra configuration to prevent the creation of empty issues. |
+| Merge/pull requests templates | :white_check_mark: | :white_check_mark: | |
+| Stale issues                  | :x:                | :white_check_mark: | A specific configuration is available for GitHub to mark and automatically close stale issues. |
+| Build workflow                | :white_check_mark: | :white_check_mark: | A basic workflow to install the package and run tests, check codestyle and safety. |
+| Greetings workflow            | :x:                | :white_check_mark: | |
+| Dependabot                    | :x:                | :white_check_mark: | [Dependabot][ft24] is a feature now incorporated into GitHub Security. See [here][ft25] how to enable it. |
+| Release drafter               | :x:                | :white_check_mark: | [Release Drafter][ft26] is a custom workflow available on GitHub Marketplace. You may see the list of labels in [`release-drafter.yml`][ft27]. Works perfectly with [Semantic Versions][ft28] specification. |
+| Changelog configuration       | :white_check_mark: | :x:                | GitLab provides automatic changelog updates through their [API][ft29]. You may modify the template in [`changelog_config.yml`][ft30]. |
 
 ### Open source community features
 
@@ -104,8 +104,8 @@ Cookiecutter will ask you to fill some variables in order to generate the files 
 
 The input variables, with their default values, are as follows:
 
-|       **Parameter**       |      **Default value**      | **Description**                                                                                                                                                       |
-|:-------------------------:|:---------------------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|       **Parameter**       |      **Default value**      | **Description**                                                                                                                                                     |
+|:-------------------------:|:---------------------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `project_name`            | `Python Project`            | A suitable name by which people will refer to, you are free to name it however you wish to. |
 | `repo_name`               | based on `project_name`     | Name of the repository to develop the project on. [Check the availability of possible names][htu1] before creating the project. |
 | `package_name`            | based on `project_name`     | PyPI-compliant Python package name. [Check the availability of possible names][htu1] before creating the project. |
@@ -117,17 +117,17 @@ The input variables, with their default values, are as follows:
 | `email`                   | based on `scm_username`     | Email for `CODE_OF_CONDUCT.md`, `SECURITY.md` files and to specify the ownership of the project in `pyproject.toml`. |
 | `licence`                 | `MIT`                       | One of `MIT`, `BSD-3`, `GNU GPL v3.0`, `GNU AGLP v3.0`, `GNU LGPL v3.0`, `Mozilla Public License 2.0` and `Apache Software License 2.0`, or `Not open source`. |
 | `minimal_python_version`  | `3.8`                       | Minimal Python version. All versions since `3.8` are available to choose. It is used for builds, pipelines and formatters. |
-| `use_formatters`          | `True`                      | :red_triangle_pointed_up: Option to use code formatters [`black`][ft4], [`isort`][ft5] and [`pyupgrade`][ft6] as pre-commit hooks. |
+| `use_formatters`          | `True`                      | :small_red_triangle: Option to use code formatters [`black`][ft4], [`isort`][ft5] and [`pyupgrade`][ft6] as pre-commit hooks. |
 | `line_length`             | 88                          | The max length per line, dismiss if `use_formatters` is not used. NOTE: This value must be between 50 and 300. |
-| `use_linters`             | `True`                      | :red_triangle_pointed_up: Option to use linters [`flake8`][ft8] and [`pydocstyle`][ft9]. Depending on the value of `docstring_style`, will also use [`pydoclint`][ft10]. |
+| `use_linters`             | `True`                      | :small_red_triangle: Option to use linters [`flake8`][ft8] and [`pydocstyle`][ft9]. Depending on the value of `docstring_style`, will also use [`pydoclint`][ft10]. |
 | `docstring_style`         | `numpy`                     | One of `numpy`, `pep257` or `google`, dismiss if `use_linters` is not used. You can choose `other` to disable `pydoclint` and checks on your docstrings. |
-| `create_cli`              | `True`                      | :red_triangle_pointed_up: Option to create a simple CLI application with [`Typer`][htu3] and [`Rich`][htu4] libraries. |
-| `create_docker`           | `True`                      | :red_triangle_pointed_up: Option to create a [Dockerfile][ft22] to build an image for your project. |
-| `create_docs`             | `True`                      | :red_triangle_pointed_up: Option to create documentation files with [`Sphinx`][htu5]. |
+| `create_cli`              | `True`                      | :small_red_triangle: Option to create a simple CLI application with [`Typer`][htu3] and [`Rich`][htu4] libraries. |
+| `create_docker`           | `True`                      | :small_red_triangle: Option to create a [Dockerfile][ft22] to build an image for your project. |
+| `create_docs`             | `True`                      | :small_red_triangle: Option to create documentation files with [`Sphinx`][htu5]. |
 
-> :eight_spoked_asterisk: Input variables marked with :red_triangle_pointed_up: are boolean variables, you can dismiss those by typing either `0`, `false`, `f`, `no`, `n` or `off`.
+> :eight_spoked_asterisk: Input variables marked with :small_red_triangle: are boolean variables, you can dismiss those by typing either `0`, `false`, `f`, `no`, `n` or `off`.
 
-All input values will be saved in the `cookiecutter-config-file.yml` file so that you won't lose them. :winking_face:
+All input values will be saved in the `cookiecutter-config-file.yml` file so that you won't lose them. :wink:
 
 #### Demo
 
@@ -261,7 +261,7 @@ Building a new version of the application contains steps:
 - Bump the version of your package `poetry version <version>`. You can pass the new version explicitly, or a rule such as `major`, `minor`, or `patch`. For more details, refer to the [Semantic Versions][ft28] standard;
 - Make a commit to `GitLab` or `GitHub`, depending on where you are hosting your code;
 - Create a `Release` for your package on the platform;
-- And... publish :slightly_smiling_face: `poetry publish --build`.
+- And... publish :slight_smile: `poetry publish --build`.
 
 ### Makefile usage
 
@@ -472,9 +472,9 @@ make cleanup
 </p>
 </details>
 
-## :bullseye: What's next
+## :dart: What's next
 
-Well, that's up to you :flexed_biceps:.
+Well, that's up to you. :muscle:
 
 For further setting up your project:
 
@@ -527,11 +527,11 @@ For taking development and exposition of your project to the next level:
   - There is a myriad of standardised static badges at [`Simple Badges`][wn14];
   - [`awesome-badges`][wn15] provides a lot of useful resources to help you deal with badges;
 - Add your project to [`OpenSSF Best Practices`][wn16] and [`OSSRank`][wn17] indexes. If you have greater ambitions for your project and/or expects it to scale at some point, it's worth considering adding it to these trackers;
-  - There are already badges for those set up in your `README.md` file, just waiting for you to update their URLs with your project's index in both services :beaming_face_with_smiling_eyes:
+  - There are already badges for those set up in your `README.md` file, just waiting for you to update their URLs with your project's index in both services; :grinning:
 - Setup a code coverage service for your tests, popular options include:
   - [`Coveralls`][wn18] and [`Codecov`][wn19] if you need solely test coverage;
   - [`Code Climate`][wn20] and [`Codacy`][wn21] for fully-featured code analysis;
-- Setup a sponsorship page and allow users and organisations who appreciate your project to help raise for its development (and add a badge in the process! :smiling_face_with_sunglasses:). Popular platforms are:
+- Setup a sponsorship page and allow users and organisations who appreciate your project to help raise for its development (and add a badge in the process! :sunglasses:). Popular platforms are:
   - [`Liberapay`][wn22];
   - [`Open Collective`][wn23];
   - [`Ko-fi`][wn24];
@@ -546,9 +546,9 @@ And here are a few articles which may help you:
 - [GitHub Actions Documentation][wn29];
 - [Makefile tutorial][wn30];
 - [A Comprehensive Look at Testing in Software Development][wn31] is an article that lays out why testing is crucial for development success. Eric's blog is actually a great reference, covering topics ranging from the basics to advanced techniques and best practices;
-- Maybe you would like to add [gitmoji][wn32] to commit names. This is really funny. :grinning_face_with_smiling_eyes:
+- Maybe you would like to add [gitmoji][wn32] to commit names. This is really funny. :grin:
 
-## :chart_increasing: Releases
+## :chart_with_upwards_trend: Releases
 
 You can see the list of available releases on the [GitLab Releases][r1] page.
 
@@ -563,7 +563,7 @@ We use [`GitLab Changelog`][ft29] entries to track changes. You can categorise c
 | `enhancement`, `feature`              | :rocket: Features               |
 | `bug`, `refactoring`, `bugfix`, `fix` | :wrench: Fixes & Refactoring    |
 | `build`, `ci`, `testing`              | :package: Build System & CI/CD  |
-| `breaking`                            | :collision: Breaking Changes    |
+| `breaking`                            | :boom: Breaking Changes         |
 | `documentation`                       | :memo: Documentation            |
 | `dependencies`                        | :arrow_up: Dependencies updates |
 
@@ -593,7 +593,7 @@ This project is licenced under the terms of the `MIT` licence. See [LICENCE][b7]
 
 ## :sports_medal: Acknowledgements
 
-Firstly, there is no way this template would exist without the previous phenomenal work by [Roman Tezikov][ac1] and his fully-featured [`python-package-template`][ft23]. If there is anyone more deserving of a :glowing_star: and acknowledgement, it's him! Please give a shoutout and [support][ac2] if possible.
+Firstly, there is no way this template would exist without the previous phenomenal work by [Roman Tezikov][ac1] and his fully-featured [`python-package-template`][ft23]. If there is anyone more deserving of a :star2: and acknowledgement, it's him! Please give a shoutout and [support][ac2] if possible.
 
 The original template was inspired by several articles that might be helpful if you are starting out managing projects:
 
@@ -610,7 +610,7 @@ And also there are some projects which can be studied as references in project m
 - [Full Stack FastAPI and PostgreSQL - Base Project Generator][ac10];
 - [The importance of layered thinking in data engineering][ac11].
 
-Give them your :star:, these resources are amazing! :winking_face:
+Give them your :star:, these resources are amazing! :wink:
 
 ## :page_with_curl: Citation
 

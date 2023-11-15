@@ -119,11 +119,11 @@ Building a new version of the application contains steps:
 - Bump the version of your package `poetry version <version>`. You can pass the new version explicitly, or a rule such as `major`, `minor`, or `patch`. For more details, refer to the [Semantic Versions][fs4] standard;
 - Make a commit to `{{ cookiecutter.scm_platform }}`;
 - Create a `{{ cookiecutter.scm_platform }} release`;
-- And... publish :slightly_smiling_face: `poetry publish --build`
+- And... publish :slight_smile: `poetry publish --build`
 
-## :bullseye: What's next
+## :dart: What's next
 
-Well, that's up to you :flexed_biceps:.
+Well, that's up to you. :muscle:
 
 For further setting up your project:
 
@@ -182,7 +182,7 @@ For taking development and exposition of your project to the next level:
 - Setup a code coverage service for your tests, popular options include:
   - [`Coveralls`][wn18] and [`Codecov`][wn19] if you need solely test coverage;
   - [`Code Climate`][wn20] and [`Codacy`][wn21] for fully-featured code analysis;
-- Setup a sponsorship page and allow users and organisations who appreciate your project to help raise for its development (and add a badge in the process! :smiling_face_with_sunglasses:). Popular platforms are:
+- Setup a sponsorship page and allow users and organisations who appreciate your project to help raise for its development (and add a badge in the process! :sunglasses:). Popular platforms are:
   - [`Liberapay`][wn22];
   - [`Open Collective`][wn23];
   - [`Ko-fi`][wn24];
@@ -202,7 +202,7 @@ And here are a few articles which may help you:
 {%- endif %}
 - [Makefile tutorial][wn27];
 - [A Comprehensive Look at Testing in Software Development][wn28] is an article that lays out why testing is crucial for development success. Eric's blog is actually a great reference, covering topics ranging from the basics to advanced techniques and best practices;
-- Maybe you would like to add [gitmoji][wn29] to commit names. This is really funny. :grinning_face_with_smiling_eyes:
+- Maybe you would like to add [gitmoji][wn29] to commit names. This is really funny. :grin:
 
 ## :rocket: Features
 
@@ -486,7 +486,7 @@ make cleanup
 </p>
 </details>
 
-## :chart_increasing: Releases
+## :chart_with_upwards_trend: Releases
 
 You can see the list of available releases on the [{{ cookiecutter.scm_platform }} Releases][r1] page.
 
@@ -509,7 +509,7 @@ We use [`Release Drafter`][hub7]. As pull requests are merged, a draft release i
 | `enhancement`, `feature`              | :rocket: Features               |
 | `bug`, `refactoring`, `bugfix`, `fix` | :wrench: Fixes & Refactoring    |
 | `build`, `ci`, `testing`              | :package: Build System & CI/CD  |
-| `breaking`                            | :collision: Breaking Changes    |
+| `breaking`                            | :boom: Breaking Changes         |
 | `documentation`                       | :memo: Documentation            |
 | `dependencies`                        | :arrow_up: Dependencies updates |
 
