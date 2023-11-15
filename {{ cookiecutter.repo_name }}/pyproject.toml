@@ -25,7 +25,7 @@ license = "{{ cookiecutter.licence }}"
 repository = "{{ cookiecutter.__scm_base_url }}"
 homepage = "{{ cookiecutter.__scm_base_url }}"
 packages = [
-  {% raw %}{{% endraw %}include = "{{ cookiecutter.repo_name }}"{% raw %}}{% endraw %}
+  {% raw %}{{% endraw %}include = "{{ cookiecutter.package_name }}"{% raw %}}{% endraw %}
 ]
 
 
