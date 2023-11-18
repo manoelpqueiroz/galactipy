@@ -25,10 +25,6 @@ default:
   - make test
   - make check-safety
 
-workflow:
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-
 test-py38:
   stage: test
   image: python:3.8
@@ -64,6 +60,8 @@ test-py311:
 
 coveralls-report:
   stage: coverage
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   script:
     - curl -L https://coveralls.io/coveralls-linux.tar.gz | tar -xz -C /usr/local/bin
     - coveralls -f coverage.xml -r $COVERALLS_TOKEN
