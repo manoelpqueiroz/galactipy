@@ -7,7 +7,7 @@ from random import choice
 import typer
 from rich.console import Console
 
-from {{ cookiecutter.package_name }} import version
+from {{ cookiecutter.package_name }} import __version__
 from {{ cookiecutter.package_name }}.example import hello
 
 
@@ -31,7 +31,7 @@ console = Console()
 def version_callback(print_version: bool) -> None:
     """Print the version of the package."""
     if print_version:
-        console.print(f"[yellow]{{ cookiecutter.project_name }}[/] version: [bold blue]{version}[/]")
+        console.print(f"[yellow]{{ cookiecutter.project_name }}[/] version: [bold blue]{__version__}[/]")
         raise typer.Exit()
 
 
