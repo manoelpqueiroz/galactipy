@@ -160,7 +160,7 @@ def remove_unused_files(
         rmdir(path)
 
 
-def print_futher_instuctions(
+def print_further_instructions(
     project_name: str, project_repo: str, scm_platform: str, scm_base_url: str
 ) -> None:
     """Show user what to do next after project creation.
@@ -227,7 +227,7 @@ def main() -> None:
         remove_docs=REMOVE_DOCS,
     )
 
-    print_futher_instuctions(
+    print_further_instructions(
         project_name=PROJECT_NAME,
         project_repo=PROJECT_REPO,
         scm_platform=SCM_PLATFORM,

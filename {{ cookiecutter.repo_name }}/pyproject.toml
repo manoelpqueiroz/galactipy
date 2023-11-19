@@ -25,7 +25,7 @@ license = "{{ cookiecutter.licence }}"
 repository = "{{ cookiecutter.__scm_base_url }}"
 homepage = "{{ cookiecutter.__scm_base_url }}"
 packages = [
-  {% raw %}{{% endraw %}include = "{{ cookiecutter.repo_name }}"{% raw %}}{% endraw %}
+  {% raw %}{{% endraw %}include = "{{ cookiecutter.package_name }}"{% raw %}}{% endraw %}
 ]
 
 
@@ -82,8 +82,15 @@ pydoclint = "^0.3.0"
 pytest = "^7.2.1"
 pytest-html = "^3.2.0"
 pytest-cov = "^4.1.0"
+pytest-mock = "^3.10.0"
+pytest-timeout = "^2.2.0"
+pytest-benchmark = "^4.0.0"
+pytest-sugar = "^0.9.7"
+{%- if cookiecutter.create_cli %}
+pytest-click = "^1.1.0"
+{%- endif %}
+pytest-pikachu = "^1.0.0"
 coverage = "^7.3.0"
-coverage-badge = "^1.1.0"
 
 {%+ if cookiecutter.use_formatters %}
 [tool.black]
@@ -197,6 +204,7 @@ norecursedirs =[
   "__pycache__"
 ]
 doctest_optionflags = ["NUMBER", "NORMALIZE_WHITESPACE", "IGNORE_EXCEPTION_DETAIL"]
+timeout = 10
 
 # Extra options:
 addopts = [
@@ -204,21 +212,23 @@ addopts = [
   "--tb=short",
   "--doctest-modules",
   "--doctest-continue-on-failure",
+  "--pikachu"
 ]
 
 
 [tool.coverage.run]
 source = ["tests"]
-
-
-[coverage.paths]
-source = "{{ cookiecutter.package_name }}"
-
-
-[coverage.run]
 branch = true
 
 
-[coverage.report]
+[tool.coverage.report]
+exclude_also = [
+  "def main",
+  "if __name__ == .__main__.:"
+]
 fail_under = 50
 show_missing = true
+
+
+[tool.coverage.paths]
+source = ["{{ cookiecutter.package_name }}"]
