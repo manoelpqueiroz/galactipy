@@ -7,17 +7,18 @@ from random import choice
 import typer
 from rich.console import Console
 
-from {{ cookiecutter.package_name }} import version
+from {{ cookiecutter.package_name }} import __version__
 from {{ cookiecutter.package_name }}.example import hello
 
 
-class Color(str, Enum):
-    white = "white"
-    red = "red"
-    cyan = "cyan"
-    magenta = "magenta"
-    yellow = "yellow"
-    green = "green"
+class Color(Enum):
+    BLACK = "black"
+    WHITE = "white"
+    RED = "red"
+    CYAN = "cyan"
+    MAGENTA = "magenta"
+    YELLOW = "yellow"
+    GREEN = "green"
 
 
 app = typer.Typer(
@@ -29,9 +30,11 @@ console = Console()
 
 
 def version_callback(print_version: bool) -> None:
-    """Print the version of the package."""
+    """Print the version of the package.
+
+    """
     if print_version:
-        console.print(f"[yellow]{{ cookiecutter.project_name }}[/] version: [bold blue]{version}[/]")
+        console.print(f"[yellow]{{ cookiecutter.project_name }}[/] version: [bold blue]{__version__}[/]")
         raise typer.Exit()
 
 
@@ -55,12 +58,14 @@ def main(
         help="Prints the version of the {{ cookiecutter.project_name }} package.",
     ),
 ) -> None:
-    """Print a greeting with a giving name."""
+    """Print a greeting with a giving name.
+
+    """
     if color is None:
         color = choice(list(Color))
 
-    greeting: str = hello(name)
-    console.print(f"[bold {color}]{greeting}[/]")
+    greeting = hello(name)
+    console.print(f"[bold {color.value}]{greeting}[/]")
 
 
 if __name__ == "__main__":
