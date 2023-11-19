@@ -15,7 +15,7 @@ def something(duration=0.000001):
     """
     time.sleep(duration)
 
-    return "Hello Aaron"
+    return "Hello Aaron!"
 
 
 @pytest.mark.parametrize(
