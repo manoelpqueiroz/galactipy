@@ -3,6 +3,8 @@
 
 from importlib import metadata, PackageNotFoundError
 
+from {{ cookiecutter.package_name }} import hello
+
 
 def _get_version() -> str:
     try:
@@ -12,3 +14,5 @@ def _get_version() -> str:
 
 
 __version__ = _get_version()
+
+__all__ = ['hello']
