@@ -1,7 +1,7 @@
 # type: ignore[attr-defined]
 """{{ cookiecutter.project_description }}"""
 
-from importlib import metadata, PackageNotFoundError
+from importlib import metadata
 
 from {{ cookiecutter.package_name }} import hello
 
