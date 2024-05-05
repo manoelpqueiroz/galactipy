@@ -25,7 +25,8 @@
     "3.8",
     "3.9",
     "3.10",
-    "3.11"
+    "3.11",
+    "3.12"
   ],
   "use_formatters": true,
   "line_length": 88,
@@ -70,7 +71,8 @@
     [3, 8],
     [3, 9],
     [3, 10],
-    [3, 11]
+    [3, 11],
+    [3, 12]
   ],
   "__mpvr": "{{ cookiecutter.minimal_python_version.replace('.', '') }}",
   "__scm_platform_lc": "{{ cookiecutter.scm_platform.lower() }}",
