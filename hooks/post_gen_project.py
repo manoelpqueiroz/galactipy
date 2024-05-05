@@ -23,10 +23,11 @@ SCM_USERNAME = "{{ cookiecutter.scm_username }}"
 SCM_BASE_URL = "{{ cookiecutter.__scm_base_url }}"
 
 # Boolean variables for additional project structures
-# Values wrapped inside strings to avoid raising errors when testing
-CREATE_CLI = "{{ cookiecutter.create_cli }}"
-CREATE_DOCKER = "{{ cookiecutter.create_docker }}"
-CREATE_DOCS = "{{ cookiecutter.create_docs }}"
+# Values wrapped inside strings and evaluated against the "True" string to avoid raising
+# errors when testing
+CREATE_CLI = "{{ cookiecutter.create_cli }}" == "True"
+CREATE_DOCKER = "{{ cookiecutter.create_docker }}" == "True"
+CREATE_DOCS = "{{ cookiecutter.create_docs }}" == "True"
 
 licences_dict = {
     "MIT": "mit",
