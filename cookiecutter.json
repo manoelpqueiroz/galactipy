@@ -47,9 +47,7 @@
     "project_description": "Short description of the project",
     "version": "Project version",
     "author": "Author or Organisation",
-    "scm_platform": {
-      "__prompt__": "In which platform would you like to host your code?"
-    },
+    "scm_platform": "In which platform would you like to host your code?",
     "scm_username": "Platform username",
     "email": "e-Mail",
     "licence": {
@@ -63,7 +61,7 @@
     "line_length": "Maximum line length",
     "use_linters": "Use flake8 and pydocstyle for linting?",
     "docstring_style": "Which docstring style would you like to use? \"numpy\" and \"google\" styles will add pydoclint as a dependency.",
-    "create_example_template": "Which example template would you like to create?",
+    "create_cli": "Would you like to create your project with CLI implementation?",
     "create_docker": "Containerize your application with Docker?",
     "create_docs": "Create project documentation with Sphinx?"
   },

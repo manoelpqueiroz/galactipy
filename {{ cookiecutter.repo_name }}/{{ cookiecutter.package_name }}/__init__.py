@@ -1,7 +1,9 @@
 # type: ignore[attr-defined]
 """{{ cookiecutter.project_description }}"""
 
-from importlib import metadata, PackageNotFoundError
+from importlib import metadata
+
+from {{ cookiecutter.package_name }} import hello
 
 
 def _get_version() -> str:
@@ -12,3 +14,5 @@ def _get_version() -> str:
 
 
 __version__ = _get_version()
+
+__all__ = ['hello']

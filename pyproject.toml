@@ -6,7 +6,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "galactipy"
-version = "0.2.1"
+version = "0.2.2"
 description = "Cookiecutter template for Python packages"
 readme = "README.md"
 authors = ["Manoel Pereira de Queiroz <mpq.dev@pm.me>"]
@@ -26,6 +26,7 @@ keywords = [
   "python-packages",
   "semantic-versions"
 ]
+package-mode = false
 
 # Pypi classifiers: https://pypi.org/classifiers/
 classifiers = ["Private :: Do Not Upload"]
@@ -43,7 +44,7 @@ pre-commit = "^2.21.0"
 bandit = "^1.7.5"
 safety = "^2.3.4"
 
-black = "^22.8.0"
+black = "^24.4.2"
 isort = {extras = ["colors"], version = "^5.11.0"}
 pyupgrade = "^3.0.0"
 
