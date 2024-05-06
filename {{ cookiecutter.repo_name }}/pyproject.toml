@@ -21,7 +21,11 @@ version = "{{ cookiecutter.version }}"
 description = "{{ cookiecutter.project_description }}"
 readme = "README.md"
 authors = ["{{ cookiecutter.author }} <{{ cookiecutter.email }}>"]
+{%- if cookiecutter.licence == 'nos' %}
+license = "Proprietary"
+{%- else %}
 license = "{{ cookiecutter.licence }}"
+{%- endif %}
 repository = "{{ cookiecutter.__scm_base_url }}"
 homepage = "{{ cookiecutter.__scm_base_url }}"
 packages = [
