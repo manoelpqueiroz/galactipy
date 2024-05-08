@@ -48,6 +48,7 @@ black = "^24.4.2"
 isort = {extras = ["colors"], version = "^5.11.0"}
 pyupgrade = "^3.0.0"
 
+ruff = "^0.4.3"
 flake8 = "^5.0.4"
 pydocstyle = {extras = ["toml"], version = "^6.2.0"}
 pydoclint = "^0.3.0"
@@ -82,6 +83,21 @@ exclude = '''
   | venv
 )/
 '''
+
+
+[tool.ruff]
+# https://github.com/astral-sh/ruff
+# https://docs.astral.sh/ruff/settings
+extend-exclude = ["[{][{] cookiecutter.repo_name [}][}]"] # https://github.com/astral-sh/ruff/issues/9585
+output-format = "grouped"
+show-fixes = true
+target-version = "py38"
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint.pycodestyle]
+max-doc-length = 79
 
 
 [tool.isort]
