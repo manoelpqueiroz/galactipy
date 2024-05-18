@@ -95,9 +95,47 @@ target-version = "py38"
 
 [tool.ruff.format]
 docstring-code-format = true
+docstring-code-line-length = 79
+skip-magic-trailing-comma = true
+
+[tool.ruff.lint.flake8-annotations]
+ignore-fully-untyped = true
+suppress-dummy-args = true
+
+[tool.ruff.lint.flake8-pytest-style]
+fixture-parentheses = false
+mark-parentheses = false
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
 
 [tool.ruff.lint.pycodestyle]
+max-line-length = 88
 max-doc-length = 79
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.lint.flake8-copyright]
+author = "Manoel Pereira de Queiroz"
+notice-rgx = "Copyright (C) 2023, 2024"
+
+[tool.ruff.lint.pylint]
+max-bool-expr = 3
+
+[tool.ruff.lint.isort]
+split-on-trailing-comma = false
+sections.typing = ["typing", "types", "typing_extensions", "mypy", "mypy_extensions"]
+sections.testing = ["pytest"]
+section-order = [
+  "future",
+  "typing",
+  "standard-library",
+  "third-party",
+  "first-party",
+  "local-folder",
+  "testing"
+]
 
 
 [tool.isort]
