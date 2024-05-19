@@ -1,7 +1,9 @@
+from typing import List
+
 from pathlib import Path
 
 
-def bulk_file_creation(root_directory: Path, *args, **kwargs) -> list:
+def bulk_file_creation(root_directory: Path, *args: str, **kwargs: List[str]) -> list:
     """Create a set of files and directories based on a root directory.
 
     Parameters
@@ -27,7 +29,7 @@ def bulk_file_creation(root_directory: Path, *args, **kwargs) -> list:
     """
     list_of_paths = []
 
-    def create_folder_with_items(folder: Path, *items) -> list:
+    def create_folder_with_items(folder: Path, *items: str) -> list:
         folder_paths = []
 
         folder.mkdir(exist_ok=True)
