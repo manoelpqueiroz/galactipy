@@ -132,5 +132,6 @@ def test_print_further_instructions(capsys, galactipy_instructions):
     )
     captured = capsys.readouterr()
 
-    # STDOUT always finishes with a newline, hence the addition on the right side
+    # STDOUT always finishes with a newline, hence the addition on the right
+    # side
     assert captured.out == galactipy_instructions + "\n"

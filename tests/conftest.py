@@ -31,8 +31,9 @@ def template_tree(tmp_path):
     template_root = tmp_path / "_templates"
     template_root.mkdir()
 
-    # Python functions do not accept a leading . for keywords, so the folder structure
-    # has to be created first manually, then detailed with `bulk_file_creation`
+    # Python functions do not accept a leading . for keywords, so the folder
+    # structure has to be created first manually, then detailed with
+    # `bulk_file_creation`
     github_dir = template_root / ".github"
     gitlab_dir = template_root / ".gitlab"
 
