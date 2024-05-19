@@ -62,7 +62,7 @@ def main(
 
     """
     if color is None:
-        color = choice(list(Color))
+        color = choice(list(Color)) # noqa: S311
 
     greeting = hello(name)
     console.print(f"[bold {color.value}]{greeting}[/]")
