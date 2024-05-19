@@ -99,7 +99,33 @@ docstring-code-line-length = 79
 skip-magic-trailing-comma = true
 
 [tool.ruff.lint]
-select = ["F", "E", "W", "I", "N", "D", "S", "UP", "C90", "ANN"]
+select = [
+  "F",
+  "E",
+  "W",
+  "I",
+  "N",
+  "D",
+  "S",
+  "UP",
+  "C90",
+  "EM",
+  "C4",
+  "ANN",
+  "ICN",
+  "RET",
+  "ISC",
+  "SIM",
+  "TID",
+  "PTH",
+  "BLE",
+  "ERA",
+  "TRY",
+  "FLY",
+  "YTT",
+  "CPY",
+  "RUF"
+]
 ignore = ["D200"]
 
 [tool.ruff.lint.per-file-ignores]
