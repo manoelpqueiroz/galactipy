@@ -40,12 +40,12 @@ def bulk_file_creation(root_directory: Path, *args: str, **kwargs: List[str]) ->
             try:
                 file_path = folder / file
 
-            except TypeError:
+            except TypeError as e:
                 msg = (
                     f"Object {file} with type '{type(file).__name__}' is not supported "
                     "for path creation."
                 )
-                raise TypeError(msg)
+                raise TypeError(msg) from e
 
             else:
                 file_path.touch()
@@ -62,12 +62,12 @@ def bulk_file_creation(root_directory: Path, *args: str, **kwargs: List[str]) ->
         try:
             _ = (e for e in files)  # Duck typing way to check if `files` is an iterable
 
-        except TypeError:
+        except TypeError as e:
             msg = (
                 f"Object {files} is not an iterable, so it can not be specified as a "
                 f"file for {subdirectory}."
             )
-            raise TypeError(msg)
+            raise TypeError(msg) from e
 
         else:
             sub_folder = root_directory / subdirectory
