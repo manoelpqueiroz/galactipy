@@ -1,5 +1,3 @@
-import pytest
-
 from hooks.pre_gen_project import (
     RESERVED_PROJECTS,
     RESERVED_USERNAMES,
@@ -8,6 +6,8 @@ from hooks.pre_gen_project import (
     validate_semver,
     validate_username,
 )
+
+import pytest
 
 
 @pytest.mark.parametrize(

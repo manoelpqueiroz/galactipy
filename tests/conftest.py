@@ -1,7 +1,6 @@
 import textwrap
 
 import pytest
-
 from tests.test_helpers import bulk_file_creation
 
 

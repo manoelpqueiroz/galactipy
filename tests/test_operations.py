@@ -1,5 +1,3 @@
-import pytest
-
 from hooks.post_gen_project import (
     generate_licence,
     generate_templates,
@@ -7,6 +5,8 @@ from hooks.post_gen_project import (
     print_further_instructions,
     remove_unused_files,
 )
+
+import pytest
 
 LICENCES_TO_CHECK = list(licences_dict.values())
 LICENCES_TO_CHECK.remove(None)
