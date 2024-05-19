@@ -1,4 +1,4 @@
-"""This module is called after the project is created."""
+"""Module to be called after the project is created."""
 
 from typing import List
 
@@ -209,7 +209,7 @@ def print_further_instructions(
     print(textwrap.dedent(message))
 
 
-def main() -> None:
+def main() -> None: # noqa: D103
     remove_gitlab = SCM_PLATFORM_LC != "gitlab"
     remove_cli = not CREATE_CLI
     remove_docker = not CREATE_DOCKER

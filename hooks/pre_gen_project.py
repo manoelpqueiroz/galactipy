@@ -1,4 +1,4 @@
-"""This module is called before the project is created."""
+"""Module to be called by Cookiecutter before the project is created."""
 
 from typing import List
 
@@ -252,7 +252,7 @@ def validate_line_length(line_length: int) -> None:
         raise ValueError(message)
 
 
-def main() -> None:
+def main() -> None: # noqa: D103
     try:
         validate_repo_name(repo_name=REPO_NAME, reserved_projects=RESERVED_PROJECTS)
 
