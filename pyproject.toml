@@ -98,6 +98,9 @@ docstring-code-format = true
 docstring-code-line-length = 79
 skip-magic-trailing-comma = true
 
+[tool.ruff.lint]
+select = ["F"]
+
 [tool.ruff.lint.flake8-annotations]
 ignore-fully-untyped = true
 suppress-dummy-args = true

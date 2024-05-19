@@ -7,7 +7,6 @@ from hooks.post_gen_project import (
     print_further_instructions,
     remove_unused_files,
 )
-from tests.test_helpers import bulk_file_creation
 
 LICENCES_TO_CHECK = list(licences_dict.values())
 LICENCES_TO_CHECK.remove(None)

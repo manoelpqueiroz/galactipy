@@ -84,7 +84,7 @@ def removal_tree(tmp_path):
 
 @pytest.fixture
 def galactipy_instructions():
-    message = f"""
+    message = """
     Your project Galactipy is created.
 
     1) Now you can start working on it:
