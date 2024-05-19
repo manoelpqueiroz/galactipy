@@ -13,6 +13,12 @@ PROJECT_VERSION = "{{ cookiecutter.version }}"
 LINE_LENGTH_PARAMETER = "{{ cookiecutter.line_length }}"
 
 
+MIN_USERNAME_LENGTH = 2
+MAX_USERNAME_LENGTH = 255
+MIN_LINE_LENGTH = 50
+MAX_LINE_LENGTH = 300
+
+
 PROJECT_REGEX = re.compile(
     r"""
         ^
@@ -202,7 +208,7 @@ def validate_username(username: str, reserved_names: List[str]) -> None:
     ValueError
         If `username` is not a valid GitLab or GitHub username.
     """
-    if not (2 <= len(username) <= 255):
+    if not (MIN_USERNAME_LENGTH <= len(username) <= MAX_USERNAME_LENGTH):
         message = (
             f"ERROR: scm_username must be between 2 and 255. Got `{len(username)}`."
         )
@@ -247,7 +253,7 @@ def validate_line_length(line_length: int) -> None:
     ValueError
         If line_length isn't between 50 and 300.
     """
-    if not (50 <= line_length <= 300):
+    if not (MIN_LINE_LENGTH <= line_length <= MAX_LINE_LENGTH):
         message = f"ERROR: line_length must be between 50 and 300. Got `{line_length}`."
         raise ValueError(message)
 

@@ -111,6 +111,7 @@ select = [
   "UP",
   "C90",
   "EM",
+  "PL",
   "C4",
   "ANN",
   "ICN",
@@ -157,6 +158,7 @@ notice-rgx = "Copyright (C) 2023, 2024"
 
 [tool.ruff.lint.pylint]
 max-bool-expr = 3
+max-args = 6
 
 [tool.ruff.lint.isort]
 split-on-trailing-comma = false
