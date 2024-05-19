@@ -44,7 +44,7 @@ def version_callback(print_version: bool) -> None:
     """
     if print_version:
         console.print(f"[yellow]{{ cookiecutter.project_name }}[/] version: [bold blue]{__version__}[/]")
-        raise typer.Exit()
+        raise typer.Exit
 
 
 @app.command(name="")

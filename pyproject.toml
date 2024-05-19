@@ -116,6 +116,7 @@ select = [
   "ICN",
   "RET",
   "ISC",
+  "RSE",
   "SIM",
   "TID",
   "PTH",
