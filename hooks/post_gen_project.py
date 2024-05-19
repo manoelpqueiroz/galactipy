@@ -210,10 +210,10 @@ def print_further_instructions(
 
 
 def main() -> None:
-    REMOVE_GITLAB = SCM_PLATFORM_LC != "gitlab"
-    REMOVE_CLI = not CREATE_CLI
-    REMOVE_DOCKER = not CREATE_DOCKER
-    REMOVE_DOCS = not CREATE_DOCS
+    remove_gitlab = SCM_PLATFORM_LC != "gitlab"
+    remove_cli = not CREATE_CLI
+    remove_docker = not CREATE_DOCKER
+    remove_docs = not CREATE_DOCS
 
     generate_licence(directory=PROJECT_DIRECTORY, licence=licences_dict[LICENCE])
 
@@ -222,10 +222,10 @@ def main() -> None:
     remove_unused_files(
         directory=PROJECT_DIRECTORY,
         package_name=PROJECT_PACKAGE,
-        remove_cli=REMOVE_CLI,
-        remove_gitlab=REMOVE_GITLAB,
-        remove_docker=REMOVE_DOCKER,
-        remove_docs=REMOVE_DOCS,
+        remove_cli=remove_cli,
+        remove_gitlab=remove_gitlab,
+        remove_docker=remove_docker,
+        remove_docs=remove_docs,
     )
 
     print_further_instructions(
