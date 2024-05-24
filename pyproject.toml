@@ -113,6 +113,7 @@ select = [
   "EM",
   "PL",
   "C4",
+  "PT",
   "ANN",
   "ICN",
   "RET",
@@ -130,7 +131,7 @@ select = [
   "CPY",
   "RUF"
 ]
-ignore = ["D200"]
+ignore = ["D200", "PT011"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**.py" = ["D100", "D101", "D102", "D103", "D104", "S101"]
