@@ -309,7 +309,7 @@ make pre-commit-install
 <summary>3. Codestyle</summary>
 <p>
 
-Automatic formatting uses `pyupgrade`, `isort` and `black`, and can be run with
+Automatic formatting uses `ruff`, and can be run with
 
 ```bash
 make codestyle
@@ -318,10 +318,10 @@ make codestyle
 make formatting
 ```
 
-For codestyle checks only, without rewriting files:
+For formatting checks only, without rewriting files:
 
 ```bash
-make check-codestyle
+make check-formatting
 ```
 
 Update all dev libraries to the latest version using one command
@@ -364,7 +364,7 @@ make mypy
 </details>
 
 <details>
-<summary>6. Tests with coverage badges</summary>
+<summary>6. Tests</summary>
 <p>
 
 Run `pytest` with all essential parameters predefined with
@@ -380,10 +380,10 @@ make test
 <summary>7. Linters</summary>
 <p>
 
-Run code and docstring linters with `flake8`, `pydocstyle` and, if you choose `numpy` or `google` style, `pydoclint`.
+Run code and docstring linters with `ruff`.
 
 ```bash
-make lint
+make check-linter
 ```
 
 </p>
@@ -402,7 +402,7 @@ make lint-all
 the same as:
 
 ```bash
-make test && make check-codestyle && make lint && make mypy && make check-safety
+make test && make check-linter && make check-formatting && make mypy && make check-safety
 ```
 
 </p>

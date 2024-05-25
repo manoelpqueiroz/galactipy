@@ -312,12 +312,12 @@ make pre-commit-install
 </p>
 </details>
 
-{%- if cookiecutter.use_formatters %}
+{%- if cookiecutter.use_ruff %}
 <details>
 <summary>3. Codestyle</summary>
 <p>
 
-Automatic formatting uses `pyupgrade`, `isort` and `black`, and can be run with
+Automatic formatting uses `ruff`, and can be run with
 
 ```bash
 make codestyle
@@ -326,10 +326,10 @@ make codestyle
 make formatting
 ```
 
-For codestyle checks only, without rewriting files:
+For formatting checks only, without rewriting files:
 
 ```bash
-make check-codestyle
+make check-formatting
 ```
 
 Update all dev libraries to the latest version using one command
@@ -343,7 +343,7 @@ make update-dev-deps
 {%- endif %}
 
 <details>
-<summary>{% if cookiecutter.use_formatters %}4{% else %}3{% endif %}. Code security</summary>
+<summary>{% if cookiecutter.use_ruff %}4{% else %}3{% endif %}. Code security</summary>
 <p>
 
 ```bash
@@ -360,7 +360,7 @@ make check-safety
 </details>
 
 <details>
-<summary>{% if cookiecutter.use_formatters %}5{% else %}4{% endif %}. Type checks</summary>
+<summary>{% if cookiecutter.use_ruff %}5{% else %}4{% endif %}. Type checks</summary>
 <p>
 
 Run `mypy` static type checker with
@@ -373,7 +373,7 @@ make mypy
 </details>
 
 <details>
-<summary>{% if cookiecutter.use_formatters %}6{% else %}5{% endif %}. Tests with coverage badges</summary>
+<summary>{% if cookiecutter.use_ruff %}6{% else %}5{% endif %}. Tests</summary>
 <p>
 
 Run `pytest` with all essential parameters predefined with
@@ -385,15 +385,15 @@ make test
 </p>
 </details>
 
-{%- if cookiecutter.use_linters %}
+{%- if cookiecutter.use_ruff %}
 <details>
-<summary>{% if cookiecutter.use_formatters %}7{% else %}6{% endif %}. Linters</summary>
+<summary>7. Linters</summary>
 <p>
 
-Run code and docstring linters with `flake8`{% if cookiecutter.docstring_style not in ['pep257', 'dismiss'] %}, `pydocstyle` and `pydoclint`{% elif cookiecutter.docstring_style != 'dismiss' %} and `pydocstyle`{% endif %}.
+Run code and docstring linters with `ruff`.
 
 ```bash
-make lint
+make check-linter
 ```
 
 </p>
@@ -401,7 +401,7 @@ make lint
 {%- endif %}
 
 <details>
-<summary>{% if cookiecutter.use_formatters and cookiecutter.use_linters %}8{% elif cookiecutter.use_formatters or cookiecutter.use_linters %}7{% else %}6{% endif %}. All linters</summary>
+<summary>{% if cookiecutter.use_ruff %}8{% else %}6{% endif %}. All linters</summary>
 <p>
 
 Of course there is a command to ~~rule~~ run all linters in one:
@@ -413,7 +413,7 @@ make lint-all
 the same as:
 
 ```bash
-make test && make check-codestyle && {% if cookiecutter.use_linters %}make lint && {% endif %}make mypy && make check-safety
+make test && {% if cookiecutter.use_ruff %}make check-linter && make check-formatting && {% endif %}make mypy && make check-safety
 ```
 
 </p>
@@ -421,7 +421,7 @@ make test && make check-codestyle && {% if cookiecutter.use_linters %}make lint 
 
 {%- if cookiecutter.create_docker %}
 <details>
-<summary>{% if cookiecutter.use_formatters and cookiecutter.use_linters %}9{% elif cookiecutter.use_formatters or cookiecutter.use_linters %}8{% else %}7{% endif %}. Docker</summary>
+<summary>{% if cookiecutter.use_ruff %}9{% else %}7{% endif %}. Docker</summary>
 <p>
 
 ```bash
@@ -447,7 +447,7 @@ More information [about docker][docker3].
 {%- endif %}
 
 <details>
-<summary>{% if cookiecutter.use_formatters and cookiecutter.use_linters %}10{% elif cookiecutter.use_formatters or cookiecutter.use_linters %}9{% else %}8{% endif %}. Cleanup</summary>
+<summary>{% if cookiecutter.use_ruff and cookiecutter.create_docker %}10{% elif cookiecutter.use_ruff and not cookiecutter.create_docker %}9{% elif not cookiecutter.use_ruff and cookiecutter.create_docker %}8{% else %}7{% endif %}. Cleanup</summary>
 <p>
 
 Delete pycache files
