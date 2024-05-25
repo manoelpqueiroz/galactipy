@@ -13,9 +13,8 @@ default_context:
   email: "{{ cookiecutter.email }}"
   licence: "{{ cookiecutter.licence }}"
   minimal_python_version: {{ cookiecutter.minimal_python_version }}
-  use_formatters: {{ cookiecutter.use_formatters }}
+  use_ruff: {{ cookiecutter.use_ruff }}
   line_length: {{ cookiecutter.line_length }}
-  use_linters: {{ cookiecutter.use_linters }}
   docstring_style: "{{ cookiecutter.docstring_style }}"
   create_cli: {{ cookiecutter.create_cli }}
   create_docker: {{ cookiecutter.create_docker }}

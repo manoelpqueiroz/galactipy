@@ -3,11 +3,11 @@ SHELL := /usr/bin/env bash
 PYTHON := python
 PYTHONPATH := `pwd`
 
-{% if not cookiecutter.create_docker %}
+{%- if not cookiecutter.create_docker %}
 #* Docker variables
 IMAGE := {{ cookiecutter.package_name }}
 VERSION := latest
-{% endif %}
+{%- endif %}
 
 #* Poetry
 .PHONY: poetry-download

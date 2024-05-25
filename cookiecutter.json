@@ -28,9 +28,8 @@
     "3.11",
     "3.12"
   ],
-  "use_formatters": true,
+  "use_ruff": true,
   "line_length": 88,
-  "use_linters": true,
   "docstring_style": [
     "numpy",
     "google",
@@ -58,10 +57,9 @@
       "nos": "Not open source"
     },
     "minimal_python_version": "Minimal Python version",
-    "use_formatters": "Use Black, isort and pyupgrade for formatting?",
+    "use_ruff": "Use Ruff for linting and formatting?",
     "line_length": "Maximum line length",
-    "use_linters": "Use flake8 and pydocstyle for linting?",
-    "docstring_style": "Which docstring style would you like to use? \"numpy\" and \"google\" styles will add pydoclint as a dependency.",
+    "docstring_style": "Which docstring style would you like to use?",
     "create_cli": "Would you like to create your project with CLI implementation?",
     "create_docker": "Containerize your application with Docker?",
     "create_docs": "Create project documentation with Sphinx?"
