@@ -12,7 +12,7 @@ from {{ cookiecutter.package_name }}.example import hello
 def something(duration=0.000001):
     """Generic function to showcase benchmarking.
 
-    """
+    """ # noqa: D401
     time.sleep(duration)
 
     return "Hello Aaron!"

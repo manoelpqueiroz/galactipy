@@ -1,7 +1,6 @@
 import textwrap
 
 import pytest
-
 from tests.test_helpers import bulk_file_creation
 
 
@@ -31,8 +30,9 @@ def template_tree(tmp_path):
     template_root = tmp_path / "_templates"
     template_root.mkdir()
 
-    # Python functions do not accept a leading . for keywords, so the folder structure
-    # has to be created first manually, then detailed with `bulk_file_creation`
+    # Python functions do not accept a leading . for keywords, so the folder
+    # structure has to be created first manually, then detailed with
+    # `bulk_file_creation`
     github_dir = template_root / ".github"
     gitlab_dir = template_root / ".gitlab"
 
@@ -84,7 +84,7 @@ def removal_tree(tmp_path):
 
 @pytest.fixture
 def galactipy_instructions():
-    message = f"""
+    message = """
     Your project Galactipy is created.
 
     1) Now you can start working on it:

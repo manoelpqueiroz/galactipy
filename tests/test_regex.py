@@ -1,6 +1,6 @@
-import pytest
-
 from hooks.pre_gen_project import (
+    MAX_USERNAME_LENGTH,
+    MIN_USERNAME_LENGTH,
     RESERVED_PROJECTS,
     RESERVED_USERNAMES,
     validate_package_name,
@@ -8,6 +8,8 @@ from hooks.pre_gen_project import (
     validate_semver,
     validate_username,
 )
+
+import pytest
 
 
 @pytest.mark.parametrize(
@@ -253,7 +255,7 @@ def test_username_length():
     for n in range(260):
         username = string * n
 
-        if 2 <= n <= 255:
+        if MIN_USERNAME_LENGTH <= n <= MAX_USERNAME_LENGTH:
             assert validate_username(username, RESERVED_USERNAMES) is None
         else:
             with pytest.raises(ValueError):

@@ -26,6 +26,15 @@ app = typer.Typer(
     help="{{ cookiecutter.project_description }}",
     add_completion=False,
 )
+color_option = typer.Option(
+    None,
+    "-c",
+    "--color",
+    "--colour",
+    case_sensitive=False,
+    help="Color for print. If not specified then choice will be random.",
+)
+
 console = Console()
 
 
@@ -35,20 +44,13 @@ def version_callback(print_version: bool) -> None:
     """
     if print_version:
         console.print(f"[yellow]{{ cookiecutter.project_name }}[/] version: [bold blue]{__version__}[/]")
-        raise typer.Exit()
+        raise typer.Exit
 
 
 @app.command(name="")
 def main(
     name: str = typer.Option(..., help="Person to greet."),
-    color: Optional[Color] = typer.Option(
-        None,
-        "-c",
-        "--color",
-        "--colour",
-        case_sensitive=False,
-        help="Color for print. If not specified then choice will be random.",
-    ),
+    color: Optional[Color] = colour_option,
     print_version: bool = typer.Option(
         None,
         "-v",
@@ -62,7 +64,7 @@ def main(
 
     """
     if color is None:
-        color = choice(list(Color))
+        color = choice(list(Color)) # noqa: S311
 
     greeting = hello(name)
     console.print(f"[bold {color.value}]{greeting}[/]")

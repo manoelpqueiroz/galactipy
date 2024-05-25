@@ -11,27 +11,9 @@ repos:
 
   - repo: local
     hooks:
-      - id: pyupgrade
-        name: pyupgrade
-        entry: poetry run pyupgrade --py37-plus
-        exclude: ^{{ cookiecutter.repo_name }}/
-        types: [python]
-        language: system
-
-  - repo: local
-    hooks:
-      - id: isort
-        name: isort
-        entry: poetry run isort --settings-path pyproject.toml
-        exclude: ^{{ cookiecutter.repo_name }}/
-        types: [python]
-        language: system
-
-  - repo: local
-    hooks:
-      - id: black
-        name: black
-        entry: poetry run black --config pyproject.toml
+      - id: ruff
+        name: ruff-linter
+        entry: poetry run ruff check
         exclude: ^{{ cookiecutter.repo_name }}/
         types: [python]
         language: system
