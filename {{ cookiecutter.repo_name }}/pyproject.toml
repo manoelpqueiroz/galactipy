@@ -122,6 +122,7 @@ select = [  # UPDATEME with additional rules from https://docs.astral.sh/ruff/ru
   "ISC",
   "RSE",
   "ARG",
+  "FBT",
   "SIM",
   "TID",
   "PTH",
