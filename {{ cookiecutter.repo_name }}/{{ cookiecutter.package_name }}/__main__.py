@@ -51,7 +51,7 @@ def version_callback(print_version: bool) -> None:
 def main(
     name: str = typer.Option(..., help="Person to greet."),
     color: Optional[Color] = colour_option,
-    print_version: bool = typer.Option(
+    print_version: bool = typer.Option(  # noqa: ARG001
         None,
         "-v",
         "--version",

@@ -135,6 +135,7 @@ ignore = ["D200"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**.py" = ["D100", "D101", "D102", "D103", "D104", "S101"]
+"__main__.py" = ["D100", "D101"]
 
 [tool.ruff.lint.flake8-annotations]
 ignore-fully-untyped = true
