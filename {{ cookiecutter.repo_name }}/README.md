@@ -25,11 +25,11 @@
 [![Bandit][bp13]][bp14]
 [![Pre-commit][bp15]][bp16]
 [![Editorconfig][bp17]][bp18]
-{%- if cookiecutter.use_formatters %}
-[![Code style: black][bfo1]][bfo2]
+{%- if cookiecutter.use_ruff %}
+[![Code style: Ruff][bfo1]][bfo2]
 [![isort][bfo3]][bfo4]
 {%- endif %}
-{%- if cookiecutter.use_linters and cookiecutter.docstring_style in ['numpy', 'google', 'pep257'] %}
+{%- if cookiecutter.use_ruff and cookiecutter.docstring_style in ['numpy', 'google', 'pep257'] %}
 [![Docstrings][bli1]][bli2]
 {%- endif %}
 
@@ -210,11 +210,8 @@ And here are a few articles which may help you:
 
 - Support for `Python {{ cookiecutter.minimal_python_version }}` and higher;
 - [`Poetry`][ft1] as a dependencies manager. See configuration in [`pyproject.toml`][ft2];
-{%- if cookiecutter.use_formatters %}
-- Automatic code formatting with [`black`][fo1], [`isort`][fo2] and [`pyupgrade`][fo3], with ready-to-use [`pre-commit`][fo4] hooks;
-{%- endif %}
-{%- if cookiecutter.use_linters %}
-- Code and docstring linting with [`flake8`][li1]{% if cookiecutter.docstring_style not in ['pep257', 'dismiss'] %}, [`pydocstyle`][li2] and [`pydoclint`][li3]{% elif cookiecutter.docstring_style != 'dismiss' %} and [`pydocstyle`][li2]{% endif %};
+{%- if cookiecutter.use_ruff %}
+- Automatic code formatting with [`ruff`][fo1], with ready-to-use [`pre-commit`][fo2] hooks and several rules already selected for linting;
 {%- endif %}
 - Type checks with [`mypy`][ft3], security checks with [`safety`][ft4] and [`bandit`][ft5];
 - Testing with [`pytest`][ft6];
@@ -224,7 +221,7 @@ And here are a few articles which may help you:
 
 - Issue and {% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates for easy integration with {{ cookiecutter.scm_platform }};
 - Predefined CI/CD build workflow for {% if cookiecutter.__scm_platform_lc == 'gitlab' %}[`GitLab CI`][lab2]{% elif cookiecutter.__scm_platform_lc == 'github' %}[`Github Actions`][hub5]{% endif %};
-- Everything is already set up for security checks, {% if cookiecutter.use_formatters %}codestyle checks, code formatting,{% endif %} testing, linting{% if cookiecutter.create_docker %}, docker builds{% endif %} etc with [`Makefile`][ft9]. More details in [makefile-usage][ft10];
+- Everything is already set up for security checks, {% if cookiecutter.use_ruff %}codestyle checks, code formatting,{% endif %} testing, linting{% if cookiecutter.create_docker %}, docker builds{% endif %} etc with [`Makefile`][ft9]. More details in [makefile-usage][ft10];
 {%- if cookiecutter.create_docker %}
 - [`Dockerfile`][docker2] for your package;
 {%- endif %}
@@ -683,18 +680,16 @@ This project was generated with [`galactipy`][bp7].
 [bdoc1]: https://img.shields.io/badge/docs-{{ cookiecutter.__scm_platform_lc }}%20pages-0a507a?style=for-the-badge
 [bdoc2]: https://{{ cookiecutter.scm_username }}.{{ cookiecutter.__scm_platform_lc }}.io/{{ cookiecutter.repo_name }}
 {%+ endif %}
-{%- if cookiecutter.use_formatters %}
-[bfo1]: https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-badge
-[bfo2]: https://black.readthedocs.io/en/stable/
+{%- if cookiecutter.use_ruff %}
+[bfo1]: https://img.shields.io/badge/code%20style-ruff-261230?style=for-the-badge&labelColor=grey
+[bfo2]: https://docs.astral.sh
 [bfo3]: https://img.shields.io/badge/imports-isort-1674b1?style=for-the-badge&labelColor=ef8336
 [bfo4]: https://pycqa.github.io/isort/
 
 [fo1]: https://black.readthedocs.io/en/stable/
-[fo2]: https://pycqa.github.io/isort/
-[fo3]: https://github.com/asottile/pyupgrade
-[fo4]: https://pre-commit.com/
+[fo2]: https://pre-commit.com/
 {%+ endif %}
-{%- if cookiecutter.use_linters %}
+{%- if cookiecutter.use_ruff %}
 {%- if cookiecutter.docstring_style == 'numpy' %}
 [bli1]: https://img.shields.io/badge/docstrings-numpydoc-4dabcf?style=for-the-badge&labelColor=4d77cf
 [bli2]: https://numpydoc.readthedocs.io/en/latest/format.html
@@ -704,13 +699,5 @@ This project was generated with [`galactipy`][bp7].
 {%- elif cookiecutter.docstring_style == 'pep257' %}
 [bli1]: https://img.shields.io/badge/docstrings-pep257-FFD43B?style=for-the-badge&labelColor=3776ab
 [bli2]: https://peps.python.org/pep-0257/
-{%- endif %}
-
-[li1]: https://flake8.pycqa.org/en/latest/
-{%- if cookiecutter.docstring_style != 'dismiss' %}
-[li2]: http://www.pydocstyle.org/en/stable/
-{%- endif %}
-{%- if cookiecutter.docstring_style != 'pep257' %}
-[li3]: https://github.com/jsh9/pydoclint
 {%- endif %}
 {%- endif %}
