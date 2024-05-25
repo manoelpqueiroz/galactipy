@@ -12,7 +12,7 @@ from {{ cookiecutter.package_name }}.example import hello
 def something(duration=0.000001):
     """Generic function to showcase benchmarking.
 
-    """ # noqa: D401
+    """  # noqa: D401
     time.sleep(duration)
 
     return "Hello Aaron!"
@@ -25,7 +25,7 @@ def something(duration=0.000001):
         ("Raven", "Hello Raven!"),
         ("Maxine", "Hello Maxine!"),
         ("Matteo", "Hello Matteo!"),
-        ("Destinee", "Hello Destine!"), # UPDATEME with the correct `expected` value
+        ("Destinee", "Hello Destine!"),  # UPDATEME with the correct `expected` value
         ("Alden", "Hello Alden!"),
         ("Mariah", "Hello Mariah!"),
         ("Anika", "Hello Anika!"),
