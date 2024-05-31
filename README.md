@@ -133,20 +133,20 @@ All input values will be saved in the `cookiecutter-config-file.yml` file so tha
 
 ```console
 $ cookiecutter gl:manoelpqueiroz/galactipy
-  [1/24] Project name (Python Project): A Decent Python Project
-  [2/24] Project slug (a-decent-python-project): a-different-slug
-  [3/24] Package name (a_decent_python_project): a_viable_package
-  [4/24] Short description of the project (Awesome `a-different-slug` is a Python cli/package created with
+  [1/17] Project name (Python Project): A Decent Python Project
+  [2/17] Project slug (a-decent-python-project): a-different-slug
+  [3/17] Package name (a_decent_python_project): a_viable_package
+  [4/17] Short description of the project (Awesome `a-different-slug` is a Python cli/package created with
 https://gitlab.com/manoelpqueiroz/galactipy): Let's try a cool description
-  [5/24] Project version (0.1.0): 1.100.9-rc7+build.456893a
-  [6/24] Author or Organisation (Manoel Pereira de Queiroz):
-  [7/24] In which platform would you like to host your code?
+  [5/17] Project version (0.1.0): 1.100.9-rc7+build.456893a
+  [6/17] Author or Organisation (Manoel Pereira de Queiroz):
+  [7/17] In which platform would you like to host your code?
     1 - GitLab
     2 - GitHub
     Choose from [1/2] (1): 2
-  [8/24] Platform username (manoelpqueiroz): myuniqueusername
-  [9/24] e-Mail (contact@myuniqueusername.com): g@mail.com
-  [10/24] Which licence would you like to use for your project?
+  [8/17] Platform username (manoelpqueiroz): myuniqueusername
+  [9/17] e-Mail (contact@myuniqueusername.com): g@mail.com
+  [10/17] Which licence would you like to use for your project?
     1 - MIT Licence
     2 - 3-Clause BSD
     3 - GNU GPL v3.0
@@ -156,24 +156,24 @@ https://gitlab.com/manoelpqueiroz/galactipy): Let's try a cool description
     7 - Apache Software License 2.0
     8 - Not open source
     Choose from [1/2/3/4/5/6/7/8] (1): 4
-  [11/24] Minimal Python version
+  [11/17] Minimal Python version
     1 - 3.8
     2 - 3.9
     3 - 3.10
     4 - 3.11
-    Choose from [1/2/3/4] (1): 3
-  [12/24] Use Black, isort and pyupgrade for formatting? [y/n] (y): yes
-  [13/24] Maximum line length (88):
-  [14/24] Use flake8 and pydocstyle for linting? [y/n] (y): true
-  [15/24] Which docstring style would you like to use? "numpy" and "google" styles will add pydoclint as a dependency.
+    5 - 3.12
+    Choose from [1/2/3/4/5] (1): 3
+  [12/17] Use Ruff for linting and formatting? [y/n] (y): yes
+  [13/17] Maximum line length (88):
+  [14/17] Which docstring style would you like to use?
     1 - numpy
     2 - google
     3 - pep257
     4 - other
     Choose from [1/2/3/4] (1): 4
-  [16/24] create_cli [y/n] (y): on
-  [17/24] Containerize your application with Docker? [y/n] (y): no
-  [18/24] Create project documentation with Sphinx? [y/n] (y): false
+  [15/17] Would you like to create your project with CLI implementation? [y/n] (y): on
+  [16/17] Containerize your application with Docker? [y/n] (y): no
+  [17/17] Create project documentation with Sphinx? [y/n] (y): false
 
 Your project A Decent Python Project is created.
 
@@ -573,12 +573,11 @@ Here is a list of things that have yet to be implemented:
 
 - Tests coverage reporting with [`Coveralls`][td1];
 - Auto uploading your package to [`PyPI`][td2] when new release is created;
-- Automatic creation of documentation. We will be using [`Sphinx`][td3] with [`Furo`][td4] design;
+- Automatic creation of documentation. We will be using [`Sphinx`][td3] with the [`PyData Sphinx Theme`][td4];
 - Code metrics with [`Radon`][td5];
 - Docstring coverage with [`interrogate`][td6];
 - `Dockerfile` linting with [`dockerfilelint`][td7];
 - [Hall of fame][td8] from `Sourcerer`;
-- Some advanced Python linting (?);
 - End-to-end testing and validation of the cookiecutter template;
 - Add [`Invoke`][td9];
 - Add [`Earthly`][td10].
@@ -616,7 +615,7 @@ Give them your :star:, these resources are amazing! :wink:
 @misc{galactipy,
   author = {Manoel Pereira de Queiroz},
   title = {Galactipy Python Package Project Generator},
-  year = {2023},
+  year = {2023, 2024},
   publisher = {GitLab},
   journal = {GitLab repository},
   howpublished = {\url{https://gitlab.com/manoelpqueiroz/galactipy}}
@@ -633,7 +632,7 @@ Here is the Markdown source for it:
 
 <!-- Anchors -->
 
-[b1]: https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11-blue?style=for-the-badge
+[b1]: https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue?style=for-the-badge
 [b2]: https://kutt.it/WlS8Qj
 [b3]: https://img.shields.io/badge/GitLab-0B2640?style=for-the-badge&logo=gitlab&logoColor=white
 [b4]: https://img.shields.io/gitlab/v/release/manoelpqueiroz%2Fgalactipy?style=for-the-badge&logo=semantic-release&color=253747
@@ -750,7 +749,7 @@ Here is the Markdown source for it:
 [td1]: https://coveralls.io
 [td2]: https://pypi.org/
 [td3]: https://github.com/sphinx-doc/sphinx
-[td4]: https://github.com/pradyunsg/furo
+[td4]: https://github.com/pydata/pydata-sphinx-theme
 [td5]: https://github.com/rubik/radon
 [td6]: https://github.com/econchick/interrogate
 [td7]: https://github.com/replicatedhq/dockerfilelint
