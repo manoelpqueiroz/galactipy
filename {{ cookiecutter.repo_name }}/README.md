@@ -61,7 +61,7 @@ cd {{ cookiecutter.repo_name }} && git init
 make poetry-download
 ```
 
-> This installs Poetry as a [standalone application][fs1]. If you prefer, you can simply install it inside your virtual environment.
+> This installs Poetry as a [standalone application][fs1]. If you prefer, install it through your distribution's package manager.
 
 3. Initialize Poetry and install `pre-commit` hooks:
 
@@ -76,7 +76,7 @@ make pre-commit-install
 make codestyle
 ```
 
-1. Upload initial code to {{ cookiecutter.scm_platform }}:
+5. Upload initial code to {{ cookiecutter.scm_platform }}:
 
 ```bash
 git add .
@@ -235,7 +235,7 @@ And here are a few articles which may help you:
 
 ### Open source community features
 
-- Ready-to-use [{% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates][ft11] and several [Issue templates][ft12].
+- Ready-to-use [{% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates][ft11] and several [Issue templates][ft12];
 - Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically;
 - **Loads** of predefined [badges][ft13] to make your project stand out, you can either keep them, remove as you wish or be welcome to add even more{% if cookiecutter.__scm_platform_lc == 'github' %};{% else %}.{% endif %}
 {%- if cookiecutter.__scm_platform_lc == 'github' %}
