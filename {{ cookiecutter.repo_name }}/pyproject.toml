@@ -54,8 +54,8 @@ classifiers = [  # UPDATEME with additional classifiers; remove last classifier 
 [tool.poetry.scripts]
 # Entry points for the package https://python-poetry.org/docs/pyproject/#scripts
 "{{ cookiecutter.repo_name }}" = "{{ cookiecutter.package_name }}.__main__:app"
-{%+ endif %}
 
+{% endif %}
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.minimal_python_version }}"
 {%+ if cookiecutter.create_cli %}
@@ -181,8 +181,8 @@ section-order = [
   "local-folder",
   "testing"
 ]
-{%+ endif %}
 
+{% endif %}
 [tool.mypy]
 # https://github.com/python/mypy
 # https://mypy.readthedocs.io/en/latest/config_file.html#using-a-pyproject-toml-file

@@ -2,12 +2,11 @@
 SHELL := /usr/bin/env bash
 PYTHON := python
 PYTHONPATH := `pwd`
-
-{%- if not cookiecutter.create_docker %}
+{%+ if cookiecutter.create_docker %}
 #* Docker variables
 IMAGE := {{ cookiecutter.package_name }}
 VERSION := latest
-{%- endif %}
+{%+ endif %}
 
 #* Poetry
 .PHONY: poetry-download
@@ -22,6 +21,10 @@ poetry-remove:
 poetry-plugins:
 	poetry self add poetry-plugin-up
 
+.PHONY: update-dev-deps
+update-dev-deps:
+	poetry up --only=dev-dependencies --latest
+
 
 #* Installation
 .PHONY: install
@@ -34,7 +37,7 @@ install:
 pre-commit-install:
 	poetry run pre-commit install
 
-{% if cookiecutter.use_ruff %}
+{%+ if cookiecutter.use_ruff %}
 #* Formatters
 .PHONY: codestyle
 codestyle:
@@ -42,8 +45,8 @@ codestyle:
 
 .PHONE: formatting
 formatting: codestyle
-{% endif %}
 
+{% endif %}
 #* Linting
 .PHONY: test
 test:
@@ -70,11 +73,7 @@ check-safety:
 .PHONY: lint-all
 lint: test {%if cookiecutter.use_ruff %}check-linter check-formatting {% endif %}mypy check-safety
 
-.PHONY: update-dev-deps
-update-dev-deps:
-	poetry up --only=dev-dependencies --latest
-
-{%+ if not cookiecutter.create_docker %}
+{%+ if cookiecutter.create_docker %}
 #* Docker
 # Example: make docker-build VERSION=latest
 # Example: make docker-build IMAGE=some_name VERSION={{ cookiecutter.version }}
@@ -91,8 +90,8 @@ docker-build:
 docker-remove:
 	@echo Removing docker $(IMAGE):$(VERSION) ...
 	docker rmi -f $(IMAGE):$(VERSION)
-{%+ endif %}
 
+{% endif %}
 #* Cleaning
 .PHONY: pycache-remove
 pycache-remove:

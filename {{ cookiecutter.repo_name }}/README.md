@@ -32,14 +32,12 @@
 {%- if cookiecutter.use_ruff and cookiecutter.docstring_style in ['numpy', 'google', 'pep257'] %}
 [![Docstrings][bli1]][bli2]
 {%- endif %}
-
-{%- if cookiecutter.licence != 'nos' %}
+{%+ if cookiecutter.licence != 'nos' %}
 <!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
 [![OpenSSF Best Practices][boss1]][boss2] -->
 <!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
 [![OSSRank][boss3]][boss4] -->
-
-{%- endif %}
+{% endif +%}
 [![Semantic versions][blic3]][bp5]
 [![Pipelines][bscm6]][bscm7]
 
@@ -311,8 +309,7 @@ make pre-commit-install
 
 </p>
 </details>
-
-{%- if cookiecutter.use_ruff %}
+{%+ if cookiecutter.use_ruff %}
 <details>
 <summary>3. Codestyle</summary>
 <p>
@@ -340,8 +337,7 @@ make update-dev-deps
 
 </p>
 </details>
-{%- endif %}
-
+{% endif +%}
 <details>
 <summary>{% if cookiecutter.use_ruff %}4{% else %}3{% endif %}. Code security</summary>
 <p>
@@ -384,8 +380,7 @@ make test
 
 </p>
 </details>
-
-{%- if cookiecutter.use_ruff %}
+{%+ if cookiecutter.use_ruff %}
 <details>
 <summary>7. Linters</summary>
 <p>
@@ -398,8 +393,7 @@ make check-linter
 
 </p>
 </details>
-{%- endif %}
-
+{% endif +%}
 <details>
 <summary>{% if cookiecutter.use_ruff %}8{% else %}6{% endif %}. All linters</summary>
 <p>
@@ -418,8 +412,7 @@ make test && {% if cookiecutter.use_ruff %}make check-linter && make check-forma
 
 </p>
 </details>
-
-{%- if cookiecutter.create_docker %}
+{%+ if cookiecutter.create_docker %}
 <details>
 <summary>{% if cookiecutter.use_ruff %}9{% else %}7{% endif %}. Docker</summary>
 <p>
@@ -444,8 +437,7 @@ More information [about docker][docker3].
 
 </p>
 </details>
-{%- endif %}
-
+{% endif +%}
 <details>
 <summary>{% if cookiecutter.use_ruff and cookiecutter.create_docker %}10{% elif cookiecutter.use_ruff and not cookiecutter.create_docker %}9{% elif not cookiecutter.use_ruff and cookiecutter.create_docker %}8{% else %}7{% endif %}. Cleanup</summary>
 <p>
@@ -488,16 +480,14 @@ make cleanup
 You can see the list of available releases on the [{{ cookiecutter.scm_platform }} Releases][r1] page.
 
 We follow [Semantic Versions][fs4] specification.
-
-{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+{%+ if cookiecutter.__scm_platform_lc == 'gitlab' %}
 We use [`GitLab Changelog`][lab4] entries to track changes. You can categorise commits and Merge Requests made to this project using [git trailers][lab6] in your commit messages.
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
 We use [`Release Drafter`][hub7]. As pull requests are merged, a draft release is kept up-to-date listing the changes, ready to publish when you’re ready. With the categories option, you can categorize pull requests in release notes using labels.
 {%- endif %}
 
 ### List of {% if cookiecutter.__scm_platform_lc == 'gitlab' %}trailers and corresponding categories{% elif cookiecutter.__scm_platform_lc == 'github' %}labels and corresponding titles{% endif %}
-
-{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+{%+ if cookiecutter.__scm_platform_lc == 'gitlab' %}
 |            **Git trailer**            |    **Category in CHANGELOG**    |
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
 |               **Label**               |      **Title in Releases**      |
@@ -509,21 +499,19 @@ We use [`Release Drafter`][hub7]. As pull requests are merged, a draft release i
 | `breaking`                            | :boom: Breaking Changes         |
 | `documentation`                       | :memo: Documentation            |
 | `dependencies`                        | :arrow_up: Dependencies updates |
-
 {%- if cookiecutter.__scm_platform_lc == 'github' %}
+
 You can update it in [`release-drafter.yml`][hub8].
 
 GitHub creates the `bug`, `enhancement`, and `documentation` labels for you. Dependabot creates the `dependencies` label. Create the remaining labels on the Issues tab of your GitHub repository, when you need them.
-
 {%- endif %}
-{%- if cookiecutter.licence != 'nos' %}
+{%+ if cookiecutter.licence != 'nos' %}
 ## :shield: Licence
 
 [![Licence][blic1]][blic2]
 
 This project is licenced under the terms of the `{{ cookiecutter.licence }}` licence. See [LICENCE][blic2] for more details.
-
-{%- endif %}
+{% endif +%}
 ## :page_with_curl: Citation
 
 ```bibtex
@@ -576,8 +564,7 @@ This project was generated with [`galactipy`][bp7].
 <!-- UPDATEME by replacing `1` with your project's index at https://ossrank.com/
 [boss3]: https://shields.io/endpoint?url=https://ossrank.com/shield/1&style=for-the-badge
 [boss4]: https://ossrank.com/p/1 -->
-{%- endif %}
-
+{% endif +%}
 [fs1]: https://github.com/python-poetry/install.python-poetry.org
 [fs2]: https://python-poetry.org/docs/
 [fs3]: https://python-poetry.org/docs/cli/#commands
@@ -633,8 +620,7 @@ This project was generated with [`galactipy`][bp7].
 [ft13]: https://shields.io/
 
 [r1]: {{ cookiecutter.__scm_link_url }}/releases
-
-{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+{%+ if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [bscm1]: https://img.shields.io/badge/GitLab-330F63?style=for-the-badge&logo=gitlab&logoColor=white
 [bscm2]: https://img.shields.io/gitlab/v/release/{{ cookiecutter.scm_username }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&logo=semantic-release&color=FFCA28
 [bscm3]: https://img.shields.io/gitlab/issues/open/{{ cookiecutter.scm_username }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&color=fca326
