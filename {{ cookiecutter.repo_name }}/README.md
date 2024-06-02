@@ -175,32 +175,35 @@ For taking development and exposition of your project to the next level:
   - You can look at dynamic badges available at [`Shields.io`][wn13];
   - There is a myriad of standardised static badges at [`Simple Badges`][wn14];
   - [`awesome-badges`][wn15] provides a lot of useful resources to help you deal with badges;
-- Add your project to [`OpenSSF Best Practices`][wn16] and [`OSSRank`][wn17] indexes. If you have greater ambitions for your project and/or expects it to scale at some point, it's worth considering adding it to these trackers;
-  - There are already badges for those set up in your `README.md` file, just waiting for you to update their URLs with your project's index in both services :beaming_face_with_smiling_eyes:
 - Setup a code coverage service for your tests, popular options include:
   - [`Coveralls`][wn18] and [`Codecov`][wn19] if you need solely test coverage;
-  - [`Code Climate`][wn20] and [`Codacy`][wn21] for fully-featured code analysis;
+  - [`Code Climate`][wn20] and [`Codacy`][wn21] for fully-featured code analysis{% if cookiecutter.licence != 'nos' %};{% else %}.{% endif %}
+{%- if cookiecutter.licence != 'nos' %}
+- Add your project to [`OpenSSF Best Practices`][wno1] and [`OSSRank`][wno2] indexes. If you have greater ambitions for your project and/or expects it to scale at some point, it's worth considering adding it to these trackers;
+  - There are already badges for those set up in your `README.md` file, just waiting for you to update their URLs with your project's index in both services :beaming_face_with_smiling_eyes:
 - Setup a sponsorship page and allow users and organisations who appreciate your project to help raise for its development (and add a badge in the process! :sunglasses:). Popular platforms are:
-  - [`Liberapay`][wn22];
-  - [`Open Collective`][wn23];
-  - [`Ko-fi`][wn24];
+  - [`Liberapay`][wno3];
+  - [`Open Collective`][wno4];
+  - [`Ko-fi`][wno5];
 {%- if cookiecutter.__scm_platform_lc == 'github' %}
-  - You can set a [Sponsors account][hub3] directly integrated into GitHub;
+  - You can set a [Sponsors account][hubo1] directly integrated into GitHub;
 {%- endif %}
   - Of course, you can also set any kind of gateway you wish, what works best for you and your project!
+{%- endif %}
 
 And here are a few articles which may help you:
-
-- [Open Source Guides][wn25];
-- [A handy guide to financial support for open source][wn26];
+{%+ if cookiecutter.licence != 'nos' %}
+- [Open Source Guides][wno6];
+- [A handy guide to financial support for open source][wno7];
+{%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 - [GitLab CI Documentation][lab1];
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
-- [GitHub Actions Documentation][hub4];
+- [GitHub Actions Documentation][hub3];
 {%- endif %}
-- [Makefile tutorial][wn27];
-- [A Comprehensive Look at Testing in Software Development][wn28] is an article that lays out why testing is crucial for development success. Eric's blog is actually a great reference, covering topics ranging from the basics to advanced techniques and best practices;
-- Maybe you would like to add [gitmoji][wn29] to commit names. This is really funny. :grin:
+- [Makefile tutorial][wn22];
+- [A Comprehensive Look at Testing in Software Development][wn23] is an article that lays out why testing is crucial for development success. Eric's blog is actually a great reference, covering topics ranging from the basics to advanced techniques and best practices;
+- Maybe you would like to add [gitmoji][wn24] to commit names. This is really funny. :grin:
 
 ## :rocket: Features
 
@@ -218,7 +221,7 @@ And here are a few articles which may help you:
 ### Deployment features
 
 - Issue and {% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates for easy integration with {{ cookiecutter.scm_platform }};
-- Predefined CI/CD build workflow for {% if cookiecutter.__scm_platform_lc == 'gitlab' %}[`GitLab CI`][lab2]{% elif cookiecutter.__scm_platform_lc == 'github' %}[`Github Actions`][hub5]{% endif %};
+- Predefined CI/CD build workflow for {% if cookiecutter.__scm_platform_lc == 'gitlab' %}[`GitLab CI`][lab2]{% elif cookiecutter.__scm_platform_lc == 'github' %}[`Github Actions`][hub4]{% endif %};
 - Everything is already set up for security checks, {% if cookiecutter.use_ruff %}codestyle checks, code formatting,{% endif %} testing, linting{% if cookiecutter.create_docker %}, docker builds{% endif %} etc with [`Makefile`][ft9]. More details in [makefile-usage][ft10];
 {%- if cookiecutter.create_docker %}
 - [`Dockerfile`][docker2] for your package;
@@ -226,8 +229,8 @@ And here are a few articles which may help you:
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 - Automatic [`Changelog entries`][lab3] updated via [GitLab API][lab4] and [template][lab5].
 {%- elif cookiecutter.__scm_platform_lc == 'github' -%}
-- Always up-to-date dependencies with [`Dependabot`][hub6]. You will only need to [enable it][hub1];
-- Automatic drafts of new releases with [`Release Drafter`][hub7]. You may see the list of labels in [`release-drafter.yml`][hub8]. Works perfectly with [Semantic Versions][fs4] specification.
+- Always up-to-date dependencies with [`Dependabot`][hub5]. You will only need to [enable it][hub1];
+- Automatic drafts of new releases with [`Release Drafter`][hub6]. You may see the list of labels in [`release-drafter.yml`][hub7]. Works perfectly with [Semantic Versions][fs4] specification.
 {%- endif %}
 
 ### Open source community features
@@ -236,8 +239,8 @@ And here are a few articles which may help you:
 - Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically;
 - **Loads** of predefined [badges][ft13] to make your project stand out, you can either keep them, remove as you wish or be welcome to add even more{% if cookiecutter.__scm_platform_lc == 'github' %};{% else %}.{% endif %}
 {%- if cookiecutter.__scm_platform_lc == 'github' %}
-- [`Stale bot`][hub2] closes abandoned issues after a period of inactivity. Configuration is [here][hub9];
-- [Semantic Versions][fs4] specification with [`Release Drafter`][hub7].
+- [`Stale bot`][hub2] closes abandoned issues after a period of inactivity. Configuration is [here][hub8];
+- [Semantic Versions][fs4] specification with [`Release Drafter`][hub6].
 {%- endif %}
 
 ## Installation
@@ -483,7 +486,7 @@ We follow [Semantic Versions][fs4] specification.
 {%+ if cookiecutter.__scm_platform_lc == 'gitlab' %}
 We use [`GitLab Changelog`][lab4] entries to track changes. You can categorise commits and Merge Requests made to this project using [git trailers][lab6] in your commit messages.
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
-We use [`Release Drafter`][hub7]. As pull requests are merged, a draft release is kept up-to-date listing the changes, ready to publish when you’re ready. With the categories option, you can categorize pull requests in release notes using labels.
+We use [`Release Drafter`][hub6]. As pull requests are merged, a draft release is kept up-to-date listing the changes, ready to publish when you’re ready. With the categories option, you can categorize pull requests in release notes using labels.
 {%- endif %}
 
 ### List of {% if cookiecutter.__scm_platform_lc == 'gitlab' %}trailers and corresponding categories{% elif cookiecutter.__scm_platform_lc == 'github' %}labels and corresponding titles{% endif %}
@@ -501,7 +504,7 @@ We use [`Release Drafter`][hub7]. As pull requests are merged, a draft release i
 | `dependencies`                        | :arrow_up: Dependencies updates |
 {%- if cookiecutter.__scm_platform_lc == 'github' %}
 
-You can update it in [`release-drafter.yml`][hub8].
+You can update it in [`release-drafter.yml`][hub7].
 
 GitHub creates the `bug`, `enhancement`, and `documentation` labels for you. Dependabot creates the `dependencies` label. Create the remaining labels on the Issues tab of your GitHub repository, when you need them.
 {%- endif %}
@@ -591,15 +594,16 @@ This project was generated with [`galactipy`][bp7].
 [wn19]: https://about.codecov.io/
 [wn20]: https://codeclimate.com/velocity/what-is-velocity
 [wn21]: https://www.codacy.com/
-[wn22]: https://liberapay.com/
-[wn23]: https://opencollective.com/
-[wn24]: https://ko-fi.com/
-[wn25]: https://opensource.guide/
-[wn26]: https://github.com/nayafia/lemonade-stand
-[wn27]: https://makefiletutorial.com/
-[wn28]: https://pytest-with-eric.com/introduction/types-of-software-testing/
-[wn29]: https://gitmoji.dev/
-
+[wn22]: https://makefiletutorial.com/
+[wn23]: https://pytest-with-eric.com/introduction/types-of-software-testing/
+[wn24]: https://gitmoji.dev/
+{%+ if cookiecutter.licence != 'nos' %}
+[wno3]: https://liberapay.com/
+[wno4]: https://opencollective.com/
+[wno5]: https://ko-fi.com/
+[wno6]: https://opensource.guide/
+[wno7]: https://github.com/nayafia/lemonade-stand
+{% endif %}
 [ft1]: https://python-poetry.org/
 [ft2]: {{ cookiecutter.__scm_link_url }}/blob/master/pyproject.toml
 [ft3]: https://mypy.readthedocs.io
@@ -646,13 +650,16 @@ This project was generated with [`galactipy`][bp7].
 
 [hub1]: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates#enabling-dependabot-version-updates
 [hub2]: https://github.com/marketplace/actions/close-stale-issues
-[hub3]: https://github.com/sponsors
-[hub4]: https://help.github.com/en/actions
-[hub5]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/workflows/build.yml
-[hub6]: https://docs.github.com/en/code-security/dependabot
-[hub7]: https://github.com/marketplace/actions/release-drafter
-[hub8]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/release-drafter.yml
-[hub9]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/.stale.yml
+[hub3]: https://help.github.com/en/actions
+[hub4]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/workflows/build.yml
+[hub5]: https://docs.github.com/en/code-security/dependabot
+[hub6]: https://github.com/marketplace/actions/release-drafter
+[hub7]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/release-drafter.yml
+[hub8]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/.stale.yml
+{%- if cookiecutter.licence != 'nos' %}
+
+[hubo1]: https://github.com/sponsors
+{%- endif %}
 {%- endif %}
 {%+ if cookiecutter.create_docker %}
 [bdocker1]: https://img.shields.io/docker/v/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=docker&logoColor=lightblue&label=image&color=lightblue
