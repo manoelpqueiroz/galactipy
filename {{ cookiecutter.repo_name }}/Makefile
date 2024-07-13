@@ -2,12 +2,11 @@
 SHELL := /usr/bin/env bash
 PYTHON := python
 PYTHONPATH := `pwd`
-
-{% if not cookiecutter.create_docker %}
+{%+ if cookiecutter.create_docker %}
 #* Docker variables
 IMAGE := {{ cookiecutter.package_name }}
 VERSION := latest
-{% endif %}
+{%+ endif %}
 
 #* Poetry
 .PHONY: poetry-download
@@ -22,6 +21,10 @@ poetry-remove:
 poetry-plugins:
 	poetry self add poetry-plugin-up
 
+.PHONY: update-dev-deps
+update-dev-deps:
+	poetry up --only=dev-dependencies --latest
+
 
 #* Installation
 .PHONY: install
@@ -34,31 +37,29 @@ install:
 pre-commit-install:
 	poetry run pre-commit install
 
-
+{%+ if cookiecutter.use_ruff %}
 #* Formatters
 .PHONY: codestyle
 codestyle:
-	poetry run pyupgrade --exit-zero-even-if-changed --py{{ cookiecutter.__mpvr }}-plus **/*.py
-	poetry run isort --settings-path pyproject.toml ./
-	poetry run black --config pyproject.toml ./
+	poetry run ruff format
 
-.PHONY: formatting
+.PHONE: formatting
 formatting: codestyle
 
-
+{% endif %}
 #* Linting
 .PHONY: test
 test:
 	PYTHONPATH=$(PYTHONPATH) poetry run pytest -c pyproject.toml --cov-report=html --cov={{ cookiecutter.package_name }} tests/
+{%+ if cookiecutter.use_ruff %}
+.PHONY: check-linter
+check-linter:
+	poetry run ruff check
 
-.PHONY: check-codestyle
-check-codestyle:
-	poetry run isort --diff --check-only --settings-path pyproject.toml ./
-	poetry run black --diff --check --config pyproject.toml ./
-
-.PHONE: check-formatting
-check-formatting: check-codestyle
-
+.PHONY: check-formatting
+check-formatting:
+	poetry run ruff format --check
+{%+ endif %}
 .PHONY: mypy
 mypy:
 	poetry run mypy --config-file pyproject.toml ./
@@ -69,24 +70,10 @@ check-safety:
 	poetry run safety check --full-report
 	poetry run bandit -ll --recursive {{ cookiecutter.package_name }} tests
 
-.PHONE: lint
-lint:
-	poetry run flake8 --count --config=.flake8 ./
-{%- if cookiecutter.use_linters and cookiecutter.docstring_style != 'dismiss' %}
-	poetry run pydocstyle --count --config=pyproject.toml ./
-{%- endif %}
-{%- if cookiecutter.use_linters and cookiecutter.docstring_style not in ['pep257', 'dismiss'] %}
-	poetry run pydoclint --config=pyproject.toml ./
-{%- endif %}
-
 .PHONY: lint-all
-lint: test check-codestyle lint mypy check-safety
+lint: test {%if cookiecutter.use_ruff %}check-linter check-formatting {% endif %}mypy check-safety
 
-.PHONY: update-dev-deps
-update-dev-deps:
-	poetry up --only=dev-dependencies --latest
-
-{%+ if not cookiecutter.create_docker %}
+{%+ if cookiecutter.create_docker %}
 #* Docker
 # Example: make docker-build VERSION=latest
 # Example: make docker-build IMAGE=some_name VERSION={{ cookiecutter.version }}
@@ -103,8 +90,8 @@ docker-build:
 docker-remove:
 	@echo Removing docker $(IMAGE):$(VERSION) ...
 	docker rmi -f $(IMAGE):$(VERSION)
-{%+ endif %}
 
+{% endif %}
 #* Cleaning
 .PHONY: pycache-remove
 pycache-remove:

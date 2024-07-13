@@ -1,7 +1,9 @@
+from typing import List
+
 from pathlib import Path
 
 
-def bulk_file_creation(root_directory: Path, *args, **kwargs) -> list:
+def bulk_file_creation(root_directory: Path, *args: str, **kwargs: List[str]) -> list:
     """Create a set of files and directories based on a root directory.
 
     Parameters
@@ -27,7 +29,7 @@ def bulk_file_creation(root_directory: Path, *args, **kwargs) -> list:
     """
     list_of_paths = []
 
-    def create_folder_with_items(folder: Path, *items) -> list:
+    def create_folder_with_items(folder: Path, *items: str) -> list:
         folder_paths = []
 
         folder.mkdir(exist_ok=True)
@@ -38,12 +40,12 @@ def bulk_file_creation(root_directory: Path, *args, **kwargs) -> list:
             try:
                 file_path = folder / file
 
-            except TypeError:
+            except TypeError as e:
                 msg = (
                     f"Object {file} with type '{type(file).__name__}' is not supported "
                     "for path creation."
                 )
-                raise TypeError(msg)
+                raise TypeError(msg) from e
 
             else:
                 file_path.touch()
@@ -60,12 +62,12 @@ def bulk_file_creation(root_directory: Path, *args, **kwargs) -> list:
         try:
             _ = (e for e in files)  # Duck typing way to check if `files` is an iterable
 
-        except TypeError:
+        except TypeError as e:
             msg = (
                 f"Object {files} is not an iterable, so it can not be specified as a "
                 f"file for {subdirectory}."
             )
-            raise TypeError(msg)
+            raise TypeError(msg) from e
 
         else:
             sub_folder = root_directory / subdirectory

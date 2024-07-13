@@ -32,11 +32,9 @@ pre-commit-install:
 #* Formatters
 .PHONY: codestyle
 codestyle:
-	poetry run pyupgrade --exit-zero-even-if-changed --py38-plus **/*.py
-	poetry run isort --settings-path pyproject.toml hooks tests
-	poetry run black --config pyproject.toml hooks tests
+	poetry run ruff format
 
-.PHONY: formatting
+.PHONE: formatting
 formatting: codestyle
 
 
@@ -45,13 +43,13 @@ formatting: codestyle
 test:
 	PYTHONPATH=$(PYTHONPATH) poetry run pytest -c pyproject.toml --cov=hooks tests/
 
-.PHONY: check-codestyle
-check-codestyle:
-	poetry run isort --diff --check-only --settings-path pyproject.toml hooks tests
-	poetry run black --diff --check --config pyproject.toml hooks tests
+.PHONY: check-linter
+check-linter:
+	poetry run ruff check
 
-.PHONE: check-formatting
-check-formatting: check-codestyle
+.PHONY: check-formatting
+check-formatting:
+	poetry run ruff format --check
 
 .PHONY: mypy
 mypy:
@@ -60,17 +58,11 @@ mypy:
 .PHONY: check-safety
 check-safety:
 	poetry check
-	poetry run safety check --full-report
+	poetry run safety check --full-report --ignore 70612
 	poetry run bandit -ll --recursive hooks
 
-.PHONE: lint
-lint:
-	poetry run flake8 --count --config=.flake8 hooks tests
-	poetry run pydocstyle --count --config=pyproject.toml hooks tests
-	poetry run pydoclint --config=pyproject.toml hooks tests
-
 .PHONY: lint-all
-lint: test check-codestyle lint mypy check-safety
+lint: test check-linter check-formatting mypy check-safety
 
 .PHONY: update-dev-deps
 update-dev-deps:

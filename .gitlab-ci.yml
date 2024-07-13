@@ -22,7 +22,7 @@ default:
       - $CI_PROJECT_DIR/.cache/pip
 
 .default_scripts: &default_scripts
-  - make check-codestyle
+  - make check-linter
   - make test
   - make check-safety
 

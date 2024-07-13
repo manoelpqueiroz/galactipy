@@ -1,6 +1,6 @@
 """Tests for hello function."""
-# UPDATEME by removing this file once the `hello` function is no longer needed for your
-# project and `example.py` is also removed
+# UPDATEME by removing this file once the `hello` function is no longer needed
+# for your project and `example.py` is also removed
 
 import time
 
@@ -12,7 +12,7 @@ from {{ cookiecutter.package_name }}.example import hello
 def something(duration=0.000001):
     """Generic function to showcase benchmarking.
 
-    """
+    """  # noqa: D401
     time.sleep(duration)
 
     return "Hello Aaron!"
@@ -25,7 +25,7 @@ def something(duration=0.000001):
         ("Raven", "Hello Raven!"),
         ("Maxine", "Hello Maxine!"),
         ("Matteo", "Hello Matteo!"),
-        ("Destinee", "Hello Destine!"), # UPDATEME with the correct `expected` value
+        ("Destinee", "Hello Destine!"),  # UPDATEME with the correct `expected` value
         ("Alden", "Hello Alden!"),
         ("Mariah", "Hello Mariah!"),
         ("Anika", "Hello Anika!"),
@@ -49,6 +49,6 @@ def test_my_stuff(benchmark):
     # Extra code, to verify that the run completed correctly
     expected = hello("Aaron")
 
-    # Sometimes you may want to check the result against your benchmark, writing faster
-    # functions are no good if they return incorrect results
+    # Sometimes you may want to check the result against your benchmark,
+    # writing faster functions are no good if they return incorrect results
     assert result == expected

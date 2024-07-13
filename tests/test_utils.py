@@ -1,10 +1,10 @@
 from pathlib import Path
 from shutil import chown
 
-import pytest
-
 from hooks.post_gen_project import rmdir
 from hooks.pre_gen_project import validate_line_length
+
+import pytest
 
 
 def test_validate_line_length():
