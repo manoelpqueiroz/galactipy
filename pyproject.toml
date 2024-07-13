@@ -6,7 +6,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "galactipy"
-version = "0.3.0"
+version = "0.3.1"
 description = "Cookiecutter template for Python packages"
 readme = "README.md"
 authors = ["Manoel Pereira de Queiroz <mpq.dev@pm.me>"]

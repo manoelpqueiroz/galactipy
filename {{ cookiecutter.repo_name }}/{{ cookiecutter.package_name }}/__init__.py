@@ -3,7 +3,7 @@
 
 from importlib import metadata
 
-from {{ cookiecutter.package_name }} import hello
+from {{ cookiecutter.package_name }}.example import hello
 
 
 def _get_version() -> str:
