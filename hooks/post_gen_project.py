@@ -25,9 +25,9 @@ SCM_BASE_URL = "{{ cookiecutter.__scm_base_url }}"
 # Boolean variables for additional project structures
 # Values wrapped inside strings and evaluated against the "True" string to
 # avoid raising errors when testing
-CREATE_CLI = "{{ cookiecutter.create_cli }}" == "True" # noqa: PLR0133
-CREATE_DOCKER = "{{ cookiecutter.create_docker }}" == "True" # noqa: PLR0133
-CREATE_DOCS = "{{ cookiecutter.create_docs }}" == "True" # noqa: PLR0133
+CREATE_CLI = "{{ cookiecutter.create_cli }}" == "True"  # noqa: PLR0133
+CREATE_DOCKER = "{{ cookiecutter.create_docker }}" == "True"  # noqa: PLR0133
+CREATE_DOCS = "{{ cookiecutter.create_docs }}" == "True"  # noqa: PLR0133
 
 licences_dict = {
     "MIT": "mit",
@@ -209,7 +209,7 @@ def print_further_instructions(
     print(textwrap.dedent(message))
 
 
-def main() -> None: # noqa: D103
+def main() -> None:  # noqa: D103
     remove_gitlab = SCM_PLATFORM_LC != "gitlab"
     remove_cli = not CREATE_CLI
     remove_docker = not CREATE_DOCKER

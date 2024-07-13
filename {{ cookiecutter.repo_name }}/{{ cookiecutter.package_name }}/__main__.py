@@ -38,7 +38,7 @@ color_option = typer.Option(
 console = Console()
 
 
-def version_callback(print_version: bool) -> None:
+def version_callback(print_version: bool) -> None:  # noqa: FBT001
     """Print the version of the package.
 
     """
@@ -51,7 +51,7 @@ def version_callback(print_version: bool) -> None:
 def main(
     name: str = typer.Option(..., help="Person to greet."),
     color: Optional[Color] = colour_option,
-    print_version: bool = typer.Option(
+    print_version: bool = typer.Option(  # noqa: ARG001, FBT001
         None,
         "-v",
         "--version",
@@ -64,7 +64,7 @@ def main(
 
     """
     if color is None:
-        color = choice(list(Color)) # noqa: S311
+        color = choice(list(Color))  # noqa: S311
 
     greeting = hello(name)
     console.print(f"[bold {color.value}]{greeting}[/]")

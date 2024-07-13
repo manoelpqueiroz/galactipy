@@ -258,7 +258,7 @@ def validate_line_length(line_length: int) -> None:
         raise ValueError(message)
 
 
-def main() -> None: # noqa: D103
+def main() -> None:  # noqa: D103
     try:
         validate_repo_name(repo_name=REPO_NAME, reserved_projects=RESERVED_PROJECTS)
 

@@ -1,5 +1,5 @@
 # type: ignore[attr-defined]
-"""{{ cookiecutter.project_description }}"""
+"""{{ cookiecutter.project_description }}."""
 
 from importlib import metadata
 
