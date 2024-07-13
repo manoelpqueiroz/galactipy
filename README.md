@@ -23,7 +23,7 @@
 [![Poetry][b18]][b19]
 [![Pre-commit][b20]][b21]
 [![Editorconfig][b22]][b23]
-[![Code style: black][b24]][b25]
+[![Code style: Ruff][b24]][b25]
 [![Docstrings: numpydoc][b26]][b27]
 
 [![Semantic versions][b28]][b5]
@@ -36,7 +36,7 @@ _Expand your project structure from atoms of code to **galactic** dimensions._ :
 ## TL;DR
 
 ```bash
-cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.2.0
+cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.3.0
 ```
 
 > All you need is the latest version of cookiecutter! :wink:
@@ -49,22 +49,21 @@ In this [cookiecutter :cookie:][ft1] template we combine state-of-the-art librar
 
 - Supports `Python 3.8` and higher;
 - [`Poetry`][ft2] as a dependencies manager. See configuration in [`pyproject.toml`][ft3];
-- Automatic code formatting with [`black`][ft4], [`isort`][ft5] and [`pyupgrade`][ft6], with ready-to-use [`pre-commit`][ft7] hooks;
-- Code and docstring linting with [`flake8`][ft8], [`pydocstyle`][ft9] and [`pydoclint`][ft10];
-- Type checks with [`mypy`][ft11], security checks with [`safety`][ft12] and [`bandit`][ft13];
-- Testing with [`pytest`][ft14];
-- Ready-to-use [`.editorconfig`][ft15], [`.dockerignore`][ft16], and [`.gitignore`][ft17] files. You don't have to worry about those things.
+- Automatic code formatting with [`ruff`][ft4], with ready-to-use [`pre-commit`][ft5] hooks and several rules already selected for linting;
+- Type checks with [`mypy`][ft6], security checks with [`safety`][ft7] and [`bandit`][ft8];
+- Testing with [`pytest`][ft9];
+- Ready-to-use [`.editorconfig`][ft10], [`.dockerignore`][ft11], and [`.gitignore`][ft12] files. You don't have to worry about those things.
 
 ### Deployment features
 
 - Issue and Merge Request templates for easy integration with GitLab and GitHub;
-- Predefined CI/CD build workflow for [`GitLab CI`][ft18] and [`Github Actions`][ft19];
-- Everything is already set up for security checks, codestyle checks, code formatting, testing, linting, docker builds etc. with [`Makefile`][ft20]. More details in [makefile-usage][ft21];
-- [`Dockerfile`][ft22] for your package.
+- Predefined CI/CD build workflow for [`GitLab CI`][ft13] and [`Github Actions`][ft14];
+- Everything is already set up for security checks, codestyle checks, code formatting, testing, linting, docker builds etc. with [`Makefile`][ft15]. More details in [makefile-usage][ft16];
+- [`Dockerfile`][ft17] for your package.
 
 #### GitLab vs. GitHub features
 
-You are free to choose whichever platform works best for you and your project. The original template by [TezRomacH][ft23] was created originally with GitHub in mind, which prompted the creation of a similarly fully-featured template for GitLab users as well.
+You are free to choose whichever platform works best for you and your project. The original template by [TezRomacH][ft18] was created originally with GitHub in mind, which prompted the creation of a similarly fully-featured template for GitLab users as well.
 
 However, not everything that is available for GitHub users is available to GitLab users, and vice-versa. Please mind the differences between both options.
 
@@ -77,17 +76,17 @@ Below is a comparison between the features available in this package depending o
 | Stale issues                  | :x:                | :white_check_mark: | A specific configuration is available for GitHub to mark and automatically close stale issues. |
 | Build workflow                | :white_check_mark: | :white_check_mark: | A basic workflow to install the package and run tests, check codestyle and safety. |
 | Greetings workflow            | :x:                | :white_check_mark: | |
-| Dependabot                    | :x:                | :white_check_mark: | [Dependabot][ft24] is a feature now incorporated into GitHub Security. See [here][ft25] how to enable it. |
-| Release drafter               | :x:                | :white_check_mark: | [Release Drafter][ft26] is a custom workflow available on GitHub Marketplace. You may see the list of labels in [`release-drafter.yml`][ft27]. Works perfectly with [Semantic Versions][ft28] specification. |
-| Changelog configuration       | :white_check_mark: | :x:                | GitLab provides automatic changelog updates through their [API][ft29]. You may modify the template in [`changelog_config.yml`][ft30]. |
+| Dependabot                    | :x:                | :white_check_mark: | [Dependabot][ft19] is a feature now incorporated into GitHub Security. See [here][ft20] how to enable it. |
+| Release drafter               | :x:                | :white_check_mark: | [Release Drafter][ft21] is a custom workflow available on GitHub Marketplace. You may see the list of labels in [`release-drafter.yml`][ft22]. Works perfectly with [Semantic Versions][ft23] specification. |
+| Changelog configuration       | :white_check_mark: | :x:                | GitLab provides automatic changelog updates through their [API][ft24]. You may modify the template in [`changelog_config.yml`][ft25]. |
 
 ### Open source community features
 
-- Ready-to-use [Merge Request templates][ft31] and several [Issue templates][ft32];
+- Ready-to-use [Merge Request templates][ft26] and several [Issue templates][ft27];
 - Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically;
-- **Loads** of predefined [badges][ft33] to make your project stand out, you can either keep them, remove as you wish or be welcome to add even more;
-- For GitHub users, [`Stale bot`][ft34] closes abandoned issues after a period of inactivity. Configuration is [here][ft35];
-- [Semantic Versions][ft28] specification with [`Changelog entries`][ft29] or [`Release Drafter`][ft26].
+- **Loads** of predefined [badges][ft28] to make your project stand out, you can either keep them, remove as you wish or be welcome to add even more;
+- For GitHub users, [`Stale bot`][ft29] closes abandoned issues after a period of inactivity. Configuration is [here][ft30];
+- [Semantic Versions][ft23] specification with [`Changelog entries`][ft24] or [`Release Drafter`][ft21].
 
 ## :exploding_head: How to use it
 
@@ -102,7 +101,7 @@ pip install -U cookiecutter
 then go to a directory where you want to create your project and run:
 
 ```bash
-cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.2.0
+cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.3.0
 ```
 
 ### Input variables
@@ -117,19 +116,18 @@ The input variables, with their default values, are as follows:
 | `repo_name`               | based on `project_name`     | Name of the repository to develop the project on. [Check the availability of possible names][htu1] before creating the project. |
 | `package_name`            | based on `project_name`     | PyPI-compliant Python package name. [Check the availability of possible names][htu1] before creating the project. |
 | `project_description`     | based on `project_name`     | A brief description of your project. |
-| `version`                 | `0.1.0`                     | Initial version of the package. Make sure it follows the [Semantic Versions][ft28] specification. |
+| `version`                 | `0.1.0`                     | Initial version of the package. Make sure it follows the [Semantic Versions][ft23] specification. |
 | `author`                  | `Manoel Pereira de Queiroz` | Name of the author or organisation. Used to generate `LICENCE` and to specify ownership in `pyproject.toml`. |
 | `scm_platform`            | `GitLab`                    | One of `GitLab` and `GitHub`. Depending on the choice you will have [different features][htu2] to work with. |
 | `scm_username`            | `manoelpqueiroz`            | GitHub or GitLab username for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for either platform. |
 | `email`                   | based on `scm_username`     | Email for `CODE_OF_CONDUCT.md`, `SECURITY.md` files and to specify the ownership of the project in `pyproject.toml`. |
 | `licence`                 | `MIT`                       | One of `MIT`, `BSD-3`, `GNU GPL v3.0`, `GNU AGLP v3.0`, `GNU LGPL v3.0`, `Mozilla Public License 2.0` and `Apache Software License 2.0`, or `Not open source`. |
 | `minimal_python_version`  | `3.8`                       | Minimal Python version. All versions since `3.8` are available to choose. It is used for builds, pipelines and formatters. |
-| `use_formatters`          | `True`                      | :small_red_triangle: Option to use code formatters [`black`][ft4], [`isort`][ft5] and [`pyupgrade`][ft6] as pre-commit hooks. |
-| `line_length`             | 88                          | The max length per line, dismiss if `use_formatters` is not used. NOTE: This value must be between 50 and 300. |
-| `use_linters`             | `True`                      | :small_red_triangle: Option to use linters [`flake8`][ft8] and [`pydocstyle`][ft9]. Depending on the value of `docstring_style`, will also use [`pydoclint`][ft10]. |
-| `docstring_style`         | `numpy`                     | One of `numpy`, `pep257` or `google`, dismiss if `use_linters` is not used. You can choose `other` to disable `pydoclint` and checks on your docstrings. |
+| `use_ruff`                | `True`                      | :small_red_triangle: Option to use [`ruff`][ft4] as the code formatter, along with a pre-commit hook. |
+| `line_length`             | 88                          | The max length per line, dismiss if `use_ruff` is not used. NOTE: This value must be between 50 and 300. |
+| `docstring_style`         | `numpy`                     | One of `numpy`, `pep257` or `google`, dismiss if `use_ruff` is not used. You can choose `other` to disable checks on your docstrings. |
 | `create_cli`              | `True`                      | :small_red_triangle: Option to create a simple CLI application with [`Typer`][htu3] and [`Rich`][htu4] libraries. |
-| `create_docker`           | `True`                      | :small_red_triangle: Option to create a [Dockerfile][ft22] to build an image for your project. |
+| `create_docker`           | `True`                      | :small_red_triangle: Option to create a [Dockerfile][ft17] to build an image for your project. |
 | `create_docs`             | `True`                      | :small_red_triangle: Option to create documentation files with [`Sphinx`][htu5]. |
 
 > :eight_spoked_asterisk: Input variables marked with :small_red_triangle: are boolean variables, you can dismiss those by typing either `0`, `false`, `f`, `no`, `n` or `off`.
@@ -142,20 +140,20 @@ All input values will be saved in the `cookiecutter-config-file.yml` file so tha
 
 ```console
 $ cookiecutter gl:manoelpqueiroz/galactipy
-  [1/24] Project name (Python Project): A Decent Python Project
-  [2/24] Project slug (a-decent-python-project): a-different-slug
-  [3/24] Package name (a_decent_python_project): a_viable_package
-  [4/24] Short description of the project (Awesome `a-different-slug` is a Python cli/package created with
+  [1/17] Project name (Python Project): A Decent Python Project
+  [2/17] Project slug (a-decent-python-project): a-different-slug
+  [3/17] Package name (a_decent_python_project): a_viable_package
+  [4/17] Short description of the project (Awesome `a-different-slug` is a Python cli/package created with
 https://gitlab.com/manoelpqueiroz/galactipy): Let's try a cool description
-  [5/24] Project version (0.1.0): 1.100.9-rc7+build.456893a
-  [6/24] Author or Organisation (Manoel Pereira de Queiroz):
-  [7/24] In which platform would you like to host your code?
+  [5/17] Project version (0.1.0): 1.100.9-rc7+build.456893a
+  [6/17] Author or Organisation (Manoel Pereira de Queiroz):
+  [7/17] In which platform would you like to host your code?
     1 - GitLab
     2 - GitHub
     Choose from [1/2] (1): 2
-  [8/24] Platform username (manoelpqueiroz): myuniqueusername
-  [9/24] e-Mail (contact@myuniqueusername.com): g@mail.com
-  [10/24] Which licence would you like to use for your project?
+  [8/17] Platform username (manoelpqueiroz): myuniqueusername
+  [9/17] e-Mail (contact@myuniqueusername.com): g@mail.com
+  [10/17] Which licence would you like to use for your project?
     1 - MIT Licence
     2 - 3-Clause BSD
     3 - GNU GPL v3.0
@@ -165,24 +163,24 @@ https://gitlab.com/manoelpqueiroz/galactipy): Let's try a cool description
     7 - Apache Software License 2.0
     8 - Not open source
     Choose from [1/2/3/4/5/6/7/8] (1): 4
-  [11/24] Minimal Python version
+  [11/17] Minimal Python version
     1 - 3.8
     2 - 3.9
     3 - 3.10
     4 - 3.11
-    Choose from [1/2/3/4] (1): 3
-  [12/24] Use Black, isort and pyupgrade for formatting? [y/n] (y): yes
-  [13/24] Maximum line length (88):
-  [14/24] Use flake8 and pydocstyle for linting? [y/n] (y): true
-  [15/24] Which docstring style would you like to use? "numpy" and "google" styles will add pydoclint as a dependency.
+    5 - 3.12
+    Choose from [1/2/3/4/5] (1): 3
+  [12/17] Use Ruff for linting and formatting? [y/n] (y): yes
+  [13/17] Maximum line length (88):
+  [14/17] Which docstring style would you like to use?
     1 - numpy
     2 - google
     3 - pep257
     4 - other
     Choose from [1/2/3/4] (1): 4
-  [16/24] create_cli [y/n] (y): on
-  [17/24] Containerize your application with Docker? [y/n] (y): no
-  [18/24] Create project documentation with Sphinx? [y/n] (y): false
+  [15/17] Would you like to create your project with CLI implementation? [y/n] (y): on
+  [16/17] Containerize your application with Docker? [y/n] (y): no
+  [17/17] Create project documentation with Sphinx? [y/n] (y): false
 
 Your project A Decent Python Project is created.
 
@@ -265,14 +263,14 @@ poetry run <repo_name> --name Manoel
 
 Building a new version of the application contains steps:
 
-- Bump the version of your package `poetry version <version>`. You can pass the new version explicitly, or a rule such as `major`, `minor`, or `patch`. For more details, refer to the [Semantic Versions][ft28] standard;
+- Bump the version of your package `poetry version <version>`. You can pass the new version explicitly, or a rule such as `major`, `minor`, or `patch`. For more details, refer to the [Semantic Versions][ft23] standard;
 - Make a commit to `GitLab` or `GitHub`, depending on where you are hosting your code;
 - Create a `Release` for your package on the platform;
 - And... publish :slight_smile: `poetry publish --build`.
 
 ### Makefile usage
 
-[`Makefile`][ft20] contains a lot of functions for faster development.
+[`Makefile`][ft15] contains a lot of functions for faster development.
 
 <details>
 <summary>1. Download and remove Poetry</summary>
@@ -318,7 +316,7 @@ make pre-commit-install
 <summary>3. Codestyle</summary>
 <p>
 
-Automatic formatting uses `pyupgrade`, `isort` and `black`, and can be run with
+Automatic formatting uses `ruff`, and can be run with
 
 ```bash
 make codestyle
@@ -327,10 +325,10 @@ make codestyle
 make formatting
 ```
 
-For codestyle checks only, without rewriting files:
+For formatting checks only, without rewriting files:
 
 ```bash
-make check-codestyle
+make check-formatting
 ```
 
 Update all dev libraries to the latest version using one command
@@ -373,7 +371,7 @@ make mypy
 </details>
 
 <details>
-<summary>6. Tests with coverage badges</summary>
+<summary>6. Tests</summary>
 <p>
 
 Run `pytest` with all essential parameters predefined with
@@ -389,10 +387,10 @@ make test
 <summary>7. Linters</summary>
 <p>
 
-Run code and docstring linters with `flake8`, `pydocstyle` and, if you choose `numpy` or `google` style, `pydoclint`.
+Run code and docstring linters with `ruff`.
 
 ```bash
-make lint
+make check-linter
 ```
 
 </p>
@@ -411,7 +409,7 @@ make lint-all
 the same as:
 
 ```bash
-make test && make check-codestyle && make lint && make mypy && make check-safety
+make test && make check-linter && make check-formatting && make mypy && make check-safety
 ```
 
 </p>
@@ -559,9 +557,9 @@ And here are a few articles which may help you:
 
 You can see the list of available releases on the [GitLab Releases][r1] page.
 
-We follow [Semantic Versions][ft28] specification.
+We follow [Semantic Versions][ft23] specification.
 
-We use [`GitLab Changelog`][ft29] entries to track changes. You can categorise commits and Merge Requests made to this project using [git trailers][r2] in your commit messages.
+We use [`GitLab Changelog`][ft24] entries to track changes. You can categorise commits and Merge Requests made to this project using [git trailers][r2] in your commit messages.
 
 ### List of trailers and corresponding categories
 
@@ -582,12 +580,11 @@ Here is a list of things that have yet to be implemented:
 
 - Tests coverage reporting with [`Coveralls`][td1];
 - Auto uploading your package to [`PyPI`][td2] when new release is created;
-- Automatic creation of documentation. We will be using [`Sphinx`][td3] with [`Furo`][td4] design;
+- Automatic creation of documentation. We will be using [`Sphinx`][td3] with the [`PyData Sphinx Theme`][td4];
 - Code metrics with [`Radon`][td5];
 - Docstring coverage with [`interrogate`][td6];
 - `Dockerfile` linting with [`dockerfilelint`][td7];
 - [Hall of fame][td8] from `Sourcerer`;
-- Some advanced Python linting (?);
 - End-to-end testing and validation of the cookiecutter template;
 - Add [`Invoke`][td9];
 - Add [`Earthly`][td10].
@@ -600,7 +597,7 @@ This project is licenced under the terms of the `MIT` licence. See [LICENCE][b7]
 
 ## :sports_medal: Acknowledgements
 
-Firstly, there is no way this template would exist without the previous phenomenal work by [Roman Tezikov][ac1] and his fully-featured [`python-package-template`][ft23]. If there is anyone more deserving of a :star2: and acknowledgement, it's him! Please give a shoutout and [support][ac2] if possible.
+Firstly, there is no way this template would exist without the previous phenomenal work by [Roman Tezikov][ac1] and his fully-featured [`python-package-template`][ft18]. If there is anyone more deserving of a :star2: and acknowledgement, it's him! Please give a shoutout and [support][ac2] if possible.
 
 The original template was inspired by several articles that might be helpful if you are starting out managing projects:
 
@@ -625,7 +622,7 @@ Give them your :star:, these resources are amazing! :wink:
 @misc{galactipy,
   author = {Manoel Pereira de Queiroz},
   title = {Galactipy Python Package Project Generator},
-  year = {2023},
+  year = {2023, 2024},
   publisher = {GitLab},
   journal = {GitLab repository},
   howpublished = {\url{https://gitlab.com/manoelpqueiroz/galactipy}}
@@ -645,7 +642,7 @@ Here is the Markdown source for it:
 [m1]: https://kutt.it/e8YfCL
 [m2]: https://github.com/manoelpqueiroz/galactipy/blob/github-mirror/CONTRIBUTING.md
 
-[b1]: https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11-blue?style=for-the-badge
+[b1]: https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue?style=for-the-badge
 [b2]: https://kutt.it/WlS8Qj
 [b3]: https://img.shields.io/badge/GitLab-0B2640?style=for-the-badge&logo=gitlab&logoColor=white
 [b4]: https://img.shields.io/gitlab/v/release/manoelpqueiroz%2Fgalactipy?style=for-the-badge&logo=semantic-release&color=253747
@@ -668,8 +665,8 @@ Here is the Markdown source for it:
 [b21]: https://kutt.it/D4ayxs
 [b22]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
 [b23]: https://kutt.it/fy3pqF
-[b24]: https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-badge
-[b25]: https://black.readthedocs.io/en/stable/
+[b24]: https://img.shields.io/badge/code%20style-ruff-261230?style=for-the-badge&labelColor=grey
+[b25]: https://docs.astral.sh
 [b26]: https://img.shields.io/badge/docstrings-numpydoc-4dabcf?style=for-the-badge&labelColor=4d77cf
 [b27]: https://numpydoc.readthedocs.io/en/latest/format.html
 [b28]: https://img.shields.io/badge/%F0%9F%93%A6-semantic%20versions-4053D6?style=for-the-badge
@@ -683,38 +680,33 @@ Here is the Markdown source for it:
 [ft1]: https://cookiecutter.readthedocs.io/en/stable/
 [ft2]: https://python-poetry.org/
 [ft3]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/pyproject.toml
-[ft4]: https://black.readthedocs.io/en/stable/
-[ft5]: https://pycqa.github.io/isort/
-[ft6]: https://github.com/asottile/pyupgrade
-[ft7]: https://pre-commit.com/
-[ft8]: https://flake8.pycqa.org/en/latest/
-[ft9]: http://www.pydocstyle.org/en/stable/
-[ft10]: https://github.com/jsh9/pydoclint
-[ft11]: https://mypy.readthedocs.io
-[ft12]: https://docs.safetycli.com/safety-2/
-[ft13]: https://bandit.readthedocs.io/en/latest/
-[ft14]: https://docs.pytest.org/en/latest/
-[ft15]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.editorconfig
-[ft16]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.dockerignore
-[ft17]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.gitignore
-[ft18]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.gitlab-ci.yml
-[ft19]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/workflows/build.yml
-[ft20]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/Makefile
-[ft21]: #makefile-usage
-[ft22]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker/Dockerfile
-[ft23]: https://github.com/TezRomacH/python-package-template
-[ft24]: https://docs.github.com/en/code-security/dependabot
-[ft25]: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates#enabling-dependabot-version-updates
-[ft26]: https://github.com/marketplace/actions/release-drafter
-[ft27]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/release-drafter.yml
-[ft28]: https://semver.org/
-[ft29]: https://docs.gitlab.com/ee/user/project/changelogs.html
-[ft30]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/changelog_config.yml
-[ft31]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/merge_request_templates/default.md
-[ft32]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/issue_templates
-[ft33]: https://shields.io/
-[ft34]: https://github.com/marketplace/actions/close-stale-issues
-[ft35]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/.stale.yml
+[ft4]: https://docs.astral.sh/
+[ft5]: https://pre-commit.com/
+[ft6]: https://mypy.readthedocs.io
+[ft7]: https://docs.safetycli.com/safety-2/
+[ft8]: https://bandit.readthedocs.io/en/latest/
+[ft9]: https://docs.pytest.org/en/latest/
+[ft10]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.editorconfig
+[ft11]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.dockerignore
+[ft12]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.gitignore
+[ft13]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.gitlab-ci.yml
+[ft14]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/workflows/build.yml
+[ft15]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/Makefile
+[ft16]: #makefile-usage
+[ft17]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker/Dockerfile
+[ft18]: https://github.com/TezRomacH/python-package-template
+[ft19]: https://docs.github.com/en/code-security/dependabot
+[ft20]: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates#enabling-dependabot-version-updates
+[ft21]: https://github.com/marketplace/actions/release-drafter
+[ft22]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/release-drafter.yml
+[ft23]: https://semver.org/
+[ft24]: https://docs.gitlab.com/ee/user/project/changelogs.html
+[ft25]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/changelog_config.yml
+[ft26]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/merge_request_templates/default.md
+[ft27]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/issue_templates
+[ft28]: https://shields.io/
+[ft29]: https://github.com/marketplace/actions/close-stale-issues
+[ft30]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/.stale.yml
 
 [htu1]: http://ivantomic.com/projects/ospnc/
 [htu2]: #gitlab-vs-github-features
@@ -767,7 +759,7 @@ Here is the Markdown source for it:
 [td1]: https://coveralls.io
 [td2]: https://pypi.org/
 [td3]: https://github.com/sphinx-doc/sphinx
-[td4]: https://github.com/pradyunsg/furo
+[td4]: https://github.com/pydata/pydata-sphinx-theme
 [td5]: https://github.com/rubik/radon
 [td6]: https://github.com/econchick/interrogate
 [td7]: https://github.com/replicatedhq/dockerfilelint

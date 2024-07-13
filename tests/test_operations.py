@@ -1,5 +1,3 @@
-import pytest
-
 from hooks.post_gen_project import (
     generate_licence,
     generate_templates,
@@ -7,7 +5,8 @@ from hooks.post_gen_project import (
     print_further_instructions,
     remove_unused_files,
 )
-from tests.test_helpers import bulk_file_creation
+
+import pytest
 
 LICENCES_TO_CHECK = list(licences_dict.values())
 LICENCES_TO_CHECK.remove(None)
@@ -133,5 +132,6 @@ def test_print_further_instructions(capsys, galactipy_instructions):
     )
     captured = capsys.readouterr()
 
-    # STDOUT always finishes with a newline, hence the addition on the right side
+    # STDOUT always finishes with a newline, hence the addition on the right
+    # side
     assert captured.out == galactipy_instructions + "\n"

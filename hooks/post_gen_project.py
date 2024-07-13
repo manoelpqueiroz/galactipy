@@ -1,4 +1,4 @@
-"""This module is called after the project is created."""
+"""Module to be called after the project is created."""
 
 from typing import List
 
@@ -23,10 +23,11 @@ SCM_USERNAME = "{{ cookiecutter.scm_username }}"
 SCM_BASE_URL = "{{ cookiecutter.__scm_base_url }}"
 
 # Boolean variables for additional project structures
-# Values wrapped inside strings to avoid raising errors when testing
-CREATE_CLI = "{{ cookiecutter.create_cli }}"
-CREATE_DOCKER = "{{ cookiecutter.create_docker }}"
-CREATE_DOCS = "{{ cookiecutter.create_docs }}"
+# Values wrapped inside strings and evaluated against the "True" string to
+# avoid raising errors when testing
+CREATE_CLI = "{{ cookiecutter.create_cli }}" == "True"  # noqa: PLR0133
+CREATE_DOCKER = "{{ cookiecutter.create_docker }}" == "True"  # noqa: PLR0133
+CREATE_DOCS = "{{ cookiecutter.create_docs }}" == "True"  # noqa: PLR0133
 
 licences_dict = {
     "MIT": "mit",
@@ -208,11 +209,11 @@ def print_further_instructions(
     print(textwrap.dedent(message))
 
 
-def main() -> None:
-    REMOVE_GITLAB = SCM_PLATFORM_LC != "gitlab"
-    REMOVE_CLI = not CREATE_CLI
-    REMOVE_DOCKER = not CREATE_DOCKER
-    REMOVE_DOCS = not CREATE_DOCS
+def main() -> None:  # noqa: D103
+    remove_gitlab = SCM_PLATFORM_LC != "gitlab"
+    remove_cli = not CREATE_CLI
+    remove_docker = not CREATE_DOCKER
+    remove_docs = not CREATE_DOCS
 
     generate_licence(directory=PROJECT_DIRECTORY, licence=licences_dict[LICENCE])
 
@@ -221,10 +222,10 @@ def main() -> None:
     remove_unused_files(
         directory=PROJECT_DIRECTORY,
         package_name=PROJECT_PACKAGE,
-        remove_cli=REMOVE_CLI,
-        remove_gitlab=REMOVE_GITLAB,
-        remove_docker=REMOVE_DOCKER,
-        remove_docs=REMOVE_DOCS,
+        remove_cli=remove_cli,
+        remove_gitlab=remove_gitlab,
+        remove_docker=remove_docker,
+        remove_docs=remove_docs,
     )
 
     print_further_instructions(

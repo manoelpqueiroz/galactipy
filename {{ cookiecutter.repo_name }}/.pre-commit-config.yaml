@@ -1,6 +1,3 @@
-default_language_version:
-  python: python{{ cookiecutter.minimal_python_version }}
-
 default_stages: [commit, push]
 
 repos:
@@ -10,29 +7,12 @@ repos:
       - id: check-yaml
       - id: end-of-file-fixer
         exclude: LICENCE
-
-{%- if cookiecutter.use_formatters %}
+{%+ if cookiecutter.use_ruff %}
   - repo: local
     hooks:
-      - id: pyupgrade
-        name: pyupgrade
-        entry: poetry run pyupgrade --py{{ cookiecutter.__mpvr }}-plus
-        types: [python]
-        language: system
-
-  - repo: local
-    hooks:
-      - id: isort
-        name: isort
-        entry: poetry run isort --settings-path pyproject.toml
-        types: [python]
-        language: system
-
-  - repo: local
-    hooks:
-      - id: black
-        name: black
-        entry: poetry run black --config pyproject.toml
+      - id: ruff
+        name: ruff
+        entry: poetry run ruff check
         types: [python]
         language: system
 {%- endif %}

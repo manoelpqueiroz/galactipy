@@ -6,7 +6,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "galactipy"
-version = "0.2.0"
+version = "0.3.0"
 description = "Cookiecutter template for Python packages"
 readme = "README.md"
 authors = ["Manoel Pereira de Queiroz <mpq.dev@pm.me>"]
@@ -26,6 +26,7 @@ keywords = [
   "python-packages",
   "semantic-versions"
 ]
+package-mode = false
 
 # Pypi classifiers: https://pypi.org/classifiers/
 classifiers = ["Private :: Do Not Upload"]
@@ -43,13 +44,7 @@ pre-commit = "^2.21.0"
 bandit = "^1.7.5"
 safety = "^2.3.4"
 
-black = "^22.8.0"
-isort = {extras = ["colors"], version = "^5.11.0"}
-pyupgrade = "^3.0.0"
-
-flake8 = "^5.0.4"
-pydocstyle = {extras = ["toml"], version = "^6.2.0"}
-pydoclint = "^0.3.0"
+ruff = "^0.4.3"
 
 pytest = "^7.2.1"
 pytest-cov = "^4.1.0"
@@ -59,41 +54,97 @@ pytest-sugar = "^0.9.7"
 coverage = "^7.3.0"
 
 
-[tool.black]
-# https://github.com/psf/black
-# https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-via-a-file
-target-version = ["py38"]
-line-length = 88
-color = true
+[tool.ruff]
+# https://github.com/astral-sh/ruff
+# https://docs.astral.sh/ruff/settings
+extend-exclude = ["[{][{] cookiecutter.repo_name [}][}]"] # https://github.com/astral-sh/ruff/issues/9585
+output-format = "grouped"
+show-fixes = true
+target-version = "py38"
 
-exclude = '''
-/(
-  \.git
-  | \.hg
-  | \.mypy_cache
-  | \.tox
-  | \.venv
-  | _build
-  | buck-out
-  | build
-  | dist
-  | env
-  | venv
-)/
-'''
+[tool.ruff.format]
+docstring-code-format = true
+docstring-code-line-length = 79
+skip-magic-trailing-comma = true
 
+[tool.ruff.lint]
+select = [
+  "F",
+  "E",
+  "W",
+  "I",
+  "N",
+  "D",
+  "S",
+  "B",
+  "UP",
+  "C90",
+  "EM",
+  "PL",
+  "C4",
+  "PT",
+  "ANN",
+  "ICN",
+  "RET",
+  "ISC",
+  "RSE",
+  "ARG",
+  "SIM",
+  "TID",
+  "PTH",
+  "BLE",
+  "ERA",
+  "TRY",
+  "FLY",
+  "YTT",
+  "CPY",
+  "RUF"
+]
+ignore = ["D200", "PT011"]
 
-[tool.isort]
-# https://github.com/PyCQA/isort
-# https://pycqa.github.io/isort/docs/configuration/options.html
-py_version = 38
-line_length = 88
+[tool.ruff.lint.per-file-ignores]
+"tests/**.py" = ["D100", "D101", "D102", "D103", "D104", "S101"]
 
-known_typing = ["typing", "types", "typing_extensions", "mypy", "mypy_extensions"]
-sections = ["FUTURE", "TYPING", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
-indent = 4
-color_output = true
-profile = "black"
+[tool.ruff.lint.flake8-annotations]
+ignore-fully-untyped = true
+suppress-dummy-args = true
+
+[tool.ruff.lint.flake8-pytest-style]
+fixture-parentheses = false
+mark-parentheses = false
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.lint.pycodestyle]
+max-line-length = 88
+max-doc-length = 79
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.lint.flake8-copyright]
+author = "Manoel Pereira de Queiroz"
+notice-rgx = "Copyright (C) 2023, 2024"
+
+[tool.ruff.lint.pylint]
+max-bool-expr = 3
+max-args = 6
+
+[tool.ruff.lint.isort]
+split-on-trailing-comma = false
+known-local-folder = ["hooks"]
+sections.typing = ["typing", "types", "typing_extensions", "mypy", "mypy_extensions"]
+sections.testing = ["pytest", "tests"]
+section-order = [
+  "future",
+  "typing",
+  "standard-library",
+  "third-party",
+  "first-party",
+  "local-folder",
+  "testing"
+]
 
 
 [tool.mypy]
@@ -122,34 +173,6 @@ warn_return_any = true
 warn_unreachable = true
 warn_unused_configs = true
 warn_unused_ignores = true
-
-
-[tool.pydocstyle]
-# https://github.com/PyCQA/pydocstyle
-# http://www.pydocstyle.org/en/stable/usage.html#available-options
-convention = "numpy"
-
-
-[tool.pydoclint]
-# https://github.com/jsh9/pydoclint
-# https://jsh9.github.io/pydoclint/how_to_config.html
-style = "numpy"
-exclude = '''
-/(
-  \.git
-  | \.hg
-  | \.mypy_cache
-  | \.tox
-  | \.venv
-  | __pycache__
-  | _build
-  | buck-out
-  | build
-  | dist
-  | env
-  | venv
-)/
-'''
 
 
 [tool.pytest.ini_options]
