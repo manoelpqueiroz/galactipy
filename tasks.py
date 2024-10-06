@@ -87,3 +87,25 @@ def poetry_plugins(c: Context) -> None:
     else:
         msg = "Poetry installation not found."
         raise PoetryPluginError(msg)
+
+
+@task
+def install(c: Context) -> None:
+    """Install dependencies specified in `pyproject.toml` and run mypy.
+
+    """
+    c.run(f"{POETRY_PATH} lock -n", pty=PTY)
+    c.run(f"{POETRY_PATH} install -n", pty=PTY)
+    c.run(
+        f"{VENV_BIN}/mypy --config-file pyproject.toml --install-types "
+        "--non-interactive hooks tests",
+        pty=PTY,
+    )
+
+
+@task
+def pre_commit_install(c: Context) -> None:
+    """Install pre-commit hooks.
+
+    """
+    c.run(f"{VENV_BIN}/pre-commit install", pty=PTY)
