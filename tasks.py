@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 from shutil import which
-from uuid import uuid4
 
 from invoke import Context, UnexpectedExit, task
 
@@ -15,13 +14,13 @@ PTY = os.name != "nt"
 VENV_EV = os.environ.get("VIRTUAL_ENV", None)
 WORKON_HOME_EV = os.environ.get("WORKON_HOME", "~/.virtualenvs")
 
-ACTIVE_VENV = Path(VENV_EV) if VENV_EV is not None else Path(str(uuid4()))
+ACTIVE_VENV = Path(VENV_EV) if VENV_EV is not None else Path.cwd().anchor / "tmp"
 VENV_HOME = Path(WORKON_HOME_EV).resolve()
 
 VENV_PATH = ACTIVE_VENV if ACTIVE_VENV.exists() else (VENV_HOME / PACKAGE_NAME)
 VENV = VENV_PATH.resolve()
 
-VENV_BIN = Path(VENV) / Path(BIN_DIR)
+VENV_BIN = Path(VENV) / BIN_DIR
 
 # Executable paths
 PYTHON_PATH = VENV_BIN / "python"
@@ -29,8 +28,13 @@ PYTHON_PATH = VENV_BIN / "python"
 POETRY_COMMAND = which("poetry")
 if POETRY_COMMAND is not None:
     POETRY_PATH = Path(POETRY_COMMAND).resolve()
+
+elif PTY:
+    POETRY_PATH = Path("/usr/bin/poetry")
+
 else:
-    POETRY_PATH = Path(str(uuid4()))
+    APPDATA = os.environ.get("APPDATA")
+    POETRY_PATH = Path(APPDATA) / "Python" / BIN_DIR / "poetry"
 
 
 class PoetryPluginError(Exception):
