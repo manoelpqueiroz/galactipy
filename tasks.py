@@ -76,21 +76,16 @@ def poetry_plugins(c: Context) -> None:
     """Install Poetry plugins through the `self add` command.
 
     """
-    if POETRY_PATH.exists():
-        try:
-            c.run(f"{POETRY_PATH} self add poetry-plugin-up", pty=PTY)
+    try:
+        c.run(f"{POETRY_PATH} self add poetry-plugin-up", pty=PTY)
 
-        except UnexpectedExit as e:
-            msg = (
-                "Command errored with return code 1. Most likely Poetry is externally "
-                "managed and `poetry-plugin-up` should be installed via your package "
-                "manager."
-            )
-            raise PoetryPluginError(msg) from e
-
-    else:
-        msg = "Poetry installation not found."
-        raise PoetryPluginError(msg)
+    except UnexpectedExit as e:
+        msg = (
+            "Command errored with return code 1. Most likely Poetry is externally "
+            "managed and `poetry-plugin-up` should be installed via your package "
+            "manager."
+        )
+        raise PoetryPluginError(msg) from e
 
 
 @task
