@@ -14,7 +14,7 @@ PTY = os.name != "nt"
 VENV_EV = os.environ.get("VIRTUAL_ENV", None)
 WORKON_HOME_EV = os.environ.get("WORKON_HOME", "~/.virtualenvs")
 
-ACTIVE_VENV = Path(VENV_EV) if VENV_EV is not None else Path.cwd().anchor / "tmp"
+ACTIVE_VENV = Path(VENV_EV) if VENV_EV is not None else Path.cwd() / "tmp"
 VENV_HOME = Path(WORKON_HOME_EV).resolve()
 
 VENV_PATH = ACTIVE_VENV if ACTIVE_VENV.exists() else (VENV_HOME / PACKAGE_NAME)
