@@ -36,6 +36,17 @@ else:
     APPDATA = os.environ.get("APPDATA")
     POETRY_PATH = Path(APPDATA) / "Python" / BIN_DIR / "poetry"
 
+# Reusable command templates
+if PTY:
+    FILE_REMOVER = 'find . | grep -E "{}" | xargs rm -rf'
+
+else:
+    FILE_REMOVER = (
+        "Get-ChildItem -Recurse "
+        '| Where-Object {{ $_.Name -match "{}" }} '
+        "| Remove-Item -Recurse"
+    )
+
 
 class PoetryPluginError(Exception):
     """Raised when a Poetry plugin is unable to be installed."""
@@ -153,4 +164,54 @@ def check_safety(c: Context) -> None:
 @task(test, check_linter, codestyle, mypy, check_safety)
 def lint_all(c: Context) -> None:  # noqa: ARG001
     """Perform all lint-related tasks, including tests, mypy and security."""
+    pass
+
+
+# Cleaning commands for Bash, Zsh and PowerShell
+@task(aliases=["pycache-clean"])
+def pycache_remove(c: Context) -> None:
+    """Remove pycache files from project directory."""
+    c.run(FILE_REMOVER.format(r"(__pycache__|\.pyc|\.pyo)$"))
+
+
+@task(aliases=["dsstore-clean"])
+def dsstore_remove(c: Context) -> None:
+    """Remove pycache files from project directory."""
+    c.run(FILE_REMOVER.format(".DS_Store"))
+
+
+@task(aliases=["mypycache-clean", "mypy-remove", "mypy-clean"])
+def mypycache_remove(c: Context) -> None:
+    """Remove pycache files from project directory."""
+    c.run(FILE_REMOVER.format(".mypy_cache"))
+
+
+@task(aliases=["ipynbcheckpoints-clean", "ipynb-clean", "ipynb-remove"])
+def ipynbcheckpoints_remove(c: Context) -> None:
+    """Remove pycache files from project directory."""
+    c.run(FILE_REMOVER.format(".ipynb_checkpoints"))
+
+
+@task(aliases=["pytestcache-clean", "pytest-remove", "pytest-clean"])
+def pytestcache_remove(c: Context) -> None:
+    """Remove pycache files from project directory."""
+    c.run(FILE_REMOVER.format(r"(.pytest_cache|.coverage)"))
+
+
+@task(aliases=["ruffcache-clean", "ruff-remove", "ruff-clean"])
+def ruffcache_remove(c: Context) -> None:
+    """Remove pycache files from project directory."""
+    c.run(FILE_REMOVER.format(".ruff_cache"))
+
+
+@task(
+    pycache_remove,
+    dsstore_remove,
+    mypycache_remove,
+    ipynbcheckpoints_remove,
+    pytestcache_remove,
+    ruffcache_remove,
+)
+def cleanup(c: Context) -> None:  # noqa: ARG001
+    """Perform all cleaning-related tasks."""
     pass
