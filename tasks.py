@@ -38,13 +38,12 @@ else:
 
 
 class PoetryPluginError(Exception):
-    """Raised when a Poetry plugin is unable to be installed.
-
-    """
+    """Raised when a Poetry plugin is unable to be installed."""
 
     pass
 
 
+# Poetry tasks
 @task
 def poetry_download(c: Context) -> None:
     """Install Poetry as a standalone package via cURL.
@@ -62,9 +61,7 @@ def poetry_download(c: Context) -> None:
 
 @task
 def poetry_remove(c: Context) -> None:
-    """Remove Poetry using the standalone installation script.
-
-    """
+    """Remove Poetry using the standalone installation script."""
     c.run(
         f"curl -sSL https://install.python-poetry.org | {PYTHON_PATH} - --uninstall",
         pty=PTY,
@@ -73,9 +70,7 @@ def poetry_remove(c: Context) -> None:
 
 @task
 def poetry_plugins(c: Context) -> None:
-    """Install Poetry plugins through the `self add` command.
-
-    """
+    """Install Poetry plugins through the `self add` command."""
     try:
         c.run(f"{POETRY_PATH} self add poetry-plugin-up", pty=PTY)
 
@@ -89,10 +84,15 @@ def poetry_plugins(c: Context) -> None:
 
 
 @task
-def install(c: Context) -> None:
-    """Install dependencies specified in `pyproject.toml` and run mypy.
+def poetry_check(c: Context) -> None:
+    """Check `pyproject.toml` configuration."""
+    c.run(f"{POETRY_PATH} check", pty=PTY)
 
-    """
+
+# Installation tasks
+@task
+def install(c: Context) -> None:
+    """Install dependencies specified in `pyproject.toml` and run mypy."""
     c.run(f"{POETRY_PATH} lock -n", pty=PTY)
     c.run(f"{POETRY_PATH} install -n", pty=PTY)
     c.run(
@@ -104,7 +104,47 @@ def install(c: Context) -> None:
 
 @task
 def pre_commit_install(c: Context) -> None:
-    """Install pre-commit hooks.
-
-    """
+    """Install pre-commit hooks."""
     c.run(f"{VENV_BIN}/pre-commit install", pty=PTY)
+
+
+# Formatting, linting and other checks
+@task(aliases=["format"])
+def codestyle(c: Context, check: bool = False) -> None:
+    """Format the entire project with `ruff format`."""
+    flag = "--check" if check else ""
+
+    c.run(f"{VENV_BIN}/ruff format {flag}", pty=PTY)
+
+
+@task
+def check_linter(c: Context, fix: bool = False) -> None:
+    """Check linting rules with `ruff check`."""
+    flag = "--fix" if fix else ""
+
+    c.run(f"{VENV_BIN}/ruff check {flag}", pty=PTY)
+
+
+@task
+def test(c: Context) -> None:
+    """Run tests with `pytest` and `pyproject.toml` configuration."""
+    c.run(f"{VENV_BIN}/pytest -c pyproject.toml --cov=hooks tests", pty=PTY)
+
+
+@task
+def mypy(c: Context) -> None:
+    """Run type checks with `mypy` and `pyproject.toml` configuration."""
+    c.run(f"{VENV_BIN}/mypy --config-file pyproject.toml hooks tests", pty=PTY)
+
+
+@task(poetry_check)
+def check_safety(c: Context) -> None:
+    """Perform security checks with Safety CLI and `bandit`."""
+    c.run(f"{VENV_BIN}/safety check --full-report --ignore 70612", pty=PTY)
+    c.run(f"{VENV_BIN}/bandit -ll --recursive hooks", pty=PTY)
+
+
+@task(test, check_linter, codestyle, mypy, check_safety)
+def lint_all(c: Context) -> None:  # noqa: ARG001
+    """Perform all lint-related tasks, including tests, mypy and security."""
+    pass
