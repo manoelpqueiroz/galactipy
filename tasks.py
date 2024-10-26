@@ -215,3 +215,9 @@ def ruffcache_remove(c: Context) -> None:
 def cleanup(c: Context) -> None:  # noqa: ARG001
     """Perform all cleaning-related tasks."""
     pass
+
+
+@task
+def build_remove(c: Context) -> None:
+    """Remove the `build` directory."""
+    c.run("rm -rf build/")
