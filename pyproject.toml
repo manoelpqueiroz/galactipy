@@ -33,7 +33,7 @@ classifiers = ["Private :: Do Not Upload"]
 
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.9"
 cookiecutter = "^2.3.0"
 
 
@@ -62,7 +62,7 @@ invoke = "^2.2.0"
 extend-exclude = ["[{][{] cookiecutter.repo_name [}][}]"] # https://github.com/astral-sh/ruff/issues/9585
 output-format = "grouped"
 show-fixes = true
-target-version = "py38"
+target-version = "py39"
 
 [tool.ruff.format]
 docstring-code-format = true
@@ -153,7 +153,7 @@ section-order = [
 [tool.mypy]
 # https://github.com/python/mypy
 # https://mypy.readthedocs.io/en/latest/config_file.html#using-a-pyproject-toml-file
-python_version = 3.8
+python_version = 3.9
 pretty = true
 show_traceback = true
 color_output = true

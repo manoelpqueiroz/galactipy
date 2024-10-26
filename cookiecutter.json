@@ -22,11 +22,11 @@
     "nos"
   ],
   "minimal_python_version": [
-    "3.8",
     "3.9",
     "3.10",
     "3.11",
-    "3.12"
+    "3.12",
+    "3.13"
   ],
   "use_ruff": true,
   "line_length": 88,
@@ -66,11 +66,11 @@
   },
 
   "_all_python_version": [
-    [3, 8],
     [3, 9],
     [3, 10],
     [3, 11],
-    [3, 12]
+    [3, 12],
+    [3, 13]
   ],
   "__mpvr": "{{ cookiecutter.minimal_python_version.replace('.', '') }}",
   "__scm_platform_lc": "{{ cookiecutter.scm_platform.lower() }}",
