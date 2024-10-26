@@ -89,6 +89,12 @@ def poetry_check(c: Context) -> None:
     c.run(f"{POETRY_PATH} check", pty=PTY)
 
 
+@task
+def update_dev_deps(c: Context) -> None:
+    """Update dev dependencies to their latest configuration."""
+    c.run(f"{POETRY_PATH} up --only=dev --latest", pty=PTY)
+
+
 # Installation tasks
 @task
 def install(c: Context) -> None:
