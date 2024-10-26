@@ -1,6 +1,7 @@
 """Module to be called after the project is created."""
 
 import textwrap
+from importlib.util import find_spec
 from pathlib import Path
 from shutil import move
 
@@ -37,6 +38,64 @@ licences_dict = {
     "Apache Software License 2.0": "apache",
     "nos": None,
 }
+
+if find_spec("rich") is not None:
+    INSTRUCTION_MESSAGE = """
+    Your project [italic]{}[/] is created.
+
+    1) Now you can start working on it:
+
+        [bold red]$[/] [green]cd[/] [underline magenta]{}[/] && [green]git[/] [yellow]init[/]
+
+    2) If you don't have Poetry installed run:
+
+        [bold red]$[/] [green]invoke[/] [blue]poetry-download[/]
+
+    3) Initialize Poetry and install pre-commit hooks:
+
+        [bold red]$[/] [green]invoke[/] [blue]install[/]
+        [bold red]$[/] [green]invoke[/] [blue]pre-commit-install[/]
+
+    4) Run codestyle:
+
+        [bold red]$[/] [green]invoke[/] [blue]codestyle[/]
+
+    5) Upload initial code to {}:
+
+        [bold red]$[/] [green]git[/] [yellow]add[/] [blue].[/]
+        [bold red]$[/] [green]git[/] [yellow]commit[/] [blue]-m[/] [yellow]":tada: Initial commit"[/]
+        [bold red]$[/] [green]git[/] [yellow]remote add[/] [red]origin[/] [blue]{}.git[/]
+        [bold red]$[/] [green]git[/] [yellow]push[/] [cyan]-u[/] [blue]origin master[/]
+    """  # noqa: E501
+
+else:
+    INSTRUCTION_MESSAGE = """
+    Your project {} is created.
+
+    1) Now you can start working on it:
+
+        $ cd {} && git init
+
+    2) If you don't have Poetry installed run:
+
+        $ invoke poetry-download
+
+    3) Initialize poetry and install pre-commit hooks:
+
+        $ invoke install
+        $ invoke pre-commit-install
+
+    4) Run codestyle:
+
+        $ invoke codestyle
+
+    5) Upload initial code to {}:
+
+        $ git add .
+        $ git commit -m ":tada: Initial commit"
+        $ git remote add origin {}.git
+        $ git push -u origin master
+    """
 
 
 def rmdir(path: Path) -> None:
@@ -177,33 +236,9 @@ def print_further_instructions(
         URL for the project's repository in `scm_platform`, consisting of
         username and repository slug.
     """
-    message = f"""
-    Your project {project_name} is created.
-
-    1) Now you can start working on it:
-
-        $ cd {project_repo} && git init
-
-    2) If you don't have Poetry installed run:
-
-        $ invoke poetry-download
-
-    3) Initialize poetry and install pre-commit hooks:
-
-        $ invoke install
-        $ invoke pre-commit-install
-
-    4) Run codestyle:
-
-        $ invoke codestyle
-
-    5) Upload initial code to {scm_platform}:
-
-        $ git add .
-        $ git commit -m ":tada: Initial commit"
-        $ git remote add origin {scm_base_url}.git
-        $ git push -u origin master
-    """
+    message = INSTRUCTION_MESSAGE.format(
+        project_name, project_repo, scm_platform, scm_base_url
+    )
     print(textwrap.dedent(message))
 
 
