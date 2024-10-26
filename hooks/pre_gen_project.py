@@ -1,7 +1,5 @@
 """Module to be called by Cookiecutter before the project is created."""
 
-from typing import List
-
 import re
 import sys
 
@@ -134,7 +132,7 @@ RESERVED_USERNAMES = [
 ]
 
 
-def validate_repo_name(repo_name: str, reserved_projects: List[str]) -> None:
+def validate_repo_name(repo_name: str, reserved_projects: list[str]) -> None:
     """Ensure that `repo_name` is valid under GitLab restrictions.
 
     Valid input starts with a digit or letter, can be comprised of any
@@ -193,7 +191,7 @@ def validate_package_name(package_name: str) -> None:
         raise ValueError(message)
 
 
-def validate_username(username: str, reserved_names: List[str]) -> None:
+def validate_username(username: str, reserved_names: list[str]) -> None:
     """Ensure that `username` is valid under GitLab and GitHub restrictions.
 
     Parameters

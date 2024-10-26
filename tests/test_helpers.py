@@ -1,9 +1,8 @@
-from typing import List
 
 from pathlib import Path
 
 
-def bulk_file_creation(root_directory: Path, *args: str, **kwargs: List[str]) -> list:
+def bulk_file_creation(root_directory: Path, *args: str, **kwargs: list[str]) -> list:
     """Create a set of files and directories based on a root directory.
 
     Parameters
