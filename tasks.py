@@ -165,10 +165,14 @@ def check_safety(c: Context) -> None:
     c.run(f"{VENV_BIN}/bandit -ll --recursive hooks", pty=PTY)
 
 
-@task(test, check_linter, codestyle, mypy, check_safety)
-def lint_all(c: Context) -> None:  # noqa: ARG001
+@task
+def lint_all(c: Context) -> None:
     """Perform all lint-related tasks, including tests, mypy and security."""
-    pass
+    test(c)
+    check_linter(c)
+    codestyle(c)
+    mypy(c)
+    check_safety(c)
 
 
 # Cleaning commands for Bash, Zsh and PowerShell
@@ -208,17 +212,15 @@ def ruffcache_remove(c: Context) -> None:
     c.run(FILE_REMOVER.format(".ruff_cache"))
 
 
-@task(
-    pycache_remove,
-    dsstore_remove,
-    mypycache_remove,
-    ipynbcheckpoints_remove,
-    pytestcache_remove,
-    ruffcache_remove,
-)
-def cleanup(c: Context) -> None:  # noqa: ARG001
+@task
+def cleanup(c: Context) -> None:
     """Perform all cleaning-related tasks."""
-    pass
+    pycache_remove(c)
+    dsstore_remove(c)
+    mypycache_remove(c)
+    ipynbcheckpoints_remove(c)
+    pytestcache_remove(c)
+    ruffcache_remove(c)
 
 
 @task
