@@ -145,7 +145,11 @@ def check_linter(c: Context, fix: bool = False) -> None:
 @task
 def test(c: Context) -> None:
     """Run tests with `pytest` and `pyproject.toml` configuration."""
-    c.run(f"{VENV_BIN}/pytest -c pyproject.toml --cov=hooks tests", pty=PTY)
+    c.run(
+        f"{VENV_BIN}/pytest -c pyproject.toml --cov=hooks --cov-config=pyproject.toml "
+        "tests",
+        pty=PTY,
+    )
 
 
 @task
