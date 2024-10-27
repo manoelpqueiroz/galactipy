@@ -176,31 +176,31 @@ def pycache_remove(c: Context) -> None:
 
 @task(aliases=["dsstore-clean"])
 def dsstore_remove(c: Context) -> None:
-    """Remove pycache files from project directory."""
+    """Remove DS Store files from project directory."""
     c.run(FILE_REMOVER.format(".DS_Store"))
 
 
 @task(aliases=["mypycache-clean", "mypy-remove", "mypy-clean"])
 def mypycache_remove(c: Context) -> None:
-    """Remove pycache files from project directory."""
+    """Remove mypy cache files from project directory."""
     c.run(FILE_REMOVER.format(".mypy_cache"))
 
 
 @task(aliases=["ipynbcheckpoints-clean", "ipynb-clean", "ipynb-remove"])
 def ipynbcheckpoints_remove(c: Context) -> None:
-    """Remove pycache files from project directory."""
+    """Remove ipynb checkpoints from project directory."""
     c.run(FILE_REMOVER.format(".ipynb_checkpoints"))
 
 
 @task(aliases=["pytestcache-clean", "pytest-remove", "pytest-clean"])
 def pytestcache_remove(c: Context) -> None:
-    """Remove pycache files from project directory."""
+    """Remove Pytest cache files from project directory."""
     c.run(FILE_REMOVER.format(r"(.pytest_cache|.coverage)"))
 
 
 @task(aliases=["ruffcache-clean", "ruff-remove", "ruff-clean"])
 def ruffcache_remove(c: Context) -> None:
-    """Remove pycache files from project directory."""
+    """Remove Ruff cache files from project directory."""
     c.run(FILE_REMOVER.format(".ruff_cache"))
 
 
