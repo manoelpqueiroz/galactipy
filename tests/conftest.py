@@ -95,7 +95,7 @@ def galactipy_instructions():
 
         $ invoke poetry-download
 
-    3) Initialize poetry and install pre-commit hooks:
+    3) Initialize Poetry and install pre-commit hooks:
 
         $ invoke install
         $ invoke pre-commit-install
