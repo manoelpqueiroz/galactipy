@@ -179,7 +179,8 @@ def print_further_instructions(
         username and repository slug.
     """
     if find_spec("rich") is not None:
-        from rich import print
+        from rich.console import Console
+        console = Console(emoji=False)
 
         message = f"""
         Your project [bold][italic]{project_name}[/italic][/bold] is created.
@@ -208,6 +209,8 @@ def print_further_instructions(
             [bold red]$[/] [green]git[/] [yellow]remote add[/] [red]origin[/] [blue]{scm_base_url}.git[/]
             [bold red]$[/] [green]git[/] [yellow]push[/] [cyan]-u[/] [blue]origin master[/]
         """  # noqa: E501
+
+        console.print(textwrap.dedent(message))
 
     else:
         message = f"""
@@ -238,7 +241,7 @@ def print_further_instructions(
             $ git push -u origin master
         """
 
-    print(textwrap.dedent(message))  # If Rich was imported, will use markup `print`
+        print(textwrap.dedent(message))
 
 
 def main() -> None:  # noqa: D103
