@@ -8,7 +8,7 @@ import pytest
 
 
 def test_validate_line_length():
-    assert validate_line_length(88) is None
+    assert validate_line_length(88) is None # type: ignore[func-returns-value]
 
     with pytest.raises(ValueError):
         validate_line_length(1_000)

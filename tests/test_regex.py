@@ -59,7 +59,7 @@ import pytest
 )
 def test_valid_repo_names(valid_slug):
 
-    assert validate_repo_name(valid_slug, RESERVED_PROJECTS) is None
+    assert validate_repo_name(valid_slug, RESERVED_PROJECTS) is None # type: ignore[func-returns-value]
 
 
 @pytest.mark.parametrize(
@@ -171,7 +171,7 @@ def test_doubly_invalid_repo_names(invalid_slug):
 )
 def test_valid_package_names(valid_package):
 
-    assert validate_package_name(valid_package) is None
+    assert validate_package_name(valid_package) is None # type: ignore[func-returns-value]
 
 
 @pytest.mark.parametrize(
@@ -217,7 +217,7 @@ def test_invalid_package_names(invalid_package):
 )
 def test_valid_usernames(valid_username):
 
-    assert validate_username(valid_username, RESERVED_USERNAMES) is None
+    assert validate_username(valid_username, RESERVED_USERNAMES) is None # type: ignore[func-returns-value]
 
 
 @pytest.mark.parametrize(
@@ -256,7 +256,7 @@ def test_username_length():
         username = string * n
 
         if MIN_USERNAME_LENGTH <= n <= MAX_USERNAME_LENGTH:
-            assert validate_username(username, RESERVED_USERNAMES) is None
+            assert validate_username(username, RESERVED_USERNAMES) is None # type: ignore[func-returns-value]
         else:
             with pytest.raises(ValueError):
                 validate_username(username, RESERVED_USERNAMES)
@@ -275,7 +275,7 @@ def test_username_length():
 )
 def test_valid_semver(valid_semver):
 
-    assert validate_semver(valid_semver) is None
+    assert validate_semver(valid_semver) is None # type: ignore[func-returns-value]
 
 
 @pytest.mark.parametrize(

@@ -10,21 +10,22 @@ stages:
 default:
   image: python:3.13
   before_script:
-    - make poetry-download
+    - pip install -U pip
+    - pip install invoke
+    - invoke poetry-download
     - export PATH="/root/.local/bin:$PATH"
     - python3 -m venv .venv
     - source .venv/bin/activate
-    - pip install -U pip
-    - make install
+    - invoke install
   cache:
     key: venv-$CI_COMMIT_REF_NAME-$CI_JOB_STAGE-$CI_COMMIT_SHA
     paths:
       - $CI_PROJECT_DIR/.cache/pip
 
 .default_scripts: &default_scripts
-  - make check-linter
-  - make test
-  - make check-safety
+  - invoke check-linter
+  - invoke test
+  - invoke check-safety
 
 test-py39:
   stage: test

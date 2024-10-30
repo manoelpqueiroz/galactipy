@@ -1,6 +1,5 @@
 """Module to be called after the project is created."""
 
-
 import textwrap
 from pathlib import Path
 from shutil import move
@@ -24,9 +23,9 @@ SCM_BASE_URL = "{{ cookiecutter.__scm_base_url }}"
 # Boolean variables for additional project structures
 # Values wrapped inside strings and evaluated against the "True" string to
 # avoid raising errors when testing
-CREATE_CLI = "{{ cookiecutter.create_cli }}" == "True"  # noqa: PLR0133
-CREATE_DOCKER = "{{ cookiecutter.create_docker }}" == "True"  # noqa: PLR0133
-CREATE_DOCS = "{{ cookiecutter.create_docs }}" == "True"  # noqa: PLR0133
+CREATE_CLI = "{{ cookiecutter.create_cli }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
+CREATE_DOCKER = "{{ cookiecutter.create_docker }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
+CREATE_DOCS = "{{ cookiecutter.create_docs }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
 
 licences_dict = {
     "MIT": "mit",
@@ -67,7 +66,7 @@ def rmdir(path: Path) -> None:
         raise ValueError(message)
 
 
-def generate_licence(directory: Path, licence: str) -> None:
+def generate_licence(directory: Path, licence: str | None) -> None:
     """Generate licence file for the project.
 
     Parameters

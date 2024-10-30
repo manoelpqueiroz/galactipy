@@ -1,8 +1,9 @@
-
 from pathlib import Path
 
 
-def bulk_file_creation(root_directory: Path, *args: str, **kwargs: list[str]) -> list:
+def bulk_file_creation(
+    root_directory: Path, *args: str, **kwargs: list[str]
+) -> list[Path]:
     """Create a set of files and directories based on a root directory.
 
     Parameters
@@ -28,7 +29,7 @@ def bulk_file_creation(root_directory: Path, *args: str, **kwargs: list[str]) ->
     """
     list_of_paths = []
 
-    def create_folder_with_items(folder: Path, *items: str) -> list:
+    def create_folder_with_items(folder: Path, *items: str) -> list[Path]:
         folder_paths = []
 
         folder.mkdir(exist_ok=True)
@@ -70,8 +71,8 @@ def bulk_file_creation(root_directory: Path, *args: str, **kwargs: list[str]) ->
 
         else:
             sub_folder = root_directory / subdirectory
-            sub_folder = create_folder_with_items(sub_folder, *files)
+            sub_tree = create_folder_with_items(sub_folder, *files)
 
-            list_of_paths.extend(sub_folder)
+            list_of_paths.extend(sub_tree)
 
     return list_of_paths
