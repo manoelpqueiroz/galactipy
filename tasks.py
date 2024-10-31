@@ -23,7 +23,8 @@ VENV = VENV_PATH.resolve()
 VENV_BIN = Path(VENV) / BIN_DIR
 
 # Executable paths
-PYTHON_PATH = VENV_BIN / "python"
+PYTHON_COMMAND = which("python")
+PYTHON_PATH = VENV_BIN / "python" if VENV_BIN.exists() else Path(PYTHON_COMMAND)
 
 POETRY_COMMAND = which("poetry")
 if POETRY_COMMAND is not None:
