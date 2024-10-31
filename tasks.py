@@ -109,14 +109,16 @@ def update_dev_deps(c: Context) -> None:
 
 # Installation tasks
 @task
-def install(c: Context) -> None:
+def install(c: Context, ignore_pty: bool = False) -> None:
     """Install dependencies specified in `pyproject.toml` and run mypy."""
-    c.run(f"{POETRY_PATH} lock -n", pty=PTY)
-    c.run(f"{POETRY_PATH} install -n", pty=PTY)
+    local_pty = False if ignore_pty else PTY
+
+    c.run(f"{POETRY_PATH} lock -n", pty=local_pty)
+    c.run(f"{POETRY_PATH} install -n", pty=local_pty)
     c.run(
         f"{VENV_BIN}/mypy --config-file pyproject.toml --install-types "
         "--non-interactive hooks tests",
-        pty=PTY,
+        pty=local_pty,
     )
 
 
