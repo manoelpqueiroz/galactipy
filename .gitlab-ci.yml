@@ -27,12 +27,6 @@ default:
   - invoke test
   - invoke check-safety
 
-test-py39:
-  stage: test
-  image: python:3.9
-  script:
-    - *default_scripts
-
 test-py310:
   stage: test
   image: python:3.10
