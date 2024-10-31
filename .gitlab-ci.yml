@@ -10,12 +10,12 @@ stages:
 default:
   image: python:3.13
   before_script:
-    - pip install -U pip
     - pip install invoke
     - invoke poetry-download
     - export PATH="/root/.local/bin:$PATH"
     - python3 -m venv .venv
     - source .venv/bin/activate
+    - pip install -U pip
     - invoke install
   cache:
     key: venv-$CI_COMMIT_REF_NAME-$CI_JOB_STAGE-$CI_COMMIT_SHA
