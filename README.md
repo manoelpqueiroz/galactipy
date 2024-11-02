@@ -51,7 +51,7 @@ In this [cookiecutter :cookie:][ft1] template we combine state-of-the-art librar
 
 - Issue and Merge Request templates for easy integration with GitLab and GitHub;
 - Predefined CI/CD build workflow for [`GitLab CI`][ft13] and [`Github Actions`][ft14];
-- Everything is already set up for security checks, codestyle checks, code formatting, testing, linting, docker builds etc. with [`Makefile`][ft15]. More details in [makefile-usage][ft16];
+- Everything is already set up for security checks, codestyle checks, code formatting, testing, linting, docker builds etc. with [`invoke`][ft15]. More details in [Invoke Usage][ft16];
 - [`Dockerfile`][ft17] for your package.
 
 #### GitLab vs. GitHub features
@@ -183,16 +183,16 @@ Your project A Decent Python Project is created.
 
 2) If you don't have Poetry installed run:
 
-    $ make poetry-download
+    $ invoke poetry-download
 
 3) Initialize poetry and install pre-commit hooks:
 
-    $ make install
-    $ make pre-commit-install
+    $ invoke install
+    $ invoke pre-commit-install
 
 4) Run codestyle:
 
-    $ make codestyle
+    $ invoke codestyle
 
 5) Upload initial code to GitHub:
 
@@ -212,13 +212,13 @@ Your project will contain `README.md` file with instructions for development, de
 
 #### Initialize `poetry`
 
-By running `make install`
+By running `invoke install`
 
 After you create a project, it will appear in your directory, and will display [a message about how to initialize the project][htu7].
 
 #### Initialize `pre-commit`
 
-By running `make pre-commit-install`. Make sure to set up git first via `git init`.
+By running `invoke pre-commit-install`. Make sure to set up git first via `git init`.
 
 ### Package example
 
@@ -242,7 +242,7 @@ etc.
 
 If you set `create_cli` to `True` the template comes with a cute little CLI application example. It utilises [`Typer`][htu3] and [`Rich`][htu4] for CLI input validation and beautiful formatting in the terminal.
 
-After installation via `make install` (preferred) or `poetry install` you can try to play with the example:
+After installation via `invoke install` (preferred) or `poetry install` you can try to play with the example:
 
 ```bash
 poetry run <repo_name> --help
@@ -261,27 +261,27 @@ Building a new version of the application contains steps:
 - Create a `Release` for your package on the platform;
 - And... publish :slight_smile: `poetry publish --build`.
 
-### Makefile usage
+### Invoke usage
 
-[`Makefile`][ft15] contains a lot of functions for faster development.
+[`invoke`][ft15] contains a lot of functions for faster development.
 
 <details>
-<summary>1. Download and remove Poetry</summary>
+<summary>1. Download or remove Poetry</summary>
 <p>
 
 To download and install Poetry as a [standalone application][htu10] run:
 
 ```bash
-make poetry-download
+invoke poetry-download
 ```
 
 To uninstall
 
 ```bash
-make poetry-remove
+invoke poetry-remove
 ```
 
-Or you can install it with `pip` inside your virtual environment if you prefer.
+Alternatively, you can install it via your package manager (preferred) or any method provided by the [documentation][htu11].
 
 </p>
 </details>
@@ -293,13 +293,19 @@ Or you can install it with `pip` inside your virtual environment if you prefer.
 Install requirements with
 
 ```bash
-make install
+invoke install
+```
+
+And then add Poetry plugins to make development easier with
+
+```bash
+invoke poetry-plugins
 ```
 
 Pre-commit hooks could be installed after `git init` via
 
 ```bash
-make pre-commit-install
+invoke pre-commit-install
 ```
 
 </p>
@@ -312,22 +318,22 @@ make pre-commit-install
 Automatic formatting uses `ruff`, and can be run with
 
 ```bash
-make codestyle
+invoke codestyle
 
 # or use synonym
-make formatting
+invoke format
 ```
 
 For formatting checks only, without rewriting files:
 
 ```bash
-make check-formatting
+invoke codestyle --check
 ```
 
-Update all dev libraries to the latest version using one command
+Aside from the formatter, you can also use `ruff` to lint project files with several preconfigured rules defined in `pyproject.toml`:
 
 ```bash
-make update-dev-deps
+invoke check-linter
 ```
 
 </p>
@@ -338,13 +344,15 @@ make update-dev-deps
 <p>
 
 ```bash
-make check-safety
+invoke check-safety
 ```
 
 This command launches `Poetry` integrity checks as well as identifies security issues with `Safety` and `Bandit`.
 
+Update all dev libraries to the latest version using one command:
+
 ```bash
-make check-safety
+invoke update-dev-deps
 ```
 
 </p>
@@ -357,7 +365,7 @@ make check-safety
 Run `mypy` static type checker with
 
 ```bash
-make mypy
+invoke mypy
 ```
 
 </p>
@@ -370,101 +378,84 @@ make mypy
 Run `pytest` with all essential parameters predefined with
 
 ```bash
-make test
+invoke test
 ```
 
 </p>
 </details>
 
 <details>
-<summary>7. Linters</summary>
+<summary>7. All code-related checks</summary>
 <p>
 
-Run code and docstring linters with `ruff`.
+Of course there is a command to ~~rule~~ run all checks in one:
 
 ```bash
-make check-linter
+invoke sweep
+```
+
+The same as:
+
+```bash
+invoke test check-linter codestyle mypy check-safety
 ```
 
 </p>
 </details>
 
 <details>
-<summary>8. All linters</summary>
+<summary>8. Docker</summary>
 <p>
 
-Of course there is a command to ~~rule~~ run all linters in one:
+Build your Docker image with the `latest` tag preconfigured with
 
 ```bash
-make lint-all
+invoke docker-build
 ```
 
-the same as:
+Remove the Docker image with
 
 ```bash
-make test && make check-linter && make check-formatting && make mypy && make check-safety
+invoke docker-remove
 ```
+
+More information about Docker [here][htu12].
 
 </p>
 </details>
 
 <details>
-<summary>9. Docker</summary>
+<summary>9. Cleanup</summary>
 <p>
 
+Delete pycache files:
+
 ```bash
-make docker-build
+invoke pycache-remove
 ```
 
-which is equivalent to:
+Remove package build:
 
 ```bash
-make docker-build VERSION=latest
+invoke build-remove
 ```
 
-Remove docker image with
+Delete .DS_STORE files:
 
 ```bash
-make docker-remove
+invoke dsstore-remove
 ```
 
-More information [about docker][htu11].
-
-</p>
-</details>
-
-<details>
-<summary>10. Cleanup</summary>
-<p>
-
-Delete pycache files
+Remove .mypycache:
 
 ```bash
-make pycache-remove
-```
-
-Remove package build
-
-```bash
-make build-remove
-```
-
-Delete .DS_STORE files
-
-```bash
-make dsstore-remove
-```
-
-Remove .mypycache
-
-```bash
-make mypycache-remove
+invoke mypycache-remove
 ```
 
 Or to remove all above run:
 
 ```bash
-make cleanup
+invoke cleanup
 ```
 
 </p>
@@ -542,8 +533,8 @@ And here are a few articles which may help you:
 - [A handy guide to financial support for open source][wn27];
 - [GitLab CI Documentation][wn28];
 - [GitHub Actions Documentation][wn29];
-- [Makefile tutorial][wn30];
-- [A Comprehensive Look at Testing in Software Development][wn31] is an article that lays out why testing is crucial for development success. Eric's blog is actually a great reference, covering topics ranging from the basics to advanced techniques and best practices;
+- [A Comprehensive Look at Testing in Software Development][wn30] is an article that lays out why testing is crucial for development success. Eric's blog is actually a great reference, covering topics ranging from the basics to advanced techniques and best practices;
+- [Robust Exception Handling][wn31];
 - Maybe you would like to add [gitmoji][wn32] to commit names. This is really funny. :grin:
 
 ## :chart_with_upwards_trend: Releases
@@ -579,8 +570,7 @@ Here is a list of things that have yet to be implemented:
 - `Dockerfile` linting with [`dockerfilelint`][td7];
 - [Hall of fame][td8] from `Sourcerer`;
 - End-to-end testing and validation of the cookiecutter template;
-- Add [`Invoke`][td9];
-- Add [`Earthly`][td10].
+- Add [`Earthly`][td9].
 
 ## :shield: Licence
 
@@ -606,6 +596,10 @@ And also there are some projects which can be studied as references in project m
 - [Cookiecutter Data Science Template: `cdst`][ac9];
 - [Full Stack FastAPI and PostgreSQL - Base Project Generator][ac10];
 - [The importance of layered thinking in data engineering][ac11].
+
+Additionally, we would like to thank the teams of the following projects for aiding us during our research and implementation of best practices and tools for Python development:
+
+- [Pelican][ac12].
 
 Give them your :star:, these resources are amazing! :wink:
 
@@ -681,8 +675,8 @@ Here is the Markdown source for it:
 [ft12]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.gitignore
 [ft13]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.gitlab-ci.yml
 [ft14]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/workflows/build.yml
-[ft15]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/Makefile
-[ft16]: #makefile-usage
+[ft15]: https://docs.pyinvoke.org/en/stable/
+[ft16]: #invoke-usage
 [ft17]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker/Dockerfile
 [ft18]: https://github.com/TezRomacH/python-package-template
 [ft19]: https://docs.github.com/en/code-security/dependabot
@@ -708,7 +702,8 @@ Here is the Markdown source for it:
 [htu8]: https://python-poetry.org/docs/
 [htu9]: https://python-poetry.org/docs/cli/#commands
 [htu10]: https://github.com/python-poetry/install.python-poetry.org
-[htu11]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker
+[htu11]: https://python-poetry.org/docs/#installation
+[htu12]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker
 
 [wn1]: https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
 [wn2]: https://github.com/tiangolo/typer
@@ -739,8 +734,8 @@ Here is the Markdown source for it:
 [wn27]: https://github.com/nayafia/lemonade-stand
 [wn28]: https://docs.gitlab.com/ee/ci/
 [wn29]: https://help.github.com/en/actions
-[wn30]: https://makefiletutorial.com/
-[wn31]: https://pytest-with-eric.com/introduction/types-of-software-testing/
+[wn30]: https://pytest-with-eric.com/introduction/types-of-software-testing/
+[wn31]: https://eli.thegreenplace.net/2008/08/21/robust-exception-handling/
 [wn32]: https://gitmoji.dev/
 
 [r1]: https://gitlab.com/manoelpqueiroz/galactipy/-/releases
@@ -754,8 +749,7 @@ Here is the Markdown source for it:
 [td6]: https://github.com/econchick/interrogate
 [td7]: https://github.com/replicatedhq/dockerfilelint
 [td8]: https://github.com/sourcerer-io/hall-of-fame
-[td9]: http://www.pyinvoke.org/
-[td10]: https://earthly.dev/
+[td9]: https://earthly.dev/
 
 [ac1]: https://github.com/TezRomacH
 [ac2]: https://patreon.com/tezikov
@@ -768,3 +762,4 @@ Here is the Markdown source for it:
 [ac9]: https://github.com/crplab/cdst
 [ac10]: https://github.com/tiangolo/full-stack-fastapi-postgresql
 [ac11]: https://towardsdatascience.com/the-importance-of-layered-thinking-in-data-engineering-a09f685edc71
+[ac12]: https://github.com/getpelican/pelican
