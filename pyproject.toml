@@ -18,7 +18,6 @@ keywords = [
   "cookiecutter",
   "template",
   "packages",
-  "makefile",
   "best-practices",
   "poetry",
   "codestyle",
