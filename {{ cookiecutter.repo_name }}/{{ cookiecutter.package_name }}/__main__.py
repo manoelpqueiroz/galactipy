@@ -26,7 +26,7 @@ app = typer.Typer(
     help="{{ cookiecutter.project_description }}",
     add_completion=False,
 )
-color_option = typer.Option(
+colour_option = typer.Option(
     None,
     "-c",
     "--color",
