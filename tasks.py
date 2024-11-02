@@ -87,7 +87,7 @@ def poetry_plugins(c: Context) -> None:
         c.run(
             f"{POETRY_PATH} self add poetry-plugin-up poetry-plugin-export "
             "poetry-bumpversion",
-            pty=PTY
+            pty=PTY,
         )
 
     except UnexpectedExit as e:
@@ -152,10 +152,7 @@ def check_linter(c: Context, fix: bool = False) -> None:
 @task
 def test(c: Context) -> None:
     """Run tests with `pytest` and `pyproject.toml` configuration."""
-    c.run(
-        f"{VENV_BIN}/pytest -c pyproject.toml tests",
-        pty=PTY,
-    )
+    c.run(f"{VENV_BIN}/pytest -c pyproject.toml tests", pty=PTY)
 
 
 @task
