@@ -55,6 +55,10 @@ coverage = "^7.6.4"
 invoke = "^2.2.0"
 
 
+[[tool.poetry_bumpversion.replacements]]
+files = ["README.md"]
+
+
 [tool.ruff]
 # https://github.com/astral-sh/ruff
 # https://docs.astral.sh/ruff/settings

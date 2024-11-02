@@ -86,6 +86,10 @@ pytest-click = "^1.1.0"
 pytest-pikachu = "^1.0.0"
 coverage = "^7.3.0"
 
+
+[[tool.poetry_bumpversion.replacements]]
+files = ["README.md"]
+
 {%+ if cookiecutter.use_ruff %}
 [tool.ruff]
 # https://github.com/astral-sh/ruff

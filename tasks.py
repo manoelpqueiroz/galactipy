@@ -84,7 +84,11 @@ def poetry_remove(c: Context) -> None:
 def poetry_plugins(c: Context) -> None:
     """Install Poetry plugins through the `self add` command."""
     try:
-        c.run(f"{POETRY_PATH} self add poetry-plugin-up poetry-plugin-export", pty=PTY)
+        c.run(
+            f"{POETRY_PATH} self add poetry-plugin-up poetry-plugin-export "
+            "poetry-bumpversion",
+            pty=PTY
+        )
 
     except UnexpectedExit as e:
         msg = (
