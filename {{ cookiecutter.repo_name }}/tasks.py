@@ -5,7 +5,10 @@ from shutil import which
 from invoke import Context, UnexpectedExit, task
 
 PACKAGE_NAME = "{{ cookiecutter.repo_name }}"
-
+{%+ if cookiecutter.create_docker %}
+DOCKER_IMAGE = "{{ cookiecutter.package_name }}"
+DOCKER_IMAGE_TAG = "latest"
+{% endif %}
 # Windows/Unix differentiation
 BIN_DIR = "bin" if os.name != "nt" else "Scripts"
 PTY = os.name != "nt"
@@ -130,7 +133,7 @@ def pre_commit_install(c: Context) -> None:
 
 
 # Formatting, linting and other checks
-{%+ if cookiecutter.use_ruff %}
+{%- if cookiecutter.use_ruff %}
 @task(aliases=["format"])
 def codestyle(c: Context, check: bool = False) -> None:
     """Format the entire project with `ruff format`."""
@@ -181,7 +184,23 @@ def lint_all(c: Context) -> None:
     mypy(c)
     check_safety(c)
 
+{%+ if cookiecutter.create_docker %}
+# Docker commands
+@task
+def docker_build(c: Context) -> None:
+    """Build Docker image for {{ cookiecutter.repo_name }}."""
+    c.run(
+        f"docker build -t {DOCKER_IMAGE}:{DOCKER_IMAGE_TAG} -f ./docker/Dockerfile "
+        "--no-cache"
+    )
 
+
+@task
+def docker_remove(c: Context) -> None:
+    """Remove Docker image created for {{ cookiecutter.repo_name }}."""
+    c.run(f"docker rmi -f {DOCKER_IMAGE}:{DOCKER_IMAGE_TAG}")
+
+{% endif %}
 # Cleaning commands for Bash, Zsh and PowerShell
 @task(aliases=["pycache-clean"])
 def pycache_remove(c: Context) -> None:
