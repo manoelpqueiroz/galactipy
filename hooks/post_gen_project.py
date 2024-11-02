@@ -1,7 +1,5 @@
 """Module to be called after the project is created."""
 
-from typing import List
-
 import textwrap
 from pathlib import Path
 from shutil import move
@@ -25,9 +23,9 @@ SCM_BASE_URL = "{{ cookiecutter.__scm_base_url }}"
 # Boolean variables for additional project structures
 # Values wrapped inside strings and evaluated against the "True" string to
 # avoid raising errors when testing
-CREATE_CLI = "{{ cookiecutter.create_cli }}" == "True"  # noqa: PLR0133
-CREATE_DOCKER = "{{ cookiecutter.create_docker }}" == "True"  # noqa: PLR0133
-CREATE_DOCS = "{{ cookiecutter.create_docs }}" == "True"  # noqa: PLR0133
+CREATE_CLI = "{{ cookiecutter.create_cli }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
+CREATE_DOCKER = "{{ cookiecutter.create_docker }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
+CREATE_DOCS = "{{ cookiecutter.create_docs }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
 
 licences_dict = {
     "MIT": "mit",
@@ -68,7 +66,7 @@ def rmdir(path: Path) -> None:
         raise ValueError(message)
 
 
-def generate_licence(directory: Path, licence: str) -> None:
+def generate_licence(directory: Path, licence: str | None) -> None:
     """Generate licence file for the project.
 
     Parameters
@@ -131,18 +129,18 @@ def remove_unused_files(
     remove_docs : bool
         Flag for removing documentation related files.
     """
-    files_to_delete: List[Path] = []
+    files_to_delete: list[Path] = []
 
-    def _cli_specific_files() -> List[Path]:
+    def _cli_specific_files() -> list[Path]:
         return [directory / package_name / "__main__.py"]
 
-    def _gitlab_specific_files() -> List[Path]:
+    def _gitlab_specific_files() -> list[Path]:
         return [directory / ".gitlab-ci.yml"]
 
-    def _docker_specific_files() -> List[Path]:
+    def _docker_specific_files() -> list[Path]:
         return [directory / ".dockerignore", directory / "docker"]
 
-    def _docs_specific_files() -> List[Path]:
+    def _docs_specific_files() -> list[Path]:
         return [directory / "docs"]
 
     if remove_cli:

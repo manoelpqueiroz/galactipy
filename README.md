@@ -40,7 +40,7 @@ In this [cookiecutter :cookie:][ft1] template we combine state-of-the-art librar
 
 ### Development features
 
-- Supports `Python 3.8` and higher;
+- Supports `Python 3.9` and higher;
 - [`Poetry`][ft2] as a dependencies manager. See configuration in [`pyproject.toml`][ft3];
 - Automatic code formatting with [`ruff`][ft4], with ready-to-use [`pre-commit`][ft5] hooks and several rules already selected for linting;
 - Type checks with [`mypy`][ft6], security checks with [`safety`][ft7] and [`bandit`][ft8];
@@ -115,7 +115,7 @@ The input variables, with their default values, are as follows:
 | `scm_username`            | `manoelpqueiroz`            | GitHub or GitLab username for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for either platform. |
 | `email`                   | based on `scm_username`     | Email for `CODE_OF_CONDUCT.md`, `SECURITY.md` files and to specify the ownership of the project in `pyproject.toml`. |
 | `licence`                 | `MIT`                       | One of `MIT`, `BSD-3`, `GNU GPL v3.0`, `GNU AGLP v3.0`, `GNU LGPL v3.0`, `Mozilla Public License 2.0` and `Apache Software License 2.0`, or `Not open source`. |
-| `minimal_python_version`  | `3.8`                       | Minimal Python version. All versions since `3.8` are available to choose. It is used for builds, pipelines and formatters. |
+| `minimal_python_version`  | `3.9`                       | Minimal Python version. All versions since `3.9` are available to choose. It is used for builds, pipelines and formatters. |
 | `use_ruff`                | `True`                      | :small_red_triangle: Option to use [`ruff`][ft4] as the code formatter, along with a pre-commit hook. |
 | `line_length`             | 88                          | The max length per line, dismiss if `use_ruff` is not used. NOTE: This value must be between 50 and 300. |
 | `docstring_style`         | `numpy`                     | One of `numpy`, `pep257` or `google`, dismiss if `use_ruff` is not used. You can choose `other` to disable checks on your docstrings. |
@@ -157,11 +157,11 @@ https://gitlab.com/manoelpqueiroz/galactipy): Let's try a cool description
     8 - Not open source
     Choose from [1/2/3/4/5/6/7/8] (1): 4
   [11/17] Minimal Python version
-    1 - 3.8
-    2 - 3.9
-    3 - 3.10
-    4 - 3.11
-    5 - 3.12
+    1 - 3.9
+    2 - 3.10
+    3 - 3.11
+    4 - 3.12
+    5 - 3.13
     Choose from [1/2/3/4/5] (1): 3
   [12/17] Use Ruff for linting and formatting? [y/n] (y): yes
   [13/17] Maximum line length (88):
@@ -632,7 +632,7 @@ Here is the Markdown source for it:
 
 <!-- Anchors -->
 
-[b1]: https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue?style=for-the-badge
+[b1]: https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue?style=for-the-badge
 [b2]: https://kutt.it/WlS8Qj
 [b3]: https://img.shields.io/badge/GitLab-0B2640?style=for-the-badge&logo=gitlab&logoColor=white
 [b4]: https://img.shields.io/gitlab/v/release/manoelpqueiroz%2Fgalactipy?style=for-the-badge&logo=semantic-release&color=253747
