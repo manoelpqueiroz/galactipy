@@ -152,6 +152,10 @@ section-order = [
 [tool.mypy]
 # https://github.com/python/mypy
 # https://mypy.readthedocs.io/en/latest/config_file.html#using-a-pyproject-toml-file
+files = [
+  "hooks",
+  "tests"
+]
 pretty = true
 show_traceback = true
 color_output = true
@@ -199,6 +203,8 @@ addopts = [
   "--tb=short",
   "--doctest-modules",
   "--doctest-continue-on-failure",
+  "--cov=hooks",
+  "--cov-config=pyproject.toml"
 ]
 
 

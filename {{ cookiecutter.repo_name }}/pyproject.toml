@@ -188,6 +188,10 @@ section-order = [
 # https://github.com/python/mypy
 # https://mypy.readthedocs.io/en/latest/config_file.html#using-a-pyproject-toml-file
 python_version = {{ cookiecutter.minimal_python_version }}
+files = [
+  "{{ cookiecutter.package_name }}",
+  "tests"
+]
 pretty = true
 show_traceback = true
 color_output = true
@@ -235,7 +239,9 @@ addopts = [
   "--tb=short",
   "--doctest-modules",
   "--doctest-continue-on-failure",
-  "--pikachu"
+  "--pikachu",
+  "--cov={{ cookiecutter.package_name }}",
+  "--cov-config=pyproject.toml"
 ]
 
 

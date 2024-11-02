@@ -117,7 +117,7 @@ def install(c: Context, ignore_pty: bool = False) -> None:
     c.run(f"{POETRY_PATH} install -n", pty=local_pty)
     c.run(
         f"{VENV_BIN}/mypy --config-file pyproject.toml --install-types "
-        "--non-interactive hooks tests",
+        "--non-interactive",
         pty=local_pty,
     )
 
@@ -149,8 +149,7 @@ def check_linter(c: Context, fix: bool = False) -> None:
 def test(c: Context) -> None:
     """Run tests with `pytest` and `pyproject.toml` configuration."""
     c.run(
-        f"{VENV_BIN}/pytest -c pyproject.toml --cov=hooks --cov-config=pyproject.toml "
-        "tests",
+        f"{VENV_BIN}/pytest -c pyproject.toml tests",
         pty=PTY,
     )
 
@@ -158,7 +157,7 @@ def test(c: Context) -> None:
 @task
 def mypy(c: Context) -> None:
     """Run type checks with `mypy` and `pyproject.toml` configuration."""
-    c.run(f"{VENV_BIN}/mypy --config-file pyproject.toml hooks tests", pty=PTY)
+    c.run(f"{VENV_BIN}/mypy --config-file pyproject.toml", pty=PTY)
 
 
 @task(poetry_check)
