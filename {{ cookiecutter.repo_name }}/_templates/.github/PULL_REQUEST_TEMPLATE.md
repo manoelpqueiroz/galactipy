@@ -23,7 +23,7 @@
 
 - [ ] I've read the [`CODE_OF_CONDUCT.md`][1] document;
 - [ ] I've read the [`CONTRIBUTING.md`][2] guide;
-- [ ] I've updated the code style using `make codestyle`;
+- [ ] I've updated the code style using `invoke codestyle`;
 - [ ] I've written tests for all new methods and classes that I created;
 - [ ] I've written the docstring in `{{ cookiecutter.docstring_style.capitalize() }}` format for all the methods and classes that I used.
 
