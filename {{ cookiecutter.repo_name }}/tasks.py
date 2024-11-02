@@ -6,8 +6,9 @@ from invoke import Context, UnexpectedExit, task
 
 PACKAGE_NAME = "{{ cookiecutter.repo_name }}"
 {%+ if cookiecutter.create_docker %}
-DOCKER_IMAGE = "{{ cookiecutter.package_name }}"
-DOCKER_IMAGE_TAG = "latest"
+DEFAULT_DOCKER_REPOSITORY = "{{ cookiecutter.package_name }}"
+DEFAULT_DOCKER_TAG = "latest"
+DEFAULT_DOCKER_IMAGE = f"{DEFAULT_DOCKER_REPOSITORY}:{DEFAULT_DOCKER_TAG}"
 {% endif %}
 # Windows/Unix differentiation
 BIN_DIR = "bin" if os.name != "nt" else "Scripts"
@@ -186,19 +187,28 @@ def lint_all(c: Context) -> None:
 
 {%+ if cookiecutter.create_docker %}
 # Docker commands
-@task
-def docker_build(c: Context) -> None:
-    """Build Docker image for {{ cookiecutter.repo_name }}."""
+@task(iterable=["images"])
+def docker_build(
+    c: Context,
+    images: list[str]= [DEFAULT_DOCKER_IMAGE]
+) -> None:
+    """Build Docker images for {{ cookiecutter.repo_name }}."""
+    docker_images = " ".join(f"-t {i}" for i in images)
+
     c.run(
-        f"docker build -t {DOCKER_IMAGE}:{DOCKER_IMAGE_TAG} -f ./docker/Dockerfile "
-        "--no-cache"
+        f"docker build {docker_images} -f ./docker/Dockerfile --no-cache"
     )
 
 
-@task
-def docker_remove(c: Context) -> None:
-    """Remove Docker image created for {{ cookiecutter.repo_name }}."""
-    c.run(f"docker rmi -f {DOCKER_IMAGE}:{DOCKER_IMAGE_TAG}")
+@task(iterable=["images"])
+def docker_remove(
+    c: Context,
+    images: list[str] = [DEFAULT_DOCKER_IMAGE],
+) -> None:
+    """Remove specified Docker images created for {{ cookiecutter.repo_name }}."""
+    docker_images = " ".join(images)
+
+    c.run(f"docker rmi -f {docker_images}")
 
 {% endif %}
 # Cleaning commands for Bash, Zsh and PowerShell
