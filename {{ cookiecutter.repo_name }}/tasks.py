@@ -178,8 +178,8 @@ def check_safety(c: Context) -> None:
 
 
 @task
-def lint_all(c: Context) -> None:
-    """Perform all lint-related tasks, including tests, mypy and security."""
+def sweep(c: Context) -> None:
+    """Perform all code checks, including tests, linting and security."""
     test(c)
     {%- if cookiecutter.use_ruff %}
     check_linter(c)
