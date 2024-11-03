@@ -12,9 +12,6 @@
 {%- if cookiecutter.licence != 'nos' %}
 [![Licence][blic1]][blic2]
 {%- endif %}
-{%- if cookiecutter.create_docs %}
-[![Docs][bdoc1]][bdoc2]
-{%- endif %}
 [![Expand your project structure from atoms of code to galactic dimensions.][bp6]][bp7]
 
 [![Contributions Welcome][bp8]][bp9]
@@ -203,7 +200,8 @@ And here are a few articles which may help you:
 {%- endif %}
 - [A Comprehensive Look at Testing in Software Development][wn22] is an article that lays out why testing is crucial for development success. Eric's blog is actually a great reference, covering topics ranging from the basics to advanced techniques and best practices;
 - [Robust Exception Handling][wn23];
-- Maybe you would like to add [gitmoji][wn24] to commit names. This is really funny. :grin:
+- [Why Your Mock Doesn't Work][wn24];
+- Maybe you would like to add [gitmoji][wn25] to commit names. This is really funny. :grin:
 
 ## :rocket: Features
 
@@ -587,7 +585,8 @@ This project was generated with [`galactipy`][bp7].
 [wn21]: https://www.codacy.com/
 [wn22]: https://pytest-with-eric.com/introduction/types-of-software-testing/
 [wn23]: https://eli.thegreenplace.net/2008/08/21/robust-exception-handling/
-[wn24]: https://gitmoji.dev/
+[wn24]: https://nedbatchelder.com/blog/201908/why_your_mock_doesnt_work.html
+[wn25]: https://gitmoji.dev/
 {%+ if cookiecutter.licence != 'nos' %}
 [wno3]: https://liberapay.com/
 [wno4]: https://opencollective.com/
@@ -661,10 +660,6 @@ This project was generated with [`galactipy`][bp7].
 [docker1]: {{ cookiecutter.__scm_link_url }}/blob/master/.dockerignore
 [docker2]: {{ cookiecutter.__scm_link_url }}/blob/master/docker/Dockerfile
 [docker3]: {{ cookiecutter.__scm_link_url }}/tree/master/docker
-{%+ endif %}
-{%- if cookiecutter.create_docs %}
-[bdoc1]: https://img.shields.io/badge/docs-{{ cookiecutter.__scm_platform_lc }}%20pages-0a507a?style=for-the-badge
-[bdoc2]: https://{{ cookiecutter.scm_username }}.{{ cookiecutter.__scm_platform_lc }}.io/{{ cookiecutter.repo_name }}
 {%+ endif %}
 {%- if cookiecutter.use_ruff %}
 [bfo1]: https://img.shields.io/badge/code%20style-ruff-261230?style=for-the-badge&labelColor=grey

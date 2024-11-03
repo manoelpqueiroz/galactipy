@@ -55,7 +55,7 @@ class TestFileRemoval:
         project_root, pyproject_file, tests_root, test_file, package_name = removal_tree
         cli_file = project_root / package_name / "__main__.py"
 
-        remove_unused_files(project_root, package_name, True, False, False, False)
+        remove_unused_files(project_root, package_name, True, False, False)
 
         assert not cli_file.exists()
 
@@ -67,7 +67,7 @@ class TestFileRemoval:
         project_root, pyproject_file, tests_root, test_file, package_name = removal_tree
         ci_file = project_root / ".gitlab-ci.yml"
 
-        remove_unused_files(project_root, package_name, False, True, False, False)
+        remove_unused_files(project_root, package_name, False, True, False)
 
         assert not ci_file.exists()
 
@@ -80,22 +80,10 @@ class TestFileRemoval:
         docker_directory = project_root / "docker"
         dockerignore = project_root / ".dockerignore"
 
-        remove_unused_files(project_root, package_name, False, False, True, False)
+        remove_unused_files(project_root, package_name, False, False, True)
 
         assert not docker_directory.exists()
         assert not dockerignore.exists()
-
-        assert pyproject_file.exists()
-        assert tests_root.exists()
-        assert test_file.exists()
-
-    def test_remove_docs(self, removal_tree):
-        project_root, pyproject_file, tests_root, test_file, package_name = removal_tree
-        docs_directory = project_root / "docs"
-
-        remove_unused_files(project_root, package_name, False, False, False, True)
-
-        assert not docs_directory.exists()
 
         assert pyproject_file.exists()
         assert tests_root.exists()
@@ -108,30 +96,54 @@ class TestFileRemoval:
         ci_file = project_root / ".gitlab-ci.yml"
         docker_directory = project_root / "docker"
         dockerignore = project_root / ".dockerignore"
-        docs_directory = project_root / "docs"
 
-        remove_unused_files(project_root, package_name, True, True, True, True)
+        remove_unused_files(project_root, package_name, True, True, True)
 
         assert not cli_file.exists()
         assert not ci_file.exists()
         assert not docker_directory.exists()
         assert not dockerignore.exists()
-        assert not docs_directory.exists()
 
         assert pyproject_file.exists()
         assert tests_root.exists()
         assert test_file.exists()
 
 
-def test_print_further_instructions(capsys, galactipy_instructions):
-    print_further_instructions(
-        "Galactipy",
-        "galactipy",
-        "GitLab",
-        "https://www.gitlab.com/manoelpqueiroz/galactipy",
-    )
-    captured = capsys.readouterr()
+class TestInstructions:
+    @pytest.mark.parametrize("rich_output", [True, None])
+    def test_print_further_instructions(
+        self, capsys, mocker, rich_output, galactipy_instructions
+    ):
+        mocker.patch(
+            "hooks.post_gen_project.find_spec", side_effect=[rich_output, True]
+        )
 
-    # STDOUT always finishes with a newline, hence the addition on the right
-    # side
-    assert captured.out == galactipy_instructions + "\n"
+        print_further_instructions(
+            "Galactipy",
+            "galactipy",
+            "GitLab",
+            "https://www.gitlab.com/manoelpqueiroz/galactipy",
+        )
+        captured = capsys.readouterr()
+
+        # STDOUT always finishes with a newline
+        assert captured.out == galactipy_instructions + "\n"
+
+    @pytest.mark.parametrize("rich_output", [True, None])
+    def test_print_invoke_instructions(
+        self, capsys, mocker, rich_output, galactipy_invoke_instructions
+    ):
+        mocker.patch(
+            "hooks.post_gen_project.find_spec", side_effect=[rich_output, None]
+        )
+
+        print_further_instructions(
+            "Galactipy",
+            "galactipy",
+            "GitLab",
+            "https://www.gitlab.com/manoelpqueiroz/galactipy",
+        )
+        captured = capsys.readouterr()
+
+        # STDOUT always finishes with a newline
+        assert captured.out == galactipy_invoke_instructions + "\n"

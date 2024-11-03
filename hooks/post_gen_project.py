@@ -1,6 +1,7 @@
 """Module to be called after the project is created."""
 
 import textwrap
+from importlib.util import find_spec
 from pathlib import Path
 from shutil import move
 
@@ -25,7 +26,6 @@ SCM_BASE_URL = "{{ cookiecutter.__scm_base_url }}"
 # avoid raising errors when testing
 CREATE_CLI = "{{ cookiecutter.create_cli }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
 CREATE_DOCKER = "{{ cookiecutter.create_docker }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
-CREATE_DOCS = "{{ cookiecutter.create_docs }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
 
 licences_dict = {
     "MIT": "mit",
@@ -110,7 +110,6 @@ def remove_unused_files(
     remove_cli: bool,
     remove_gitlab: bool,
     remove_docker: bool,
-    remove_docs: bool,
 ) -> None:
     """Remove unused files.
 
@@ -126,8 +125,6 @@ def remove_unused_files(
         Flag for removing GitLab related files.
     remove_docker : bool
         Flag for removing Docker related files.
-    remove_docs : bool
-        Flag for removing documentation related files.
     """
     files_to_delete: list[Path] = []
 
@@ -140,9 +137,6 @@ def remove_unused_files(
     def _docker_specific_files() -> list[Path]:
         return [directory / ".dockerignore", directory / "docker"]
 
-    def _docs_specific_files() -> list[Path]:
-        return [directory / "docs"]
-
     if remove_cli:
         files_to_delete.extend(_cli_specific_files())
 
@@ -151,9 +145,6 @@ def remove_unused_files(
 
     if remove_docker:
         files_to_delete.extend(_docker_specific_files())
-
-    if remove_docs:
-        files_to_delete.extend(_docs_specific_files())
 
     for path in files_to_delete:
         rmdir(path)
@@ -177,41 +168,102 @@ def print_further_instructions(
         URL for the project's repository in `scm_platform`, consisting of
         username and repository slug.
     """
-    message = f"""
-    Your project {project_name} is created.
+    if find_spec("rich") is not None:
+        from rich.console import Console
+        console = Console(emoji=False)
 
-    1) Now you can start working on it:
+        message = textwrap.dedent(
+            f"""
+            Your project [bold][italic]{project_name}[/italic][/bold] is created.
 
-        $ cd {project_repo} && git init
+            1) Now you can start working on it:
 
-    2) If you don't have Poetry installed run:
+                [bold red]$[/] [green]cd[/] [underline magenta]{project_repo}[/] && [green]git[/] [yellow]init[/]
 
-        $ invoke poetry-download
+            2) If you don't have Poetry installed run:
 
-    3) Initialize poetry and install pre-commit hooks:
+                [bold red]$[/] [green]invoke[/] [blue]poetry-download[/]
 
-        $ invoke install
-        $ invoke pre-commit-install
+            3) Initialize Poetry and install pre-commit hooks:
 
-    4) Run codestyle:
+                [bold red]$[/] [green]invoke[/] [blue]install[/]
+                [bold red]$[/] [green]invoke[/] [blue]pre-commit-install[/]
 
-        $ invoke codestyle
+            4) Run codestyle:
 
-    5) Upload initial code to {scm_platform}:
+                [bold red]$[/] [green]invoke[/] [blue]codestyle[/]
 
-        $ git add .
-        $ git commit -m ":tada: Initial commit"
-        $ git remote add origin {scm_base_url}.git
-        $ git push -u origin master
-    """
-    print(textwrap.dedent(message))
+            5) Upload initial code to {scm_platform}:
+
+                [bold red]$[/] [green]git[/] [yellow]add[/] [blue].[/]
+                [bold red]$[/] [green]git[/] [yellow]commit[/] [blue]-m[/] [yellow]":tada: Initial commit"[/]
+                [bold red]$[/] [green]git[/] [yellow]remote add[/] [red]origin[/] [blue]{scm_base_url}.git[/]
+                [bold red]$[/] [green]git[/] [yellow]push[/] [cyan]-u[/] [blue]origin master[/]
+            """  # noqa: E501
+        )
+
+        if find_spec("invoke") is None:
+            message += textwrap.dedent(
+                """
+                [bold red]WARNING![/] Invoke was not found in your system.
+
+                Install it first via your package manager or via pip before running step 2.
+
+                    [bold red]$[/] [green]pip[/] [yellow]install[/] invoke
+                """  # noqa: E501
+            )
+
+        console.print(message)
+
+    else:
+        message = textwrap.dedent(
+            f"""
+            Your project {project_name} is created.
+
+            1) Now you can start working on it:
+
+                $ cd {project_repo} && git init
+
+            2) If you don't have Poetry installed run:
+
+                $ invoke poetry-download
+
+            3) Initialize Poetry and install pre-commit hooks:
+
+                $ invoke install
+                $ invoke pre-commit-install
+
+            4) Run codestyle:
+
+                $ invoke codestyle
+
+            5) Upload initial code to {scm_platform}:
+
+                $ git add .
+                $ git commit -m ":tada: Initial commit"
+                $ git remote add origin {scm_base_url}.git
+                $ git push -u origin master
+            """
+        )
+
+        if find_spec("invoke") is None:
+            message += textwrap.dedent(
+                """
+                WARNING! Invoke was not found in your system.
+
+                Install it first via your package manager or via pip before running step 2.
+
+                    $ pip install invoke
+                """  # noqa: E501
+            )
+
+        print(message)
 
 
 def main() -> None:  # noqa: D103
     remove_gitlab = SCM_PLATFORM_LC != "gitlab"
     remove_cli = not CREATE_CLI
     remove_docker = not CREATE_DOCKER
-    remove_docs = not CREATE_DOCS
 
     generate_licence(directory=PROJECT_DIRECTORY, licence=licences_dict[LICENCE])
 
@@ -223,7 +275,6 @@ def main() -> None:  # noqa: D103
         remove_cli=remove_cli,
         remove_gitlab=remove_gitlab,
         remove_docker=remove_docker,
-        remove_docs=remove_docs,
     )
 
     print_further_instructions(
