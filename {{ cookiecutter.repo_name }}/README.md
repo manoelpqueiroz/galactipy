@@ -203,7 +203,8 @@ And here are a few articles which may help you:
 {%- endif %}
 - [A Comprehensive Look at Testing in Software Development][wn22] is an article that lays out why testing is crucial for development success. Eric's blog is actually a great reference, covering topics ranging from the basics to advanced techniques and best practices;
 - [Robust Exception Handling][wn23];
-- Maybe you would like to add [gitmoji][wn24] to commit names. This is really funny. :grin:
+- [Why Your Mock Doesn't Work][wn24];
+- Maybe you would like to add [gitmoji][wn25] to commit names. This is really funny. :grin:
 
 ## :rocket: Features
 
@@ -587,7 +588,8 @@ This project was generated with [`galactipy`][bp7].
 [wn21]: https://www.codacy.com/
 [wn22]: https://pytest-with-eric.com/introduction/types-of-software-testing/
 [wn23]: https://eli.thegreenplace.net/2008/08/21/robust-exception-handling/
-[wn24]: https://gitmoji.dev/
+[wn24]: https://nedbatchelder.com/blog/201908/why_your_mock_doesnt_work.html
+[wn25]: https://gitmoji.dev/
 {%+ if cookiecutter.licence != 'nos' %}
 [wno3]: https://liberapay.com/
 [wno4]: https://opencollective.com/
