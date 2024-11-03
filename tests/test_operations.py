@@ -123,15 +123,41 @@ class TestFileRemoval:
         assert test_file.exists()
 
 
-def test_print_further_instructions(capsys, galactipy_instructions):
-    print_further_instructions(
-        "Galactipy",
-        "galactipy",
-        "GitLab",
-        "https://www.gitlab.com/manoelpqueiroz/galactipy",
-    )
-    captured = capsys.readouterr()
+class TestInstructions:
+    @pytest.mark.parametrize("rich_output", [True, None])
+    def test_print_further_instructions(
+        self, capsys, mocker, rich_output, galactipy_instructions
+    ):
+        mocker.patch(
+            "hooks.post_gen_project.find_spec", side_effect=[rich_output, True]
+        )
 
-    # STDOUT always finishes with a newline, hence the addition on the right
-    # side
-    assert captured.out == galactipy_instructions + "\n"
+        print_further_instructions(
+            "Galactipy",
+            "galactipy",
+            "GitLab",
+            "https://www.gitlab.com/manoelpqueiroz/galactipy",
+        )
+        captured = capsys.readouterr()
+
+        # STDOUT always finishes with a newline
+        assert captured.out == galactipy_instructions + "\n"
+
+    @pytest.mark.parametrize("rich_output", [True, None])
+    def test_print_invoke_instructions(
+        self, capsys, mocker, rich_output, galactipy_invoke_instructions
+    ):
+        mocker.patch(
+            "hooks.post_gen_project.find_spec", side_effect=[rich_output, None]
+        )
+
+        print_further_instructions(
+            "Galactipy",
+            "galactipy",
+            "GitLab",
+            "https://www.gitlab.com/manoelpqueiroz/galactipy",
+        )
+        captured = capsys.readouterr()
+
+        # STDOUT always finishes with a newline
+        assert captured.out == galactipy_invoke_instructions + "\n"
