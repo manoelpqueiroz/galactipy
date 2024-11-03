@@ -18,4 +18,3 @@ default_context:
   docstring_style: "{{ cookiecutter.docstring_style }}"
   create_cli: {{ cookiecutter.create_cli }}
   create_docker: {{ cookiecutter.create_docker }}
-  create_docs: {{ cookiecutter.create_docs }}
