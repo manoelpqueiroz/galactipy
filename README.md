@@ -121,7 +121,6 @@ The input variables, with their default values, are as follows:
 | `docstring_style`         | `numpy`                     | One of `numpy`, `pep257` or `google`, dismiss if `use_ruff` is not used. You can choose `other` to disable checks on your docstrings. |
 | `create_cli`              | `True`                      | :small_red_triangle: Option to create a simple CLI application with [`Typer`][htu3] and [`Rich`][htu4] libraries. |
 | `create_docker`           | `True`                      | :small_red_triangle: Option to create a [Dockerfile][ft17] to build an image for your project. |
-| `create_docs`             | `True`                      | :small_red_triangle: Option to create documentation files with [`Sphinx`][htu5]. |
 
 > :eight_spoked_asterisk: Input variables marked with :small_red_triangle: are boolean variables, you can dismiss those by typing either `0`, `false`, `f`, `no`, `n` or `off`.
 
@@ -133,20 +132,20 @@ All input values will be saved in the `cookiecutter-config-file.yml` file so tha
 
 ```console
 $ cookiecutter gl:manoelpqueiroz/galactipy
-  [1/17] Project name (Python Project): A Decent Python Project
-  [2/17] Project slug (a-decent-python-project): a-different-slug
-  [3/17] Package name (a_decent_python_project): a_viable_package
-  [4/17] Short description of the project (Awesome `a-different-slug` is a Python cli/package created with
+  [1/16] Project name (Python Project): A Decent Python Project
+  [2/16] Project slug (a-decent-python-project): a-different-slug
+  [3/16] Package name (a_decent_python_project): a_viable_package
+  [4/16] Short description of the project (Awesome `a-different-slug` is a Python cli/package created with
 https://gitlab.com/manoelpqueiroz/galactipy): Let's try a cool description
-  [5/17] Project version (0.1.0): 1.100.9-rc7+build.456893a
-  [6/17] Author or Organisation (Manoel Pereira de Queiroz):
-  [7/17] In which platform would you like to host your code?
+  [5/16] Project version (0.1.0): 1.100.9-rc7+build.456893a
+  [6/16] Author or Organisation (Manoel Pereira de Queiroz):
+  [7/16] In which platform would you like to host your code?
     1 - GitLab
     2 - GitHub
     Choose from [1/2] (1): 2
-  [8/17] Platform username (manoelpqueiroz): myuniqueusername
-  [9/17] e-Mail (contact@myuniqueusername.com): g@mail.com
-  [10/17] Which licence would you like to use for your project?
+  [8/16] Platform username (manoelpqueiroz): myuniqueusername
+  [9/16] e-Mail (contact@myuniqueusername.com): g@mail.com
+  [10/16] Which licence would you like to use for your project?
     1 - MIT Licence
     2 - 3-Clause BSD
     3 - GNU GPL v3.0
@@ -156,24 +155,23 @@ https://gitlab.com/manoelpqueiroz/galactipy): Let's try a cool description
     7 - Apache Software License 2.0
     8 - Not open source
     Choose from [1/2/3/4/5/6/7/8] (1): 4
-  [11/17] Minimal Python version
+  [11/16] Minimal Python version
     1 - 3.9
     2 - 3.10
     3 - 3.11
     4 - 3.12
     5 - 3.13
     Choose from [1/2/3/4/5] (1): 3
-  [12/17] Use Ruff for linting and formatting? [y/n] (y): yes
-  [13/17] Maximum line length (88):
-  [14/17] Which docstring style would you like to use?
+  [12/16] Use Ruff for linting and formatting? [y/n] (y): yes
+  [13/16] Maximum line length (88):
+  [14/16] Which docstring style would you like to use?
     1 - numpy
     2 - google
     3 - pep257
     4 - other
     Choose from [1/2/3/4] (1): 4
-  [15/17] Would you like to create your project with CLI implementation? [y/n] (y): on
-  [16/17] Containerize your application with Docker? [y/n] (y): no
-  [17/17] Create project documentation with Sphinx? [y/n] (y): false
+  [15/16] Would you like to create your project with CLI implementation? [y/n] (y): on
+  [16/16] Containerize your application with Docker? [y/n] (y): no
 
 Your project A Decent Python Project is created.
 
@@ -206,7 +204,7 @@ Your project A Decent Python Project is created.
 
 ### More details
 
-Your project will contain `README.md` file with instructions for development, deployment etc. You can read [the project README.md template][htu6] before.
+Your project will contain `README.md` file with instructions for development, deployment etc. You can read [the project README.md template][htu5] before.
 
 ### Initial set up
 
@@ -214,7 +212,7 @@ Your project will contain `README.md` file with instructions for development, de
 
 By running `invoke install`
 
-After you create a project, it will appear in your directory, and will display [a message about how to initialize the project][htu7].
+After you create a project, it will appear in your directory, and will display [a message about how to initialize the project][htu6].
 
 #### Initialize `pre-commit`
 
@@ -222,13 +220,13 @@ By running `invoke pre-commit-install`. Make sure to set up git first via `git i
 
 ### Package example
 
-Want to know more about Poetry? Check [its documentation][htu8].
+Want to know more about Poetry? Check [its documentation][htu7].
 
 <details>
 <summary>Details about Poetry</summary>
 <p>
 
-Poetry's [commands][htu9] are very intuitive and easy to learn, like:
+Poetry's [commands][htu8] are very intuitive and easy to learn, like:
 
 - `poetry add numpy@latest`
 - `poetry run pytest`
@@ -269,7 +267,7 @@ Building a new version of the application contains steps:
 <summary>1. Download or remove Poetry</summary>
 <p>
 
-To download and install Poetry as a [standalone application][htu10] run:
+To download and install Poetry as a [standalone application][htu9] run:
 
 ```bash
 invoke poetry-download
@@ -281,7 +279,7 @@ To uninstall
 invoke poetry-remove
 ```
 
-Alternatively, you can install it via your package manager (preferred) or any method provided by the [documentation][htu11].
+Alternatively, you can install it via your package manager (preferred) or any method provided by the [documentation][htu10].
 
 </p>
 </details>
@@ -419,7 +417,7 @@ Remove the Docker image with
 invoke docker-remove
 ```
 
-More information about Docker [here][htu12].
+More information about Docker [here][htu11].
 
 </p>
 </details>
@@ -696,14 +694,13 @@ Here is the Markdown source for it:
 [htu2]: #gitlab-vs-github-features
 [htu3]: https://typer.tiangolo.com/
 [htu4]: https://rich.readthedocs.io/en/latest/
-[htu5]: https://www.sphinx-doc.org/en/master/
-[htu6]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D
-[htu7]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D#very-first-steps
-[htu8]: https://python-poetry.org/docs/
-[htu9]: https://python-poetry.org/docs/cli/#commands
-[htu10]: https://github.com/python-poetry/install.python-poetry.org
-[htu11]: https://python-poetry.org/docs/#installation
-[htu12]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker
+[htu5]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D
+[htu6]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D#very-first-steps
+[htu7]: https://python-poetry.org/docs/
+[htu8]: https://python-poetry.org/docs/cli/#commands
+[htu9]: https://github.com/python-poetry/install.python-poetry.org
+[htu10]: https://python-poetry.org/docs/#installation
+[htu11]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker
 
 [wn1]: https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
 [wn2]: https://github.com/tiangolo/typer
