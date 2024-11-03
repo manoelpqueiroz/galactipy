@@ -182,66 +182,92 @@ def print_further_instructions(
         from rich.console import Console
         console = Console(emoji=False)
 
-        message = f"""
-        Your project [bold][italic]{project_name}[/italic][/bold] is created.
+        message = textwrap.dedent(
+            f"""
+            Your project [bold][italic]{project_name}[/italic][/bold] is created.
 
-        1) Now you can start working on it:
+            1) Now you can start working on it:
 
-            [bold red]$[/] [green]cd[/] [underline magenta]{project_repo}[/] && [green]git[/] [yellow]init[/]
+                [bold red]$[/] [green]cd[/] [underline magenta]{project_repo}[/] && [green]git[/] [yellow]init[/]
 
-        2) If you don't have Poetry installed run:
+            2) If you don't have Poetry installed run:
 
-            [bold red]$[/] [green]invoke[/] [blue]poetry-download[/]
+                [bold red]$[/] [green]invoke[/] [blue]poetry-download[/]
 
-        3) Initialize Poetry and install pre-commit hooks:
+            3) Initialize Poetry and install pre-commit hooks:
 
-            [bold red]$[/] [green]invoke[/] [blue]install[/]
-            [bold red]$[/] [green]invoke[/] [blue]pre-commit-install[/]
+                [bold red]$[/] [green]invoke[/] [blue]install[/]
+                [bold red]$[/] [green]invoke[/] [blue]pre-commit-install[/]
 
-        4) Run codestyle:
+            4) Run codestyle:
 
-            [bold red]$[/] [green]invoke[/] [blue]codestyle[/]
+                [bold red]$[/] [green]invoke[/] [blue]codestyle[/]
 
-        5) Upload initial code to {scm_platform}:
+            5) Upload initial code to {scm_platform}:
 
-            [bold red]$[/] [green]git[/] [yellow]add[/] [blue].[/]
-            [bold red]$[/] [green]git[/] [yellow]commit[/] [blue]-m[/] [yellow]":tada: Initial commit"[/]
-            [bold red]$[/] [green]git[/] [yellow]remote add[/] [red]origin[/] [blue]{scm_base_url}.git[/]
-            [bold red]$[/] [green]git[/] [yellow]push[/] [cyan]-u[/] [blue]origin master[/]
-        """  # noqa: E501
+                [bold red]$[/] [green]git[/] [yellow]add[/] [blue].[/]
+                [bold red]$[/] [green]git[/] [yellow]commit[/] [blue]-m[/] [yellow]":tada: Initial commit"[/]
+                [bold red]$[/] [green]git[/] [yellow]remote add[/] [red]origin[/] [blue]{scm_base_url}.git[/]
+                [bold red]$[/] [green]git[/] [yellow]push[/] [cyan]-u[/] [blue]origin master[/]
+            """  # noqa: E501
+        )
 
-        console.print(textwrap.dedent(message))
+        if find_spec("invoke") is None:
+            message += textwrap.dedent(
+                """
+                :stop_sign: [bold red]WARNING![/] Invoke was not found in your system.
+
+                Install it first via your package manager or via pip before running step 2.
+
+                    [bold red]$[/] [green]pip[/] [yellow]install[/] invoke
+                """  # noqa: E501
+            )
+
+        console.print(message)
 
     else:
-        message = f"""
-        Your project {project_name} is created.
+        message = textwrap.dedent(
+            f"""
+            Your project {project_name} is created.
 
-        1) Now you can start working on it:
+            1) Now you can start working on it:
 
-            $ cd {project_repo} && git init
+                $ cd {project_repo} && git init
 
-        2) If you don't have Poetry installed run:
+            2) If you don't have Poetry installed run:
 
-            $ invoke poetry-download
+                $ invoke poetry-download
 
-        3) Initialize poetry and install pre-commit hooks:
+            3) Initialize poetry and install pre-commit hooks:
 
-            $ invoke install
-            $ invoke pre-commit-install
+                $ invoke install
+                $ invoke pre-commit-install
 
-        4) Run codestyle:
+            4) Run codestyle:
 
-            $ invoke codestyle
+                $ invoke codestyle
 
-        5) Upload initial code to {scm_platform}:
+            5) Upload initial code to {scm_platform}:
 
-            $ git add .
-            $ git commit -m ":tada: Initial commit"
-            $ git remote add origin {scm_base_url}.git
-            $ git push -u origin master
-        """
+                $ git add .
+                $ git commit -m ":tada: Initial commit"
+                $ git remote add origin {scm_base_url}.git
+                $ git push -u origin master
+            """
+        )
 
-        print(textwrap.dedent(message))
+        if find_spec("invoke") is None:
+            message += textwrap.dedent(
+                """
+                WARNING! Invoke was not found in your system.
+
+                Install it first via your package manager or via pip before running step 2.
+
+                    $ pip install invoke
+                """  # noqa: E501
+            )
+
+        print(message)
 
 
 def main() -> None:  # noqa: D103
