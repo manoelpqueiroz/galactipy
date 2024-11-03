@@ -4,8 +4,12 @@ from shutil import which
 
 from invoke import Context, UnexpectedExit, task
 
-PACKAGE_NAME = "galactipy"
-
+PACKAGE_NAME = "{{ cookiecutter.repo_name }}"
+{%+ if cookiecutter.create_docker %}
+DEFAULT_DOCKER_REPOSITORY = "{{ cookiecutter.package_name }}"
+DEFAULT_DOCKER_TAG = "latest"
+DEFAULT_DOCKER_IMAGE = f"{DEFAULT_DOCKER_REPOSITORY}:{DEFAULT_DOCKER_TAG}"
+{% endif %}
 # Windows/Unix differentiation
 BIN_DIR = "bin" if os.name != "nt" else "Scripts"
 PTY = os.name != "nt"
@@ -41,10 +45,11 @@ else:
 if PTY:
     FILE_REMOVER = 'find . | grep -E "{}" | xargs rm -rf'
 
+
 else:
     FILE_REMOVER = (
         "Get-ChildItem -Recurse "
-        '| Where-Object {{ $_.Name -match "{}" }} '
+        '| Where-Object {% raw %}{{ $_.Name -match "{}" }}{% endraw %} '
         "| Remove-Item -Recurse"
     )
 
@@ -87,7 +92,7 @@ def poetry_plugins(c: Context) -> None:
         c.run(
             f"{POETRY_PATH} self add poetry-plugin-up poetry-plugin-export "
             "poetry-bumpversion",
-            pty=PTY,
+            pty=PTY
         )
 
     except UnexpectedExit as e:
@@ -133,6 +138,7 @@ def pre_commit_install(c: Context) -> None:
 
 
 # Formatting, linting and other checks
+{%- if cookiecutter.use_ruff %}
 @task(aliases=["format"])
 def codestyle(c: Context, check: bool = False) -> None:
     """Format the entire project with `ruff format`."""
@@ -148,11 +154,14 @@ def check_linter(c: Context, fix: bool = False) -> None:
 
     c.run(f"{VENV_BIN}/ruff check {flag}", pty=PTY)
 
-
+{% endif %}
 @task
 def test(c: Context) -> None:
     """Run tests with `pytest` and `pyproject.toml` configuration."""
-    c.run(f"{VENV_BIN}/pytest -c pyproject.toml tests", pty=PTY)
+    c.run(
+        f"{VENV_BIN}/pytest -c pyproject.toml tests",
+        pty=PTY,
+    )
 
 
 @task
@@ -165,19 +174,46 @@ def mypy(c: Context) -> None:
 def check_safety(c: Context) -> None:
     """Perform security checks with Safety CLI and `bandit`."""
     c.run(f"{VENV_BIN}/safety check --full-report --ignore 70612", pty=PTY)
-    c.run(f"{VENV_BIN}/bandit -ll --recursive hooks", pty=PTY)
+    c.run(f"{VENV_BIN}/bandit -ll --recursive {{ cookiecutter.package_name }}", pty=PTY)
 
 
 @task
 def sweep(c: Context) -> None:
     """Perform all code checks, including tests, linting and security."""
     test(c)
+    {%- if cookiecutter.use_ruff %}
     check_linter(c)
     codestyle(c)
+    {%- endif %}
     mypy(c)
     check_safety(c)
 
+{%+ if cookiecutter.create_docker %}
+# Docker commands
+@task(iterable=["images"])
+def docker_build(c: Context, images: list[str]) -> None:
+    """Build Docker images for {{ cookiecutter.repo_name }}."""
+    if len(images) == 0:
+        images.append(DEFAULT_DOCKER_IMAGE)
 
+    docker_images = " ".join(f"-t {i}" for i in images)
+
+    c.run(
+        f"docker build . {docker_images} -f ./docker/Dockerfile --no-cache"
+    )
+
+
+@task(iterable=["images"])
+def docker_remove(c: Context, images: list[str]) -> None:
+    """Remove specified Docker images created for {{ cookiecutter.repo_name }}."""
+    if len(images) == 0:
+        images.append(DEFAULT_DOCKER_IMAGE)
+
+    docker_images = " ".join(images)
+
+    c.run(f"docker rmi -f {docker_images}")
+
+{% endif %}
 # Cleaning commands for Bash, Zsh and PowerShell
 @task(aliases=["pycache-clean"])
 def pycache_remove(c: Context) -> None:
@@ -229,4 +265,4 @@ def cleanup(c: Context) -> None:
 @task
 def build_remove(c: Context) -> None:
     """Remove the `build` directory."""
-    c.run("rm -rf build/")
+    c.run("rm -rf build")

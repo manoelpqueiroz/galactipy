@@ -58,7 +58,7 @@ cd {{ cookiecutter.repo_name }} && git init
 2. If you don't have `Poetry` installed run:
 
 ```bash
-make poetry-download
+invoke poetry-download
 ```
 
 > This installs Poetry as a [standalone application][fs1]. If you prefer, install it through your distribution's package manager.
@@ -66,14 +66,14 @@ make poetry-download
 3. Initialize Poetry and install `pre-commit` hooks:
 
 ```bash
-make install
-make pre-commit-install
+invoke install
+invoke pre-commit-install
 ```
 
 4. Run the codestyle:
 
 ```bash
-make codestyle
+invoke codestyle
 ```
 
 5. Upload initial code to {{ cookiecutter.scm_platform }}:
@@ -201,8 +201,8 @@ And here are a few articles which may help you:
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
 - [GitHub Actions Documentation][hub3];
 {%- endif %}
-- [Makefile tutorial][wn22];
-- [A Comprehensive Look at Testing in Software Development][wn23] is an article that lays out why testing is crucial for development success. Eric's blog is actually a great reference, covering topics ranging from the basics to advanced techniques and best practices;
+- [A Comprehensive Look at Testing in Software Development][wn22] is an article that lays out why testing is crucial for development success. Eric's blog is actually a great reference, covering topics ranging from the basics to advanced techniques and best practices;
+- [Robust Exception Handling][wn23];
 - Maybe you would like to add [gitmoji][wn24] to commit names. This is really funny. :grin:
 
 ## :rocket: Features
@@ -222,7 +222,7 @@ And here are a few articles which may help you:
 
 - Issue and {% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates for easy integration with {{ cookiecutter.scm_platform }};
 - Predefined CI/CD build workflow for {% if cookiecutter.__scm_platform_lc == 'gitlab' %}[`GitLab CI`][lab2]{% elif cookiecutter.__scm_platform_lc == 'github' %}[`Github Actions`][hub4]{% endif %};
-- Everything is already set up for security checks, {% if cookiecutter.use_ruff %}codestyle checks, code formatting,{% endif %} testing, linting{% if cookiecutter.create_docker %}, docker builds{% endif %} etc with [`Makefile`][ft9]. More details in [makefile-usage][ft10];
+- Everything is already set up for security checks, {% if cookiecutter.use_ruff %}codestyle checks, code formatting,{% endif %} testing, linting{% if cookiecutter.create_docker %}, docker builds{% endif %} etc with [`Invoke`][ft9]. More details in [Invoke Usage][ft10];
 {%- if cookiecutter.create_docker %}
 - [`Dockerfile`][docker2] for your package;
 {%- endif %}
@@ -269,27 +269,27 @@ poetry run {{ cookiecutter.repo_name }} --help
 ```
 {%- endif %}
 
-### Makefile usage
+### Invoke usage
 
-[`Makefile`][ft9] contains a lot of functions for faster development.
+[`invoke`][ft9] contains a lot of functions for faster development.
 
 <details>
-<summary>1. Download and remove Poetry</summary>
+<summary>1. Download or remove Poetry</summary>
 <p>
 
 To download and install Poetry as a [standalone application][fs1] run:
 
 ```bash
-make poetry-download
+invoke poetry-download
 ```
 
 To uninstall
 
 ```bash
-make poetry-remove
+invoke poetry-remove
 ```
 
-Or you can install it with `pip` inside your virtual environment if you prefer.
+Alternatively, you can install it via your package manager (preferred) or any method provided by the [documentation][inv1].
 
 </p>
 </details>
@@ -301,13 +301,19 @@ Or you can install it with `pip` inside your virtual environment if you prefer.
 Install requirements with
 
 ```bash
-make install
+invoke install
+```
+
+And then add Poetry plugins to make development easier with
+
+```bash
+invoke poetry-plugins
 ```
 
 Pre-commit hooks could be installed after `git init` via
 
 ```bash
-make pre-commit-install
+invoke pre-commit-install
 ```
 
 </p>
@@ -320,22 +326,22 @@ make pre-commit-install
 Automatic formatting uses `ruff`, and can be run with
 
 ```bash
-make codestyle
+invoke codestyle
 
 # or use synonym
-make formatting
+invoke format
 ```
 
 For formatting checks only, without rewriting files:
 
 ```bash
-make check-formatting
+invoke codestyle --check
 ```
 
-Update all dev libraries to the latest version using one command
+Aside from the formatter, you can also use `ruff` to lint project files with several preconfigured rules defined in `pyproject.toml`:
 
 ```bash
-make update-dev-deps
+invoke check-linter
 ```
 
 </p>
@@ -346,13 +352,15 @@ make update-dev-deps
 <p>
 
 ```bash
-make check-safety
+invoke check-safety
 ```
 
 This command launches `Poetry` integrity checks as well as identifies security issues with `Safety` and `Bandit`.
 
+Update all dev libraries to the latest version using one command:
+
 ```bash
-make check-safety
+invoke update-dev-deps
 ```
 
 </p>
@@ -365,7 +373,7 @@ make check-safety
 Run `mypy` static type checker with
 
 ```bash
-make mypy
+invoke mypy
 ```
 
 </p>
@@ -378,101 +386,84 @@ make mypy
 Run `pytest` with all essential parameters predefined with
 
 ```bash
-make test
+invoke test
 ```
 
 </p>
 </details>
-{%+ if cookiecutter.use_ruff %}
+
 <details>
-<summary>7. Linters</summary>
-<p>
-
-Run code and docstring linters with `ruff`.
-
-```bash
-make check-linter
-```
-
-</p>
-</details>
-{% endif +%}
-<details>
-<summary>{% if cookiecutter.use_ruff %}8{% else %}6{% endif %}. All linters</summary>
+<summary>{% if cookiecutter.use_ruff %}7{% else %}6{% endif %}. All code-related checks</summary>
 <p>
 
 Of course there is a command to ~~rule~~ run all linters in one:
 
 ```bash
-make lint-all
+invoke sweep
 ```
 
-the same as:
+The same as:
 
 ```bash
-make test && {% if cookiecutter.use_ruff %}make check-linter && make check-formatting && {% endif %}make mypy && make check-safety
+invoke test {% if cookiecutter.use_ruff %}check-linter codestyle {% endif %}mypy check-safety
 ```
 
 </p>
 </details>
 {%+ if cookiecutter.create_docker %}
 <details>
-<summary>{% if cookiecutter.use_ruff %}9{% else %}7{% endif %}. Docker</summary>
+<summary>{% if cookiecutter.use_ruff %}8{% else %}7{% endif %}. Docker</summary>
 <p>
 
-```bash
-make docker-build
-```
-
-which is equivalent to:
+Build your Docker image with the `latest` tag preconfigured with
 
 ```bash
-make docker-build VERSION=latest
+invoke docker-build
 ```
 
 Remove docker image with
 
 ```bash
-make docker-remove
+invoke docker-remove
 ```
 
-More information [about docker][docker3].
+More information about Docker [here][docker3].
 
 </p>
 </details>
 {% endif +%}
 <details>
-<summary>{% if cookiecutter.use_ruff and cookiecutter.create_docker %}10{% elif cookiecutter.use_ruff and not cookiecutter.create_docker %}9{% elif not cookiecutter.use_ruff and cookiecutter.create_docker %}8{% else %}7{% endif %}. Cleanup</summary>
+<summary>{% if cookiecutter.use_ruff and cookiecutter.create_docker %}9{% elif cookiecutter.use_ruff and not cookiecutter.create_docker %}8{% elif not cookiecutter.use_ruff and cookiecutter.create_docker %}8{% else %}7{% endif %}. Cleanup</summary>
 <p>
 
-Delete pycache files
+Delete pycache files:
 
 ```bash
-make pycache-remove
+invoke pycache-remove
 ```
 
-Remove package build
+Remove package build:
 
 ```bash
-make build-remove
+invoke build-remove
 ```
 
-Delete .DS_STORE files
+Delete .DS_STORE files:
 
 ```bash
-make dsstore-remove
+invoke dsstore-remove
 ```
 
-Remove .mypycache
+Remove .mypycache:
 
 ```bash
-make mypycache-remove
+invoke mypycache-remove
 ```
 
 Or to remove all above run:
 
 ```bash
-make cleanup
+invoke cleanup
 ```
 
 </p>
@@ -594,8 +585,8 @@ This project was generated with [`galactipy`][bp7].
 [wn19]: https://about.codecov.io/
 [wn20]: https://codeclimate.com/velocity/what-is-velocity
 [wn21]: https://www.codacy.com/
-[wn22]: https://makefiletutorial.com/
-[wn23]: https://pytest-with-eric.com/introduction/types-of-software-testing/
+[wn22]: https://pytest-with-eric.com/introduction/types-of-software-testing/
+[wn23]: https://eli.thegreenplace.net/2008/08/21/robust-exception-handling/
 [wn24]: https://gitmoji.dev/
 {%+ if cookiecutter.licence != 'nos' %}
 [wno3]: https://liberapay.com/
@@ -612,7 +603,7 @@ This project was generated with [`galactipy`][bp7].
 [ft6]: https://docs.pytest.org/en/latest/
 [ft7]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
 [ft8]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitignore
-[ft9]: {{ cookiecutter.__scm_link_url }}/blob/master/Makefile
+[ft9]: https://docs.pyinvoke.org/en/stable/
 [ft10]: #makefile-usage
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [ft11]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/merge_request_templates/default.md
@@ -622,6 +613,8 @@ This project was generated with [`galactipy`][bp7].
 [ft12]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/ISSUE_TEMPLATE
 {%- endif %}
 [ft13]: https://shields.io/
+
+[inv1]: https://python-poetry.org/docs/#installation
 
 [r1]: {{ cookiecutter.__scm_link_url }}/releases
 {%+ if cookiecutter.__scm_platform_lc == 'gitlab' %}

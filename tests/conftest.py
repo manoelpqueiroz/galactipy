@@ -93,16 +93,16 @@ def galactipy_instructions():
 
     2) If you don't have Poetry installed run:
 
-        $ make poetry-download
+        $ invoke poetry-download
 
     3) Initialize poetry and install pre-commit hooks:
 
-        $ make install
-        $ make pre-commit-install
+        $ invoke install
+        $ invoke pre-commit-install
 
     4) Run codestyle:
 
-        $ make codestyle
+        $ invoke codestyle
 
     5) Upload initial code to GitLab:
 

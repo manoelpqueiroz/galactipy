@@ -61,8 +61,7 @@
     "line_length": "Maximum line length",
     "docstring_style": "Which docstring style would you like to use?",
     "create_cli": "Would you like to create your project with CLI implementation?",
-    "create_docker": "Containerize your application with Docker?",
-    "create_docs": "Create project documentation with Sphinx?"
+    "create_docker": "Containerize your application with Docker?"
   },
 
   "_all_python_version": [
