@@ -12,9 +12,6 @@
 {%- if cookiecutter.licence != 'nos' %}
 [![Licence][blic1]][blic2]
 {%- endif %}
-{%- if cookiecutter.create_docs %}
-[![Docs][bdoc1]][bdoc2]
-{%- endif %}
 [![Expand your project structure from atoms of code to galactic dimensions.][bp6]][bp7]
 
 [![Contributions Welcome][bp8]][bp9]
@@ -663,10 +660,6 @@ This project was generated with [`galactipy`][bp7].
 [docker1]: {{ cookiecutter.__scm_link_url }}/blob/master/.dockerignore
 [docker2]: {{ cookiecutter.__scm_link_url }}/blob/master/docker/Dockerfile
 [docker3]: {{ cookiecutter.__scm_link_url }}/tree/master/docker
-{%+ endif %}
-{%- if cookiecutter.create_docs %}
-[bdoc1]: https://img.shields.io/badge/docs-{{ cookiecutter.__scm_platform_lc }}%20pages-0a507a?style=for-the-badge
-[bdoc2]: https://{{ cookiecutter.scm_username }}.{{ cookiecutter.__scm_platform_lc }}.io/{{ cookiecutter.repo_name }}
 {%+ endif %}
 {%- if cookiecutter.use_ruff %}
 [bfo1]: https://img.shields.io/badge/code%20style-ruff-261230?style=for-the-badge&labelColor=grey
