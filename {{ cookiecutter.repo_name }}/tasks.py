@@ -191,24 +191,24 @@ def sweep(c: Context) -> None:
 {%+ if cookiecutter.create_docker %}
 # Docker commands
 @task(iterable=["images"])
-def docker_build(
-    c: Context,
-    images: list[str]= [DEFAULT_DOCKER_IMAGE]
-) -> None:
+def docker_build(c: Context, images: list[str]) -> None:
     """Build Docker images for {{ cookiecutter.repo_name }}."""
+    if len(images) == 0:
+        images.append(DEFAULT_DOCKER_IMAGE)
+
     docker_images = " ".join(f"-t {i}" for i in images)
 
     c.run(
-        f"docker build {docker_images} -f ./docker/Dockerfile --no-cache"
+        f"docker build . {docker_images} -f ./docker/Dockerfile --no-cache"
     )
 
 
 @task(iterable=["images"])
-def docker_remove(
-    c: Context,
-    images: list[str] = [DEFAULT_DOCKER_IMAGE],
-) -> None:
+def docker_remove(c: Context, images: list[str]) -> None:
     """Remove specified Docker images created for {{ cookiecutter.repo_name }}."""
+    if len(images) == 0:
+        images.append(DEFAULT_DOCKER_IMAGE)
+
     docker_images = " ".join(images)
 
     c.run(f"docker rmi -f {docker_images}")
