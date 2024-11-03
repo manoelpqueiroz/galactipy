@@ -85,31 +85,44 @@ def removal_tree(tmp_path):
 @pytest.fixture
 def galactipy_instructions():
     message = """
-    Your project Galactipy is created.
+        Your project Galactipy is created.
 
-    1) Now you can start working on it:
+        1) Now you can start working on it:
 
-        $ cd galactipy && git init
+            $ cd galactipy && git init
 
-    2) If you don't have Poetry installed run:
+        2) If you don't have Poetry installed run:
 
-        $ invoke poetry-download
+            $ invoke poetry-download
 
-    3) Initialize poetry and install pre-commit hooks:
+        3) Initialize Poetry and install pre-commit hooks:
 
-        $ invoke install
-        $ invoke pre-commit-install
+            $ invoke install
+            $ invoke pre-commit-install
 
-    4) Run codestyle:
+        4) Run codestyle:
 
-        $ invoke codestyle
+            $ invoke codestyle
 
-    5) Upload initial code to GitLab:
+        5) Upload initial code to GitLab:
 
-        $ git add .
-        $ git commit -m ":tada: Initial commit"
-        $ git remote add origin https://www.gitlab.com/manoelpqueiroz/galactipy.git
-        $ git push -u origin master
+            $ git add .
+            $ git commit -m ":tada: Initial commit"
+            $ git remote add origin https://www.gitlab.com/manoelpqueiroz/galactipy.git
+            $ git push -u origin master
     """
 
     return textwrap.dedent(message)
+
+
+@pytest.fixture
+def galactipy_invoke_instructions(galactipy_instructions):
+    extra_message = """
+        WARNING! Invoke was not found in your system.
+
+        Install it first via your package manager or via pip before running step 2.
+
+            $ pip install invoke
+    """
+
+    return galactipy_instructions + textwrap.dedent(extra_message)
