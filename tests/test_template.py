@@ -1,7 +1,3 @@
-import pytest
-
-
-@pytest.mark.skip
 def test_bake_project(cookies):
     result = cookies.bake()
 

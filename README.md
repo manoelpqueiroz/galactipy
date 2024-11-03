@@ -36,7 +36,7 @@ _Expand your project structure from atoms of code to **galactic** dimensions._ :
 ## TL;DR
 
 ```bash
-cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.3.0
+cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.4.0
 ```
 
 > All you need is the latest version of cookiecutter! :wink:
@@ -47,7 +47,7 @@ In this [cookiecutter :cookie:][ft1] template we combine state-of-the-art librar
 
 ### Development features
 
-- Supports `Python 3.8` and higher;
+- Supports `Python 3.9` and higher;
 - [`Poetry`][ft2] as a dependencies manager. See configuration in [`pyproject.toml`][ft3];
 - Automatic code formatting with [`ruff`][ft4], with ready-to-use [`pre-commit`][ft5] hooks and several rules already selected for linting;
 - Type checks with [`mypy`][ft6], security checks with [`safety`][ft7] and [`bandit`][ft8];
@@ -58,7 +58,7 @@ In this [cookiecutter :cookie:][ft1] template we combine state-of-the-art librar
 
 - Issue and Merge Request templates for easy integration with GitLab and GitHub;
 - Predefined CI/CD build workflow for [`GitLab CI`][ft13] and [`Github Actions`][ft14];
-- Everything is already set up for security checks, codestyle checks, code formatting, testing, linting, docker builds etc. with [`Makefile`][ft15]. More details in [makefile-usage][ft16];
+- Everything is already set up for security checks, codestyle checks, code formatting, testing, linting, docker builds etc. with [`invoke`][ft15]. More details in [Invoke Usage][ft16];
 - [`Dockerfile`][ft17] for your package.
 
 #### GitLab vs. GitHub features
@@ -101,7 +101,7 @@ pip install -U cookiecutter
 then go to a directory where you want to create your project and run:
 
 ```bash
-cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.3.0
+cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.4.0
 ```
 
 ### Input variables
@@ -122,13 +122,12 @@ The input variables, with their default values, are as follows:
 | `scm_username`            | `manoelpqueiroz`            | GitHub or GitLab username for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for either platform. |
 | `email`                   | based on `scm_username`     | Email for `CODE_OF_CONDUCT.md`, `SECURITY.md` files and to specify the ownership of the project in `pyproject.toml`. |
 | `licence`                 | `MIT`                       | One of `MIT`, `BSD-3`, `GNU GPL v3.0`, `GNU AGLP v3.0`, `GNU LGPL v3.0`, `Mozilla Public License 2.0` and `Apache Software License 2.0`, or `Not open source`. |
-| `minimal_python_version`  | `3.8`                       | Minimal Python version. All versions since `3.8` are available to choose. It is used for builds, pipelines and formatters. |
+| `minimal_python_version`  | `3.9`                       | Minimal Python version. All versions since `3.9` are available to choose. It is used for builds, pipelines and formatters. |
 | `use_ruff`                | `True`                      | :small_red_triangle: Option to use [`ruff`][ft4] as the code formatter, along with a pre-commit hook. |
 | `line_length`             | 88                          | The max length per line, dismiss if `use_ruff` is not used. NOTE: This value must be between 50 and 300. |
 | `docstring_style`         | `numpy`                     | One of `numpy`, `pep257` or `google`, dismiss if `use_ruff` is not used. You can choose `other` to disable checks on your docstrings. |
 | `create_cli`              | `True`                      | :small_red_triangle: Option to create a simple CLI application with [`Typer`][htu3] and [`Rich`][htu4] libraries. |
 | `create_docker`           | `True`                      | :small_red_triangle: Option to create a [Dockerfile][ft17] to build an image for your project. |
-| `create_docs`             | `True`                      | :small_red_triangle: Option to create documentation files with [`Sphinx`][htu5]. |
 
 > :eight_spoked_asterisk: Input variables marked with :small_red_triangle: are boolean variables, you can dismiss those by typing either `0`, `false`, `f`, `no`, `n` or `off`.
 
@@ -140,20 +139,20 @@ All input values will be saved in the `cookiecutter-config-file.yml` file so tha
 
 ```console
 $ cookiecutter gl:manoelpqueiroz/galactipy
-  [1/17] Project name (Python Project): A Decent Python Project
-  [2/17] Project slug (a-decent-python-project): a-different-slug
-  [3/17] Package name (a_decent_python_project): a_viable_package
-  [4/17] Short description of the project (Awesome `a-different-slug` is a Python cli/package created with
+  [1/16] Project name (Python Project): A Decent Python Project
+  [2/16] Project slug (a-decent-python-project): a-different-slug
+  [3/16] Package name (a_decent_python_project): a_viable_package
+  [4/16] Short description of the project (Awesome `a-different-slug` is a Python cli/package created with
 https://gitlab.com/manoelpqueiroz/galactipy): Let's try a cool description
-  [5/17] Project version (0.1.0): 1.100.9-rc7+build.456893a
-  [6/17] Author or Organisation (Manoel Pereira de Queiroz):
-  [7/17] In which platform would you like to host your code?
+  [5/16] Project version (0.1.0): 1.100.9-rc7+build.456893a
+  [6/16] Author or Organisation (Manoel Pereira de Queiroz):
+  [7/16] In which platform would you like to host your code?
     1 - GitLab
     2 - GitHub
     Choose from [1/2] (1): 2
-  [8/17] Platform username (manoelpqueiroz): myuniqueusername
-  [9/17] e-Mail (contact@myuniqueusername.com): g@mail.com
-  [10/17] Which licence would you like to use for your project?
+  [8/16] Platform username (manoelpqueiroz): myuniqueusername
+  [9/16] e-Mail (contact@myuniqueusername.com): g@mail.com
+  [10/16] Which licence would you like to use for your project?
     1 - MIT Licence
     2 - 3-Clause BSD
     3 - GNU GPL v3.0
@@ -163,24 +162,23 @@ https://gitlab.com/manoelpqueiroz/galactipy): Let's try a cool description
     7 - Apache Software License 2.0
     8 - Not open source
     Choose from [1/2/3/4/5/6/7/8] (1): 4
-  [11/17] Minimal Python version
-    1 - 3.8
-    2 - 3.9
-    3 - 3.10
-    4 - 3.11
-    5 - 3.12
+  [11/16] Minimal Python version
+    1 - 3.9
+    2 - 3.10
+    3 - 3.11
+    4 - 3.12
+    5 - 3.13
     Choose from [1/2/3/4/5] (1): 3
-  [12/17] Use Ruff for linting and formatting? [y/n] (y): yes
-  [13/17] Maximum line length (88):
-  [14/17] Which docstring style would you like to use?
+  [12/16] Use Ruff for linting and formatting? [y/n] (y): yes
+  [13/16] Maximum line length (88):
+  [14/16] Which docstring style would you like to use?
     1 - numpy
     2 - google
     3 - pep257
     4 - other
     Choose from [1/2/3/4] (1): 4
-  [15/17] Would you like to create your project with CLI implementation? [y/n] (y): on
-  [16/17] Containerize your application with Docker? [y/n] (y): no
-  [17/17] Create project documentation with Sphinx? [y/n] (y): false
+  [15/16] Would you like to create your project with CLI implementation? [y/n] (y): on
+  [16/16] Containerize your application with Docker? [y/n] (y): no
 
 Your project A Decent Python Project is created.
 
@@ -190,16 +188,16 @@ Your project A Decent Python Project is created.
 
 2) If you don't have Poetry installed run:
 
-    $ make poetry-download
+    $ invoke poetry-download
 
 3) Initialize poetry and install pre-commit hooks:
 
-    $ make install
-    $ make pre-commit-install
+    $ invoke install
+    $ invoke pre-commit-install
 
 4) Run codestyle:
 
-    $ make codestyle
+    $ invoke codestyle
 
 5) Upload initial code to GitHub:
 
@@ -213,29 +211,29 @@ Your project A Decent Python Project is created.
 
 ### More details
 
-Your project will contain `README.md` file with instructions for development, deployment etc. You can read [the project README.md template][htu6] before.
+Your project will contain `README.md` file with instructions for development, deployment etc. You can read [the project README.md template][htu5] before.
 
 ### Initial set up
 
 #### Initialize `poetry`
 
-By running `make install`
+By running `invoke install`
 
-After you create a project, it will appear in your directory, and will display [a message about how to initialize the project][htu7].
+After you create a project, it will appear in your directory, and will display [a message about how to initialize the project][htu6].
 
 #### Initialize `pre-commit`
 
-By running `make pre-commit-install`. Make sure to set up git first via `git init`.
+By running `invoke pre-commit-install`. Make sure to set up git first via `git init`.
 
 ### Package example
 
-Want to know more about Poetry? Check [its documentation][htu8].
+Want to know more about Poetry? Check [its documentation][htu7].
 
 <details>
 <summary>Details about Poetry</summary>
 <p>
 
-Poetry's [commands][htu9] are very intuitive and easy to learn, like:
+Poetry's [commands][htu8] are very intuitive and easy to learn, like:
 
 - `poetry add numpy@latest`
 - `poetry run pytest`
@@ -249,7 +247,7 @@ etc.
 
 If you set `create_cli` to `True` the template comes with a cute little CLI application example. It utilises [`Typer`][htu3] and [`Rich`][htu4] for CLI input validation and beautiful formatting in the terminal.
 
-After installation via `make install` (preferred) or `poetry install` you can try to play with the example:
+After installation via `invoke install` (preferred) or `poetry install` you can try to play with the example:
 
 ```bash
 poetry run <repo_name> --help
@@ -268,27 +266,27 @@ Building a new version of the application contains steps:
 - Create a `Release` for your package on the platform;
 - And... publish :slight_smile: `poetry publish --build`.
 
-### Makefile usage
+### Invoke usage
 
-[`Makefile`][ft15] contains a lot of functions for faster development.
+[`invoke`][ft15] contains a lot of functions for faster development.
 
 <details>
-<summary>1. Download and remove Poetry</summary>
+<summary>1. Download or remove Poetry</summary>
 <p>
 
-To download and install Poetry as a [standalone application][htu10] run:
+To download and install Poetry as a [standalone application][htu9] run:
 
 ```bash
-make poetry-download
+invoke poetry-download
 ```
 
 To uninstall
 
 ```bash
-make poetry-remove
+invoke poetry-remove
 ```
 
-Or you can install it with `pip` inside your virtual environment if you prefer.
+Alternatively, you can install it via your package manager (preferred) or any method provided by the [documentation][htu10].
 
 </p>
 </details>
@@ -300,13 +298,19 @@ Or you can install it with `pip` inside your virtual environment if you prefer.
 Install requirements with
 
 ```bash
-make install
+invoke install
+```
+
+And then add Poetry plugins to make development easier with
+
+```bash
+invoke poetry-plugins
 ```
 
 Pre-commit hooks could be installed after `git init` via
 
 ```bash
-make pre-commit-install
+invoke pre-commit-install
 ```
 
 </p>
@@ -319,22 +323,22 @@ make pre-commit-install
 Automatic formatting uses `ruff`, and can be run with
 
 ```bash
-make codestyle
+invoke codestyle
 
 # or use synonym
-make formatting
+invoke format
 ```
 
 For formatting checks only, without rewriting files:
 
 ```bash
-make check-formatting
+invoke codestyle --check
 ```
 
-Update all dev libraries to the latest version using one command
+Aside from the formatter, you can also use `ruff` to lint project files with several preconfigured rules defined in `pyproject.toml`:
 
 ```bash
-make update-dev-deps
+invoke check-linter
 ```
 
 </p>
@@ -345,13 +349,15 @@ make update-dev-deps
 <p>
 
 ```bash
-make check-safety
+invoke check-safety
 ```
 
 This command launches `Poetry` integrity checks as well as identifies security issues with `Safety` and `Bandit`.
 
+Update all dev libraries to the latest version using one command:
+
 ```bash
-make check-safety
+invoke update-dev-deps
 ```
 
 </p>
@@ -364,7 +370,7 @@ make check-safety
 Run `mypy` static type checker with
 
 ```bash
-make mypy
+invoke mypy
 ```
 
 </p>
@@ -377,101 +383,84 @@ make mypy
 Run `pytest` with all essential parameters predefined with
 
 ```bash
-make test
+invoke test
 ```
 
 </p>
 </details>
 
 <details>
-<summary>7. Linters</summary>
+<summary>7. All code-related checks</summary>
 <p>
 
-Run code and docstring linters with `ruff`.
+Of course there is a command to ~~rule~~ run all checks in one:
 
 ```bash
-make check-linter
+invoke sweep
+```
+
+The same as:
+
+```bash
+invoke test check-linter codestyle mypy check-safety
 ```
 
 </p>
 </details>
 
 <details>
-<summary>8. All linters</summary>
+<summary>8. Docker</summary>
 <p>
 
-Of course there is a command to ~~rule~~ run all linters in one:
+Build your Docker image with the `latest` tag preconfigured with
 
 ```bash
-make lint-all
+invoke docker-build
 ```
 
-the same as:
+Remove the Docker image with
 
 ```bash
-make test && make check-linter && make check-formatting && make mypy && make check-safety
+invoke docker-remove
 ```
+
+More information about Docker [here][htu11].
 
 </p>
 </details>
 
 <details>
-<summary>9. Docker</summary>
+<summary>9. Cleanup</summary>
 <p>
 
+Delete pycache files:
+
 ```bash
-make docker-build
+invoke pycache-remove
 ```
 
-which is equivalent to:
+Remove package build:
 
 ```bash
-make docker-build VERSION=latest
+invoke build-remove
 ```
 
-Remove docker image with
+Delete .DS_STORE files:
 
 ```bash
-make docker-remove
+invoke dsstore-remove
 ```
 
-More information [about docker][htu11].
-
-</p>
-</details>
-
-<details>
-<summary>10. Cleanup</summary>
-<p>
-
-Delete pycache files
+Remove .mypycache:
 
 ```bash
-make pycache-remove
-```
-
-Remove package build
-
-```bash
-make build-remove
-```
-
-Delete .DS_STORE files
-
-```bash
-make dsstore-remove
-```
-
-Remove .mypycache
-
-```bash
-make mypycache-remove
+invoke mypycache-remove
 ```
 
 Or to remove all above run:
 
 ```bash
-make cleanup
+invoke cleanup
 ```
 
 </p>
@@ -549,8 +538,8 @@ And here are a few articles which may help you:
 - [A handy guide to financial support for open source][wn27];
 - [GitLab CI Documentation][wn28];
 - [GitHub Actions Documentation][wn29];
-- [Makefile tutorial][wn30];
-- [A Comprehensive Look at Testing in Software Development][wn31] is an article that lays out why testing is crucial for development success. Eric's blog is actually a great reference, covering topics ranging from the basics to advanced techniques and best practices;
+- [A Comprehensive Look at Testing in Software Development][wn30] is an article that lays out why testing is crucial for development success. Eric's blog is actually a great reference, covering topics ranging from the basics to advanced techniques and best practices;
+- [Robust Exception Handling][wn31];
 - Maybe you would like to add [gitmoji][wn32] to commit names. This is really funny. :grin:
 
 ## :chart_with_upwards_trend: Releases
@@ -586,8 +575,7 @@ Here is a list of things that have yet to be implemented:
 - `Dockerfile` linting with [`dockerfilelint`][td7];
 - [Hall of fame][td8] from `Sourcerer`;
 - End-to-end testing and validation of the cookiecutter template;
-- Add [`Invoke`][td9];
-- Add [`Earthly`][td10].
+- Add [`Earthly`][td9].
 
 ## :shield: Licence
 
@@ -613,6 +601,10 @@ And also there are some projects which can be studied as references in project m
 - [Cookiecutter Data Science Template: `cdst`][ac9];
 - [Full Stack FastAPI and PostgreSQL - Base Project Generator][ac10];
 - [The importance of layered thinking in data engineering][ac11].
+
+Additionally, we would like to thank the teams of the following projects for aiding us during our research and implementation of best practices and tools for Python development:
+
+- [Pelican][ac12].
 
 Give them your :star:, these resources are amazing! :wink:
 
@@ -642,7 +634,7 @@ Here is the Markdown source for it:
 [m1]: https://kutt.it/e8YfCL
 [m2]: https://github.com/manoelpqueiroz/galactipy/blob/github-mirror/CONTRIBUTING.md
 
-[b1]: https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue?style=for-the-badge
+[b1]: https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue?style=for-the-badge
 [b2]: https://kutt.it/WlS8Qj
 [b3]: https://img.shields.io/badge/GitLab-0B2640?style=for-the-badge&logo=gitlab&logoColor=white
 [b4]: https://img.shields.io/gitlab/v/release/manoelpqueiroz%2Fgalactipy?style=for-the-badge&logo=semantic-release&color=253747
@@ -691,8 +683,8 @@ Here is the Markdown source for it:
 [ft12]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.gitignore
 [ft13]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.gitlab-ci.yml
 [ft14]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/workflows/build.yml
-[ft15]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/Makefile
-[ft16]: #makefile-usage
+[ft15]: https://docs.pyinvoke.org/en/stable/
+[ft16]: #invoke-usage
 [ft17]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker/Dockerfile
 [ft18]: https://github.com/TezRomacH/python-package-template
 [ft19]: https://docs.github.com/en/code-security/dependabot
@@ -712,12 +704,12 @@ Here is the Markdown source for it:
 [htu2]: #gitlab-vs-github-features
 [htu3]: https://typer.tiangolo.com/
 [htu4]: https://rich.readthedocs.io/en/latest/
-[htu5]: https://www.sphinx-doc.org/en/master/
-[htu6]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D
-[htu7]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D#very-first-steps
-[htu8]: https://python-poetry.org/docs/
-[htu9]: https://python-poetry.org/docs/cli/#commands
-[htu10]: https://github.com/python-poetry/install.python-poetry.org
+[htu5]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D
+[htu6]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D#very-first-steps
+[htu7]: https://python-poetry.org/docs/
+[htu8]: https://python-poetry.org/docs/cli/#commands
+[htu9]: https://github.com/python-poetry/install.python-poetry.org
+[htu10]: https://python-poetry.org/docs/#installation
 [htu11]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker
 
 [wn1]: https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
@@ -749,8 +741,8 @@ Here is the Markdown source for it:
 [wn27]: https://github.com/nayafia/lemonade-stand
 [wn28]: https://docs.gitlab.com/ee/ci/
 [wn29]: https://help.github.com/en/actions
-[wn30]: https://makefiletutorial.com/
-[wn31]: https://pytest-with-eric.com/introduction/types-of-software-testing/
+[wn30]: https://pytest-with-eric.com/introduction/types-of-software-testing/
+[wn31]: https://eli.thegreenplace.net/2008/08/21/robust-exception-handling/
 [wn32]: https://gitmoji.dev/
 
 [r1]: https://gitlab.com/manoelpqueiroz/galactipy/-/releases
@@ -764,8 +756,7 @@ Here is the Markdown source for it:
 [td6]: https://github.com/econchick/interrogate
 [td7]: https://github.com/replicatedhq/dockerfilelint
 [td8]: https://github.com/sourcerer-io/hall-of-fame
-[td9]: http://www.pyinvoke.org/
-[td10]: https://earthly.dev/
+[td9]: https://earthly.dev/
 
 [ac1]: https://github.com/TezRomacH
 [ac2]: https://patreon.com/tezikov
@@ -778,3 +769,4 @@ Here is the Markdown source for it:
 [ac9]: https://github.com/crplab/cdst
 [ac10]: https://github.com/tiangolo/full-stack-fastapi-postgresql
 [ac11]: https://towardsdatascience.com/the-importance-of-layered-thinking-in-data-engineering-a09f685edc71
+[ac12]: https://github.com/getpelican/pelican

@@ -1,7 +1,7 @@
 {
   "project_name": "Python Project",
   "repo_name": "{{ cookiecutter.project_name.replace(' ', '-').lower().strip('-') }}",
-  "package_name": "{{ cookiecutter.project_name.replace(' ', '_').replace('-', '_').lower() }}",
+  "package_name": "{{ cookiecutter.repo_name.replace('-', '_') }}",
   "project_description": "Awesome `{{ cookiecutter.repo_name }}` is a Python cli/package created with https://gitlab.com/manoelpqueiroz/galactipy",
   "version": "0.1.0",
   "author": "Manoel Pereira de Queiroz",
@@ -22,11 +22,11 @@
     "nos"
   ],
   "minimal_python_version": [
-    "3.8",
     "3.9",
     "3.10",
     "3.11",
-    "3.12"
+    "3.12",
+    "3.13"
   ],
   "use_ruff": true,
   "line_length": 88,
@@ -61,16 +61,15 @@
     "line_length": "Maximum line length",
     "docstring_style": "Which docstring style would you like to use?",
     "create_cli": "Would you like to create your project with CLI implementation?",
-    "create_docker": "Containerize your application with Docker?",
-    "create_docs": "Create project documentation with Sphinx?"
+    "create_docker": "Containerize your application with Docker?"
   },
 
   "_all_python_version": [
-    [3, 8],
     [3, 9],
     [3, 10],
     [3, 11],
-    [3, 12]
+    [3, 12],
+    [3, 13]
   ],
   "__mpvr": "{{ cookiecutter.minimal_python_version.replace('.', '') }}",
   "__scm_platform_lc": "{{ cookiecutter.scm_platform.lower() }}",

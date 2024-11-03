@@ -2,24 +2,19 @@
 
 ## Installation
 
-To create Docker you need to run:
+To create a Docker image you can run:
 
 ```bash
-make docker-build
+invoke docker-build
 ```
 
-which is equivalent to:
+This will create a default image `{{ cookiecutter.package_name }}:latest`.
+
+You may provide name and version for the image, as well as multiple tags:
 
 ```bash
-make docker-build VERSION=latest
-```
-
-You may provide name and version for the image.
-Default name is `IMAGE := {{ cookiecutter.package_name }}`.
-Default version is `VERSION := latest`.
-
-```bash
-make docker-build IMAGE=some_name VERSION={{ cookiecutter.version }}
+invoke docker-build -i {{ cookiecutter.package_name }}:{{ cookiecutter.version }}
+invoke docker-build -i {{ cookiecutter.package_name }}:latest -i {{ cookiecutter.package_name }}:{{ cookiecutter.version }}
 ```
 
 ## Usage
@@ -32,16 +27,16 @@ docker run -it --rm \
 
 ## How to clean up
 
-To uninstall docker image run `make docker-remove` with `VERSION`:
+To uninstall the default Docker image run:
 
 ```bash
-make docker-remove VERSION={{ cookiecutter.version }}
+invoke docker-remove
 ```
 
-you may also choose the image name
+Again, you may also remove multiple images:
 
 ```bash
-make docker-remove IMAGE=some_name VERSION=latest
+invoke docker-remove -i {{ cookiecutter.package_name }}:latest -i {{ cookiecutter.package_name }}:{{ cookiecutter.version }}
 ```
 
-If you want to clean all, including `build` and `pycache` run `make cleanup`
+If you want to clean all, including `build` and `pycache` run `invoke cleanup`.
