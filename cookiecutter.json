@@ -38,7 +38,6 @@
   ],
   "create_cli": true,
   "create_docker": true,
-  "create_docs": true,
 
   "__prompts__": {
     "project_name": "Project name",
