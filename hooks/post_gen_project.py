@@ -215,7 +215,7 @@ def print_further_instructions(
         if find_spec("invoke") is None:
             message += textwrap.dedent(
                 """
-                :stop_sign: [bold red]WARNING![/] Invoke was not found in your system.
+                [bold red]WARNING![/] Invoke was not found in your system.
 
                 Install it first via your package manager or via pip before running step 2.
 
@@ -238,7 +238,7 @@ def print_further_instructions(
 
                 $ invoke poetry-download
 
-            3) Initialize poetry and install pre-commit hooks:
+            3) Initialize Poetry and install pre-commit hooks:
 
                 $ invoke install
                 $ invoke pre-commit-install
