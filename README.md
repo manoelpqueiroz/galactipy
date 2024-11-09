@@ -546,14 +546,16 @@ We use [`GitLab Changelog`][ft24] entries to track changes. You can categorise c
 
 ### List of trailers and corresponding categories
 
-|            **Git trailer**            |    **Category in CHANGELOG**    |
-| :-----------------------------------: | :-----------------------------: |
-| `enhancement`, `feature`              | :rocket: Features               |
-| `bug`, `refactoring`, `bugfix`, `fix` | :wrench: Fixes & Refactoring    |
-| `build`, `ci`, `testing`              | :package: Build System & CI/CD  |
-| `breaking`                            | :boom: Breaking Changes         |
-| `documentation`                       | :memo: Documentation            |
-| `dependencies`                        | :arrow_up: Dependencies updates |
+|            **Git trailer**            |        **Category in CHANGELOG**       |
+| :-----------------------------------: | :------------------------------------: |
+| `enhancement`, `feature`              | :rocket: Features                      |
+| `bug`, `refactoring`, `bugfix`, `fix` | :wrench: Fixes & Refactoring           |
+| `build`, `ci`, `testing`              | :package: Build System & CI/CD         |
+| `breaking`                            | :boom: Breaking Changes                |
+| `hooks`, `project-config`             | :gear: Internals                       |
+| `template-config`                     | :construction_site: Template Internals |
+| `documentation`                       | :memo: Documentation                   |
+| `dependencies`                        | :arrow_up: Dependencies updates        |
 
 ## :test_tube: TODOs
 
