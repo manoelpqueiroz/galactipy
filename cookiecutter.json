@@ -36,6 +36,7 @@
     "pep257",
     "other"
   ],
+  "docstring_length": "{{ cookiecutter.line_length }}",
   "create_cli": true,
   "create_docker": true,
 
@@ -59,6 +60,7 @@
     "use_ruff": "Use Ruff for linting and formatting?",
     "line_length": "Maximum line length",
     "docstring_style": "Which docstring style would you like to use?",
+    "docstring_length": "Docstring maximum line length",
     "create_cli": "Would you like to create your project with CLI implementation?",
     "create_docker": "Containerize your application with Docker?"
   },

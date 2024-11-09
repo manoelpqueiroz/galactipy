@@ -1,0 +1,45 @@
+{% raw %}{
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/.ipynb_checkpoints": true
+    },
+    "editor.lineNumbers": "relative",
+    {%- endraw %}{% if cookiecutter.docstring_length == cookiecutter.line_length %}
+    "editor.rulers": [{{ cookiecutter.line_length }}],
+    {%- else %}
+    "editor.rulers": [{{ cookiecutter.docstring_length }}, {{ cookiecutter.line_length }}],
+    {%- endif %}{% raw %}
+    "editor.scrollBeyondLastLine": false,
+    "editor.cursorStyle": "underline",
+    "terminal.integrated.persistentSessionReviveProcess": "never",
+    "terminal.integrated.enablePersistentSessions": false,
+    "workbench.localHistory.enabled": false,
+    "workbench.editor.enablePreview": false,
+    "workbench.settings.editor": "json",
+    "git.suggestSmartCommit": false,
+    "diffEditor.renderSideBySide": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "debug.toolBarLocation": "docked",
+    "explorer.autoReveal": true,
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": [
+        "--strict-markers",
+        "--tb=short",
+        "--doctest-modules",
+        "--doctest-continue-on-failure",
+        "--pikachu",
+        "--cov={% endraw %}{{ cookiecutter.package_name }}{% raw %}",
+        "--cov-config=pyproject.toml"
+    ],
+    "[python]": {
+        "editor.bracketPairColorization.enabled": false
+    },
+    "[markdown]": {
+        "editor.tabSize": 2
+    },
+    "[dockerfile]": {
+        "editor.tabSize": 2
+    }
+}{% endraw %}
