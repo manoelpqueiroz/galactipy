@@ -50,5 +50,73 @@
     },
     "[dockerfile]": {
         "editor.tabSize": 2
-    }
+    },
+    "todo-tree.tree.labelFormat": "${after}",
+    "todo-tree.highlights.defaultHighlight": {
+        "foreground": "#444444",
+        "background": "#FFFFFF",
+        "fontWeight": "bold",
+    },
+    "todo-tree.highlights.customHighlight": {
+        "TODO": {
+            "icon": "alert",
+            "iconColour": "#e69b39"
+        },
+        "CHECKLIST": {
+            "icon": "tasklist",
+            "iconColour": "#39e673"
+        },
+        "UPDATEME": {
+            "icon": "pencil",
+            "iconColour": "#e65339"
+        },
+        "BUG": {
+            "icon": "bug",
+            "iconColour": "#e63946",
+            "foreground": "#e63946"
+        },
+        "REFACTOR": {
+            "icon": "issue-reopened",
+            "iconColour": "#4a39e6",
+            "foreground": "#4a39e6"
+        },
+        "FIXME": {
+            "icon": "tools",
+            "iconColour": "#e63946",
+            "foreground": "#e63946"
+        },
+        "HACK": {
+            "icon": "cpu",
+            "iconColour": "#e6399e"
+        }
+    },
+    "todo-tree.general.tags": [
+        "BUG",
+        "HACK",
+        "FIXME",
+        "FIXIT",
+        "FIX",
+        "NEEDSWORK",
+        "UPDATEME",
+        "TODO",
+        "REFACTOR",
+        "[ ]"
+    ],
+    "todo-tree.general.tagGroups": {
+        "FIXME": [
+            "FIXME",
+            "FIXIT",
+            "FIX",
+            "NEEDSWORK"
+        ],
+        "CHECKLIST": [
+            "[ ]"
+        ]
+    },
+    "todo-tree.general.statusBar": "top three",
+    "todo-tree.general.showIconsInsteadOfTagsInStatusBar": true,
+    "todo-tree.filtering.excludeGlobs": [
+        "**/node_modules/*/**", // Default for todo-tree
+        "**/.{% endraw %}{{ cookiecutter.__scm_platform_lc }}{% raw %}/*/**"
+    ]
 }{% endraw %}
