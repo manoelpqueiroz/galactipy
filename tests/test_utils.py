@@ -2,7 +2,7 @@ from pathlib import Path
 from shutil import chown
 
 from hooks.post_gen_project import rmdir
-from hooks.pre_gen_project import validate_line_length
+from hooks.pre_gen_project import validate_docstring_length, validate_line_length
 
 import pytest
 
@@ -15,6 +15,15 @@ def test_validate_line_length():
 
     with pytest.raises(ValueError):
         validate_line_length(-10)
+
+
+def test_validate_docstring_length():
+    assert validate_docstring_length(88, 87) is None  # type: ignore[func-returns-value]
+
+    assert validate_docstring_length(88, 88) is None  # type: ignore[func-returns-value]
+
+    with pytest.raises(ValueError):
+        validate_docstring_length(88, 100)
 
 
 class TestRmDir:
