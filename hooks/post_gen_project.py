@@ -170,6 +170,7 @@ def print_further_instructions(
     """
     if find_spec("rich") is not None:
         from rich.console import Console
+
         console = Console(emoji=False)
 
         message = textwrap.dedent(

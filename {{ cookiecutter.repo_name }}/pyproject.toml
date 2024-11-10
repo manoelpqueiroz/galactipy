@@ -142,7 +142,17 @@ select = [  # UPDATEME with additional rules from https://docs.astral.sh/ruff/ru
   "RUF"
 ]
 ignore = ["D200"]
-task-tags = ["TODO", "FIXME", "XXX", "UPDATEME"]  # UPDATEME by modifying or removing this setting after addressing all UPDATEMEs
+task-tags = [
+  "BUG",
+  "HACK",
+  "FIXME",
+  "FIXIT",
+  "FIX",
+  "NEEDSWORK",
+  "UPDATEME",
+  "TODO",
+  "REFACTOR"
+]  # UPDATEME by modifying or removing this setting after addressing all UPDATEMEs
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**.py" = ["D100", "D101", "D102", "D103", "D104", "S101"]
