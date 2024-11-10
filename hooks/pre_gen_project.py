@@ -9,6 +9,7 @@ USERNAME = "{{ cookiecutter.scm_username }}"
 PROJECT_VERSION = "{{ cookiecutter.version }}"
 # Integer value wrapped inside strings to avoid raising errors when testing
 LINE_LENGTH_PARAMETER = "{{ cookiecutter.line_length }}"
+DOCSTRING_LENGTH_PARAMETER = "{{ cookiecutter.docstring_length }}"
 
 
 MIN_USERNAME_LENGTH = 2
@@ -244,7 +245,7 @@ def validate_line_length(line_length: int) -> None:
     Parameters
     ----------
     line_length : int
-        Integer parameter for isort and black formatters.
+        Integer parameter for Ruff formatter.
 
     Raises
     ------
@@ -253,6 +254,29 @@ def validate_line_length(line_length: int) -> None:
     """
     if not (MIN_LINE_LENGTH <= line_length <= MAX_LINE_LENGTH):
         message = f"ERROR: line_length must be between 50 and 300. Got `{line_length}`."
+        raise ValueError(message)
+
+
+def validate_docstring_length(line_length: int, docstring_length: int) -> None:
+    """Validate docstring_length parameter against line_length.
+
+    Parameters
+    ----------
+    line_length : int
+        Integer parameter for maximum line length for Ruff formatter.
+    docstring_length : int
+        Integer parameter for maximum docstring line length for Ruff formatter.
+
+    Raises
+    ------
+    ValueError
+        If docstring_length is greater than line_length
+    """
+    if docstring_length > line_length:
+        message = (
+            f"ERROR: docstring_length of {docstring_length} is greater than "
+            f"line_length {line_length}"
+        )
         raise ValueError(message)
 
 
@@ -267,6 +291,13 @@ def main() -> None:  # noqa: D103
         validate_semver(version=PROJECT_VERSION)
 
         validate_line_length(line_length=int(LINE_LENGTH_PARAMETER))
+
+        validate_line_length(line_length=int(DOCSTRING_LENGTH_PARAMETER))
+
+        validate_docstring_length(
+            line_length=int(LINE_LENGTH_PARAMETER),
+            docstring_length=int(DOCSTRING_LENGTH_PARAMETER),
+        )
 
     except ValueError as ex:
         print(ex)

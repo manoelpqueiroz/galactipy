@@ -122,26 +122,10 @@ Well, that's up to you. :muscle:
 
 For further setting up your project:
 
-- Look for files and sections marked with `UPDATEME`, these should be updated according to the needs and characteristics of your project;
-  - **Tip:** If you use VS Code's [`Todo Tree`][wn1] extension, you can even set a specific tag to quickly locate these marks. Update your `settings.json` with:
-
-```json
-"todo-tree.highlights.customHighlight": {
-    "UPDATEME": {
-        "icon": "pencil",
-        "iconColour": "#E63946"
-    }
-},
-"todo-tree.general.tags": [
-    "BUG",
-    "HACK",
-    "FIXME",
-    "UPDATEME",
-    "TODO",
-    "XXX",
-    "[ ]"
-]
-```
+- [ ] Look for files and sections marked with `UPDATEME`, these should be updated according to the needs and characteristics of your project;
+  - If you use VS Code, install the [`Todo Tree`][wn1] extension to easily locate and jump to these marks, they are already configured in your `settings.json` file;
+- [ ] Make sure to create your desired Issue labels on your platform before you start tracking them so it ensures you will be able to filter them from the get-go;
+- [ ] Make changes to your CI configurations to better suit your needs.
 
 - In order to reduce user prompts and keep things effective, the template generates files with a few assumptions:
   - It assumes your main git branch is `master`. If you wish to use another branch name for development, be aware of changes you will have to make in the Issue and Merge Request templates and `README.md` file so links won't break when you push them to your repo;
@@ -149,8 +133,6 @@ For further setting up your project:
 {%- if cookiecutter.create_docker %}
   - It generates a Docker badge assuming you also use `{{ cookiecutter.scm_username }}` for Docker Hub and you will push your image under `{{ cookiecutter.repo_name }}`, change it otherwise;
 {%- endif %}
-- Make sure to create your desired Issue labels on your platform before you start tracking them so it ensures you will be able to filter them from the get-go;
-- Make changes to your CI configurations to better suit your needs.
 
 If you want to put your project on steroids, here are a few Python tools which can help you depending on what you want to achieve with your application:
 
@@ -201,7 +183,8 @@ And here are a few articles which may help you:
 - [A Comprehensive Look at Testing in Software Development][wn22] is an article that lays out why testing is crucial for development success. Eric's blog is actually a great reference, covering topics ranging from the basics to advanced techniques and best practices;
 - [Robust Exception Handling][wn23];
 - [Why Your Mock Doesn't Work][wn24];
-- Maybe you would like to add [gitmoji][wn25] to commit names. This is really funny. :grin:
+- [Managing TODOs in a codebase][wn25];
+- Maybe you would like to add [gitmoji][wn26] to commit names. This is really funny. :grin:
 
 ## :rocket: Features
 
@@ -586,7 +569,8 @@ This project was generated with [`galactipy`][bp7].
 [wn22]: https://pytest-with-eric.com/introduction/types-of-software-testing/
 [wn23]: https://eli.thegreenplace.net/2008/08/21/robust-exception-handling/
 [wn24]: https://nedbatchelder.com/blog/201908/why_your_mock_doesnt_work.html
-[wn25]: https://gitmoji.dev/
+[wn25]: https://medium.com/babylon-engineering/todo-find-a-title-for-the-article-fee79708ca15
+[wn26]: https://gitmoji.dev/
 {%+ if cookiecutter.licence != 'nos' %}
 [wno3]: https://liberapay.com/
 [wno4]: https://opencollective.com/

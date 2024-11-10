@@ -29,7 +29,7 @@ _Expand your project structure from atoms of code to **galactic** dimensions._ :
 ## TL;DR
 
 ```bash
-cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.5.0
+cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.6.0
 ```
 
 > All you need is the latest version of cookiecutter! :wink:
@@ -45,18 +45,19 @@ In this [cookiecutter :cookie:][ft1] template we combine state-of-the-art librar
 - Automatic code formatting with [`ruff`][ft4], with ready-to-use [`pre-commit`][ft5] hooks and several rules already selected for linting;
 - Type checks with [`mypy`][ft6], security checks with [`safety`][ft7] and [`bandit`][ft8];
 - Testing with [`pytest`][ft9];
-- Ready-to-use [`.editorconfig`][ft10], [`.dockerignore`][ft11], and [`.gitignore`][ft12] files. You don't have to worry about those things.
+- Predefined VS Code [`settings.json`][ft10] with quality-of-life configuration for editor, workbench, debugging and more;
+- Ready-to-use [`.editorconfig`][ft11], [`.dockerignore`][ft12] and [`.gitignore`][ft13] files. You don't have to worry about those things.
 
 ### Deployment features
 
 - Issue and Merge Request templates for easy integration with GitLab and GitHub;
-- Predefined CI/CD build workflow for [`GitLab CI`][ft13] and [`Github Actions`][ft14];
-- Everything is already set up for security checks, codestyle checks, code formatting, testing, linting, docker builds etc. with [`invoke`][ft15]. More details in [Invoke Usage][ft16];
-- [`Dockerfile`][ft17] for your package.
+- Predefined CI/CD build workflow for [`GitLab CI`][ft14] and [`Github Actions`][ft15];
+- Everything is already set up for security checks, codestyle checks, code formatting, testing, linting, docker builds etc. with [`invoke`][ft16]. More details in [Invoke Usage][ft17];
+- [`Dockerfile`][ft18] for your package.
 
 #### GitLab vs. GitHub features
 
-You are free to choose whichever platform works best for you and your project. The original template by [TezRomacH][ft18] was created originally with GitHub in mind, which prompted the creation of a similarly fully-featured template for GitLab users as well.
+You are free to choose whichever platform works best for you and your project. The original template by [TezRomacH][ft19] was created originally with GitHub in mind, which prompted the creation of a similarly fully-featured template for GitLab users as well.
 
 However, not everything that is available for GitHub users is available to GitLab users, and vice-versa. Please mind the differences between both options.
 
@@ -69,17 +70,17 @@ Below is a comparison between the features available in this package depending o
 | Stale issues                  | :x:                | :white_check_mark: | A specific configuration is available for GitHub to mark and automatically close stale issues. |
 | Build workflow                | :white_check_mark: | :white_check_mark: | A basic workflow to install the package and run tests, check codestyle and safety. |
 | Greetings workflow            | :x:                | :white_check_mark: | |
-| Dependabot                    | :x:                | :white_check_mark: | [Dependabot][ft19] is a feature now incorporated into GitHub Security. See [here][ft20] how to enable it. |
-| Release drafter               | :x:                | :white_check_mark: | [Release Drafter][ft21] is a custom workflow available on GitHub Marketplace. You may see the list of labels in [`release-drafter.yml`][ft22]. Works perfectly with [Semantic Versions][ft23] specification. |
-| Changelog configuration       | :white_check_mark: | :x:                | GitLab provides automatic changelog updates through their [API][ft24]. You may modify the template in [`changelog_config.yml`][ft25]. |
+| Dependabot                    | :x:                | :white_check_mark: | [Dependabot][ft20] is a feature now incorporated into GitHub Security. See [here][ft21] how to enable it. |
+| Release drafter               | :x:                | :white_check_mark: | [Release Drafter][ft22] is a custom workflow available on GitHub Marketplace. You may see the list of labels in [`release-drafter.yml`][ft23]. Works perfectly with [Semantic Versions][ft24] specification. |
+| Changelog configuration       | :white_check_mark: | :x:                | GitLab provides automatic changelog updates through their [API][ft25]. You may modify the template in [`changelog_config.yml`][ft26]. |
 
 ### Open source community features
 
-- Ready-to-use [Merge Request templates][ft26] and several [Issue templates][ft27];
+- Ready-to-use [Merge Request templates][ft27] and several [Issue templates][ft28];
 - Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically;
-- **Loads** of predefined [badges][ft28] to make your project stand out, you can either keep them, remove as you wish or be welcome to add even more;
-- For GitHub users, [`Stale bot`][ft29] closes abandoned issues after a period of inactivity. Configuration is [here][ft30];
-- [Semantic Versions][ft23] specification with [`Changelog entries`][ft24] or [`Release Drafter`][ft21].
+- **Loads** of predefined [badges][ft29] to make your project stand out, you can either keep them, remove as you wish or be welcome to add even more;
+- For GitHub users, [`Stale bot`][ft30] closes abandoned issues after a period of inactivity. Configuration is [here][ft31];
+- [Semantic Versions][ft24] specification with [`Changelog entries`][ft25] or [`Release Drafter`][ft22].
 
 ## :exploding_head: How to use it
 
@@ -94,7 +95,7 @@ pip install -U cookiecutter
 then go to a directory where you want to create your project and run:
 
 ```bash
-cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.5.0
+cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.6.0
 ```
 
 ### Input variables
@@ -109,7 +110,7 @@ The input variables, with their default values, are as follows:
 | `repo_name`               | based on `project_name`     | Name of the repository to develop the project on. [Check the availability of possible names][htu1] before creating the project. |
 | `package_name`            | based on `project_name`     | PyPI-compliant Python package name. [Check the availability of possible names][htu1] before creating the project. |
 | `project_description`     | based on `project_name`     | A brief description of your project. |
-| `version`                 | `0.1.0`                     | Initial version of the package. Make sure it follows the [Semantic Versions][ft23] specification. |
+| `version`                 | `0.1.0`                     | Initial version of the package. Make sure it follows the [Semantic Versions][ft24] specification. |
 | `author`                  | `Manoel Pereira de Queiroz` | Name of the author or organisation. Used to generate `LICENCE` and to specify ownership in `pyproject.toml`. |
 | `scm_platform`            | `GitLab`                    | One of `GitLab` and `GitHub`. Depending on the choice you will have [different features][htu2] to work with. |
 | `scm_username`            | `manoelpqueiroz`            | GitHub or GitLab username for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for either platform. |
@@ -119,8 +120,9 @@ The input variables, with their default values, are as follows:
 | `use_ruff`                | `True`                      | :small_red_triangle: Option to use [`ruff`][ft4] as the code formatter, along with a pre-commit hook. |
 | `line_length`             | 88                          | The max length per line, dismiss if `use_ruff` is not used. NOTE: This value must be between 50 and 300. |
 | `docstring_style`         | `numpy`                     | One of `numpy`, `pep257` or `google`, dismiss if `use_ruff` is not used. You can choose `other` to disable checks on your docstrings. |
+| `docstring_length`        | based on `line_lenght`      | The max length for docstrings, dismiss if `use_ruff` is not used. NOTE: This value must be between 50 and 300 and lower of equal to `line_lenght`. |
 | `create_cli`              | `True`                      | :small_red_triangle: Option to create a simple CLI application with [`Typer`][htu3] and [`Rich`][htu4] libraries. |
-| `create_docker`           | `True`                      | :small_red_triangle: Option to create a [Dockerfile][ft17] to build an image for your project. |
+| `create_docker`           | `True`                      | :small_red_triangle: Option to create a [Dockerfile][ft18] to build an image for your project. |
 
 > :eight_spoked_asterisk: Input variables marked with :small_red_triangle: are boolean variables, you can dismiss those by typing either `0`, `false`, `f`, `no`, `n` or `off`.
 
@@ -132,20 +134,20 @@ All input values will be saved in the `cookiecutter-config-file.yml` file so tha
 
 ```console
 $ cookiecutter gl:manoelpqueiroz/galactipy
-  [1/16] Project name (Python Project): A Decent Python Project
-  [2/16] Project slug (a-decent-python-project): a-different-slug
-  [3/16] Package name (a_decent_python_project): a_viable_package
-  [4/16] Short description of the project (Awesome `a-different-slug` is a Python cli/package created with
+  [1/17] Project name (Python Project): A Decent Python Project
+  [2/17] Project slug (a-decent-python-project): a-different-slug
+  [3/17] Package name (a_decent_python_project): a_viable_package
+  [4/17] Short description of the project (Awesome `a-different-slug` is a Python cli/package created with
 https://gitlab.com/manoelpqueiroz/galactipy): Let's try a cool description
-  [5/16] Project version (0.1.0): 1.100.9-rc7+build.456893a
-  [6/16] Author or Organisation (Manoel Pereira de Queiroz):
-  [7/16] In which platform would you like to host your code?
+  [5/17] Project version (0.1.0): 1.100.9-rc7+build.456893a
+  [6/17] Author or Organisation (Manoel Pereira de Queiroz):
+  [7/17] In which platform would you like to host your code?
     1 - GitLab
     2 - GitHub
     Choose from [1/2] (1): 2
-  [8/16] Platform username (manoelpqueiroz): myuniqueusername
-  [9/16] e-Mail (contact@myuniqueusername.com): g@mail.com
-  [10/16] Which licence would you like to use for your project?
+  [8/17] Platform username (manoelpqueiroz): myuniqueusername
+  [9/17] e-Mail (contact@myuniqueusername.com): g@mail.com
+  [10/17] Which licence would you like to use for your project?
     1 - MIT Licence
     2 - 3-Clause BSD
     3 - GNU GPL v3.0
@@ -155,23 +157,24 @@ https://gitlab.com/manoelpqueiroz/galactipy): Let's try a cool description
     7 - Apache Software License 2.0
     8 - Not open source
     Choose from [1/2/3/4/5/6/7/8] (1): 4
-  [11/16] Minimal Python version
+  [11/17] Minimal Python version
     1 - 3.9
     2 - 3.10
     3 - 3.11
     4 - 3.12
     5 - 3.13
     Choose from [1/2/3/4/5] (1): 3
-  [12/16] Use Ruff for linting and formatting? [y/n] (y): yes
-  [13/16] Maximum line length (88):
-  [14/16] Which docstring style would you like to use?
+  [12/17] Use Ruff for linting and formatting? [y/n] (y): yes
+  [13/17] Maximum line length (88):
+  [14/17] Which docstring style would you like to use?
     1 - numpy
     2 - google
     3 - pep257
     4 - other
     Choose from [1/2/3/4] (1): 4
-  [15/16] Would you like to create your project with CLI implementation? [y/n] (y): on
-  [16/16] Containerize your application with Docker? [y/n] (y): no
+  [15/17] Docstring maximum line length (88):
+  [16/17] Would you like to create your project with CLI implementation? [y/n] (y): on
+  [17/17] Containerize your application with Docker? [y/n] (y): no
 
 Your project A Decent Python Project is created.
 
@@ -254,14 +257,14 @@ poetry run <repo_name> --name Manoel
 
 Building a new version of the application contains steps:
 
-- Bump the version of your package `poetry version <version>`. You can pass the new version explicitly, or a rule such as `major`, `minor`, or `patch`. For more details, refer to the [Semantic Versions][ft23] standard;
+- Bump the version of your package `poetry version <version>`. You can pass the new version explicitly, or a rule such as `major`, `minor`, or `patch`. For more details, refer to the [Semantic Versions][ft24] standard;
 - Make a commit to `GitLab` or `GitHub`, depending on where you are hosting your code;
 - Create a `Release` for your package on the platform;
 - And... publish :slight_smile: `poetry publish --build`.
 
 ### Invoke usage
 
-[`invoke`][ft15] contains a lot of functions for faster development.
+[`invoke`][ft16] contains a lot of functions for faster development.
 
 <details>
 <summary>1. Download or remove Poetry</summary>
@@ -466,32 +469,14 @@ Well, that's up to you. :muscle:
 For further setting up your project:
 
 - Look for files and sections marked with `UPDATEME`, these should be updated according to the needs and characteristics of your project;
-  - **Tip:** If you use VS Code's [`Todo Tree`][wn1] extension, you can even set a specific tag to quickly locate these marks. Update your `settings.json` with:
-
-```json
-"todo-tree.highlights.customHighlight": {
-    "UPDATEME": {
-        "icon": "pencil",
-        "iconColour": "#E63946"
-    }
-},
-"todo-tree.general.tags": [
-    "BUG",
-    "HACK",
-    "FIXME",
-    "UPDATEME",
-    "TODO",
-    "XXX",
-    "[ ]"
-]
-```
+  - If you use VS Code, install the [`Todo Tree`][wn1] extension to easily locate and jump to these marks, they are already configured in the `settings.json` file;
+- Make sure to create your desired Issue labels on your platform before you start tracking them so it ensures you will be able to filter them from the get-go;
+- Make changes to your CI configurations to better suit your needs.
 
 - In order to reduce user prompts and keep things effective, the template generates files with a few assumptions:
   - It assumes your main git branch is `master`. If you wish to use another branch name for development, be aware of changes you will have to make in the Issue and Merge Request templates and `README.md` file so links won't break when you push them to your repo;
   - It generates a PyPI badge assuming you will be able to publish your project under `repo_name`, change it otherwise;
   - It generates a Docker badge assuming you also use `scm_username` for Docker Hub and you will push your image under `repo_name`, change it otherwise;
-- Make sure to create your desired Issue labels on your platform before you start tracking them so it ensures you will be able to filter them from the get-go;
-- Make changes to your CI configurations to better suit your needs.
 
 If you want to put your project on steroids, here are a few Python tools which can help you depending on what you want to achieve with your application:
 
@@ -534,15 +519,16 @@ And here are a few articles which may help you:
 - [A Comprehensive Look at Testing in Software Development][wn30] is an article that lays out why testing is crucial for development success. Eric's blog is actually a great reference, covering topics ranging from the basics to advanced techniques and best practices;
 - [Robust Exception Handling][wn31];
 - [Why Your Mock Doesn't Work][wn32];
-- Maybe you would like to add [gitmoji][wn33] to commit names. This is really funny. :grin:
+- [Managing TODOs in a codebase][wn33];
+- Maybe you would like to add [gitmoji][wn34] to commit names. This is really funny. :grin:
 
 ## :chart_with_upwards_trend: Releases
 
 You can see the list of available releases on the [GitLab Releases][r1] page.
 
-We follow [Semantic Versions][ft23] specification.
+We follow [Semantic Versions][ft24] specification.
 
-We use [`GitLab Changelog`][ft24] entries to track changes. You can categorise commits and Merge Requests made to this project using [git trailers][r2] in your commit messages.
+We use [`GitLab Changelog`][ft25] entries to track changes. You can categorise commits and Merge Requests made to this project using [git trailers][r2] in your commit messages.
 
 ### List of trailers and corresponding categories
 
@@ -581,7 +567,7 @@ This project is licenced under the terms of the `MIT` licence. See [LICENCE][b7]
 
 ## :sports_medal: Acknowledgements
 
-Firstly, there is no way this template would exist without the previous phenomenal work by [Roman Tezikov][ac1] and his fully-featured [`python-package-template`][ft18]. If there is anyone more deserving of a :star2: and acknowledgement, it's him! Please give a shoutout and [support][ac2] if possible.
+Firstly, there is no way this template would exist without the previous phenomenal work by [Roman Tezikov][ac1] and his fully-featured [`python-package-template`][ft19]. If there is anyone more deserving of a :star2: and acknowledgement, it's him! Please give a shoutout and [support][ac2] if possible.
 
 The original template was inspired by several articles that might be helpful if you are starting out managing projects:
 
@@ -671,27 +657,28 @@ Here is the Markdown source for it:
 [ft7]: https://docs.safetycli.com/safety-2/
 [ft8]: https://bandit.readthedocs.io/en/latest/
 [ft9]: https://docs.pytest.org/en/latest/
-[ft10]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.editorconfig
-[ft11]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.dockerignore
-[ft12]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.gitignore
-[ft13]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.gitlab-ci.yml
-[ft14]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/workflows/build.yml
-[ft15]: https://docs.pyinvoke.org/en/stable/
-[ft16]: #invoke-usage
-[ft17]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker/Dockerfile
-[ft18]: https://github.com/TezRomacH/python-package-template
-[ft19]: https://docs.github.com/en/code-security/dependabot
-[ft20]: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates#enabling-dependabot-version-updates
-[ft21]: https://github.com/marketplace/actions/release-drafter
-[ft22]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/release-drafter.yml
-[ft23]: https://semver.org/
-[ft24]: https://docs.gitlab.com/ee/user/project/changelogs.html
-[ft25]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/changelog_config.yml
-[ft26]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/merge_request_templates/default.md
-[ft27]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/issue_templates
-[ft28]: https://shields.io/
-[ft29]: https://github.com/marketplace/actions/close-stale-issues
-[ft30]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/.stale.yml
+[ft10]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.vscode/settings.json
+[ft11]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.editorconfig
+[ft12]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.dockerignore
+[ft13]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.gitignore
+[ft14]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.gitlab-ci.yml
+[ft15]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/workflows/build.yml
+[ft16]: https://docs.pyinvoke.org/en/stable/
+[ft17]: #invoke-usage
+[ft18]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker/Dockerfile
+[ft19]: https://github.com/TezRomacH/python-package-template
+[ft20]: https://docs.github.com/en/code-security/dependabot
+[ft21]: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates#enabling-dependabot-version-updates
+[ft22]: https://github.com/marketplace/actions/release-drafter
+[ft23]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/release-drafter.yml
+[ft24]: https://semver.org/
+[ft25]: https://docs.gitlab.com/ee/user/project/changelogs.html
+[ft26]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/changelog_config.yml
+[ft27]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/merge_request_templates/default.md
+[ft28]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/issue_templates
+[ft29]: https://shields.io/
+[ft30]: https://github.com/marketplace/actions/close-stale-issues
+[ft31]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/.stale.yml
 
 [htu1]: http://ivantomic.com/projects/ospnc/
 [htu2]: #gitlab-vs-github-features
@@ -737,7 +724,8 @@ Here is the Markdown source for it:
 [wn30]: https://pytest-with-eric.com/introduction/types-of-software-testing/
 [wn31]: https://eli.thegreenplace.net/2008/08/21/robust-exception-handling/
 [wn32]: https://nedbatchelder.com/blog/201908/why_your_mock_doesnt_work.html
-[wn33]: https://gitmoji.dev/
+[wn33]: https://medium.com/babylon-engineering/todo-find-a-title-for-the-article-fee79708ca15
+[wn34]: https://gitmoji.dev/
 
 [r1]: https://gitlab.com/manoelpqueiroz/galactipy/-/releases
 [r2]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
