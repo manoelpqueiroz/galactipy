@@ -296,7 +296,7 @@ def main() -> None:  # noqa: D103
 
         validate_docstring_length(
             line_length=int(LINE_LENGTH_PARAMETER),
-            docstring_length=int(DOCSTRING_LENGTH_PARAMETER)
+            docstring_length=int(DOCSTRING_LENGTH_PARAMETER),
         )
 
     except ValueError as ex:
