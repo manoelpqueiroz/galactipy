@@ -7,6 +7,12 @@ stages:
   - test
   - coverage
 
+workflow:
+  rules:
+    - if: $CI_COMMIT_TITLE =~ /(\:construction|WIP)\:.*/i
+      when: never
+    - if: $CI_COMMIT_BRANCH
+
 default:
   image: python:3.13
   before_script:
