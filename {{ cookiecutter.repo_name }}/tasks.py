@@ -140,10 +140,25 @@ def build(c: Context) -> None:
 
 
 @task
-def publish(c: Context, repo : str = "pypi") -> None:
+def publish(c: Context, repo : str = "pypi", build: bool = True) -> None:
     """Publish {{ cookiecutter.project_name }} to PyPI."""
-    c.run(f"{POETRY_PATH} publish --repository {repo} --build", pty=PTY)
+    # If pypi is specifically specified as a repo, Poetry fails to recognize it
+    repo_flag = f"--repository {repo}" if repo != "pypi" else ""
+    build_flag = "--build" if build else ""
 
+    result = c.run(
+        f"{POETRY_PATH} publish {repo_flag} {build_flag}",
+        hide='err',
+        warn=True,
+        pty=PTY,
+    )
+
+    if result.failed:
+        print(
+            "\nCould not upload to PyPI.\nDid you set up your API token with "
+            "`inv pypi-config`\nand remove any \"Private :: Do Not Upload\" "
+            "classifiers from pyproject.toml?"
+        )
 
 # Installation tasks
 @task
