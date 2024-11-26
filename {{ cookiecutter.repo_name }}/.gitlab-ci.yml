@@ -7,6 +7,8 @@
 # General pipeline configuration
 stages:
   - test
+  - build
+  - deploy
 
 default:
   image: python:{{ cookiecutter.minimal_python_version }}
@@ -18,6 +20,7 @@ default:
 workflow:
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_TAG
 
 # Anchors for common commands
 .env_setup: &env_setup
@@ -46,3 +49,23 @@ test-py{{ version[0] }}{{ version[1] }}:
     - *env_setup
     - *test_scripts
 {%- endfor %}
+
+build-test:
+  stage: build
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?!$)(?:-((?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*))?(?:\+([0-9a-z-]+(?:\.[0-9a-z-]+)*))?$/i
+  artifacts:
+    paths:
+      - dist/
+  script:
+    - invoke build
+
+build-prod:
+  stage: build
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
+  artifacts:
+    paths:
+      - dist/
+  script:
+    - invoke build
