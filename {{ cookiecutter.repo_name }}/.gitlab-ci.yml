@@ -10,6 +10,10 @@ stages:
   - build
   - deploy
 
+variables:
+  SEMVER_RELEASE_VERSION: /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
+  SEMVER_NONRELEASE_VERSION: /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*))?(?:\+([0-9a-z-]+(?:\.[0-9a-z-]+)*))?$/i
+
 default:
   image: python:{{ cookiecutter.minimal_python_version }}
   cache:
@@ -53,7 +57,7 @@ test-py{{ version[0] }}{{ version[1] }}:
 build-test:
   stage: build
   rules:
-    - if: $CI_COMMIT_TAG =~ /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?!$)(?:-((?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*))?(?:\+([0-9a-z-]+(?:\.[0-9a-z-]+)*))?$/i
+    - if: $CI_COMMIT_TAG =~ $SEMVER_NONRELEASE_VERSION && $CI_COMMIT_TAG !~ $SEMVER_RELEASE_VERSION
   artifacts:
     paths:
       - dist/
@@ -63,7 +67,7 @@ build-test:
 build-prod:
   stage: build
   rules:
-    - if: $CI_COMMIT_TAG =~ /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
+    - if: $CI_COMMIT_TAG =~ $SEMVER_RELEASE_VERSION
   artifacts:
     paths:
       - dist/
