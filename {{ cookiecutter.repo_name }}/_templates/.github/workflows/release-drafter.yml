@@ -1,3 +1,5 @@
+# Check GitHub Actions documentation at:
+# https://github.com/marketplace/actions/pypi-publish
 {% raw %}name: Release Drafter
 
 on:

@@ -1,6 +1,7 @@
 {%- set list_python_version = cookiecutter.minimal_python_version.split('.') | map('int') | list %}
-{%- raw %}
-# UPDATEME to suit your project's workflow
+# Check GitHub Actions documentation at:
+# https://github.com/marketplace/actions/pypi-publish
+{% raw %}# UPDATEME to suit your project's workflow
 name: build
 
 on: [push, pull_request]
