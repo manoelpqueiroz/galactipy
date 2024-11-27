@@ -1,0 +1,33 @@
+# Check GitHub Actions documentation at:
+# https://github.com/marketplace/actions/pypi-publish
+{% raw %}name: PyPI Test Publishing
+
+on:
+  push:
+    tags:
+      - 'v?[1-9][0-9]*.[1-9][0-9]*.[1-9][0-9]*[-\+]*\+?*'
+      - 'v?0.[1-9][0-9]*.0[-\+]*\+?*'
+      - 'v?[1-9][0-9]*.0.0[-\+]*\+?*'
+      - 'v?[1-9][0-9]*.0.[1-9][0-9]*[-\+]*\+?*'
+      - 'v?[1-9][0-9]*.[1-9][0-9]*.0[-\+]*\+?*'
+    tags-ignore:
+      - 'v?[1-9][0-9]*.[1-9][0-9]*.[1-9][0-9]*'
+      - 'v?0.[1-9][0-9]*.0'
+      - 'v?[1-9][0-9]*.0.0'
+      - 'v?[1-9][0-9]*.0.[1-9][0-9]*'
+      - 'v?[1-9][0-9]*.[1-9][0-9]*.0'
+
+jobs:
+  deploy-test:
+    name: Upload to Test PyPI
+    runs-on: ubuntu-latest
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/{% endraw %}{{ cookiecutter.repo_name }}{% raw %}
+    steps:
+    - name: Deploy to PyPI test environment
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        # UPDATEME by setting the TESTPYPI_TOKEN variable for https://test.pypi.org in {{ cookiecutter.__scm_link_url }}/settings/secrets/actions/new
+        password: ${{ secrets.TESTPYPI_TOKEN }}
+        repository-url: https://test.pypi.org/legacy/{% endraw %}
