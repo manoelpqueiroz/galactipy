@@ -2,7 +2,7 @@
 # Check GitHub Actions documentation at:
 # https://github.com/marketplace/actions/pypi-publish
 {% raw %}# UPDATEME to suit your project's workflow
-name: build
+name: Test
 
 on: [push, pull_request]
 
