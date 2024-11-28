@@ -18,7 +18,7 @@ jobs:
     - name: Deploy to PyPI test environment
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
-        # UPDATEME by setting the TESTPYPI_TOKEN variable for https://test.pypi.org in {{ cookiecutter.__scm_link_url }}/settings/secrets/actions/new
+        # UPDATEME by setting the TESTPYPI_TOKEN variable for https://test.pypi.org in {% endraw %}{{ cookiecutter.__scm_link_url }}{% raw %}/settings/secrets/actions/new
         password: ${{ secrets.TESTPYPI_TOKEN }}
         repository-url: https://test.pypi.org/legacy/{% endraw %}
         attestations: false
