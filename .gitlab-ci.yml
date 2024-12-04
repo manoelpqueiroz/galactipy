@@ -6,11 +6,13 @@
 stages:
   - test
   - coverage
+  - release
 
 workflow:
   rules:
     - if: $CI_COMMIT_TITLE =~ /(\:construction|WIP)\:.*/i
       when: never
+    - if: $CI_COMMIT_TAG =~ /^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
     - if: $CI_COMMIT_BRANCH
 
 default:
@@ -73,3 +75,15 @@ coveralls-report:
   script:
     - curl -L https://coveralls.io/coveralls-linux.tar.gz | tar -xz -C /usr/local/bin
     - coveralls -f coverage.xml -r $COVERALLS_TOKEN
+
+changelog-build:
+  stage: release
+  image: alpine:latest
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
+  script:
+    - apk add curl jq
+    - 'curl --header "PRIVATE-TOKEN: $CI_API_TOKEN" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/repository/changelog?version=$CI_COMMIT_TAG" | jq --raw-output .notes > RELEASE_NOTES.md'
+  artifacts:
+    paths:
+    - RELEASE_NOTES.md
