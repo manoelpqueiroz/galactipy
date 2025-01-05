@@ -41,7 +41,7 @@ jobs:
         name: prod-package-distribution
         path: dist/
         overwrite: true
-        retention-days: 30{% endraw %}
+        retention-days: 30
 
   deploy-prod:
     name: Upload release to PyPI
@@ -49,7 +49,7 @@ jobs:
     needs: build
     if: ${{ inputs.publish }}
     environment:
-      # UPDATEME by creating the "production" environment in {% endraw % }{{ cookiecutter.__scm_link_url }}{% raw %}/settings/environments/new
+      # UPDATEME by creating the "production" environment in {% endraw %}{{ cookiecutter.__scm_link_url }}{% raw %}/settings/environments/new
       name: production
       url: https://pypi.org/p/{% endraw %}{{ cookiecutter.repo_name }}{% raw %}
     permissions:

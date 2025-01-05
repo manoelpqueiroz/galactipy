@@ -34,14 +34,14 @@ jobs:
         name: test-package-distribution
         path: dist/
         overwrite: true
-        retention-days: 30{% endraw %}
+        retention-days: 30
 
   deploy-test:
     name: Upload to Test PyPI
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    needs: build
     environment:
-      # UPDATEME by creating the "development" environment in {% endraw % }{{ cookiecutter.__scm_link_url }}{% raw %}/settings/environments/new
+      # UPDATEME by creating the "development" environment in {% endraw %}{{ cookiecutter.__scm_link_url }}{% raw %}/settings/environments/new
       name: development
       url: https://test.pypi.org/p/{% endraw %}{{ cookiecutter.repo_name }}{% raw %}
     steps:
@@ -55,5 +55,5 @@ jobs:
       with:
         # UPDATEME by setting the TESTPYPI_TOKEN variable for https://test.pypi.org in the development environment
         password: ${{ secrets.TESTPYPI_TOKEN }}
-        repository-url: https://test.pypi.org/legacy/{% endraw %}
-        attestations: false
+        repository-url: https://test.pypi.org/legacy/
+        attestations: false{% endraw %}
