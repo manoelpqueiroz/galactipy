@@ -1,6 +1,6 @@
 # Check GitHub Actions documentation at:
 # https://github.com/marketplace/actions/pypi-publish
-{% raw %}name: Publish to PyPI
+{% raw %}name: 🔖 Publish to PyPI
 
 on:
   push:
@@ -21,21 +21,21 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Set up Python {% endraw %}{{ cookiecutter.minimal_python_version }}{% raw %}
+    - name: 🐍 Set up Python {% endraw %}{{ cookiecutter.minimal_python_version }}{% raw %}
       uses: actions/setup-python@v5
       with:
         python-version: "{% endraw %}{{ cookiecutter.minimal_python_version }}{% raw %}"
 
-    - name: Install Invoke
+    - name: 💽 Install Invoke
       run: pip install invoke
 
-    - name: Install poetry
+    - name: 💽 Install poetry
       run: invoke poetry-download
 
-    - name: Build
+    - name: 📦 Build
       run: invoke build
 
-    - name: Upload Builds
+    - name: 🗃️ Upload Builds
       uses: actions/upload-artifact@v4
       with:
         name: prod-package-distribution
@@ -56,10 +56,10 @@ jobs:
       # UPDATEME by setting up trusted publishing (https://docs.pypi.org/trusted-publishers/)
       id-token: write
     steps:
-    - name: Download artifacts
+    - name: 🗃️ Download artifacts
       uses: actions/download-artifact@v4
       with:
         name: prod-package-distribution
         path: dist/
-    - name: Deploy to PyPI
+    - name: 📤 Deploy to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1{% endraw %}
