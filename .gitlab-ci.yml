@@ -12,11 +12,18 @@ workflow:
   rules:
     - if: $CI_COMMIT_TITLE =~ /(\:construction|WIP)\:.*/i
       when: never
+    - if: $GITLAB_USER_LOGIN =~ /^project_\d+_bot_\w+/i
     - if: $CI_COMMIT_TAG =~ /^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
     - if: $CI_COMMIT_BRANCH
 
 default:
   image: python:3.13
+  cache:
+    key: venv-$CI_COMMIT_REF_NAME-$CI_JOB_STAGE-$CI_COMMIT_SHA
+    paths:
+      - $CI_PROJECT_DIR/.cache/pip
+
+.python_setup:
   before_script:
     - pip install invoke
     - invoke poetry-download
@@ -25,10 +32,6 @@ default:
     - source .venv/bin/activate
     - pip install -U pip
     - invoke install --ignore-pty
-  cache:
-    key: venv-$CI_COMMIT_REF_NAME-$CI_JOB_STAGE-$CI_COMMIT_SHA
-    paths:
-      - $CI_PROJECT_DIR/.cache/pip
 
 .default_scripts: &default_scripts
   - invoke check-linter
@@ -38,18 +41,21 @@ default:
 test-py310:
   stage: test
   image: python:3.10
+  extends: .python_setup
   script:
     - *default_scripts
 
 test-py311:
   stage: test
   image: python:3.11
+  extends: .python_setup
   script:
     - *default_scripts
 
 test-py312:
   stage: test
   image: python:3.12
+  extends: .python_setup
   script:
     - *default_scripts
 
@@ -64,6 +70,7 @@ test-py313:
         coverage_format: cobertura
         path: coverage.xml
     expire_in: 1 week
+  extends: .python_setup
   script:
     - *default_scripts
     - coverage xml
@@ -83,7 +90,12 @@ changelog-build:
     - if: $CI_COMMIT_TAG =~ /^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
   script:
     - apk add curl jq
-    - 'curl --header "PRIVATE-TOKEN: $CI_API_TOKEN" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/repository/changelog?version=$CI_COMMIT_TAG" | jq --raw-output .notes > RELEASE_NOTES.md'
+    - >
+      curl
+      --header "PRIVATE-TOKEN: $CI_API_TOKEN"
+      "$CI_API_V4_URL/projects/$CI_PROJECT_ID/repository/changelog?version=$CI_COMMIT_TAG"
+      |
+      jq --raw-output .notes > RELEASE_NOTES.md
   artifacts:
     paths:
     - RELEASE_NOTES.md
@@ -95,9 +107,13 @@ changelog-commit:
     - if: $CI_COMMIT_TAG =~ /^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
   needs: [changelog-build]
   variables:
-    CHANGELOG_COMMIT_MESSAGE: ':bookmark: Update CHANGELOG.md'
+    CHANGELOG_COMMIT_MESSAGE: '%3Abookmark%3A%20Update%20CHANGELOG.md'
   script:
-    - 'curl --header "PRIVATE-TOKEN: $CI_API_TOKEN" --request POST "$CI_API_V4_URL/projects/$CI_PROJECT_ID/repository/changelog?version=$CI_COMMIT_TAG&message=$CHANGELOG_COMMIT_MESSAGE"'
+    - >
+      curl
+      --header "PRIVATE-TOKEN: $CI_API_TOKEN"
+      --request POST
+      "$CI_API_V4_URL/projects/$CI_PROJECT_ID/repository/changelog?version=$CI_COMMIT_TAG&message=$CHANGELOG_COMMIT_MESSAGE"
 
 release-galactipy:
   stage: release
