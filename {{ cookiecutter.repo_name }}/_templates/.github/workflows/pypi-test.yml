@@ -45,12 +45,14 @@ jobs:
       # TODO Create the "development" environment in {% endraw %}{{ cookiecutter.__scm_link_url }}{% raw %}/settings/environments/new
       name: development
       url: https://test.pypi.org/p/{% endraw %}{{ cookiecutter.repo_name }}{% raw %}
+
     steps:
     - name: 🗃️ Download artifacts
       uses: actions/download-artifact@v4
       with:
         name: test-package-distribution
         path: dist/
+
     - name: 📤 Deploy to PyPI test environment
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
