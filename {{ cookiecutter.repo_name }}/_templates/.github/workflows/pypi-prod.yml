@@ -3,9 +3,6 @@
 {% raw %}name: 🔖 Publish to PyPI
 
 on:
-  push:
-    tags:
-      - 'v?[0-9]+.[0-9]+.[0-9]+'
   workflow_dispatch:
     inputs:
       publish:
@@ -47,7 +44,7 @@ jobs:
     name: Upload release to PyPI
     runs-on: ubuntu-latest
     needs: build
-    if: ${{ inputs.publish }}
+    if: ${{ inputs.publish && github.ref_type == 'tag' }}
     environment:
       # TODO Create the "production" environment in {% endraw %}{{ cookiecutter.__scm_link_url }}{% raw %}/settings/environments/new
       name: production
