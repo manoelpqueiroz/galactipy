@@ -71,7 +71,7 @@ deploy-test:
     - build-project
   script:
     - *env_setup
-    # UPDATEME by setting the TESTPYPI_TOKEN variable for https://test.pypi.org in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
+    # TODO Set the TESTPYPI_TOKEN variable for https://test.pypi.org in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
     - invoke pypi-config $TESTPYPI_TOKEN --repo testpypi
     - invoke publish --repo testpypi --no-build
 
@@ -83,6 +83,6 @@ deploy-prod:
     - build-project
   script:
     - *env_setup
-    # UPDATEME by setting the PYPI_TOKEN variable for https://pypi.org in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
+    # TODO Set the PYPI_TOKEN variable for https://pypi.org in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
     - invoke pypi-config $PYPI_TOKEN
     - invoke publish --no-build

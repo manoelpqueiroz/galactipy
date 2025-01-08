@@ -49,11 +49,11 @@ jobs:
     needs: build
     if: ${{ inputs.publish }}
     environment:
-      # UPDATEME by creating the "production" environment in {% endraw %}{{ cookiecutter.__scm_link_url }}{% raw %}/settings/environments/new
+      # TODO Create the "production" environment in {% endraw %}{{ cookiecutter.__scm_link_url }}{% raw %}/settings/environments/new
       name: production
       url: https://pypi.org/p/{% endraw %}{{ cookiecutter.repo_name }}{% raw %}
     permissions:
-      # UPDATEME by setting up trusted publishing (https://docs.pypi.org/trusted-publishers/)
+      # TODO Set up trusted publishing (https://docs.pypi.org/trusted-publishers/)
       id-token: write
     steps:
     - name: 🗃️ Download artifacts
