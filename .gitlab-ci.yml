@@ -109,6 +109,7 @@ changelog-commit:
   variables:
     CHANGELOG_COMMIT_MESSAGE: '%3Abookmark%3A%20Update%20CHANGELOG.md'
   script:
+    - apk add curl
     - >
       curl
       --header "PRIVATE-TOKEN: $CI_API_TOKEN"
