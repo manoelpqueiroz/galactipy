@@ -4,7 +4,7 @@
 {% raw %}# UPDATEME to suit your project's workflow
 name: 🧪 Test
 
-on: [push, pull_request]
+on: pull_request
 
 jobs:
   build:
@@ -42,9 +42,7 @@ jobs:
         invoke check-linter
 
     - name: ☑️ Run tests
-      run: |
-        invoke test
+      run: invoke test
 
     - name: 👮 Run safety checks
-      run: |
-        invoke check-safety{% endraw %}
+      run: invoke check-safety{% endraw %}
