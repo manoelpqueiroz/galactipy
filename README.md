@@ -566,20 +566,38 @@ We use [`GitLab Changelog`][ft29] entries to track changes. You can categorise c
 | `documentation`                       | :memo: Documentation                   |
 | `dependencies`                        | :arrow_up: Dependencies updates        |
 
-## :test_tube: TODOs
+## :national_park: Roadmap
 
-This template will continue to develop and follow the bleeding edge new tools and best practices to improve the Python development experience.
+We aim to continue developing the template, following the bleeding edge new tools and best practices to improve the Python development experience, with the goal of turning Galactipy into the go-to reference for starting new projects, while giving users flexibility in how they wish to set up their repositories.
 
-Here is a list of things that have yet to be implemented:
+While we don't have a detailed roadmap for the project, our anticipated developments branch out in three categories.
 
-- Tests coverage reporting with [`Coveralls`][td1];
-- Automatic creation of documentation. We will be using [`Sphinx`][td2] with the [`PyData Sphinx Theme`][td3];
-- Code metrics with [`Radon`][td4];
-- Docstring coverage with [`interrogate`][td5];
-- `Dockerfile` linting with [`dockerfilelint`][td6];
-- [Hall of fame][td7] from `Sourcerer`;
-- End-to-end testing and validation of the cookiecutter template;
-- Add [`Earthly`][td8].
+### Features Previewed in `python-package-template`
+
+Galactipy was born out of [`python-package-template`][ft20], developed by [Roman Tezikov][rd1] at GitHub. Roman's template was at the time the best template for Python projects for its feature richness which included the pre-configured CI workflows and `makefile` aliases that helped developers with day-to-day operations.
+
+Below is a list of expected features the original template intended to develop and that we wish to carry on for Galactipy:
+
+- Option for choosing between test coverage and code analysis for generated projects, with the tools for each yet to be decided upon;
+- Documentation structure with [`Sphynx`][rd2] using the [`PyData Sphinx Theme`][rd3];
+- Code metrics with [`Radon`][rd4];
+- Docstring coverage with [`interrogate`][rd5];
+- `Dockerfile` linting with [`dockerfilelint`][rd6];
+- Build streamlining with [`Earthly`][rd7].
+
+### Mirror GitHub features for GitLab
+
+As the project started on GitHub, features like Dependabot, Release Drafter and stale issue were already set up, but require more research and complexity to implement on GitLab. We would like Galactipy to have the same features between the two platforms if possible, and for that to happen a considerable amount of effort must be put just to ensure feature parity between the two.
+
+### Quality-of-life Features
+
+We also wish to implement features completely new to the template, especially aiming at streamlining development process so less time is lost setting up a new project and apply software development best practices with available tools for the Python ecosystem:
+
+- Automatic deployment to [`GitLab Pages`][rd8] and [`GitHub Pages`][rd9];
+- Automatic deployment to [`Docker Hub`][rd10];
+- Update GitHub Actions with the latest popular and useful workflows from the marketplace;
+- Implement SAST for improving security of your projects;
+- Use [Behaviour-Driven Development][rd11] for tests with [`pytest-bdd`][rd12].
 
 ## :shield: Licence
 
@@ -589,26 +607,26 @@ This project is licenced under the terms of the `MIT` licence. See [LICENCE][b7]
 
 ## :sports_medal: Acknowledgements
 
-Firstly, there is no way this template would exist without the previous phenomenal work by [Roman Tezikov][ac1] and his fully-featured [`python-package-template`][ft20]. If there is anyone more deserving of a :star2: and acknowledgement, it's him! Please give a shoutout and [support][ac2] if possible.
+Firstly, there is no way this template would exist without the previous phenomenal work by [Roman Tezikov][rd1] and his fully-featured [`python-package-template`][ft20]. If there is anyone more deserving of a :star2: and acknowledgement, it's him! Please give a shoutout and [support][ac1] if possible.
 
 The original template was inspired by several articles that might be helpful if you are starting out managing projects:
 
-- [Hypermodern Python][ac3];
-- [Ultimate Setup for Your Next Python Project][ac4];
-- [Nine simple steps for better-looking python code][ac5];
-- [Modern Python developer's toolkit][ac6].
+- [Hypermodern Python][ac2];
+- [Ultimate Setup for Your Next Python Project][ac3];
+- [Nine simple steps for better-looking python code][ac4];
+- [Modern Python developer's toolkit][ac5].
 
 And also there are some projects which can be studied as references in project management and template design:
 
-- [`Cookiecutter`][ac7];
-- [Audreyr's `cookiecutter-pypackage`][ac8];
-- [Cookiecutter Data Science Template: `cdst`][ac9];
-- [Full Stack FastAPI and PostgreSQL - Base Project Generator][ac10];
-- [The importance of layered thinking in data engineering][ac11].
+- [`Cookiecutter`][ac6];
+- [Audreyr's `cookiecutter-pypackage`][ac7];
+- [Cookiecutter Data Science Template: `cdst`][ac8];
+- [Full Stack FastAPI and PostgreSQL - Base Project Generator][ac9];
+- [The importance of layered thinking in data engineering][ac10].
 
 Additionally, we would like to thank the teams of the following projects for aiding us during our research and implementation of best practices and tools for Python development:
 
-- [Pelican][ac12].
+- [Pelican][ac11].
 
 Give them your :star:, these resources are amazing! :wink:
 
@@ -759,24 +777,27 @@ Here is the Markdown source for it:
 [r1]: https://gitlab.com/manoelpqueiroz/galactipy/-/releases
 [r2]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
 
-[td1]: https://coveralls.io
-[td2]: https://github.com/sphinx-doc/sphinx
-[td3]: https://github.com/pydata/pydata-sphinx-theme
-[td4]: https://github.com/rubik/radon
-[td5]: https://github.com/econchick/interrogate
-[td6]: https://github.com/replicatedhq/dockerfilelint
-[td7]: https://github.com/sourcerer-io/hall-of-fame
-[td8]: https://earthly.dev/
+[rd1]: https://github.com/TezRomacH
+[rd2]: https://github.com/sphinx-doc/sphinx
+[rd3]: https://github.com/pydata/pydata-sphinx-theme
+[rd4]: https://github.com/rubik/radon
+[rd5]: https://github.com/econchick/interrogate
+[rd6]: https://github.com/replicatedhq/dockerfilelint
+[rd7]: https://earthly.dev/
+[rd8]: https://docs.gitlab.com/ee/user/project/pages/
+[rd9]: https://pages.github.com/
+[rd10]: https://hub.docker.com/
+[rd11]: https://cucumber.io/docs/bdd/
+[rd12]: https://github.com/pytest-dev/pytest-bdd
 
-[ac1]: https://github.com/TezRomacH
-[ac2]: https://patreon.com/tezikov
-[ac3]: https://cjolowicz.github.io/posts/hypermodern-python-01-setup/
-[ac4]: https://martinheinz.dev/blog/14
-[ac5]: https://towardsdatascience.com/nine-simple-steps-for-better-looking-python-code-87e5d9d3b1cf
-[ac6]: https://pycon.switowski.com/
-[ac7]: https://github.com/cookiecutter/cookiecutter
-[ac8]: https://github.com/audreyr/cookiecutter-pypackage
-[ac9]: https://github.com/crplab/cdst
-[ac10]: https://github.com/tiangolo/full-stack-fastapi-postgresql
-[ac11]: https://towardsdatascience.com/the-importance-of-layered-thinking-in-data-engineering-a09f685edc71
-[ac12]: https://github.com/getpelican/pelican
+[ac1]: https://patreon.com/tezikov
+[ac2]: https://cjolowicz.github.io/posts/hypermodern-python-01-setup/
+[ac3]: https://martinheinz.dev/blog/14
+[ac4]: https://towardsdatascience.com/nine-simple-steps-for-better-looking-python-code-87e5d9d3b1cf
+[ac5]: https://pycon.switowski.com/
+[ac6]: https://github.com/cookiecutter/cookiecutter
+[ac7]: https://github.com/audreyr/cookiecutter-pypackage
+[ac8]: https://github.com/crplab/cdst
+[ac9]: https://github.com/tiangolo/full-stack-fastapi-postgresql
+[ac10]: https://towardsdatascience.com/the-importance-of-layered-thinking-in-data-engineering-a09f685edc71
+[ac11]: https://github.com/getpelican/pelican

@@ -1,0 +1,62 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Galactipy
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Manoel
+    family-names: Pereira de Queiroz
+    email: mpq.dev@pm.me
+  - given-names: Roman
+    family-names: Tezikov
+    email: tez.romach@gmail.com
+  - given-names: Simon
+    family-names: Otziger
+    email: 3603495+volemont@users.noreply.github.com
+  - given-names: Alexandre
+    family-names: Bassel
+    email: 11035784+abassel@users.noreply.github.com
+  - given-names: Chen
+    family-names: Shijiang
+    email: chenshijiang@evision.ai
+  - given-names: Sebastian
+    family-names: Thurm
+    email: 65230277+N720720@users.noreply.github.com
+  - given-names: Vsevolod
+    family-names: Poletaev
+    email: poletaev.va@gmail.com
+  - given-names: Mou
+    family-names: Chenghao
+    email: mouchenghao@gmail.com
+  - given-names: Peter
+    family-names: Kogan
+    email: kogan.peter@gmail.com
+  - given-names: Philipp
+    family-names: Tempel
+    email: git@philipptempel.me
+  - email: johnthagen@users.noreply.github.com
+repository-code: 'https://www.gitlab.com/manoelpqueiroz/galactipy'
+repository: 'https://github.com/manoelpqueiroz/galactipy'
+abstract: >-
+  Full-fledged template for Python projects. Combines
+  state-of-the-art libraries and best development practices
+  for Python.
+keywords:
+  - python
+  - cookiecutter
+  - template
+  - packages
+  - best-practices
+  - poetry
+  - codestyle
+  - formatters
+  - python-packages
+  - semantic-versions
+license: MIT
+commit: 26e8abffc6648d88f3845ed73192f2f79bab55ff
+version: v0.7.0
+date-released: '2025-01-09'
