@@ -4,11 +4,30 @@
 # Official language image. Look for the different tagged releases at:
 # https://hub.docker.com/r/library/python/tags/
 # UPDATEME to suit your project's workflow
+# General pipeline configuration
 stages:
   - test
+  - build
+  - deploy
+
+variables:
+  SEMVER_RELEASE_VERSION: /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
+  SEMVER_ANY_VERSION: /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*))?(?:\+([0-9a-z-]+(?:\.[0-9a-z-]+)*))?$/i
 
 default:
-  before_script:
+  image: python:{{ cookiecutter.minimal_python_version }}
+  cache:
+    key: venv-$CI_COMMIT_REF_NAME-$CI_JOB_STAGE-$CI_COMMIT_SHA
+    paths:
+      - $CI_PROJECT_DIR/.cache/pip
+
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_TAG
+
+# Anchors for common commands
+.env_setup: &env_setup
     - pip install invoke
     - invoke poetry-download
     - export PATH="/root/.local/bin:$PATH"
@@ -16,20 +35,14 @@ default:
     - source .venv/bin/activate
     - pip install -U pip
     - invoke install --ignore-pty
-  cache:
-    key: venv-$CI_COMMIT_REF_NAME-$CI_JOB_STAGE-$CI_COMMIT_SHA
-    paths:
-      - $CI_PROJECT_DIR/.cache/pip
 
-.default_scripts: &default_scripts
+.test_scripts: &test_scripts
   - invoke codestyle --check
   - invoke check-linter
   - invoke test
   - invoke check-safety
 
-workflow:
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+# Jobs
 {%- set list_python_version = cookiecutter.minimal_python_version.split('.') | map('int') | list %}
 {%- for version in cookiecutter._all_python_version if version[0] >= list_python_version[0] and version[1] >= list_python_version[1] %}
 
@@ -37,5 +50,41 @@ test-py{{ version[0] }}{{ version[1] }}:
   stage: test
   image: python:{{ version[0] }}.{{ version[1] }}
   script:
-    - *default_scripts
+    - *env_setup
+    - *test_scripts
 {%- endfor %}
+
+build-project:
+  stage: build
+  artifacts:
+    paths:
+      - dist/
+  script:
+    - *env_setup
+    - invoke build
+
+deploy-test:
+  stage: deploy
+  rules:
+    - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
+  dependencies:
+    - build-project
+  script:
+    - *env_setup
+    # TODO Set the TESTPYPI_TOKEN variable for https://test.pypi.org in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
+    - invoke pypi-config $TESTPYPI_TOKEN --repo testpypi
+    - invoke publish --repo testpypi --no-build
+
+deploy-prod:
+  stage: deploy
+  rules:
+    - if: $CI_COMMIT_TAG =~ $SEMVER_RELEASE_VERSION
+  dependencies:
+    - build-project
+  needs:
+    - deploy-test
+  script:
+    - *env_setup
+    # TODO Set the PYPI_TOKEN variable for https://pypi.org in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
+    - invoke pypi-config $PYPI_TOKEN
+    - invoke publish --no-build

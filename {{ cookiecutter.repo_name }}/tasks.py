@@ -116,6 +116,50 @@ def update_dev_deps(c: Context) -> None:
     c.run(f"{POETRY_PATH} up --only=dev --latest", pty=PTY)
 
 
+@task
+def pypi_config(c: Context, api_token: str, repo: str = "pypi") -> None:
+    """Configure PyPI API token for package uploads.
+
+    If "testpypi" is provided as the `repo` argument, will also configure
+    test.pypi.org as a publishing repository.
+    """
+    if repo == "testpypi":
+        c.run(
+            f"{POETRY_PATH} config repositories.{repo} "
+            "https://test.pypi.org/legacy/",
+            pty=PTY
+        )
+
+    c.run(f"{POETRY_PATH} config pypi-token.{repo} {api_token}", pty=PTY)
+
+
+@task
+def build(c: Context) -> None:
+    """Build {{ cookiecutter.project_name }} wheels."""
+    c.run(f"{POETRY_PATH} build", pty=PTY)
+
+
+@task
+def publish(c: Context, repo : str = "pypi", build: bool = True) -> None:
+    """Publish {{ cookiecutter.project_name }} to PyPI."""
+    # If pypi is specifically specified as a repo, Poetry fails to recognize it
+    repo_flag = f"--repository {repo}" if repo != "pypi" else ""
+    build_flag = "--build" if build else ""
+
+    result = c.run(
+        f"{POETRY_PATH} publish {repo_flag} {build_flag}",
+        hide='err',
+        warn=True,
+        pty=PTY,
+    )
+
+    if result.failed:
+        print(
+            "\nCould not upload to PyPI.\nDid you set up your API token with "
+            "`inv pypi-config`\nand remove any \"Private :: Do Not Upload\" "
+            "classifiers from pyproject.toml?"
+        )
+
 # Installation tasks
 @task
 def install(c: Context, ignore_pty: bool = False) -> None:

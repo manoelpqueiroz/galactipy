@@ -8,7 +8,7 @@ from {{ cookiecutter.package_name }}.example import hello
 
 def _get_version() -> str:
     try:
-        return metadata.version("{{ cookiecutter.project_name }}")
+        return metadata.version("{{ cookiecutter.repo_name }}")
     except ModuleNotFoundError:  # pragma: no cover
         return "unknown"
 
