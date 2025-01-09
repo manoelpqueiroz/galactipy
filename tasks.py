@@ -68,7 +68,11 @@ def poetry_download(c: Context) -> None:
     and the script instructions in https://install.python-poetry.org/.
 
     """
-    c.run(f"curl -sSL https://install.python-poetry.org | {PYTHON_PATH} -", pty=PTY)
+    c.run(
+        "curl -sSL https://install.python-poetry.org | "
+        f"{PYTHON_PATH} - --version 1.8.5",
+        pty=PTY,
+    )
 
 
 @task

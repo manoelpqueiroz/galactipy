@@ -36,7 +36,7 @@ _Expand your project structure from atoms of code to **galactic** dimensions._ :
 ## TL;DR
 
 ```bash
-cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.6.0
+cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.7.0
 ```
 
 > All you need is the latest version of cookiecutter! :wink:
@@ -59,12 +59,13 @@ In this [cookiecutter :cookie:][ft1] template we combine state-of-the-art librar
 
 - Issue and Merge Request templates for easy integration with GitLab and GitHub;
 - Predefined CI/CD build workflow for [`GitLab CI`][ft14] and [`Github Actions`][ft15];
-- Everything is already set up for security checks, codestyle checks, code formatting, testing, linting, docker builds etc. with [`invoke`][ft16]. More details in [Invoke Usage][ft17];
-- [`Dockerfile`][ft18] for your package.
+- Automatic package uploads to [`PyPI`][ft16] test and production repositories;
+- Everything is already set up for security checks, codestyle checks, code formatting, testing, linting, docker builds etc. with [`invoke`][ft17]. More details in [Invoke Usage][ft18];
+- [`Dockerfile`][ft19] for your package.
 
 #### GitLab vs. GitHub features
 
-You are free to choose whichever platform works best for you and your project. The original template by [TezRomacH][ft19] was created originally with GitHub in mind, which prompted the creation of a similarly fully-featured template for GitLab users as well.
+You are free to choose whichever platform works best for you and your project. The original template by [TezRomacH][ft20] was created originally with GitHub in mind, which prompted the creation of a similarly fully-featured template for GitLab users as well.
 
 However, not everything that is available for GitHub users is available to GitLab users, and vice-versa. Please mind the differences between both options.
 
@@ -74,20 +75,23 @@ Below is a comparison between the features available in this package depending o
 |:-----------------------------:|:------------------:|:------------------:|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Issue templates               | :white_check_mark: | :white_check_mark: | Both options feature automatic labels, but GitHub has an extra configuration to prevent the creation of empty issues. |
 | Merge/pull requests templates | :white_check_mark: | :white_check_mark: | |
+| Project conditions checks     | :white_check_mark: | :white_check_mark: | A basic workflow to install the package and run tests, check codestyle and safety. |
+| Publication to TestPyPI       | :white_check_mark: | :white_check_mark: | For GitHub, the workflow uses the official [PyPI Publish action][ft21], while GitLab CI uses the [PyPI API][ft22]. |
+| Publication to PyPI           | :white_check_mark: | :white_check_mark: | For GitHub, trusted publishing is used with the PyPI Publish action, while GitLab CI uses the PyPI API. |
 | Stale issues                  | :x:                | :white_check_mark: | A specific configuration is available for GitHub to mark and automatically close stale issues. |
-| Build workflow                | :white_check_mark: | :white_check_mark: | A basic workflow to install the package and run tests, check codestyle and safety. |
-| Greetings workflow            | :x:                | :white_check_mark: | |
-| Dependabot                    | :x:                | :white_check_mark: | [Dependabot][ft20] is a feature now incorporated into GitHub Security. See [here][ft21] how to enable it. |
-| Release drafter               | :x:                | :white_check_mark: | [Release Drafter][ft22] is a custom workflow available on GitHub Marketplace. You may see the list of labels in [`release-drafter.yml`][ft23]. Works perfectly with [Semantic Versions][ft24] specification. |
-| Changelog configuration       | :white_check_mark: | :x:                | GitLab provides automatic changelog updates through their [API][ft25]. You may modify the template in [`changelog_config.yml`][ft26]. |
+| Greetings workflow            | :x:                | :white_check_mark: | GitHub provides workflows to automatically reply to issues and merge requests with the [First Interaction][ft23] action. |
+| Dependabot                    | :x:                | :white_check_mark: | [Dependabot][ft24] is a feature now incorporated into GitHub Security. See [here][ft25] how to enable it. |
+| Release drafter               | :x:                | :white_check_mark: | [Release Drafter][ft26] is a custom workflow available on GitHub Marketplace. You may see the list of labels in [`release-drafter.yml`][ft27]. Works perfectly with [Semantic Versions][ft28] specification. |
+| Changelog configuration       | :white_check_mark: | :x:                | GitLab provides automatic changelog updates through their [API][ft29]. You may modify the template in [`changelog_config.yml`][ft30]. |
+| CI control over pushed tags   | :white_check_mark: | :warning:          | GitLab provides full control for tags pushed to the repository using [regex][ft31], while GitHub Actions is more restricted in how it [filters][ft32] workflows to run, and can only apply these filters at the top level, limiting workflow customization. |
 
 ### Open source community features
 
-- Ready-to-use [Merge Request templates][ft27] and several [Issue templates][ft28];
+- Ready-to-use [Merge Request templates][ft33] and several [Issue templates][ft34];
 - Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically;
-- **Loads** of predefined [badges][ft29] to make your project stand out, you can either keep them, remove as you wish or be welcome to add even more;
-- For GitHub users, [`Stale bot`][ft30] closes abandoned issues after a period of inactivity. Configuration is [here][ft31];
-- [Semantic Versions][ft24] specification with [`Changelog entries`][ft25] or [`Release Drafter`][ft22].
+- **Loads** of predefined [badges][ft35] to make your project stand out, you can either keep them, remove as you wish or be welcome to add even more;
+- For GitHub users, [`Stale bot`][ft36] closes abandoned issues after a period of inactivity. Configuration is [here][ft37];
+- [Semantic Versions][ft28] specification with [`Changelog entries`][ft29] or [`Release Drafter`][ft26].
 
 ## :exploding_head: How to use it
 
@@ -102,7 +106,7 @@ pip install -U cookiecutter
 then go to a directory where you want to create your project and run:
 
 ```bash
-cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.6.0
+cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.7.0
 ```
 
 ### Input variables
@@ -117,7 +121,7 @@ The input variables, with their default values, are as follows:
 | `repo_name`               | based on `project_name`     | Name of the repository to develop the project on. [Check the availability of possible names][htu1] before creating the project. |
 | `package_name`            | based on `project_name`     | PyPI-compliant Python package name. [Check the availability of possible names][htu1] before creating the project. |
 | `project_description`     | based on `project_name`     | A brief description of your project. |
-| `version`                 | `0.1.0`                     | Initial version of the package. Make sure it follows the [Semantic Versions][ft24] specification. |
+| `version`                 | `0.1.0`                     | Initial version of the package. Make sure it follows the [Semantic Versions][ft28] specification. |
 | `author`                  | `Manoel Pereira de Queiroz` | Name of the author or organisation. Used to generate `LICENCE` and to specify ownership in `pyproject.toml`. |
 | `scm_platform`            | `GitLab`                    | One of `GitLab` and `GitHub`. Depending on the choice you will have [different features][htu2] to work with. |
 | `scm_username`            | `manoelpqueiroz`            | GitHub or GitLab username for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for either platform. |
@@ -129,7 +133,7 @@ The input variables, with their default values, are as follows:
 | `docstring_style`         | `numpy`                     | One of `numpy`, `pep257` or `google`, dismiss if `use_ruff` is not used. You can choose `other` to disable checks on your docstrings. |
 | `docstring_length`        | based on `line_lenght`      | The max length for docstrings, dismiss if `use_ruff` is not used. NOTE: This value must be between 50 and 300 and lower of equal to `line_lenght`. |
 | `create_cli`              | `True`                      | :small_red_triangle: Option to create a simple CLI application with [`Typer`][htu3] and [`Rich`][htu4] libraries. |
-| `create_docker`           | `True`                      | :small_red_triangle: Option to create a [Dockerfile][ft18] to build an image for your project. |
+| `create_docker`           | `True`                      | :small_red_triangle: Option to create a [Dockerfile][ft19] to build an image for your project. |
 
 > :eight_spoked_asterisk: Input variables marked with :small_red_triangle: are boolean variables, you can dismiss those by typing either `0`, `false`, `f`, `no`, `n` or `off`.
 
@@ -262,22 +266,41 @@ poetry run <repo_name> --name Manoel
 
 ### Building and releasing your package
 
-Building a new version of the application contains steps:
+In order to release a new version of the application, a few steps are needed.
 
-- Bump the version of your package `poetry version <version>`. You can pass the new version explicitly, or a rule such as `major`, `minor`, or `patch`. For more details, refer to the [Semantic Versions][ft24] standard;
-- Make a commit to `GitLab` or `GitHub`, depending on where you are hosting your code;
-- Create a `Release` for your package on the platform;
-- And... publish :slight_smile: `poetry publish --build`.
+First, the new version to be published must be set. Unless you are to publish your package's first version, which Galactipy already sets for you, you should use:
+
+```bash
+poetry version <version>
+```
+
+You can pass the new version explicitly, or a rule such as `major`, `minor`, or `patch`. For more details, refer to the [Semantic Versions][ft28] standard.
+
+Make sure you have a PyPI account and generate an API token, you can then register it in your repository with
+
+```bash
+invoke pypi-config <API_token>
+```
+
+Then, you're all good to build and publish your package in one go!
+
+```bash
+invoke publish
+```
+
+You should also [push a tag][htu9] to `GitLab` or `GitHub` and create a `Release` for your application on the platform to ensure users can check the latest version contents.
+
+Of course, you can also rely solely on the CI tools provided by Galactipy to handle building, publishing and releasing automatically, with minimal configuration required! :partying_face:
 
 ### Invoke usage
 
-[`invoke`][ft16] contains a lot of functions for faster development.
+[`invoke`][ft17] contains a lot of functions for faster development.
 
 <details>
 <summary>1. Download or remove Poetry</summary>
 <p>
 
-To download and install Poetry as a [standalone application][htu9] run:
+To download and install Poetry as a [standalone application][htu10] run:
 
 ```bash
 invoke poetry-download
@@ -289,7 +312,7 @@ To uninstall
 invoke poetry-remove
 ```
 
-Alternatively, you can install it via your package manager (preferred) or any method provided by the [documentation][htu10].
+Alternatively, you can install it via your package manager (preferred) or any method provided by the [documentation][htu11].
 
 </p>
 </details>
@@ -427,7 +450,7 @@ Remove the Docker image with
 invoke docker-remove
 ```
 
-More information about Docker [here][htu11].
+More information about Docker [here][htu12].
 
 </p>
 </details>
@@ -529,13 +552,13 @@ And here are a few articles which may help you:
 - [Managing TODOs in a codebase][wn33];
 - Maybe you would like to add [gitmoji][wn34] to commit names. This is really funny. :grin:
 
-## :chart_with_upwards_trend: Releases
+## :chart_with_upwards_trend: Galactipy Releases
 
 You can see the list of available releases on the [GitLab Releases][r1] page.
 
-We follow [Semantic Versions][ft24] specification.
+We follow [Semantic Versions][ft28] specification.
 
-We use [`GitLab Changelog`][ft25] entries to track changes. You can categorise commits and Merge Requests made to this project using [git trailers][r2] in your commit messages.
+We use [`GitLab Changelog`][ft29] entries to track changes. You can categorise commits and Merge Requests made to this project using [git trailers][r2] in your commit messages.
 
 ### List of trailers and corresponding categories
 
@@ -557,14 +580,13 @@ This template will continue to develop and follow the bleeding edge new tools an
 Here is a list of things that have yet to be implemented:
 
 - Tests coverage reporting with [`Coveralls`][td1];
-- Auto uploading your package to [`PyPI`][td2] when new release is created;
-- Automatic creation of documentation. We will be using [`Sphinx`][td3] with the [`PyData Sphinx Theme`][td4];
-- Code metrics with [`Radon`][td5];
-- Docstring coverage with [`interrogate`][td6];
-- `Dockerfile` linting with [`dockerfilelint`][td7];
-- [Hall of fame][td8] from `Sourcerer`;
+- Automatic creation of documentation. We will be using [`Sphinx`][td2] with the [`PyData Sphinx Theme`][td3];
+- Code metrics with [`Radon`][td4];
+- Docstring coverage with [`interrogate`][td5];
+- `Dockerfile` linting with [`dockerfilelint`][td6];
+- [Hall of fame][td7] from `Sourcerer`;
 - End-to-end testing and validation of the cookiecutter template;
-- Add [`Earthly`][td9].
+- Add [`Earthly`][td8].
 
 ## :shield: Licence
 
@@ -574,7 +596,7 @@ This project is licenced under the terms of the `MIT` licence. See [LICENCE][b7]
 
 ## :sports_medal: Acknowledgements
 
-Firstly, there is no way this template would exist without the previous phenomenal work by [Roman Tezikov][ac1] and his fully-featured [`python-package-template`][ft19]. If there is anyone more deserving of a :star2: and acknowledgement, it's him! Please give a shoutout and [support][ac2] if possible.
+Firstly, there is no way this template would exist without the previous phenomenal work by [Roman Tezikov][ac1] and his fully-featured [`python-package-template`][ft20]. If there is anyone more deserving of a :star2: and acknowledgement, it's him! Please give a shoutout and [support][ac2] if possible.
 
 The original template was inspired by several articles that might be helpful if you are starting out managing projects:
 
@@ -673,22 +695,28 @@ Here is the Markdown source for it:
 [ft13]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.gitignore
 [ft14]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.gitlab-ci.yml
 [ft15]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/workflows/build.yml
-[ft16]: https://docs.pyinvoke.org/en/stable/
-[ft17]: #invoke-usage
-[ft18]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker/Dockerfile
-[ft19]: https://github.com/TezRomacH/python-package-template
-[ft20]: https://docs.github.com/en/code-security/dependabot
-[ft21]: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates#enabling-dependabot-version-updates
-[ft22]: https://github.com/marketplace/actions/release-drafter
-[ft23]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/release-drafter.yml
-[ft24]: https://semver.org/
-[ft25]: https://docs.gitlab.com/ee/user/project/changelogs.html
-[ft26]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/changelog_config.yml
-[ft27]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/merge_request_templates/default.md
-[ft28]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/issue_templates
-[ft29]: https://shields.io/
-[ft30]: https://github.com/marketplace/actions/close-stale-issues
-[ft31]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/.stale.yml
+[ft16]: https://pypi.org/
+[ft17]: https://docs.pyinvoke.org/en/stable/
+[ft18]: #invoke-usage
+[ft19]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker/Dockerfile
+[ft20]: https://github.com/TezRomacH/python-package-template
+[ft21]: https://github.com/marketplace/actions/pypi-publish
+[ft22]: https://docs.pypi.org/api/upload/
+[ft23]: https://github.com/marketplace/actions/first-interaction
+[ft24]: https://docs.github.com/en/code-security/dependabot
+[ft25]: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates#enabling-dependabot-version-updates
+[ft26]: https://github.com/marketplace/actions/release-drafter
+[ft27]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/release-drafter.yml
+[ft28]: https://semver.org/
+[ft29]: https://docs.gitlab.com/ee/user/project/changelogs.html
+[ft30]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/changelog_config.yml
+[ft31]: https://docs.gitlab.com/ee/ci/jobs/job_rules.html#compare-a-variable-to-a-regular-expression
+[ft32]: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+[ft33]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/merge_request_templates/default.md
+[ft34]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/issue_templates
+[ft35]: https://shields.io/
+[ft36]: https://github.com/marketplace/actions/close-stale-issues
+[ft37]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/.stale.yml
 
 [htu1]: http://ivantomic.com/projects/ospnc/
 [htu2]: #gitlab-vs-github-features
@@ -698,9 +726,10 @@ Here is the Markdown source for it:
 [htu6]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D#very-first-steps
 [htu7]: https://python-poetry.org/docs/
 [htu8]: https://python-poetry.org/docs/cli/#commands
-[htu9]: https://github.com/python-poetry/install.python-poetry.org
-[htu10]: https://python-poetry.org/docs/#installation
-[htu11]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker
+[htu9]: https://git-scm.com/book/en/v2/Git-Basics-Tagging
+[htu10]: https://github.com/python-poetry/install.python-poetry.org
+[htu11]: https://python-poetry.org/docs/#installation
+[htu12]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker
 
 [wn1]: https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
 [wn2]: https://github.com/tiangolo/typer
@@ -741,14 +770,13 @@ Here is the Markdown source for it:
 [r2]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
 
 [td1]: https://coveralls.io
-[td2]: https://pypi.org/
-[td3]: https://github.com/sphinx-doc/sphinx
-[td4]: https://github.com/pydata/pydata-sphinx-theme
-[td5]: https://github.com/rubik/radon
-[td6]: https://github.com/econchick/interrogate
-[td7]: https://github.com/replicatedhq/dockerfilelint
-[td8]: https://github.com/sourcerer-io/hall-of-fame
-[td9]: https://earthly.dev/
+[td2]: https://github.com/sphinx-doc/sphinx
+[td3]: https://github.com/pydata/pydata-sphinx-theme
+[td4]: https://github.com/rubik/radon
+[td5]: https://github.com/econchick/interrogate
+[td6]: https://github.com/replicatedhq/dockerfilelint
+[td7]: https://github.com/sourcerer-io/hall-of-fame
+[td8]: https://earthly.dev/
 
 [ac1]: https://github.com/TezRomacH
 [ac2]: https://patreon.com/tezikov

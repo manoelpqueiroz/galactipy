@@ -1,12 +1,14 @@
 {%- set list_python_version = cookiecutter.minimal_python_version.split('.') | map('int') | list %}
-{%- raw %}
-# UPDATEME to suit your project's workflow
-name: build
+# Check GitHub Actions documentation at:
+# https://github.com/marketplace/actions/pypi-publish
+{% raw %}# UPDATEME to suit your project's workflow
+name: 🧪 Test
 
-on: [push, pull_request]
+on: pull_request
 
 jobs:
-  build:
+  test:
+    name: Repository Checks
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -14,36 +16,35 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python ${{ matrix.python-version }}
+    - name: 🐍 Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2.2.2
       with:
         python-version: ${{ matrix.python-version }}
 
-    - name: Install Invoke
+    - name: 💽 Install Invoke
       run: pip install invoke
 
-    - name: Install poetry
+    - name: 💽 Install poetry
       run: invoke poetry-download
 
-    - name: Set up cache
+    - name: 🫙 Set up cache
       uses: actions/cache@v2.1.6
       with:
         path: .venv
         key: venv-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('poetry.lock') }}
-    - name: Install dependencies
+
+    - name: 📥 Install dependencies
       run: |
         poetry config virtualenvs.in-project true
         poetry install
 
-    - name: Run style checks
+    - name: ✒️ Run style checks
       run: |
         invoke codestyle --check
         invoke check-linter
 
-    - name: Run tests
-      run: |
-        invoke test
+    - name: ☑️ Run tests
+      run: invoke test
 
-    - name: Run safety checks
-      run: |
-        invoke check-safety{% endraw %}
+    - name: 👮 Run safety checks
+      run: invoke check-safety{% endraw %}

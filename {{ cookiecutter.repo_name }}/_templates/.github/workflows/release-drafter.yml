@@ -1,16 +1,19 @@
-{% raw %}name: Release Drafter
+# Check GitHub Actions documentation at:
+# https://github.com/marketplace/actions/pypi-publish
+{% raw %}name: 📜 Release Drafter
 
 on:
   push:
-    # branches to consider in the event; optional, defaults to all
-    branches:
-      - master
+    tags:
+      - 'v?[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
   update_release_draft:
+    name: Prepare Release Draft
     runs-on: ubuntu-latest
     steps:
       # Drafts your next Release notes as Pull Requests are merged into "master"
       - uses: release-drafter/release-drafter@v5.15.0
         env:
+          # TODO Set up token for Release Drafter
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}{% endraw %}

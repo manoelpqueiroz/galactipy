@@ -109,12 +109,31 @@ etc.
 
 ### Building and releasing your package
 
-Building a new version of the application contains steps:
+In order to release a new version of the application, a few steps are needed.
 
-- Bump the version of your package `poetry version <version>`. You can pass the new version explicitly, or a rule such as `major`, `minor`, or `patch`. For more details, refer to the [Semantic Versions][fs4] standard;
-- Make a commit to `{{ cookiecutter.scm_platform }}`;
-- Create a `{{ cookiecutter.scm_platform }} release`;
-- And... publish :slight_smile: `poetry publish --build`
+First, the new version to be published must be set. Unless you are to publish your package's first version, which Galactipy already sets for you, you should use:
+
+```bash
+poetry version <version>
+```
+
+You can pass the new version explicitly, or a rule such as `major`, `minor`, or `patch`. For more details, refer to the [Semantic Versions][fs4] standard.
+
+Make sure you have a PyPI account and generate an API token, you can then register it in your repository with
+
+```bash
+invoke pypi-config <API_token>
+```
+
+Then, you're all good to build and publish your package in one go!
+
+```bash
+invoke publish
+```
+
+You should also [push a tag][fs5] to `GitLab` or `GitHub` and create a `Release` for your application on the platform to ensure users can check the latest version contents.
+
+Of course, you can also rely solely on the CI tools provided by Galactipy to handle building, publishing and releasing automatically, with minimal configuration required! :partying_face:
 
 ## :dart: What's next
 
@@ -203,7 +222,8 @@ And here are a few articles which may help you:
 
 - Issue and {% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates for easy integration with {{ cookiecutter.scm_platform }};
 - Predefined CI/CD build workflow for {% if cookiecutter.__scm_platform_lc == 'gitlab' %}[`GitLab CI`][lab2]{% elif cookiecutter.__scm_platform_lc == 'github' %}[`Github Actions`][hub4]{% endif %};
-- Everything is already set up for security checks, {% if cookiecutter.use_ruff %}codestyle checks, code formatting,{% endif %} testing, linting{% if cookiecutter.create_docker %}, docker builds{% endif %} etc with [`Invoke`][ft9]. More details in [Invoke Usage][ft10];
+- Automatic package uploads to [`PyPI`][ft9] test and production repositories;
+- Everything is already set up for security checks, {% if cookiecutter.use_ruff %}codestyle checks, code formatting,{% endif %} testing, linting{% if cookiecutter.create_docker %}, docker builds{% endif %} etc with [`Invoke`][ft10]. More details in [Invoke Usage][ft11];
 {%- if cookiecutter.create_docker %}
 - [`Dockerfile`][docker2] for your package;
 {%- endif %}
@@ -216,9 +236,9 @@ And here are a few articles which may help you:
 
 ### Open source community features
 
-- Ready-to-use [{% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates][ft11] and several [Issue templates][ft12];
+- Ready-to-use [{% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates][ft12] and several [Issue templates][ft13];
 - Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically;
-- **Loads** of predefined [badges][ft13] to make your project stand out, you can either keep them, remove as you wish or be welcome to add even more{% if cookiecutter.__scm_platform_lc == 'github' %};{% else %}.{% endif %}
+- **Loads** of predefined [badges][ft14] to make your project stand out, you can either keep them, remove as you wish or be welcome to add even more{% if cookiecutter.__scm_platform_lc == 'github' %};{% else %}.{% endif %}
 {%- if cookiecutter.__scm_platform_lc == 'github' %}
 - [`Stale bot`][hub2] closes abandoned issues after a period of inactivity. Configuration is [here][hub8];
 - [Semantic Versions][fs4] specification with [`Release Drafter`][hub6].
@@ -252,7 +272,7 @@ poetry run {{ cookiecutter.repo_name }} --help
 
 ### Invoke usage
 
-[`invoke`][ft9] contains a lot of functions for faster development.
+[`invoke`][ft10] contains a lot of functions for faster development.
 
 <details>
 <summary>1. Download or remove Poetry</summary>
@@ -544,6 +564,7 @@ This project was generated with [`galactipy`][bp7].
 [fs2]: https://python-poetry.org/docs/
 [fs3]: https://python-poetry.org/docs/cli/#commands
 [fs4]: https://semver.org/
+[fs5]: https://git-scm.com/book/en/v2/Git-Basics-Tagging
 
 [wn1]: https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
 [wn2]: https://github.com/tiangolo/typer
@@ -586,16 +607,17 @@ This project was generated with [`galactipy`][bp7].
 [ft6]: https://docs.pytest.org/en/latest/
 [ft7]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
 [ft8]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitignore
-[ft9]: https://docs.pyinvoke.org/en/stable/
-[ft10]: #makefile-usage
+[ft9]: https://pypi.org/
+[ft10]: https://docs.pyinvoke.org/en/stable/
+[ft11]: #invoke-usage
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[ft11]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/merge_request_templates/default.md
-[ft12]: {{ cookiecutter.__scm_link_url }}/tree/master/.gitlab/issue_templates
+[ft12]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/merge_request_templates/default.md
+[ft13]: {{ cookiecutter.__scm_link_url }}/tree/master/.gitlab/issue_templates
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
-[ft11]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/PULL_REQUEST_TEMPLATE.md
-[ft12]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/ISSUE_TEMPLATE
+[ft12]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/PULL_REQUEST_TEMPLATE.md
+[ft13]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/ISSUE_TEMPLATE
 {%- endif %}
-[ft13]: https://shields.io/
+[ft14]: https://shields.io/
 
 [inv1]: https://python-poetry.org/docs/#installation
 
