@@ -125,7 +125,7 @@ def pypi_config(c: Context, api_token: str, repo: str = "pypi") -> None:
     """
     if repo == "testpypi":
         c.run(
-            f"{POETRY_PATH} config repositories.{repo}"
+            f"{POETRY_PATH} config repositories.{repo} "
             "https://test.pypi.org/legacy/",
             pty=PTY
         )
