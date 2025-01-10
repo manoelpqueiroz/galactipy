@@ -12,6 +12,11 @@ stages:
   - release
   - maintenance
 
+# TODO Set up a bot for automated repository actions and components
+# 1. Create a Project Access Token at {{ cookiecutter.__scm_link_url }}/settings/access_tokens
+# 2. Ensure token has "Maintainer" role and "api" scope
+# 3. Set the CI_API_TOKEN variable in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
+# 4. Ensure variable has at least "Masked" option flagged and "Protect variable" unchecked
 include:
   - component: $CI_SERVER_FQDN/components/gitlab-triage/gitlab-triage@0.1.2
     rules:
@@ -102,11 +107,6 @@ deploy-prod:
     - invoke pypi-config $PYPI_TOKEN
     - invoke publish --no-build
 
-# TODO Set up a bot for automating releases
-# 1. Create a Project Access Token at {{ cookiecutter.__scm_link_url }}/settings/access_tokens
-# 2. Ensure token has "Maintainer" role and "api" scope
-# 3. Set the CI_API_TOKEN variable in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
-# 4. Ensure variable has at least "Masked" option flagged and "Protect variable" unchecked
 changelog-build:
   stage: release
   image: alpine:latest
