@@ -10,6 +10,15 @@ stages:
   - build
   - deploy
   - release
+  - maintenance
+
+include:
+  - component: $CI_SERVER_FQDN/components/gitlab-triage/gitlab-triage@0.1.2
+    rules:
+      - if: $CI_PIPELINE_SOURCE == 'schedule'
+    inputs:
+      api_token: $CI_API_TOKEN
+      stage: maintenance
 
 variables:
   SEMVER_RELEASE_VERSION: /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
@@ -17,6 +26,8 @@ variables:
 
 default:
   image: python:{{ cookiecutter.minimal_python_version }}
+  rules:
+    - if: $CI_PIPELINE_SOURCE != 'schedule'
   cache:
     key: venv-$CI_COMMIT_REF_NAME-$CI_JOB_STAGE-$CI_COMMIT_SHA
     paths:
