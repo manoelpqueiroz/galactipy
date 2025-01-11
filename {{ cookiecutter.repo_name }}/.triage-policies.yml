@@ -1,0 +1,61 @@
+{% raw %}resource_rules:
+  issues:
+    rules:
+      - name: Flag Stale Issues
+        conditions:
+          date:
+            attribute: updated_at
+            condition: older_than
+            interval_type: days
+            interval: 60
+          state: opened
+          forbidden_labels:
+            - needs-triage
+            - stale
+          author_member:
+            source: project
+            condition: not_member_of
+            source_id: {% endraw %}{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}{% raw %}
+        actions:
+          labels:
+            - stale
+          comment: >
+            This issue has inactive for the past 60 days and has been marked as `stale`.
+            Based on our policy, it will be closed in 7 days if no further action is
+            taken.\n\n
+            If you are still interested in addressing this issue, please place a comment
+            below to reestablish the discussion.
+      - name: Unflag Stale Issues
+        conditions:
+          state: opened
+          labels:
+            - stale
+          ruby: |
+            active?(resource[:project_id], resource[:iid], 7)
+        actions:
+          remove_labels:
+            - stale
+      - name: Close Stales Issues
+        conditions:
+          date:
+            attribute: updated_at
+            condition: older_than
+            interval_type: days
+            interval: 7
+          state: opened
+          forbidden_labels:
+            - needs-triage
+          labels:
+            - stale
+          author_member:
+            source: project
+            condition: not_member_of
+            source_id: {% endraw %}{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}{% raw %}
+        actions:
+          status: close
+          comment: >
+            :wave: Hi {{ author }},\n\n
+            This issue has received no updates since being marked as `stale`. Based on
+            our policy, it is now being closed.\n\n
+            If you believe this issue requires further attention, please reopen it to
+            recommence discussions.{% endraw %}

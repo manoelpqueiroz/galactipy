@@ -65,6 +65,7 @@ def removal_tree(tmp_path):
     bulk_file_creation(
         tmp_path,
         ".gitlab-ci.yml",
+        ".triage-policies.yml",
         ".dockerignore",
         "pyproject.toml",
         package_test=["__main__.py"],

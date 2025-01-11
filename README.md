@@ -29,7 +29,7 @@ _Expand your project structure from atoms of code to **galactic** dimensions._ :
 ## TL;DR
 
 ```bash
-cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.7.0
+cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.8.0
 ```
 
 > All you need is the latest version of cookiecutter! :wink:
@@ -71,7 +71,7 @@ Below is a comparison between the features available in this package depending o
 | Project conditions checks     | :white_check_mark: | :white_check_mark: | A basic workflow to install the package and run tests, check codestyle and safety. |
 | Publication to TestPyPI       | :white_check_mark: | :white_check_mark: | For GitHub, the workflow uses the official [PyPI Publish action][ft21], while GitLab CI uses the [PyPI API][ft22]. |
 | Publication to PyPI           | :white_check_mark: | :white_check_mark: | For GitHub, trusted publishing is used with the PyPI Publish action, while GitLab CI uses the PyPI API. |
-| Stale issues                  | :x:                | :white_check_mark: | A specific configuration is available for GitHub to mark and automatically close stale issues. |
+| Stale issues                  | :white_check_mark: | :white_check_mark: | GitLab rules are more flexible, marking stale issues only for those not opened by project members. |
 | Greetings workflow            | :x:                | :white_check_mark: | GitHub provides workflows to automatically reply to issues and merge requests with the [First Interaction][ft23] action. |
 | Dependabot                    | :x:                | :white_check_mark: | [Dependabot][ft24] is a feature now incorporated into GitHub Security. See [here][ft25] how to enable it. |
 | Release drafter               | :x:                | :white_check_mark: | [Release Drafter][ft26] is a custom workflow available on GitHub Marketplace. You may see the list of labels in [`release-drafter.yml`][ft27]. Works perfectly with [Semantic Versions][ft28] specification. |
@@ -83,7 +83,7 @@ Below is a comparison between the features available in this package depending o
 - Ready-to-use [Merge Request templates][ft33] and several [Issue templates][ft34];
 - Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically;
 - **Loads** of predefined [badges][ft35] to make your project stand out, you can either keep them, remove as you wish or be welcome to add even more;
-- For GitHub users, [`Stale bot`][ft36] closes abandoned issues after a period of inactivity. Configuration is [here][ft37];
+- Workflows to mark and close abandoned issues after a period of inactivity for both GitLab with [`Triage Policies`][ft36] and GitHub with [`Stale Bot`][ft37];
 - [Semantic Versions][ft28] specification with [`Changelog entries`][ft29] or [`Release Drafter`][ft26].
 
 ## :exploding_head: How to use it
@@ -99,7 +99,7 @@ pip install -U cookiecutter
 then go to a directory where you want to create your project and run:
 
 ```bash
-cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.7.0
+cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.8.0
 ```
 
 ### Input variables
@@ -725,8 +725,8 @@ Here is the Markdown source for it:
 [ft33]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/merge_request_templates/default.md
 [ft34]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/issue_templates
 [ft35]: https://shields.io/
-[ft36]: https://github.com/marketplace/actions/close-stale-issues
-[ft37]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/.stale.yml
+[ft36]: https://gitlab.com/explore/catalog/components/gitlab-triage
+[ft37]: https://github.com/marketplace/actions/close-stale-issues
 
 [htu1]: http://ivantomic.com/projects/ospnc/
 [htu2]: #gitlab-vs-github-features

@@ -132,7 +132,7 @@ def remove_unused_files(
         return [directory / package_name / "__main__.py"]
 
     def _gitlab_specific_files() -> list[Path]:
-        return [directory / ".gitlab-ci.yml"]
+        return [directory / ".gitlab-ci.yml", directory / ".triage-policies.yml"]
 
     def _docker_specific_files() -> list[Path]:
         return [directory / ".dockerignore", directory / "docker"]

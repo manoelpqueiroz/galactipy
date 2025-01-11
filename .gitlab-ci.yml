@@ -7,6 +7,7 @@ stages:
   - test
   - coverage
   - release
+  - maintenance
 
 workflow:
   rules:
@@ -21,6 +22,14 @@ workflow:
     - if: $CI_COMMIT_TAG =~ /^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
     - if: $CI_COMMIT_BRANCH
 
+include:
+  - component: $CI_SERVER_FQDN/components/gitlab-triage/gitlab-triage@0.1.2
+    rules:
+      - if: $CI_PIPELINE_SOURCE == 'schedule'
+    inputs:
+      api_token: $CI_API_TOKEN
+      stage: maintenance
+
 default:
   image: python:3.13
   cache:
@@ -29,6 +38,8 @@ default:
       - $CI_PROJECT_DIR/.cache/pip
 
 .python_setup:
+  rules:
+    - if: $CI_PIPELINE_SOURCE != 'schedule'
   before_script:
     - pip install invoke
     - invoke poetry-download
@@ -83,7 +94,7 @@ test-py313:
 coveralls-report:
   stage: coverage
   rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE != 'schedule'
   script:
     - curl -L https://coveralls.io/coveralls-linux.tar.gz | tar -xz -C /usr/local/bin
     - coveralls -f coverage.xml -r $COVERALLS_TOKEN
