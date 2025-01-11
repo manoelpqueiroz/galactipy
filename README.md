@@ -576,9 +576,8 @@ While we don't have a detailed roadmap for the project, our anticipated developm
 
 Galactipy was born out of [`python-package-template`][ft20], developed by [Roman Tezikov][rd1] at GitHub. Roman's template was at the time the best template for Python projects for its feature richness which included the pre-configured CI workflows and `makefile` aliases that helped developers with day-to-day operations.
 
-Below is a list of expected features the original template intended to develop and that we wish to carry on for Galactipy:
+While the original project is now archived, there were some features Roman intended to develop and we wish to carry on for Galactipy:
 
-- Option for choosing between test coverage and code analysis for generated projects, with the tools for each yet to be decided upon;
 - Documentation structure with [`Sphynx`][rd2] using the [`PyData Sphinx Theme`][rd3];
 - Code metrics with [`Radon`][rd4];
 - Docstring coverage with [`interrogate`][rd5];
@@ -587,13 +586,16 @@ Below is a list of expected features the original template intended to develop a
 
 ### Mirror GitHub features for GitLab
 
-As the project started on GitHub, features like Dependabot, Release Drafter and stale issue were already set up, but require more research and complexity to implement on GitLab. We would like Galactipy to have the same features between the two platforms if possible, and for that to happen a considerable amount of effort must be put just to ensure feature parity between the two.
+As the project started on GitHub, features like Dependabot, Release Drafter and stale issue were already set up, but require more research and complexity to implement on GitLab.
+
+We would like Galactipy to have nearly equal functionality between GitHub and GitLab as possible, a considerable effort must be put just to ensure feature parity between the two.
 
 ### Quality-of-life Features
 
 We also wish to implement features completely new to the template, especially aiming at streamlining development process so less time is lost setting up a new project and apply software development best practices with available tools for the Python ecosystem:
 
-- Automatic deployment to [`GitLab Pages`][rd8] and [`GitHub Pages`][rd9];
+- Option to choose between test coverage or full code analysis, with providers for each yet to be selected;
+- Documentation upload to [`GitLab Pages`][rd8] and [`GitHub Pages`][rd9];
 - Automatic deployment to [`Docker Hub`][rd10];
 - Update GitHub Actions with the latest popular and useful workflows from the marketplace;
 - Implement SAST for improving security of your projects;
