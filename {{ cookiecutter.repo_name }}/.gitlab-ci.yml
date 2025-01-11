@@ -31,8 +31,6 @@ variables:
 
 default:
   image: python:{{ cookiecutter.minimal_python_version }}
-  rules:
-    - if: $CI_PIPELINE_SOURCE != 'schedule'
   cache:
     key: venv-$CI_COMMIT_REF_NAME-$CI_JOB_STAGE-$CI_COMMIT_SHA
     paths:
@@ -47,7 +45,10 @@ workflow:
       when: never
 
 # Anchors for common commands
-.env_setup: &env_setup
+.env_setup:
+  rules:
+    - if: $CI_PIPELINE_SOURCE != 'schedule'
+  before_script:
     - pip install invoke
     - invoke poetry-download
     - export PATH="/root/.local/bin:$PATH"
@@ -69,8 +70,8 @@ workflow:
 test-py{{ version[0] }}{{ version[1] }}:
   stage: test
   image: python:{{ version[0] }}.{{ version[1] }}
+  extends: .env_setup
   script:
-    - *env_setup
     - *test_scripts
 {%- endfor %}
 
@@ -79,8 +80,8 @@ build-project:
   artifacts:
     paths:
       - dist/
+  extends: .env_setup
   script:
-    - *env_setup
     - invoke build
 
 deploy-test:
@@ -89,8 +90,8 @@ deploy-test:
     - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
   dependencies:
     - build-project
+  extends: .env_setup
   script:
-    - *env_setup
     # TODO Set the TESTPYPI_TOKEN variable for https://test.pypi.org in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
     - invoke pypi-config $TESTPYPI_TOKEN --repo testpypi
     - invoke publish --repo testpypi --no-build
@@ -103,8 +104,8 @@ deploy-prod:
     - build-project
   needs:
     - deploy-test
+  extends: .env_setup
   script:
-    - *env_setup
     # TODO Set the PYPI_TOKEN variable for https://pypi.org in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
     - invoke pypi-config $PYPI_TOKEN
     - invoke publish --no-build
