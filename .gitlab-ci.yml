@@ -27,14 +27,14 @@ include:
 
 default:
   image: python:3.13
-  rules:
-    - if: $CI_PIPELINE_SOURCE != 'schedule'
   cache:
     key: venv-$CI_COMMIT_REF_NAME-$CI_JOB_STAGE-$CI_COMMIT_SHA
     paths:
       - $CI_PROJECT_DIR/.cache/pip
 
 .python_setup:
+  rules:
+    - if: $CI_PIPELINE_SOURCE != 'schedule'
   before_script:
     - pip install invoke
     - invoke poetry-download
@@ -89,7 +89,7 @@ test-py313:
 coveralls-report:
   stage: coverage
   rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE != 'schedule'
   script:
     - curl -L https://coveralls.io/coveralls-linux.tar.gz | tar -xz -C /usr/local/bin
     - coveralls -f coverage.xml -r $COVERALLS_TOKEN
