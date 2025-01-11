@@ -82,10 +82,12 @@ git branch -M main
 git remote add origin {{ cookiecutter.__scm_base_url }}.git
 git push -u origin main
 ```
-{%- if cookiecutter.__scm_platform_lc == 'github' -%}
-### Set up bots
 
-- Set up [Dependabot][hub1] to ensure you have the latest dependencies.
+### Set up bots
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' -%}
+- Set up a [Repository Access Token][lab1] to enable automatic releases and issue closing.
+{%- elif cookiecutter.__scm_platform_lc == 'github' -%}
+- Set up [Dependabot][hub1] to ensure you have the latest dependencies;
 - Set up [Stale bot][hub2] for automatic issue closing.
 {%- endif %}
 
@@ -195,7 +197,7 @@ And here are a few articles which may help you:
 - [A handy guide to financial support for open source][wno7];
 {%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-- [GitLab CI Documentation][lab1];
+- [GitLab CI Documentation][lab2];
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
 - [GitHub Actions Documentation][hub3];
 {%- endif %}
@@ -221,14 +223,14 @@ And here are a few articles which may help you:
 ### Deployment features
 
 - Issue and {% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates for easy integration with {{ cookiecutter.scm_platform }};
-- Predefined CI/CD build workflow for {% if cookiecutter.__scm_platform_lc == 'gitlab' %}[`GitLab CI`][lab2]{% elif cookiecutter.__scm_platform_lc == 'github' %}[`Github Actions`][hub4]{% endif %};
+- Predefined CI/CD build workflow for {% if cookiecutter.__scm_platform_lc == 'gitlab' %}[`GitLab CI`][lab3]{% elif cookiecutter.__scm_platform_lc == 'github' %}[`Github Actions`][hub4]{% endif %};
 - Automatic package uploads to [`PyPI`][ft9] test and production repositories;
 - Everything is already set up for security checks, {% if cookiecutter.use_ruff %}codestyle checks, code formatting,{% endif %} testing, linting{% if cookiecutter.create_docker %}, docker builds{% endif %} etc with [`Invoke`][ft10]. More details in [Invoke Usage][ft11];
 {%- if cookiecutter.create_docker %}
 - [`Dockerfile`][docker2] for your package;
 {%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' -%}
-- Automatic [`Changelog entries`][lab3] updated via [GitLab API][lab4] and [template][lab5].
+- Automatic [`Changelog entries`][lab4] updated via [GitLab API][lab5] and [template][lab6].
 {%- elif cookiecutter.__scm_platform_lc == 'github' -%}
 - Always up-to-date dependencies with [`Dependabot`][hub5]. You will only need to [enable it][hub1];
 - Automatic drafts of new releases with [`Release Drafter`][hub6]. You may see the list of labels in [`release-drafter.yml`][hub7]. Works perfectly with [Semantic Versions][fs4] specification.
@@ -239,7 +241,8 @@ And here are a few articles which may help you:
 - Ready-to-use [{% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates][ft12] and several [Issue templates][ft13];
 - Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically;
 - **Loads** of predefined [badges][ft14] to make your project stand out, you can either keep them, remove as you wish or be welcome to add even more{% if cookiecutter.__scm_platform_lc == 'github' %};{% else %}.{% endif %}
-{%- if cookiecutter.__scm_platform_lc == 'github' %}
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+{%- elif cookiecutter.__scm_platform_lc == 'github' %}
 - [`Stale bot`][hub2] closes abandoned issues after a period of inactivity. Configuration is [here][hub8];
 - [Semantic Versions][fs4] specification with [`Release Drafter`][hub6].
 {%- endif %}
@@ -476,7 +479,7 @@ You can see the list of available releases on the [{{ cookiecutter.scm_platform 
 
 We follow [Semantic Versions][fs4] specification.
 {%+ if cookiecutter.__scm_platform_lc == 'gitlab' %}
-We use [`GitLab Changelog`][lab4] entries to track changes. You can categorise commits and Merge Requests made to this project using [git trailers][lab6] in your commit messages.
+We use [`GitLab Changelog`][lab5] entries to track changes. You can categorise commits and Merge Requests made to this project using [git trailers][lab7] in your commit messages.
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
 We use [`Release Drafter`][hub6]. As pull requests are merged, a draft release is kept up-to-date listing the changes, ready to publish when you’re ready. With the categories option, you can categorize pull requests in release notes using labels.
 {%- endif %}
@@ -631,12 +634,13 @@ This project was generated with [`galactipy`][bp7].
 [bscm6]: https://img.shields.io/gitlab/pipeline-status/{{ cookiecutter.scm_username }}%2F{{ cookiecutter.repo_name }}?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
 [bscm7]: {{ cookiecutter.__scm_link_url }}/pipelines
 
-[lab1]: https://docs.gitlab.com/ee/ci/
-[lab2]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab-ci.yml
-[lab3]: {{ cookiecutter.__scm_link_url }}/blob/master/CHANGELOG.md
-[lab4]: https://docs.gitlab.com/ee/user/project/changelogs.html
-[lab5]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/changelog_config.yml
-[lab6]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
+[lab1]: https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html
+[lab2]: https://docs.gitlab.com/ee/ci/
+[lab3]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab-ci.yml
+[lab4]: {{ cookiecutter.__scm_link_url }}/blob/master/CHANGELOG.md
+[lab5]: https://docs.gitlab.com/ee/user/project/changelogs.html
+[lab6]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/changelog_config.yml
+[lab7]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
 [bscm1]: https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
 [bscm2]: https://img.shields.io/github/v/release/{{ cookiecutter.scm_username}}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=semantic-release&color=347d39

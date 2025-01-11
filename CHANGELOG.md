@@ -1,3 +1,91 @@
+## 0.8.0 (2025-01-11)
+
+### :rocket: Features (2 changes)
+
+- [:sparkles: Implement stale issues for GitLab](manoelpqueiroz/galactipy@6fc4776be0d77a5da2f2ab9530377e2dfa421cde) ([merge request](manoelpqueiroz/galactipy!34))
+- [:sparkles: Implement autoreleases for template](manoelpqueiroz/galactipy@03488de7553a8e050784185aaa37f409b991e301) ([merge request](manoelpqueiroz/galactipy!34))
+
+### :package: Build System & CI/CD (5 changes)
+
+- [:green_heart: Fix incorrect default CI usage](manoelpqueiroz/galactipy@2d9435d9d3677bd5eb9929652ece41c1127f27b0) ([merge request](manoelpqueiroz/galactipy!34))
+- [:green_heart: Fix project CI workflow usage](manoelpqueiroz/galactipy@a227f64c33c19da78b22ab1610579f3430782dd0) ([merge request](manoelpqueiroz/galactipy!33))
+- [:construction_worker: Implement triage policies for project](manoelpqueiroz/galactipy@7c70af56fdf2909599e9c60cc56a819574f7f8cc) ([merge request](manoelpqueiroz/galactipy!34))
+- [:construction_worker: Change project CI rules](manoelpqueiroz/galactipy@b7fc6fcf44c03eec39e9eee8fac06ac7a603e5c7) ([merge request](manoelpqueiroz/galactipy!33))
+- [:green_heart: Fix Changelog commit job](manoelpqueiroz/galactipy@e932406337ad1433583541d475e35641a504012d) ([merge request](manoelpqueiroz/galactipy!32))
+
+### :gear: Internals (1 change)
+
+- [:safety_vest: Update post-gen hooks with triage policies removal](manoelpqueiroz/galactipy@1d8a56603fbd650276c0d092fef221e083dc3d19) ([merge request](manoelpqueiroz/galactipy!34))
+
+### :construction_site: Template Internals (2 changes)
+
+- [:construction_worker: Fix template CI rule enforcement](manoelpqueiroz/galactipy@0994bdc86e3ae13fd45f6bbe1db21f046bfab635)
+- [:construction_worker: Refine template CI for GitLab](manoelpqueiroz/galactipy@8f3216ed73bbf859ae0e38e4fdb536a23ad6b6d2) ([merge request](manoelpqueiroz/galactipy!34))
+
+### :memo: Documentation (4 changes)
+
+- [:memo: Refine project roadmap](manoelpqueiroz/galactipy@7054e3df30d8e5ecc0247cf5487cc9277f1beb79) ([merge request](manoelpqueiroz/galactipy!33))
+- [:wrench: Move instructions for project access token](manoelpqueiroz/galactipy@fcb98d59c251da47b49db681ca4b925c1acc463e) ([merge request](manoelpqueiroz/galactipy!34))
+- [:memo: Replace TODOs section with project roadmap](manoelpqueiroz/galactipy@5da905bdce3cc82c481e524b67231da2ff51f9de) ([merge request](manoelpqueiroz/galactipy!32))
+- [:memo: Add citation file for the project](manoelpqueiroz/galactipy@15a5b1576609e93fb87f53a75d90c5b9a674d546) ([merge request](manoelpqueiroz/galactipy!32))
+
+## 0.7.0 (2025-01-09)
+
+### :rocket: Features (6 changes)
+
+- [:construction_worker: Refine GitLab PyPI upload CI](manoelpqueiroz/galactipy@651ce9a123c85b97650aec18c150c001794f0327) ([merge request](manoelpqueiroz/galactipy!31))
+- [:truck: Separate test and production publishing for GitHub Actions](manoelpqueiroz/galactipy@a793f852b8aa50015a46b00450f9231e47ed21ac) ([merge request](manoelpqueiroz/galactipy!31))
+- [:sparkles: Add PyPI publishing via GitHub Actions](manoelpqueiroz/galactipy@bbd8ad830e1fdcdf0e6bd133c886cfe2bbff7aa5) ([merge request](manoelpqueiroz/galactipy!31))
+- [:sparkles: Add PyPI publishing via GitLab CI](manoelpqueiroz/galactipy@eb6c61fb70382384c210217b93913201a2533490) ([merge request](manoelpqueiroz/galactipy!31))
+- [:children_crossing: Specify Poetry publishing exceptions](manoelpqueiroz/galactipy@aebca6f5a78f73fc70c255d939736410891725e8) ([merge request](manoelpqueiroz/galactipy!31))
+- [:sparkles: Add PyPI publishing Invoke commands](manoelpqueiroz/galactipy@53649863f0dc7f4baf95f7a3b17be31eac2cad2b) ([merge request](manoelpqueiroz/galactipy!31))
+
+### :wrench: Fixes & Refactoring (5 changes)
+
+- [:pencil2: Fix Test PyPI configuration for Invoke](manoelpqueiroz/galactipy@f029c50be0e5df422075dd8d660ae0aa5edcbd94) ([merge request](manoelpqueiroz/galactipy!31))
+- [:adhesive_bandage: Alter workflow files for optimal structure](manoelpqueiroz/galactipy@3f9682777146ec3da5a5a1a852666bcf22769a74) ([merge request](manoelpqueiroz/galactipy!31))
+- [:adhesive_bandage: Fix typos in workflow files](manoelpqueiroz/galactipy@b3240351480d461d36b535bc1bd88fc5281a8401) ([merge request](manoelpqueiroz/galactipy!31))
+- [:pencil2: Fix missing endraw directive for GitHub PyPI test](manoelpqueiroz/galactipy@bd227befda9fa31aac6fd48f56642409103250d5) ([merge request](manoelpqueiroz/galactipy!31))
+- [:construction_worker: Ensure Poetry installation for template CI](manoelpqueiroz/galactipy@acdff9f9f82fc4eddfae10a6b7202009c18357f2) ([merge request](manoelpqueiroz/galactipy!31))
+
+### :package: Build System & CI/CD (5 changes)
+
+- [:construction_worker: Refine rules for automatic releases](manoelpqueiroz/galactipy@a6e594e9609269f703cbb4dab6ac1d6e13280da6) ([merge request](manoelpqueiroz/galactipy!30))
+- [:construction_worker: Automatic releases for Galactipy](manoelpqueiroz/galactipy@dfcae1813337f104c0933d3e61fd5f81caea4ae8) ([merge request](manoelpqueiroz/galactipy!30))
+- [:construction_worker: Add job for CHANGELOG commit for project](manoelpqueiroz/galactipy@d61768e39546b4c977ca4518347a8e903f4b7e36) ([merge request](manoelpqueiroz/galactipy!30))
+- [:construction_worker: Set up release notes job for project](manoelpqueiroz/galactipy@25f12f6a51fe34b0177f958d359f1055ee78e0e0) ([merge request](manoelpqueiroz/galactipy!30))
+- [:construction_worker: Configure CI to skip Work in Progress commits](manoelpqueiroz/galactipy@a8d85c730c2a31a268a6fc045cc0b64d2858ff13) ([merge request](manoelpqueiroz/galactipy!30))
+
+### :gear: Internals (1 change)
+
+- [:pushpin: Pin Poetry to v1.8.5](manoelpqueiroz/galactipy@b23e76c3fb3d1945fb766c1731e8d15c7ea972be) ([merge request](manoelpqueiroz/galactipy!30))
+
+### :construction_site: Template Internals (13 changes)
+
+- [:construction_worker: Change rule for when test workflow runs](manoelpqueiroz/galactipy@31de526f8936bd9590a8ed6859ef0999f9620ca4) ([merge request](manoelpqueiroz/galactipy!31))
+- [:construction_worker: Refine rules GitHub workflows](manoelpqueiroz/galactipy@f1647003c53a43f868e6834754cc46f62321f98f) ([merge request](manoelpqueiroz/galactipy!31))
+- [:construction_worker: Ensure PyPI test publishing for full releases](manoelpqueiroz/galactipy@ce8b54d15e09cc5beaec20af59b53bd9e2e923cb) ([merge request](manoelpqueiroz/galactipy!31))
+- [:children_crossing: Add emoji to GitHub workflows and job steps](manoelpqueiroz/galactipy@c880f1fea206d6b5c7d8d08058bf2e658c8a5eb5) ([merge request](manoelpqueiroz/galactipy!31))
+- [:construction_worker: Set up build and artifacts for PyPI uploads](manoelpqueiroz/galactipy@f29c212cd7fa12145020af60981eefeaa1d61b8b) ([merge request](manoelpqueiroz/galactipy!31))
+- [:truck: Rename GitHub build workflow](manoelpqueiroz/galactipy@4cb8f6d6a5143ffcf6a48948284c32119ff30953) ([merge request](manoelpqueiroz/galactipy!31))
+- [:construction_worker: Correct and simplify PyPI triggers for GitHub](manoelpqueiroz/galactipy@13929207c8ac34663df1b1f2e24c29d10c590b07) ([merge request](manoelpqueiroz/galactipy!31))
+- [:children_crossing: Add link to GitHub Actions documentation](manoelpqueiroz/galactipy@357843ec0f58ffa37f647ff17c6cea3eef5f49be) ([merge request](manoelpqueiroz/galactipy!31))
+- [:construction_worker: Streamline template GitLab CI](manoelpqueiroz/galactipy@cd22a3620eba9d44b069339f89a0df1f1347ffc8) ([merge request](manoelpqueiroz/galactipy!31))
+- [:construction_worker: Move SemVer regex to pipeline variables](manoelpqueiroz/galactipy@8a4008e1d5978d8a8bb1ca4cc642d665c2e32652) ([merge request](manoelpqueiroz/galactipy!31))
+- [:construction_worker: Set up build jobs for template](manoelpqueiroz/galactipy@181b343e13cd00d9eaa9d8190fdad49d59d08d8a) ([merge request](manoelpqueiroz/galactipy!31))
+- [:construction_worker: Reorganize current template CI](manoelpqueiroz/galactipy@99da0478e4ce2e0ae3d68372846efadf7f29c804) ([merge request](manoelpqueiroz/galactipy!31))
+- [:wrench: Fix template pyproject name keyword](manoelpqueiroz/galactipy@8914d84598a845a310d8c96aa8254148c497facc) ([merge request](manoelpqueiroz/galactipy!31))
+
+### :memo: Documentation (3 changes)
+
+- [:memo: Update READMEs with PyPI publishing](manoelpqueiroz/galactipy@6cf6299998cc335cb4485df65d51b755c6e13de5) ([merge request](manoelpqueiroz/galactipy!31))
+- [:bulb: Correct TODOs marked as UPDATEMEs](manoelpqueiroz/galactipy@b665d0e647a74fbb35696aea03330316acddc4a8) ([merge request](manoelpqueiroz/galactipy!31))
+- [:memo: Fill CHANGELOG.md with previous releases](manoelpqueiroz/galactipy@07ba1a9e4902660c7f8cff69e0103242ab35dfb6) ([merge request](manoelpqueiroz/galactipy!30))
+
+### :arrow_up: Dependencies Updates (1 change)
+
+- [:arrow_up: Upgrade lock file dependencies](manoelpqueiroz/galactipy@3fb6aac5ec5833294729e3b78e22837e877aa84b) ([merge request](manoelpqueiroz/galactipy!31))
+
 ## 0.6.1 (2024-12-03)
 
 ### :construction_site: Template Internals (1 change)
