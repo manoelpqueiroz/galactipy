@@ -29,7 +29,7 @@ _Expand your project structure from atoms of code to **galactic** dimensions._ :
 ## TL;DR
 
 ```bash
-cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.7.0
+cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.8.0
 ```
 
 > All you need is the latest version of cookiecutter! :wink:
@@ -99,7 +99,7 @@ pip install -U cookiecutter
 then go to a directory where you want to create your project and run:
 
 ```bash
-cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.7.0
+cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.8.0
 ```
 
 ### Input variables
