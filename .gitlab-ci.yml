@@ -15,8 +15,9 @@ workflow:
     - if: $CI_COMMIT_BRANCH =~ /^test.*/i
       when: never
     - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft\:.*/i
-      when: manual
+      when: never
     - if: $GITLAB_USER_LOGIN =~ /^project_\d+_bot_\w+/i
+      when: never
     - if: $CI_COMMIT_TAG =~ /^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
     - if: $CI_COMMIT_BRANCH
 
