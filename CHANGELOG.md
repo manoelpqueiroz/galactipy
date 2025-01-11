@@ -1,3 +1,34 @@
+## 0.8.0 (2025-01-11)
+
+### :rocket: Features (2 changes)
+
+- [:sparkles: Implement stale issues for GitLab](manoelpqueiroz/galactipy@6fc4776be0d77a5da2f2ab9530377e2dfa421cde) ([merge request](manoelpqueiroz/galactipy!34))
+- [:sparkles: Implement autoreleases for template](manoelpqueiroz/galactipy@03488de7553a8e050784185aaa37f409b991e301) ([merge request](manoelpqueiroz/galactipy!34))
+
+### :package: Build System & CI/CD (5 changes)
+
+- [:green_heart: Fix incorrect default CI usage](manoelpqueiroz/galactipy@2d9435d9d3677bd5eb9929652ece41c1127f27b0) ([merge request](manoelpqueiroz/galactipy!34))
+- [:green_heart: Fix project CI workflow usage](manoelpqueiroz/galactipy@a227f64c33c19da78b22ab1610579f3430782dd0) ([merge request](manoelpqueiroz/galactipy!33))
+- [:construction_worker: Implement triage policies for project](manoelpqueiroz/galactipy@7c70af56fdf2909599e9c60cc56a819574f7f8cc) ([merge request](manoelpqueiroz/galactipy!34))
+- [:construction_worker: Change project CI rules](manoelpqueiroz/galactipy@b7fc6fcf44c03eec39e9eee8fac06ac7a603e5c7) ([merge request](manoelpqueiroz/galactipy!33))
+- [:green_heart: Fix Changelog commit job](manoelpqueiroz/galactipy@e932406337ad1433583541d475e35641a504012d) ([merge request](manoelpqueiroz/galactipy!32))
+
+### :gear: Internals (1 change)
+
+- [:safety_vest: Update post-gen hooks with triage policies removal](manoelpqueiroz/galactipy@1d8a56603fbd650276c0d092fef221e083dc3d19) ([merge request](manoelpqueiroz/galactipy!34))
+
+### :construction_site: Template Internals (2 changes)
+
+- [:construction_worker: Fix template CI rule enforcement](manoelpqueiroz/galactipy@0994bdc86e3ae13fd45f6bbe1db21f046bfab635)
+- [:construction_worker: Refine template CI for GitLab](manoelpqueiroz/galactipy@8f3216ed73bbf859ae0e38e4fdb536a23ad6b6d2) ([merge request](manoelpqueiroz/galactipy!34))
+
+### :memo: Documentation (4 changes)
+
+- [:memo: Refine project roadmap](manoelpqueiroz/galactipy@7054e3df30d8e5ecc0247cf5487cc9277f1beb79) ([merge request](manoelpqueiroz/galactipy!33))
+- [:wrench: Move instructions for project access token](manoelpqueiroz/galactipy@fcb98d59c251da47b49db681ca4b925c1acc463e) ([merge request](manoelpqueiroz/galactipy!34))
+- [:memo: Replace TODOs section with project roadmap](manoelpqueiroz/galactipy@5da905bdce3cc82c481e524b67231da2ff51f9de) ([merge request](manoelpqueiroz/galactipy!32))
+- [:memo: Add citation file for the project](manoelpqueiroz/galactipy@15a5b1576609e93fb87f53a75d90c5b9a674d546) ([merge request](manoelpqueiroz/galactipy!32))
+
 ## 0.7.0 (2025-01-09)
 
 ### :rocket: Features (6 changes)
