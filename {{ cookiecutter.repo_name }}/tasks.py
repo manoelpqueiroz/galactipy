@@ -6,7 +6,7 @@ from invoke import Context, UnexpectedExit, task
 
 PACKAGE_NAME = "{{ cookiecutter.repo_name }}"
 {%+ if cookiecutter.create_docker %}
-DEFAULT_DOCKER_REPOSITORY = "{{ cookiecutter.package_name }}"
+DEFAULT_DOCKER_REPOSITORY = "{{ cookiecutter.repo_name }}/{{ cookiecutter.package_name }}"
 DEFAULT_DOCKER_TAG = "latest"
 DEFAULT_DOCKER_IMAGE = f"{DEFAULT_DOCKER_REPOSITORY}:{DEFAULT_DOCKER_TAG}"
 {% endif %}
@@ -234,28 +234,36 @@ def sweep(c: Context) -> None:
 
 {%+ if cookiecutter.create_docker %}
 # Docker commands
-@task(iterable=["images"])
-def docker_build(c: Context, images: list[str]) -> None:
+@task(iterable=["tags"])
+def docker_build(
+    c: Context,
+    tags: list[str],
+    repository: str = DEFAULT_DOCKER_REPOSITORY,
+) -> None:
     """Build Docker images for {{ cookiecutter.repo_name }}."""
-    if len(images) == 0:
-        images.append(DEFAULT_DOCKER_IMAGE)
+    if len(tags) == 0:
+        tags.append(DEFAULT_DOCKER_TAG)
 
-    docker_images = " ".join(f"-t {i}" for i in images)
+    docker_images = " ".join(f"-t {repository}:{tag}" for tag in tags)
 
     c.run(
-        f"docker build . {docker_images} -f ./docker/Dockerfile --no-cache"
+        f"docker build . {docker_images} -f ./docker/Dockerfile --no-cache", pty=PTY
     )
 
 
-@task(iterable=["images"])
-def docker_remove(c: Context, images: list[str]) -> None:
+@task(iterable=["tags"])
+def docker_remove(
+    c: Context,
+    tags: list[str],
+    repository: str = DEFAULT_DOCKER_REPOSITORY
+) -> None:
     """Remove specified Docker images created for {{ cookiecutter.repo_name }}."""
-    if len(images) == 0:
-        images.append(DEFAULT_DOCKER_IMAGE)
+    if len(tags) == 0:
+        docker_images = c.run(f"docker images {repository} -qa", hide='out').stdout
+    else:
+        docker_images = " ".join(f"-t {repository}:{tag}" for tag in tags)
 
-    docker_images = " ".join(images)
-
-    c.run(f"docker rmi -f {docker_images}")
+    c.run(f"docker rmi -f {docker_images}", pty=PTY)
 
 {% endif %}
 # Cleaning commands for Bash, Zsh and PowerShell
