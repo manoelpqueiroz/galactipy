@@ -261,7 +261,7 @@ def docker_remove(
     if len(tags) == 0:
         docker_images = c.run(f"docker images {repository} -qa", hide='out').stdout
     else:
-        docker_images = " ".join(f"-t {repository}:{tag}" for tag in tags)
+        docker_images = " ".join(f"{repository}:{tag}" for tag in tags)
 
     c.run(f"docker rmi -f {docker_images}", pty=PTY)
 
@@ -276,7 +276,7 @@ def docker_push(
     if len(tags) == 0:
         c.run(f"docker push -a {repository}")
     else:
-        docker_images = " ".join(f"-t {repository}:{tag}" for tag in tags)
+        docker_images = " ".join(f"{repository}:{tag}" for tag in tags)
 
     c.run(f"docker push -f {docker_images}", pty=PTY)
 
