@@ -265,6 +265,21 @@ def docker_remove(
 
     c.run(f"docker rmi -f {docker_images}", pty=PTY)
 
+
+@task(iterable=["tags"])
+def docker_push(
+    c: Context,
+    tags: list[str],
+    repository: str = DEFAULT_DOCKER_REPOSITORY,
+) -> None:
+    """Push specified Docker images to Docker Hub."""
+    if len(tags) == 0:
+        c.run(f"docker push -a {repository}")
+    else:
+        docker_images = " ".join(f"-t {repository}:{tag}" for tag in tags)
+
+    c.run(f"docker push -f {docker_images}", pty=PTY)
+
 {% endif %}
 # Cleaning commands for Bash, Zsh and PowerShell
 @task(aliases=["pycache-clean"])
