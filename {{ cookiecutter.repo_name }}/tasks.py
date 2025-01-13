@@ -6,7 +6,12 @@ from invoke import Context, UnexpectedExit, task
 
 PACKAGE_NAME = "{{ cookiecutter.repo_name }}"
 {%+ if cookiecutter.create_docker %}
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+DOCKER_REGISTRY = "registry.gitlab.com"
+DEFAULT_DOCKER_REPOSITORY = f"{DOCKER_REGISTRY}/{{ cookiecutter.repo_name }}/{{ cookiecutter.package_name }}"
+{%- else %}
 DEFAULT_DOCKER_REPOSITORY = "{{ cookiecutter.repo_name }}/{{ cookiecutter.package_name }}"
+{%- endif %}
 DEFAULT_DOCKER_TAG = "latest"
 DEFAULT_DOCKER_IMAGE = f"{DEFAULT_DOCKER_REPOSITORY}:{DEFAULT_DOCKER_TAG}"
 {% endif %}
@@ -44,7 +49,6 @@ else:
 # Reusable command templates
 if PTY:
     FILE_REMOVER = 'find . | grep -E "{}" | xargs rm -rf'
-
 
 else:
     FILE_REMOVER = (
@@ -234,6 +238,18 @@ def sweep(c: Context) -> None:
 
 {%+ if cookiecutter.create_docker %}
 # Docker commands
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+@task
+def docker_login(c: Context, username: str, password: str) -> None:
+    """Login to GitLab Container Registry using a Token.
+
+    More information for authentication methods provided at
+    https://docs.gitlab.com/ee/user/packages/container_registry/authenticate_with_container_registry.html
+    """
+    c.run(f"docker login {DOCKER_REGISTRY} -u {username} -p {password}")
+
+
+{% endif -%}
 @task(iterable=["tags"])
 def docker_build(
     c: Context,
