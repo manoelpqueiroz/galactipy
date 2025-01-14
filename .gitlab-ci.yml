@@ -31,52 +31,38 @@ include:
       stage: maintenance
 
 default:
-  image: python:3.13
   cache:
     key: venv-$CI_COMMIT_REF_NAME-$CI_JOB_STAGE-$CI_COMMIT_SHA
     paths:
       - $CI_PROJECT_DIR/.cache/pip
 
-.python_setup:
-  rules:
-    - if: $CI_PIPELINE_SOURCE != 'schedule'
-  before_script:
-    - pip install invoke
-    - invoke poetry-download
-    - export PATH="/root/.local/bin:$PATH"
-    - python3 -m venv .venv
-    - source .venv/bin/activate
-    - pip install -U pip
-    - invoke install --ignore-pty
-
 .default_scripts: &default_scripts
+  - invoke install --ignore-pty
   - invoke check-linter
   - invoke test
   - invoke check-safety
 
 test-py310:
   stage: test
-  image: python:3.10
-  extends: .python_setup
+  image: registry.gitlab.com/galactipy/docker:3.10
   script:
     - *default_scripts
 
 test-py311:
   stage: test
-  image: python:3.11
-  extends: .python_setup
+  image: registry.gitlab.com/galactipy/docker:3.11
   script:
     - *default_scripts
 
 test-py312:
   stage: test
-  image: python:3.12
-  extends: .python_setup
+  image: registry.gitlab.com/galactipy/docker:3.12
   script:
     - *default_scripts
 
 test-py313:
   stage: test
+  image: registry.gitlab.com/galactipy/docker:3.13
   artifacts:
     name: coverage_$CI_COMMIT_REF_NAME_$CI_JOB_NAME_$CI_JOB_STARTED_AT
     paths:
@@ -86,16 +72,17 @@ test-py313:
         coverage_format: cobertura
         path: coverage.xml
     expire_in: 1 week
-  extends: .python_setup
   script:
     - *default_scripts
     - coverage xml
 
 coveralls-report:
   stage: coverage
+  image: alpine:latest
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE != 'schedule'
   script:
+    - apk add curl
     - curl -L https://coveralls.io/coveralls-linux.tar.gz | tar -xz -C /usr/local/bin
     - coveralls -f coverage.xml -r $COVERALLS_TOKEN
 
