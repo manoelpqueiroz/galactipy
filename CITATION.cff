@@ -39,8 +39,8 @@ authors:
     family-names: Tempel
     email: git@philipptempel.me
   - email: johnthagen@users.noreply.github.com
-repository-code: 'https://www.gitlab.com/manoelpqueiroz/galactipy'
-repository: 'https://github.com/manoelpqueiroz/galactipy'
+repository-code: 'https://www.gitlab.com/galactipy/galactipy'
+repository: 'https://github.com/galactipy/galactipy'
 abstract: >-
   Full-fledged template for Python projects. Combines
   state-of-the-art libraries and best development practices
