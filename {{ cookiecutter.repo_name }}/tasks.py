@@ -246,7 +246,16 @@ def docker_login(c: Context, username: str, password: str) -> None:
     More information for authentication methods provided at
     https://docs.gitlab.com/ee/user/packages/container_registry/authenticate_with_container_registry.html
     """
-    c.run(f"docker login {DOCKER_REGISTRY} -u {username} -p {password}")
+    if PTY:
+        password_cmd = f"echo {password}"
+
+    else:
+        password_cmd = f"Write-Host {password}"
+
+    c.run(
+        f"{password_cmd} | "
+        f"docker login {DOCKER_REGISTRY} -u {username} --password-stdin"
+    )
 
 
 {%- endif %}
