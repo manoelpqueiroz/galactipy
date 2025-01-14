@@ -29,7 +29,7 @@ _Expand your project structure from atoms of code to **galactic** dimensions._ :
 ## TL;DR
 
 ```bash
-cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.8.0
+cookiecutter gl:galactipy/galactipy --checkout v0.8.0
 ```
 
 > All you need is the latest version of cookiecutter! :wink:
@@ -99,7 +99,7 @@ pip install -U cookiecutter
 then go to a directory where you want to create your project and run:
 
 ```bash
-cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.8.0
+cookiecutter gl:galactipy/galactipy --checkout v0.8.0
 ```
 
 ### Input variables
@@ -110,23 +110,23 @@ The input variables, with their default values, are as follows:
 
 |       **Parameter**       |      **Default value**      | **Description**                                                                                                                                                     |
 |:-------------------------:|:---------------------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `project_name`            | `Python Project`            | A suitable name by which people will refer to, you are free to name it however you wish to. |
-| `repo_name`               | based on `project_name`     | Name of the repository to develop the project on. [Check the availability of possible names][htu1] before creating the project. |
-| `package_name`            | based on `project_name`     | PyPI-compliant Python package name. [Check the availability of possible names][htu1] before creating the project. |
-| `project_description`     | based on `project_name`     | A brief description of your project. |
-| `version`                 | `0.1.0`                     | Initial version of the package. Make sure it follows the [Semantic Versions][ft28] specification. |
-| `author`                  | `Manoel Pereira de Queiroz` | Name of the author or organisation. Used to generate `LICENCE` and to specify ownership in `pyproject.toml`. |
-| `scm_platform`            | `GitLab`                    | One of `GitLab` and `GitHub`. Depending on the choice you will have [different features][htu2] to work with. |
-| `scm_username`            | `manoelpqueiroz`            | GitHub or GitLab username for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for either platform. |
-| `email`                   | based on `scm_username`     | Email for `CODE_OF_CONDUCT.md`, `SECURITY.md` files and to specify the ownership of the project in `pyproject.toml`. |
-| `licence`                 | `MIT`                       | One of `MIT`, `BSD-3`, `GNU GPL v3.0`, `GNU AGLP v3.0`, `GNU LGPL v3.0`, `Mozilla Public License 2.0` and `Apache Software License 2.0`, or `Not open source`. |
-| `minimal_python_version`  | `3.9`                       | Minimal Python version. All versions since `3.9` are available to choose. It is used for builds, pipelines and formatters. |
-| `use_ruff`                | `True`                      | :small_red_triangle: Option to use [`ruff`][ft4] as the code formatter, along with a pre-commit hook. |
-| `line_length`             | 88                          | The max length per line, dismiss if `use_ruff` is not used. NOTE: This value must be between 50 and 300. |
-| `docstring_style`         | `numpy`                     | One of `numpy`, `pep257` or `google`, dismiss if `use_ruff` is not used. You can choose `other` to disable checks on your docstrings. |
-| `docstring_length`        | based on `line_lenght`      | The max length for docstrings, dismiss if `use_ruff` is not used. NOTE: This value must be between 50 and 300 and lower of equal to `line_lenght`. |
-| `create_cli`              | `True`                      | :small_red_triangle: Option to create a simple CLI application with [`Typer`][htu3] and [`Rich`][htu4] libraries. |
-| `create_docker`           | `True`                      | :small_red_triangle: Option to create a [Dockerfile][ft19] to build an image for your project. |
+| `project_name`            | `Python Project`             | A suitable name by which people will refer to, you are free to name it however you wish to. |
+| `repo_name`               | based on `project_name`      | Name of the repository to develop the project on. [Check the availability of possible names][htu1] before creating the project. |
+| `package_name`            | based on `project_name`      | PyPI-compliant Python package name. [Check the availability of possible names][htu1] before creating the project. |
+| `project_description`     | based on `project_name`      | A brief description of your project. |
+| `version`                 | `0.1.0`                      | Initial version of the package. Make sure it follows the [Semantic Versions][ft28] specification. |
+| `author`                  | `The Galactipy Contributors` | Name of the author or organisation. Used to generate `LICENCE` and to specify ownership in `pyproject.toml`. |
+| `scm_platform`            | `GitLab`                     | One of `GitLab` and `GitHub`. Depending on the choice you will have [different features][htu2] to work with. |
+| `scm_username`            | `galactipy`                  | GitHub or GitLab username for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for either platform. |
+| `email`                   | based on `scm_username`      | Email for `CODE_OF_CONDUCT.md`, `SECURITY.md` files and to specify the ownership of the project in `pyproject.toml`. |
+| `licence`                 | `MIT`                        | One of `MIT`, `BSD-3`, `GNU GPL v3.0`, `GNU AGLP v3.0`, `GNU LGPL v3.0`, `Mozilla Public License 2.0` and `Apache Software License 2.0`, or `Not open source`. |
+| `minimal_python_version`  | `3.9`                        | Minimal Python version. All versions since `3.9` are available to choose. It is used for builds, pipelines and formatters. |
+| `use_ruff`                | `True`                       | :small_red_triangle: Option to use [`ruff`][ft4] as the code formatter, along with a pre-commit hook. |
+| `line_length`             | 88                           | The max length per line, dismiss if `use_ruff` is not used. NOTE: This value must be between 50 and 300. |
+| `docstring_style`         | `numpy`                      | One of `numpy`, `pep257` or `google`, dismiss if `use_ruff` is not used. You can choose `other` to disable checks on your docstrings. |
+| `docstring_length`        | based on `line_length`       | The max length for docstrings, dismiss if `use_ruff` is not used. NOTE: This value must be between 50 and 300 and lower of equal to `line_lenght`. |
+| `create_cli`              | `True`                       | :small_red_triangle: Option to create a simple CLI application with [`Typer`][htu3] and [`Rich`][htu4] libraries. |
+| `create_docker`           | `True`                       | :small_red_triangle: Option to create a [Dockerfile][ft19] to build an image for your project. |
 
 > :eight_spoked_asterisk: Input variables marked with :small_red_triangle: are boolean variables, you can dismiss those by typing either `0`, `false`, `f`, `no`, `n` or `off`.
 
@@ -137,19 +137,19 @@ All input values will be saved in the `cookiecutter-config-file.yml` file so tha
 <div class="termy">
 
 ```console
-$ cookiecutter gl:manoelpqueiroz/galactipy
+$ cookiecutter gl:galactipy/galactipy
   [1/17] Project name (Python Project): A Decent Python Project
   [2/17] Project slug (a-decent-python-project): a-different-slug
   [3/17] Package name (a_decent_python_project): a_viable_package
   [4/17] Short description of the project (Awesome `a-different-slug` is a Python cli/package created with
-https://gitlab.com/manoelpqueiroz/galactipy): Let's try a cool description
+https://gitlab.com/galactipy/galactipy): Let's try a cool description
   [5/17] Project version (0.1.0): 1.100.9-rc7+build.456893a
-  [6/17] Author or Organisation (Manoel Pereira de Queiroz):
+  [6/17] Author or Organisation (The Galactipy Contributors):
   [7/17] In which platform would you like to host your code?
     1 - GitLab
     2 - GitHub
     Choose from [1/2] (1): 2
-  [8/17] Platform username (manoelpqueiroz): myuniqueusername
+  [8/17] Platform username (galactipy): myuniqueusername
   [9/17] e-Mail (contact@myuniqueusername.com): g@mail.com
   [10/17] Which licence would you like to use for your project?
     1 - MIT Licence
@@ -641,7 +641,7 @@ Give them your :star:, these resources are amazing! :wink:
   year = {2023, 2024},
   publisher = {GitLab},
   journal = {GitLab repository},
-  howpublished = {\url{https://gitlab.com/manoelpqueiroz/galactipy}}
+  howpublished = {\url{https://gitlab.com/galactipy/galactipy}}
 }
 ```
 
@@ -658,9 +658,9 @@ Here is the Markdown source for it:
 [b1]: https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue?style=for-the-badge
 [b2]: https://kutt.it/WlS8Qj
 [b3]: https://img.shields.io/badge/GitLab-0B2640?style=for-the-badge&logo=gitlab&logoColor=white
-[b4]: https://img.shields.io/gitlab/v/release/manoelpqueiroz%2Fgalactipy?style=for-the-badge&logo=semantic-release&color=253747
+[b4]: https://img.shields.io/gitlab/v/release/galactipy%2Fgalactipy?style=for-the-badge&logo=semantic-release&color=253747
 [b5]: https://kutt.it/dFL664
-[b6]: https://img.shields.io/gitlab/license/manoelpqueiroz%2Fgalactipy?style=for-the-badge
+[b6]: https://img.shields.io/gitlab/license/galactipy%2Fgalactipy?style=for-the-badge
 [b7]: https://kutt.it/hTjpzN
 [b8]: https://img.shields.io/badge/Cookiecutter-D4AA00?style=for-the-badge&logo=Cookiecutter&logoColor=white
 [b9]: https://cookiecutter.readthedocs.io/en/stable/
@@ -668,9 +668,9 @@ Here is the Markdown source for it:
 [b11]: https://project-types.github.io/#toy
 [b12]: https://img.shields.io/static/v1.svg?label=Contributions&message=Welcome&color=0059b3&style=for-the-badge
 [b13]: https://kutt.it/1Q6cYr
-[b14]: https://img.shields.io/gitlab/issues/open/manoelpqueiroz%2Fgalactipy?style=for-the-badge&color=fca326
+[b14]: https://img.shields.io/gitlab/issues/open/galactipy%2Fgalactipy?style=for-the-badge&color=fca326
 [b15]: https://kutt.it/2B3qIg
-[b16]: https://img.shields.io/gitlab/merge-requests/open/manoelpqueiroz%2Fgalactipy?style=for-the-badge&color=6fdac9
+[b16]: https://img.shields.io/gitlab/merge-requests/open/galactipy%2Fgalactipy?style=for-the-badge&color=6fdac9
 [b17]: https://kutt.it/YZ7kPX
 [b18]: https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json&style=for-the-badge
 [b19]: https://python-poetry.org/
@@ -683,32 +683,32 @@ Here is the Markdown source for it:
 [b26]: https://img.shields.io/badge/docstrings-numpydoc-4dabcf?style=for-the-badge&labelColor=4d77cf
 [b27]: https://numpydoc.readthedocs.io/en/latest/format.html
 [b28]: https://img.shields.io/badge/%F0%9F%93%A6-semantic%20versions-4053D6?style=for-the-badge
-[b29]: https://img.shields.io/gitlab/pipeline-status/manoelpqueiroz%2Fgalactipy?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
+[b29]: https://img.shields.io/gitlab/pipeline-status/galactipy%2Fgalactipy?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
 [b30]: https://kutt.it/zG7nVG
-[b31]: https://img.shields.io/coverallsCoverage/gitlab/manoelpqueiroz/galactipy?style=for-the-badge&logo=coveralls
+[b31]: https://img.shields.io/coverallsCoverage/gitlab/galactipy/galactipy?style=for-the-badge&logo=coveralls
 [b32]: https://kutt.it/uxIDHs
 [b33]: https://img.shields.io/badge/made%20with-galactipy%20%F0%9F%8C%8C-179287?style=for-the-badge&labelColor=193A3E
 [b34]: https://kutt.it/7fYqQl
 
 [ft1]: https://cookiecutter.readthedocs.io/en/stable/
 [ft2]: https://python-poetry.org/
-[ft3]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/pyproject.toml
+[ft3]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/pyproject.toml
 [ft4]: https://docs.astral.sh/
 [ft5]: https://pre-commit.com/
 [ft6]: https://mypy.readthedocs.io
 [ft7]: https://docs.safetycli.com/safety-2/
 [ft8]: https://bandit.readthedocs.io/en/latest/
 [ft9]: https://docs.pytest.org/en/latest/
-[ft10]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.vscode/settings.json
-[ft11]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.editorconfig
-[ft12]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.dockerignore
-[ft13]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.gitignore
-[ft14]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.gitlab-ci.yml
-[ft15]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/workflows/build.yml
+[ft10]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.vscode/settings.json
+[ft11]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.editorconfig
+[ft12]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.dockerignore
+[ft13]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.gitignore
+[ft14]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.gitlab-ci.yml
+[ft15]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/workflows/build.yml
 [ft16]: https://pypi.org/
 [ft17]: https://docs.pyinvoke.org/en/stable/
 [ft18]: #invoke-usage
-[ft19]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker/Dockerfile
+[ft19]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker/Dockerfile
 [ft20]: https://github.com/TezRomacH/python-package-template
 [ft21]: https://github.com/marketplace/actions/pypi-publish
 [ft22]: https://docs.pypi.org/api/upload/
@@ -716,14 +716,14 @@ Here is the Markdown source for it:
 [ft24]: https://docs.github.com/en/code-security/dependabot
 [ft25]: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates#enabling-dependabot-version-updates
 [ft26]: https://github.com/marketplace/actions/release-drafter
-[ft27]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/release-drafter.yml
+[ft27]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/release-drafter.yml
 [ft28]: https://semver.org/
 [ft29]: https://docs.gitlab.com/ee/user/project/changelogs.html
-[ft30]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/changelog_config.yml
+[ft30]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/changelog_config.yml
 [ft31]: https://docs.gitlab.com/ee/ci/jobs/job_rules.html#compare-a-variable-to-a-regular-expression
 [ft32]: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
-[ft33]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/merge_request_templates/default.md
-[ft34]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/issue_templates
+[ft33]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/merge_request_templates/default.md
+[ft34]: https://gitlab.com/galactipy/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/issue_templates
 [ft35]: https://shields.io/
 [ft36]: https://gitlab.com/explore/catalog/components/gitlab-triage
 [ft37]: https://github.com/marketplace/actions/close-stale-issues
@@ -732,14 +732,14 @@ Here is the Markdown source for it:
 [htu2]: #gitlab-vs-github-features
 [htu3]: https://typer.tiangolo.com/
 [htu4]: https://rich.readthedocs.io/en/latest/
-[htu5]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D
-[htu6]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D#very-first-steps
+[htu5]: https://gitlab.com/galactipy/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D
+[htu6]: https://gitlab.com/galactipy/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D#very-first-steps
 [htu7]: https://python-poetry.org/docs/
 [htu8]: https://python-poetry.org/docs/cli/#commands
 [htu9]: https://git-scm.com/book/en/v2/Git-Basics-Tagging
 [htu10]: https://github.com/python-poetry/install.python-poetry.org
 [htu11]: https://python-poetry.org/docs/#installation
-[htu12]: https://gitlab.com/manoelpqueiroz/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker
+[htu12]: https://gitlab.com/galactipy/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker
 
 [wn1]: https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
 [wn2]: https://github.com/tiangolo/typer
@@ -776,7 +776,7 @@ Here is the Markdown source for it:
 [wn33]: https://medium.com/babylon-engineering/todo-find-a-title-for-the-article-fee79708ca15
 [wn34]: https://gitmoji.dev/
 
-[r1]: https://gitlab.com/manoelpqueiroz/galactipy/-/releases
+[r1]: https://gitlab.com/galactipy/galactipy/-/releases
 [r2]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
 
 [rd1]: https://github.com/TezRomacH
