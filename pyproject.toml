@@ -9,7 +9,20 @@ name = "galactipy"
 version = "0.8.0"
 description = "Cookiecutter template for Python packages"
 readme = "README.md"
-authors = ["Manoel Pereira de Queiroz <mpq.dev@pm.me>"]
+authors = [
+  "Manoel Pereira de Queiroz <mpq.dev@pm.me>",
+  "Roman Tezikov <tez.romach@gmail.com>",
+  "Simon Otziger <3603495+volemont@users.noreply.github.com>",
+  "Alexandre Bassel <11035784+abassel@users.noreply.github.com>",
+  "Chen Shijiang <chenshijiang@evision.ai>",
+  "Sebastian Thurm <65230277+N720720@users.noreply.github.com>",
+  "Vsevolod Poletaev <poletaev.va@gmail.com>",
+  "Mou Chenghao <mouchenghao@gmail.com>",
+  "Peter Kogan <kogan.peter@gmail.com>",
+  "Philipp Tempel <git@philipptempel.me>",
+  "John Hagen <johnthagen@users.noreply.github.com>"
+]
+maintainers = ["Manoel Pereira de Queiroz <mpq.dev@pm.me>"]
 license = "MIT"
 repository = "https://gitlab.com/galactipy/galactipy"
 homepage = "https://gitlab.com/galactipy/galactipy"
