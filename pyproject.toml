@@ -11,8 +11,8 @@ description = "Cookiecutter template for Python packages"
 readme = "README.md"
 authors = ["Manoel Pereira de Queiroz <mpq.dev@pm.me>"]
 license = "MIT"
-repository = "https://gitlab.com/manoelpqueiroz/galactipy"
-homepage = "https://gitlab.com/manoelpqueiroz/galactipy"
+repository = "https://gitlab.com/galactipy/galactipy"
+homepage = "https://gitlab.com/galactipy/galactipy"
 keywords = [
   "python",
   "cookiecutter",

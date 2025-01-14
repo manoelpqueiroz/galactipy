@@ -15,7 +15,7 @@ resource_rules:
           author_member:
             source: project
             condition: not_member_of
-            source_id: manoelpqueiroz/galactipy
+            source_id: galactipy/galactipy
         actions:
           labels:
             - stale
@@ -50,7 +50,7 @@ resource_rules:
           author_member:
             source: project
             condition: not_member_of
-            source_id: manoelpqueiroz/galactipy
+            source_id: galactipy/galactipy
         actions:
           status: close
           comment: >
