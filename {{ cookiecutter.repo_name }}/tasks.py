@@ -249,7 +249,7 @@ def docker_login(c: Context, username: str, password: str) -> None:
     c.run(f"docker login {DOCKER_REGISTRY} -u {username} -p {password}")
 
 
-{% endif -%}
+{%- endif %}
 @task(iterable=["tags"])
 def docker_build(
     c: Context,
