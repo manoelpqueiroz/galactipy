@@ -132,6 +132,28 @@ changelog-commit:
       --request POST
       "$CI_API_V4_URL/projects/$CI_PROJECT_ID/repository/changelog?version=$CI_COMMIT_TAG&message=$CHANGELOG_COMMIT_MESSAGE"
 
+github-mirror-update:
+  stage: release
+  image: alpine:lastest
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.0$/i
+  needs: [changelog-commit]
+  script:
+    - apk add curl jq
+    - >
+      MR_ID=$(curl
+      --header "PRIVATE-TOKEN: $CI_API_TOKEN"
+      --data "$GH_MIRROR_MR_PAYLOAD"
+      --request POST
+      "$CI_API_V4_URL/projects/$CI_PROJECT_ID/merge_requests"
+      |
+      jq --raw-output .iid)
+    - >
+      curl
+      --header "PRIVATE-TOKEN: $CI_API_TOKEN"
+      --request PUT
+      "$CI_API_V4_URL/projects/$CI_PROJECT_ID/merge_requests/$MR_ID/merge"
+
 release-galactipy:
   stage: release
   image: registry.gitlab.com/gitlab-org/release-cli:latest
