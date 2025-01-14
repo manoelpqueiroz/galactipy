@@ -1,3 +1,14 @@
+## 0.8.1 (2025-01-14)
+
+### :rocket: Features (1 change)
+
+- [:sparkles: Add citation file to template](galactipy/galactipy@82810ebc8c496de6815418cd0e735016104413a1) ([merge request](galactipy/galactipy!36))
+
+### :package: Build System & CI/CD (2 changes)
+
+- [:construction_worker: Ensure GitHub mirroring in full releases only](galactipy/galactipy@9d3b4660e4194d3b8bbd0563330e572bbff522cd) ([merge request](galactipy/galactipy!35))
+- [:construction_worker: Create job to update github-mirror branch](galactipy/galactipy@0a4c5532c9f34b0aa179f6ca847921034c830c89) ([merge request](galactipy/galactipy!35))
+
 ## 0.8.0 (2025-01-11)
 
 ### :rocket: Features (2 changes)
