@@ -136,7 +136,7 @@ github-mirror-update:
   stage: release
   image: alpine:lastest
   rules:
-    - if: $CI_COMMIT_TAG =~ /^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
+    - if: $CI_COMMIT_TAG =~ /^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.0$/i
   needs: [changelog-commit]
   script:
     - apk add curl jq
