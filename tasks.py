@@ -2,7 +2,17 @@ import os
 from pathlib import Path
 from shutil import which
 
-from invoke import Context, UnexpectedExit, task
+try:
+    from invoke import Context, UnexpectedExit, task
+except ModuleNotFoundError as e:
+    msg = (
+        "Invoke was not found in your system. Install it through your distribution's "
+        "package manager if available, otherwise install it preferrably via pipx with "
+        "`pipx install invoke` or through `pip install invoke --user`. If you have "
+        "Invoke already installed, your virtual environment most likely is having "
+        "trouble choosing the executable to run."
+    )
+    raise ModuleNotFoundError(msg) from e
 
 PACKAGE_NAME = "galactipy"
 
