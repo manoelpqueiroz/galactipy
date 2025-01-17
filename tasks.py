@@ -1,6 +1,5 @@
-import os
-from pathlib import Path
-from shutil import which
+from utils.resolution import UNIX_OS as PTY
+from utils.resolution import get_commands, get_venv_bin
 
 try:
     from invoke import Context, UnexpectedExit, task
@@ -16,36 +15,9 @@ except ModuleNotFoundError as e:
 
 PACKAGE_NAME = "galactipy"
 
-# Windows/Unix differentiation
-BIN_DIR = "bin" if os.name != "nt" else "Scripts"
-PTY = os.name != "nt"
-
-# Virtualenv retrieval
-VENV_EV = os.environ.get("VIRTUAL_ENV", None)
-WORKON_HOME_EV = os.environ.get("WORKON_HOME", "~/.virtualenvs")
-
-ACTIVE_VENV = Path(VENV_EV) if VENV_EV is not None else Path.cwd() / "tmp"
-VENV_HOME = Path(WORKON_HOME_EV).resolve()
-
-VENV_PATH = ACTIVE_VENV if ACTIVE_VENV.exists() else (VENV_HOME / PACKAGE_NAME)
-VENV = VENV_PATH.resolve()
-
-VENV_BIN = Path(VENV) / BIN_DIR
-
-# Executable paths
-PYTHON_COMMAND = which("python")
-PYTHON_PATH = VENV_BIN / "python" if VENV_BIN.exists() else Path(PYTHON_COMMAND)
-
-POETRY_COMMAND = which("poetry")
-if POETRY_COMMAND is not None:
-    POETRY_PATH = Path(POETRY_COMMAND).resolve()
-
-elif PTY:
-    POETRY_PATH = Path("/usr/bin/poetry")
-
-else:
-    APPDATA = os.environ.get("APPDATA")
-    POETRY_PATH = Path(APPDATA) / "Python" / BIN_DIR / "poetry"
+# Default paths
+VENV_BIN = get_venv_bin(PACKAGE_NAME)
+PYTHON_PATH, POETRY_PATH = get_commands(VENV_BIN)
 
 # Reusable command templates
 if PTY:
@@ -133,8 +105,10 @@ def install(c: Context, ignore_pty: bool = False) -> None:
 
     c.run(f"{POETRY_PATH} lock -n", pty=local_pty)
     c.run(f"{POETRY_PATH} install -n", pty=local_pty)
+
+    local_venv_bin = get_venv_bin(PACKAGE_NAME)
     c.run(
-        f"{VENV_BIN}/mypy --config-file pyproject.toml --install-types "
+        f"{local_venv_bin}/mypy --config-file pyproject.toml --install-types "
         "--non-interactive",
         pty=local_pty,
     )
