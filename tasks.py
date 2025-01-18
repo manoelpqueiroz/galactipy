@@ -144,6 +144,12 @@ def test(c: Context) -> None:
 
 
 @task
+def coverage(c: Context) -> None:
+    """Generate coverage file in XML for integration with Coveralls."""
+    c.run(f"{VENV_BIN}/coverage xml", pty=PTY)
+
+
+@task
 def mypy(c: Context) -> None:
     """Run type checks with `mypy` and `pyproject.toml` configuration."""
     c.run(f"{VENV_BIN}/mypy --config-file pyproject.toml", pty=PTY)
