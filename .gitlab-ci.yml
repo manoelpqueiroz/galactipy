@@ -19,9 +19,8 @@ workflow:
       when: never
     - if: $CI_COMMIT_BRANCH =~ /^test.*/i
       when: never
-    - if: $GITLAB_USER_LOGIN =~ /^project_\d+_bot_\w+/i
+    - if: $GITLAB_USER_LOGIN =~ /^(project|group)_\d+_bot_\w+/i
       when: never
-    - if: $CI_COMMIT_TAG =~ $SEMVER_RELEASE_VERSION
     - if: $CI_COMMIT_BRANCH
 
 include:
@@ -38,6 +37,28 @@ default:
     paths:
       - $CI_PROJECT_DIR/.cache/pip
 
+.test_rules:
+  rules:
+    - if:
+      changes:
+        paths:
+          - '{{ cookiecutter.repo_name }}/**/*'
+          - hooks/*
+          - tests/*
+          - utils/*
+          - tasks.py
+          - cookiecutter.json
+          - .gitlab-ci.yml
+          - .triage-policies.yml
+        compare_to: $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_TAG
+      when: never
+    - if: $CI_PIPELINE_SOURCE == 'schedule'
+      when: never
+    - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft\:.*/i
+      when: manual
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
 .default_scripts: &default_scripts
   - invoke install --ignore-pty
   - invoke check-linter
@@ -47,48 +68,28 @@ default:
 test-py310:
   stage: test
   image: registry.gitlab.com/galactipy/docker:3.10
-  rules:
-    - if: $CI_COMMIT_TAG
-      when: never
-    - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft\:.*/i
-      when: manual
-    - if: $CI_COMMIT_BRANCH
+  extends: .test_rules
   script:
     - *default_scripts
 
 test-py311:
   stage: test
   image: registry.gitlab.com/galactipy/docker:3.11
-  rules:
-    - if: $CI_COMMIT_TAG
-      when: never
-    - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft\:.*/i
-      when: manual
-    - if: $CI_COMMIT_BRANCH
+  extends: .test_rules
   script:
     - *default_scripts
 
 test-py312:
   stage: test
   image: registry.gitlab.com/galactipy/docker:3.12
-  rules:
-    - if: $CI_COMMIT_TAG
-      when: never
-    - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft\:.*/i
-      when: manual
-    - if: $CI_COMMIT_BRANCH
+  extends: .test_rules
   script:
     - *default_scripts
 
 test-py313:
   stage: test
   image: registry.gitlab.com/galactipy/docker:3.13
-  rules:
-    - if: $CI_COMMIT_TAG
-      when: never
-    - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft\:.*/i
-      when: manual
-    - if: $CI_COMMIT_BRANCH
+  extends: .test_rules
   artifacts:
     name: coverage_$CI_COMMIT_REF_NAME_$CI_JOB_NAME_$CI_JOB_STARTED_AT
     paths:
