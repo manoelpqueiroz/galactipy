@@ -24,6 +24,16 @@ include:
     inputs:
       api_token: $CI_API_TOKEN
       stage: maintenance
+{%- if cookiecutter.create_docker %}
+  # UPDATEME if you wish to use another registry besides GitLab
+  # https://gitlab.com/explore/catalog/to-be-continuous/docker
+  - component: $CI_SERVER_FQDN/components/to-be-continuous/docker/gitlab-ci-docker@6.0.0
+    rules:
+      - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+      - if: $CI_COMMIT_TAG =~ $SEMVER_RELEASE_VERSION
+    inputs:
+      file: docker/Dockerfile
+{%- endif %}
 
 variables:
   SEMVER_RELEASE_VERSION: /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
