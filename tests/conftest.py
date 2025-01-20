@@ -109,7 +109,7 @@ def galactipy_instructions():
 
             $ git add .
             $ git commit -m ":tada: Initial commit"
-            $ git remote add origin https://www.gitlab.com/manoelpqueiroz/galactipy.git
+            $ git remote add origin https://www.gitlab.com/galactipy/galactipy.git
             $ git push -u origin master
     """
 

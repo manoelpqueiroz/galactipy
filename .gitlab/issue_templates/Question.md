@@ -19,6 +19,6 @@ Is it possible to [...]?
 
 <!-- Add any other context or screenshots about the feature request here. -->
 
-[1]: https://gitlab.com/manoelpqueiroz/galactipy/-/issues
+[1]: https://gitlab.com/galactipy/galactipy/-/issues
 
 /label ~"question" ~"needs-triage"
