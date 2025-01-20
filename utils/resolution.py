@@ -93,7 +93,7 @@ def get_commands(venv_bin: Path | None) -> list[Path]:
         python_path = Path("/usr/bin/python")
 
     elif python_command is None and not UNIX_OS:
-        python_path = Path(localappdata) / "Programs" / "Python" / "Laucher" / "py"
+        python_path = Path(localappdata) / "Programs" / "Python" / "Launcher" / "py"
 
     elif venv_bin is None:
         python_path = Path(python_command)
