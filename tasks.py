@@ -166,6 +166,7 @@ def check_safety(c: Context) -> None:
 def sweep(c: Context) -> None:
     """Perform all code checks, including tests, linting and security."""
     test(c)
+    coverage(c)
     check_linter(c)
     codestyle(c)
     mypy(c)
