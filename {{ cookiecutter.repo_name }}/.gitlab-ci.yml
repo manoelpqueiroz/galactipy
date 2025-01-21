@@ -11,10 +11,12 @@ stages:
   - deploy
   - release
   - maintenance
+{%- if cookiecutter.create_docker %}
   # Docker component exclusive stages
   - package-build
   - package-test
   - publish
+{%- endif %}
 
 # TODO Set up a bot for automated repository actions and components
 # 1. Create a Project Access Token at {{ cookiecutter.__scm_link_url }}/settings/access_tokens
