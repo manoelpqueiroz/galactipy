@@ -11,6 +11,10 @@ stages:
   - deploy
   - release
   - maintenance
+  # Docker component exclusive stages
+  - package-build
+  - package-test
+  - publish
 
 # TODO Set up a bot for automated repository actions and components
 # 1. Create a Project Access Token at {{ cookiecutter.__scm_link_url }}/settings/access_tokens
@@ -25,9 +29,9 @@ include:
       api_token: $CI_API_TOKEN
       stage: maintenance
 {%- if cookiecutter.create_docker %}
-  # UPDATEME if you wish to use another registry besides GitLab
+  # UPDATEME if you wish to use another registry besides GitLab, see documentation at:
   # https://gitlab.com/explore/catalog/to-be-continuous/docker
-  - component: $CI_SERVER_FQDN/components/to-be-continuous/docker/gitlab-ci-docker@6.0.0
+  - component: $CI_SERVER_FQDN/to-be-continuous/docker/gitlab-ci-docker@6.0.0
     rules:
       - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
       - if: $CI_COMMIT_TAG =~ $SEMVER_RELEASE_VERSION
