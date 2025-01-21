@@ -21,10 +21,8 @@ jobs:
     steps:
       - name: 🔓 Login to Docker Hub
         uses: docker/login-action@v3
-        # TODO Create the "production" environment in {% endraw %}{{ cookiecutter.__scm_link_url }}{% raw %}/settings/environments/new
-        environment: production
         with:
-          # TODO Store the DOCKERHUB_USERNAME variable in the production environment
+          # TODO Store the DOCKERHUB_USERNAME variable in the repository configuration
           username: ${{ vars.DOCKERHUB_USERNAME }}
           # TODO Set a Docker Hub Personal Access Token for publishing (https://docs.docker.com/security/for-developers/access-tokens/)
           password: ${{ secrets.DOCKERHUB_TOKEN }}
@@ -35,6 +33,6 @@ jobs:
       - name: 🛫 Build and Push Image
         uses: docker/build-push-action@v6
         with:
-          context: "{{defaultContext}}:Docker"
+          file: "docker/Dockerfile"
           push: true
           tags: {% endraw %}{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}{% raw %}:latest{% endraw %}
