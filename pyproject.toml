@@ -6,7 +6,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "galactipy"
-version = "0.8.0"
+version = "0.9.0"
 description = "Cookiecutter template for Python packages"
 readme = "README.md"
 authors = ["Manoel Pereira de Queiroz <mpq.dev@pm.me>"]
@@ -23,7 +23,7 @@ keywords = [
   "codestyle",
   "formatters",
   "python-packages",
-  "semantic-versions"
+  "semantic-versions",
 ]
 package-mode = false
 
@@ -63,7 +63,9 @@ files = ["README.md"]
 [tool.ruff]
 # https://github.com/astral-sh/ruff
 # https://docs.astral.sh/ruff/settings
-extend-exclude = ["[{][{] cookiecutter.repo_name [}][}]"] # https://github.com/astral-sh/ruff/issues/9585
+extend-exclude = [
+  "[{][{] cookiecutter.repo_name [}][}]",
+] # https://github.com/astral-sh/ruff/issues/9585
 output-format = "grouped"
 show-fixes = true
 target-version = "py39"
@@ -104,7 +106,7 @@ select = [
   "FLY",
   "YTT",
   "CPY",
-  "RUF"
+  "RUF",
 ]
 ignore = ["D200", "PT011"]
 
@@ -141,7 +143,13 @@ max-args = 6
 [tool.ruff.lint.isort]
 split-on-trailing-comma = false
 known-local-folder = ["hooks"]
-sections.typing = ["typing", "types", "typing_extensions", "mypy", "mypy_extensions"]
+sections.typing = [
+  "typing",
+  "types",
+  "typing_extensions",
+  "mypy",
+  "mypy_extensions",
+]
 sections.testing = ["pytest", "tests"]
 section-order = [
   "future",
@@ -150,17 +158,14 @@ section-order = [
   "third-party",
   "first-party",
   "local-folder",
-  "testing"
+  "testing",
 ]
 
 
 [tool.mypy]
 # https://github.com/python/mypy
 # https://mypy.readthedocs.io/en/latest/config_file.html#using-a-pyproject-toml-file
-files = [
-  "hooks",
-  "tests"
-]
+files = ["hooks", "tests"]
 pretty = true
 show_traceback = true
 color_output = true
@@ -187,7 +192,7 @@ warn_unused_ignores = true
 [tool.pytest.ini_options]
 # https://docs.pytest.org/en/6.2.x/customize.html#pyproject-toml
 # Directories that are not visited by pytest collector:
-norecursedirs =[
+norecursedirs = [
   "{{ cookiecutter.repo_name }}",
   "hooks",
   "*.egg",
@@ -197,9 +202,13 @@ norecursedirs =[
   "docs",
   ".tox",
   ".git",
-  "__pycache__"
+  "__pycache__",
 ]
-doctest_optionflags = ["NUMBER", "NORMALIZE_WHITESPACE", "IGNORE_EXCEPTION_DETAIL"]
+doctest_optionflags = [
+  "NUMBER",
+  "NORMALIZE_WHITESPACE",
+  "IGNORE_EXCEPTION_DETAIL",
+]
 timeout = 10
 
 # Extra options:
@@ -209,23 +218,18 @@ addopts = [
   "--doctest-modules",
   "--doctest-continue-on-failure",
   "--cov=hooks",
-  "--cov-config=pyproject.toml"
+  "--cov-config=pyproject.toml",
 ]
 
 
 [tool.coverage.run]
 source = ["tests"]
 branch = true
-omit = [
-  "test_template.py"
-]
+omit = ["test_template.py"]
 
 
 [tool.coverage.report]
-exclude_also = [
-  "def main",
-  "if __name__ == .__main__.:"
-]
+exclude_also = ["def main", "if __name__ == .__main__.:"]
 fail_under = 90
 show_missing = true
 

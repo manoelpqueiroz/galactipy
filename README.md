@@ -29,7 +29,7 @@ _Expand your project structure from atoms of code to **galactic** dimensions._ :
 ## TL;DR
 
 ```bash
-cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.8.0
+cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.9.0
 ```
 
 > All you need is the latest version of cookiecutter! :wink:
@@ -64,24 +64,24 @@ However, not everything that is available for GitHub users is available to GitLa
 
 Below is a comparison between the features available in this package depending on which platform you choose to host your project:
 
-|          **Feature**          |     **GitLab**     |     **GitHub**     | **Observations**                                                                                                                                                                                             |
-|:-----------------------------:|:------------------:|:------------------:|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Issue templates               | :white_check_mark: | :white_check_mark: | Both options feature automatic labels, but GitHub has an extra configuration to prevent the creation of empty issues. |
-| Merge/pull requests templates | :white_check_mark: | :white_check_mark: | |
-| Project conditions checks     | :white_check_mark: | :white_check_mark: | A basic workflow to install the package and run tests, check codestyle and safety. |
-| Publication to TestPyPI       | :white_check_mark: | :white_check_mark: | For GitHub, the workflow uses the official [PyPI Publish action][ft21], while GitLab CI uses the [PyPI API][ft22]. |
-| Publication to PyPI           | :white_check_mark: | :white_check_mark: | For GitHub, trusted publishing is used with the PyPI Publish action, while GitLab CI uses the PyPI API. |
-| Image publication             | :white_check_mark: | :white_check_mark: | For GitHub, images are pushed to [Docker Hub][ft23], while GitLab CI pushes images to the repository's [Container Registry][ft24] by default (and can be reconfigured). |
-| Snapshot images               | :white_check_mark: | :x:                | For GitLab, the [Docker][ft25] CI/CD component is used and allows for pushing snapshot images for testing when a Merge Request is open. |
-| Dockerfile linting            | :white_check_mark: | :x:                | The Docker GitLab CI/CD component includes a job for linting the Dockerfile with [Hadolint][ft26]. |
-| Image vulnerability analysis  | :white_check_mark: | :x:                | The Docker GitLab CI/CD component uses [Trivy][ft27] to scan the image for vulnerabilities. |
-| SBOM files                    | :white_check_mark: | :x:                | The Docker GitLab CI/CD component generates a bill of materials with [CycloneDX][ft28]. |
-| Stale issues                  | :white_check_mark: | :white_check_mark: | GitLab rules are more flexible, marking stale issues only for those not opened by project members. |
-| Greetings workflow            | :x:                | :white_check_mark: | GitHub provides workflows to automatically reply to issues and merge requests with the [First Interaction][ft29] action. |
-| Dependabot                    | :x:                | :white_check_mark: | [Dependabot][ft30] is a feature now incorporated into GitHub Security. See [here][ft31] how to enable it. |
-| Release drafter               | :x:                | :white_check_mark: | [Release Drafter][ft32] is a custom workflow available on GitHub Marketplace. You may see the list of labels in [`release-drafter.yml`][ft33]. Works perfectly with [Semantic Versions][ft34] specification. |
-| Changelog configuration       | :white_check_mark: | :x:                | GitLab provides automatic changelog updates through their [API][ft35]. You may modify the template in [`changelog_config.yml`][ft36]. |
-| CI control over pushed tags   | :white_check_mark: | :warning:          | GitLab provides full control for tags pushed to the repository using [regex][ft37], while GitHub Actions is more restricted in how it [filters][ft38] workflows to run, and can only apply these filters at the top level, limiting workflow customization. |
+|          **Feature**          |     **GitLab**     |     **GitHub**     | **Observations**                                                                                                                                                                                                                                            |
+| :---------------------------: | :----------------: | :----------------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|        Issue templates        | :white_check_mark: | :white_check_mark: | Both options feature automatic labels, but GitHub has an extra configuration to prevent the creation of empty issues.                                                                                                                                       |
+| Merge/pull requests templates | :white_check_mark: | :white_check_mark: |                                                                                                                                                                                                                                                             |
+|   Project conditions checks   | :white_check_mark: | :white_check_mark: | A basic workflow to install the package and run tests, check codestyle and safety.                                                                                                                                                                          |
+|    Publication to TestPyPI    | :white_check_mark: | :white_check_mark: | For GitHub, the workflow uses the official [PyPI Publish action][ft21], while GitLab CI uses the [PyPI API][ft22].                                                                                                                                          |
+|      Publication to PyPI      | :white_check_mark: | :white_check_mark: | For GitHub, trusted publishing is used with the PyPI Publish action, while GitLab CI uses the PyPI API.                                                                                                                                                     |
+|       Image publication       | :white_check_mark: | :white_check_mark: | For GitHub, images are pushed to [Docker Hub][ft23], while GitLab CI pushes images to the repository's [Container Registry][ft24] by default (and can be reconfigured).                                                                                     |
+|        Snapshot images        | :white_check_mark: |        :x:         | For GitLab, the [Docker][ft25] CI/CD component is used and allows for pushing snapshot images for testing when a Merge Request is open.                                                                                                                     |
+|      Dockerfile linting       | :white_check_mark: |        :x:         | The Docker GitLab CI/CD component includes a job for linting the Dockerfile with [Hadolint][ft26].                                                                                                                                                          |
+| Image vulnerability analysis  | :white_check_mark: |        :x:         | The Docker GitLab CI/CD component uses [Trivy][ft27] to scan the image for vulnerabilities.                                                                                                                                                                 |
+|          SBOM files           | :white_check_mark: |        :x:         | The Docker GitLab CI/CD component generates a bill of materials with [CycloneDX][ft28].                                                                                                                                                                     |
+|         Stale issues          | :white_check_mark: | :white_check_mark: | GitLab rules are more flexible, marking stale issues only for those not opened by project members.                                                                                                                                                          |
+|      Greetings workflow       |        :x:         | :white_check_mark: | GitHub provides workflows to automatically reply to issues and merge requests with the [First Interaction][ft29] action.                                                                                                                                    |
+|          Dependabot           |        :x:         | :white_check_mark: | [Dependabot][ft30] is a feature now incorporated into GitHub Security. See [here][ft31] how to enable it.                                                                                                                                                   |
+|        Release drafter        |        :x:         | :white_check_mark: | [Release Drafter][ft32] is a custom workflow available on GitHub Marketplace. You may see the list of labels in [`release-drafter.yml`][ft33]. Works perfectly with [Semantic Versions][ft34] specification.                                                |
+|    Changelog configuration    | :white_check_mark: |        :x:         | GitLab provides automatic changelog updates through their [API][ft35]. You may modify the template in [`changelog_config.yml`][ft36].                                                                                                                       |
+|  CI control over pushed tags  | :white_check_mark: |     :warning:      | GitLab provides full control for tags pushed to the repository using [regex][ft37], while GitHub Actions is more restricted in how it [filters][ft38] workflows to run, and can only apply these filters at the top level, limiting workflow customization. |
 
 ### Open source community features
 
@@ -104,7 +104,7 @@ pip install -U cookiecutter
 then go to a directory where you want to create your project and run:
 
 ```bash
-cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.8.0
+cookiecutter gl:manoelpqueiroz/galactipy --checkout v0.9.0
 ```
 
 ### Input variables
@@ -113,25 +113,25 @@ Cookiecutter will ask you to fill some variables in order to generate the files 
 
 The input variables, with their default values, are as follows:
 
-|       **Parameter**       |      **Default value**      | **Description**                                                                                                                                                     |
-|:-------------------------:|:---------------------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `project_name`            | `Python Project`            | A suitable name by which people will refer to, you are free to name it however you wish to. |
-| `repo_name`               | based on `project_name`     | Name of the repository to develop the project on. [Check the availability of possible names][htu1] before creating the project. |
-| `package_name`            | based on `project_name`     | PyPI-compliant Python package name. [Check the availability of possible names][htu1] before creating the project. |
-| `project_description`     | based on `project_name`     | A brief description of your project. |
-| `version`                 | `0.1.0`                     | Initial version of the package. Make sure it follows the [Semantic Versions][ft34] specification. |
-| `author`                  | `Manoel Pereira de Queiroz` | Name of the author or organisation. Used to generate `LICENCE` and to specify ownership in `pyproject.toml`. |
-| `scm_platform`            | `GitLab`                    | One of `GitLab` and `GitHub`. Depending on the choice you will have [different features][htu2] to work with. |
-| `scm_username`            | `manoelpqueiroz`            | GitHub or GitLab username for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for either platform. |
-| `email`                   | based on `scm_username`     | Email for `CODE_OF_CONDUCT.md`, `SECURITY.md` files and to specify the ownership of the project in `pyproject.toml`. |
-| `licence`                 | `MIT`                       | One of `MIT`, `BSD-3`, `GNU GPL v3.0`, `GNU AGLP v3.0`, `GNU LGPL v3.0`, `Mozilla Public License 2.0` and `Apache Software License 2.0`, or `Not open source`. |
-| `minimal_python_version`  | `3.9`                       | Minimal Python version. All versions since `3.9` are available to choose. It is used for builds, pipelines and formatters. |
-| `use_ruff`                | `True`                      | :small_red_triangle: Option to use [`ruff`][ft4] as the code formatter, along with a pre-commit hook. |
-| `line_length`             | 88                          | The max length per line, dismiss if `use_ruff` is not used. NOTE: This value must be between 50 and 300. |
-| `docstring_style`         | `numpy`                     | One of `numpy`, `pep257` or `google`, dismiss if `use_ruff` is not used. You can choose `other` to disable checks on your docstrings. |
-| `docstring_length`        | based on `line_lenght`      | The max length for docstrings, dismiss if `use_ruff` is not used. NOTE: This value must be between 50 and 300 and lower of equal to `line_lenght`. |
-| `create_cli`              | `True`                      | :small_red_triangle: Option to create a simple CLI application with [`Typer`][htu3] and [`Rich`][htu4] libraries. |
-| `create_docker`           | `True`                      | :small_red_triangle: Option to create a [Dockerfile][ft19] to build an image for your project. |
+|      **Parameter**       |      **Default value**      | **Description**                                                                                                                                                |
+| :----------------------: | :-------------------------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|      `project_name`      |      `Python Project`       | A suitable name by which people will refer to, you are free to name it however you wish to.                                                                    |
+|       `repo_name`        |   based on `project_name`   | Name of the repository to develop the project on. [Check the availability of possible names][htu1] before creating the project.                                |
+|      `package_name`      |   based on `project_name`   | PyPI-compliant Python package name. [Check the availability of possible names][htu1] before creating the project.                                              |
+|  `project_description`   |   based on `project_name`   | A brief description of your project.                                                                                                                           |
+|        `version`         |           `0.1.0`           | Initial version of the package. Make sure it follows the [Semantic Versions][ft34] specification.                                                              |
+|         `author`         | `Manoel Pereira de Queiroz` | Name of the author or organisation. Used to generate `LICENCE` and to specify ownership in `pyproject.toml`.                                                   |
+|      `scm_platform`      |          `GitLab`           | One of `GitLab` and `GitHub`. Depending on the choice you will have [different features][htu2] to work with.                                                   |
+|      `scm_username`      |      `manoelpqueiroz`       | GitHub or GitLab username for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for either platform.                               |
+|         `email`          |   based on `scm_username`   | Email for `CODE_OF_CONDUCT.md`, `SECURITY.md` files and to specify the ownership of the project in `pyproject.toml`.                                           |
+|        `licence`         |            `MIT`            | One of `MIT`, `BSD-3`, `GNU GPL v3.0`, `GNU AGLP v3.0`, `GNU LGPL v3.0`, `Mozilla Public License 2.0` and `Apache Software License 2.0`, or `Not open source`. |
+| `minimal_python_version` |            `3.9`            | Minimal Python version. All versions since `3.9` are available to choose. It is used for builds, pipelines and formatters.                                     |
+|        `use_ruff`        |           `True`            | :small_red_triangle: Option to use [`ruff`][ft4] as the code formatter, along with a pre-commit hook.                                                          |
+|      `line_length`       |             88              | The max length per line, dismiss if `use_ruff` is not used. NOTE: This value must be between 50 and 300.                                                       |
+|    `docstring_style`     |           `numpy`           | One of `numpy`, `pep257` or `google`, dismiss if `use_ruff` is not used. You can choose `other` to disable checks on your docstrings.                          |
+|    `docstring_length`    |   based on `line_lenght`    | The max length for docstrings, dismiss if `use_ruff` is not used. NOTE: This value must be between 50 and 300 and lower of equal to `line_lenght`.             |
+|       `create_cli`       |           `True`            | :small_red_triangle: Option to create a simple CLI application with [`Typer`][htu3] and [`Rich`][htu4] libraries.                                              |
+|     `create_docker`      |           `True`            | :small_red_triangle: Option to create a [Dockerfile][ft19] to build an image for your project.                                                                 |
 
 > :eight_spoked_asterisk: Input variables marked with :small_red_triangle: are boolean variables, you can dismiss those by typing either `0`, `false`, `f`, `no`, `n` or `off`.
 
@@ -562,16 +562,16 @@ We use [`GitLab Changelog`][ft35] entries to track changes. You can categorise c
 
 ### List of trailers and corresponding categories
 
-|            **Git trailer**            |        **Category in CHANGELOG**       |
+|            **Git trailer**            |       **Category in CHANGELOG**        |
 | :-----------------------------------: | :------------------------------------: |
-| `enhancement`, `feature`              | :rocket: Features                      |
-| `bug`, `refactoring`, `bugfix`, `fix` | :wrench: Fixes & Refactoring           |
-| `build`, `ci`, `testing`              | :package: Build System & CI/CD         |
-| `breaking`                            | :boom: Breaking Changes                |
-| `hooks`, `project-config`             | :gear: Internals                       |
-| `template-config`                     | :construction_site: Template Internals |
-| `documentation`                       | :memo: Documentation                   |
-| `dependencies`                        | :arrow_up: Dependencies updates        |
+|       `enhancement`, `feature`        |           :rocket: Features            |
+| `bug`, `refactoring`, `bugfix`, `fix` |      :wrench: Fixes & Refactoring      |
+|       `build`, `ci`, `testing`        |     :package: Build System & CI/CD     |
+|              `breaking`               |        :boom: Breaking Changes         |
+|       `hooks`, `project-config`       |            :gear: Internals            |
+|           `template-config`           | :construction_site: Template Internals |
+|            `documentation`            |          :memo: Documentation          |
+|            `dependencies`             |    :arrow_up: Dependencies updates     |
 
 ## :national_park: Roadmap
 
