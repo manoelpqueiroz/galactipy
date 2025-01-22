@@ -48,7 +48,14 @@ def template_tree(tmp_path):
             "feature_request.md",
             "question.md",
         ],
-        workflows=["build.yml", "greetings.yml", "release-drafter.yml"],
+        workflows=[
+            "test.yml",
+            "greetings.yml",
+            "release-drafter.yml",
+            "docker.yml",
+            "pypi-prod.yml",
+            "pypi-test.yml",
+        ],
     )
     bulk_file_creation(
         gitlab_dir,
@@ -73,6 +80,9 @@ def removal_tree(tmp_path):
         docs=[".gitkeep"],
         tests=["test_hello.py"],
     )
+
+    github_dir = tmp_path / ".github"
+    bulk_file_creation(github_dir, workflows=["docker.yml"])
 
     pyproject_file = tmp_path / "pyproject.toml"
     tests_directory = tmp_path / "tests"
