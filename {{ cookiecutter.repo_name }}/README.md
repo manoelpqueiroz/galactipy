@@ -17,18 +17,23 @@
 [![Contributions Welcome][bp8]][bp9]
 [![Open issues][bscm3]][bp10]
 [![Merge Requests][bscm4]][bscm5]
-
+{%+ if cookiecutter.use_bdd %}
+[![BDD][bbbd1]][bbbd2]
+{%- endif %}
 [![Poetry][bp11]][bp12]
-[![Bandit][bp13]][bp14]
-[![Pre-commit][bp15]][bp16]
-[![Editorconfig][bp17]][bp18]
 {%- if cookiecutter.use_ruff %}
 [![Code style: Ruff][bfo1]][bfo2]
-[![isort][bfo3]][bfo4]
 {%- endif %}
 {%- if cookiecutter.use_ruff and cookiecutter.docstring_style in ['numpy', 'google', 'pep257'] %}
 [![Docstrings][bli1]][bli2]
 {%- endif %}
+
+[![Pre-commit][bp13]][bp14]
+[![Bandit][bp15]][bp16]
+{%- if cookiecutter.use_ruff %}
+[![isort][bfo3]][bfo4]
+{%- endif %}
+[![Editorconfig][bp17]][bp18]
 {%+ if cookiecutter.licence != 'nos' %}
 <!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
 [![OpenSSF Best Practices][boss1]][boss2] -->
@@ -470,6 +475,64 @@ invoke cleanup
 </p>
 </details>
 
+{% if cookiecutter.use_bdd %}
+# Behaviour-Driven Development
+
+A `features` directory is placed under `tests`, with [`pytest-bdd`][bdd1] added as a dependency. You should create `.feature` files inside this folder to specify them and describe scenarios using the [Gherkin][bdd2] language:
+
+```
+# tests/features/divide.feature
+Feature: Divide numbers
+  Scenario: Full division
+    When I ask the calculator to divide "21" by "7"
+    Then the screen should return "3" as an integer
+
+  Scenario: Division by zero
+    When I ask the calculator to divide any number by "0"
+    Then the screen should return an error message
+```
+
+You would then use `pytest-bdd` to wrap each scenario referred in the feature file as a step by step validation:
+
+```py
+from mypackage import divide
+from pytest_bdd import scenario, when, then
+
+@scenario("divide.feature", "Full Division")
+def test_full_division():
+    pass
+
+@when("I ask the calculator to divide \"21\" by \"7\"")
+def divide_21_7():
+    calculation = divide(21, 7)
+
+    return calculation
+
+@then("The screen should return \"3\" as an integer")
+def return_integer():
+    assert calculation.display == "3"
+
+
+@scenario("divide.feature", "Division by Zero")
+def test_zero_division():
+    pass
+
+@when("I ask the calculator to divide any number by \"0\"")
+def divide_by_zero():
+    calculation = divide(15, 0)
+
+    return calculation
+
+@then("The screen should return an error message")
+def return_integer():
+    assert calculation.display == "Error"
+```
+
+Then you can simply use `pytest` as you normally would to run the test suite and check the results.
+
+For more information on behaviour-driven development and more advanced cases, please check out the [Cucumber documentation][bdd3].
+{% endif %}
+
 ## :chart_with_upwards_trend: Releases
 
 You can see the list of available releases on the [{{ cookiecutter.scm_platform }} Releases][r1] page.
@@ -538,10 +601,10 @@ This project was generated with [`galactipy`][bp7].
 [bp10]: {{ cookiecutter.__scm_link_url }}/issues
 [bp11]: https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json&style=for-the-badge
 [bp12]: https://python-poetry.org/
-[bp13]: https://img.shields.io/badge/security-bandit-yellow?style=for-the-badge
-[bp14]: https://bandit.readthedocs.io/en/latest/
-[bp15]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge
-[bp16]: {{ cookiecutter.__scm_link_url }}/blob/master/.pre-commit-config.yaml
+[bp13]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge
+[bp14]: {{ cookiecutter.__scm_link_url }}/blob/master/.pre-commit-config.yaml
+[bp15]: https://img.shields.io/badge/security-bandit-yellow?style=for-the-badge
+[bp16]: https://bandit.readthedocs.io/en/latest/
 [bp17]: https://img.shields.io/badge/Editor%20Config-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
 [bp18]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
 {%+ if cookiecutter.licence != 'nos' %}
@@ -551,7 +614,7 @@ This project was generated with [`galactipy`][bp7].
 [blic1]: https://img.shields.io/github/license/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}?style=for-the-badge
 {%- endif %}
 [blic2]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
-[blic3]: https://img.shields.io/badge/%F0%9F%93%A6-semantic%20versions-4053D6?style=for-the-badge
+[blic3]: https://img.shields.io/badge/semantic%20versions-4053D6?style=for-the-badge&logo=semver
 
 <!-- UPDATEME by replacing `1` with your project's index at https://www.bestpractices.dev/en
 [boss1]: https://img.shields.io/cii/level/1?style=for-the-badge&logo=linux-foundation&label=openssf%20best%20practices
@@ -643,8 +706,8 @@ This project was generated with [`galactipy`][bp7].
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
 [bscm1]: https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
 [bscm2]: https://img.shields.io/github/v/release/{{ cookiecutter.scm_username}}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=semantic-release&color=347d39
-[bscm3]: https://img.shields.io/github/issues/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}?style=for-the-badge&color=347d39
-[bscm4]: https://img.shields.io/github/issues-pr/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}?style=for-the-badge&color=347d39
+[bscm3]: https://img.shields.io/github/issues/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}?style=for-the-badge&color=bc4c00
+[bscm4]: https://img.shields.io/github/issues-pr/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}?style=for-the-badge&color=1f883d
 [bscm5]: {{ cookiecutter.__scm_link_url }}/pulls
 [bscm6]: https://img.shields.io/github/actions/workflow/status/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}/build.yml?style=for-the-badge&logo=github
 [bscm7]: {{ cookiecutter.__scm_link_url }}/actions/workflows/build.yml
@@ -695,4 +758,12 @@ This project was generated with [`galactipy`][bp7].
 [bli1]: https://img.shields.io/badge/docstrings-pep257-FFD43B?style=for-the-badge&labelColor=3776ab
 [bli2]: https://peps.python.org/pep-0257/
 {%- endif %}
+{%+ endif %}
+{%- if cookiecutter.use_bdd %}
+[bbbd1]: https://img.shields.io/badge/BDD-23D96C?style=for-the-badge&logo=cucumber&logoColor=white
+[bbbd2]: https://cucumber.io/
+
+[bdd1]: https://pytest-bdd.readthedocs.io/en/latest/
+[bdd2]: https://cucumber.io/docs/gherkin/reference
+[bdd3]: https://cucumber.io/docs
 {%- endif %}
