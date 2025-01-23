@@ -1,67 +1,62 @@
-{%- set licence_classifiers = {
-    'MIT': 'License :: OSI Approved :: MIT License',
-    'BSD-3': 'License :: OSI Approved :: BSD License',
-    'GNU GPL v3.0': 'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
-    'GNU AGPL v3.0': 'License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)',
-    'GNU LGPL v3.0': 'License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)',
-    'Mozilla Public License 2.0': 'License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)',
-    'Apache Software License 2.0': 'License :: OSI Approved :: Apache Software License',
-    'nos': 'License :: Other/Proprietary License'
-} -%}
-{%- set list_python_version = cookiecutter.minimal_python_version.split('.') | map('int') | list %}
 # Poetry pyproject.toml: https://python-poetry.org/docs/pyproject/
+[project]
+name = "{{ cookiecutter.repo_name }}"
+version = "{{ cookiecutter.version }}"
+description = "{{ cookiecutter.project_description }}"
+{%- if cookiecutter.licence == 'nos' %}
+license = "Proprietary"
+{%- else %}
+license = {% raw %}{{% endraw %} text = "{{ cookiecutter.licence }}" {% raw %}}{% endraw %}
+{%- endif %}
+readme = "README.md"
+requires-python = ">={{ cookiecutter.minimal_python_version }}"
+authors = [
+  {% raw %}{{% endraw %} name = "{{ cookiecutter.author }}", email = "{{ cookiecutter.email }}" {% raw %}}{% endraw %},
+]
+maintainers = [
+  {% raw %}{{% endraw %} name = "{{ cookiecutter.author }}", email = "{{ cookiecutter.email }}" {% raw %}}{% endraw %},
+]
+# Keywords description https://python-poetry.org/docs/pyproject/#keywords
+keywords = []  # UPDATEME with relevant keywords
+dynamic = ["classifiers"]
+{%- if cookiecutter.create_cli %}
+# Entry points for the package https://python-poetry.org/docs/pyproject/#scripts
+"{{ cookiecutter.repo_name }}" = "{{ cookiecutter.package_name }}.__main__:app"
+{%- endif %}
+
+[project.urls]
+repository = "{{ cookiecutter.__scm_base_url }}"
+homepage = "{{ cookiecutter.__scm_base_url }}"
+"Work Item Tracker" = "{{ cookiecutter.__scm_link_url }}/issues"
+"Contributing Guidelines" = "{{ cookiecutter.__scm_link_url }}/tree/master/CONTRIBUTING.md"
+
+
 [build-system]
 requires = ["poetry_core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 
 [tool.poetry]
-name = "{{ cookiecutter.repo_name }}"
-version = "{{ cookiecutter.version }}"
-description = "{{ cookiecutter.project_description }}"
-readme = "README.md"
-authors = ["{{ cookiecutter.author }} <{{ cookiecutter.email }}>"]
-{%- if cookiecutter.licence == 'nos' %}
-license = "Proprietary"
-{%- else %}
-license = "{{ cookiecutter.licence }}"
-{%- endif %}
-repository = "{{ cookiecutter.__scm_base_url }}"
-homepage = "{{ cookiecutter.__scm_base_url }}"
+requires-poetry = ">=2.0"
 packages = [
   {% raw %}{{% endraw %}include = "{{ cookiecutter.package_name }}"{% raw %}}{% endraw %}
 ]
 
-
-# Keywords description https://python-poetry.org/docs/pyproject/#keywords
-keywords = []  # UPDATEME with relevant keywords
-
-
 # Pypi classifiers: https://pypi.org/classifiers/
-classifiers = [  # UPDATEME with additional classifiers; remove last classifier to allow publishing on PyPI
+classifiers = [  # UPDATEME with additional classifiers
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Developers",
   "Operating System :: OS Independent",
   "Topic :: Software Development :: Libraries :: Python Modules",
-  "{{ licence_classifiers[cookiecutter.licence] }}",
-  "Programming Language :: Python :: 3",
-  {%- for version in cookiecutter._all_python_version if version[0] >= list_python_version[0] and version[1] >= list_python_version[1] %}
-  "Programming Language :: Python :: {{ version[0] }}.{{ version[1] }}",{% endfor %}
-  "Private :: Do Not Upload"
+  "Private :: Do Not Upload"  # TODO Remove classifier to allow publishing on PyPI
 ]
 
-{%+ if cookiecutter.create_cli %}
-[tool.poetry.scripts]
-# Entry points for the package https://python-poetry.org/docs/pyproject/#scripts
-"{{ cookiecutter.repo_name }}" = "{{ cookiecutter.package_name }}.__main__:app"
-
-{% endif %}
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.minimal_python_version }}"
 {%+ if cookiecutter.create_cli %}
 typer = {extras = ["all"], version = "^0.7.0"}
 rich = "^12.6.0"
-{%+ endif %}
+{%- endif %}
 
 [tool.poetry.group.dev.dependencies]
 invoke = "^2.2.0"
@@ -88,7 +83,7 @@ coverage = "^7.3.0"
 
 
 [[tool.poetry_bumpversion.replacements]]
-files = ["README.md"]
+files = ["README.md"{% if cookiecutter.create_docker %}, "Dockerfile"{% endif %}]
 
 {%+ if cookiecutter.use_ruff %}
 [tool.ruff]
@@ -139,7 +134,7 @@ select = [  # UPDATEME with additional rules from https://docs.astral.sh/ruff/ru
   "FLY",
   "YTT",
   "CPY",
-  "RUF"
+  "RUF",
 ]
 ignore = ["D200"]
 task-tags = [
