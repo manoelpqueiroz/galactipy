@@ -2,7 +2,7 @@ from utils.resolution import UNIX_OS as PTY
 from utils.resolution import get_commands, get_venv_bin
 
 try:
-    from invoke import Context, UnexpectedExit, task
+    from invoke import Context, task
 except ModuleNotFoundError as e:
     msg = (
         "Invoke was not found in your system. Install it through your distribution's "
@@ -50,11 +50,7 @@ def poetry_download(c: Context) -> None:
     and the script instructions in https://install.python-poetry.org/.
 
     """
-    c.run(
-        "curl -sSL https://install.python-poetry.org | "
-        f"{PYTHON_PATH} - --version 1.8.5",
-        pty=PTY,
-    )
+    c.run(f"curl -sSL https://install.python-poetry.org | {PYTHON_PATH} -", pty=PTY)
 
 
 @task
@@ -64,25 +60,6 @@ def poetry_remove(c: Context) -> None:
         f"curl -sSL https://install.python-poetry.org | {PYTHON_PATH} - --uninstall",
         pty=PTY,
     )
-
-
-@task
-def poetry_plugins(c: Context) -> None:
-    """Install Poetry plugins through the `self add` command."""
-    try:
-        c.run(
-            f"{POETRY_PATH} self add poetry-plugin-up poetry-plugin-export "
-            "poetry-bumpversion",
-            pty=PTY,
-        )
-
-    except UnexpectedExit as e:
-        msg = (
-            "Command errored with return code 1. Most likely Poetry is externally "
-            "managed and `poetry-plugin-up` should be installed via your package "
-            "manager."
-        )
-        raise PoetryPluginError(msg) from e
 
 
 @task
