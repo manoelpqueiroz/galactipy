@@ -58,21 +58,21 @@ cookiecutter = "^2.6.0"
 
 
 [tool.poetry.group.dev.dependencies]
-mypy = "^1.13.0"
+mypy = "^1.14.1"
 mypy-extensions = "^1.0.0"
-pre-commit = "^4.0.1"
-bandit = "^1.7.10"
-safety = "~3.0"
+pre-commit = "^4.1.0"
+bandit = "^1.8.2"
+safety = "~3.2.14"
 
-ruff = "^0.4.3"
+ruff = "^0.9.2"
 
-pytest = "^8.3.3"
+pytest = "^8.3.4"
 pytest-cov = "^6.0.0"
 pytest-cookies = "^0.7.0"
 pytest-timeout = "^2.3.1"
 pytest-sugar = "^1.0.0"
 pytest-mock = "^3.14.0"
-coverage = "^7.6.4"
+coverage = "^7.6.10"
 
 invoke = "^2.2.0"
 
@@ -206,7 +206,6 @@ implicit_optional = false
 show_column_numbers = true
 show_error_context = true
 strict_equality = true
-no_warn_no_return = false
 warn_redundant_casts = true
 warn_return_any = true
 warn_unreachable = true
