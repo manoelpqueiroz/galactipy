@@ -6,13 +6,8 @@ from importlib import metadata
 from {{ cookiecutter.package_name }}.example import hello
 
 
-def _get_version() -> str:
-    try:
-        return metadata.version("{{ cookiecutter.repo_name }}")
-    except ModuleNotFoundError:  # pragma: no cover
-        return "unknown"
-
-
-__version__ = _get_version()
+# Placeholder for poetry-dynamic-versioning, do not change:
+# https://github.com/mtkennerly/poetry-dynamic-versioning#installation
+__version__ = "0.0.0"
 
 __all__ = ['hello']

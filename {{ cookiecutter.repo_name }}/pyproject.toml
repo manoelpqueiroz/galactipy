@@ -1,7 +1,6 @@
 # Poetry pyproject.toml: https://python-poetry.org/docs/pyproject/
 [project]
 name = "{{ cookiecutter.repo_name }}"
-version = "{{ cookiecutter.version }}"
 description = "{{ cookiecutter.project_description }}"
 {%- if cookiecutter.licence == 'nos' %}
 license = "Proprietary"
@@ -18,7 +17,7 @@ maintainers = [
 ]
 # Keywords description https://python-poetry.org/docs/pyproject/#keywords
 keywords = []  # UPDATEME with relevant keywords
-dynamic = ["classifiers"]
+dynamic = ["version", "classifiers"]
 {%- if cookiecutter.create_cli %}
 # Entry points for the package https://python-poetry.org/docs/pyproject/#scripts
 "{{ cookiecutter.repo_name }}" = "{{ cookiecutter.package_name }}.__main__:app"
@@ -32,12 +31,15 @@ homepage = "{{ cookiecutter.__scm_base_url }}"
 
 
 [build-system]
-requires = ["poetry_core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["poetry_core>=1.0.0", "poetry-dynamic-versioning>=1.7.1,<2.0.0"]
+build-backend = "poetry_dynamic_versioning.backend"
 
 
 [tool.poetry]
 requires-poetry = ">=2.0"
+# Placeholder for poetry-dynamic-versioning, do not change:
+# https://github.com/mtkennerly/poetry-dynamic-versioning#installation
+version = "0.0.0"
 packages = [
   {% raw %}{{% endraw %}include = "{{ cookiecutter.package_name }}"{% raw %}}{% endraw %}
 ]
@@ -51,10 +53,11 @@ classifiers = [  # UPDATEME with additional classifiers
   "Private :: Do Not Upload"  # TODO Remove classifier to allow publishing on PyPI
 ]
 
+
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.minimal_python_version }}"
 {%+ if cookiecutter.create_cli %}
-typer = {extras = ["all"], version = "^0.7.0"}
+typer = { extras = ["all"], version = "^0.7.0" }
 rich = "^12.6.0"
 {%- endif %}
 
@@ -82,8 +85,14 @@ pytest-pikachu = "^1.0.0"
 coverage = "^7.3.0"
 
 
-[[tool.poetry_bumpversion.replacements]]
-files = ["README.md"{% if cookiecutter.create_docker %}, "Dockerfile"{% endif %}]
+[tool.poetry.requires-plugins]
+poetry-dynamic-versioning = { version = "^1.7.1", extras = ["plugin"] }
+poetry-plugin-export = "^1.9.0"
+poetry-plugin-up = "^0.9.0"
+poetry-plugin-bundle = "^1.5.0"
+
+[tool.poetry-dynamic-versioning]
+enable = true
 
 {%+ if cookiecutter.use_ruff %}
 [tool.ruff]
