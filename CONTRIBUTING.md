@@ -55,8 +55,8 @@ You can contribute by spreading a word about this template. It would also be a h
 contribution to write a short article on how you are using it in your projects. You can
 also share your best practices with us so we can continuously improve the project!
 
-[1]: https://gitlab.com/manoelpqueiroz/galactipy
-[2]: https://github.com/manoelpqueiroz/galactipy
-[3]: https://gitlab.com/manoelpqueiroz/galactipy/-/issues
+[1]: https://gitlab.com/galactipy/galactipy
+[2]: https://github.com/galactipy/galactipy
+[3]: https://gitlab.com/galactipy/galactipy/-/issues
 [4]: https://github.com/python-poetry/poetry
 [5]: https://pre-commit.com/

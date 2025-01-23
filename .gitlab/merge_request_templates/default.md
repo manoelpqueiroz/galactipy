@@ -27,5 +27,5 @@
 - [ ] I've written tests for all new methods and classes that I created;
 - [ ] I've written the docstring in `Numpy` format for all the methods and classes that I used.
 
-[1]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/CODE_OF_CONDUCT.md
-[2]: https://gitlab.com/manoelpqueiroz/galactipy/-/blob/master/CONTRIBUTING.md
+[1]: https://gitlab.com/galactipy/galactipy/-/blob/master/CODE_OF_CONDUCT.md
+[2]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md

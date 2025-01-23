@@ -140,7 +140,7 @@ class TestInstructions:
             "Galactipy",
             "galactipy",
             "GitLab",
-            "https://www.gitlab.com/manoelpqueiroz/galactipy",
+            "https://www.gitlab.com/galactipy/galactipy",
         )
         captured = capsys.readouterr()
 
@@ -159,7 +159,7 @@ class TestInstructions:
             "Galactipy",
             "galactipy",
             "GitLab",
-            "https://www.gitlab.com/manoelpqueiroz/galactipy",
+            "https://www.gitlab.com/galactipy/galactipy",
         )
         captured = capsys.readouterr()
 

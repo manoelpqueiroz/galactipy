@@ -1,41 +1,23 @@
-import os
-from pathlib import Path
-from shutil import which
+from utils.resolution import UNIX_OS as PTY
+from utils.resolution import get_commands, get_venv_bin
 
-from invoke import Context, UnexpectedExit, task
+try:
+    from invoke import Context, UnexpectedExit, task
+except ModuleNotFoundError as e:
+    msg = (
+        "Invoke was not found in your system. Install it through your distribution's "
+        "package manager if available, otherwise install it preferrably via pipx with "
+        "`pipx install invoke` or through `pip install invoke --user`. If you have "
+        "Invoke already installed, your virtual environment most likely is having "
+        "trouble choosing the executable to run."
+    )
+    raise ModuleNotFoundError(msg) from e
 
 PACKAGE_NAME = "galactipy"
 
-# Windows/Unix differentiation
-BIN_DIR = "bin" if os.name != "nt" else "Scripts"
-PTY = os.name != "nt"
-
-# Virtualenv retrieval
-VENV_EV = os.environ.get("VIRTUAL_ENV", None)
-WORKON_HOME_EV = os.environ.get("WORKON_HOME", "~/.virtualenvs")
-
-ACTIVE_VENV = Path(VENV_EV) if VENV_EV is not None else Path.cwd() / "tmp"
-VENV_HOME = Path(WORKON_HOME_EV).resolve()
-
-VENV_PATH = ACTIVE_VENV if ACTIVE_VENV.exists() else (VENV_HOME / PACKAGE_NAME)
-VENV = VENV_PATH.resolve()
-
-VENV_BIN = Path(VENV) / BIN_DIR
-
-# Executable paths
-PYTHON_COMMAND = which("python")
-PYTHON_PATH = VENV_BIN / "python" if VENV_BIN.exists() else Path(PYTHON_COMMAND)
-
-POETRY_COMMAND = which("poetry")
-if POETRY_COMMAND is not None:
-    POETRY_PATH = Path(POETRY_COMMAND).resolve()
-
-elif PTY:
-    POETRY_PATH = Path("/usr/bin/poetry")
-
-else:
-    APPDATA = os.environ.get("APPDATA")
-    POETRY_PATH = Path(APPDATA) / "Python" / BIN_DIR / "poetry"
+# Default paths
+VENV_BIN = get_venv_bin(PACKAGE_NAME)
+PYTHON_PATH, POETRY_PATH = get_commands(VENV_BIN)
 
 # Reusable command templates
 if PTY:
@@ -123,8 +105,10 @@ def install(c: Context, ignore_pty: bool = False) -> None:
 
     c.run(f"{POETRY_PATH} lock -n", pty=local_pty)
     c.run(f"{POETRY_PATH} install -n", pty=local_pty)
+
+    local_venv_bin = get_venv_bin(PACKAGE_NAME)
     c.run(
-        f"{VENV_BIN}/mypy --config-file pyproject.toml --install-types "
+        f"{local_venv_bin}/mypy --config-file pyproject.toml --install-types "
         "--non-interactive",
         pty=local_pty,
     )
@@ -160,6 +144,12 @@ def test(c: Context) -> None:
 
 
 @task
+def coverage(c: Context) -> None:
+    """Generate coverage file in XML for integration with Coveralls."""
+    c.run(f"{VENV_BIN}/coverage xml", pty=PTY)
+
+
+@task
 def mypy(c: Context) -> None:
     """Run type checks with `mypy` and `pyproject.toml` configuration."""
     c.run(f"{VENV_BIN}/mypy --config-file pyproject.toml", pty=PTY)
@@ -176,6 +166,7 @@ def check_safety(c: Context) -> None:
 def sweep(c: Context) -> None:
     """Perform all code checks, including tests, linting and security."""
     test(c)
+    coverage(c)
     check_linter(c)
     codestyle(c)
     mypy(c)
