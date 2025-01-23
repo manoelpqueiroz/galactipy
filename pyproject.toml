@@ -1,7 +1,7 @@
 # Poetry pyproject.toml: https://python-poetry.org/docs/pyproject/
 [project]
 name = "galactipy"
-version = "0.9.0"
+version = "0.10.0"
 description = "Full-fledged template for Python projects."
 license = { text = "MIT" }
 readme = "README.md"
@@ -82,7 +82,7 @@ poetry-plugin-up = "^0.9.0"
 poetry-bumpversion = "^0.3.3"
 
 [[tool.poetry_bumpversion.replacements]]
-files = ["README.md"]
+files = ["README.md", "CITATION.cff"]
 
 
 [tool.ruff]
