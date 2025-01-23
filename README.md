@@ -585,11 +585,10 @@ Galactipy was born out of [`python-package-template`][ft20], developed by [Roman
 
 While the original project is now archived, there were some features Roman intended to develop and we wish to carry on for Galactipy:
 
-- Documentation structure with [`Sphynx`][rd2] using the [`PyData Sphinx Theme`][rd3];
+- Documentation structure with [`Sphinx`][rd2] using the [`PyData Sphinx Theme`][rd3];
 - Code metrics with [`Radon`][rd4];
 - Docstring coverage with [`interrogate`][rd5];
-- `Dockerfile` linting with [`dockerfilelint`][rd6];
-- Build streamlining with [`Earthly`][rd7].
+- Build streamlining with [`Earthly`][rd6].
 
 ### Mirror GitHub features for GitLab
 
@@ -602,11 +601,10 @@ We would like Galactipy to have nearly equal functionality between GitHub and Gi
 We also wish to implement features completely new to the template, especially aiming at streamlining development process so less time is lost setting up a new project and apply software development best practices with available tools for the Python ecosystem:
 
 - Option to choose between test coverage or full code analysis, with providers for each yet to be selected;
-- Documentation upload to [`GitLab Pages`][rd8] and [`GitHub Pages`][rd9];
-- Automatic deployment to [`Docker Hub`][rd10];
+- Documentation upload to [`GitLab Pages`][rd7] and [`GitHub Pages`][rd8];
 - Update GitHub Actions with the latest popular and useful workflows from the marketplace;
 - Implement SAST for improving security of your projects;
-- Use [Behaviour-Driven Development][rd11] for tests with [`pytest-bdd`][rd12].
+- Use [Behaviour-Driven Development][rd9] for tests with [`pytest-bdd`][rd10].
 
 ## :shield: Licence
 
@@ -797,13 +795,11 @@ Here is the Markdown source for it:
 [rd3]: https://github.com/pydata/pydata-sphinx-theme
 [rd4]: https://github.com/rubik/radon
 [rd5]: https://github.com/econchick/interrogate
-[rd6]: https://github.com/replicatedhq/dockerfilelint
-[rd7]: https://earthly.dev/
-[rd8]: https://docs.gitlab.com/ee/user/project/pages/
-[rd9]: https://pages.github.com/
-[rd10]: https://hub.docker.com/
-[rd11]: https://cucumber.io/docs/bdd/
-[rd12]: https://github.com/pytest-dev/pytest-bdd
+[rd6]: https://earthly.dev/
+[rd7]: https://docs.gitlab.com/ee/user/project/pages/
+[rd8]: https://pages.github.com/
+[rd9]: https://cucumber.io/docs/bdd/
+[rd10]: https://github.com/pytest-dev/pytest-bdd
 
 [ac1]: https://patreon.com/tezikov
 [ac2]: https://cjolowicz.github.io/posts/hypermodern-python-01-setup/
