@@ -28,7 +28,7 @@ include:
     rules:
       - if: $CI_PIPELINE_SOURCE == 'schedule'
     inputs:
-      api_token: $CI_API_TOKEN
+      api_token: $GALACTIPY_BOT_TOKEN
       stage: maintenance
 
 default:
@@ -122,7 +122,7 @@ changelog-build:
     - apk add curl jq
     - >
       curl
-      --header "PRIVATE-TOKEN: $CI_API_TOKEN"
+      --header "PRIVATE-TOKEN: $GALACTIPY_BOT_TOKEN"
       "$CI_API_V4_URL/projects/$CI_PROJECT_ID/repository/changelog?version=$CI_COMMIT_TAG"
       |
       jq --raw-output .notes > RELEASE_NOTES.md
@@ -142,7 +142,7 @@ changelog-commit:
     - apk add curl
     - >
       curl
-      --header "PRIVATE-TOKEN: $CI_API_TOKEN"
+      --header "PRIVATE-TOKEN: $GALACTIPY_BOT_TOKEN"
       --request POST
       "$CI_API_V4_URL/projects/$CI_PROJECT_ID/repository/changelog?version=$CI_COMMIT_TAG&message=$CHANGELOG_COMMIT_MESSAGE"
 
@@ -156,7 +156,7 @@ github-mirror-update:
     - apk add curl jq
     - >
       MR_ID=$(curl
-      --header "PRIVATE-TOKEN: $CI_API_TOKEN"
+      --header "PRIVATE-TOKEN: $GALACTIPY_BOT_TOKEN"
       --data "$GH_MIRROR_MR_PAYLOAD"
       --request POST
       "$CI_API_V4_URL/projects/$CI_PROJECT_ID/merge_requests"
@@ -164,7 +164,7 @@ github-mirror-update:
       jq --raw-output .iid)
     - >
       curl
-      --header "PRIVATE-TOKEN: $CI_API_TOKEN"
+      --header "PRIVATE-TOKEN: $GALACTIPY_BOT_TOKEN"
       --request PUT
       "$CI_API_V4_URL/projects/$CI_PROJECT_ID/merge_requests/$MR_ID/merge"
 
