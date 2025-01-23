@@ -1,3 +1,63 @@
+## 0.9.0 (2025-01-23)
+
+### :rocket: Features (7 changes)
+
+- [:wrench: Update template Dockerfile](galactipy/galactipy@c1b5fa8cc8639ca976a6d1ce08eaf105d6fca59c) ([merge request](galactipy/galactipy!38))
+- [:sparkles: Enable multiple tags for GitLab Docker images](galactipy/galactipy@80be464d81108c4cf9ee8fb254afed3303c29a9b) ([merge request](galactipy/galactipy!38))
+- [:sparkles: Enable multiple tags for GitHub Docker action](galactipy/galactipy@e50de3418cbb35ce42a3ff7f22d242ffdaae0139) ([merge request](galactipy/galactipy!38))
+- [:sparkles: Add GitLab Docker component](galactipy/galactipy@991abd3429dc6d6706e11ae8f9698846eebdbcfd) ([merge request](galactipy/galactipy!38))
+- [:sparkles: Add GitHub Docker push workflow](galactipy/galactipy@4cbb16b72151cc96a7d70d53b088d7e97af11e5b) ([merge request](galactipy/galactipy!38))
+- [:sparkles: Add Docker login command for GitLab projects](galactipy/galactipy@70e44f24b980742e251a1168cd5b6aea81212fee) ([merge request](galactipy/galactipy!38))
+- [:sparkles: Add Docker push command to Invoke tasks](galactipy/galactipy@ac17144faa9c4a1c2c781e332d7c48bbd4ff14a6) ([merge request](galactipy/galactipy!38))
+
+### :wrench: Fixes & Refactoring (3 changes)
+
+- [:construction_worker: Fix deficient GitHub Docker action](galactipy/galactipy@3c42ff1d983df188dbbdce3d29202f37acd7190f) ([merge request](galactipy/galactipy!38))
+- [:pencil2: Fix default Python path for Windows on project tasks](galactipy/galactipy@49475faee47e199e86b21fb223b13dbd1311bccf) ([merge request](galactipy/galactipy!37))
+- [:pencil2: Fix wrong Jinja statement for Docker login task](galactipy/galactipy@39ee84348b450dcb5e5119728acfcf54c15aa136) ([merge request](galactipy/galactipy!38))
+
+### :package: Build System & CI/CD (10 changes)
+
+- [:construction_worker: Fix insufficient rule for CI](galactipy/galactipy@8d8387d5ca2420ad1ec5822b17943cdd91a5226f)
+- [:construction_worker: Refine project CI rules and structure](galactipy/galactipy@380c7aff680e8739ffbac2081ad402e12c11b156) ([merge request](galactipy/galactipy!37))
+- [:construction_worker: Enable manual pipelines for draft Merge Requests](galactipy/galactipy@bd6b5c036a6c796b76c795768acf09dc92217245) ([merge request](galactipy/galactipy!37))
+- [:wrench: Add task for generating coverage](galactipy/galactipy@f77220a18037bfe940302e893c3ab11951be8378) ([merge request](galactipy/galactipy!37))
+- [:building_construction: Revamp path resolution for project tasks](galactipy/galactipy@b20ae65c743ef55ac4adcc4264510a73cac9237c) ([merge request](galactipy/galactipy!37))
+- [:construction_worker: Move CI semver regular expressions to variables](galactipy/galactipy@68a392a85381ec13edb7a8932a57c1b29a38c00d) ([merge request](galactipy/galactipy!37))
+- [:truck: Update tests to reference new namespace](galactipy/galactipy@3cf3cb4a2e9c9591d929a2ed16b83db2a0d20790) ([merge request](galactipy/galactipy!37))
+- [:truck: Update project configuration to new namespace](galactipy/galactipy@042c27c3082186bef0395cc0a92ea7e4333c8190) ([merge request](galactipy/galactipy!37))
+- [:wrench: Update Cookiecutter configuration to new project namespace](galactipy/galactipy@50f8e57850b21ce5b6be646af9da574645a82cf1) ([merge request](galactipy/galactipy!37))
+- [:construction_worker: Update project CI to use custom Docker images](galactipy/galactipy@3eae9b464f1224f2907574d461cf415414a912b0) ([merge request](galactipy/galactipy!37))
+
+### :gear: Internals (3 changes)
+
+- [:wrench: Include GitHub workflow removal for Docker](galactipy/galactipy@5f00baa3ced0775d9907e54c6dfdf5fc99cda5d5) ([merge request](galactipy/galactipy!38))
+- [:wrench: Include project coverage task in sweep command](galactipy/galactipy@577c34cf43911c1d834eb7856b2642a0cf2ab3ae) ([merge request](galactipy/galactipy!37))
+- [:wrench: Add exception message for nonexistent Invoke installation](galactipy/galactipy@c0661b21e41eb9c38c25b64f73e242d4187da4c8) ([merge request](galactipy/galactipy!37))
+
+### :construction_site: Template Internals (9 changes)
+
+- [:see_no_evil: Update dockerignore for template](galactipy/galactipy@591cfe60d510311591a506cd45faeb583a7248a4) ([merge request](galactipy/galactipy!38))
+- [:wrench: Add jinja conditional for GitLab Docker stages](galactipy/galactipy@a0cdd3ae93c4abeb82032ca89bcd50b362552591) ([merge request](galactipy/galactipy!38))
+- [:construction_worker: Set up template GitLab Docker stages](galactipy/galactipy@293f74c0e9ec7d82393fec47a6469c7a8a95cb83) ([merge request](galactipy/galactipy!38))
+- [:see_no_evil: Update Dockerignore file for template](galactipy/galactipy@08e631b12f6bf36353ceb364e48a16cbd7604661) ([merge request](galactipy/galactipy!38))
+- [:lock: Ensure password STDIN for Docker login](galactipy/galactipy@cf667700af8a1475c4ea00ccc450490137fa47cd) ([merge request](galactipy/galactipy!38))
+- [:pencil2: Fix malformed Docker repositories](galactipy/galactipy@2f83889e0d6a00ec38d28d2ed7328bc6cacabd2f) ([merge request](galactipy/galactipy!38))
+- [:wrench: Update Python Docker image to Debian bookworm](galactipy/galactipy@946cd2d24ca3e29e416eaf0cfedc10d2bb34335b) ([merge request](galactipy/galactipy!38))
+- [:adhesive_bandage: Fix Docker remove and push commands](galactipy/galactipy@23cdf88fa747161b6589159443f0232de3c7f32e) ([merge request](galactipy/galactipy!38))
+- [:wrench: Fix existing Docker tasks](galactipy/galactipy@604311cd90ba4d122ea2f0c6457e25b6299ded23) ([merge request](galactipy/galactipy!38))
+
+### :memo: Documentation (8 changes)
+
+- [:memo: Include custom badge for GitLab containers](galactipy/galactipy@75f0682c708bc96d5f4fac7385afecdb7bbc6674) ([merge request](galactipy/galactipy!38))
+- [:memo: Refine Docker README instructions](galactipy/galactipy@f64924aaf9cda1c1afe8f57ce09460b5a97fecb8) ([merge request](galactipy/galactipy!38))
+- [:memo: Update project README with Docker features](galactipy/galactipy@94cba899c1f42b7fdbd4de35c46e5e602744938f) ([merge request](galactipy/galactipy!38))
+- [:busts_in_silhouette: Update pyproject with previous contributors](galactipy/galactipy@3186eb8c7883bf9d0abe5c588b448267f963b2a3) ([merge request](galactipy/galactipy!37))
+- [:memo: Update licence copyright](galactipy/galactipy@4a7361387f65aa74eaf8ba9dc9db8a9345f1ad41) ([merge request](galactipy/galactipy!37))
+- [:truck: Replace project namespace for README.md](galactipy/galactipy@5f683420cf3705dc6e4b5813dbe998621e2fcf1a) ([merge request](galactipy/galactipy!37))
+- [:truck: Replace commit references for CHANGELOG.md](galactipy/galactipy@4240aaf3785e661e4f27a94a570d26ba8e2db247) ([merge request](galactipy/galactipy!37))
+- [:truck: Replace project URL for auxiliary files](galactipy/galactipy@dc9a592733fbf40b8bca266a8f1945b30d4abe32) ([merge request](galactipy/galactipy!37))
+
 ## 0.8.1 (2025-01-14)
 
 ### :rocket: Features (1 change)
