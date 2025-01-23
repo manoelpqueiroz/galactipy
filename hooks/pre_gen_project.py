@@ -6,7 +6,6 @@ import sys
 REPO_NAME = "{{ cookiecutter.repo_name }}"
 PACKAGE_NAME = "{{ cookiecutter.package_name }}"
 USERNAME = "{{ cookiecutter.scm_username }}"
-PROJECT_VERSION = "{{ cookiecutter.version }}"
 # Integer value wrapped inside strings to avoid raising errors when testing
 LINE_LENGTH_PARAMETER = "{{ cookiecutter.line_length }}"
 DOCSTRING_LENGTH_PARAMETER = "{{ cookiecutter.docstring_length }}"
@@ -38,26 +37,6 @@ USERNAME_REGEX = re.compile(
         (?!.*(-){2})            # Must not have any two consecutive - ahead
         [a-zA-Z0-9\-]*          # Can contain any letters, numbers or -
         [a-zA-Z0-9]             # Must end with letter or number
-        $
-    """,
-    re.VERBOSE,
-)
-SEMVER_REGEX = re.compile(
-    r"""
-        ^
-        (?P<major>0|[1-9]\d*)
-        \.
-        (?P<minor>0|[1-9]\d*)
-        \.
-        (?P<patch>0|[1-9]\d*)
-        (?:-(?P<prerelease>
-            (?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)
-            (?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*
-        ))?
-        (?:\+(?P<build>
-            [0-9a-zA-Z-]+
-            (?:\.[0-9a-zA-Z-]+)*
-        ))?
         $
     """,
     re.VERBOSE,
@@ -221,24 +200,6 @@ def validate_username(username: str, reserved_names: list[str]) -> None:
         raise ValueError(message)
 
 
-def validate_semver(version: str) -> None:
-    """Ensure version in semver notation.
-
-    Parameters
-    ----------
-    version : str
-        String version. For example 0.1.2 or 1.2.4
-
-    Raises
-    ------
-    ValueError
-        If version is not in semver notation.
-    """
-    if SEMVER_REGEX.fullmatch(version) is None:
-        message = f"ERROR: `{version}` is not in semver notation (https://semver.org/)"
-        raise ValueError(message)
-
-
 def validate_line_length(line_length: int) -> None:
     """Validate line_length parameter. Length should be between 50 and 300.
 
@@ -287,8 +248,6 @@ def main() -> None:  # noqa: D103
         validate_package_name(package_name=PACKAGE_NAME)
 
         validate_username(username=USERNAME, reserved_names=RESERVED_USERNAMES)
-
-        validate_semver(version=PROJECT_VERSION)
 
         validate_line_length(line_length=int(LINE_LENGTH_PARAMETER))
 

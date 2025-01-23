@@ -113,14 +113,6 @@ etc.
 
 In order to release a new version of the application, a few steps are needed.
 
-First, the new version to be published must be set. Unless you are to publish your package's first version, which Galactipy already sets for you, you should use:
-
-```bash
-poetry version <version>
-```
-
-You can pass the new version explicitly, or a rule such as `major`, `minor`, or `patch`. For more details, refer to the [Semantic Versions][fs4] standard.
-
 Make sure you have a PyPI account and generate an API token, you can then register it in your repository with
 
 ```bash
@@ -216,7 +208,7 @@ And here are a few articles which may help you:
 ### Development features
 
 - Support for `Python {{ cookiecutter.minimal_python_version }}` and higher;
-- [`Poetry`][ft1] as a dependencies manager. See configuration in [`pyproject.toml`][ft2];
+- Uses [`Poetry`][ft1] as the dependency manager and extends functionality with [`dynamic versioning`][new1], [`virtual environment bundling`][new2], dependency [`export`][new3] and [`update resolution`][new4]. See configuration in [`pyproject.toml`][ft2];
 {%- if cookiecutter.use_ruff %}
 - Automatic code formatting with [`ruff`][fo1], with ready-to-use [`pre-commit`][fo2] hooks and several rules already selected for linting;
 {%- endif %}
@@ -231,10 +223,10 @@ And here are a few articles which may help you:
 - Automatic package uploads to [`PyPI`][ft9] test and production repositories;
 - Everything is already set up for security checks, {% if cookiecutter.use_ruff %}codestyle checks, code formatting,{% endif %} testing, linting{% if cookiecutter.create_docker %}, docker builds{% endif %} etc with [`Invoke`][ft10]. More details in [Invoke Usage][ft11];
 {%- if cookiecutter.create_docker %}
-- [`Dockerfile`][docker2] for your package;
+- [`Dockerfile`][docker2] for your package, with CI/CD workflows to publish your image to a container registry.
 {%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' -%}
-- Automatic [`Changelog entries`][lab4] updated via [GitLab API][lab5] and [template][lab6].
+- Automatic [`Changelog entries`][lab4] updated via [GitLab API][lab5] and [template][lab8].
 {%- elif cookiecutter.__scm_platform_lc == 'github' -%}
 - Always up-to-date dependencies with [`Dependabot`][hub5]. You will only need to [enable it][hub1];
 - Automatic drafts of new releases with [`Release Drafter`][hub6]. You may see the list of labels in [`release-drafter.yml`][hub7]. Works perfectly with [Semantic Versions][fs4] specification.
@@ -246,6 +238,7 @@ And here are a few articles which may help you:
 - Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically;
 - **Loads** of predefined [badges][ft14] to make your project stand out, you can either keep them, remove as you wish or be welcome to add even more{% if cookiecutter.__scm_platform_lc == 'github' %};{% else %}.{% endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+- [`Triage Policies`][lab6] closes abandoned issues after a period of inactivity. Configuration is [here][lab7];
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
 - [`Stale bot`][hub2] closes abandoned issues after a period of inactivity. Configuration is [here][hub8];
 - [Semantic Versions][fs4] specification with [`Release Drafter`][hub6].
@@ -483,7 +476,7 @@ You can see the list of available releases on the [{{ cookiecutter.scm_platform 
 
 We follow [Semantic Versions][fs4] specification.
 {%+ if cookiecutter.__scm_platform_lc == 'gitlab' %}
-We use [`GitLab Changelog`][lab5] entries to track changes. You can categorise commits and Merge Requests made to this project using [git trailers][lab7] in your commit messages.
+We use [`GitLab Changelog`][lab5] entries to track changes. You can categorise commits and Merge Requests made to this project using [git trailers][lab9] in your commit messages.
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
 We use [`Release Drafter`][hub6]. As pull requests are merged, a draft release is kept up-to-date listing the changes, ready to publish when you’re ready. With the categories option, you can categorize pull requests in release notes using labels.
 {%- endif %}
@@ -643,8 +636,10 @@ This project was generated with [`galactipy`][bp7].
 [lab3]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab-ci.yml
 [lab4]: {{ cookiecutter.__scm_link_url }}/blob/master/CHANGELOG.md
 [lab5]: https://docs.gitlab.com/ee/user/project/changelogs.html
-[lab6]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/changelog_config.yml
-[lab7]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
+[lab6]: https://gitlab.com/explore/catalog/components/gitlab-triage
+[lab7]: {{ cookiecutter.__scm_link_url }}/blob/master/.triage-policies.yml
+[lab8]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/changelog_config.yml
+[lab9]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
 [bscm1]: https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
 [bscm2]: https://img.shields.io/github/v/release/{{ cookiecutter.scm_username}}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=semantic-release&color=347d39

@@ -15,4 +15,4 @@ repository: '{{ cookiecutter.__scm_base_url }}'
 abstract: >-
   {{ cookiecutter.project_description }}
 license: {{ cookiecutter.licence }}
-version: {{ cookiecutter.version }}
+version: '0.1.0'  # UPDATEME with your latest version
