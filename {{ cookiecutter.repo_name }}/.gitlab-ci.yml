@@ -11,6 +11,12 @@ stages:
   - deploy
   - release
   - maintenance
+{%- if cookiecutter.create_docker %}
+  # Docker component exclusive stages
+  - package-build
+  - package-test
+  - publish
+{%- endif %}
 
 # TODO Set up a bot for automated repository actions and components
 # 1. Create a Project Access Token at {{ cookiecutter.__scm_link_url }}/settings/access_tokens
@@ -24,6 +30,19 @@ include:
     inputs:
       api_token: $CI_API_TOKEN
       stage: maintenance
+{%- if cookiecutter.create_docker %}
+  # UPDATEME if you wish to use another registry besides GitLab, see documentation at:
+  # https://gitlab.com/explore/catalog/to-be-continuous/docker
+  - component: $CI_SERVER_FQDN/to-be-continuous/docker/gitlab-ci-docker@6.0.0
+    rules:
+      - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+      - if: $CI_COMMIT_TAG # HACK Fine-tuning for running only on release tags not working at upstream (https://gitlab.com/to-be-continuous/docker/-/issues/107)
+    inputs:
+      context-path: $CI_PROJECT_DIR
+      file: $CI_PROJECT_DIR/docker/Dockerfile
+      snapshot-image: "$CI_REGISTRY_IMAGE/snapshot:$CI_COMMIT_REF_SLUG-nightly"
+      release-extra-tags: "latest \\g<major> \\g<major>.\\g<minor> \\g<major>.\\g<minor>.\\g<patch>"
+{%- endif %}
 
 variables:
   SEMVER_RELEASE_VERSION: /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i

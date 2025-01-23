@@ -84,9 +84,9 @@ git push -u origin main
 ```
 
 ### Set up bots
-{%- if cookiecutter.__scm_platform_lc == 'gitlab' -%}
+{%+ if cookiecutter.__scm_platform_lc == 'gitlab' %}
 - Set up a [Repository Access Token][lab1] to enable automatic releases and issue closing.
-{%- elif cookiecutter.__scm_platform_lc == 'github' -%}
+{% elif cookiecutter.__scm_platform_lc == 'github' -%}
 - Set up [Dependabot][hub1] to ensure you have the latest dependencies;
 - Set up [Stale bot][hub2] for automatic issue closing.
 {%- endif %}
@@ -136,6 +136,10 @@ invoke publish
 You should also [push a tag][fs5] to `GitLab` or `GitHub` and create a `Release` for your application on the platform to ensure users can check the latest version contents.
 
 Of course, you can also rely solely on the CI tools provided by Galactipy to handle building, publishing and releasing automatically, with minimal configuration required! :partying_face:
+
+{% if cookiecutter.create_docker -%}
+Pushing a tag to your repository will also set up the automated workflows to build and publish your image to {% if cookiecutter.__scm_platform_lc == 'gitlab' %}the GitLab Container Registry{% else %}Docker Hub{% endif %}.
+{%- endif %}
 
 ## :dart: What's next
 
@@ -664,8 +668,13 @@ This project was generated with [`galactipy`][bp7].
 {%- endif %}
 {%- endif %}
 {%+ if cookiecutter.create_docker %}
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+[bdocker1]: https://img.shields.io/gitlab/v/release/{{ cookiecutter.scm_username }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&logo=linux-containers&logoColor=C5F4EC&label=image&color=C5F4EC
+[bdocker2]: {{ cookiecutter.__scm_base_url }}/container_registry
+{%- else %}
 [bdocker1]: https://img.shields.io/docker/v/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=docker&logoColor=lightblue&label=image&color=lightblue
 [bdocker2]: https://hub.docker.com/r/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}
+{%- endif %}
 
 [docker1]: {{ cookiecutter.__scm_link_url }}/blob/master/.dockerignore
 [docker2]: {{ cookiecutter.__scm_link_url }}/blob/master/docker/Dockerfile
