@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/linux,archlinuxpackages,osx,windows,python,c,django,database,pycharm,visualstudio,visualstudiocode,vim,zsh,git,diff,microsoftoffice,spreadsheet,ssh,certificates
 # Edit at https://www.toptal.com/developers/gitignore?templates=linux,archlinuxpackages,osx,windows,python,c,django,database,pycharm,visualstudio,visualstudiocode,vim,zsh,git,diff,microsoftoffice,spreadsheet,ssh,certificates
 
+### Gitkeep ###
+!.gitkeep
+
 ### ArchLinuxPackages ###
 *.tar
 *.tar.*
