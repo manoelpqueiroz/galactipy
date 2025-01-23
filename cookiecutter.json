@@ -3,7 +3,6 @@
   "repo_name": "{{ cookiecutter.project_name.replace(' ', '-').lower().strip('-') }}",
   "package_name": "{{ cookiecutter.repo_name.replace('-', '_') }}",
   "project_description": "Awesome `{{ cookiecutter.repo_name }}` is a Python cli/package created with https://gitlab.com/galactipy/galactipy",
-  "version": "0.1.0",
   "author": "The Galactipy Contributors",
   "scm_platform": [
     "GitLab",

@@ -119,7 +119,6 @@ The input variables, with their default values, are as follows:
 |       `repo_name`        |   based on `project_name`   | Name of the repository to develop the project on. [Check the availability of possible names][htu1] before creating the project.                                |
 |      `package_name`      |   based on `project_name`   | PyPI-compliant Python package name. [Check the availability of possible names][htu1] before creating the project.                                              |
 |  `project_description`   |   based on `project_name`   | A brief description of your project.                                                                                                                           |
-|        `version`         |           `0.1.0`           | Initial version of the package. Make sure it follows the [Semantic Versions][ft34] specification.                                                              |
 |         `author`         | `Manoel Pereira de Queiroz` | Name of the author or organisation. Used to generate `LICENCE` and to specify ownership in `pyproject.toml`.                                                   |
 |      `scm_platform`      |          `GitLab`           | One of `GitLab` and `GitHub`. Depending on the choice you will have [different features][htu2] to work with.                                                   |
 |      `scm_username`      |      `manoelpqueiroz`       | GitHub or GitLab username for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for either platform.                               |
@@ -148,15 +147,14 @@ $ cookiecutter gl:galactipy/galactipy
   [3/17] Package name (a_decent_python_project): a_viable_package
   [4/17] Short description of the project (Awesome `a-different-slug` is a Python cli/package created with
 https://gitlab.com/galactipy/galactipy): Let's try a cool description
-  [5/17] Project version (0.1.0): 1.100.9-rc7+build.456893a
-  [6/17] Author or Organisation (The Galactipy Contributors):
-  [7/17] In which platform would you like to host your code?
+  [5/16] Author or Organisation (The Galactipy Contributors):
+  [6/16] In which platform would you like to host your code?
     1 - GitLab
     2 - GitHub
     Choose from [1/2] (1): 2
-  [8/17] Platform username (galactipy): myuniqueusername
-  [9/17] e-Mail (contact@myuniqueusername.com): g@mail.com
-  [10/17] Which licence would you like to use for your project?
+  [7/16] Platform username (galactipy): myuniqueusername
+  [8/16] e-Mail (contact@myuniqueusername.com): g@mail.com
+  [9/16] Which licence would you like to use for your project?
     1 - MIT Licence
     2 - 3-Clause BSD
     3 - GNU GPL v3.0
@@ -166,24 +164,24 @@ https://gitlab.com/galactipy/galactipy): Let's try a cool description
     7 - Apache Software License 2.0
     8 - Not open source
     Choose from [1/2/3/4/5/6/7/8] (1): 4
-  [11/17] Minimal Python version
+  [10/16] Minimal Python version
     1 - 3.9
     2 - 3.10
     3 - 3.11
     4 - 3.12
     5 - 3.13
     Choose from [1/2/3/4/5] (1): 3
-  [12/17] Use Ruff for linting and formatting? [y/n] (y): yes
-  [13/17] Maximum line length (88):
-  [14/17] Which docstring style would you like to use?
+  [11/16] Use Ruff for linting and formatting? [y/n] (y): yes
+  [12/16] Maximum line length (88):
+  [13/16] Which docstring style would you like to use?
     1 - numpy
     2 - google
     3 - pep257
     4 - other
     Choose from [1/2/3/4] (1): 4
-  [15/17] Docstring maximum line length (88):
-  [16/17] Would you like to create your project with CLI implementation? [y/n] (y): on
-  [17/17] Containerize your application with Docker? [y/n] (y): no
+  [14/16] Docstring maximum line length (88):
+  [15/16] Would you like to create your project with CLI implementation? [y/n] (y): on
+  [16/16] Containerize your application with Docker? [y/n] (y): no
 
 Your project A Decent Python Project is created.
 
@@ -265,14 +263,6 @@ poetry run <repo_name> --name Manoel
 ### Building and releasing your package
 
 In order to release a new version of the application, a few steps are needed.
-
-First, the new version to be published must be set. Unless you are to publish your package's first version, which Galactipy already sets for you, you should use:
-
-```bash
-poetry version <version>
-```
-
-You can pass the new version explicitly, or a rule such as `major`, `minor`, or `patch`. For more details, refer to the [Semantic Versions][ft34] standard.
 
 Make sure you have a PyPI account and generate an API token, you can then register it in your repository with
 

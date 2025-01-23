@@ -6,7 +6,6 @@ default_context:
   repo_name: "{{ cookiecutter.repo_name }}"
   package_name: "{{ cookiecutter.package_name }}"
   project_description: "{{ cookiecutter.project_description }}"
-  version: "{{ cookiecutter.version }}"
   author: "{{ cookiecutter.author }}"
   scm_platform: "{{ cookiecutter.scm_platform }}"
   scm_username: "{{ cookiecutter.scm_username }}"

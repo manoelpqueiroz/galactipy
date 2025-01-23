@@ -14,8 +14,8 @@ This will create a default image `{{ cookiecutter.repo_name }}:latest`.
 You may provide multiple tags for the image, and you can also override the default `{{ docker_repo }}` repository:
 
 ```bash
-invoke docker-build -t {{ cookiecutter.version }}
-invoke docker-build -t latest -t {{ cookiecutter.version }} -r someuser/somerepo
+invoke docker-build -t sometag
+invoke docker-build -t latest -t sometag -r someuser/somerepo
 ```
 
 ## Usage
@@ -35,5 +35,5 @@ invoke docker-remove
 Again, you may also remove multiple tags:
 
 ```bash
-invoke docker-remove -t latest -t {{ cookiecutter.version }}
+invoke docker-remove -t latest -t sometag
 ```
