@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 from shutil import which
 
-from invoke import Context, UnexpectedExit, task
+from invoke import Context, task
 
 PACKAGE_NAME = "{{ cookiecutter.repo_name }}"
 {%+ if cookiecutter.create_docker %}
@@ -87,25 +87,6 @@ def poetry_remove(c: Context) -> None:
         f"curl -sSL https://install.python-poetry.org | {PYTHON_PATH} - --uninstall",
         pty=PTY,
     )
-
-
-@task
-def poetry_plugins(c: Context) -> None:
-    """Install Poetry plugins through the `self add` command."""
-    try:
-        c.run(
-            f"{POETRY_PATH} self add poetry-plugin-up poetry-plugin-export "
-            "poetry-bumpversion",
-            pty=PTY
-        )
-
-    except UnexpectedExit as e:
-        msg = (
-            "Command errored with return code 1. Most likely Poetry is externally "
-            "managed and `poetry-plugin-up` should be installed via your package "
-            "manager."
-        )
-        raise PoetryPluginError(msg) from e
 
 
 @task

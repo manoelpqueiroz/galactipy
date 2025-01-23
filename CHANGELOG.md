@@ -1,3 +1,37 @@
+## 0.10.0 (2025-01-23)
+
+### :rocket: Features (1 change)
+
+- [:sparkles: Configure template plugins for Poetry v2.0](galactipy/galactipy@90b81b4fb9b52b871375bef6c03e67cdf7b35b1b) ([merge request](galactipy/galactipy!39))
+
+### :package: Build System & CI/CD (3 changes)
+
+- [:construction_worker: Specify Galactipy Bot variable in project CI](galactipy/galactipy@5309fc117685b4f121e0022001be95189d4491f0) ([merge request](galactipy/galactipy!39))
+- [:fire: Remove static version from template](galactipy/galactipy@0fc56a09b1402b1464f81704964e413ab31498ee) ([merge request](galactipy/galactipy!39))
+- [:green_heart: Fix Alpine tag for GitHub mirror update job](galactipy/galactipy@e77e21756d27c9093220ffba6cf39701b5ee8977) ([merge request](galactipy/galactipy!39))
+
+### :gear: Internals (1 change)
+
+- [:fire: Update project tasks to comply with Poetry v2.0](galactipy/galactipy@7a2e3971a187fa0b9da13526d134f51833a2dc80) ([merge request](galactipy/galactipy!39))
+
+### :construction_site: Template Internals (1 change)
+
+- [:fire: Remove Poetry plugins task for template](galactipy/galactipy@580b57de8540d7f60523f5f6bc139619f59b43fe) ([merge request](galactipy/galactipy!39))
+
+### :boom: Breaking Changes (2 changes)
+
+- [:boom: Update template pyproject to Poetry v2.0](galactipy/galactipy@ba2c5d33902f7c499b2981f815e18b2d8c016f80) ([merge request](galactipy/galactipy!39))
+- [:wrench: Update template pyproject to Poetry v2.0](galactipy/galactipy@f29ba716fd4c68581416d99c2651119e5d403cd4) ([merge request](galactipy/galactipy!39))
+
+### :memo: Documentation (2 changes)
+
+- [:memo: Update READMEs with Poetry plugin functionality](galactipy/galactipy@bb1b46f12fd64ee8143cc782efded114be02a96c) ([merge request](galactipy/galactipy!39))
+- [:memo: Update project README roadmap](galactipy/galactipy@18cc6afb3d97291210d268e76b0c3419b97d304c) ([merge request](galactipy/galactipy!39))
+
+### :arrow_up: Dependencies Updates (1 change)
+
+- [:arrow_up: Update project and template dependencies](galactipy/galactipy@f10cd8daf06fb811972e1cee1a2d01ca4b71e5ed) ([merge request](galactipy/galactipy!39))
+
 ## 0.9.0 (2025-01-23)
 
 ### :rocket: Features (7 changes)
