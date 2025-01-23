@@ -77,15 +77,15 @@ def removal_tree(tmp_path):
         "pyproject.toml",
         package_test=["__main__.py"],
         docker=["Dockerfile", "README.md"],
-        docs=[".gitkeep"],
-        tests=["test_hello.py"],
     )
 
-    github_dir = tmp_path / ".github"
-    bulk_file_creation(github_dir, workflows=["docker.yml"])
+    github_directory = tmp_path / ".github"
+    bulk_file_creation(github_directory, workflows=["docker.yml", "test.yml"])
+
+    tests_directory = tmp_path / "tests"
+    bulk_file_creation(tests_directory, "test_hello.py", features=[".gitkeep"])
 
     pyproject_file = tmp_path / "pyproject.toml"
-    tests_directory = tmp_path / "tests"
     test_file = tests_directory / "test_hello.py"
 
     package_name = "package_test"

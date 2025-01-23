@@ -186,6 +186,9 @@ section-order = [
   "testing",
 ]
 
+[tool.ruff.lint.mccabe]
+max-complexity = 11
+
 
 [tool.mypy]
 # https://github.com/python/mypy
