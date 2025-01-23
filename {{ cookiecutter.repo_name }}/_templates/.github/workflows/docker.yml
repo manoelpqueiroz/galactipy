@@ -1,0 +1,46 @@
+# Check GitHub Actions documentation at:
+# https://github.com/marketplace/actions/build-and-push-docker-images
+{% raw %}name: 🐳 Publish to Docker Hub
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Allow publishing to Docker Hub in production
+        required: true
+        type: boolean
+
+jobs:
+  docker-deploy:
+    runs-on: ubuntu-latest
+    if: ${{ inputs.publish && github.ref_type == 'tag' }}
+    steps:
+      - name: 🔰 Configure Tags to Push
+        uses: docker/metadata-action@v5
+        id: meta
+        with:
+          images: |
+            {% endraw %}{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}{% raw %}
+          tags: |
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=semver,pattern=v{{major}}
+
+      - name: 🔓 Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          # TODO Store the DOCKERHUB_USERNAME variable in the repository configuration
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          # TODO Set a Docker Hub Personal Access Token for publishing (https://docs.docker.com/security/for-developers/access-tokens/)
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: ⚙️ Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: 🛫 Build and Push Image
+        uses: docker/build-push-action@v6
+        with:
+          file: "docker/Dockerfile"
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}{% endraw %}

@@ -1,0 +1,18 @@
+# CITATION.cff files can be generated and updated with cffinit:
+# https://citation-file-format.github.io/cff-initializer-javascript/#/
+
+cff-version: 1.2.0
+title: {{ cookiecutter.project_name }}
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - name: {{ cookiecutter.author }}
+    email: {{ cookiecutter.email }}
+repository-code: '{{ cookiecutter.__scm_base_url }}'
+repository: '{{ cookiecutter.__scm_base_url }}'
+abstract: >-
+  {{ cookiecutter.project_description }}
+license: {{ cookiecutter.licence }}
+version: {{ cookiecutter.version }}

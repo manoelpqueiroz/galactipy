@@ -9,18 +9,19 @@ stages:
   - release
   - maintenance
 
+variables:
+  SEMVER_RELEASE_VERSION: /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
+  SEMVER_MINOR_VERSION: /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.0$/i
+
 workflow:
   rules:
     - if: $CI_COMMIT_TITLE =~ /(\:construction|WIP)\:.*/i
       when: never
     - if: $CI_COMMIT_BRANCH =~ /^test.*/i
       when: never
-    - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft\:.*/i
+    - if: $GITLAB_USER_LOGIN =~ /^(project|group)_\d+_bot_\w+/i
       when: never
-    - if: $GITLAB_USER_LOGIN =~ /^project_\d+_bot_\w+/i
-      when: never
-    - if: $CI_COMMIT_TAG =~ /^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
-    - if: $CI_COMMIT_BRANCH
+    - if: $CI_COMMIT_BRANCH || $CI_COMMIT_TAG
 
 include:
   - component: $CI_SERVER_FQDN/components/gitlab-triage/gitlab-triage@0.1.2
@@ -31,52 +32,64 @@ include:
       stage: maintenance
 
 default:
-  image: python:3.13
   cache:
     key: venv-$CI_COMMIT_REF_NAME-$CI_JOB_STAGE-$CI_COMMIT_SHA
     paths:
       - $CI_PROJECT_DIR/.cache/pip
 
-.python_setup:
+.test_rules:
   rules:
-    - if: $CI_PIPELINE_SOURCE != 'schedule'
-  before_script:
-    - pip install invoke
-    - invoke poetry-download
-    - export PATH="/root/.local/bin:$PATH"
-    - python3 -m venv .venv
-    - source .venv/bin/activate
-    - pip install -U pip
-    - invoke install --ignore-pty
+    - if:
+      changes:
+        paths:
+          - "{{ cookiecutter.repo_name }}/**/*"
+          - hooks/*
+          - tests/*
+          - utils/*
+          - tasks.py
+          - cookiecutter.json
+          - .gitlab-ci.yml
+          - .triage-policies.yml
+        compare_to: $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_TAG
+      when: never
+    - if: $CI_PIPELINE_SOURCE == 'schedule'
+      when: never
+    - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft\:.*/i
+      when: manual
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 .default_scripts: &default_scripts
+  - invoke install --ignore-pty
   - invoke check-linter
   - invoke test
   - invoke check-safety
 
 test-py310:
   stage: test
-  image: python:3.10
-  extends: .python_setup
+  image: registry.gitlab.com/galactipy/docker:3.10
+  extends: .test_rules
   script:
     - *default_scripts
 
 test-py311:
   stage: test
-  image: python:3.11
-  extends: .python_setup
+  image: registry.gitlab.com/galactipy/docker:3.11
+  extends: .test_rules
   script:
     - *default_scripts
 
 test-py312:
   stage: test
-  image: python:3.12
-  extends: .python_setup
+  image: registry.gitlab.com/galactipy/docker:3.12
+  extends: .test_rules
   script:
     - *default_scripts
 
 test-py313:
   stage: test
+  image: registry.gitlab.com/galactipy/docker:3.13
+  extends: .test_rules
   artifacts:
     name: coverage_$CI_COMMIT_REF_NAME_$CI_JOB_NAME_$CI_JOB_STARTED_AT
     paths:
@@ -86,16 +99,17 @@ test-py313:
         coverage_format: cobertura
         path: coverage.xml
     expire_in: 1 week
-  extends: .python_setup
   script:
     - *default_scripts
-    - coverage xml
+    - invoke coverage
 
 coveralls-report:
   stage: coverage
+  image: alpine:latest
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE != 'schedule'
   script:
+    - apk add curl
     - curl -L https://coveralls.io/coveralls-linux.tar.gz | tar -xz -C /usr/local/bin
     - coveralls -f coverage.xml -r $COVERALLS_TOKEN
 
@@ -103,7 +117,7 @@ changelog-build:
   stage: release
   image: alpine:latest
   rules:
-    - if: $CI_COMMIT_TAG =~ /^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
+    - if: $CI_COMMIT_TAG =~ $SEMVER_RELEASE_VERSION
   script:
     - apk add curl jq
     - >
@@ -114,16 +128,16 @@ changelog-build:
       jq --raw-output .notes > RELEASE_NOTES.md
   artifacts:
     paths:
-    - RELEASE_NOTES.md
+      - RELEASE_NOTES.md
 
 changelog-commit:
   stage: release
   image: alpine:latest
   rules:
-    - if: $CI_COMMIT_TAG =~ /^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
+    - if: $CI_COMMIT_TAG =~ $SEMVER_RELEASE_VERSION
   needs: [changelog-build]
   variables:
-    CHANGELOG_COMMIT_MESSAGE: '%3Abookmark%3A%20Update%20CHANGELOG.md'
+    CHANGELOG_COMMIT_MESSAGE: "%3Abookmark%3A%20Update%20CHANGELOG.md"
   script:
     - apk add curl
     - >
@@ -132,11 +146,33 @@ changelog-commit:
       --request POST
       "$CI_API_V4_URL/projects/$CI_PROJECT_ID/repository/changelog?version=$CI_COMMIT_TAG&message=$CHANGELOG_COMMIT_MESSAGE"
 
+github-mirror-update:
+  stage: release
+  image: alpine:lastest
+  rules:
+    - if: $CI_COMMIT_TAG =~ $SEMVER_MINOR_VERSION
+  needs: [changelog-commit]
+  script:
+    - apk add curl jq
+    - >
+      MR_ID=$(curl
+      --header "PRIVATE-TOKEN: $CI_API_TOKEN"
+      --data "$GH_MIRROR_MR_PAYLOAD"
+      --request POST
+      "$CI_API_V4_URL/projects/$CI_PROJECT_ID/merge_requests"
+      |
+      jq --raw-output .iid)
+    - >
+      curl
+      --header "PRIVATE-TOKEN: $CI_API_TOKEN"
+      --request PUT
+      "$CI_API_V4_URL/projects/$CI_PROJECT_ID/merge_requests/$MR_ID/merge"
+
 release-galactipy:
   stage: release
   image: registry.gitlab.com/gitlab-org/release-cli:latest
   rules:
-    - if: $CI_COMMIT_TAG =~ /^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
+    - if: $CI_COMMIT_TAG =~ $SEMVER_RELEASE_VERSION
   needs: [changelog-build]
   script:
     - echo "Creating release $CI_COMMIT_TAG"

@@ -134,8 +134,13 @@ def remove_unused_files(
     def _gitlab_specific_files() -> list[Path]:
         return [directory / ".gitlab-ci.yml", directory / ".triage-policies.yml"]
 
-    def _docker_specific_files() -> list[Path]:
-        return [directory / ".dockerignore", directory / "docker"]
+    def _docker_specific_files(is_github: bool) -> list[Path]:
+        removals = [directory / ".dockerignore", directory / "docker"]
+
+        if is_github:
+            removals.append(directory / ".github" / "workflows" / "docker.yml")
+
+        return removals
 
     if remove_cli:
         files_to_delete.extend(_cli_specific_files())
@@ -144,7 +149,7 @@ def remove_unused_files(
         files_to_delete.extend(_gitlab_specific_files())
 
     if remove_docker:
-        files_to_delete.extend(_docker_specific_files())
+        files_to_delete.extend(_docker_specific_files(remove_gitlab))
 
     for path in files_to_delete:
         rmdir(path)

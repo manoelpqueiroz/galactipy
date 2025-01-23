@@ -66,16 +66,18 @@ class TestFileRemoval:
     def test_remove_gitlab(self, removal_tree):
         project_root, pyproject_file, tests_root, test_file, package_name = removal_tree
         ci_file = project_root / ".gitlab-ci.yml"
+        triage_file = project_root / ".triage-policies.yml"
 
         remove_unused_files(project_root, package_name, False, True, False)
 
         assert not ci_file.exists()
+        assert not triage_file.exists()
 
         assert pyproject_file.exists()
         assert tests_root.exists()
         assert test_file.exists()
 
-    def test_remove_docker(self, removal_tree):
+    def test_remove_docker_gitlab(self, removal_tree):
         project_root, pyproject_file, tests_root, test_file, package_name = removal_tree
         docker_directory = project_root / "docker"
         dockerignore = project_root / ".dockerignore"
@@ -84,6 +86,22 @@ class TestFileRemoval:
 
         assert not docker_directory.exists()
         assert not dockerignore.exists()
+
+        assert pyproject_file.exists()
+        assert tests_root.exists()
+        assert test_file.exists()
+
+    def test_remove_docker_github(self, removal_tree):
+        project_root, pyproject_file, tests_root, test_file, package_name = removal_tree
+        docker_directory = project_root / "docker"
+        dockerignore = project_root / ".dockerignore"
+        docker_workflow = project_root / ".github" / "workflows" / "docker.yml"
+
+        remove_unused_files(project_root, package_name, False, True, True)
+
+        assert not docker_directory.exists()
+        assert not dockerignore.exists()
+        assert not docker_workflow.exists()
 
         assert pyproject_file.exists()
         assert tests_root.exists()
@@ -122,7 +140,7 @@ class TestInstructions:
             "Galactipy",
             "galactipy",
             "GitLab",
-            "https://www.gitlab.com/manoelpqueiroz/galactipy",
+            "https://www.gitlab.com/galactipy/galactipy",
         )
         captured = capsys.readouterr()
 
@@ -141,7 +159,7 @@ class TestInstructions:
             "Galactipy",
             "galactipy",
             "GitLab",
-            "https://www.gitlab.com/manoelpqueiroz/galactipy",
+            "https://www.gitlab.com/galactipy/galactipy",
         )
         captured = capsys.readouterr()
 

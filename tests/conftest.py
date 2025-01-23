@@ -48,7 +48,14 @@ def template_tree(tmp_path):
             "feature_request.md",
             "question.md",
         ],
-        workflows=["build.yml", "greetings.yml", "release-drafter.yml"],
+        workflows=[
+            "test.yml",
+            "greetings.yml",
+            "release-drafter.yml",
+            "docker.yml",
+            "pypi-prod.yml",
+            "pypi-test.yml",
+        ],
     )
     bulk_file_creation(
         gitlab_dir,
@@ -73,6 +80,9 @@ def removal_tree(tmp_path):
         docs=[".gitkeep"],
         tests=["test_hello.py"],
     )
+
+    github_dir = tmp_path / ".github"
+    bulk_file_creation(github_dir, workflows=["docker.yml"])
 
     pyproject_file = tmp_path / "pyproject.toml"
     tests_directory = tmp_path / "tests"
@@ -109,7 +119,7 @@ def galactipy_instructions():
 
             $ git add .
             $ git commit -m ":tada: Initial commit"
-            $ git remote add origin https://www.gitlab.com/manoelpqueiroz/galactipy.git
+            $ git remote add origin https://www.gitlab.com/galactipy/galactipy.git
             $ git push -u origin master
     """
 

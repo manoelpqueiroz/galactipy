@@ -6,7 +6,12 @@ from invoke import Context, UnexpectedExit, task
 
 PACKAGE_NAME = "{{ cookiecutter.repo_name }}"
 {%+ if cookiecutter.create_docker %}
-DEFAULT_DOCKER_REPOSITORY = "{{ cookiecutter.package_name }}"
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+DOCKER_REGISTRY = "registry.gitlab.com"
+DEFAULT_DOCKER_REPOSITORY = f"{DOCKER_REGISTRY}/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}"
+{%- else %}
+DEFAULT_DOCKER_REPOSITORY = "{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}"
+{%- endif %}
 DEFAULT_DOCKER_TAG = "latest"
 DEFAULT_DOCKER_IMAGE = f"{DEFAULT_DOCKER_REPOSITORY}:{DEFAULT_DOCKER_TAG}"
 {% endif %}
@@ -44,7 +49,6 @@ else:
 # Reusable command templates
 if PTY:
     FILE_REMOVER = 'find . | grep -E "{}" | xargs rm -rf'
-
 
 else:
     FILE_REMOVER = (
@@ -234,28 +238,72 @@ def sweep(c: Context) -> None:
 
 {%+ if cookiecutter.create_docker %}
 # Docker commands
-@task(iterable=["images"])
-def docker_build(c: Context, images: list[str]) -> None:
-    """Build Docker images for {{ cookiecutter.repo_name }}."""
-    if len(images) == 0:
-        images.append(DEFAULT_DOCKER_IMAGE)
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+@task
+def docker_login(c: Context, username: str, password: str) -> None:
+    """Login to GitLab Container Registry using a Token.
 
-    docker_images = " ".join(f"-t {i}" for i in images)
+    More information for authentication methods provided at
+    https://docs.gitlab.com/ee/user/packages/container_registry/authenticate_with_container_registry.html
+    """
+    if PTY:
+        password_cmd = f"echo {password}"
+
+    else:
+        password_cmd = f"Write-Host {password}"
 
     c.run(
-        f"docker build . {docker_images} -f ./docker/Dockerfile --no-cache"
+        f"{password_cmd} | "
+        f"docker login {DOCKER_REGISTRY} -u {username} --password-stdin"
     )
 
 
-@task(iterable=["images"])
-def docker_remove(c: Context, images: list[str]) -> None:
+{%- endif %}
+@task(iterable=["tags"])
+def docker_build(
+    c: Context,
+    tags: list[str],
+    repository: str = DEFAULT_DOCKER_REPOSITORY,
+) -> None:
+    """Build Docker images for {{ cookiecutter.repo_name }}."""
+    if len(tags) == 0:
+        tags.append(DEFAULT_DOCKER_TAG)
+
+    docker_images = " ".join(f"-t {repository}:{tag}" for tag in tags)
+
+    c.run(
+        f"docker build . {docker_images} -f ./docker/Dockerfile --no-cache", pty=PTY
+    )
+
+
+@task(iterable=["tags"])
+def docker_remove(
+    c: Context,
+    tags: list[str],
+    repository: str = DEFAULT_DOCKER_REPOSITORY
+) -> None:
     """Remove specified Docker images created for {{ cookiecutter.repo_name }}."""
-    if len(images) == 0:
-        images.append(DEFAULT_DOCKER_IMAGE)
+    if len(tags) == 0:
+        docker_images = c.run(f"docker images {repository} -qa", hide='out').stdout
+    else:
+        docker_images = " ".join(f"{repository}:{tag}" for tag in tags)
 
-    docker_images = " ".join(images)
+    c.run(f"docker rmi -f {docker_images}", pty=PTY)
 
-    c.run(f"docker rmi -f {docker_images}")
+
+@task(iterable=["tags"])
+def docker_push(
+    c: Context,
+    tags: list[str],
+    repository: str = DEFAULT_DOCKER_REPOSITORY,
+) -> None:
+    """Push specified Docker images to Docker Hub."""
+    if len(tags) == 0:
+        c.run(f"docker push -a {repository}")
+    else:
+        docker_images = " ".join(f"{repository}:{tag}" for tag in tags)
+
+    c.run(f"docker push -f {docker_images}", pty=PTY)
 
 {% endif %}
 # Cleaning commands for Bash, Zsh and PowerShell
