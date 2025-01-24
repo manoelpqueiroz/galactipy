@@ -20,8 +20,6 @@ workflow:
       when: never
     - if: $CI_COMMIT_BRANCH =~ /^test.*/i
       when: never
-    - if: $GITLAB_USER_LOGIN =~ /^(project|group)_\d+_bot_\w+/i
-      when: never
     - if: $CI_COMMIT_BRANCH || $CI_COMMIT_TAG
 
 include:
@@ -58,6 +56,8 @@ default:
       when: never
     - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft\:.*/i
       when: manual
+    - if: $GITLAB_USER_LOGIN =~ /^(project|group)_\d+_bot_\w+/i
+      when: never
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 .default_scripts: &default_scripts
@@ -108,6 +108,8 @@ coveralls-report:
   stage: coverage
   image: alpine:latest
   rules:
+    - if: $GITLAB_USER_LOGIN =~ /^(project|group)_\d+_bot_\w+/i
+      when: never
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE != 'schedule'
   script:
     - apk add curl
@@ -195,6 +197,7 @@ github-mirror-commit:
       curl
       --header "PRIVATE-TOKEN: $GALACTIPY_BOT_TOKEN"
       --request PUT
+      --data '{"merge_when_pipeline_succeeds": true}'
       "$CI_API_V4_URL/projects/$CI_PROJECT_ID/merge_requests/$MR_ID/merge"
       >
       mr_merge_response.json
@@ -203,3 +206,11 @@ github-mirror-commit:
     paths:
       - mr_merge_response.json
     expire_in: 1 week
+
+allow-github-merge:
+  stage: post-release
+  image: alpine:latest
+  rules:
+    - if: $GITLAB_USER_LOGIN =~ /^(project|group)_\d+_bot_\w+/i
+  script:
+    - echo "Token pipeline running after a commit was pushed by $GITLAB_USER_NAME."
