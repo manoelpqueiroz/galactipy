@@ -1,3 +1,21 @@
+## 0.11.0 (2025-01-24)
+
+### :rocket: Features (1 change)
+
+- [:sparkles: Add option for behaviour-driven development](galactipy/galactipy@fdb4c6e2a215cb95cb049929476b99fbb420f5e9) ([merge request](galactipy/galactipy!40))
+
+### :package: Build System & CI/CD (1 change)
+
+- [:construction_worker: Update GitHub mirror jobs](galactipy/galactipy@47cbe9178b6726df419857b93b2fa75a63d1160e) ([merge request](galactipy/galactipy!40))
+
+### :gear: Internals (1 change)
+
+- [:wrench: Include BDD flux control in post-gen hooks](galactipy/galactipy@a509a9c80daa305440c854a0b4413141b81f211f) ([merge request](galactipy/galactipy!40))
+
+### :memo: Documentation (1 change)
+
+- [:memo: Update READMEs with BDD functionality](galactipy/galactipy@0eeeefe46404ac125dc2652a8f44aca04bcbeabf) ([merge request](galactipy/galactipy!40))
+
 ## 0.10.0 (2025-01-23)
 
 ### :rocket: Features (1 change)
