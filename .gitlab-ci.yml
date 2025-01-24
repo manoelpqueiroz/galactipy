@@ -14,13 +14,33 @@ variables:
   SEMVER_RELEASE_VERSION: /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
   SEMVER_MINOR_VERSION: /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.0$/i
 
+# Anchors and script templates
+.filechecks: &filechecks
+  - "{{ cookiecutter.repo_name }}/**/*"
+  - hooks/*
+  - tests/*
+  - utils/*
+  - tasks.py
+  - cookiecutter.json
+  - .gitlab-ci.yml
+  - .triage-policies.yml
+
+.default_scripts: &default_scripts
+  - invoke install --ignore-pty
+  - invoke check-linter
+  - invoke test
+  - invoke check-safety
+
+# CI definitions
 workflow:
   rules:
     - if: $CI_COMMIT_TITLE =~ /(\:construction|WIP)\:.*/i
       when: never
     - if: $CI_COMMIT_BRANCH =~ /^test.*/i
       when: never
-    - if: $CI_COMMIT_BRANCH || $CI_COMMIT_TAG
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
 
 include:
   - component: $CI_SERVER_FQDN/components/gitlab-triage/gitlab-triage@0.1.2
@@ -36,35 +56,28 @@ default:
     paths:
       - $CI_PROJECT_DIR/.cache/pip
 
+# Template job for running tests
 .test_rules:
   rules:
-    - if:
-      changes:
-        paths:
-          - "{{ cookiecutter.repo_name }}/**/*"
-          - hooks/*
-          - tests/*
-          - utils/*
-          - tasks.py
-          - cookiecutter.json
-          - .gitlab-ci.yml
-          - .triage-policies.yml
-        compare_to: $CI_DEFAULT_BRANCH
     - if: $CI_COMMIT_TAG
       when: never
     - if: $CI_PIPELINE_SOURCE == 'schedule'
       when: never
-    - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft\:.*/i
-      when: manual
     - if: $GITLAB_USER_LOGIN =~ /^(project|group)_\d+_bot_\w+/i
       when: never
+    - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE != 'merge_request_event'
+      changes:
+        paths: *filechecks
+        compare_to: $CI_DEFAULT_BRANCH
+      when: manual
+    - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft\:.*/i
+      changes:
+        paths: *filechecks
+      when: manual
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
+      changes:
+        paths: *filechecks
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-
-.default_scripts: &default_scripts
-  - invoke install --ignore-pty
-  - invoke check-linter
-  - invoke test
-  - invoke check-safety
 
 test-py310:
   stage: test
@@ -104,17 +117,21 @@ test-py313:
     - *default_scripts
     - invoke coverage
 
-coveralls-report:
+codacy-report:
   stage: coverage
   image: alpine:latest
   rules:
+    - if: $CI_COMMIT_TAG
+      when: never
     - if: $GITLAB_USER_LOGIN =~ /^(project|group)_\d+_bot_\w+/i
       when: never
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE != 'schedule'
   script:
-    - apk add curl
-    - curl -L https://coveralls.io/coveralls-linux.tar.gz | tar -xz -C /usr/local/bin
-    - coveralls -f coverage.xml -r $COVERALLS_TOKEN
+    - apk add curl bash
+    - curl -Ls https://coverage.codacy.com/get.sh -o codacy.sh
+    - chmod +x codacy.sh
+    - ./codacy.sh report -r coverage.xml
 
 changelog-build:
   stage: release
@@ -139,15 +156,17 @@ changelog-commit:
   rules:
     - if: $CI_COMMIT_TAG =~ $SEMVER_RELEASE_VERSION
   needs: [changelog-build]
-  variables:
-    CHANGELOG_COMMIT_MESSAGE: "%3Abookmark%3A%20Update%20CHANGELOG.md"
   script:
     - apk add curl
     - >
+      cat $CHANGELOG_COMMIT_PAYLOAD
+      |
       curl
       --header "PRIVATE-TOKEN: $GALACTIPY_BOT_TOKEN"
+      --header "Content-Type: application/json"
+      --data @-
       --request POST
-      "$CI_API_V4_URL/projects/$CI_PROJECT_ID/repository/changelog?version=$CI_COMMIT_TAG&message=$CHANGELOG_COMMIT_MESSAGE"
+      "$CI_API_V4_URL/projects/$CI_PROJECT_ID/repository/changelog"
 
 release-galactipy:
   stage: release
