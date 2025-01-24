@@ -1,7 +1,7 @@
 # Poetry pyproject.toml: https://python-poetry.org/docs/pyproject/
 [project]
 name = "galactipy"
-version = "0.10.0"
+version = "0.11.0"
 description = "Full-fledged template for Python projects."
 license = { text = "MIT" }
 readme = "README.md"
@@ -185,6 +185,9 @@ section-order = [
   "local-folder",
   "testing",
 ]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 11
 
 
 [tool.mypy]

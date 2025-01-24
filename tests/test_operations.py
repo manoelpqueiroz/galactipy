@@ -55,7 +55,7 @@ class TestFileRemoval:
         project_root, pyproject_file, tests_root, test_file, package_name = removal_tree
         cli_file = project_root / package_name / "__main__.py"
 
-        remove_unused_files(project_root, package_name, True, False, False)
+        remove_unused_files(project_root, package_name, True, False, False, False)
 
         assert not cli_file.exists()
 
@@ -68,7 +68,7 @@ class TestFileRemoval:
         ci_file = project_root / ".gitlab-ci.yml"
         triage_file = project_root / ".triage-policies.yml"
 
-        remove_unused_files(project_root, package_name, False, True, False)
+        remove_unused_files(project_root, package_name, False, True, False, False)
 
         assert not ci_file.exists()
         assert not triage_file.exists()
@@ -82,7 +82,7 @@ class TestFileRemoval:
         docker_directory = project_root / "docker"
         dockerignore = project_root / ".dockerignore"
 
-        remove_unused_files(project_root, package_name, False, False, True)
+        remove_unused_files(project_root, package_name, False, False, True, False)
 
         assert not docker_directory.exists()
         assert not dockerignore.exists()
@@ -96,12 +96,26 @@ class TestFileRemoval:
         docker_directory = project_root / "docker"
         dockerignore = project_root / ".dockerignore"
         docker_workflow = project_root / ".github" / "workflows" / "docker.yml"
+        test_workflow = project_root / ".github" / "workflows" / "test.yml"
 
-        remove_unused_files(project_root, package_name, False, True, True)
+        remove_unused_files(project_root, package_name, False, True, True, False)
 
         assert not docker_directory.exists()
         assert not dockerignore.exists()
         assert not docker_workflow.exists()
+
+        assert pyproject_file.exists()
+        assert tests_root.exists()
+        assert test_file.exists()
+        assert test_workflow.exists()
+
+    def test_remove_bdd(self, removal_tree):
+        project_root, pyproject_file, tests_root, test_file, package_name = removal_tree
+        gitkeep = project_root / "tests" / "features" / ".gitkeep"
+
+        remove_unused_files(project_root, package_name, False, False, False, True)
+
+        assert not gitkeep.exists()
 
         assert pyproject_file.exists()
         assert tests_root.exists()
@@ -114,13 +128,15 @@ class TestFileRemoval:
         ci_file = project_root / ".gitlab-ci.yml"
         docker_directory = project_root / "docker"
         dockerignore = project_root / ".dockerignore"
+        gitkeep = project_root / "tests" / "features" / ".gitkeep"
 
-        remove_unused_files(project_root, package_name, True, True, True)
+        remove_unused_files(project_root, package_name, True, True, True, True)
 
         assert not cli_file.exists()
         assert not ci_file.exists()
         assert not docker_directory.exists()
         assert not dockerignore.exists()
+        assert not gitkeep.exists()
 
         assert pyproject_file.exists()
         assert tests_root.exists()

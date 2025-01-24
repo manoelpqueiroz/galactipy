@@ -7,6 +7,7 @@ stages:
   - test
   - coverage
   - release
+  - post-release
   - maintenance
 
 variables:
@@ -146,28 +147,6 @@ changelog-commit:
       --request POST
       "$CI_API_V4_URL/projects/$CI_PROJECT_ID/repository/changelog?version=$CI_COMMIT_TAG&message=$CHANGELOG_COMMIT_MESSAGE"
 
-github-mirror-update:
-  stage: release
-  image: alpine:latest
-  rules:
-    - if: $CI_COMMIT_TAG =~ $SEMVER_MINOR_VERSION
-  needs: [changelog-commit]
-  script:
-    - apk add curl jq
-    - >
-      MR_ID=$(curl
-      --header "PRIVATE-TOKEN: $GALACTIPY_BOT_TOKEN"
-      --data "$GH_MIRROR_MR_PAYLOAD"
-      --request POST
-      "$CI_API_V4_URL/projects/$CI_PROJECT_ID/merge_requests"
-      |
-      jq --raw-output .iid)
-    - >
-      curl
-      --header "PRIVATE-TOKEN: $GALACTIPY_BOT_TOKEN"
-      --request PUT
-      "$CI_API_V4_URL/projects/$CI_PROJECT_ID/merge_requests/$MR_ID/merge"
-
 release-galactipy:
   stage: release
   image: registry.gitlab.com/gitlab-org/release-cli:latest
@@ -179,3 +158,48 @@ release-galactipy:
   release:
     tag_name: $CI_COMMIT_TAG
     description: RELEASE_NOTES.md
+
+github-mirror-mr:
+  stage: post-release
+  image: alpine:latest
+  rules:
+    - if: $CI_COMMIT_TAG =~ $SEMVER_MINOR_VERSION
+  script:
+    - apk add curl
+    - >
+      cat $GH_MIRROR_MR_PAYLOAD
+      |
+      curl
+      --header "PRIVATE-TOKEN: $GALACTIPY_BOT_TOKEN"
+      --header "Content-Type: application/json"
+      --data @-
+      --request POST
+      "$CI_API_V4_URL/projects/$CI_PROJECT_ID/merge_requests"
+      >
+      mr_creation_response.json
+  artifacts:
+    paths:
+      - mr_creation_response.json
+    expire_in: 1 hour
+
+github-mirror-commit:
+  stage: post-release
+  image: alpine:latest
+  rules:
+    - if: $CI_COMMIT_TAG =~ $SEMVER_MINOR_VERSION
+  needs: [github-mirror-mr]
+  script:
+    - apk add curl jq
+    - export MR_ID=$(cat mr_creation_response.json | jq --raw-output .iid)
+    - >
+      curl
+      --header "PRIVATE-TOKEN: $GALACTIPY_BOT_TOKEN"
+      --request PUT
+      "$CI_API_V4_URL/projects/$CI_PROJECT_ID/merge_requests/$MR_ID/merge"
+      >
+      mr_merge_response.json
+  artifacts:
+    name: github_mirror_$CI_COMMIT_REF_NAME_$CI_JOB_NAME_$CI_JOB_STARTED_AT
+    paths:
+      - mr_merge_response.json
+    expire_in: 1 week

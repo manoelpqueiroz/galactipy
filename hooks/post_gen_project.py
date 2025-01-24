@@ -26,6 +26,7 @@ SCM_BASE_URL = "{{ cookiecutter.__scm_base_url }}"
 # avoid raising errors when testing
 CREATE_CLI = "{{ cookiecutter.create_cli }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
 CREATE_DOCKER = "{{ cookiecutter.create_docker }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
+USE_BDD = "{{ cookiecutter.use_bdd }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
 
 licences_dict = {
     "MIT": "mit",
@@ -110,6 +111,7 @@ def remove_unused_files(
     remove_cli: bool,
     remove_gitlab: bool,
     remove_docker: bool,
+    remove_bdd: bool,
 ) -> None:
     """Remove unused files.
 
@@ -125,6 +127,8 @@ def remove_unused_files(
         Flag for removing GitLab related files.
     remove_docker : bool
         Flag for removing Docker related files.
+    remove_bdd : bool
+        Flag for removing BDD related files.
     """
     files_to_delete: list[Path] = []
 
@@ -142,6 +146,9 @@ def remove_unused_files(
 
         return removals
 
+    def _bdd_specific_files() -> list[Path]:
+        return [directory / "tests" / "features"]
+
     if remove_cli:
         files_to_delete.extend(_cli_specific_files())
 
@@ -150,6 +157,9 @@ def remove_unused_files(
 
     if remove_docker:
         files_to_delete.extend(_docker_specific_files(remove_gitlab))
+
+    if remove_bdd:
+        files_to_delete.extend(_bdd_specific_files())
 
     for path in files_to_delete:
         rmdir(path)
@@ -270,6 +280,7 @@ def main() -> None:  # noqa: D103
     remove_gitlab = SCM_PLATFORM_LC != "gitlab"
     remove_cli = not CREATE_CLI
     remove_docker = not CREATE_DOCKER
+    remove_bdd = not USE_BDD
 
     generate_licence(directory=PROJECT_DIRECTORY, licence=licences_dict[LICENCE])
 
@@ -281,6 +292,7 @@ def main() -> None:  # noqa: D103
         remove_cli=remove_cli,
         remove_gitlab=remove_gitlab,
         remove_docker=remove_docker,
+        remove_bdd=remove_bdd,
     )
 
     print_further_instructions(

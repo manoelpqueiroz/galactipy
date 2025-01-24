@@ -15,5 +15,7 @@ default_context:
   use_ruff: {{ cookiecutter.use_ruff }}
   line_length: {{ cookiecutter.line_length }}
   docstring_style: "{{ cookiecutter.docstring_style }}"
+  docstring_length: {{ cookiecutter.docstring_length }}
+  use_bdd: {{ cookiecutter.use_bdd }}
   create_cli: {{ cookiecutter.create_cli }}
   create_docker: {{ cookiecutter.create_docker }}

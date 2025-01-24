@@ -60,5 +60,5 @@ keywords:
   - semantic-versions
 license: MIT
 commit: 26e8abffc6648d88f3845ed73192f2f79bab55ff
-version: v0.10.0
-date-released: '2025-01-09'
+version: v0.11.0
+date-released: '2025-01-24'
