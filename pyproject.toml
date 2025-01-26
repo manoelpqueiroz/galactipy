@@ -246,6 +246,7 @@ addopts = [
   "--doctest-continue-on-failure",
   "--cov=hooks",
   "--cov-config=pyproject.toml",
+  "--junitxml=test_report.xml"
 ]
 
 
