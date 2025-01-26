@@ -83,14 +83,15 @@ Below is a comparison between the features available in this package depending o
 |          Dependabot           |        :x:         | :white_check_mark: | [Dependabot][ft36] is a feature now incorporated into GitHub Security. See [here][ft37] how to enable it.                                                                                                                                                   |
 |        Release drafter        |        :x:         | :white_check_mark: | [Release Drafter][ft38] is a custom workflow available on GitHub Marketplace. You may see the list of labels in [`release-drafter.yml`][ft39]. Works perfectly with [Semantic Versions][ft40] specification.                                                |
 |    Changelog configuration    | :white_check_mark: |        :x:         | GitLab provides automatic changelog updates through their [API][ft41]. You may modify the template in [`changelog_config.yml`][ft42].                                                                                                                       |
-|  CI control over pushed tags  | :white_check_mark: |     :warning:      | GitLab provides full control for tags pushed to the repository using [regex][ft43], while GitHub Actions is more restricted in how it [filters][ft44] workflows to run, and can only apply these filters at the top level, limiting workflow customization. |
+|         Test Reports          | :white_check_mark: |        :x:         | JUnit XML reports are supported by GitLab to allow [test reports][ft43] to be displayed in pipelines and merge requests. |
+|  CI control over pushed tags  | :white_check_mark: |     :warning:      | GitLab provides full control for tags pushed to the repository using [regex][ft44], while GitHub Actions is more restricted in how it [filters][ft45] workflows to run, and can only apply these filters at the top level, limiting workflow customization. |
 
 ### Open source community features
 
-- Ready-to-use [Merge Request templates][ft45] and several [Issue templates][ft46];
+- Ready-to-use [Merge Request templates][ft46] and several [Issue templates][ft47];
 - Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically;
-- **Loads** of predefined [badges][ft47] to make your project stand out: project info, contributions, development practices, development tools and QA status; you can either keep them, remove as you wish or be welcome to add even more;
-- Workflows to mark and close abandoned issues after a period of inactivity for both GitLab with [`Triage Policies`][ft48] and GitHub with [`Stale Bot`][ft49];
+- **Loads** of predefined [badges][ft48] to make your project stand out: project info, contributions, development practices, development tools and QA status; you can either keep them, remove as you wish or be welcome to add even more;
+- Workflows to mark and close abandoned issues after a period of inactivity for both GitLab with [`Triage Policies`][ft49] and GitHub with [`Stale Bot`][ft50];
 - [Semantic Versions][ft40] specification with [`Changelog entries`][ft41] or [`Release Drafter`][ft38].
 
 ## :exploding_head: How to use it
@@ -797,13 +798,14 @@ Here is the Markdown source for it:
 [ft40]: https://semver.org/
 [ft41]: https://docs.gitlab.com/ee/user/project/changelogs.html
 [ft42]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/changelog_config.yml
-[ft43]: https://docs.gitlab.com/ee/ci/jobs/job_rules.html#compare-a-variable-to-a-regular-expression
-[ft44]: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
-[ft45]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/merge_request_templates/default.md
-[ft46]: https://gitlab.com/galactipy/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/issue_templates
-[ft47]: https://shields.io/
-[ft48]: https://gitlab.com/explore/catalog/components/gitlab-triage
-[ft49]: https://github.com/marketplace/actions/close-stale-issues
+[ft43]: https://docs.gitlab.com/ee/ci/testing/unit_test_reports.html
+[ft44]: https://docs.gitlab.com/ee/ci/jobs/job_rules.html#compare-a-variable-to-a-regular-expression
+[ft45]: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+[ft46]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/merge_request_templates/default.md
+[ft47]: https://gitlab.com/galactipy/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/issue_templates
+[ft48]: https://shields.io/
+[ft49]: https://gitlab.com/explore/catalog/components/gitlab-triage
+[ft50]: https://github.com/marketplace/actions/close-stale-issues
 
 [htu1]: http://ivantomic.com/projects/ospnc/
 [htu2]: #gitlab-vs-github-features
