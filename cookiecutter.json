@@ -37,6 +37,10 @@
   ],
   "docstring_length": "{{ cookiecutter.line_length }}",
   "use_bdd": true,
+  "coverage_service": [
+    "Codacy",
+    "Coveralls"
+  ],
   "create_cli": true,
   "create_docker": true,
 
@@ -67,6 +71,11 @@
     "docstring_style": "Which docstring style would you like to use?",
     "docstring_length": "Docstring maximum line length",
     "use_bdd": "Use behaviour-driven development for testing?",
+    "coverage_service": {
+      "__prompt__": "What would you like to use for code quality services?",
+      "Codacy": "Full code analysis with Codacy",
+      "Coveralls": "Basic code coverage with Coveralls"
+    },
     "create_cli": "Would you like to create your project with CLI implementation?",
     "create_docker": "Containerize your application with Docker?"
   },
@@ -82,6 +91,7 @@
   "__scm_platform_lc": "{{ cookiecutter.scm_platform.lower() }}",
   "__scm_base_url": "https://{{ cookiecutter.__scm_platform_lc }}.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}",
   "__scm_link_url": "https://{{ cookiecutter.__scm_platform_lc }}.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}{% if cookiecutter.__scm_platform_lc == 'gitlab' %}/-{% endif %}",
+  "__coverage_lc": "{{ cookiecutter.coverage_service.lower() }}",
   "_copy_without_render": [
     "poetry.lock"
   ]
