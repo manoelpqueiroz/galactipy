@@ -490,7 +490,7 @@ invoke cleanup
 
 Think of it as a way to use natural language to describe **what** we want the code to do in order to work on it with more clarity of end-goals and reduce bugs.
 
-In order to apply BDD, however, a crucial perspective must change: tests should be described and written *before* the code itself. This is to make sure that the application's behaviour (what it should do and what it should *not* do) are made very clear from the beginning.
+In order to apply BDD, however, a crucial perspective must change: tests should be described and written _before_ the code itself. This is to make sure that the application's behaviour (what it should do and what it should _not_ do) are made very clear from the beginning.
 
 If you choose to use BDD for your project, a `features` directory will be created under `tests` and [`pytest-bdd`][htu14] will be added as a dependency. You should place `.feature` files inside this folder to specify them and describe scenarios using the [Gherkin][htu15] language:
 

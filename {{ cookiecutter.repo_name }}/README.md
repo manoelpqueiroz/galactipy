@@ -605,7 +605,7 @@ This project was generated with [`galactipy`][bp7].
 [bp14]: {{ cookiecutter.__scm_link_url }}/blob/master/.pre-commit-config.yaml
 [bp15]: https://img.shields.io/badge/security-bandit-yellow?style=for-the-badge
 [bp16]: https://bandit.readthedocs.io/en/latest/
-[bp17]: https://img.shields.io/badge/Editor%20Config-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
+[bp17]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
 [bp18]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
 {%+ if cookiecutter.licence != 'nos' %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
