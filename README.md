@@ -14,14 +14,16 @@
 [![Merge Requests][b16]][b17]
 
 [![Poetry][b18]][b19]
-[![Pre-commit][b20]][b21]
-[![Editorconfig][b22]][b23]
-[![Code style: Ruff][b24]][b25]
-[![Docstrings: numpydoc][b26]][b27]
+[![Code style: Ruff][b20]][b21]
+[![Docstrings: numpydoc][b22]][b23]
+
+[![Pre-commit][b24]][b25]
+[![Editorconfig][b26]][b27]
 
 [![Semantic versions][b28]][b5]
-[![GitLab Pipelines][b29]][b30]
+[![Code Quality][b29]][b30]
 [![Coverage][b31]][b32]
+[![GitLab Pipelines][b33]][b34]
 
 _Expand your project structure from atoms of code to **galactic** dimensions._ :milky_way:
 </div>
@@ -29,7 +31,7 @@ _Expand your project structure from atoms of code to **galactic** dimensions._ :
 ## TL;DR
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v0.11.0
+cookiecutter gl:galactipy/galactipy --checkout v0.11.1
 ```
 
 > All you need is the latest version of cookiecutter! :wink:
@@ -81,14 +83,15 @@ Below is a comparison between the features available in this package depending o
 |          Dependabot           |        :x:         | :white_check_mark: | [Dependabot][ft36] is a feature now incorporated into GitHub Security. See [here][ft37] how to enable it.                                                                                                                                                   |
 |        Release drafter        |        :x:         | :white_check_mark: | [Release Drafter][ft38] is a custom workflow available on GitHub Marketplace. You may see the list of labels in [`release-drafter.yml`][ft39]. Works perfectly with [Semantic Versions][ft40] specification.                                                |
 |    Changelog configuration    | :white_check_mark: |        :x:         | GitLab provides automatic changelog updates through their [API][ft41]. You may modify the template in [`changelog_config.yml`][ft42].                                                                                                                       |
-|  CI control over pushed tags  | :white_check_mark: |     :warning:      | GitLab provides full control for tags pushed to the repository using [regex][ft43], while GitHub Actions is more restricted in how it [filters][ft44] workflows to run, and can only apply these filters at the top level, limiting workflow customization. |
+|         Test Reports          | :white_check_mark: |        :x:         | JUnit XML reports are supported by GitLab to allow [test reports][ft43] to be displayed in pipelines and merge requests. |
+|  CI control over pushed tags  | :white_check_mark: |     :warning:      | GitLab provides full control for tags pushed to the repository using [regex][ft44], while GitHub Actions is more restricted in how it [filters][ft45] workflows to run, and can only apply these filters at the top level, limiting workflow customization. |
 
 ### Open source community features
 
-- Ready-to-use [Merge Request templates][ft45] and several [Issue templates][ft46];
+- Ready-to-use [Merge Request templates][ft46] and several [Issue templates][ft47];
 - Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically;
-- **Loads** of predefined [badges][ft47] to make your project stand out: project info, contributions, development practices, development tools and QA status; you can either keep them, remove as you wish or be welcome to add even more;
-- Workflows to mark and close abandoned issues after a period of inactivity for both GitLab with [`Triage Policies`][ft48] and GitHub with [`Stale Bot`][ft49];
+- **Loads** of predefined [badges][ft48] to make your project stand out: project info, contributions, development practices, development tools and QA status; you can either keep them, remove as you wish or be welcome to add even more;
+- Workflows to mark and close abandoned issues after a period of inactivity for both GitLab with [`Triage Policies`][ft49] and GitHub with [`Stale Bot`][ft50];
 - [Semantic Versions][ft40] specification with [`Changelog entries`][ft41] or [`Release Drafter`][ft38].
 
 ## :exploding_head: How to use it
@@ -104,7 +107,7 @@ pip install -U cookiecutter
 then go to a directory where you want to create your project and run:
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v0.11.0
+cookiecutter gl:galactipy/galactipy --checkout v0.11.1
 ```
 
 ### Input variables
@@ -490,7 +493,7 @@ invoke cleanup
 
 Think of it as a way to use natural language to describe **what** we want the code to do in order to work on it with more clarity of end-goals and reduce bugs.
 
-In order to apply BDD, however, a crucial perspective must change: tests should be described and written *before* the code itself. This is to make sure that the application's behaviour (what it should do and what it should *not* do) are made very clear from the beginning.
+In order to apply BDD, however, a crucial perspective must change: tests should be described and written _before_ the code itself. This is to make sure that the application's behaviour (what it should do and what it should _not_ do) are made very clear from the beginning.
 
 If you choose to use BDD for your project, a `features` directory will be created under `tests` and [`pytest-bdd`][htu14] will be added as a dependency. You should place `.feature` files inside this folder to specify them and describe scenarios using the [Gherkin][htu15] language:
 
@@ -706,7 +709,7 @@ Give them your :star:, these resources are amazing! :wink:
 }
 ```
 
-Add the badge [![Expand your project structure from atoms of code to galactic dimensions.][b33]][b34] to your project! It would be really appreciated to spread the word of this template.
+Add the badge [![Expand your project structure from atoms of code to galactic dimensions.][b35]][b36] to your project! It would be really appreciated to spread the word of this template.
 
 Here is the Markdown source for it:
 
@@ -735,21 +738,23 @@ Here is the Markdown source for it:
 [b17]: https://kutt.it/YZ7kPX
 [b18]: https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json&style=for-the-badge
 [b19]: https://python-poetry.org/
-[b20]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge
-[b21]: https://kutt.it/D4ayxs
-[b22]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
-[b23]: https://kutt.it/fy3pqF
-[b24]: https://img.shields.io/badge/code%20style-ruff-261230?style=for-the-badge&labelColor=grey
-[b25]: https://docs.astral.sh
-[b26]: https://img.shields.io/badge/docstrings-numpydoc-4dabcf?style=for-the-badge&labelColor=4d77cf
-[b27]: https://numpydoc.readthedocs.io/en/latest/format.html
+[b20]: https://img.shields.io/badge/code%20style-ruff-261230?style=for-the-badge&labelColor=grey
+[b21]: https://docs.astral.sh
+[b22]: https://img.shields.io/badge/docstrings-numpydoc-4dabcf?style=for-the-badge&labelColor=4d77cf
+[b23]: https://numpydoc.readthedocs.io/en/latest/format.html
+[b24]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge
+[b25]: https://kutt.it/D4ayxs
+[b26]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
+[b27]: https://kutt.it/fy3pqF
 [b28]: https://img.shields.io/badge/semantic%20versions-4053D6?style=for-the-badge&logo=semver
-[b29]: https://img.shields.io/gitlab/pipeline-status/galactipy%2Fgalactipy?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
-[b30]: https://kutt.it/zG7nVG
-[b31]: https://img.shields.io/coverallsCoverage/gitlab/galactipy/galactipy?style=for-the-badge&logo=coveralls
+[b29]: https://img.shields.io/codacy/grade/9827f88089954a3680675d7c77e63fd5?style=for-the-badge&logo=codacy
+[b30]: https://kutt.it/ByTvpc
+[b31]: https://img.shields.io/codacy/coverage/9827f88089954a3680675d7c77e63fd5?style=for-the-badge&logo=codacy
 [b32]: https://kutt.it/uxIDHs
-[b33]: https://img.shields.io/badge/made%20with-galactipy%20%F0%9F%8C%8C-179287?style=for-the-badge&labelColor=193A3E
-[b34]: https://kutt.it/7fYqQl
+[b33]: https://img.shields.io/gitlab/pipeline-status/galactipy%2Fgalactipy?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
+[b34]: https://kutt.it/zG7nVG
+[b35]: https://img.shields.io/badge/made%20with-galactipy%20%F0%9F%8C%8C-179287?style=for-the-badge&labelColor=193A3E
+[b36]: https://kutt.it/7fYqQl
 
 [ft1]: https://cookiecutter.readthedocs.io/en/stable/
 [ft2]: https://python-poetry.org/
@@ -793,13 +798,14 @@ Here is the Markdown source for it:
 [ft40]: https://semver.org/
 [ft41]: https://docs.gitlab.com/ee/user/project/changelogs.html
 [ft42]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/changelog_config.yml
-[ft43]: https://docs.gitlab.com/ee/ci/jobs/job_rules.html#compare-a-variable-to-a-regular-expression
-[ft44]: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
-[ft45]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/merge_request_templates/default.md
-[ft46]: https://gitlab.com/galactipy/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/issue_templates
-[ft47]: https://shields.io/
-[ft48]: https://gitlab.com/explore/catalog/components/gitlab-triage
-[ft49]: https://github.com/marketplace/actions/close-stale-issues
+[ft43]: https://docs.gitlab.com/ee/ci/testing/unit_test_reports.html
+[ft44]: https://docs.gitlab.com/ee/ci/jobs/job_rules.html#compare-a-variable-to-a-regular-expression
+[ft45]: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+[ft46]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/merge_request_templates/default.md
+[ft47]: https://gitlab.com/galactipy/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/issue_templates
+[ft48]: https://shields.io/
+[ft49]: https://gitlab.com/explore/catalog/components/gitlab-triage
+[ft50]: https://github.com/marketplace/actions/close-stale-issues
 
 [htu1]: http://ivantomic.com/projects/ospnc/
 [htu2]: #gitlab-vs-github-features
