@@ -14,14 +14,16 @@
 [![Merge Requests][b16]][b17]
 
 [![Poetry][b18]][b19]
-[![Pre-commit][b20]][b21]
-[![Editorconfig][b22]][b23]
-[![Code style: Ruff][b24]][b25]
-[![Docstrings: numpydoc][b26]][b27]
+[![Code style: Ruff][b20]][b21]
+[![Docstrings: numpydoc][b22]][b23]
+
+[![Pre-commit][b24]][b25]
+[![Editorconfig][b26]][b27]
 
 [![Semantic versions][b28]][b5]
-[![GitLab Pipelines][b29]][b30]
+[![Code Quality][b29]][b30]
 [![Coverage][b31]][b32]
+[![GitLab Pipelines][b33]][b34]
 
 _Expand your project structure from atoms of code to **galactic** dimensions._ :milky_way:
 </div>
@@ -706,7 +708,7 @@ Give them your :star:, these resources are amazing! :wink:
 }
 ```
 
-Add the badge [![Expand your project structure from atoms of code to galactic dimensions.][b33]][b34] to your project! It would be really appreciated to spread the word of this template.
+Add the badge [![Expand your project structure from atoms of code to galactic dimensions.][b35]][b36] to your project! It would be really appreciated to spread the word of this template.
 
 Here is the Markdown source for it:
 
@@ -735,21 +737,23 @@ Here is the Markdown source for it:
 [b17]: https://kutt.it/YZ7kPX
 [b18]: https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json&style=for-the-badge
 [b19]: https://python-poetry.org/
-[b20]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge
-[b21]: https://kutt.it/D4ayxs
-[b22]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
-[b23]: https://kutt.it/fy3pqF
-[b24]: https://img.shields.io/badge/code%20style-ruff-261230?style=for-the-badge&labelColor=grey
-[b25]: https://docs.astral.sh
-[b26]: https://img.shields.io/badge/docstrings-numpydoc-4dabcf?style=for-the-badge&labelColor=4d77cf
-[b27]: https://numpydoc.readthedocs.io/en/latest/format.html
+[b20]: https://img.shields.io/badge/code%20style-ruff-261230?style=for-the-badge&labelColor=grey
+[b21]: https://docs.astral.sh
+[b22]: https://img.shields.io/badge/docstrings-numpydoc-4dabcf?style=for-the-badge&labelColor=4d77cf
+[b23]: https://numpydoc.readthedocs.io/en/latest/format.html
+[b24]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge
+[b25]: https://kutt.it/D4ayxs
+[b26]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
+[b27]: https://kutt.it/fy3pqF
 [b28]: https://img.shields.io/badge/semantic%20versions-4053D6?style=for-the-badge&logo=semver
-[b29]: https://img.shields.io/gitlab/pipeline-status/galactipy%2Fgalactipy?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
-[b30]: https://kutt.it/zG7nVG
-[b31]: https://img.shields.io/coverallsCoverage/gitlab/galactipy/galactipy?style=for-the-badge&logo=coveralls
+[b29]: https://img.shields.io/codacy/grade/9827f88089954a3680675d7c77e63fd5?style=for-the-badge&logo=codacy
+[b30]: https://kutt.it/ByTvpc
+[b31]: https://img.shields.io/codacy/coverage/9827f88089954a3680675d7c77e63fd5?style=for-the-badge&logo=codacy
 [b32]: https://kutt.it/uxIDHs
-[b33]: https://img.shields.io/badge/made%20with-galactipy%20%F0%9F%8C%8C-179287?style=for-the-badge&labelColor=193A3E
-[b34]: https://kutt.it/7fYqQl
+[b33]: https://img.shields.io/gitlab/pipeline-status/galactipy%2Fgalactipy?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
+[b34]: https://kutt.it/zG7nVG
+[b35]: https://img.shields.io/badge/made%20with-galactipy%20%F0%9F%8C%8C-179287?style=for-the-badge&labelColor=193A3E
+[b36]: https://kutt.it/7fYqQl
 
 [ft1]: https://cookiecutter.readthedocs.io/en/stable/
 [ft2]: https://python-poetry.org/
