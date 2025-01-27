@@ -33,6 +33,7 @@ jobs:
           # TODO Store the DOCKERHUB_USERNAME variable in the repository configuration
           username: ${{ vars.DOCKERHUB_USERNAME }}
           # TODO Set a Docker Hub Personal Access Token for publishing (https://docs.docker.com/security/for-developers/access-tokens/)
+          # TODO Store the Personal Access Token as the DOCKERHUB_TOKEN secret in the repository configuration
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: ⚙️ Set up Docker Buildx

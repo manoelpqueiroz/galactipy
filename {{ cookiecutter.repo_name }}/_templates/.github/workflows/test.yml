@@ -47,4 +47,21 @@ jobs:
       run: invoke test
 
     - name: 👮 Run safety checks
-      run: invoke check-safety{% endraw %}
+      run: invoke check-safety
+
+    - name: 🕵️ Generate coverage
+      if: ${{ matrix.python-version }} == {% endraw %}"{{ cookiecutter.minimal_python_version }}"{% raw %}
+      run: invoke coverage
+
+    - name: 📤 Upload Coverage to {% endraw %}{{ cookiecutter.coverage_service }}{% raw %}
+      if: ${{ matrix.python-version }} == {% endraw %}"{{ cookiecutter.minimal_python_version }}"
+{%- if cookiecutter.__coverage_lc == 'coveralls' %}
+      uses: coverallsapp/github-action@v2.3.6
+{%- elif cookiecutter.__coverage_lc == 'codacy' %}
+      uses: codacy/codacy-coverage-reporter-action@v1.3.0
+      with:
+        # TODO Set a token for your repository (https://docs.codacy.com/codacy-api/api-tokens/#repository-api-tokens)
+        # TODO Store the token as the CODACY_PROJECT_TOKEN secret in the repository configuration
+        project-token: {%raw %}${{ secrets.CODACY_PROJECT_TOKEN }}{% endraw %}
+        coverage-reports: coverage.xml
+{%- endif %}
