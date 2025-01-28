@@ -40,7 +40,15 @@
 <!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
 [![OSSRank][boss3]][boss4] -->
 {% endif +%}
-[![Semantic versions][blic3]][bp5]
+[![Semantic versions][bp19]][bp5]
+{%- if cookiecutter.__coverage_lc == 'coveralls' %}
+[![Coverage][bcov1]][bcov2]
+{%- elif cookiecutter.__coverage_lc == 'codacy' %}
+<!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
+[![Code Quality][bcov1]][bcov2] -->
+<!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
+[![Coverage][bcov3]][bcov4] -->
+{%- endif %}
 [![Pipelines][bscm6]][bscm7]
 
 _{{ cookiecutter.project_description }}_
@@ -607,6 +615,7 @@ This project was generated with [`galactipy`][bp7].
 [bp16]: https://bandit.readthedocs.io/en/latest/
 [bp17]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
 [bp18]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
+[bp19]: https://img.shields.io/badge/semantic%20versions-4053D6?style=for-the-badge&logo=semver
 {%+ if cookiecutter.licence != 'nos' %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [blic1]: https://img.shields.io/gitlab/license/{{ cookiecutter.scm_username}}/{{ cookiecutter.repo_name }}?style=for-the-badge
@@ -614,14 +623,23 @@ This project was generated with [`galactipy`][bp7].
 [blic1]: https://img.shields.io/github/license/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}?style=for-the-badge
 {%- endif %}
 [blic2]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
-[blic3]: https://img.shields.io/badge/semantic%20versions-4053D6?style=for-the-badge&logo=semver
 
-<!-- UPDATEME by replacing `1` with your project's index at https://www.bestpractices.dev/en
-[boss1]: https://img.shields.io/cii/level/1?style=for-the-badge&logo=linux-foundation&label=openssf%20best%20practices
-[boss2]: https://www.bestpractices.dev/en/projects/1 -->
-<!-- UPDATEME by replacing `1` with your project's index at https://ossrank.com/
-[boss3]: https://shields.io/endpoint?url=https://ossrank.com/shield/1&style=for-the-badge
-[boss4]: https://ossrank.com/p/1 -->
+<!-- TODO Replace the `100` ID with your project's index at https://www.bestpractices.dev/en
+[boss1]: https://img.shields.io/cii/level/100?style=for-the-badge&logo=linux-foundation&label=openssf%20best%20practices
+[boss2]: https://www.bestpractices.dev/en/projects/100 -->
+<!-- TODO Replace the `200` ID with your project's index at https://ossrank.com/
+[boss3]: https://shields.io/endpoint?url=https://ossrank.com/shield/200&style=for-the-badge
+[boss4]: https://ossrank.com/p/200 -->
+{% endif +%}
+{% if cookiecutter.__coverage_lc == 'coveralls' %}
+[bcov1]: https://img.shields.io/coverallsCoverage/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=coveralls
+[bcov2]: https://coveralls.io/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}
+{% elif cookiecutter.__coverage_lc == 'codacy' %}
+<!-- TODO Replace the hash `d5402a91aa7b4234bd1c19b5e86a63be` with your project ID in the "Codacy Badge" section available at https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}/settings
+[bcov1]: https://img.shields.io/codacy/grade/d5402a91aa7b4234bd1c19b5e86a63be?style=for-the-badge&logo=codacy
+[bcov2]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}/dashboard
+[bcov3]: https://img.shields.io/codacy/coverage/d5402a91aa7b4234bd1c19b5e86a63be?style=for-the-badge&logo=codacy
+[bcov4]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}/coverage -->
 {% endif +%}
 [fs1]: https://github.com/python-poetry/install.python-poetry.org
 [fs2]: https://python-poetry.org/docs/
