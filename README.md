@@ -53,8 +53,7 @@ In this [cookiecutter :cookie:][ft1] template we combine state-of-the-art librar
 
 ### Deployment features
 
-- Issue and Merge Request templates for easy integration with GitLab and GitHub;
-- Predefined CI/CD build workflow for [`GitLab CI`][ft22] and [`Github Actions`][ft23];
+- Predefined CI/CD build workflow with [`GitLab CI`][ft22] and [`Github Actions`][ft23];
 - Automatic package uploads to [`PyPI`][ft24] test and production repositories;
 - Everything is already set up for security checks, codestyle checks, code formatting, testing, linting, docker builds etc. with [`invoke`][ft25]. More details in [Invoke Usage][ft26];
 - [`Dockerfile`][ft27] for your package, with CI/CD workflows to publish your image to a container registry.
@@ -62,7 +61,7 @@ In this [cookiecutter :cookie:][ft1] template we combine state-of-the-art librar
 
 ### Project management features
 
-- Ready-to-use [Merge Request templates][ft31] and several [Issue templates][ft32];
+- Ready-to-use [Merge Request templates][ft31] and several [Issue templates][ft32] for easy integration with GitLab and GitHub;
 - Workflows to mark and close abandoned issues after a period of inactivity for both GitLab with [`Triage Policies`][ft33] and GitHub with [`Stale Bot`][ft34].
 
 ### Open source community features
@@ -560,7 +559,7 @@ Well, that's up to you. :muscle:
 
 For further setting up your project:
 
-- Look for files and sections marked with `UPDATEME`, these should be updated according to the needs and characteristics of your project;
+- Look for files and sections marked with `TODO` (which must be addressed in order for your project to run properly) and `UPDATEME` (optional settings if you feel inclined to);
   - If you use VS Code, install the [`Todo Tree`][wn1] extension to easily locate and jump to these marks, they are already configured in the `settings.json` file;
 - Make sure to create your desired Issue labels on your platform before you start tracking them so it ensures you will be able to filter them from the get-go;
 - Make changes to your CI configurations to better suit your needs.
