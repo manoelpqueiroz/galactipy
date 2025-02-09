@@ -41,8 +41,8 @@
     "Codacy",
     "Coveralls"
   ],
-  "create_cli": true,
   "create_docker": true,
+  "bare_repo": false,
 
   "__prompts__": {
     "project_name": "Project name",
@@ -76,8 +76,8 @@
       "Codacy": "Full code analysis with Codacy",
       "Coveralls": "Basic code coverage with Coveralls"
     },
-    "create_cli": "Would you like to create your project with CLI implementation?",
-    "create_docker": "Containerize your application with Docker?"
+    "create_docker": "Containerize your application with Docker?",
+    "bare_repo": "Galactipy creates a minimal structure for a CLI application. Do you wish to generate your project in a bare repository without any pre-configured Python scripts?"
   },
 
   "_all_python_version": [

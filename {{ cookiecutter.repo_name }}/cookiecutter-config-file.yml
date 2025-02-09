@@ -18,5 +18,5 @@ default_context:
   docstring_length: {{ cookiecutter.docstring_length }}
   use_bdd: {{ cookiecutter.use_bdd }}
   coverage_service: "{{ cookiecutter.coverage_service }}"
-  create_cli: {{ cookiecutter.create_cli }}
   create_docker: {{ cookiecutter.create_docker }}
+  bare_repo: {{ cookiecutter.bare_repo }}
