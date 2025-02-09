@@ -1,3 +1,31 @@
+## 0.12.0 (2025-02-09)
+
+### :rocket: Features (4 changes)
+
+- [:sparkles: Split test and coverage uploads for GitHub templates](galactipy/galactipy@145a7fb3e12e79907d769d04b44f8572af121f46) ([merge request](galactipy/galactipy!44))
+- [:sparkles: Implement GitHub coverage action](galactipy/galactipy@39ddf84bdda5ed68898e038828bdaf94ef03fb49) ([merge request](galactipy/galactipy!44))
+- [:sparkles: Set up GitLab coverage uploads](galactipy/galactipy@5aef4759c7fc147be6ed2fd4433b64d3be5f0c4d) ([merge request](galactipy/galactipy!44))
+- [:sparkles: Add option between code coverage and code analysis](galactipy/galactipy@802dec8fccd4d5705c61ed2ac2834762dd70d469) ([merge request](galactipy/galactipy!44))
+
+### :package: Build System & CI/CD (1 change)
+
+- [:construction_worker: Refine project coverage job](galactipy/galactipy@a9bcedf2fb76979f719ea7578acf305ee0f120ba) ([merge request](galactipy/galactipy!44))
+
+### :gear: Internals (1 change)
+
+- [:pencil2: Fix reference to coverage service in project tasks](galactipy/galactipy@9ee73e8c4c344e6231e46a1d7d9e9397b1098721) ([merge request](galactipy/galactipy!44))
+
+### :construction_site: Template Internals (1 change)
+
+- [:construction_worker: Fix template GitLab CI rules for tests](galactipy/galactipy@b69511410a05645a67d95604eea4e34e79e1541b) ([merge request](galactipy/galactipy!44))
+
+### :memo: Documentation (4 changes)
+
+- [:memo: Include CITATION.cff in READMEs](galactipy/galactipy@2c7debad84e0ef6ba36fcee831a51366a621dc74) ([merge request](galactipy/galactipy!44))
+- [:memo: Update template README instructions](galactipy/galactipy@a3dfae1cd0d57a9218fcb4834d3bfcc775fb1c37) ([merge request](galactipy/galactipy!44))
+- [:memo: Update project README with coverage features](galactipy/galactipy@87ea836444e4dd3f81f65970e530718f9a00f9e3) ([merge request](galactipy/galactipy!44))
+- [:memo: Add code quality service badges for template README](galactipy/galactipy@062701927cbdf3a7f24a01fda8c54596ca1d2f38) ([merge request](galactipy/galactipy!44))
+
 ## 0.11.1 (2025-01-26)
 
 ### :rocket: Features (1 change)
