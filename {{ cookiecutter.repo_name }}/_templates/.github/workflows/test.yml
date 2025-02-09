@@ -7,44 +7,25 @@ name: 🧪 Test
 on: pull_request
 
 jobs:
-  test:
-    name: Repository Checks
-    runs-on: ubuntu-latest
+  test-only:
+    name: Tests
     strategy:
       matrix:
-        python-version: [{% endraw %}{% for version in cookiecutter._all_python_version if version[0] >= list_python_version[0] and version[1] >= list_python_version[1] %}"{{ version[0] }}.{{ version[1] }}"{% if not loop.last %}, {% endif %}{% endfor %}{% raw %}]
+        test-python-version: [{% endraw %}{% for version in cookiecutter._all_python_version if version[0] >= list_python_version[0] and version[1] > list_python_version[1] %}"{{ version[0] }}.{{ version[1] }}"{% if not loop.last %}, {% endif %}{% endfor %}{% raw %}]
+    uses: {% endraw %}{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}{% raw %}/.github/workflows/test_template.yml@master
+    with:
+      python-version: ${{ matrix.test-python-version }}
+      upload-coverage: false
 
-    steps:
-    - uses: actions/checkout@v2
-    - name: 🐍 Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2.2.2
-      with:
-        python-version: ${{ matrix.python-version }}
-
-    - name: 💽 Install Invoke
-      run: pip install invoke
-
-    - name: 💽 Install poetry
-      run: invoke poetry-download
-
-    - name: 🫙 Set up cache
-      uses: actions/cache@v2.1.6
-      with:
-        path: .venv
-        key: venv-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('poetry.lock') }}
-
-    - name: 📥 Install dependencies
-      run: |
-        poetry config virtualenvs.in-project true
-        poetry install
-
-    - name: ✒️ Run style checks
-      run: |
-        invoke codestyle --check
-        invoke check-linter
-
-    - name: ☑️ Run tests
-      run: invoke test
-
-    - name: 👮 Run safety checks
-      run: invoke check-safety{% endraw %}
+  test-and-coverage:
+    name: Tests & Coverage
+    uses: {% endraw %}{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}{% raw %}/.github/workflows/test_template.yml@master
+    with:
+      python-version: "{% endraw %}{{ cookiecutter.minimal_python_version }}{% raw %}"
+      upload-coverage: true{% endraw %}
+{%- if cookiecutter.__coverage_lc == 'codacy' %}{% raw %}
+    secrets:
+      # TODO Set a token for your repository (https://docs.codacy.com/codacy-api/api-tokens/#repository-api-tokens)
+      # TODO Store the token as the CODACY_PROJECT_TOKEN secret in the repository configuration
+      codacy-token: ${{ secrets.CODACY_PROJECT_TOKEN }}{% endraw %}
+{%- endif %}

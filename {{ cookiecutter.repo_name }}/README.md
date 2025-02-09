@@ -40,7 +40,15 @@
 <!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
 [![OSSRank][boss3]][boss4] -->
 {% endif +%}
-[![Semantic versions][blic3]][bp5]
+[![Semantic versions][bp19]][bp5]
+{%- if cookiecutter.__coverage_lc == 'coveralls' %}
+[![Coverage][bcov1]][bcov2]
+{%- elif cookiecutter.__coverage_lc == 'codacy' %}
+<!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
+[![Code Quality][bcov1]][bcov2] -->
+<!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
+[![Coverage][bcov3]][bcov4] -->
+{%- endif %}
 [![Pipelines][bscm6]][bscm7]
 
 _{{ cookiecutter.project_description }}_
@@ -144,7 +152,7 @@ Well, that's up to you. :muscle:
 
 For further setting up your project:
 
-- [ ] Look for files and sections marked with `UPDATEME`, these should be updated according to the needs and characteristics of your project;
+- [ ] Look for files and sections marked with `TODO` (which must be addressed in order for your project to run properly) and `UPDATEME` (optional settings if you feel inclined to);
   - If you use VS Code, install the [`Todo Tree`][wn1] extension to easily locate and jump to these marks, they are already configured in your `settings.json` file;
 - [ ] Make sure to create your desired Issue labels on your platform before you start tracking them so it ensures you will be able to filter them from the get-go;
 - [ ] Make changes to your CI configurations to better suit your needs.
@@ -152,8 +160,10 @@ For further setting up your project:
 - In order to reduce user prompts and keep things effective, the template generates files with a few assumptions:
   - It assumes your main git branch is `master`. If you wish to use another branch name for development, be aware of changes you will have to make in the Issue and Merge Request templates and `README.md` file so links won't break when you push them to your repo;
   - It generates a PyPI badge assuming you will be able to publish your project under `{{ cookiecutter.repo_name }}`, change it otherwise;
-{%- if cookiecutter.create_docker %}
-  - It generates a Docker badge assuming you also use `{{ cookiecutter.scm_username }}` for Docker Hub and you will push your image under `{{ cookiecutter.repo_name }}`, change it otherwise;
+{%- if cookiecutter.create_docker and cookiecutter.__scm_platform_lc == 'github' %}
+  - It generates a Docker badge assuming you also use `{{ cookiecutter.scm_username }}` for Docker Hub and you will push your image under `{{ cookiecutter.repo_name }}`, change it otherwise.
+{%- elif cookiecutter.create_docker and cookiecutter.__scm_platform_lc == 'gitlab' %}
+  - It assumes you will be pushing container images to the GitLab Container Registry at `{{ cookiecutter.scm_username}}/{{ cookiecutter.repo_name }}`, change it otherwise.
 {%- endif %}
 
 If you want to put your project on steroids, here are a few Python tools which can help you depending on what you want to achieve with your application:
@@ -218,36 +228,36 @@ And here are a few articles which may help you:
 - Automatic code formatting with [`ruff`][fo1], with ready-to-use [`pre-commit`][fo2] hooks and several rules already selected for linting;
 {%- endif %}
 - Type checks with [`mypy`][ft3], security checks with [`safety`][ft4] and [`bandit`][ft5];
-- Testing with [`pytest`][ft6];
-- Ready-to-use [`.editorconfig`][ft7]{% if cookiecutter.create_docker %}, [`.dockerignore`][docker1]{% endif %} and [`.gitignore`][ft8] files. You don't have to worry about those things.
+- Testing with [`pytest`][ft6]{% if cookiecutter.use_bdd %} and [`behaviour-driven development`][bdd1] configuration for managing scenarios; more details in the [Behaviour-Driven Development][bdd2] section{% endif %};
+- Code quality integrations with {% if cookiecutter.__coverage_lc == 'coveralls' %}[`Coveralls`][ft7]{% elif cookiecutter.__coverage_lc == 'codacy' %}[`Codacy`][ft7]{% endif %} via CI/CD;
+- Predefined VS Code [`settings.json`][ft8] with quality-of-life configuration for editor, workbench, debugging and more;
+- Ready-to-use [`.editorconfig`][ft9]{% if cookiecutter.create_docker %}, [`.dockerignore`][docker1]{% endif %} and [`.gitignore`][ft10] files. You don't have to worry about those things.
 
 ### Deployment features
 
-- Issue and {% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates for easy integration with {{ cookiecutter.scm_platform }};
-- Predefined CI/CD build workflow for {% if cookiecutter.__scm_platform_lc == 'gitlab' %}[`GitLab CI`][lab3]{% elif cookiecutter.__scm_platform_lc == 'github' %}[`Github Actions`][hub4]{% endif %};
-- Automatic package uploads to [`PyPI`][ft9] test and production repositories;
-- Everything is already set up for security checks, {% if cookiecutter.use_ruff %}codestyle checks, code formatting,{% endif %} testing, linting{% if cookiecutter.create_docker %}, docker builds{% endif %} etc with [`Invoke`][ft10]. More details in [Invoke Usage][ft11];
+- Predefined CI/CD build workflow with {% if cookiecutter.__scm_platform_lc == 'gitlab' %}[`GitLab CI`][lab3]{% elif cookiecutter.__scm_platform_lc == 'github' %}[`Github Actions`][hub4]{% endif %};
+- Automatic package uploads to [`PyPI`][ft11] test and production repositories;
+- Everything is already set up for security checks,{% if cookiecutter.use_ruff %} codestyle checks, code formatting,{% endif %} testing, linting{% if cookiecutter.create_docker %}, docker builds{% endif %} etc with [`Invoke`][ft12]. More details in [Invoke Usage][ft13];
 {%- if cookiecutter.create_docker %}
-- [`Dockerfile`][docker2] for your package, with CI/CD workflows to publish your image to a container registry.
+- [`Dockerfile`][docker2] for your package, with CI/CD workflows to publish your image to a container registry;
 {%- endif %}
-{%- if cookiecutter.__scm_platform_lc == 'gitlab' -%}
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 - Automatic [`Changelog entries`][lab4] updated via [GitLab API][lab5] and [template][lab8].
-{%- elif cookiecutter.__scm_platform_lc == 'github' -%}
+{%- elif cookiecutter.__scm_platform_lc == 'github' %}
 - Always up-to-date dependencies with [`Dependabot`][hub5]. You will only need to [enable it][hub1];
-- Automatic drafts of new releases with [`Release Drafter`][hub6]. You may see the list of labels in [`release-drafter.yml`][hub7]. Works perfectly with [Semantic Versions][fs4] specification.
+- Automatic drafts of new releases with [`Release Drafter`][hub6]. You may see the list of labels in [`release-drafter.yml`][hub7].
 {%- endif %}
+
+### Project management features
+
+- Issue and {% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates for easy integration with {{ cookiecutter.scm_platform }};
+- Workflows to mark and close abandoned issues after a period of inactivity with {% if cookiecutter.__scm_platform_lc == 'gitlab' %}GitLab [`Triage Policies`][lab9]{% elif cookiecutter.__scm_platform_lc == 'github' %}[`Stale Bot`][hub8]{% endif %}.
 
 ### Open source community features
 
-- Ready-to-use [{% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates][ft12] and several [Issue templates][ft13];
-- Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically;
-- **Loads** of predefined [badges][ft14] to make your project stand out, you can either keep them, remove as you wish or be welcome to add even more{% if cookiecutter.__scm_platform_lc == 'github' %};{% else %}.{% endif %}
-{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-- [`Triage Policies`][lab6] closes abandoned issues after a period of inactivity. Configuration is [here][lab7];
-{%- elif cookiecutter.__scm_platform_lc == 'github' %}
-- [`Stale bot`][hub2] closes abandoned issues after a period of inactivity. Configuration is [here][hub8];
-- [Semantic Versions][fs4] specification with [`Release Drafter`][hub6].
-{%- endif %}
+- Ready-to-use [{% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates][ft14] and several [Issue templates][ft15];
+- Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `CITATION.cff` and `SECURITY.md` are generated automatically;
+- **Loads** of predefined [badges][ft16] to make your project stand out, you can either keep them, remove as you wish or be welcome to add even more.
 
 ## Installation
 
@@ -277,7 +287,7 @@ poetry run {{ cookiecutter.repo_name }} --help
 
 ### Invoke usage
 
-[`invoke`][ft10] contains a lot of functions for faster development.
+[`invoke`][ft12] contains a lot of functions for faster development.
 
 <details>
 <summary>1. Download or remove Poetry</summary>
@@ -478,7 +488,7 @@ invoke cleanup
 {% if cookiecutter.use_bdd %}
 # Behaviour-Driven Development
 
-A `features` directory is placed under `tests`, with [`pytest-bdd`][bdd1] added as a dependency. You should create `.feature` files inside this folder to specify them and describe scenarios using the [Gherkin][bdd2] language:
+A `features` directory is placed under `tests`, with [`pytest-bdd`][bdd3] added as a dependency. You should create `.feature` files inside this folder to specify them and describe scenarios using the [Gherkin][bdd4] language:
 
 ```
 # tests/features/divide.feature
@@ -530,7 +540,7 @@ def return_integer():
 
 Then you can simply use `pytest` as you normally would to run the test suite and check the results.
 
-For more information on behaviour-driven development and more advanced cases, please check out the [Cucumber documentation][bdd3].
+For more information on behaviour-driven development and more advanced cases, please check out the [Cucumber documentation][bdd5].
 {% endif %}
 
 ## :chart_with_upwards_trend: Releases
@@ -539,7 +549,7 @@ You can see the list of available releases on the [{{ cookiecutter.scm_platform 
 
 We follow [Semantic Versions][fs4] specification.
 {%+ if cookiecutter.__scm_platform_lc == 'gitlab' %}
-We use [`GitLab Changelog`][lab5] entries to track changes. You can categorise commits and Merge Requests made to this project using [git trailers][lab9] in your commit messages.
+We use [`GitLab Changelog`][lab5] entries to track changes. You can categorise commits and Merge Requests made to this project using [git trailers][lab10] in your commit messages.
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
 We use [`Release Drafter`][hub6]. As pull requests are merged, a draft release is kept up-to-date listing the changes, ready to publish when you’re ready. With the categories option, you can categorize pull requests in release notes using labels.
 {%- endif %}
@@ -605,8 +615,9 @@ This project was generated with [`galactipy`][bp7].
 [bp14]: {{ cookiecutter.__scm_link_url }}/blob/master/.pre-commit-config.yaml
 [bp15]: https://img.shields.io/badge/security-bandit-yellow?style=for-the-badge
 [bp16]: https://bandit.readthedocs.io/en/latest/
-[bp17]: https://img.shields.io/badge/Editor%20Config-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
+[bp17]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
 [bp18]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
+[bp19]: https://img.shields.io/badge/semantic%20versions-4053D6?style=for-the-badge&logo=semver
 {%+ if cookiecutter.licence != 'nos' %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [blic1]: https://img.shields.io/gitlab/license/{{ cookiecutter.scm_username}}/{{ cookiecutter.repo_name }}?style=for-the-badge
@@ -614,14 +625,23 @@ This project was generated with [`galactipy`][bp7].
 [blic1]: https://img.shields.io/github/license/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}?style=for-the-badge
 {%- endif %}
 [blic2]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
-[blic3]: https://img.shields.io/badge/semantic%20versions-4053D6?style=for-the-badge&logo=semver
 
-<!-- UPDATEME by replacing `1` with your project's index at https://www.bestpractices.dev/en
-[boss1]: https://img.shields.io/cii/level/1?style=for-the-badge&logo=linux-foundation&label=openssf%20best%20practices
-[boss2]: https://www.bestpractices.dev/en/projects/1 -->
-<!-- UPDATEME by replacing `1` with your project's index at https://ossrank.com/
-[boss3]: https://shields.io/endpoint?url=https://ossrank.com/shield/1&style=for-the-badge
-[boss4]: https://ossrank.com/p/1 -->
+<!-- TODO Replace the `100` ID with your project's index at https://www.bestpractices.dev/en
+[boss1]: https://img.shields.io/cii/level/100?style=for-the-badge&logo=linux-foundation&label=openssf%20best%20practices
+[boss2]: https://www.bestpractices.dev/en/projects/100 -->
+<!-- TODO Replace the `200` ID with your project's index at https://ossrank.com/
+[boss3]: https://shields.io/endpoint?url=https://ossrank.com/shield/200&style=for-the-badge
+[boss4]: https://ossrank.com/p/200 -->
+{% endif +%}
+{% if cookiecutter.__coverage_lc == 'coveralls' %}
+[bcov1]: https://img.shields.io/coverallsCoverage/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=coveralls
+[bcov2]: https://coveralls.io/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}
+{% elif cookiecutter.__coverage_lc == 'codacy' %}
+<!-- TODO Replace the hash `d5402a91aa7b4234bd1c19b5e86a63be` with your project ID in the "Codacy Badge" section available at https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}/settings
+[bcov1]: https://img.shields.io/codacy/grade/d5402a91aa7b4234bd1c19b5e86a63be?style=for-the-badge&logo=codacy
+[bcov2]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}/dashboard
+[bcov3]: https://img.shields.io/codacy/coverage/d5402a91aa7b4234bd1c19b5e86a63be?style=for-the-badge&logo=codacy
+[bcov4]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}/coverage -->
 {% endif +%}
 [fs1]: https://github.com/python-poetry/install.python-poetry.org
 [fs2]: https://python-poetry.org/docs/
@@ -668,19 +688,25 @@ This project was generated with [`galactipy`][bp7].
 [ft4]: https://docs.safetycli.com/safety-2/
 [ft5]: https://bandit.readthedocs.io/en/latest/
 [ft6]: https://docs.pytest.org/en/latest/
-[ft7]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
-[ft8]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitignore
-[ft9]: https://pypi.org/
-[ft10]: https://docs.pyinvoke.org/en/stable/
-[ft11]: #invoke-usage
-{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[ft12]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/merge_request_templates/default.md
-[ft13]: {{ cookiecutter.__scm_link_url }}/tree/master/.gitlab/issue_templates
-{%- elif cookiecutter.__scm_platform_lc == 'github' %}
-[ft12]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/PULL_REQUEST_TEMPLATE.md
-[ft13]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/ISSUE_TEMPLATE
+{%- if cookiecutter.__coverage_lc == 'coveralls' %}
+[ft7]: https://coveralls.io/
+{%- elif cookiecutter.__coverage_lc == 'codacy' %}
+[ft7]: https://www.codacy.com/
 {%- endif %}
-[ft14]: https://shields.io/
+[ft8]: {{ cookiecutter.__scm_link_url }}/blob/master/.vscode/settings.json
+[ft9]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
+[ft10]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitignore
+[ft11]: https://pypi.org/
+[ft12]: https://docs.pyinvoke.org/en/stable/
+[ft13]: #invoke-usage
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+[ft14]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/merge_request_templates/default.md
+[ft15]: {{ cookiecutter.__scm_link_url }}/tree/master/.gitlab/issue_templates
+{%- elif cookiecutter.__scm_platform_lc == 'github' %}
+[ft14]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/PULL_REQUEST_TEMPLATE.md
+[ft15]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/ISSUE_TEMPLATE
+{%- endif %}
+[ft16]: https://shields.io/
 
 [inv1]: https://python-poetry.org/docs/#installation
 
@@ -702,7 +728,8 @@ This project was generated with [`galactipy`][bp7].
 [lab6]: https://gitlab.com/explore/catalog/components/gitlab-triage
 [lab7]: {{ cookiecutter.__scm_link_url }}/blob/master/.triage-policies.yml
 [lab8]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/changelog_config.yml
-[lab9]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
+[lab9]: https://gitlab.com/explore/catalog/components/gitlab-triage
+[lab10]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
 [bscm1]: https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
 [bscm2]: https://img.shields.io/github/v/release/{{ cookiecutter.scm_username}}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=semantic-release&color=347d39
@@ -763,7 +790,9 @@ This project was generated with [`galactipy`][bp7].
 [bbbd1]: https://img.shields.io/badge/BDD-23D96C?style=for-the-badge&logo=cucumber&logoColor=white
 [bbbd2]: https://cucumber.io/
 
-[bdd1]: https://pytest-bdd.readthedocs.io/en/latest/
-[bdd2]: https://cucumber.io/docs/gherkin/reference
-[bdd3]: https://cucumber.io/docs
+[bdd1]: https://cucumber.io/
+[bdd2]: #behaviour-driven-development
+[bdd3]: https://pytest-bdd.readthedocs.io/en/latest/
+[bdd4]: https://cucumber.io/docs/gherkin/reference
+[bdd5]: https://cucumber.io/docs
 {%- endif %}

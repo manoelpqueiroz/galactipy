@@ -1,3 +1,53 @@
+## 0.12.0 (2025-02-09)
+
+### :rocket: Features (4 changes)
+
+- [:sparkles: Split test and coverage uploads for GitHub templates](galactipy/galactipy@145a7fb3e12e79907d769d04b44f8572af121f46) ([merge request](galactipy/galactipy!44))
+- [:sparkles: Implement GitHub coverage action](galactipy/galactipy@39ddf84bdda5ed68898e038828bdaf94ef03fb49) ([merge request](galactipy/galactipy!44))
+- [:sparkles: Set up GitLab coverage uploads](galactipy/galactipy@5aef4759c7fc147be6ed2fd4433b64d3be5f0c4d) ([merge request](galactipy/galactipy!44))
+- [:sparkles: Add option between code coverage and code analysis](galactipy/galactipy@802dec8fccd4d5705c61ed2ac2834762dd70d469) ([merge request](galactipy/galactipy!44))
+
+### :package: Build System & CI/CD (1 change)
+
+- [:construction_worker: Refine project coverage job](galactipy/galactipy@a9bcedf2fb76979f719ea7578acf305ee0f120ba) ([merge request](galactipy/galactipy!44))
+
+### :gear: Internals (1 change)
+
+- [:pencil2: Fix reference to coverage service in project tasks](galactipy/galactipy@9ee73e8c4c344e6231e46a1d7d9e9397b1098721) ([merge request](galactipy/galactipy!44))
+
+### :construction_site: Template Internals (1 change)
+
+- [:construction_worker: Fix template GitLab CI rules for tests](galactipy/galactipy@b69511410a05645a67d95604eea4e34e79e1541b) ([merge request](galactipy/galactipy!44))
+
+### :memo: Documentation (4 changes)
+
+- [:memo: Include CITATION.cff in READMEs](galactipy/galactipy@2c7debad84e0ef6ba36fcee831a51366a621dc74) ([merge request](galactipy/galactipy!44))
+- [:memo: Update template README instructions](galactipy/galactipy@a3dfae1cd0d57a9218fcb4834d3bfcc775fb1c37) ([merge request](galactipy/galactipy!44))
+- [:memo: Update project README with coverage features](galactipy/galactipy@87ea836444e4dd3f81f65970e530718f9a00f9e3) ([merge request](galactipy/galactipy!44))
+- [:memo: Add code quality service badges for template README](galactipy/galactipy@062701927cbdf3a7f24a01fda8c54596ca1d2f38) ([merge request](galactipy/galactipy!44))
+
+## 0.11.1 (2025-01-26)
+
+### :rocket: Features (1 change)
+
+- [:sparkles: Enable test reports for the template](galactipy/galactipy@0d228762a5372891d487bdc94a58f73656fed647) ([merge request](galactipy/galactipy!42))
+
+### :package: Build System & CI/CD (3 changes)
+
+- [:construction_worker: Enable GitLab test reports for project](galactipy/galactipy@30916dc028316ad1013d0677e558e0572ebadc95) ([merge request](galactipy/galactipy!42))
+- [:construction_worker: Replace Coveralls with Codacy](galactipy/galactipy@29da8fe242be6a7ef4ab1d74e2c7ca9d3036d497) ([merge request](galactipy/galactipy!42))
+- [:green_heart: Adapt CI to enable Galactipy Bot merges](galactipy/galactipy@85209d71ef2319b4b2abcdf2ae4887033843bd2f) ([merge request](galactipy/galactipy!41))
+
+### :construction_site: Template Internals (1 change)
+
+- [:construction_worker: Refine rules for template CI](galactipy/galactipy@268393b7106914d97a05fcdf5396fbe7e88e0f5e) ([merge request](galactipy/galactipy!42))
+
+### :memo: Documentation (3 changes)
+
+- [:memo: Update project README with test reports feature](galactipy/galactipy@e3090a7212a16a30162b0a9d33516dbfe0471fe0) ([merge request](galactipy/galactipy!42))
+- [:memo: Add Codacy badges for the project](galactipy/galactipy@857ef66c2a754c3e78384dc265a4bcc26cb123c1) ([merge request](galactipy/galactipy!42))
+- [:memo: Fix Codacy warnings](galactipy/galactipy@7e6b67bfcdba0c7e3a7e7304785a8d8049a96bc8) ([merge request](galactipy/galactipy!42))
+
 ## 0.11.0 (2025-01-24)
 
 ### :rocket: Features (1 change)

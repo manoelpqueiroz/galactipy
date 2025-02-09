@@ -264,7 +264,8 @@ addopts = [
   "--doctest-continue-on-failure",
   "--pikachu",
   "--cov={{ cookiecutter.package_name }}",
-  "--cov-config=pyproject.toml"
+  "--cov-config=pyproject.toml",
+  "--junitxml=test_report.xml"
 ]
 
 
