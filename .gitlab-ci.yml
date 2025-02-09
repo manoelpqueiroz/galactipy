@@ -130,10 +130,9 @@ codacy-report:
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE != 'schedule'
   script:
-    - apk add curl bash
+    - apk add curl
     - curl -Ls https://coverage.codacy.com/get.sh -o codacy.sh
-    - chmod +x codacy.sh
-    - ./codacy.sh report -r coverage.xml
+    - sh ./codacy.sh report -r coverage.xml
 
 changelog-build:
   stage: release

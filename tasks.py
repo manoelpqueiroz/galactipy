@@ -122,7 +122,7 @@ def test(c: Context) -> None:
 
 @task
 def coverage(c: Context) -> None:
-    """Generate coverage file in XML for integration with Coveralls."""
+    """Generate coverage file in XML for integration with Codacy."""
     c.run(f"{VENV_BIN}/coverage xml", pty=PTY)
 
 

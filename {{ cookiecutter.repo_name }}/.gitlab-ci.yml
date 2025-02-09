@@ -7,6 +7,7 @@
 # General pipeline configuration
 stages:
   - test
+  - coverage
   - build
   - deploy
   - release
@@ -70,6 +71,8 @@ workflow:
 # Anchors for common commands
 .env_setup:
   rules:
+    - if: $CI_COMMIT_TAG
+      when: never
     - if: $CI_PIPELINE_SOURCE == 'schedule'
       when: never
     - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE != 'merge_request_event'
@@ -101,18 +104,44 @@ test-py{{ version[0] }}{{ version[1] }}:
   stage: test
   image: python:{{ version[0] }}.{{ version[1] }}
   extends: .env_setup
-  rules:
-    - if: $CI_COMMIT_TAG
-      when: never
+  script:
+    - *test_scripts
+{%- if version[0] == list_python_version[0] and version[1] == list_python_version[1] %}
+    - invoke coverage
   artifacts:
     name: coverage_$CI_COMMIT_REF_NAME_$CI_JOB_NAME_$CI_JOB_STARTED_AT
     paths:
+      - coverage.xml
       - test_report.xml
     reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage.xml
       junit: test_report.xml
     expire_in: 1 week
+
+{{ cookiecutter.__coverage_lc }}-report:
+  stage: coverage
+  image: alpine:latest
+  rules:
+    - if: $CI_COMMIT_TAG
+      when: never
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE != 'schedule'
   script:
-    - *test_scripts
+    - apk add curl
+{%- if cookiecutter.__coverage_lc == 'coveralls' %}
+    - curl -L https://coveralls.io/coveralls-linux.tar.gz | tar -xz -C /usr/local/bin
+    # TODO Set the COVERALLS_REPO_TOKEN CI/CD variable in {{ cookiecutter.__scm_link_url }}/settings/ci_cd, see documentation at:
+    # https://docs.coveralls.io/#integrate-coveralls-with-your-codebase
+    - coveralls -f coverage.xml -r $COVERALLS_REPO_TOKEN
+{%- elif cookiecutter.__coverage_lc == 'codacy' %}
+    - curl -Ls https://coverage.codacy.com/get.sh -o codacy.sh
+    # TODO Set the CODACY_PROJECT_TOKEN CI/CD variable in {{ cookiecutter.__scm_link_url }}/settings/ci_cd, see documentation at:
+    # https://docs.codacy.com/codacy-api/api-tokens/#repository-api-tokens
+    - sh ./codacy.sh report -r coverage.xml
+{%- endif %}
+{%- endif %}
 {%- endfor %}
 
 build-project:
@@ -131,8 +160,6 @@ deploy-test:
       when: manual
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
     - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
-  dependencies:
-    - build-project
   extends: .env_setup
   script:
     # TODO Set the TESTPYPI_TOKEN variable for https://test.pypi.org in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
@@ -143,10 +170,7 @@ deploy-prod:
   stage: deploy
   rules:
     - if: $CI_COMMIT_TAG =~ $SEMVER_RELEASE_VERSION
-  dependencies:
-    - build-project
-  needs:
-    - deploy-test
+  needs: [deploy-test]
   extends: .env_setup
   script:
     # TODO Set the PYPI_TOKEN variable for https://pypi.org in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
@@ -195,6 +219,7 @@ release-{{ cookiecutter.repo_name }}-pre:
     - echo "Creating release $CI_COMMIT_TAG"
   release:
     tag_name: $CI_COMMIT_TAG
+    description: Pre-release version $CI_COMMIT_TAG for {{ cookiecutter.project_name }}.
 
 release-{{ cookiecutter.repo_name }}-stable:
   stage: release
