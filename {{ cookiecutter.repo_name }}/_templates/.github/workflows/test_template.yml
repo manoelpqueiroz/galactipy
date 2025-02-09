@@ -1,0 +1,72 @@
+# Check GitHub Actions documentation at:
+# https://github.com/marketplace/actions/pypi-publish
+{% raw %}# UPDATEME to suit your project's workflow
+on:
+  workflow_call:
+    inputs:
+      python-version:
+        required: true
+        type: string
+      upload-coverage:
+        required: true
+        type: boolean{% endraw %}
+{%- if cookiecutter.__coverage_lc == 'codacy' %}{% raw %}
+    secrets:
+      codacy-token:
+        required: false{% endraw %}
+{%- endif %}{% raw %}
+
+jobs:
+  test:
+    name: Repository Checks
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: 🐍 Set up Python ${{ inputs.python-version }}
+      uses: actions/setup-python@v2.2.2
+      with:
+        python-version: ${{ inputs.python-version }}
+
+    - name: 💽 Install Invoke
+      run: pip install invoke
+
+    - name: 💽 Install poetry
+      run: invoke poetry-download
+
+    - name: 🫙 Set up cache
+      uses: actions/cache@v2.1.6
+      with:
+        path: .venv
+        key: venv-${{ inputs.python-version }}-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('poetry.lock') }}
+
+    - name: 📥 Install dependencies
+      run: |
+        poetry config virtualenvs.in-project true
+        poetry install
+
+    - name: ✒️ Run style checks
+      run: |
+        invoke codestyle --check
+        invoke check-linter
+
+    - name: ☑️ Run tests
+      run: invoke test
+
+    - name: 👮 Run safety checks
+      run: invoke check-safety
+
+    - name: 🕵️ Generate coverage
+      if: ${{ inputs.upload-coverage }}
+      run: invoke coverage
+
+    - name: 📤 Upload Coverage to {% endraw %}{{ cookiecutter.coverage_service }}{% raw %}
+      if: ${{ inputs.upload-coverage }}{% endraw %}
+{%- if cookiecutter.__coverage_lc == 'coveralls' %}
+      uses: coverallsapp/github-action@v2.3.6
+{%- elif cookiecutter.__coverage_lc == 'codacy' %}{% raw %}
+      uses: codacy/codacy-coverage-reporter-action@v1.3.0
+      with:
+        project-token: ${{ secrets.codacy-token }}
+        coverage-reports: coverage.xml{% endraw %}
+{%- endif %}
