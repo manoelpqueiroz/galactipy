@@ -256,7 +256,7 @@ And here are a few articles which may help you:
 ### Open source community features
 
 - Ready-to-use [{% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates][ft14] and several [Issue templates][ft15];
-- Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically;
+- Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `CITATION.cff` and `SECURITY.md` are generated automatically;
 - **Loads** of predefined [badges][ft16] to make your project stand out, you can either keep them, remove as you wish or be welcome to add even more.
 
 ## Installation

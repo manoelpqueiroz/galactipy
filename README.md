@@ -66,7 +66,7 @@ In this [cookiecutter :cookie:][ft1] template we combine state-of-the-art librar
 
 ### Open source community features
 
-- Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically;
+- Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `CITATION.cff` and `SECURITY.md` are generated automatically;
 - **Loads** of predefined [badges][ft35] to make your project stand out: project info, contributions, development practices, development tools and QA status; you can either keep them, remove as you wish or be welcome to add even more.
 
 ### GitLab vs. GitHub feature comparison chart
