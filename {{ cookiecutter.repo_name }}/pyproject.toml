@@ -18,9 +18,11 @@ maintainers = [
 # Keywords description https://python-poetry.org/docs/pyproject/#keywords
 keywords = []  # UPDATEME with relevant keywords
 dynamic = ["version", "classifiers"]
-{%- if cookiecutter.create_cli %}
+{%- if not cookiecutter.bare_repo %}
+
+[project.scripts]
 # Entry points for the package https://python-poetry.org/docs/pyproject/#scripts
-"{{ cookiecutter.repo_name }}" = "{{ cookiecutter.package_name }}.__main__:app"
+"{{ cookiecutter.repo_name }}" = "{{ cookiecutter.package_name }}.cli.root_command:app"
 {%- endif %}
 
 [project.urls]
@@ -56,7 +58,7 @@ classifiers = [  # UPDATEME with additional classifiers
 
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.minimal_python_version }}"
-{%+ if cookiecutter.create_cli %}
+{%+ if not cookiecutter.bare_repo %}
 typer = { extras = ["all"], version = "^0.15.1" }
 rich = "^13.9.4"
 {%- endif %}
@@ -81,9 +83,6 @@ pytest-mock = "^3.14.0"
 pytest-timeout = "^2.3.1"
 pytest-benchmark = "^5.1.0"
 pytest-sugar = "^1.0.0"
-{%- if cookiecutter.create_cli %}
-pytest-click = "^1.1.0"
-{%- endif %}
 pytest-pikachu = "^1.0.0"
 coverage = "^7.6.10"
 
