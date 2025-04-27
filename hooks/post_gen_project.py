@@ -132,8 +132,18 @@ def remove_unused_files(
     """
     files_to_delete: list[Path] = []
 
-    def _cli_specific_files() -> list[Path]:
-        return [directory / package_name / "__main__.py"]
+    def _cli_specific_files(remove_bdd: bool) -> list[Path]:
+        removals = [
+            directory / package_name / "cli",
+            directory / package_name / "__main__.py",
+            directory / "tests" / "cli",
+            directory / "tests" / "conftest.py",
+        ]
+
+        if not remove_bdd:
+            removals.append(directory / "tests" / "features" / "root_command.feature")
+
+        return removals
 
     def _gitlab_specific_files() -> list[Path]:
         return [directory / ".gitlab-ci.yml", directory / ".triage-policies.yml"]
@@ -149,8 +159,14 @@ def remove_unused_files(
     def _bdd_specific_files() -> list[Path]:
         return [directory / "tests" / "features"]
 
+    if not remove_cli and not remove_bdd:
+        files_to_delete.append(directory / "tests" / "features" / ".gitkeep")
+
     if remove_cli:
-        files_to_delete.extend(_cli_specific_files())
+        files_to_delete.extend(_cli_specific_files(remove_bdd))
+
+    else:
+        files_to_delete.append(directory / "tests" / ".gitkeep")
 
     if remove_gitlab:
         files_to_delete.extend(_gitlab_specific_files())
