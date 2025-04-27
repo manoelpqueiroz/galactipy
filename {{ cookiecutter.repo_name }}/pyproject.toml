@@ -252,7 +252,7 @@ norecursedirs =[
 doctest_optionflags = ["NUMBER", "NORMALIZE_WHITESPACE", "IGNORE_EXCEPTION_DETAIL"]
 timeout = 10
 {%- if cookiecutter.use_bdd %}
-bdd_features_base_dir = "features/"
+bdd_features_base_dir = "tests/features/"
 {%- endif %}
 
 # Extra options:
@@ -271,6 +271,7 @@ addopts = [
 [tool.coverage.run]
 source = ["tests"]
 branch = true
+omit = ["__main__.py"]
 
 
 [tool.coverage.report]
@@ -278,7 +279,7 @@ exclude_also = [
   "def main",
   "if __name__ == .__main__.:"
 ]
-fail_under = 50
+fail_under = 90
 show_missing = true
 
 
