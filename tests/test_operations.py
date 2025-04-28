@@ -52,19 +52,40 @@ class TestTemplateGeneration:
 
 class TestFileRemoval:
     def test_remove_cli(self, removal_tree):
-        project_root, pyproject_file, tests_root, test_file, package_name = removal_tree
-        cli_file = project_root / package_name / "__main__.py"
+        (
+            project_root,
+            pyproject_file,
+            tests_root,
+            test_file,
+            feature_file,
+            package_name,
+        ) = removal_tree
+        cli_root = project_root / package_name / "cli"
+        main_file = project_root / package_name / "__main__.py"
+        conftest_file = tests_root / "conftest.py"
+        test_gitkeep = tests_root / ".gitkeep"
 
         remove_unused_files(project_root, package_name, True, False, False, False)
 
-        assert not cli_file.exists()
+        assert not cli_root.exists()
+        assert not main_file.exists()
+        assert not test_file.exists()
+        assert not conftest_file.exists()
+        assert not feature_file.exists()
 
         assert pyproject_file.exists()
         assert tests_root.exists()
-        assert test_file.exists()
+        assert test_gitkeep.exists()
 
     def test_remove_gitlab(self, removal_tree):
-        project_root, pyproject_file, tests_root, test_file, package_name = removal_tree
+        (
+            project_root,
+            pyproject_file,
+            tests_root,
+            test_file,
+            feature_file,
+            package_name,
+        ) = removal_tree
         ci_file = project_root / ".gitlab-ci.yml"
         triage_file = project_root / ".triage-policies.yml"
 
@@ -78,7 +99,14 @@ class TestFileRemoval:
         assert test_file.exists()
 
     def test_remove_docker_gitlab(self, removal_tree):
-        project_root, pyproject_file, tests_root, test_file, package_name = removal_tree
+        (
+            project_root,
+            pyproject_file,
+            tests_root,
+            test_file,
+            feature_file,
+            package_name,
+        ) = removal_tree
         docker_directory = project_root / "docker"
         dockerignore = project_root / ".dockerignore"
 
@@ -92,7 +120,14 @@ class TestFileRemoval:
         assert test_file.exists()
 
     def test_remove_docker_github(self, removal_tree):
-        project_root, pyproject_file, tests_root, test_file, package_name = removal_tree
+        (
+            project_root,
+            pyproject_file,
+            tests_root,
+            test_file,
+            feature_file,
+            package_name,
+        ) = removal_tree
         docker_directory = project_root / "docker"
         dockerignore = project_root / ".dockerignore"
         docker_workflow = project_root / ".github" / "workflows" / "docker.yml"
@@ -109,38 +144,125 @@ class TestFileRemoval:
         assert test_file.exists()
         assert test_workflow.exists()
 
-    def test_remove_bdd(self, removal_tree):
-        project_root, pyproject_file, tests_root, test_file, package_name = removal_tree
-        gitkeep = project_root / "tests" / "features" / ".gitkeep"
+    def test_remove_bdd_keep_cli(self, removal_tree):
+        (
+            project_root,
+            pyproject_file,
+            tests_root,
+            test_file,
+            feature_file,
+            package_name,
+        ) = removal_tree
+        cli_root = project_root / package_name / "cli"
+        main_file = project_root / package_name / "__main__.py"
+        conftest_file = tests_root / "conftest.py"
+        test_gitkeep = tests_root / ".gitkeep"
+        features_gitkeep = tests_root / "features" / ".gitkeep"
 
         remove_unused_files(project_root, package_name, False, False, False, True)
 
-        assert not gitkeep.exists()
+        assert not feature_file.exists()
+        assert not test_gitkeep.exists()
+        assert not features_gitkeep.exists()
+
+        assert pyproject_file.exists()
+
+        assert cli_root.exists()
+        assert main_file.exists()
+
+        assert tests_root.exists()
+        assert test_file.exists()
+        assert conftest_file.exists()
+
+    def test_remove_bdd_and_cli(self, removal_tree):
+        (
+            project_root,
+            pyproject_file,
+            tests_root,
+            test_file,
+            feature_file,
+            package_name,
+        ) = removal_tree
+        cli_root = project_root / package_name / "cli"
+        main_file = project_root / package_name / "__main__.py"
+        conftest_file = tests_root / "conftest.py"
+        test_gitkeep = tests_root / ".gitkeep"
+        features_gitkeep = tests_root / "features" / ".gitkeep"
+
+        remove_unused_files(project_root, package_name, True, False, False, True)
+
+        assert not cli_root.exists()
+        assert not main_file.exists()
+        assert not test_file.exists()
+        assert not conftest_file.exists()
+
+        assert not feature_file.exists()
+        assert not features_gitkeep.exists()
 
         assert pyproject_file.exists()
         assert tests_root.exists()
+        assert test_gitkeep.exists()
+
+    def test_keep_bdd_and_cli(self, removal_tree):
+        (
+            project_root,
+            pyproject_file,
+            tests_root,
+            test_file,
+            feature_file,
+            package_name,
+        ) = removal_tree
+        cli_command = project_root / package_name / "cli" / "root_command.py"
+        main_file = project_root / package_name / "__main__.py"
+        conftest_file = tests_root / "conftest.py"
+        test_gitkeep = tests_root / ".gitkeep"
+        features_gitkeep = tests_root / "features" / ".gitkeep"
+
+        remove_unused_files(project_root, package_name, False, False, False, False)
+
+        assert not test_gitkeep.exists()
+        assert not features_gitkeep.exists()
+
+        assert cli_command.exists()
+        assert main_file.exists()
         assert test_file.exists()
+        assert conftest_file.exists()
+        assert feature_file.exists()
+
+        assert pyproject_file.exists()
 
     def test_remove_all(self, removal_tree):
-        project_root, pyproject_file, tests_root, test_file, package_name = removal_tree
+        (
+            project_root,
+            pyproject_file,
+            tests_root,
+            test_file,
+            feature_file,
+            package_name,
+        ) = removal_tree
 
+        cli_root = project_root / package_name / "cli"
         cli_file = project_root / package_name / "__main__.py"
         ci_file = project_root / ".gitlab-ci.yml"
         docker_directory = project_root / "docker"
         dockerignore = project_root / ".dockerignore"
-        gitkeep = project_root / "tests" / "features" / ".gitkeep"
+        test_gitkeep = tests_root / ".gitkeep"
+        features_gitkeep = project_root / "tests" / "features" / ".gitkeep"
 
         remove_unused_files(project_root, package_name, True, True, True, True)
 
+        assert not cli_root.exists()
         assert not cli_file.exists()
         assert not ci_file.exists()
         assert not docker_directory.exists()
         assert not dockerignore.exists()
-        assert not gitkeep.exists()
+        assert not test_file.exists()
+        assert not feature_file.exists()
+        assert not features_gitkeep.exists()
 
         assert pyproject_file.exists()
         assert tests_root.exists()
-        assert test_file.exists()
+        assert test_gitkeep.exists()
 
 
 class TestInstructions:
