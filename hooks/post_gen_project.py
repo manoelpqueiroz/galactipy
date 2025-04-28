@@ -130,55 +130,115 @@ def remove_unused_files(
     remove_bdd : bool
         Flag for removing BDD related files.
     """
+    files_to_delete = _get_files_to_delete(
+        directory, package_name, remove_cli, remove_gitlab, remove_docker, remove_bdd
+    )
+
+    for path in files_to_delete:
+        rmdir(path)
+
+
+def _get_files_to_delete(
+    directory: Path,
+    package_name: str,
+    remove_cli: bool,
+    remove_gitlab: bool,
+    remove_docker: bool,
+    remove_bdd: bool,
+) -> list[Path]:
+    """Determine files to be removed from tree at template generation.
+
+    Parameters
+    ----------
+    directory : Path
+        path to the project directory.
+    package_name : str
+        Project module name.
+    remove_cli : bool
+        Flag for removing CLI related files.
+    remove_gitlab : bool
+        Flag for removing GitLab related files.
+    remove_docker : bool
+        Flag for removing Docker related files.
+    remove_bdd : bool
+        Flag for removing BDD related files.
+    """
     files_to_delete: list[Path] = []
 
-    def _cli_specific_files(remove_bdd: bool) -> list[Path]:
-        removals = [
-            directory / package_name / "cli",
-            directory / package_name / "__main__.py",
-            directory / "tests" / "cli",
-            directory / "tests" / "conftest.py",
-        ]
+    cli_specific_files = _get_cli_specific_files(directory, package_name, remove_bdd)
+    docker_specific_files = _get_docker_specific_files(directory, remove_gitlab)
 
-        if not remove_bdd:
-            removals.append(directory / "tests" / "features" / "root_command.feature")
+    gitlab_specific_files = [
+        directory / ".gitlab-ci.yml",
+        directory / ".triage-policies.yml",
+    ]
 
-        return removals
-
-    def _gitlab_specific_files() -> list[Path]:
-        return [directory / ".gitlab-ci.yml", directory / ".triage-policies.yml"]
-
-    def _docker_specific_files(is_github: bool) -> list[Path]:
-        removals = [directory / ".dockerignore", directory / "docker"]
-
-        if is_github:
-            removals.append(directory / ".github" / "workflows" / "docker.yml")
-
-        return removals
-
-    def _bdd_specific_files() -> list[Path]:
-        return [directory / "tests" / "features"]
+    bdd_specific_files = [directory / "tests" / "features"]
 
     if not remove_cli and not remove_bdd:
         files_to_delete.append(directory / "tests" / "features" / ".gitkeep")
 
     if remove_cli:
-        files_to_delete.extend(_cli_specific_files(remove_bdd))
+        files_to_delete.extend(cli_specific_files)
 
     else:
         files_to_delete.append(directory / "tests" / ".gitkeep")
 
     if remove_gitlab:
-        files_to_delete.extend(_gitlab_specific_files())
+        files_to_delete.extend(gitlab_specific_files)
 
     if remove_docker:
-        files_to_delete.extend(_docker_specific_files(remove_gitlab))
+        files_to_delete.extend(docker_specific_files)
 
     if remove_bdd:
-        files_to_delete.extend(_bdd_specific_files())
+        files_to_delete.extend(bdd_specific_files)
 
-    for path in files_to_delete:
-        rmdir(path)
+    return files_to_delete
+
+
+def _get_cli_specific_files(
+    directory: Path, package_name: str, remove_bdd: bool
+) -> list[Path]:
+    """Return select files to remove when CLI option is disabled.
+
+    Parameters
+    ----------
+    directory : Path
+        Root directory of the project.
+    package_name : str
+        Name of the package under the root directory of the project.
+    remove_bdd : bool
+        Determine whether CLI feature file should be removed as well.
+    """
+    removals = [
+        directory / package_name / "cli",
+        directory / package_name / "__main__.py",
+        directory / "tests" / "cli",
+        directory / "tests" / "conftest.py",
+    ]
+
+    if not remove_bdd:
+        removals.append(directory / "tests" / "features" / "root_command.feature")
+
+    return removals
+
+
+def _get_docker_specific_files(directory: Path, is_github: bool) -> list[Path]:
+    """Return select files to remove when the Docker option is disabled.
+
+    Parameters
+    ----------
+    directory : Path
+        Root directory of the project.
+    is_github : bool
+        Determine whether GitHub Docker workflow should be removed as well.
+    """
+    removals = [directory / ".dockerignore", directory / "docker"]
+
+    if is_github:
+        removals.append(directory / ".github" / "workflows" / "docker.yml")
+
+    return removals
 
 
 def print_further_instructions(

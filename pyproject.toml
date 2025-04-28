@@ -186,10 +186,6 @@ section-order = [
   "testing",
 ]
 
-[tool.ruff.lint.mccabe]
-max-complexity = 13
-
-
 [tool.mypy]
 # https://github.com/python/mypy
 # https://mypy.readthedocs.io/en/latest/config_file.html#using-a-pyproject-toml-file
