@@ -31,7 +31,7 @@ _Expand your project structure from atoms of code to **galactic** dimensions._ :
 ## TL;DR
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v0.12.0
+cookiecutter gl:galactipy/galactipy --checkout v0.13.0
 ```
 
 > All you need is the latest version of cookiecutter! :wink:
@@ -110,7 +110,7 @@ pip install -U cookiecutter
 then go to a directory where you want to create your project and run:
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v0.12.0
+cookiecutter gl:galactipy/galactipy --checkout v0.13.0
 ```
 
 ### Input variables
@@ -495,58 +495,51 @@ invoke cleanup
 
 [Behaviour-driven development][ft14] is a software development paradigm in which domain language is used to describe the behaviour of the code. It sprang up from [test-driven development][htu13].
 
-Think of it as a way to use natural language to describe **what** we want the code to do in order to work on it with more clarity of end-goals and reduce bugs.
-
-In order to apply BDD, however, a crucial perspective must change: tests should be described and written _before_ the code itself. This is to make sure that the application's behaviour (what it should do and what it should _not_ do) are made very clear from the beginning.
-
-If you choose to use BDD for your project, a `features` directory will be created under `tests` and [`pytest-bdd`][htu14] will be added as a dependency. You should place `.feature` files inside this folder to specify them and describe scenarios using the [Gherkin][htu15] language:
+If you choose to use BDD for your project, a `features` directory will be created under `tests` and [`pytest-bdd`][htu14] will be added as a dependency. You should place `.feature` files inside this folder to specify tests and describe scenarios using the [Gherkin][htu15] language:
 
 ```
-# tests/features/divide.feature
-Feature: Divide numbers
-  Scenario: Full division
-    When I ask the calculator to divide "21" by "7"
-    Then the screen should return "3" as an integer
+# tests/features/root_command.feature
+Feature: Command-line interface
 
-  Scenario: Division by zero
-    When I ask the calculator to divide any number by "0"
-    Then the screen should return an error message
+  Scenario: Invoke with version argument
+    When the program is called with the `--version` argument
+    Then the program's version is displayed
+    And the program is terminated without errors
 ```
 
 You would then use `pytest-bdd` to wrap each scenario referred in the feature file as a step by step validation:
 
 ```py
-from mypackage import divide
-from pytest_bdd import scenario, when, then
 
-@scenario("divide.feature", "Full Division")
-def test_full_division():
+from typer.testing import CliRunner
+from rich.text import Text
+
+from python_project.cli.root_command import app
+
+from pytest_bdd import scenario, when, then, parsers
+
+
+runner = CliRunner()
+
+
+@scenario("root_command.feature", "Invoke with version argument")
+def test_app_with_version_arg():
     pass
 
-@when("I ask the calculator to divide \"21\" by \"7\"")
-def divide_21_7():
-    calculation = divide(21, 7)
 
-    return calculation
-
-@then("The screen should return \"3\" as an integer")
-def return_integer():
-    assert calculation.display == "3"
+@when("the program is called with the `--version` argument", target_fixture="app_run")
+def invoke_version_arg():
+    return runner.invoke(app, args=["--version"])
 
 
-@scenario("divide.feature", "Division by Zero")
-def test_zero_division():
-    pass
+@then("the program's version is displayed")
+def version_display(app_run, version_string):
+    assert app_run.stdout == version_string
 
-@when("I ask the calculator to divide any number by \"0\"")
-def divide_by_zero():
-    calculation = divide(15, 0)
 
-    return calculation
-
-@then("The screen should return an error message")
-def return_integer():
-    assert calculation.display == "Error"
+@then("the program is terminated without errors")
+def successful_termination(app_run):
+    assert app_run.exit_code == 0
 ```
 
 Then you can simply use `pytest` as you normally would to run the test suite and check the results.
@@ -661,7 +654,6 @@ We would like Galactipy to have nearly equal functionality between GitHub and Gi
 
 We also wish to implement features completely new to the template, especially aiming at streamlining development process so less time is lost setting up a new project and apply software development best practices with available tools for the Python ecosystem:
 
-- Option to choose between test coverage or full code analysis, with providers for each yet to be selected;
 - Documentation upload to [`GitLab Pages`][rd7] and [`GitHub Pages`][rd8];
 - Update GitHub Actions with the latest popular and useful workflows from the marketplace;
 - Add pre-commit hooks for finer control of the development cycle;
