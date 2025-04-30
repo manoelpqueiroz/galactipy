@@ -97,6 +97,7 @@ class TestFileRemoval:
         assert pyproject_file.exists()
         assert tests_root.exists()
         assert test_file.exists()
+        assert feature_file.exists()
 
     def test_remove_docker_gitlab(self, removal_tree):
         (
@@ -118,6 +119,7 @@ class TestFileRemoval:
         assert pyproject_file.exists()
         assert tests_root.exists()
         assert test_file.exists()
+        assert feature_file.exists()
 
     def test_remove_docker_github(self, removal_tree):
         (
@@ -142,6 +144,7 @@ class TestFileRemoval:
         assert pyproject_file.exists()
         assert tests_root.exists()
         assert test_file.exists()
+        assert feature_file.exists()
         assert test_workflow.exists()
 
     def test_remove_bdd_keep_cli(self, removal_tree):
