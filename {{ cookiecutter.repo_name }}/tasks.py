@@ -110,8 +110,7 @@ def pypi_config(c: Context, api_token: str, repo: str = "pypi") -> None:
     """
     if repo == "testpypi":
         c.run(
-            f"{POETRY_PATH} config repositories.{repo} "
-            "https://test.pypi.org/legacy/",
+            f"{POETRY_PATH} config repositories.{repo} https://test.pypi.org/legacy/",
             pty=PTY
         )
 
@@ -125,7 +124,7 @@ def build(c: Context) -> None:
 
 
 @task
-def publish(c: Context, repo : str = "pypi", build: bool = True) -> None:
+def publish(c: Context, repo: str = "pypi", build: bool = True) -> None:
     """Publish {{ cookiecutter.project_name }} to PyPI."""
     # If pypi is specifically specified as a repo, Poetry fails to recognize it
     repo_flag = f"--repository {repo}" if repo != "pypi" else ""
@@ -133,7 +132,7 @@ def publish(c: Context, repo : str = "pypi", build: bool = True) -> None:
 
     result = c.run(
         f"{POETRY_PATH} publish {repo_flag} {build_flag}",
-        hide='err',
+        hide="err",
         warn=True,
         pty=PTY,
     )
@@ -141,9 +140,10 @@ def publish(c: Context, repo : str = "pypi", build: bool = True) -> None:
     if result.failed:
         print(
             "\nCould not upload to PyPI.\nDid you set up your API token with "
-            "`inv pypi-config`\nand remove any \"Private :: Do Not Upload\" "
+            '`inv pypi-config`\nand remove any "Private :: Do Not Upload" '
             "classifiers from pyproject.toml?"
         )
+
 
 # Installation tasks
 @task
@@ -187,10 +187,7 @@ def check_linter(c: Context, fix: bool = False) -> None:
 @task
 def test(c: Context) -> None:
     """Run tests with `pytest` and `pyproject.toml` configuration."""
-    c.run(
-        f"{VENV_BIN}/pytest -c pyproject.toml tests",
-        pty=PTY,
-    )
+    c.run(f"{VENV_BIN}/pytest -c pyproject.toml tests", pty=PTY)
 
 
 @task
@@ -248,9 +245,7 @@ def docker_login(c: Context, username: str, password: str) -> None:
 {%- endif %}
 @task(iterable=["tags"])
 def docker_build(
-    c: Context,
-    tags: list[str],
-    repository: str = DEFAULT_DOCKER_REPOSITORY,
+    c: Context, tags: list[str],repository: str = DEFAULT_DOCKER_REPOSITORY
 ) -> None:
     """Build Docker images for {{ cookiecutter.repo_name }}."""
     if len(tags) == 0:
@@ -258,20 +253,16 @@ def docker_build(
 
     docker_images = " ".join(f"-t {repository}:{tag}" for tag in tags)
 
-    c.run(
-        f"docker build . {docker_images} -f ./docker/Dockerfile --no-cache", pty=PTY
-    )
+    c.run(f"docker build . {docker_images} -f ./docker/Dockerfile --no-cache", pty=PTY)
 
 
 @task(iterable=["tags"])
 def docker_remove(
-    c: Context,
-    tags: list[str],
-    repository: str = DEFAULT_DOCKER_REPOSITORY
+    c: Context,tags: list[str], repository: str = DEFAULT_DOCKER_REPOSITORY
 ) -> None:
     """Remove specified Docker images created for {{ cookiecutter.repo_name }}."""
     if len(tags) == 0:
-        docker_images = c.run(f"docker images {repository} -qa", hide='out').stdout
+        docker_images = c.run(f"docker images {repository} -qa", hide="out").stdout
     else:
         docker_images = " ".join(f"{repository}:{tag}" for tag in tags)
 
@@ -280,9 +271,7 @@ def docker_remove(
 
 @task(iterable=["tags"])
 def docker_push(
-    c: Context,
-    tags: list[str],
-    repository: str = DEFAULT_DOCKER_REPOSITORY,
+    c: Context, tags: list[str], repository: str = DEFAULT_DOCKER_REPOSITORY
 ) -> None:
     """Push specified Docker images to Docker Hub."""
     if len(tags) == 0:

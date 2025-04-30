@@ -271,7 +271,7 @@ or install with `Poetry`:
 poetry add {{ cookiecutter.repo_name }}
 ```
 
-{%- if cookiecutter.create_cli %}
+{%- if not cookiecutter.bare_repo %}
 Then you can run
 
 ```bash

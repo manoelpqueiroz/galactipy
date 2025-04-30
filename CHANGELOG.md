@@ -1,3 +1,34 @@
+## 0.13.0 (2025-04-30)
+
+### :rocket: Features (3 changes)
+
+- [:sparkles: Implement BDD for CLI app](galactipy/galactipy@8444f8f2162b3c33dc1d09f6497178333b1797d2) ([merge request](galactipy/galactipy!47))
+- [:building_construction: Reorganise template with new CLI structure](galactipy/galactipy@22b040154fefa27f34800f0cd595f116ac081530) ([merge request](galactipy/galactipy!43))
+- [:sparkles: Add option to generate bare repository](galactipy/galactipy@1bd59eb701ac0b47716805986830537c6bf620ea) ([merge request](galactipy/galactipy!43))
+
+### :wrench: Fixes & Refactoring (2 changes)
+
+- [:recycle: Refactor file removal functions](galactipy/galactipy@163f10173735e4e31c0aa45d542f803e0ec7c2fd) ([merge request](galactipy/galactipy!47))
+- [:rotating_light: Fix formatting for template tasks](galactipy/galactipy@8e067d861481de2a8c07425c18e0d3aa58b96877) ([merge request](galactipy/galactipy!47))
+
+### :package: Build System & CI/CD (3 changes)
+
+- [:white_check_mark: Improve code quality](galactipy/galactipy@5cbce6c7e580e5d1d91446c4bb37977b715bbeb4) ([merge request](galactipy/galactipy!47))
+- [:white_check_mark: Rewrite tests for file removals](galactipy/galactipy@9c215e15deebf010526be5c6017d1e240ac320c4) ([merge request](galactipy/galactipy!47))
+- [:white_check_mark: Add root command test for template](galactipy/galactipy@e5ee031f1536f059871205a00d6f41fe8e3c100e) ([merge request](galactipy/galactipy!43))
+
+### :gear: Internals (1 change)
+
+- [:wrench: Update file removals for new CLI structure](galactipy/galactipy@5d279c713cf8409645b5084e1b5cbf9c38a9195d) ([merge request](galactipy/galactipy!47))
+
+### :construction_site: Template Internals (1 change)
+
+- [:see_no_evil: Add Gitkeep file for when CLI and BDD are dismissed](galactipy/galactipy@38e1271799a75906754fe9f6e4911ca714919080) ([merge request](galactipy/galactipy!43))
+
+### :memo: Documentation (1 change)
+
+- [:memo: Update BDD documentation in project README](galactipy/galactipy@afabb6ff05f0fa1d876078654b20aeafeeff7b80) ([merge request](galactipy/galactipy!47))
+
 ## 0.12.0 (2025-02-09)
 
 ### :rocket: Features (4 changes)
