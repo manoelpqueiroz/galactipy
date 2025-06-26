@@ -1,5 +1,6 @@
 # :tools: Request for Correction
 
+> [!important]
 > :bulb: **Expose errors with Galactipy for the development team to address.**
 >
 > Please run through all items under the **`Applicant Checklist`** section and be as much detailed as you can to speed up diagnostic and solution.
@@ -30,7 +31,7 @@
 - [ ] I am confident this discussion does not fall in another category.
 
 [1]: https://gitlab.com/galactipy/galactipy/-/merge_requests
-[2]: https://gitlab.com/galactipy/galactipy/-/issues/?state=all
+[2]: https://gitlab.com/galactipy/galactipy/-/issues/?state=all&type%5B%5D=issue
 [3]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md
 
 ## :thought_balloon: Context

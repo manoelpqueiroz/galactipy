@@ -1,5 +1,6 @@
 # :bow: Request for Improvement
 
+> [!important]
 > :bulb: **Suggest an improvement to the Galactipy feature set.**
 >
 > Please run through all items under the **`Applicant Checklist`** section and follow the [_why, not just what_][1] directive.
@@ -33,7 +34,7 @@
 - [ ] I am confident this discussion does not fall in another category.
 
 [2]: https://gitlab.com/galactipy/galactipy/-/milestones
-[3]: https://gitlab.com/galactipy/galactipy/-/issues/?state=all
+[3]: https://gitlab.com/galactipy/galactipy/-/issues/?state=all&type%5B%5D=issue
 [4]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md
 
 ### Commitment to Project Support

@@ -1,5 +1,6 @@
 # :wave: Request for Support
 
+> [!important]
 > :bulb: **Seek help from the development team for Galactipy usage.**
 >
 > Please run through all items under the **`Applicant Checklist`** section and provide details on the reasons that brought you to open this discussion.
@@ -27,7 +28,7 @@
 - [ ] I provided a concise and clear title for this discussion;
 - [ ] I am confident this discussion does not fall in another category.
 
-[1]: https://gitlab.com/galactipy/galactipy/-/issues/?state=all
+[1]: https://gitlab.com/galactipy/galactipy/-/issues/?state=all&type%5B%5D=issue
 [2]: https://gitlab.com/galactipy/galactipy/-/blob/master/README.md
 [3]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md
 
