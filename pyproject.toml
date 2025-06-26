@@ -158,8 +158,8 @@ max-doc-length = 79
 convention = "numpy"
 
 [tool.ruff.lint.flake8-copyright]
-author = "Manoel Pereira de Queiroz"
-notice-rgx = "Copyright (C) 2023, 2024"
+author = "The Galactipy Contributors"
+notice-rgx = "Copyright (C) 2023-2025"
 
 [tool.ruff.lint.pylint]
 max-bool-expr = 3

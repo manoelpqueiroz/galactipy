@@ -16,14 +16,15 @@
 [![Poetry][b18]][b19]
 [![Code style: Ruff][b20]][b21]
 [![Docstrings: numpydoc][b22]][b23]
+[![Gitmoji][b24]][b25]
 
-[![Pre-commit][b24]][b25]
-[![Editorconfig][b26]][b27]
+[![Pre-commit][b26]][b27]
+[![Editorconfig][b28]][b29]
 
-[![Semantic versions][b28]][b5]
-[![Code Quality][b29]][b30]
-[![Coverage][b31]][b32]
-[![GitLab Pipelines][b33]][b34]
+[![Intended Effort versioning][b30]][b5]
+[![Code Quality][b31]][b32]
+[![Coverage][b33]][b34]
+[![GitLab Pipelines][b35]][b36]
 
 _Expand your project structure from atoms of code to **galactic** dimensions._ :milky_way:
 </div>
@@ -604,60 +605,21 @@ And here are a few articles which may help you:
 - [Robust Exception Handling][wn31];
 - [Why Your Mock Doesn't Work][wn32];
 - [Managing TODOs in a codebase][wn33];
-- Maybe you would like to add [gitmoji][wn34] to commit names. This is really funny. :grin:
+- Maybe you would like to add [gitmoji][b25] to commit names. This is really funny. :grin:
 
 ## :chart_with_upwards_trend: Galactipy Releases
 
 You can see the list of available releases on the [GitLab Releases][r1] page.
 
-We follow [Semantic Versions][ft28] specification.
+We follow [Intended Effort Versioning][r2] specification, details can be found in our
+[`CONTRIBUTING`][r3] guide.
 
-We use [`GitLab Changelog`][ft29] entries to track changes. You can categorise commits and Merge Requests made to this project using [git trailers][r2] in your commit messages.
+## :map: Roadmap
 
-### List of trailers and corresponding categories
-
-|            **Git trailer**            |       **Category in CHANGELOG**        |
-| :-----------------------------------: | :------------------------------------: |
-|       `enhancement`, `feature`        |           :rocket: Features            |
-| `bug`, `refactoring`, `bugfix`, `fix` |      :wrench: Fixes & Refactoring      |
-|       `build`, `ci`, `testing`        |     :package: Build System & CI/CD     |
-|              `breaking`               |        :boom: Breaking Changes         |
-|       `hooks`, `project-config`       |            :gear: Internals            |
-|           `template-config`           | :construction_site: Template Internals |
-|            `documentation`            |          :memo: Documentation          |
-|            `dependencies`             |    :arrow_up: Dependencies updates     |
-
-## :national_park: Roadmap
-
-We aim to continue developing the template, following the bleeding edge new tools and best practices to improve the Python development experience, with the goal of turning Galactipy into the go-to reference for starting new projects, while giving users flexibility in how they wish to set up their repositories.
-
-While we don't have a detailed roadmap for the project, our anticipated developments branch out in three categories.
-
-### Features Previewed in `python-package-template`
-
-Galactipy was born out of [`python-package-template`][ft36], developed by [Roman Tezikov][rd1] at GitHub. Roman's template was at the time the best template for Python projects for its feature richness which included the pre-configured CI workflows and `makefile` aliases that helped developers with day-to-day operations.
-
-While the original project is now archived, there were some features Roman intended to develop and we wish to carry on for Galactipy:
-
-- Documentation structure with [`Sphinx`][rd2] using the [`PyData Sphinx Theme`][rd3];
-- Code metrics with [`Radon`][rd4];
-- Docstring coverage with [`interrogate`][rd5];
-- Build streamlining with [`Earthly`][rd6].
-
-### Mirror GitHub features for GitLab
-
-As the project started on GitHub, features like Dependabot, Release Drafter and stale issue were already set up, but require more research and complexity to implement on GitLab.
-
-We would like Galactipy to have nearly equal functionality between GitHub and GitLab as possible, a considerable effort must be put just to ensure feature parity between the two.
-
-### Quality-of-life Features
-
-We also wish to implement features completely new to the template, especially aiming at streamlining development process so less time is lost setting up a new project and apply software development best practices with available tools for the Python ecosystem:
-
-- Documentation upload to [`GitLab Pages`][rd7] and [`GitHub Pages`][rd8];
-- Update GitHub Actions with the latest popular and useful workflows from the marketplace;
-- Add pre-commit hooks for finer control of the development cycle;
-- Implement SAST for improving security of your projects.
+Galactipy's roadmap is managed through our [Milestones][rd1] page, which lays out the
+current development streams mapped for delivery. All official details on development,
+timeline and deliverables are found through those pages. The project's milestones are
+also presented in the [`ROADMAP`][rd2] file purely for informational purposes.
 
 ## :shield: Licence
 
@@ -667,30 +629,34 @@ This project is licenced under the terms of the `MIT` licence. See [LICENCE][b7]
 
 ## :sports_medal: Acknowledgements
 
-Firstly, there is no way this template would exist without the previous phenomenal work by [Roman Tezikov][rd1] and his fully-featured [`python-package-template`][ft36]. If there is anyone more deserving of a :star2: and acknowledgement, it's him! Please give a shoutout and [support][ac1] if possible.
+Firstly, there is no way this template would exist without the previous phenomenal work by [Roman Tezikov][ac1] and his fully-featured [`python-package-template`][ft36]. If there is anyone more deserving of a :star2: and acknowledgement, it's him! Please give a shoutout and [support][ac2] if possible.
 
 The original template was inspired by several articles that might be helpful if you are starting out managing projects:
 
-- [Hypermodern Python][ac2];
-- [Ultimate Setup for Your Next Python Project][ac3];
-- [Nine simple steps for better-looking python code][ac4];
-- [Modern Python developer's toolkit][ac5].
+- [Hypermodern Python][ac3];
+- [Ultimate Setup for Your Next Python Project][ac4];
+- [Nine simple steps for better-looking python code][ac5];
+- [Modern Python developer's toolkit][ac6].
 
 And also there are some projects which can be studied as references in project management and template design:
 
-- [`Cookiecutter`][ac6];
-- [Audreyr's `cookiecutter-pypackage`][ac7];
-- [Cookiecutter Data Science Template: `cdst`][ac8];
-- [Full Stack FastAPI and PostgreSQL - Base Project Generator][ac9];
-- [The importance of layered thinking in data engineering][ac10].
+- [`Cookiecutter`][ac7];
+- [Audreyr's `cookiecutter-pypackage`][ac8];
+- [Cookiecutter Data Science Template: `cdst`][ac9];
+- [Full Stack FastAPI and PostgreSQL - Base Project Generator][ac10];
+- [The importance of layered thinking in data engineering][ac11].
 
-Additionally, we would like to thank the teams of the following projects for aiding us during our research and implementation of best practices and tools for Python development:
+Additionally, we would like to thank the teams of the following projects for either aiding us directly during our research of best practices and tools for Python development or whose documentation have inspired parts of the project:
 
-- [Pelican][ac11].
+- [Pelican][ac12];
+- [Spark][ac13];
+- [React][ac14];
+- [Chai][ac15];
+- [Harbor][ac16].
 
 Give them your :star:, these resources are amazing! :wink:
 
-<small>Galactipy Bot avatar created by [Smashicons][ac12].</small>
+<small>Galactipy Bot avatar created by [Smashicons][ac17].</small>
 
 ## :page_with_curl: Citation
 
@@ -705,7 +671,7 @@ Give them your :star:, these resources are amazing! :wink:
 }
 ```
 
-Add the badge [![Expand your project structure from atoms of code to galactic dimensions.][b35]][b36] to your project! It would be really appreciated to spread the word of this template.
+Add the badge [![Expand your project structure from atoms of code to galactic dimensions.][b37]][b38] to your project! It would be really appreciated to spread the word of this template.
 
 Here is the Markdown source for it:
 
@@ -738,19 +704,21 @@ Here is the Markdown source for it:
 [b21]: https://docs.astral.sh
 [b22]: https://img.shields.io/badge/docstrings-numpydoc-4dabcf?style=for-the-badge&labelColor=4d77cf
 [b23]: https://numpydoc.readthedocs.io/en/latest/format.html
-[b24]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge
-[b25]: https://kutt.it/D4ayxs
-[b26]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
-[b27]: https://kutt.it/fy3pqF
-[b28]: https://img.shields.io/badge/semantic%20versions-4053D6?style=for-the-badge&logo=semver
-[b29]: https://img.shields.io/codacy/grade/9827f88089954a3680675d7c77e63fd5?style=for-the-badge&logo=codacy
-[b30]: https://kutt.it/ByTvpc
-[b31]: https://img.shields.io/codacy/coverage/9827f88089954a3680675d7c77e63fd5?style=for-the-badge&logo=codacy
-[b32]: https://kutt.it/uxIDHs
-[b33]: https://img.shields.io/gitlab/pipeline-status/galactipy%2Fgalactipy?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
-[b34]: https://kutt.it/zG7nVG
-[b35]: https://img.shields.io/badge/made%20with-galactipy%20%F0%9F%8C%8C-179287?style=for-the-badge&labelColor=193A3E
-[b36]: https://kutt.it/7fYqQl
+[b24]: https://img.shields.io/badge/%F0%9F%98%9C_gitmoji-ffdd67?style=for-the-badge
+[b25]: https://gitmoji.dev/
+[b26]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge
+[b27]: https://kutt.it/D4ayxs
+[b28]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
+[b29]: https://kutt.it/fy3pqF
+[b30]: https://img.shields.io/badge/effver-0097a7?style=for-the-badge&logo=semver
+[b31]: https://img.shields.io/codacy/grade/9827f88089954a3680675d7c77e63fd5?style=for-the-badge&logo=codacy
+[b32]: https://kutt.it/ByTvpc
+[b33]: https://img.shields.io/codacy/coverage/9827f88089954a3680675d7c77e63fd5?style=for-the-badge&logo=codacy
+[b34]: https://kutt.it/uxIDHs
+[b35]: https://img.shields.io/gitlab/pipeline-status/galactipy%2Fgalactipy?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
+[b36]: https://kutt.it/zG7nVG
+[b37]: https://img.shields.io/badge/made%20with-galactipy%20%F0%9F%8C%8C-179287?style=for-the-badge&labelColor=193A3E
+[b38]: https://kutt.it/7fYqQl
 
 [ft1]: https://cookiecutter.readthedocs.io/en/stable/
 [ft2]: https://python-poetry.org/
@@ -855,29 +823,28 @@ Here is the Markdown source for it:
 [wn31]: https://eli.thegreenplace.net/2008/08/21/robust-exception-handling/
 [wn32]: https://nedbatchelder.com/blog/201908/why_your_mock_doesnt_work.html
 [wn33]: https://medium.com/babylon-engineering/todo-find-a-title-for-the-article-fee79708ca15
-[wn34]: https://gitmoji.dev/
 
 [r1]: https://gitlab.com/galactipy/galactipy/-/releases
-[r2]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
+[r2]: https://jacobtomlinson.dev/effver/
+[r3]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#versioning-customs
 
-[rd1]: https://github.com/TezRomacH
-[rd2]: https://github.com/sphinx-doc/sphinx
-[rd3]: https://github.com/pydata/pydata-sphinx-theme
-[rd4]: https://github.com/rubik/radon
-[rd5]: https://github.com/econchick/interrogate
-[rd6]: https://earthly.dev/
-[rd7]: https://docs.gitlab.com/ee/user/project/pages/
-[rd8]: https://pages.github.com/
+[rd1]: https://gitlab.com/galactipy/galactipy/-/milestones
+[rd2]: https://gitlab.com/galactipy/galactipy/-/blob/master/ROADMAP.md
 
-[ac1]: https://patreon.com/tezikov
-[ac2]: https://cjolowicz.github.io/posts/hypermodern-python-01-setup/
-[ac3]: https://martinheinz.dev/blog/14
-[ac4]: https://towardsdatascience.com/nine-simple-steps-for-better-looking-python-code-87e5d9d3b1cf
-[ac5]: https://pycon.switowski.com/
-[ac6]: https://github.com/cookiecutter/cookiecutter
-[ac7]: https://github.com/audreyr/cookiecutter-pypackage
-[ac8]: https://github.com/crplab/cdst
-[ac9]: https://github.com/tiangolo/full-stack-fastapi-postgresql
-[ac10]: https://towardsdatascience.com/the-importance-of-layered-thinking-in-data-engineering-a09f685edc71
-[ac11]: https://github.com/getpelican/pelican
-[ac12]: https://www.flaticon.com/free-icons/robot
+[ac1]: https://github.com/TezRomacH
+[ac2]: https://patreon.com/tezikov
+[ac3]: https://cjolowicz.github.io/posts/hypermodern-python-01-setup/
+[ac4]: https://martinheinz.dev/blog/14
+[ac5]: https://towardsdatascience.com/nine-simple-steps-for-better-looking-python-code-87e5d9d3b1cf
+[ac6]: https://pycon.switowski.com/
+[ac7]: https://github.com/cookiecutter/cookiecutter
+[ac8]: https://github.com/audreyr/cookiecutter-pypackage
+[ac9]: https://github.com/crplab/cdst
+[ac10]: https://github.com/tiangolo/full-stack-fastapi-postgresql
+[ac11]: https://towardsdatascience.com/the-importance-of-layered-thinking-in-data-engineering-a09f685edc71
+[ac12]: https://github.com/getpelican/pelican
+[ac13]: https://github.com/apache/spark
+[ac14]: https://github.com/facebook/react/
+[ac15]: https://github.com/chaijs/chai
+[ac16]: https://github.com/goharbor/harbor
+[ac17]: https://www.flaticon.com/free-icons/robot
