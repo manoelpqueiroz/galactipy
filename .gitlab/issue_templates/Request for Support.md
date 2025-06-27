@@ -19,7 +19,7 @@
 <!-- Please check all that apply with an `x` (like `[x]`); checking is not mandatory -->
 
 - [ ] I am using the latest version for generating projects with Galactipy;
-- [ ] I have explored the [issue tracker][1] for similar cases, attempting searches with the following terms:
+- [ ] I have explored the [Issue Tracker][1] for similar cases, attempting searches with the following terms:
   <!-- List all searches you have performed -->
   - `...`
   - `...`
@@ -30,19 +30,20 @@
 
 [1]: https://gitlab.com/galactipy/galactipy/-/issues/?state=all&type%5B%5D=issue
 [2]: https://gitlab.com/galactipy/galactipy/-/blob/master/README.md
-[3]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md
+[3]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contributing-through-user-requests
 
 ### Commitment to Project Support
 
-After reading the [Requesting Matters][4] section of the `CONTRIBUTING` guide and submitting this request, I commit to one of:
+After reading the [Commitment to Help][4] section of the `CONTRIBUTING` guide and submitting this request, I commit to one of:
 
 - [ ] Read [open discussions][5] until I find **2** where I can help someone and add a comment to help there;
-- [ ] Hit the "watch" button in this repository to receive notifications about the project and help **2** people that ask questions in the future;
+- [ ] Hit the ["Watch"][new6] button in this repository to receive notifications about the project and help **2** people that ask questions in the future;
 - [ ] Review **1** Merge Request by cloning the project and following the [review process][6].
 
-[4]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#requesting-matters
+[4]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#commitment-to-help
 [5]: https://gitlab.com/galactipy/galactipy/-/issues/?type%5B%5D=issue
-[6]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#mr-review-process
+[new6]: https://gitlab.com/gitlab-org/gitlab-foss/-/issues/234#note_17497758
+[6]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contributing-by-reviewing-changes
 
 ## :speech_balloon: Context
 
