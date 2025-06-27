@@ -585,26 +585,24 @@ For taking development and exposition of your project to the next level:
   - [`awesome-badges`][wn15] provides a lot of useful resources to help you deal with badges;
 - Add your project to [`OpenSSF Best Practices`][wn16] and [`OSSRank`][wn17] indexes. If you have greater ambitions for your project and/or expects it to scale at some point, it's worth considering adding it to these trackers;
   - There are already badges for those set up in your `README.md` file, just waiting for you to update their URLs with your project's index in both services; :grinning:
-- Setup a code coverage service for your tests, popular options include:
-  - [`Coveralls`][wn18] and [`Codecov`][wn19] if you need solely test coverage;
-  - [`Code Climate`][wn20] and [`Codacy`][wn21] for fully-featured code analysis;
 - Setup a sponsorship page and allow users and organisations who appreciate your project to help raise for its development (and add a badge in the process! :sunglasses:). Popular platforms are:
-  - [`Liberapay`][wn22];
-  - [`Open Collective`][wn23];
-  - [`Ko-fi`][wn24];
-  - If you host on GitHub, you can set a [Sponsors account][wn25] directly integrated into the platform;
+  - [`Liberapay`][wn18];
+  - [`Open Collective`][wn19];
+  - [`Ko-fi`][wn20];
+  - If you host on GitHub, you can set a [Sponsors account][wn21] directly integrated into the platform;
   - Of course, you can also set any kind of gateway you wish, what works best for you and your project!
+- If you are unsure about the versioning logic to use, check [this list][wn22] with a plethora of options to choose from.
 
 And here are a few articles which may help you:
 
-- [Open Source Guides][wn26];
-- [A handy guide to financial support for open source][wn27];
-- [GitLab CI Documentation][wn28];
-- [GitHub Actions Documentation][wn29];
-- [A Comprehensive Look at Testing in Software Development][wn30] is an article that lays out why testing is crucial for development success. Eric's blog is actually a great reference, covering topics ranging from the basics to advanced techniques and best practices;
-- [Robust Exception Handling][wn31];
-- [Why Your Mock Doesn't Work][wn32];
-- [Managing TODOs in a codebase][wn33];
+- [Open Source Guides][wn23];
+- [A handy guide to financial support for open source][wn24];
+- [GitLab CI Documentation][wn25];
+- [GitHub Actions Documentation][wn26];
+- [A Comprehensive Look at Testing in Software Development][wn27] is an article that lays out why testing is crucial for development success. Eric's blog is actually a great reference, covering topics ranging from the basics to advanced techniques and best practices;
+- [Robust Exception Handling][wn28];
+- [Why Your Mock Doesn't Work][wn29];
+- [Managing TODOs in a codebase][wn30];
 - Maybe you would like to add [gitmoji][b25] to commit names. This is really funny. :grin:
 
 ## :chart_with_upwards_trend: Galactipy Releases
@@ -625,7 +623,7 @@ also presented in the [`ROADMAP`][rd2] file purely for informational purposes.
 
 [![Licence][b6]][b7]
 
-This project is licenced under the terms of the `MIT` licence. See [LICENCE][b7] for more details.
+This project is licenced under the terms of the MIT licence. See [`LICENCE`][b7] for more details.
 
 ## :sports_medal: Acknowledgements
 
@@ -660,16 +658,10 @@ Give them your :star:, these resources are amazing! :wink:
 
 ## :page_with_curl: Citation
 
-```bibtex
-@misc{galactipy,
-  author = {Manoel Pereira de Queiroz},
-  title = {Galactipy Python Package Project Generator},
-  year = {2023, 2024},
-  publisher = {GitLab},
-  journal = {GitLab repository},
-  howpublished = {\url{https://gitlab.com/galactipy/galactipy}}
-}
-```
+We provide a [`CITATION.cff`][cite1] file to make it easier to cite this project in your
+paper.
+
+## :mega: Spread the Word
 
 Add the badge [![Expand your project structure from atoms of code to galactic dimensions.][b37]][b38] to your project! It would be really appreciated to spread the word of this template.
 
@@ -678,6 +670,14 @@ Here is the Markdown source for it:
 ```markdown
 [![Expand your project structure from atoms of code to galactic dimensions.](https://img.shields.io/badge/made%20with-galactipy%20%F0%9F%8C%8C-179287?style=for-the-badge&labelColor=193A3E)](https://kutt.it/7fYqQl)
 ```
+
+We would be equally grateful if you could also do any of the following:
+
+- Set the notification level to **"Watch"** to receive our latest updates; :bell:
+- Star the project! :star2:
+- Share the project with colleagues; :speaking_head:
+- Write a short article on how you are using Galactipy on your projects; :pencil2:
+- Share best practices, references and tools for project management with us! :beers:
 
 <!-- Anchors -->
 
@@ -807,22 +807,19 @@ Here is the Markdown source for it:
 [wn15]: https://github.com/badges/awesome-badges
 [wn16]: https://www.bestpractices.dev/en
 [wn17]: https://ossrank.com/
-[wn18]: https://coveralls.io/
-[wn19]: https://about.codecov.io/
-[wn20]: https://codeclimate.com/velocity/what-is-velocity
-[wn21]: https://www.codacy.com/
-[wn22]: https://liberapay.com/
-[wn23]: https://opencollective.com/
-[wn24]: https://ko-fi.com/
-[wn25]: https://github.com/sponsors
-[wn26]: https://opensource.guide/
-[wn27]: https://github.com/nayafia/lemonade-stand
-[wn28]: https://docs.gitlab.com/ee/ci/
-[wn29]: https://help.github.com/en/actions
-[wn30]: https://pytest-with-eric.com/introduction/types-of-software-testing/
-[wn31]: https://eli.thegreenplace.net/2008/08/21/robust-exception-handling/
-[wn32]: https://nedbatchelder.com/blog/201908/why_your_mock_doesnt_work.html
-[wn33]: https://medium.com/babylon-engineering/todo-find-a-title-for-the-article-fee79708ca15
+[wn18]: https://liberapay.com/
+[wn19]: https://opencollective.com/
+[wn20]: https://ko-fi.com/
+[wn21]: https://github.com/sponsors
+[wn22]: https://nesbitt.io/2024/06/24/from-zerover-to-semver-a-comprehensive-list-of-versioning-schemes-in-open-source.html
+[wn23]: https://opensource.guide/
+[wn24]: https://github.com/nayafia/lemonade-stand
+[wn25]: https://docs.gitlab.com/ee/ci/
+[wn26]: https://help.github.com/en/actions
+[wn27]: https://pytest-with-eric.com/introduction/types-of-software-testing/
+[wn28]: https://eli.thegreenplace.net/2008/08/21/robust-exception-handling/
+[wn29]: https://nedbatchelder.com/blog/201908/why_your_mock_doesnt_work.html
+[wn30]: https://medium.com/babylon-engineering/todo-find-a-title-for-the-article-fee79708ca15
 
 [r1]: https://gitlab.com/galactipy/galactipy/-/releases
 [r2]: https://jacobtomlinson.dev/effver/
@@ -848,3 +845,5 @@ Here is the Markdown source for it:
 [ac15]: https://github.com/chaijs/chai
 [ac16]: https://github.com/goharbor/harbor
 [ac17]: https://www.flaticon.com/free-icons/robot
+
+[cite1]: https://gitlab.com/galactipy/galactipy/-/blob/master/CITATION.cff
