@@ -73,6 +73,7 @@ How would you classify this request?
   What problem does it solve?
   What benefits does it bring and to whom?
   What would be considered a successful outcome for this development from your perspective?
+
   Feel free to bring some of your personal experience as a Galactipy user to let us understand the circumstances that led to this request
 -->
 
