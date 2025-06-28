@@ -2,29 +2,35 @@
 
 <div align="center">
 
+<!-- Project details -->
 [![Python support][b1]][b2]
 [![Repository][b3]][b2]
 [![Releases][b4]][b5]
 [![Licence][b6]][b7]
 [![Cookiecutter template][b8]][b9]
 
+<!-- Information on development -->
 [![Project type][b10]][b11]
 [![Contributions Welcome][b12]][b13]
 [![Open issues][b14]][b15]
 [![Merge Requests][b16]][b17]
 
-[![Poetry][b18]][b19]
-[![Code style: Ruff][b20]][b21]
-[![Docstrings: numpydoc][b22]][b23]
-[![Gitmoji][b24]][b25]
+<!-- Styling policies -->
+[![Code style: Ruff][b18]][b19]
+[![Docstrings: numpydoc][b20]][b21]
+[![Gitmoji][b22]][b23]
+[![Semantic Line Breaks][b24]][b25]
 
-[![Pre-commit][b26]][b27]
-[![Editorconfig][b28]][b29]
+<!-- Development utilities -->
+[![Poetry][b26]][b27]
+[![Pre-commit][b28]][b29]
+[![Editorconfig][b30]][b31]
 
-[![Intended Effort versioning][b30]][b5]
-[![Code Quality][b31]][b32]
-[![Coverage][b33]][b34]
-[![GitLab Pipelines][b35]][b36]
+<!-- Quality Assurance -->
+[![Intended Effort versioning][b32]][b5]
+[![Code Quality][b33]][b34]
+[![Coverage][b35]][b36]
+[![GitLab Pipelines][b37]][b38]
 
 _Expand your project structure from atoms of code to **galactic** dimensions._ :milky_way:
 </div>
@@ -603,7 +609,7 @@ And here are a few articles which may help you:
 - [Robust Exception Handling][wn28];
 - [Why Your Mock Doesn't Work][wn29];
 - [Managing TODOs in a codebase][wn30];
-- Maybe you would like to add [gitmoji][b25] to commit names. This is really funny. :grin:
+- Maybe you would like to add [gitmoji][b23] to commit names. This is really funny. :grin:
 
 ## :chart_with_upwards_trend: Galactipy Releases
 
@@ -663,7 +669,7 @@ paper.
 
 ## :mega: Spread the Word
 
-Add the badge [![Expand your project structure from atoms of code to galactic dimensions.][b37]][b38] to your project! It would be really appreciated to spread the word of this template.
+Add the badge [![Expand your project structure from atoms of code to galactic dimensions.][b39]][b40] to your project! It would be really appreciated to spread the word of this template.
 
 Here is the Markdown source for it:
 
@@ -698,27 +704,29 @@ We would be equally grateful if you could also do any of the following:
 [b15]: https://kutt.it/2B3qIg
 [b16]: https://img.shields.io/gitlab/merge-requests/open/galactipy%2Fgalactipy?style=for-the-badge&color=6fdac9
 [b17]: https://kutt.it/YZ7kPX
-[b18]: https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json&style=for-the-badge
-[b19]: https://python-poetry.org/
-[b20]: https://img.shields.io/badge/code%20style-ruff-261230?style=for-the-badge&labelColor=grey
-[b21]: https://docs.astral.sh
-[b22]: https://img.shields.io/badge/docstrings-numpydoc-4dabcf?style=for-the-badge&labelColor=4d77cf
-[b23]: https://numpydoc.readthedocs.io/en/latest/format.html
-[b24]: https://img.shields.io/badge/%F0%9F%98%9C_gitmoji-ffdd67?style=for-the-badge
-[b25]: https://gitmoji.dev/
-[b26]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge
-[b27]: https://kutt.it/D4ayxs
-[b28]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
-[b29]: https://kutt.it/fy3pqF
-[b30]: https://img.shields.io/badge/effver-0097a7?style=for-the-badge&logo=semver
-[b31]: https://img.shields.io/codacy/grade/9827f88089954a3680675d7c77e63fd5?style=for-the-badge&logo=codacy
-[b32]: https://kutt.it/ByTvpc
-[b33]: https://img.shields.io/codacy/coverage/9827f88089954a3680675d7c77e63fd5?style=for-the-badge&logo=codacy
-[b34]: https://kutt.it/uxIDHs
-[b35]: https://img.shields.io/gitlab/pipeline-status/galactipy%2Fgalactipy?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
-[b36]: https://kutt.it/zG7nVG
-[b37]: https://img.shields.io/badge/made%20with-galactipy%20%F0%9F%8C%8C-179287?style=for-the-badge&labelColor=193A3E
-[b38]: https://kutt.it/7fYqQl
+[b18]: https://img.shields.io/badge/code%20style-ruff-261230?style=for-the-badge&labelColor=grey
+[b19]: https://docs.astral.sh
+[b20]: https://img.shields.io/badge/docstrings-numpydoc-4dabcf?style=for-the-badge&labelColor=4d77cf
+[b21]: https://numpydoc.readthedocs.io/en/latest/format.html
+[b22]: https://img.shields.io/badge/%F0%9F%98%9C_gitmoji-ffdd67?style=for-the-badge
+[b23]: https://gitmoji.dev/
+[b24]: https://img.shields.io/badge/sembr-367DA9?style=for-the-badge&logo=read.cv&logoColor=white
+[b25]: https://sembr.org/
+[b26]: https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json&style=for-the-badge
+[b27]: https://python-poetry.org/
+[b28]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge
+[b29]: https://kutt.it/D4ayxs
+[b30]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
+[b31]: https://kutt.it/fy3pqF
+[b32]: https://img.shields.io/badge/effver-0097a7?style=for-the-badge&logo=semver
+[b33]: https://img.shields.io/codacy/grade/9827f88089954a3680675d7c77e63fd5?style=for-the-badge&logo=codacy
+[b34]: https://kutt.it/ByTvpc
+[b35]: https://img.shields.io/codacy/coverage/9827f88089954a3680675d7c77e63fd5?style=for-the-badge&logo=codacy
+[b36]: https://kutt.it/uxIDHs
+[b37]: https://img.shields.io/gitlab/pipeline-status/galactipy%2Fgalactipy?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
+[b38]: https://kutt.it/zG7nVG
+[b39]: https://img.shields.io/badge/made%20with-galactipy%20%F0%9F%8C%8C-179287?style=for-the-badge&labelColor=193A3E
+[b40]: https://kutt.it/7fYqQl
 
 [ft1]: https://cookiecutter.readthedocs.io/en/stable/
 [ft2]: https://python-poetry.org/
