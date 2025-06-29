@@ -1,15 +1,16 @@
 # :card_index: Internal Work Item
 
-> [!important]
-> :bulb: **Manage development iteration with issues and tasks.**
->
-> Please read the [`CONTRIBUTING`][1] guide for best practices when opening issues and run through the items under the **`Author Checklist`**.
->
->---
->
-> :ok: **Use this template for:** breaking down larger developments into actionable and iterable steps, preserve ideas for future development.
->
-> :no_entry: ***DO NOT use this template if you do not have a Developer role in this project.***
+>>> [!important]
+:bulb: **Manage development iteration with issues and tasks.**
+
+Please read the [`CONTRIBUTING`][1] guide for best practices when opening issues and run through the items under the **`Author Checklist`**.
+
+---
+
+:ok: **Use this template for:** breaking down larger developments into actionable and iterable steps, preserve ideas for future development.
+
+:no_entry: ***DO NOT use this template if you do not have a Developer role in this project.***
+>>>
 
 [1]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md
 

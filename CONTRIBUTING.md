@@ -130,26 +130,27 @@ with your first steps here:
   Galactipy needs. Check [starter assignment][26] issues, or [find your own][34] that
   deserves your time and effort.
 
-> [!tip]
-> Having all that said, aside from actions and tasks you can take to feel more
-> comfortable contributing, we believe there are three fundamental _behaviours_ that, if
-> followed, will help you become an even more robust contributor:
->
-> 1. **Communication makes all the difference:** open source projects often have
->    contributors from all over the world, so clear communication is key. It's
->    completely okay to ask questions when you're stuck and being clear when submitting
->    a Merge Request helps everyone involved. Jumping into discussions don't just
->    improve your contributions; it also helps you learn much more from those with more
->    experience and improve your problem-solving skills;
-> 2. **Patience is part of the process:** waiting for feedback on Merge Requests,
->    learning new tools, and figuring things out all take time. There might be times
->    where frustration kicks in and everything feels like taking you nowhere, but if you
->    stick to the process and leverage collaboration with other contributors you will
->    thrive. _Contributing to open source is a marathon, not a sprint_;
-> 3. **The learning never stops:** contributing to open source is a rewarding
->    experience, it will push you to learn new things, show you different perspectives
->    and help you become a better communicator. And there's always more to learn,
->    getting a chance to grow with every issue, every interaction and every feedback.
+>>> [!tip]
+Having all that said, aside from actions and tasks you can take to feel more
+comfortable contributing, we believe there are three fundamental _behaviours_ that, if
+followed, will help you become an even more robust contributor:
+
+1. **Communication makes all the difference:** open source projects often have
+   contributors from all over the world, so clear communication is key. It's
+   completely okay to ask questions when you're stuck and being clear when submitting
+   a Merge Request helps everyone involved. Jumping into discussions don't just
+   improve your contributions; it also helps you learn much more from those with more
+   experience and improve your problem-solving skills;
+2. **Patience is part of the process:** waiting for feedback on Merge Requests,
+   learning new tools, and figuring things out all take time. There might be times
+   where frustration kicks in and everything feels like taking you nowhere, but if you
+   stick to the process and leverage collaboration with other contributors you will
+   thrive. _Contributing to open source is a marathon, not a sprint_;
+3. **The learning never stops:** contributing to open source is a rewarding
+   experience, it will push you to learn new things, show you different perspectives
+   and help you become a better communicator. And there's always more to learn,
+   getting a chance to grow with every issue, every interaction and every feedback.
+>>>
 
 ## :classical_building: Fundamental Policies
 
@@ -243,14 +244,15 @@ Once the official milestone is created, it should be attached to the proposal MR
 `ROADMAP.md` table should be updated with the actual link to the milestone before
 merging to `master`.
 
-> [!tip]
-> Milestones should be the entry door for new contributors to have a general glimpse on
-> what the project has been prioritising and where it wants to go, helping newcomers get
-> onboarded more quickly. Therefore, contributors writing official milestones should
-> approach the task with the following goals in mind:
->
-> - [_Comprehensive, yet succinct_][49];
-> - [_Standardised, yet conscious_][50].
+>>> [!tip]
+Milestones should be the entry door for new contributors to have a general glimpse on
+what the project has been prioritising and where it wants to go, helping newcomers get
+onboarded more quickly. Therefore, contributors writing official milestones should
+approach the task with the following goals in mind:
+
+- [_Comprehensive, yet succinct_][49];
+- [_Standardised, yet conscious_][50].
+>>>
 
 After a milestone has been completed, a new Merge Request should be opened to update the
 `ROADMAP.md` table in the **Timeline** field with the following possible values:
@@ -275,14 +277,15 @@ what needs to be **done**, explicitly describing the task to be accomplished, ra
 than just naming a topic or describing past actions. The title of an issue should always
 summarise the _what_ that specific issue is trying to address.
 
-> [!caution]
-> The only exception to using imperative mood in issue titles is when it refers to a bug
-> or malfunction that has been identified. In this case, the title should refer to the
-> erroneous **behaviour** of Galactipy.
->
-> Since when bugs first appear, its solution is unknown, by providing the behaviour
-> being observed we can equally understand _what_ needs to be addressed to close the
-> issue.
+>>> [!caution]
+The only exception to using imperative mood in issue titles is when it refers to a bug
+or malfunction that has been identified. In this case, the title should refer to the
+erroneous **behaviour** of Galactipy.
+
+Since when bugs first appear, its solution is unknown, by providing the behaviour
+being observed we can equally understand _what_ needs to be addressed to close the
+issue.
+>>>
 
 ##### Tasks Are Used as Acceptance Criteria for Issues
 
@@ -296,9 +299,10 @@ In either case, Tasks must be used to complement the open issue with their accep
 criteria to be closed. Their titles should follow the same [rules][54] as issue titles,
 while descriptions are optional if relevant to understand implementation.
 
-> [!caution]
-> The only labels allowed on tasks are `needs::refinement` and `manual-closure`.
-> Otherwise, there should be no labels associated with a task.
+>>> [!caution]
+The only labels allowed on tasks are `needs::refinement` and `manual-closure`.
+Otherwise, there should be no labels associated with a task.
+>>>
 
 ##### Usage of the `needs::refinement` Label
 
@@ -310,10 +314,11 @@ later.
 Use this label for experimental issues and tasks which need more research before the
 actual actions that will lead to its implementation are evident for a contributor.
 
-> [!important]
-> Do not confuse the `needs::refinement` label with the `needs::criteria` label. The
-> former is set when resolution is still unclear, the latter is set when the deliverable
-> is known and understood, but is waiting for a contributor to detail in smaller steps.
+>>> [!important]
+Do not confuse the `needs::refinement` label with the `needs::criteria` label. The
+former is set when resolution is still unclear, the latter is set when the deliverable
+is known and understood, but is waiting for a contributor to detail in smaller steps.
+>>>
 
 ##### Usage of the `seeking-contributors` Labels
 
@@ -334,12 +339,13 @@ manner to the `starter-assignment` labels, with the difference that
 `seeking-contributors::greenlit` is aimed towards contributors with intermediate
 experience in the project.
 
-> [!important]
-> Contributors planning on refining an issue or Merge Request to mark with the
-> `seeking-contributors::greenlit` label should be aware of the **Goldilocks Priority**
-> principle: the item's priority should not be so high that a core contributor should do
-> it, but not too low that it isn't useful enough for a core contributor to spend time
-> reviewing it, answering questions, helping get it into a release etc.
+>>> [!important]
+Contributors planning on refining an issue or Merge Request to mark with the
+`seeking-contributors::greenlit` label should be aware of the **Goldilocks Priority**
+principle: the item's priority should not be so high that a core contributor should do
+it, but not too low that it isn't useful enough for a core contributor to spend time
+reviewing it, answering questions, helping get it into a release etc.
+>>>
 
 ##### Blocks Must be Set at the Same Issue Level
 
@@ -422,20 +428,21 @@ a domain can only be applied without breaking the project by also changing other
 In this case, prefer to classify the commit through the most fundamental change (i.e.,
 the change that led to subsequent file changes from other domains).
 
-> [!warning]
-> The shorthand codes specified in the Gitmoji website use the GitHub standard. For some
-> of the Gitmoji, these shorthands are different when rendering in GitLab, be aware of
-> which ones:
->
-> | Gitmoji | Default Shorthand | Shorthand in GitLab |
-> |:-------:|:-----------------:|:-----------------------:|
-> | :brick: | `:bricks:` | `:brick:` |
-> | :construction_site: | `:building_construction:` | `:construction_site:` |
-> | :camera_with_flash: | `:camera_flash:` | `:camera_with_flash:` |
-> | :card_box: | `:card_file_box:` | `:card_box:` |
-> | :goal: | `:goal_net:` | `:goal:` |
-> | :pencil: | `:memo:` | `:pencil:` |
-> | :face_with_monocle: | `:monocle_face:` | `:face_with_monocle:` |
+>>> [!warning]
+The shorthand codes specified in the Gitmoji website use the GitHub standard. For some
+of the Gitmoji, these shorthands are different when rendering in GitLab, be aware of
+which ones:
+
+| Gitmoji | Default Shorthand | Shorthand in GitLab |
+|:-------:|:-----------------:|:-----------------------:|
+| :brick: | `:bricks:` | `:brick:` |
+| :construction_site: | `:building_construction:` | `:construction_site:` |
+| :camera_with_flash: | `:camera_flash:` | `:camera_with_flash:` |
+| :card_box: | `:card_file_box:` | `:card_box:` |
+| :goal: | `:goal_net:` | `:goal:` |
+| :pencil: | `:memo:` | `:pencil:` |
+| :face_with_monocle: | `:monocle_face:` | `:face_with_monocle:` |
+>>>
 
 If the changes still reflect a work in progress that will be rebased at a later moment,
 we recommend committing with the `:construction:` Gitmoji so the CI will ignore it.
@@ -499,16 +506,17 @@ increases the document's readability by other contributors and makes changes cle
 when using `git diff`. This comes from Brian Kernighan in his 1974 book
 _"UNIX for Beginners"_:
 
-> [!note] Hints for Preparing Documents
-> Most documents go through several versions (always more than you expected) before they
-> are finally finished. Accordingly, you should do whatever possible to make the job of
-> changing them easy.
->
-> First, when you do the purely mechanical operations of typing, type so subsequent
-> editing will be easy. Start each sentence on a new line. Make lines short, and break
-> lines at natural places, such as after commas and semicolons, rather than randomly.
-> Since most people change documents by rewriting phrases and adding, deleting and
-> rearranging sentences, these precautions simplify any editing you have to do later.
+>>> [!note] Hints for Preparing Documents
+Most documents go through several versions (always more than you expected) before they
+are finally finished. Accordingly, you should do whatever possible to make the job of
+changing them easy.
+
+First, when you do the purely mechanical operations of typing, type so subsequent
+editing will be easy. Start each sentence on a new line. Make lines short, and break
+lines at natural places, such as after commas and semicolons, rather than randomly.
+Since most people change documents by rewriting phrases and adding, deleting and
+rearranging sentences, these precautions simplify any editing you have to do later.
+>>>
 
 On a more practical level, this [article][66] from Derek Sivers provides additional
 reasons for adopting this style.
@@ -906,18 +914,19 @@ isolated Pytest task) and if no errors are raised, then run `invoke sweep` (the 
 set of development checks in a single task). This step is crucial to ensure you don't
 introduce any regressions as you work on your change.
 
-> [!note]
-> The project uses `pytest-cookies` as a development dependency. This plugin allows
-> Pytest to validate if the current state of the code and configuration files allows for
-> a project to be generated without errors. While it acts as a handy tool to ensure that
-> critical errors will be caught by [`test_bake_project`][91], the reality is that
-> developers should be aware of limitations currently faced by the project to implement
-> end-to-end tests, as its nature relates less to code and more to behaviour after file
-> generation.
->
-> The %1 milestone has been created to address this situation at a future moment. Feel
-> free to take a look at it and discuss with the maintainers if you wish to contribute
-> to this development front.
+>>> [!note]
+The project uses `pytest-cookies` as a development dependency. This plugin allows
+Pytest to validate if the current state of the code and configuration files allows for
+a project to be generated without errors. While it acts as a handy tool to ensure that
+critical errors will be caught by [`test_bake_project`][91], the reality is that
+developers should be aware of limitations currently faced by the project to implement
+end-to-end tests, as its nature relates less to code and more to behaviour after file
+generation.
+
+The %1 milestone has been created to address this situation at a future moment. Feel
+free to take a look at it and discuss with the maintainers if you wish to contribute
+to this development front.
+>>>
 
 As Galactipy's purpose is to generate functional repositories which can be used by
 developers with minimal configuration, the nature of development involves ensuring not
@@ -1417,26 +1426,27 @@ Here is a general guide on how to help other users with their requests:
    - In many cases, it's better to understand their **underlying problem** or use case,
      because there might be a better way to solve it than what they are trying to do.
 
-> [!tip] Tip: When Things are Difficult
-> When things are great, everything is easier, so that doesn't need much instructions.
-> But when things are difficult, here are some guidelines.
->
-> Try to find the good side. In general, if people are not being unfriendly, try to
-> thank their effort and interest, even if you disagree with the main subject, just
-> thank them for being interested in the project, or for having dedicated some time to
-> try to do something.
->
-> It's difficult to convey emotion in text, use emoji to help. :wink:
->
-> In many requests people bring their frustration and show it without filter, which can
-> be displayed through exaggerating, complaining, being entitled, etc. That's really not
-> nice, and when it happens, it lowers our priority to solve their problems. But still,
-> try to breathe, and be gentle with your answers.
->
-> Try to avoid using bitter sarcasm or potentially passive-aggressive comments. If
-> something is wrong, it's better to be direct (try to be gentle) than sarcastic.
->
-> Try to be as specific and objective as possible, avoid generalizations.
+>>> [!tip] Tip: When Things are Difficult
+When things are great, everything is easier, so that doesn't need much instructions. But
+when things are difficult, here are some guidelines.
+
+Try to find the good side. In general, if people are not being unfriendly, try to thank
+their effort and interest, even if you disagree with the main subject, just thank them
+for being interested in the project, or for having dedicated some time to try to do
+something.
+
+It's difficult to convey emotion in text, use emoji to help. :wink:
+
+In many requests people bring their frustration and show it without filter, which can be
+displayed through exaggerating, complaining, being entitled, etc. That's really not
+nice, and when it happens, it lowers our priority to solve their problems. But still,
+try to breathe, and be gentle with your answers.
+
+Try to avoid using bitter sarcasm or potentially passive-aggressive comments. If
+something is wrong, it's better to be direct (try to be gentle) than sarcastic.
+
+Try to be as specific and objective as possible, avoid generalizations.
+>>>
 
 #### Commitment to Help
 
@@ -1485,10 +1495,11 @@ comments to guide you further with opening your request correctly, please follow
 closely as possible. If any instruction is not clear, please raise your concern so we
 can help and improve them if applicable.
 
-> [!note]
-> A fourth template, **Internal Work Item**, is available to contributors for specific
-> cases regarding project development. This should not be used if you do not have
-> Developer status.
+>>> [!note]
+A fourth template, **Internal Work Item**, is available to contributors for specific
+cases regarding project development. This should not be used if you do not have
+Developer status.
+>>>
 
 **Always use one of the templates for opening requests!** By taking a single look at its
 type and the structured sections filled by the author, we can provide faster feedback on
@@ -1614,12 +1625,13 @@ information below is much valuable to accelerate the process:
 These details will help people to fix any potential issues. It is important to note that
 **all** reports are valuable, even if they are not perfectly detailed.
 
-> [!warning]
-> **Avoid overloading with extraneous details.** RFCs are the type of request that most
-> need attention and careful examination by the development team, since a bug can turn
-> Galactipy entirely unusable. Focus on objective facts directly related to the bug and
-> kindly perform your due diligence as much as possible before bringing it to us,
-> contextualising your research and findings to avoid rework by the development team.
+>>> [!warning]
+**Avoid overloading with extraneous details.** RFCs are the type of request that most
+need attention and careful examination by the development team, since a bug can turn
+Galactipy entirely unusable. Focus on objective facts directly related to the bug and
+kindly perform your due diligence as much as possible before bringing it to us,
+contextualising your research and findings to avoid rework by the development team.
+>>>
 
 ### Contributing by Reviewing Changes
 

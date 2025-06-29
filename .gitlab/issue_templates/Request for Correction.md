@@ -1,17 +1,17 @@
 # :tools: Request for Correction
 
-> [!important]
-> :bulb: **Expose errors with Galactipy for the development team to address.**
->
-> Please run through all items under the **`Applicant Checklist`** section and be as much detailed as you can to speed up diagnostic and solution.
->
->---
->
-> :ok: **Use this template for:** bugs, crashes upon project generation, non-standardised project rendering, typos, missing files.
->
-> :no_good: **Refrain from using this template if:**
->
-> - You do not feel capable of providing details and some initial direction for the development team :right_arrow: open a **`Request for Support`** first.
+>>> [!important]
+:bulb: **Expose errors with Galactipy for the development team to address.**
+
+Please run through all items under the **`Applicant Checklist`** section and be as much detailed as you can to speed up diagnostic and solution.
+
+---
+
+:ok: **Use this template for:** bugs, crashes upon project generation, non-standardised project rendering, typos, missing files.
+
+:no_good: **Refrain from using this template if:**
+- You do not feel capable of providing details and some initial direction for the development team :right_arrow: open a **`Request for Support`** first.
+>>>
 
 ## Applicant Checklist
 

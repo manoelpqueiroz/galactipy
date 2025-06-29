@@ -1,18 +1,18 @@
 # :wave: Request for Support
 
-> [!important]
-> :bulb: **Seek help from the development team for Galactipy usage.**
->
-> Please run through all items under the **`Applicant Checklist`** section and provide details on the reasons that brought you to open this discussion.
->
->---
->
-> :ok: **Use this template for:** general questions on how to use Galactipy, when you are experiencing issues but are unsure why, questions for the developers regarding design decisions.
->
-> :no_good: **Refrain from using this template if:**
->
-> - You have a clear request for a new feature or an update to an existing feature :right_arrow: use the **`Request for Improvement`** template instead;
-> - Your templates are experiencing an unexpected behaviour which you have identified :right_arrow: a **`Request for Correction`** is more suitable.
+>>> [!important]
+:bulb: **Seek help from the development team for Galactipy usage.**
+
+Please run through all items under the **`Applicant Checklist`** section and provide details on the reasons that brought you to open this discussion.
+
+---
+
+:ok: **Use this template for:** general questions on how to use Galactipy, when you are experiencing issues but are unsure why, questions for the developers regarding design decisions.
+
+:no_good: **Refrain from using this template if:**
+- You have a clear request for a new feature or an update to an existing feature :right_arrow: use the **`Request for Improvement`** template instead;
+- Your templates are experiencing an unexpected behaviour which you have identified :right_arrow: a **`Request for Correction`** is more suitable.
+>>>
 
 ## Applicant Checklist
 
