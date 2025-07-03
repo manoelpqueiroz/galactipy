@@ -63,7 +63,7 @@ to bring updated status information.
 | %7        | Organise features, documentation and options for releasing `v1.0`. | :gem: Stable Release | N/A |
 | %8        | Replace `Makefile` with Invoke as the subprocess manager. | :motorway: Improvements | **Delivered with [`v0.4`][v0.4] :airplane_departure:** |
 | %10       | Write clear-cut user tutorial for project management best practices via documentation. | :children_crossing: User Experience | N/A |
-| %11       | Adapt and document relevant GitLab processes and modus operandi to establish standard development philosophy for project and template. | :scroll: Policies | N/A |
+| %11       | Adapt and document relevant GitLab processes and modus operandi to establish standard development philosophy for project and template. | :scroll: Policies | **Delivered Internally :100:** |
 | %12       | Include additional tools and services for building applications, checking code coverage and obtaining development metrics for releasing `v2.0`. | :sparkles: New Features | N/A |
 | %13       | Structure additional tasks and steps for configuring external services, eliminate the need for additional setup outside the CLI. | :children_crossing: User Experience | N/A |
 | %14       | Integrate Invoke tasks to call the SCM APIs for common project management tasks and housekeeping. | :bullettrain_side: Team Productivity | N/A |
