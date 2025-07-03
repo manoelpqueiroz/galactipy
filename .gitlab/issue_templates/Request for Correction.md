@@ -10,6 +10,7 @@ Please run through all items under the **`Applicant Checklist`** section and be 
 :ok: **Use this template for:** bugs, crashes upon project generation, non-standardised project rendering, typos, missing files.
 
 :no_good: **Refrain from using this template if:**
+
 - You do not feel capable of providing details and some initial direction for the development team :right_arrow: open a **`Request for Support`** first.
 >>>
 

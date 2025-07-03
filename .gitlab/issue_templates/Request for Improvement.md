@@ -10,6 +10,7 @@ Please run through all items under the **`Applicant Checklist`** section and fol
 :ok: **Use this template for:** requests for new features to improve your project's structure, additional tools to boost developer productivity, integrations with novel services/platforms, updates to existing features, tools and integrations.
 
 :no_good: **Refrain from using this template if:**
+
 - Your request involves addressing unexpected behaviour of generated projects :right_arrow: use a **`Request for Correction`**;
 - You are unsure your request involves an actual feature :right_arrow: attempt a **`Request for Support`** first;
 - You feel your request is not clear enough yet :right_arrow: a **`Request for Support`** is also recommended.

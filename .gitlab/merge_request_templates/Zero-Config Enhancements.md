@@ -34,6 +34,7 @@ This template should be used to propose and discuss changes to the default confi
 <!-- Mark complying items as they are delivered -->
 
 >>> [!caution] :scroll: Policy compliance
+
 - [ ] I have read the [`CONTRIBUTING`][1] guide for proposing changes;
 - [ ] I provided a concise and clear title for this discussion;
 - [ ] I have presented my proposal following [Galactipy's philosophy][2] principles;
@@ -46,6 +47,7 @@ This template should be used to propose and discuss changes to the default confi
 >>>
 
 >>> [!important] :technologist: Development control
+
 - [ ] I have modified files to sufficiently improve user experience without causing incompatibility in project generation;
 - [ ] I have assured the configuration improvement works as expected;
 - [ ] I have either:
@@ -58,6 +60,7 @@ This template should be used to propose and discuss changes to the default confi
 >>>
 
 >>> [!tip] :reminder_ribbon: Contribution control
+
 - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
 >>>
 

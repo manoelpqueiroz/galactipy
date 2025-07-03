@@ -20,6 +20,7 @@ This template should be used to propose and discuss changes that improve project
 <!-- Mark complying items as they are delivered -->
 
 >>> [!caution] :scroll: Policy compliance
+
 - [ ] I have read the [`CONTRIBUTING`][1] guide for proposing changes;
 - [ ] I provided a concise and clear title for this discussion;
 - [ ] I have presented my proposal following [Galactipy's philosophy][2] principles;
@@ -32,6 +33,7 @@ This template should be used to propose and discuss changes that improve project
 >>>
 
 >>> [!important] :technologist: Development control
+
 - [ ] I have either:
   - Changed configuration files, without causing incompatibility;
   - Changed documentation files only;
@@ -41,6 +43,7 @@ This template should be used to propose and discuss changes that improve project
 >>>
 
 >>> [!tip] :reminder_ribbon: Contribution control
+
 - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
 >>>
 

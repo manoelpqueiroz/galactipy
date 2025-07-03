@@ -32,6 +32,7 @@ This template should be used to propose and discuss any changes that affect know
 <!-- Mark complying items as they are delivered -->
 
 >>> [!caution] :scroll: Policy compliance
+
 - [ ] I have read the [`CONTRIBUTING`][1] guide for proposing changes;
 - [ ] I provided a concise and clear title for this discussion;
 - [ ] I have presented my proposal following [Galactipy's philosophy][2] principles;
@@ -59,6 +60,7 @@ For rules in configuration files:
 >>>
 
 >>> [!tip] :reminder_ribbon: Contribution control
+
 - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
 >>>
 

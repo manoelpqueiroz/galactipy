@@ -476,7 +476,7 @@ file:
 | `fix` |      :wrench: Fixes & Refactoring      | Minor corrections that can not be characterised as bugs in and of themselves, such as typos and naming conventions. |
 | `ci` |     :package: Build System & CI/CD     | Changes to Galactipy's GitLab CI file. |
 | `testing`        |     :package: Build System & CI/CD     | Changes to tests for Galactipy. |
-|      `hooks`      |            :gear: Internals            | Modifications made to pre-gen and post-gen hooks.
+|      `hooks`      |            :gear: Internals            | Modifications made to pre-gen and post-gen hooks. |
 | `project-config`  |            :gear: Internals            | Modifications made to configuration files for the project, excluding those specified in the `policies` trailer. |
 | `build`        |     :construction_site: Template Internals     | Modifications to CI workflows for generated projects. |
 | `template-config` | :construction_site: Template Internals | Modifications made to configuration files for generated projects, inside `{{ cookiecutter.repo_name }}`. |
@@ -985,7 +985,7 @@ contribution acceptance criteria below:
 7. Only one specific issue is fixed or one specific feature is implemented. Do not
    combine things; send separate Merge Requests for each issue or feature;
 8. Contains functionality that other users will benefit from;
-9.  Changes do not degrade performance;
+9. Changes do not degrade performance;
 10. If the Merge Request adds any new libraries, they should conform to our existing
     licence; Also, make the reviewer aware of the new library and explain why you need
     it.
@@ -1830,7 +1830,7 @@ Thank you so much for using Galactipy!
 [92]: https://jinja.palletsprojects.com/en/stable/templates/#whitespace-control
 [93]: #opening-admissible-merge-requests
 [94]: #gitmoji
-[95]: #code-review-guidelines
+[95]: #merge-request-review-process
 [96]: https://docs.gitlab.com/user/project/merge_requests/dependencies/
 [97]: https://josipmisko.com/posts/code-review-nit
 [98]: https://gitlab.com/galactipy/galactipy/-/issues/?state=opened&label_name%5B%5D=seeking-contributors%3A%3Aopinion&type%5B%5D=issue

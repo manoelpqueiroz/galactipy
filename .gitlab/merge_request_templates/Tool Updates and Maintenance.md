@@ -33,6 +33,7 @@ This template should be used to propose and discuss the maintenance of existing 
 <!-- Mark complying items as they are delivered -->
 
 >>> [!caution] :scroll: Policy compliance
+
 - [ ] I have read the [`CONTRIBUTING`][1] guide for proposing changes;
 - [ ] I provided a concise and clear title for this discussion;
 - [ ] I have presented my proposal following [Galactipy's philosophy][2] principles;
@@ -45,6 +46,7 @@ This template should be used to propose and discuss the maintenance of existing 
 >>>
 
 >>> [!important] :technologist: Development control
+
 - [ ] I have assembled the minimal configuration to implement the proposed change without breaking functionality;
 - [ ] I have either:
   - Evaluated that this change does not require updating links to tool/service configuration;
@@ -59,6 +61,7 @@ This template should be used to propose and discuss the maintenance of existing 
 >>>
 
 >>> [!tip] :reminder_ribbon: Contribution control
+
 - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
 >>>
 

@@ -34,6 +34,7 @@ This template should be used to propose and discuss the inclusion of new tools a
 <!-- Mark complying items as they are delivered -->
 
 >>> [!caution] :scroll: Policy compliance
+
 - [ ] I have read the [`CONTRIBUTING`][1] guide for proposing changes;
 - [ ] I provided a concise and clear title for this discussion;
 - [ ] I have presented my proposal following [Galactipy's philosophy][2] principles;
@@ -46,6 +47,7 @@ This template should be used to propose and discuss the inclusion of new tools a
 >>>
 
 >>> [!important] :technologist: Development control
+
 - [ ] I have assembled the minimal configuration to make the proposed tool/service functional for users;
 - [ ] I have provided links to repository and configuration reference of the proposed tool/service as inline comments;
 - [ ] I have updated the documentation promoting the tool/service as a feature, along with any additional references that might be useful for users;
@@ -54,6 +56,7 @@ This template should be used to propose and discuss the inclusion of new tools a
 >>>
 
 >>> [!tip] :reminder_ribbon: Contribution control
+
 - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
 >>>
 
