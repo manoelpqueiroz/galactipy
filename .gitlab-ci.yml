@@ -128,6 +128,8 @@ codacy-report:
     - if: $GITLAB_USER_LOGIN =~ /^(project|group)_\d+_bot_\w+/i
       when: never
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
+      changes:
+        paths: *filechecks
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE != 'schedule'
   script:
     - apk add curl
