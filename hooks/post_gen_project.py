@@ -28,6 +28,7 @@ SCM_BASE_URL = "{{ cookiecutter.__scm_base_url }}"
 CREATE_CLI = "{{ cookiecutter.bare_repo }}" == "False"  # type: ignore[comparison-overlap] # noqa: PLR0133
 CREATE_DOCKER = "{{ cookiecutter.create_docker }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
 USE_BDD = "{{ cookiecutter.use_bdd }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
+ENABLE_FLAGS = "{{ cookiecutter.__debug }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
 
 licences_dict = {
     "MIT": "mit",
@@ -42,11 +43,12 @@ licences_dict = {
 
 
 @dataclass
-class ProjectFlags: # noqa: D101
+class ProjectFlags:  # noqa: D101
     remove_cli: bool
     remove_gitlab: bool
     remove_docker: bool
     remove_bdd: bool
+    remove_features: bool
 
 
 def rmdir(path: Path) -> None:
@@ -133,6 +135,12 @@ def remove_unused_files(
 
     for path in files_to_delete:
         rmdir(path)
+
+    if flags.remove_features:
+        feature_files = _get_feature_files(directory)
+
+        for path in feature_files:
+            rmdir(path)
 
 
 def _get_files_to_delete(
@@ -228,6 +236,21 @@ def _get_docker_specific_files(directory: Path, is_github: bool) -> list[Path]:
         removals.append(directory / ".github" / "workflows" / "docker.yml")
 
     return removals
+
+
+def _get_feature_files(directory: Path) -> list[Path]:
+    """Return all feature files for removal.
+
+    Parameters
+    ----------
+    directory : Path
+        Root directory of the project.
+    """
+    feature_directories = list(directory.rglob("**/*_feature"))
+
+    feature_files = list(directory.glob("**/*_feature.*"))
+
+    return feature_directories + feature_files
 
 
 def print_further_instructions(
@@ -346,8 +369,11 @@ def main() -> None:  # noqa: D103
     remove_cli = not CREATE_CLI
     remove_docker = not CREATE_DOCKER
     remove_bdd = not USE_BDD
+    remove_features = not ENABLE_FLAGS
 
-    config = ProjectFlags(remove_cli, remove_gitlab, remove_docker, remove_bdd)
+    config = ProjectFlags(
+        remove_cli, remove_gitlab, remove_docker, remove_bdd, remove_features
+    )
 
     generate_licence(directory=PROJECT_DIRECTORY, licence=licences_dict[LICENCE])
 
