@@ -695,7 +695,7 @@ We would be equally grateful if you could also do any of the following:
 <!-- Anchors -->
 
 [m1]: https://kutt.it/e8YfCL
-[m2]: https://gitlab.com/galactipy/galactipy/-/blob/github-mirror/CONTRIBUTING.md
+[m2]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md
 
 [b1]: https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue?style=for-the-badge
 [b2]: https://kutt.it/WlS8Qj
