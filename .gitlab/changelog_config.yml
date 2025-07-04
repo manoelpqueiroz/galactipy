@@ -3,21 +3,22 @@
 # https://docs.gitlab.com/ee/api/repositories.html#generate-changelog-data for
 # more information.
 categories:
-  enhancement: ":rocket: Features"
-  feature: ":rocket: Features"
+  enhancement: ":milky_way: Components"
+  feature: ":milky_way: Components"
   bug: ":wrench: Fixes & Refactoring"
   refactoring: ":wrench: Fixes & Refactoring"
   bugfix: ":wrench: Fixes & Refactoring"
   fix: ":wrench: Fixes & Refactoring"
-  build: ":package: Build System & CI/CD"
   ci: ":package: Build System & CI/CD"
   testing: ":package: Build System & CI/CD"
   hooks: ":gear: Internals"
   project-config: ":gear: Internals"
   template-config: ":construction_site: Template Internals"
-  breaking: ":boom: Breaking Changes"
-  documentation: ":memo: Documentation"
-  dependencies: ":arrow_up: Dependencies Updates"
+  build: ":construction_site: Template Internals"
+  documentation: ":pencil: Documentation"
+  policies: ":scroll: Project Policies"
+  milestones: ":scroll: Project Policies"
+  dependencies: ":arrow_up: Dependency Updates"
 template: |
   {% if categories %}
   {% each categories %}

@@ -1,7 +1,7 @@
 # Poetry pyproject.toml: https://python-poetry.org/docs/pyproject/
 [project]
 name = "galactipy"
-version = "0.13.0"
+version = "0.14.0"
 description = "Full-fledged template for Python projects."
 license = { text = "MIT" }
 readme = "README.md"
@@ -158,8 +158,8 @@ max-doc-length = 79
 convention = "numpy"
 
 [tool.ruff.lint.flake8-copyright]
-author = "Manoel Pereira de Queiroz"
-notice-rgx = "Copyright (C) 2023, 2024"
+author = "The Galactipy Contributors"
+notice-rgx = "Copyright (C) 2023-2025"
 
 [tool.ruff.lint.pylint]
 max-bool-expr = 3

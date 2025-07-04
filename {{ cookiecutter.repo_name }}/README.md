@@ -2,6 +2,7 @@
 
 <div align="center">
 
+<!-- Project details -->
 [![Python support][bp1]][bp2]
 [![PyPI Release][bp3]][bp2]
 [![Repository][bscm1]][bp4]
@@ -14,33 +15,47 @@
 {%- endif %}
 [![Expand your project structure from atoms of code to galactic dimensions.][bp6]][bp7]
 
+<!-- Information on development -->
 [![Contributions Welcome][bp8]][bp9]
 [![Open issues][bscm3]][bp10]
 [![Merge Requests][bscm4]][bscm5]
-{%+ if cookiecutter.use_bdd %}
+
+<!-- Styling policies -->
+{%- if cookiecutter.use_bdd %}
 [![BDD][bbbd1]][bbbd2]
 {%- endif %}
-[![Poetry][bp11]][bp12]
 {%- if cookiecutter.use_ruff %}
 [![Code style: Ruff][bfo1]][bfo2]
 {%- endif %}
 {%- if cookiecutter.use_ruff and cookiecutter.docstring_style in ['numpy', 'google', 'pep257'] %}
 [![Docstrings][bli1]][bli2]
 {%- endif %}
+{%- if cookiecutter.commit_convention == 'gitmoji' %}
+[![Gitmoji][bcv1]][bcv2]
+{%- elif cookiecutter.commit_convention == 'conventional' %}
+[![Conventional Commits][bcv1]][bcv2]
+{%- elif cookiecutter.commit_convention == 'conventional-gitmoji' %}
+[![Conventional Gitmoji][bcv1]][bcv2]
+{%- endif %}
+[![Semantic Line Breaks][bp11]][bp12]
 
-[![Pre-commit][bp13]][bp14]
-[![Bandit][bp15]][bp16]
+<!-- Development utilities -->
+[![Poetry][bp13]][bp14]
+[![Pre-commit][bp15]][bp16]
+[![Bandit][bp17]][bp18]
 {%- if cookiecutter.use_ruff %}
 [![isort][bfo3]][bfo4]
 {%- endif %}
-[![Editorconfig][bp17]][bp18]
+[![Editorconfig][bp19]][bp20]
 {%+ if cookiecutter.licence != 'nos' %}
+<!-- Open Source benchmarks -->
 <!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
 [![OpenSSF Best Practices][boss1]][boss2] -->
 <!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
 [![OSSRank][boss3]][boss4] -->
 {% endif +%}
-[![Semantic versions][bp19]][bp5]
+<!-- Quality assurance -->
+[![Semantic versions][bp21]][bp5]
 {%- if cookiecutter.__coverage_lc == 'coveralls' %}
 [![Coverage][bcov1]][bcov2]
 {%- elif cookiecutter.__coverage_lc == 'codacy' %}
@@ -215,8 +230,7 @@ And here are a few articles which may help you:
 - [A Comprehensive Look at Testing in Software Development][wn22] is an article that lays out why testing is crucial for development success. Eric's blog is actually a great reference, covering topics ranging from the basics to advanced techniques and best practices;
 - [Robust Exception Handling][wn23];
 - [Why Your Mock Doesn't Work][wn24];
-- [Managing TODOs in a codebase][wn25];
-- Maybe you would like to add [gitmoji][wn26] to commit names. This is really funny. :grin:
+- [Managing TODOs in a codebase][wn25].
 
 ## :rocket: Features
 
@@ -251,7 +265,8 @@ And here are a few articles which may help you:
 ### Project management features
 
 - Issue and {% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates for easy integration with {{ cookiecutter.scm_platform }};
-- Workflows to mark and close abandoned issues after a period of inactivity with {% if cookiecutter.__scm_platform_lc == 'gitlab' %}GitLab [`Triage Policies`][lab9]{% elif cookiecutter.__scm_platform_lc == 'github' %}[`Stale Bot`][hub8]{% endif %}.
+- Workflows to mark and close abandoned issues after a period of inactivity with {% if cookiecutter.__scm_platform_lc == 'gitlab' %}GitLab [`Triage Policies`][lab9]{% elif cookiecutter.__scm_platform_lc == 'github' %}[`Stale Bot`][hub8]{% endif %};
+- {% if cookiecutter.commit_convention == 'gitmoji' %}[Gitmoji][bcv2]{% elif cookiecutter.commit_convention == 'conventional' %}[Conventional Commits][bcv2]{% elif cookiecutter.commit_convention == 'conventional-gitmoji' %}A mix of both [Gitmoji][cv1] and [Conventional Commits][bcv2]{% endif %} as the standard for commit titles.
 
 ### Open source community features
 
@@ -609,15 +624,17 @@ This project was generated with [`galactipy`][bp7].
 [bp8]: https://img.shields.io/static/v1.svg?label=Contributions&message=Welcome&color=0059b3&style=for-the-badge
 [bp9]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md
 [bp10]: {{ cookiecutter.__scm_link_url }}/issues
-[bp11]: https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json&style=for-the-badge
-[bp12]: https://python-poetry.org/
-[bp13]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge
-[bp14]: {{ cookiecutter.__scm_link_url }}/blob/master/.pre-commit-config.yaml
-[bp15]: https://img.shields.io/badge/security-bandit-yellow?style=for-the-badge
-[bp16]: https://bandit.readthedocs.io/en/latest/
-[bp17]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
-[bp18]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
-[bp19]: https://img.shields.io/badge/semantic%20versions-4053D6?style=for-the-badge&logo=semver
+[bp11]: https://img.shields.io/badge/sembr-367DA9?style=for-the-badge&logo=read.cv&logoColor=white
+[bp12]: https://sembr.org/
+[bp13]: https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json&style=for-the-badge
+[bp14]: https://python-poetry.org/
+[bp15]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge
+[bp16]: {{ cookiecutter.__scm_link_url }}/blob/master/.pre-commit-config.yaml
+[bp17]: https://img.shields.io/badge/security-bandit-yellow?style=for-the-badge
+[bp18]: https://bandit.readthedocs.io/en/latest/
+[bp19]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
+[bp20]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
+[bp21]: https://img.shields.io/badge/semantic%20versions-4053D6?style=for-the-badge&logo=semver
 {%+ if cookiecutter.licence != 'nos' %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [blic1]: https://img.shields.io/gitlab/license/{{ cookiecutter.scm_username}}/{{ cookiecutter.repo_name }}?style=for-the-badge
@@ -674,7 +691,6 @@ This project was generated with [`galactipy`][bp7].
 [wn23]: https://eli.thegreenplace.net/2008/08/21/robust-exception-handling/
 [wn24]: https://nedbatchelder.com/blog/201908/why_your_mock_doesnt_work.html
 [wn25]: https://medium.com/babylon-engineering/todo-find-a-title-for-the-article-fee79708ca15
-[wn26]: https://gitmoji.dev/
 {%+ if cookiecutter.licence != 'nos' %}
 [wno3]: https://liberapay.com/
 [wno4]: https://opencollective.com/
@@ -795,4 +811,15 @@ This project was generated with [`galactipy`][bp7].
 [bdd3]: https://pytest-bdd.readthedocs.io/en/latest/
 [bdd4]: https://cucumber.io/docs/gherkin/reference
 [bdd5]: https://cucumber.io/docs
+{%- endif %}
+{%- if cookiecutter.commit_convention == 'gitmoji' %}
+[bcv1]: https://img.shields.io/badge/%F0%9F%98%9C_gitmoji-ffdd67?style=for-the-badge
+[bcv2]: https://gitmoji.dev/
+{%- elif cookiecutter.commit_convention == 'conventional' %}
+[bcv1]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white&style=for-the-badge
+[bcv2]: https://conventionalcommits.org
+{%- elif cookiecutter.commit_convention == 'conventional-gitmoji' %}
+[bcv1]: https://img.shields.io/badge/conventional-%F0%9F%98%9C%20gitmoji-ffdd67?style=for-the-badge&logo=conventionalcommits&logoColor=white&labelColor=fe5196
+[bcv2]: https://conventionalcommits.org
+[cv1]: https://gitmoji.dev/
 {%- endif %}

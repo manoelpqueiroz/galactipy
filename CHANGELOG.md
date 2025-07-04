@@ -1,3 +1,42 @@
+## 0.14.0 (2025-07-04)
+
+### :milky_way: Components (1 change)
+
+- [:wrench: Add Cookiecutter option for commit convention](galactipy/galactipy@93d5921d99ac543c3a29cd6cca395d2c3e313150) ([merge request](galactipy/galactipy!53))
+
+### :wrench: Fixes & Refactoring (2 changes)
+
+- [:pencil2: Fix Codacy quality issues](galactipy/galactipy@e5da7ad00722bebd2524e1064dd739f1cb8b03dc) ([merge request](galactipy/galactipy!50))
+- [:pencil2: Replace multiline blockquotes syntax](galactipy/galactipy@8aa8dfff897a7ee1cc377a21798c0b2325c6cc2f) ([merge request](galactipy/galactipy!50))
+
+### :package: Build System & CI/CD (1 change)
+
+- [:green_heart: Adjust rule for Codacy pipeline](galactipy/galactipy@084c50dba773362af7f2bbbf2bb330ab23b0ad82) ([merge request](galactipy/galactipy!50))
+
+### :gear: Internals (2 changes)
+
+- [:wrench: Add template for internal issues](galactipy/galactipy@fba1f72bdeddf118933a95d7f86947fe1a5eb42d) ([merge request](galactipy/galactipy!50))
+- [:wrench: Replace issue templates for project](galactipy/galactipy@965f0c38e89628138a6b584c33a44610fd893c94) ([merge request](galactipy/galactipy!50))
+
+### :pencil: Documentation (4 changes)
+
+- [:pencil: Update READMEs detailing commit conventions](galactipy/galactipy@227359db2b802bfcfd9fde1cb0136cf8486b4d72) ([merge request](galactipy/galactipy!53))
+- [:pencil: Reorganise badge clusters for template](galactipy/galactipy@58d47a881450cdf85b3450dea7ba508260d9e053) ([merge request](galactipy/galactipy!53))
+- [:pencil: Add badge for SemBr in project README](galactipy/galactipy@43d1f6ab5e6d4094c6a3c00da56fc70b69251c32) ([merge request](galactipy/galactipy!50))
+- [:pencil: Adjust project README content](galactipy/galactipy@eb8dd0aa06fd117b7af72a4618e982a6a5f514de) ([merge request](galactipy/galactipy!50))
+
+### :scroll: Project Policies (9 changes)
+
+- [:pencil: Include checklist for closing issues in MR templates](galactipy/galactipy@cf6a996155bad8b511863d6f8491d085abf1be4b) ([merge request](galactipy/galactipy!52))
+- [:pencil: Mark delivery of Galactipy Philosophy milestone](galactipy/galactipy@719688e0f28a8a0465b5c1c2bfba9cc236ff20a3) ([merge request](galactipy/galactipy!51))
+- [:wrench: Replace MR templates for project](galactipy/galactipy@64f0e0e7a99c5f05a207ecb6448a44e4493bb91e) ([merge request](galactipy/galactipy!50))
+- [:pencil: Adopt Semantic Line Breaks for project](galactipy/galactipy@949008576d998f21847444fbefc10ddb44978456) ([merge request](galactipy/galactipy!50))
+- [:pencil: Incorporate additional project values](galactipy/galactipy@f9b039e76c03410e7783ce94238dc6668da6b698) ([merge request](galactipy/galactipy!50))
+- [:wrench: Refine project issue templates with current guidelines](galactipy/galactipy@711a1825ae1fd9eb6f897c4bae5f33d9e71f4ff7) ([merge request](galactipy/galactipy!50))
+- [:pencil: Rebuild contributing guidelines](galactipy/galactipy@0942188b755b37bb3f115a01da9098529fc64281) ([merge request](galactipy/galactipy!50))
+- [:wrench: Refine URL for Issue Tracker in project templates](galactipy/galactipy@3560db7a07922f52a0abc18ee1ef4d03ea6a5baa) ([merge request](galactipy/galactipy!50))
+- [:wrench: Update project Git trailers](galactipy/galactipy@3b214ecd5019e0a66b076b9263370f5348fc2090) ([merge request](galactipy/galactipy!50))
+
 ## 0.13.0 (2025-04-30)
 
 ### :rocket: Features (3 changes)
