@@ -30,6 +30,13 @@
 {%- if cookiecutter.use_ruff and cookiecutter.docstring_style in ['numpy', 'google', 'pep257'] %}
 [![Docstrings][bli1]][bli2]
 {%- endif %}
+{%- if cookiecutter.commit_convention == 'gitmoji' %}
+[![Gitmoji][bcv1]][bcv2]
+{%- elif cookiecutter.commit_convention == 'conventional' %}
+[![Conventional Commits][bcv1]][bcv2]
+{%- elif cookiecutter.commit_convention == 'conventional-gitmoji' %}
+[![Conventional Gitmoji][bcv1]][bcv2]
+{%- endif %}
 [![Semantic Line Breaks][bp11]][bp12]
 
 <!-- Development utilities -->
@@ -805,4 +812,14 @@ This project was generated with [`galactipy`][bp7].
 [bdd3]: https://pytest-bdd.readthedocs.io/en/latest/
 [bdd4]: https://cucumber.io/docs/gherkin/reference
 [bdd5]: https://cucumber.io/docs
+{%- endif %}
+{%- if cookiecutter.commit_convention == 'gitmoji' %}
+[bcv1]: https://img.shields.io/badge/%F0%9F%98%9C_gitmoji-ffdd67?style=for-the-badge
+[bcv2]: https://gitmoji.dev/
+{%- elif cookiecutter.commit_convention == 'conventional' %}
+[bcv1]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white&style=for-the-badge
+[bcv2]: https://conventionalcommits.org
+{%- elif cookiecutter.commit_convention == 'conventional-gitmoji' %}
+[bcv1]: https://img.shields.io/badge/conventional-%F0%9F%98%9C%20gitmoji-ffdd67?style=for-the-badge&logo=conventionalcommits&logoColor=white&labelColor=fe5196
+[bcv2]: https://conventionalcommits.org
 {%- endif %}
