@@ -1,3 +1,25 @@
+## 0.14.1 (2025-07-04)
+
+### :wrench: Fixes & Refactoring (1 change)
+
+- [:adhesive_bandage: Include commit convention in Cookiecutter config file](galactipy/galactipy@5eec68ff19adc5985b43a7418e764dd17fc8e735) ([merge request](galactipy/galactipy!57))
+
+### :package: Build System & CI/CD (3 changes)
+
+- [:construction_worker: Update rules for testing and coverage](galactipy/galactipy@55d81c1e226420c23cb155c762fdc167c43b7558) ([merge request](galactipy/galactipy!56))
+- [:white_check_mark: Write additional test for feature removals](galactipy/galactipy@f4379fe8b0247edd51abd93e9b7b6a57e169b357) ([merge request](galactipy/galactipy!55))
+- [:white_check_mark: Fix operation tests after refactor](galactipy/galactipy@620c80a28bad896d1048bbd19b0032162f5386fe) ([merge request](galactipy/galactipy!55))
+
+### :gear: Internals (2 changes)
+
+- [:technologist: Add feature flags functionality](galactipy/galactipy@40ded67088bf124cfbffb18badaeba3472cb2077) ([merge request](galactipy/galactipy!55))
+- [:recycle: Encapsulate removal flags in dataclass](galactipy/galactipy@fbe2b86d0ffa872534044104b369d0b85f863bea) ([merge request](galactipy/galactipy!55))
+
+### :scroll: Project Policies (2 changes)
+
+- [:pencil: Refine information on project MR templates](galactipy/galactipy@d4ce5edd63478505efbf428bf775a5b0b9b234f3) ([merge request](galactipy/galactipy!56))
+- [:pencil: Add section on feature flags to CONTRIBUTING guide](galactipy/galactipy@60751cbf2cfd5293248692a853d8e8f4aee9fb41) ([merge request](galactipy/galactipy!55))
+
 ## 0.14.0 (2025-07-04)
 
 ### :milky_way: Components (1 change)
