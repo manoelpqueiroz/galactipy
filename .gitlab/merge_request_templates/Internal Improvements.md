@@ -57,6 +57,7 @@ This template should be used to propose and discuss changes to tools used to man
 
 >>> [!tip] :reminder_ribbon: Contribution control
 
+- [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][9] or the Related Issues section;
 - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
 >>>
 
@@ -68,21 +69,24 @@ This template should be used to propose and discuss changes to tools used to man
 [6]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#say-why-not-just-what
 [7]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#git-trailers
 [8]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#styling
+[9]: https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically
 
 ## Reviewer Checklist
 
 >>> [!warning] :passport_control: MANDATORY
-I attest that the proposed change meets the [Contribution Acceptance Criteria][9]:
+I attest that the proposed change meets the [Contribution Acceptance Criteria][10]:
 
 - [ ] The change is as small as possible;
 - [ ] Only one specific feature is implemented and does not combine things;
 - [ ] The change either:
   - Does not require updating the documentation;
-  - Proper documentation was added, promoting and preserving [institutional knowledge][10];
+  - Proper documentation was added, promoting and preserving [institutional knowledge][11];
 - [ ] The commit history is logical;
 - [ ] The commit history applies the proper Gitmoji;
 - [ ] The commit title applies imperative mood;
-- [ ] The commit descriptions sufficiently explains design choices.
+- [ ] The commit descriptions sufficiently explains design choices;
+- [ ] Issues marked for automatic closing are accurate;
+- [ ] Issues requiring manual check have been addressed.
 >>>
 
 >>> [!tip] :pen_fountain: Discretionary
@@ -92,12 +96,11 @@ I attest that during the course of this development, the following interactions 
 - [ ] We have explored possible alternative solutions;
 - [ ] We have worked to simplify the implementation;
 - [ ] We have covered all the edge cases we could come up with;
-- [ ] We have found [opportunities][11] for future development and have created work items to take action on later.
+- [ ] We have found [opportunities][12] for future development and have created work items to take action on later.
 >>>
 
-[9]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
-[10]: https://www.teachfloor.com/elearning-glossary/institutional-knowledge
-[11]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
+[10]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
+[11]: https://www.teachfloor.com/elearning-glossary/institutional-knowledge
+[12]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
 
 ## Related Issues
-<!-- DO NOT ADD CONTENT BELOW THIS LINE -->
