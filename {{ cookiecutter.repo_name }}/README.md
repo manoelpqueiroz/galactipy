@@ -230,8 +230,7 @@ And here are a few articles which may help you:
 - [A Comprehensive Look at Testing in Software Development][wn22] is an article that lays out why testing is crucial for development success. Eric's blog is actually a great reference, covering topics ranging from the basics to advanced techniques and best practices;
 - [Robust Exception Handling][wn23];
 - [Why Your Mock Doesn't Work][wn24];
-- [Managing TODOs in a codebase][wn25];
-- Maybe you would like to add [gitmoji][wn26] to commit names. This is really funny. :grin:
+- [Managing TODOs in a codebase][wn25].
 
 ## :rocket: Features
 
@@ -266,7 +265,8 @@ And here are a few articles which may help you:
 ### Project management features
 
 - Issue and {% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates for easy integration with {{ cookiecutter.scm_platform }};
-- Workflows to mark and close abandoned issues after a period of inactivity with {% if cookiecutter.__scm_platform_lc == 'gitlab' %}GitLab [`Triage Policies`][lab9]{% elif cookiecutter.__scm_platform_lc == 'github' %}[`Stale Bot`][hub8]{% endif %}.
+- Workflows to mark and close abandoned issues after a period of inactivity with {% if cookiecutter.__scm_platform_lc == 'gitlab' %}GitLab [`Triage Policies`][lab9]{% elif cookiecutter.__scm_platform_lc == 'github' %}[`Stale Bot`][hub8]{% endif %};
+- {% if cookiecutter.commit_convention == 'gitmoji' %}[Gitmoji][bcv2]{% elif cookiecutter.commit_convention == 'conventional' %}[Conventional Commits][bcv2]{% elif cookiecutter.commit_convention == 'conventional-gitmoji' %}A mix of both [Gitmoji][cv1] and [Conventional Commits][bcv2]{% endif %} as the standard for commit titles.
 
 ### Open source community features
 
@@ -691,7 +691,6 @@ This project was generated with [`galactipy`][bp7].
 [wn23]: https://eli.thegreenplace.net/2008/08/21/robust-exception-handling/
 [wn24]: https://nedbatchelder.com/blog/201908/why_your_mock_doesnt_work.html
 [wn25]: https://medium.com/babylon-engineering/todo-find-a-title-for-the-article-fee79708ca15
-[wn26]: https://gitmoji.dev/
 {%+ if cookiecutter.licence != 'nos' %}
 [wno3]: https://liberapay.com/
 [wno4]: https://opencollective.com/
@@ -822,4 +821,5 @@ This project was generated with [`galactipy`][bp7].
 {%- elif cookiecutter.commit_convention == 'conventional-gitmoji' %}
 [bcv1]: https://img.shields.io/badge/conventional-%F0%9F%98%9C%20gitmoji-ffdd67?style=for-the-badge&logo=conventionalcommits&logoColor=white&labelColor=fe5196
 [bcv2]: https://conventionalcommits.org
+[cv1]: https://gitmoji.dev/
 {%- endif %}
