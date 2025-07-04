@@ -57,6 +57,7 @@ This template should be used to propose and discuss the inclusion of new tools a
 
 >>> [!tip] :reminder_ribbon: Contribution control
 
+- [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][10] or the Related Issues section;
 - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
 >>>
 
@@ -69,15 +70,16 @@ This template should be used to propose and discuss the inclusion of new tools a
 [7]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#git-trailers
 [8]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#styling
 [9]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#versioning-customs
+[10]: https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically
 
 ## Reviewer Checklist
 
 >>> [!warning] :passport_control: MANDATORY
-I attest that the proposed change meets the [Contribution Acceptance Criteria][10]:
+I attest that the proposed change meets the [Contribution Acceptance Criteria][11]:
 
 - [ ] The change is as small as possible;
 - [ ] Only one specific feature is implemented and does not combine things;
-- [ ] Proper documentation was added, promoting and preserving [institutional knowledge][11];
+- [ ] Proper documentation was added, promoting and preserving [institutional knowledge][12];
 - [ ] The change either:
   - Does not require any addition or modification to unit tests;
   - Modifies Cookiecutter pre-gen and/or post-gen hooks, with proper tests being added;
@@ -85,6 +87,8 @@ I attest that the proposed change meets the [Contribution Acceptance Criteria][1
 - [ ] The commit history applies the proper Gitmoji;
 - [ ] The commit title applies imperative mood;
 - [ ] The commit descriptions sufficiently explains design choices;
+- [ ] Issues marked for automatic closing are accurate;
+- [ ] Issues requiring manual check have been addressed;
 - [ ] The proposed Galactipy version adheres to our view on [EffVer][9].
 >>>
 
@@ -95,14 +99,13 @@ I attest that during the course of this development, the following interactions 
 - [ ] We have explored possible alternative solutions;
 - [ ] We have worked to simplify the implementation;
 - [ ] We have covered all the edge cases we could come up with;
-- [ ] We have found [opportunities][12] for future development and have created work items to take action on later.
+- [ ] We have found [opportunities][13] for future development and have created work items to take action on later.
 >>>
 
-[10]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
-[11]: https://www.teachfloor.com/elearning-glossary/institutional-knowledge
-[12]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
+[11]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
+[12]: https://www.teachfloor.com/elearning-glossary/institutional-knowledge
+[13]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
 
 ## Related Issues
-<!-- DO NOT ADD CONTENT BELOW THIS LINE -->
 
 /label ~"enhancement::tool-expansion"

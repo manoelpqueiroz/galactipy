@@ -59,16 +59,22 @@ This template should be used to propose changes resolving a major issue with the
   - Kept the Galactipy version the same, as it does not change end-user files.
 >>>
 
+>>> [!tip] :reminder_ribbon: Contribution control
+
+- [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][10] or the Related Issues section.
+>>>
+
 [5]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#commit-customs
 [6]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#say-why-not-just-what
 [7]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#git-trailers
 [8]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#styling
 [9]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#versioning-customs
+[10]: https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically
 
 ## Reviewer Checklist
 
 >>> [!warning] :passport_control: MANDATORY
-I attest that the proposed change meets the [Contribution Acceptance Criteria][10]:
+I attest that the proposed change meets the [Contribution Acceptance Criteria][11]:
 
 - [ ] The change is as small as possible;
 - [ ] The root cause of the issue is addressed without workarounds;
@@ -79,6 +85,8 @@ I attest that the proposed change meets the [Contribution Acceptance Criteria][1
 - [ ] The commit history applies the proper Gitmoji;
 - [ ] The commit title applies imperative mood;
 - [ ] The commit descriptions sufficiently explains design choices;
+- [ ] Issues marked for automatic closing are accurate;
+- [ ] Issues requiring manual check have been addressed;
 - [ ] The proposed Galactipy version adheres to our view on [EffVer][9].
 >>>
 
@@ -89,11 +97,10 @@ I attest that during the course of this development, the following interactions 
 - [ ] We have explored possible alternative solutions;
 - [ ] We have worked to simplify the implementation;
 - [ ] We have covered all the edge cases we could come up with;
-- [ ] We have found [opportunities][11] for future development and have created work items to take action on later.
+- [ ] We have found [opportunities][12] for future development and have created work items to take action on later.
 >>>
 
-[10]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
-[11]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
+[11]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
+[12]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
 
 ## Related Issues
-<!-- DO NOT ADD CONTENT BELOW THIS LINE -->

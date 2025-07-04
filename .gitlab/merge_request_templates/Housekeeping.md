@@ -44,6 +44,7 @@ This template should be used to propose and discuss changes that improve project
 
 >>> [!tip] :reminder_ribbon: Contribution control
 
+- [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][10] or the Related Issues section;
 - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
 >>>
 
@@ -56,11 +57,12 @@ This template should be used to propose and discuss changes that improve project
 [7]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#git-trailers
 [8]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#styling
 [9]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#versioning-customs
+[10]: https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically
 
 ## Reviewer Checklist
 
 >>> [!warning] :passport_control: MANDATORY
-I attest that the proposed change meets the [Contribution Acceptance Criteria][10]:
+I attest that the proposed change meets the [Contribution Acceptance Criteria][11]:
 
 - [ ] The change is as small as possible;
 - [ ] Only one specific change and does not combine things;
@@ -71,17 +73,18 @@ I attest that the proposed change meets the [Contribution Acceptance Criteria][1
 - [ ] The commit history applies the proper Gitmoji;
 - [ ] The commit title applies imperative mood;
 - [ ] The commit descriptions sufficiently explains design choices;
+- [ ] Issues marked for automatic closing are accurate;
+- [ ] Issues requiring manual check have been addressed;
 - [ ] The proposed Galactipy version adheres to our view on [EffVer][9].
 >>>
 
 >>> [!tip] :pen_fountain: Discretionary
 I attest that during the course of this development, the following interactions have taken place:
 
-- [ ] We have found [opportunities][11] for future development and have created work items to take action on later.
+- [ ] We have found [opportunities][12] for future development and have created work items to take action on later.
 >>>
 
-[10]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
-[11]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
+[11]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
+[12]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
 
 ## Related Issues
-<!-- DO NOT ADD CONTENT BELOW THIS LINE -->
