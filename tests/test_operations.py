@@ -249,6 +249,43 @@ class TestFileRemoval:
 
         assert pyproject_file.exists()
 
+    def test_remove_feature_files(self, removal_tree):
+        (
+            project_root,
+            pyproject_file,
+            tests_root,
+            test_file,
+            feature_file,
+            package_name,
+        ) = removal_tree
+
+        file1 = project_root / "file1_feature.md"
+        file2 = project_root / "docker" / "file2_feature.md"
+        file3 = project_root / "directory_feature" / "sample_file_1.md"
+        file4 = project_root / "directory_feature" / "subdirectory" / "sample_file_2.md"
+        file5 = project_root / "directory_feature" / "subdirectory" / "sample_file_3"
+
+        dockerfile = project_root / "docker" / "Dockerfile"
+        docker_readme = project_root / "docker" / "README.md"
+
+        config = ProjectFlags(False, False, False, False, True)
+
+        remove_unused_files(project_root, package_name, config)
+
+        assert feature_file.exists()
+        assert dockerfile.exists()
+        assert docker_readme.exists()
+
+        assert not file1.exists()
+        assert not file2.exists()
+        assert not file3.exists()
+        assert not file4.exists()
+        assert not file5.exists()
+
+        assert tests_root.exists()
+        assert test_file.exists()
+        assert pyproject_file.exists()
+
     def test_remove_all(self, removal_tree):
         (
             project_root,
@@ -267,7 +304,13 @@ class TestFileRemoval:
         test_gitkeep = tests_root / ".gitkeep"
         features_gitkeep = project_root / "tests" / "features" / ".gitkeep"
 
-        config = ProjectFlags(True, True, True, True, False)
+        file1 = project_root / "file1_feature.md"
+        file2 = project_root / "docker" / "file2_feature.md"
+        file3 = project_root / "directory_feature" / "sample_file_1.md"
+        file4 = project_root / "directory_feature" / "subdirectory" / "sample_file_2.md"
+        file5 = project_root / "directory_feature" / "subdirectory" / "sample_file_3"
+
+        config = ProjectFlags(True, True, True, True, True)
 
         remove_unused_files(project_root, package_name, config)
 
@@ -279,6 +322,12 @@ class TestFileRemoval:
         assert not test_file.exists()
         assert not feature_file.exists()
         assert not features_gitkeep.exists()
+
+        assert not file1.exists()
+        assert not file2.exists()
+        assert not file3.exists()
+        assert not file4.exists()
+        assert not file5.exists()
 
         assert pyproject_file.exists()
         assert tests_root.exists()
