@@ -1,4 +1,5 @@
 from hooks.post_gen_project import (
+    ProjectFlags,
     generate_licence,
     generate_templates,
     licences_dict,
@@ -65,7 +66,9 @@ class TestFileRemoval:
         conftest_file = tests_root / "conftest.py"
         test_gitkeep = tests_root / ".gitkeep"
 
-        remove_unused_files(project_root, package_name, True, False, False, False)
+        config = ProjectFlags(True, False, False, False, False)
+
+        remove_unused_files(project_root, package_name, config)
 
         assert not cli_root.exists()
         assert not main_file.exists()
@@ -89,7 +92,9 @@ class TestFileRemoval:
         ci_file = project_root / ".gitlab-ci.yml"
         triage_file = project_root / ".triage-policies.yml"
 
-        remove_unused_files(project_root, package_name, False, True, False, False)
+        config = ProjectFlags(False, True, False, False, False)
+
+        remove_unused_files(project_root, package_name, config)
 
         assert not ci_file.exists()
         assert not triage_file.exists()
@@ -111,7 +116,9 @@ class TestFileRemoval:
         docker_directory = project_root / "docker"
         dockerignore = project_root / ".dockerignore"
 
-        remove_unused_files(project_root, package_name, False, False, True, False)
+        config = ProjectFlags(False, False, True, False, False)
+
+        remove_unused_files(project_root, package_name, config)
 
         assert not docker_directory.exists()
         assert not dockerignore.exists()
@@ -135,7 +142,9 @@ class TestFileRemoval:
         docker_workflow = project_root / ".github" / "workflows" / "docker.yml"
         test_workflow = project_root / ".github" / "workflows" / "test.yml"
 
-        remove_unused_files(project_root, package_name, False, True, True, False)
+        config = ProjectFlags(False, True, True, False, False)
+
+        remove_unused_files(project_root, package_name, config)
 
         assert not docker_directory.exists()
         assert not dockerignore.exists()
@@ -162,7 +171,9 @@ class TestFileRemoval:
         test_gitkeep = tests_root / ".gitkeep"
         features_gitkeep = tests_root / "features" / ".gitkeep"
 
-        remove_unused_files(project_root, package_name, False, False, False, True)
+        config = ProjectFlags(False, False, False, True, False)
+
+        remove_unused_files(project_root, package_name, config)
 
         assert not feature_file.exists()
         assert not test_gitkeep.exists()
@@ -192,7 +203,9 @@ class TestFileRemoval:
         test_gitkeep = tests_root / ".gitkeep"
         features_gitkeep = tests_root / "features" / ".gitkeep"
 
-        remove_unused_files(project_root, package_name, True, False, False, True)
+        config = ProjectFlags(True, False, False, True, False)
+
+        remove_unused_files(project_root, package_name, config)
 
         assert not cli_root.exists()
         assert not main_file.exists()
@@ -221,7 +234,9 @@ class TestFileRemoval:
         test_gitkeep = tests_root / ".gitkeep"
         features_gitkeep = tests_root / "features" / ".gitkeep"
 
-        remove_unused_files(project_root, package_name, False, False, False, False)
+        config = ProjectFlags(False, False, False, False, False)
+
+        remove_unused_files(project_root, package_name, config)
 
         assert not test_gitkeep.exists()
         assert not features_gitkeep.exists()
@@ -252,7 +267,9 @@ class TestFileRemoval:
         test_gitkeep = tests_root / ".gitkeep"
         features_gitkeep = project_root / "tests" / "features" / ".gitkeep"
 
-        remove_unused_files(project_root, package_name, True, True, True, True)
+        config = ProjectFlags(True, True, True, True, False)
+
+        remove_unused_files(project_root, package_name, config)
 
         assert not cli_root.exists()
         assert not cli_file.exists()
