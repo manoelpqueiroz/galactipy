@@ -1,6 +1,6 @@
 <div align="center">
 
-| :exclamation: | This is a mirror repository to `galactipy`, which is currently being developed on [GitLab][m1]. Feel free to fork it and take a look at [`CONTRIBUTING.md`][m2] to know how to contribute to the project! |
+| :exclamation: | This is a mirror repository of **Galactipy**, which is currently being developed on [GitLab][m1]. Take a look at our [`CONTRIBUTING.md`][m2] to get more familiar with the project and understand how to contribute! |
 |---------------|:----|
 
 </div>
@@ -695,7 +695,7 @@ We would be equally grateful if you could also do any of the following:
 <!-- Anchors -->
 
 [m1]: https://kutt.it/e8YfCL
-[m2]: https://github.com/manoelpqueiroz/galactipy/blob/github-mirror/CONTRIBUTING.md
+[m2]: https://gitlab.com/galactipy/galactipy/-/blob/github-mirror/CONTRIBUTING.md
 
 [b1]: https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue?style=for-the-badge
 [b2]: https://kutt.it/WlS8Qj
