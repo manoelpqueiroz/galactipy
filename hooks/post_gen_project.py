@@ -1,6 +1,7 @@
 """Module to be called after the project is created."""
 
 import textwrap
+from dataclasses import dataclass
 from importlib.util import find_spec
 from pathlib import Path
 from shutil import move
@@ -38,6 +39,14 @@ licences_dict = {
     "Apache Software License 2.0": "apache",
     "nos": None,
 }
+
+
+@dataclass
+class ProjectFlags: # noqa: D101
+    remove_cli: bool
+    remove_gitlab: bool
+    remove_docker: bool
+    remove_bdd: bool
 
 
 def rmdir(path: Path) -> None:
@@ -106,12 +115,7 @@ def generate_templates(directory: Path, scm_platform: str) -> None:
 
 
 def remove_unused_files(
-    directory: Path,
-    package_name: str,
-    remove_cli: bool,
-    remove_gitlab: bool,
-    remove_docker: bool,
-    remove_bdd: bool,
+    directory: Path, package_name: str, flags: ProjectFlags
 ) -> None:
     """Remove unused files.
 
@@ -121,52 +125,37 @@ def remove_unused_files(
         path to the project directory.
     package_name : str
         Project module name.
-    remove_cli : bool
-        Flag for removing CLI related files.
-    remove_gitlab : bool
-        Flag for removing GitLab related files.
-    remove_docker : bool
-        Flag for removing Docker related files.
-    remove_bdd : bool
-        Flag for removing BDD related files.
+    flags : ProjectFlags
+        Necessary flags for deciding which files should be removed, based on
+        the file group.
     """
-    files_to_delete = _get_files_to_delete(
-        directory, package_name, remove_cli, remove_gitlab, remove_docker, remove_bdd
-    )
+    files_to_delete = _get_files_to_delete(directory, package_name, flags)
 
     for path in files_to_delete:
         rmdir(path)
 
 
 def _get_files_to_delete(
-    directory: Path,
-    package_name: str,
-    remove_cli: bool,
-    remove_gitlab: bool,
-    remove_docker: bool,
-    remove_bdd: bool,
+    directory: Path, package_name: str, flags: ProjectFlags
 ) -> list[Path]:
     """Determine files to be removed from tree at template generation.
 
     Parameters
     ----------
     directory : Path
-        path to the project directory.
+        Path to the project directory.
     package_name : str
         Project module name.
-    remove_cli : bool
-        Flag for removing CLI related files.
-    remove_gitlab : bool
-        Flag for removing GitLab related files.
-    remove_docker : bool
-        Flag for removing Docker related files.
-    remove_bdd : bool
-        Flag for removing BDD related files.
+    flags : ProjectFlags
+        Necessary flags for deciding which files should be removed, based on
+        the file group.
     """
     files_to_delete: list[Path] = []
 
-    cli_specific_files = _get_cli_specific_files(directory, package_name, remove_bdd)
-    docker_specific_files = _get_docker_specific_files(directory, remove_gitlab)
+    cli_specific_files = _get_cli_specific_files(
+        directory, package_name, flags.remove_bdd
+    )
+    docker_specific_files = _get_docker_specific_files(directory, flags.remove_gitlab)
 
     gitlab_specific_files = [
         directory / ".gitlab-ci.yml",
@@ -175,22 +164,22 @@ def _get_files_to_delete(
 
     bdd_specific_files = [directory / "tests" / "features"]
 
-    if not remove_cli and not remove_bdd:
+    if not flags.remove_cli and not flags.remove_bdd:
         files_to_delete.append(directory / "tests" / "features" / ".gitkeep")
 
-    if remove_cli:
+    if flags.remove_cli:
         files_to_delete.extend(cli_specific_files)
 
     else:
         files_to_delete.append(directory / "tests" / ".gitkeep")
 
-    if remove_gitlab:
+    if flags.remove_gitlab:
         files_to_delete.extend(gitlab_specific_files)
 
-    if remove_docker:
+    if flags.remove_docker:
         files_to_delete.extend(docker_specific_files)
 
-    if remove_bdd:
+    if flags.remove_bdd:
         files_to_delete.extend(bdd_specific_files)
 
     return files_to_delete
@@ -358,17 +347,14 @@ def main() -> None:  # noqa: D103
     remove_docker = not CREATE_DOCKER
     remove_bdd = not USE_BDD
 
+    config = ProjectFlags(remove_cli, remove_gitlab, remove_docker, remove_bdd)
+
     generate_licence(directory=PROJECT_DIRECTORY, licence=licences_dict[LICENCE])
 
     generate_templates(directory=PROJECT_DIRECTORY, scm_platform=SCM_PLATFORM_LC)
 
     remove_unused_files(
-        directory=PROJECT_DIRECTORY,
-        package_name=PROJECT_PACKAGE,
-        remove_cli=remove_cli,
-        remove_gitlab=remove_gitlab,
-        remove_docker=remove_docker,
-        remove_bdd=remove_bdd,
+        directory=PROJECT_DIRECTORY, package_name=PROJECT_PACKAGE, flags=config
     )
 
     print_further_instructions(
