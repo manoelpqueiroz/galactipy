@@ -286,7 +286,7 @@ or install with `Poetry`:
 poetry add {{ cookiecutter.repo_name }}
 ```
 
-{%- if not cookiecutter.bare_repo %}
+{%- if cookiecutter.app_type != 'bare_repo' %}
 Then you can run
 
 ```bash

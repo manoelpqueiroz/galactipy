@@ -18,7 +18,7 @@ maintainers = [
 # Keywords description https://python-poetry.org/docs/pyproject/#keywords
 keywords = []  # UPDATEME with relevant keywords
 dynamic = ["version", "classifiers"]
-{%- if not cookiecutter.bare_repo %}
+{%- if cookiecutter.app_type != 'bare_repo' %}
 
 [project.scripts]
 # Entry points for the package https://python-poetry.org/docs/pyproject/#scripts
@@ -58,7 +58,7 @@ classifiers = [  # UPDATEME with additional classifiers
 
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.minimal_python_version }}"
-{%+ if not cookiecutter.bare_repo %}
+{%+ if cookiecutter.app_type != 'bare_repo' %}
 typer = { extras = ["all"], version = "^0.15.1" }
 rich = "^13.9.4"
 {%- endif %}

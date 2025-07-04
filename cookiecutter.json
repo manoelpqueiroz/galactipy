@@ -47,7 +47,12 @@
     "Coveralls"
   ],
   "create_docker": true,
-  "bare_repo": false,
+  "app_type": [
+    "tui",
+    "hybrid",
+    "cli",
+    "bare_repo"
+  ],
 
   "__prompts__": {
     "project_name": "Project name",
@@ -88,7 +93,13 @@
       "Coveralls": "Basic code coverage with Coveralls"
     },
     "create_docker": "Containerize your application with Docker?",
-    "bare_repo": "Galactipy creates a minimal structure for a CLI application. Do you wish to generate your project in a bare repository without any pre-configured Python scripts?"
+    "app_type": {
+      "__prompt__": "Which kind of application do you want to build?",
+      "tui": "Integrated CLI+TUI",
+      "hybrid": "Hybrid CLI/TUI",
+      "cli": "CLI-only application",
+      "bare_repo": "Bare repository"
+    }
   },
 
   "_all_python_version": [
