@@ -58,6 +58,9 @@ classifiers = [  # UPDATEME with additional classifiers
 
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.minimal_python_version }}"
+{%+ if cookiecutter.app_type == 'tui' or cookiecutter.app_type == 'hybrid' %}
+textual = "^3.5.0"
+{%- endif %}
 {%+ if cookiecutter.app_type != 'bare_repo' %}
 typer = { extras = ["all"], version = "^0.15.1" }
 rich = "^13.9.4"
