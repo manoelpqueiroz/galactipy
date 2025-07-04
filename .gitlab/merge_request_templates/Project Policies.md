@@ -3,12 +3,13 @@
 >>> [!note] :bulb: To modify documents and rules for Galactipy development
 This template should be used to propose and discuss any changes that affect knowledge management of the project.
 
-:ok: **Types of changes to be proposed with this template:** changes to project documentation and issue/MR templates, changes to project guidelines, milestone creation/completion, changes to linting, styling, testing and issue triaging rules
+:ok: **Types of changes to be proposed with this template:** changes to project documentation and issue/MR templates, changes to project guidelines, changes to CI rules, milestone creation/completion, changes to linting, styling, testing and issue triaging rules
 
 :no_good: **What this type of proposal does not stand for:**
 
 - Changes that modify tool functionality;
 - Typo fixes;
+- Updates to CI pipeline jobs;
 - Changes to documentation within `{{ cookiecutter.repo_name }}`.
 >>>
 

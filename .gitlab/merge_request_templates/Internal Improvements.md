@@ -11,6 +11,7 @@ This template should be used to propose and discuss changes to tools used to man
 - Changes to tool rules in `pyproject.toml`;
 - Updates to documentation files for the project;
 - Project dependency updates;
+- Modifications to CI job rules only;
 - Modifications to tools and files inside `{{ cookiecutter.repo_name }}`.
 >>>
 
