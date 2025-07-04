@@ -77,12 +77,20 @@ def removal_tree(tmp_path):
         ".triage-policies.yml",
         ".dockerignore",
         "pyproject.toml",
+        "file1_feature.md",
         package_test=["__main__.py"],
-        docker=["Dockerfile", "README.md"],
+        docker=["Dockerfile", "README.md", "file2_feature.md"],
     )
 
     github_directory = tmp_path / ".github"
     bulk_file_creation(github_directory, workflows=["docker.yml", "test.yml"])
+
+    feature_directory = tmp_path / "directory_feature"
+    bulk_file_creation(
+        feature_directory,
+        "sample_file_1.md",
+        subdirectory=["sample_file_2.md", "sample_file_3"],
+    )
 
     tests_directory = tmp_path / "tests"
     bulk_file_creation(

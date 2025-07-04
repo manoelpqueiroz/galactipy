@@ -955,6 +955,27 @@ A non-exhaustive list of steps to consider:
   - Have the changes for a specific configuration file being altered been applied and
     are behaving as expected?
 
+#### Feature Flags
+
+Sometimes,
+a feature is too large
+to be delivered in one Merge Request,
+requiring progress to be done iteratively.
+To prevent the need for large changes,
+contributors can specify files and directories
+to be removed from project generation
+by appending `_feature` to their names.
+They can use this configuration
+to create new files and directories
+or duplicate existing ones
+and work in smaller steps
+until the feature is ready to be shipped to users.
+
+Additionally,
+by setting the hidden Cookiecutter variable `__debug` to `true`,
+developers can render projects including the `_feature` files and directories,
+in case they need to check output.
+
 ### Merge Request Review Process
 
 After [starting with a Merge Request][31], ensuring you have opened an
