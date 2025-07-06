@@ -1,0 +1,13 @@
+/* UPDATEME by removing this file when no longer needed */
+.title {
+    margin: 1;
+    width: 100%;
+    text-align: center;
+    color: $text-success;
+}
+
+.description {
+    width: 100%;
+    text-align: center;
+    color: $text-secondary;
+}
