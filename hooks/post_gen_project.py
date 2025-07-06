@@ -22,6 +22,8 @@ SCM_PLATFORM_LC = "{{ cookiecutter.__scm_platform_lc }}"
 SCM_USERNAME = "{{ cookiecutter.scm_username }}"
 SCM_BASE_URL = "{{ cookiecutter.__scm_base_url }}"
 
+APP_TYPE = "{{ cookiecutter.app_type }}"
+
 # Boolean variables for additional project structures
 # Values wrapped inside strings and evaluated against the "True" string to
 # avoid raising errors when testing
@@ -117,7 +119,7 @@ def generate_templates(directory: Path, scm_platform: str) -> None:
 
 
 def remove_unused_files(
-    directory: Path, package_name: str, flags: ProjectFlags
+    directory: Path, package_name: str, app_type: str, flags: ProjectFlags
 ) -> None:
     """Remove unused files.
 
@@ -127,11 +129,13 @@ def remove_unused_files(
         path to the project directory.
     package_name : str
         Project module name.
+    app_type : str
+        Type of application defined by the `app_type` Cookiecutter variable.
     flags : ProjectFlags
         Necessary flags for deciding which files should be removed, based on
         the file group.
     """
-    files_to_delete = _get_files_to_delete(directory, package_name, flags)
+    files_to_delete = _get_files_to_delete(directory, package_name, app_type, flags)
 
     for path in files_to_delete:
         rmdir(path)
@@ -144,7 +148,7 @@ def remove_unused_files(
 
 
 def _get_files_to_delete(
-    directory: Path, package_name: str, flags: ProjectFlags
+    directory: Path, package_name: str, app_type: str, flags: ProjectFlags
 ) -> list[Path]:
     """Determine files to be removed from tree at template generation.
 
@@ -154,6 +158,8 @@ def _get_files_to_delete(
         Path to the project directory.
     package_name : str
         Project module name.
+    app_type : str
+        Type of application defined by the `app_type` Cookiecutter variable.
     flags : ProjectFlags
         Necessary flags for deciding which files should be removed, based on
         the file group.
@@ -163,6 +169,7 @@ def _get_files_to_delete(
     cli_specific_files = _get_cli_specific_files(
         directory, package_name, flags.remove_bdd
     )
+    tui_specific_files = _get_tui_specific_files(directory, package_name, app_type)
     docker_specific_files = _get_docker_specific_files(directory, flags.remove_gitlab)
 
     gitlab_specific_files = [
@@ -190,6 +197,8 @@ def _get_files_to_delete(
     if flags.remove_bdd:
         files_to_delete.extend(bdd_specific_files)
 
+    files_to_delete.extend(tui_specific_files)
+
     return files_to_delete
 
 
@@ -216,6 +225,31 @@ def _get_cli_specific_files(
 
     if not remove_bdd:
         removals.append(directory / "tests" / "features" / "root_command.feature")
+
+    return removals
+
+
+def _get_tui_specific_files(
+    directory: Path, package_name: str, app_type: str
+) -> list[Path]:
+    """Return select files to remove when CLI-only option is enabled.
+
+    Parameters
+    ----------
+    directory : Path
+        Root directory of the project.
+    package_name : str
+        Name of the package under the root directory of the project.
+    app_type : str
+        Type of application defined by the `app_type` Cookiecutter variable.
+    """
+    removals = []
+
+    if app_type in ["tui", "cli"]:
+        removals.append(directory / package_name / "cli" / "commands" / "launch.py")
+
+    if app_type in ["cli", "bare_repo"]:
+        removals.append(directory / package_name / "tui")
 
     return removals
 
@@ -380,7 +414,10 @@ def main() -> None:  # noqa: D103
     generate_templates(directory=PROJECT_DIRECTORY, scm_platform=SCM_PLATFORM_LC)
 
     remove_unused_files(
-        directory=PROJECT_DIRECTORY, package_name=PROJECT_PACKAGE, flags=config
+        directory=PROJECT_DIRECTORY,
+        package_name=PROJECT_PACKAGE,
+        app_type=APP_TYPE,
+        flags=config,
     )
 
     print_further_instructions(
