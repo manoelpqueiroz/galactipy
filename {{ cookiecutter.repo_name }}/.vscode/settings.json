@@ -121,6 +121,31 @@
         "**/.github/PULL_REQUEST_TEMPLATE.md"
 {%- else %}
         "**/.gitlab/merge_request_templates/*/**"
-{%- endif %}{%- raw %}
+{%- endif %}
+{%- if cookiecutter.app_type == 'tui' or cookiecutter.app_type == 'hybrid' %}
+    ],
+    "vsicons.associations.files": [
+        {
+            "icon": "css",
+            "extensions": [
+                "tcss"
+            ],
+            "format": "svg"
+        },
+    ],
+    "vsicons.associations.folders": [
+        {
+            "icon": "component",
+            "extensions": [
+                "tui"
+            ],
+            "format": "svg"
+        },
+    ],
+    "files.associations": {
+        "*.tcss": "css"
+    }
+{%- else %}
     ]
+{%- endif %}{%- raw %}
 }{% endraw %}
