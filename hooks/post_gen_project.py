@@ -166,18 +166,17 @@ def _get_files_to_delete(
     """
     files_to_delete: list[Path] = []
 
-    cli_specific_files = _get_cli_specific_files(
-        directory, package_name, flags.remove_bdd
-    )
+    cli_specific_files = _get_cli_specific_files(directory, package_name)
     tui_specific_files = _get_tui_specific_files(directory, package_name, app_type)
+
+    bdd_specific_files = _get_bdd_specific_files(directory, app_type, flags.remove_bdd)
+
     docker_specific_files = _get_docker_specific_files(directory, flags.remove_gitlab)
 
     gitlab_specific_files = [
         directory / ".gitlab-ci.yml",
         directory / ".triage-policies.yml",
     ]
-
-    bdd_specific_files = [directory / "tests" / "features"]
 
     if not flags.remove_cli and not flags.remove_bdd:
         files_to_delete.append(directory / "tests" / "features" / ".gitkeep")
@@ -202,9 +201,7 @@ def _get_files_to_delete(
     return files_to_delete
 
 
-def _get_cli_specific_files(
-    directory: Path, package_name: str, remove_bdd: bool
-) -> list[Path]:
+def _get_cli_specific_files(directory: Path, package_name: str) -> list[Path]:
     """Return select files to remove when CLI option is disabled.
 
     Parameters
@@ -213,20 +210,13 @@ def _get_cli_specific_files(
         Root directory of the project.
     package_name : str
         Name of the package under the root directory of the project.
-    remove_bdd : bool
-        Determine whether CLI feature file should be removed as well.
     """
-    removals = [
+    return [
         directory / package_name / "cli",
         directory / package_name / "__main__.py",
         directory / "tests" / "cli",
         directory / "tests" / "conftest.py",
     ]
-
-    if not remove_bdd:
-        removals.append(directory / "tests" / "features" / "root_command.feature")
-
-    return removals
 
 
 def _get_tui_specific_files(
@@ -249,7 +239,40 @@ def _get_tui_specific_files(
         removals.append(directory / package_name / "cli" / "commands" / "launch.py")
 
     if app_type in ["cli", "bare_repo"]:
-        removals.append(directory / package_name / "tui")
+        removals.extend([directory / package_name / "tui", directory / "tests" / "tui"])
+
+    return removals
+
+
+def _get_bdd_specific_files(
+    directory: Path, app_type: str, remove_bdd: bool
+) -> list[Path]:
+    """Return select files to remove when the BDD option is disabled.
+
+    Parameters
+    ----------
+    directory : Path
+        Root directory of the project.
+    app_type : str
+        Type of application defined by the `app_type` Cookiecutter variable.
+    remove_bdd : bool
+        Flag for determining if BDD will be used or not.
+    """
+    removals = []
+
+    if remove_bdd:
+        removals.append(directory / "tests" / "features")
+
+    elif app_type == "bare_repo":
+        removals.extend(
+            [
+                directory / "tests" / "features" / "main_window.feature",
+                directory / "tests" / "features" / "root_command.feature",
+            ]
+        )
+
+    elif app_type == "cli":
+        removals.append(directory / "tests" / "features" / "main_window.feature")
 
     return removals
 
