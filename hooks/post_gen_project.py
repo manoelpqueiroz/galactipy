@@ -27,7 +27,6 @@ APP_TYPE = "{{ cookiecutter.app_type }}"
 # Boolean variables for additional project structures
 # Values wrapped inside strings and evaluated against the "True" string to
 # avoid raising errors when testing
-CREATE_CLI = "{{ cookiecutter.app_type }}" != "bare_repo"  # type: ignore[comparison-overlap] # noqa: PLR0133
 CREATE_DOCKER = "{{ cookiecutter.create_docker }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
 USE_BDD = "{{ cookiecutter.use_bdd }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
 ENABLE_FLAGS = "{{ cookiecutter.__debug }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
@@ -46,11 +45,14 @@ licences_dict = {
 
 @dataclass
 class ProjectFlags:  # noqa: D101
-    remove_cli: bool
     remove_gitlab: bool
     remove_docker: bool
     remove_bdd: bool
     remove_features: bool
+    app_type: str
+
+    def __post_init__(self):  # noqa: D105
+        self.remove_cli = self.app_type == "bare_repo"
 
 
 def rmdir(path: Path) -> None:
@@ -119,7 +121,7 @@ def generate_templates(directory: Path, scm_platform: str) -> None:
 
 
 def remove_unused_files(
-    directory: Path, package_name: str, app_type: str, flags: ProjectFlags
+    directory: Path, package_name: str, flags: ProjectFlags
 ) -> None:
     """Remove unused files.
 
@@ -129,13 +131,11 @@ def remove_unused_files(
         path to the project directory.
     package_name : str
         Project module name.
-    app_type : str
-        Type of application defined by the `app_type` Cookiecutter variable.
     flags : ProjectFlags
         Necessary flags for deciding which files should be removed, based on
         the file group.
     """
-    files_to_delete = _get_files_to_delete(directory, package_name, app_type, flags)
+    files_to_delete = _get_files_to_delete(directory, package_name, flags)
 
     for path in files_to_delete:
         rmdir(path)
@@ -148,7 +148,7 @@ def remove_unused_files(
 
 
 def _get_files_to_delete(
-    directory: Path, package_name: str, app_type: str, flags: ProjectFlags
+    directory: Path, package_name: str, flags: ProjectFlags
 ) -> list[Path]:
     """Determine files to be removed from tree at template generation.
 
@@ -158,8 +158,6 @@ def _get_files_to_delete(
         Path to the project directory.
     package_name : str
         Project module name.
-    app_type : str
-        Type of application defined by the `app_type` Cookiecutter variable.
     flags : ProjectFlags
         Necessary flags for deciding which files should be removed, based on
         the file group.
@@ -167,9 +165,13 @@ def _get_files_to_delete(
     files_to_delete: list[Path] = []
 
     cli_specific_files = _get_cli_specific_files(directory, package_name)
-    tui_specific_files = _get_tui_specific_files(directory, package_name, app_type)
+    tui_specific_files = _get_tui_specific_files(
+        directory, package_name, flags.app_type
+    )
 
-    bdd_specific_files = _get_bdd_specific_files(directory, app_type, flags.remove_bdd)
+    bdd_specific_files = _get_bdd_specific_files(
+        directory, flags.app_type, flags.remove_bdd
+    )
 
     docker_specific_files = _get_docker_specific_files(directory, flags.remove_gitlab)
 
@@ -423,13 +425,12 @@ def print_further_instructions(
 
 def main() -> None:  # noqa: D103
     remove_gitlab = SCM_PLATFORM_LC != "gitlab"
-    remove_cli = not CREATE_CLI
     remove_docker = not CREATE_DOCKER
     remove_bdd = not USE_BDD
     remove_features = not ENABLE_FLAGS
 
     config = ProjectFlags(
-        remove_cli, remove_gitlab, remove_docker, remove_bdd, remove_features
+        remove_gitlab, remove_docker, remove_bdd, remove_features, APP_TYPE
     )
 
     generate_licence(directory=PROJECT_DIRECTORY, licence=licences_dict[LICENCE])
@@ -437,10 +438,7 @@ def main() -> None:  # noqa: D103
     generate_templates(directory=PROJECT_DIRECTORY, scm_platform=SCM_PLATFORM_LC)
 
     remove_unused_files(
-        directory=PROJECT_DIRECTORY,
-        package_name=PROJECT_PACKAGE,
-        app_type=APP_TYPE,
-        flags=config,
+        directory=PROJECT_DIRECTORY, package_name=PROJECT_PACKAGE, flags=config
     )
 
     print_further_instructions(
