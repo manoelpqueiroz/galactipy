@@ -165,9 +165,7 @@ def _get_files_to_delete(
     files_to_delete: list[Path] = []
 
     cli_specific_files = _get_cli_specific_files(directory, package_name)
-    tui_specific_files = _get_tui_specific_files(
-        directory, package_name, flags.app_type
-    )
+    tui_specific_files = _get_tui_related_files(directory, package_name, flags.app_type)
 
     bdd_specific_files = _get_bdd_specific_files(
         directory, flags.app_type, flags.remove_bdd
@@ -221,7 +219,7 @@ def _get_cli_specific_files(directory: Path, package_name: str) -> list[Path]:
     ]
 
 
-def _get_tui_specific_files(
+def _get_tui_related_files(
     directory: Path, package_name: str, app_type: str
 ) -> list[Path]:
     """Return select files to remove when CLI-only option is enabled.
@@ -239,6 +237,9 @@ def _get_tui_specific_files(
 
     if app_type in ["tui", "cli"]:
         removals.append(directory / package_name / "cli" / "commands" / "launch.py")
+
+    elif app_type == "hybrid":
+        removals.append(directory / package_name / "cli" / "commands" / ".gitkeep")
 
     if app_type in ["cli", "bare_repo"]:
         removals.extend([directory / package_name / "tui", directory / "tests" / "tui"])
