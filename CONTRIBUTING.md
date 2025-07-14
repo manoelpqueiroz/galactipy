@@ -202,66 +202,96 @@ candidate contributors in more detail.
 #### Roadmap Management
 
 Medium and long-term vision for Galactipy is managed through the project's roadmap,
-where the general direction of development is stored and accessible for anyone to see
-and comment. Issues and Merge Requests should ideally be related to a milestone once a
-work item has been created.
+where the general direction of development is stored and accessible
+for anyone to see and comment.
+Issues and Merge Requests should ideally be related to a milestone
+once a work item has been created.
 
-Any contributor can propose a new distinct deliverable to be added to the roadmap. A
-[Merge Request][31] containing the proposal must be opened with the
-[**Project Policies** template][44], detailing nature, scope and purpose of
-the milestone.
+Any contributor can propose a new distinct deliverable
+to be added to the roadmap.
+A [Merge Request][31] containing the proposal must be opened with the [**Project Policies** template][44],
+detailing nature, scope and purpose of the milestone.
 
-The MR must contain the proposed milestone added to the [`ROADMAP.md` table][45] for
-discussion, containing:
+The MR must detail the proposed milestone added to the [`ROADMAP.md` table][45] for discussion, containing:
 
-- **Title:** the proposed title for the milestone;
-- **Description:** an overview of the development, in a short summary. Details regarding
-  the milestone will be discussed in the MR and later be included in the official
-  project milestone if accepted;
-- **Theme:** the theme to which the proposed milestone is best related to. The naming is
-  open to discussion and the author is free to suggest it, along with an Emoji to better
-  convey its nature, in a `:emoji: Theme Title` pattern;
-- **Timeline:** a broad estimation of when this proposed milestone can be delivered in
-  full. Should act as a starting point for the actual work tracking to be done via the
-  official milestone.
+- **Title:**
+  the proposed title for the milestone;
+- **Description:**
+  an overview of the development,
+  in a short summary.
+  Details regarding the milestone
+  will be discussed in the MR and
+  later be included in the official project milestone
+  if accepted;
+- **Theme:**
+  the theme to which
+  the proposed milestone is best related to.
+  The naming is open to discussion and
+  the author is free to suggest it,
+  along with an Emoji to
+  better convey its nature,
+  in a `:emoji: Theme Title` pattern;
+- **Timeline:**
+  a broad estimation of when this proposed milestone
+  can be delivered in full.
+  Should act as a starting point for
+  the actual work tracking
+  to be done via
+  the official milestone.
 
-Contributors and maintainers will participate in the discussion to [refine][46] the
-scope of the milestone and either accept of reject the proposal via
-[thumbs-up/thumbs-down][47] reactions on the author's initial comment.
+Contributors and maintainers will participate in the discussion to
+[refine][46] the scope of the milestone and
+either accept of reject the proposal via [thumbs-up/thumbs-down][47] reactions
+on the author's initial comment.
 
-Once a milestone has been accepted for inclusion in the roadmap, it will be officially
-created in the [Milestones][24] page. The milestone itself should contain:
+Once a milestone has been accepted for inclusion in the roadmap,
+it will be officially created in the [Milestones][24] page.
+The milestone itself should contain:
 
 - The [Motivational Narrative][48] as a summary to the milestone's goal;
   - We suggest using the following pattern if the actor of the deliverable is not clear:
     `**In order to** {GOAL},<br>**The project will** {ACTION}.`;
-- Detailed information collected from the discussion regarding nature and scope;
-- A list of the anticipated developments that have been discussed in the MR in a
-  dedicated section;
-- Details on caveats for development and potential bottleneck mappings.
+- Detailed information collected from the discussion
+  regarding nature and scope,
+  under the **Reasoning** section;
+- A non-exhaustive list of leading developments
+  that have been discussed in the MR
+  in the **Anticipated Developments** section;
+- Details on potential bottleneck mappings
+  in the **Caveats** section.
 
-Once the official milestone is created, it should be attached to the proposal MR and the
-`ROADMAP.md` table should be updated with the actual link to the milestone before
-merging to `master`.
+Once the official milestone is created,
+it should be attached to the proposal MR and
+the `ROADMAP.md` table should be updated
+with the actual link to the milestone
+before merging to `master`.
 
 >>> [!tip]
-Milestones should be the entry door for new contributors to have a general glimpse on
-what the project has been prioritising and where it wants to go, helping newcomers get
-onboarded more quickly. Therefore, contributors writing official milestones should
-approach the task with the following goals in mind:
+Milestones should be the entry door for new contributors
+to have a general glimpse on
+what the project has been prioritising and
+where it wants to go,
+helping newcomers get onboarded more quickly.
+Therefore, contributors writing official milestones
+should approach the task with the following goals in mind:
 
 - [_Comprehensive, yet succinct_][49];
 - [_Standardised, yet conscious_][50].
 >>>
 
-After a milestone has been completed, a new Merge Request should be opened to update the
-`ROADMAP.md` table in the **Timeline** field with the following possible values:
+After a milestone has been completed,
+a new Merge Request should be opened to
+update the `ROADMAP.md` table in the **Timeline** field
+with the following possible values:
 
-- `**Delivered with <version> :airplane_departure:**`, if properly associated to a
-  [GitLab Release][51];
-- `**Delivered Internally :100:**`, if the milestone has no impact on project releases.
+- `**Delivered with <version> :airplane_departure:**`,
+  if properly associated to a [GitLab Release][51];
+- `**Delivered Internally :100:**`,
+  if the milestone has no impact on project releases.
 
-Likewise, the MRs should be associated with the completed milestone.
+Likewise,
+the MRs should be associated with
+the completed milestone.
 
 #### GitLab Practices
 
