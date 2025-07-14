@@ -32,7 +32,10 @@ This template should be used to propose and discuss changes to tools used to man
 
 ## Submitter Checklist
 
-<!-- Mark complying items as they are delivered -->
+<!--
+  Mark complying items as they are delivered with `[x]`
+  Single out unnecessary or unworkable items with `[~]`
+-->
 
 >>> [!caution] :scroll: Policy compliance
 
@@ -54,6 +57,7 @@ This template should be used to propose and discuss changes to tools used to man
 - [ ] I have either:
   - Evaluated that this change does not require updating the documentation;
   - Updated the documentation highlighting this change and any relevant information.
+
 >>>
 
 >>> [!tip] :reminder_ribbon: Contribution control
@@ -103,5 +107,3 @@ I attest that during the course of this development, the following interactions 
 [10]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
 [11]: https://www.teachfloor.com/elearning-glossary/institutional-knowledge
 [12]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
-
-## Related Issues

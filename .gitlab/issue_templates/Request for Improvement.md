@@ -85,4 +85,4 @@ How would you classify this request?
   Screenshots, links and any content that helps us better visualise your desired outcome are welcome!
 -->
 
-/label ~"rfi" ~"needs-triage"
+/label ~"request::improvement" ~"needs::triage"
