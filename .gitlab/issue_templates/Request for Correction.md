@@ -51,4 +51,4 @@ Please run through all items under the **`Applicant Checklist`** section and be 
   Provide your `cookiecutter-config_file.yml` if possible
 -->
 
-/label ~"request::correction" ~"needs::triage"
+/label ~"request::correction"
