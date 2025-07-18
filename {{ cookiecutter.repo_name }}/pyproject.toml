@@ -202,12 +202,22 @@ max-bool-expr = 3
 [tool.ruff.lint.isort]
 split-on-trailing-comma = false
 known-first-party = ["{{ cookiecutter.package_name }}"]
-sections.typing = ["typing", "types", "typing_extensions", "mypy", "mypy_extensions"]
-sections.testing = ["pytest", "tests"]
+{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+sections.app-builders = ["rich", "typer", "textual"]
+{%- elif cookiecutter.app_type == 'cli' %}
+sections.app-builders = ["rich", "typer"]
+{%- endif %}
+sections.typing = ["typing", "types", "typing_extensions", "mypy", "mypy_extensions", "pytype", "pydantic"]
+{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+sections.testing = ["pytest", {% if cookiecutter.use_bdd %}"pytest_bdd"{% endif %}, "pytest_asyncio", "tests"]
+{%- else %}
+sections.testing = ["pytest", {% if cookiecutter.use_bdd %}"pytest_bdd"{% endif %}, "tests"]
+{%- endif %}
 section-order = [
   "future",
   "typing",
   "standard-library",
+  "app-builders",
   "third-party",
   "first-party",
   "local-folder",
