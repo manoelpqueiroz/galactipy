@@ -271,7 +271,10 @@ addopts = [
   "--pikachu",
   "--cov={{ cookiecutter.package_name }}",
   "--cov-config=pyproject.toml",
-  "--junitxml=test_report.xml"
+  "--junitxml=test_report.xml",
+{%- if cookiecutter.app_type == 'tui' or cookiecutter.app_type == 'hybrid' %}
+  "--asyncio-mode=auto",
+{%- endif %}
 ]
 
 
