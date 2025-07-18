@@ -60,7 +60,7 @@ classifiers = [  # UPDATEME with additional classifiers
 python = "^{{ cookiecutter.minimal_python_version }}"
 {%+ if cookiecutter.app_type == 'tui' or cookiecutter.app_type == 'hybrid' %}
 textual = "^3.5.0"
-art = "^6.5.0"
+art = "^6.5.0" # UPDATEME by removing when no longer needed
 {%- endif %}
 {%+ if cookiecutter.app_type != 'bare_repo' %}
 typer = { extras = ["all"], version = "^0.15.1" }

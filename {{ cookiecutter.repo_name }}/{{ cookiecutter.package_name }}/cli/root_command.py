@@ -59,7 +59,7 @@ def main(
         interface = TerminalApp()
         interface.run()
     {%- elif cookiecutter.app_type == 'hybrid' or cookiecutter.app_type == 'cli' %}
-    """{{ cookiecutter.project_description }}
+    """{{ cookiecutter.project_description }}.
 
     See below for commands and options.
     """
