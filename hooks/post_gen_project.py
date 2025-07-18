@@ -264,18 +264,32 @@ def _get_bdd_specific_files(
     removals = []
 
     if remove_bdd:
-        removals.append(directory / "tests" / "features")
+        removals.extend(
+            [
+                directory / "tests" / "features",
+                directory / "tests" / "helpers",
+                directory / "tests" / "utils",
+            ]
+        )
 
     elif app_type == "bare_repo":
         removals.extend(
             [
+                directory / "tests" / "helpers",
+                directory / "tests" / "utils",
                 directory / "tests" / "features" / "main_window.feature",
                 directory / "tests" / "features" / "root_command.feature",
             ]
         )
 
     elif app_type == "cli":
-        removals.append(directory / "tests" / "features" / "main_window.feature")
+        removals.extend(
+            [
+                directory / "tests" / "helpers",
+                directory / "tests" / "utils",
+                directory / "tests" / "features" / "main_window.feature",
+            ]
+        )
 
     return removals
 
