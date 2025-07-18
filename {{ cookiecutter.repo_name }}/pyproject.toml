@@ -81,6 +81,9 @@ pytest = "^8.3.4"
 {%- if cookiecutter.use_bdd %}
 pytest-bdd = "^8.1.0"
 {%- endif %}
+{%- if cookiecutter.app_type == 'tui' or cookiecutter.app_type == 'hybrid' %}
+pytest-asyncio = "^1.0.0"
+{%- endif %}
 pytest-html = "^4.1.1"
 pytest-cov = "^6.0.0"
 pytest-mock = "^3.14.0"
