@@ -53,8 +53,7 @@ def main(
     ] = False,
 ):
     {%- if cookiecutter.app_type == 'tui' %}
-    """Launch the {{ cookiecutter.project_name }} interface.
-    """
+    """Launch the {{ cookiecutter.project_name }} interface."""
     if ctx.invoked_subcommand is None:
         interface = TerminalApp()
         interface.run()

@@ -48,10 +48,14 @@ packages = [
 
 # Pypi classifiers: https://pypi.org/classifiers/
 classifiers = [  # UPDATEME with additional classifiers
-  "Development Status :: 3 - Alpha",
+  "Development Status :: 1 - Planning",
   "Intended Audience :: Developers",
   "Operating System :: OS Independent",
   "Topic :: Software Development :: Libraries :: Python Modules",
+{%- if cookiecutter.app_type != 'bare_repo' %}
+  "Environment :: Console",
+  "Topic :: Terminals",
+{%- endif %}
   "Private :: Do Not Upload"  # TODO Remove classifier to allow publishing on PyPI
 ]
 

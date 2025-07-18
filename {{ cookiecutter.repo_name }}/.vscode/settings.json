@@ -135,12 +135,19 @@
     ],
     "vsicons.associations.folders": [
         {
-            "icon": "component",
+            "icon": "app",
             "extensions": [
                 "tui"
             ],
             "format": "svg"
         },
+        {
+            "icon": "model",
+            "extensions": [
+                "features"
+            ],
+            "format": "svg"
+        }
     ],
     "files.associations": {
         "*.tcss": "css"
