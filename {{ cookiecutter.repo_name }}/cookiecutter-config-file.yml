@@ -20,4 +20,4 @@ default_context:
   commit_convention: "{{ cookiecutter.commit_convention }}"
   coverage_service: "{{ cookiecutter.coverage_service }}"
   create_docker: {{ cookiecutter.create_docker }}
-  bare_repo: {{ cookiecutter.bare_repo }}
+  app_type: "{{ cookiecutter.app_type }}"

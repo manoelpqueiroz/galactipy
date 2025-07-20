@@ -22,10 +22,11 @@ SCM_PLATFORM_LC = "{{ cookiecutter.__scm_platform_lc }}"
 SCM_USERNAME = "{{ cookiecutter.scm_username }}"
 SCM_BASE_URL = "{{ cookiecutter.__scm_base_url }}"
 
+APP_TYPE = "{{ cookiecutter.app_type }}"
+
 # Boolean variables for additional project structures
 # Values wrapped inside strings and evaluated against the "True" string to
 # avoid raising errors when testing
-CREATE_CLI = "{{ cookiecutter.bare_repo }}" == "False"  # type: ignore[comparison-overlap] # noqa: PLR0133
 CREATE_DOCKER = "{{ cookiecutter.create_docker }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
 USE_BDD = "{{ cookiecutter.use_bdd }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
 ENABLE_FLAGS = "{{ cookiecutter.__debug }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
@@ -44,11 +45,14 @@ licences_dict = {
 
 @dataclass
 class ProjectFlags:  # noqa: D101
-    remove_cli: bool
     remove_gitlab: bool
     remove_docker: bool
     remove_bdd: bool
     remove_features: bool
+    app_type: str
+
+    def __post_init__(self):  # noqa: D105
+        self.remove_cli = self.app_type == "bare_repo"
 
 
 def rmdir(path: Path) -> None:
@@ -160,17 +164,19 @@ def _get_files_to_delete(
     """
     files_to_delete: list[Path] = []
 
-    cli_specific_files = _get_cli_specific_files(
-        directory, package_name, flags.remove_bdd
+    cli_specific_files = _get_cli_specific_files(directory, package_name)
+    tui_specific_files = _get_tui_related_files(directory, package_name, flags.app_type)
+
+    bdd_specific_files = _get_bdd_specific_files(
+        directory, flags.app_type, flags.remove_bdd
     )
+
     docker_specific_files = _get_docker_specific_files(directory, flags.remove_gitlab)
 
     gitlab_specific_files = [
         directory / ".gitlab-ci.yml",
         directory / ".triage-policies.yml",
     ]
-
-    bdd_specific_files = [directory / "tests" / "features"]
 
     if not flags.remove_cli and not flags.remove_bdd:
         files_to_delete.append(directory / "tests" / "features" / ".gitkeep")
@@ -187,15 +193,13 @@ def _get_files_to_delete(
     if flags.remove_docker:
         files_to_delete.extend(docker_specific_files)
 
-    if flags.remove_bdd:
-        files_to_delete.extend(bdd_specific_files)
+    files_to_delete.extend(bdd_specific_files)
+    files_to_delete.extend(tui_specific_files)
 
     return files_to_delete
 
 
-def _get_cli_specific_files(
-    directory: Path, package_name: str, remove_bdd: bool
-) -> list[Path]:
+def _get_cli_specific_files(directory: Path, package_name: str) -> list[Path]:
     """Return select files to remove when CLI option is disabled.
 
     Parameters
@@ -204,18 +208,86 @@ def _get_cli_specific_files(
         Root directory of the project.
     package_name : str
         Name of the package under the root directory of the project.
-    remove_bdd : bool
-        Determine whether CLI feature file should be removed as well.
     """
-    removals = [
+    return [
         directory / package_name / "cli",
         directory / package_name / "__main__.py",
         directory / "tests" / "cli",
         directory / "tests" / "conftest.py",
     ]
 
-    if not remove_bdd:
-        removals.append(directory / "tests" / "features" / "root_command.feature")
+
+def _get_tui_related_files(
+    directory: Path, package_name: str, app_type: str
+) -> list[Path]:
+    """Return select files to remove when CLI-only option is enabled.
+
+    Parameters
+    ----------
+    directory : Path
+        Root directory of the project.
+    package_name : str
+        Name of the package under the root directory of the project.
+    app_type : str
+        Type of application defined by the `app_type` Cookiecutter variable.
+    """
+    removals = []
+
+    if app_type in ["tui", "cli"]:
+        removals.append(directory / package_name / "cli" / "commands" / "launch.py")
+
+    elif app_type == "hybrid":
+        removals.append(directory / package_name / "cli" / "commands" / ".gitkeep")
+
+    if app_type in ["cli", "bare_repo"]:
+        removals.extend([directory / package_name / "tui", directory / "tests" / "tui"])
+
+    return removals
+
+
+def _get_bdd_specific_files(
+    directory: Path, app_type: str, remove_bdd: bool
+) -> list[Path]:
+    """Return select files to remove when the BDD option is disabled.
+
+    Parameters
+    ----------
+    directory : Path
+        Root directory of the project.
+    app_type : str
+        Type of application defined by the `app_type` Cookiecutter variable.
+    remove_bdd : bool
+        Flag for determining if BDD will be used or not.
+    """
+    removals = []
+
+    if remove_bdd:
+        removals.extend(
+            [
+                directory / "tests" / "features",
+                directory / "tests" / "helpers",
+                directory / "tests" / "utils",
+            ]
+        )
+
+    elif app_type == "bare_repo":
+        removals.extend(
+            [
+                directory / "tests" / "helpers",
+                directory / "tests" / "utils",
+                directory / "tests" / "features" / "main_window.feature",
+                directory / "tests" / "features" / "root_command.feature",
+            ]
+        )
+
+    elif app_type == "cli":
+        removals.extend(
+            [
+                directory / "tests" / "helpers",
+                directory / "tests" / "utils",
+                directory / "tests" / "features" / "main_window.feature",
+            ]
+        )
 
     return removals
 
@@ -272,7 +344,7 @@ def print_further_instructions(
         username and repository slug.
     """
     if find_spec("rich") is not None:
-        from rich.console import Console
+        from rich.console import Console  # noqa: PLC0415
 
         console = Console(emoji=False)
 
@@ -366,13 +438,12 @@ def print_further_instructions(
 
 def main() -> None:  # noqa: D103
     remove_gitlab = SCM_PLATFORM_LC != "gitlab"
-    remove_cli = not CREATE_CLI
     remove_docker = not CREATE_DOCKER
     remove_bdd = not USE_BDD
     remove_features = not ENABLE_FLAGS
 
     config = ProjectFlags(
-        remove_cli, remove_gitlab, remove_docker, remove_bdd, remove_features
+        remove_gitlab, remove_docker, remove_bdd, remove_features, APP_TYPE
     )
 
     generate_licence(directory=PROJECT_DIRECTORY, licence=licences_dict[LICENCE])
