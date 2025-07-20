@@ -1,5 +1,3 @@
-from typing_extensions import Annotated
-
 import typer
 
 from {{ cookiecutter.package_name }}.tui.main_window import TerminalApp

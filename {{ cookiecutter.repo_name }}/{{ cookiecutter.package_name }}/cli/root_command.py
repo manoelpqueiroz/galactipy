@@ -2,7 +2,7 @@
 # https://typer.tiangolo.com/tutorial/
 # See recommended configuration for multicommand applications at:
 # https://typer.tiangolo.com/tutorial/one-file-per-command/#main-module-mainpy
-from typing_extensions import Annotated
+from typing import Annotated
 
 import typer
 from rich import print
