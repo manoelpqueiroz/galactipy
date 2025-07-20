@@ -344,7 +344,7 @@ def print_further_instructions(
         username and repository slug.
     """
     if find_spec("rich") is not None:
-        from rich.console import Console
+        from rich.console import Console  # noqa: PLC0415
 
         console = Console(emoji=False)
 
