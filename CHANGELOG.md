@@ -1,3 +1,54 @@
+## 0.15.0 (2025-07-20)
+
+### :milky_way: Components (4 changes)
+
+- [:art: Make TUI interface the default for __main__.py](galactipy/galactipy@459edbdfedf6f0f57608cded98217825cc725a2f) ([merge request](galactipy/galactipy!60))
+- [:art: Include TUI launch command for the CLI](galactipy/galactipy@5793150c4a753b808d13cdf1b00095be4a30bb7a) ([merge request](galactipy/galactipy!60))
+- [:sparkles: Create demo TUI application](galactipy/galactipy@d0a798a6354dfc8d594f7de3d8173d78a392a8ed) ([merge request](galactipy/galactipy!60))
+- [:sparkles: Change bare repo option to allow more types of configuration](galactipy/galactipy@ce91f469e8bb149de91f4f0d6d5800b1422660e5) ([merge request](galactipy/galactipy!60))
+
+### :wrench: Fixes & Refactoring (4 changes)
+
+- [:green_heart: Ingore rule for top-level import in post-gen hooks](galactipy/galactipy@df9e5e0d7106e779093a47ad8b0fc2de0bb74a5f) ([merge request](galactipy/galactipy!60))
+- [:adhesive_bandage: Update references to typing module](galactipy/galactipy@ac2688cab765188170ebd93b133155e38a4dc034) ([merge request](galactipy/galactipy!60))
+- [:recycle: Refactor project flags dataclass](galactipy/galactipy@50979cb2ffa1fdcf640063c2ab266a7f9f4be640) ([merge request](galactipy/galactipy!60))
+- [:pencil: Make minor adjustments to TUI-related configuration](galactipy/galactipy@4d99d66bbf2ff93edfda6a26bff6ced482f5906c) ([merge request](galactipy/galactipy!60))
+
+### :package: Build System & CI/CD (1 change)
+
+- [:white_check_mark: Rework file removal tests](galactipy/galactipy@c13b80106b862ae9c1a6aae801083d31aabd090c) ([merge request](galactipy/galactipy!60))
+
+### :gear: Internals (4 changes)
+
+- [:wrench: Specify additional removals for BDD](galactipy/galactipy@86fbf81250f61d8d015d3a42b96733337cfda987) ([merge request](galactipy/galactipy!60))
+- [:wrench: Refine behaviour for TUI file removals](galactipy/galactipy@c5f73aea3b3c8cff92f5012ca45787381017cf3f) ([merge request](galactipy/galactipy!60))
+- [:wrench: Create dedicated function for BDD file removals](galactipy/galactipy@0a12b1d6029cb7797370c35646740cf00f4a1627) ([merge request](galactipy/galactipy!60))
+- [:wrench: Specify TUI-related files for removal](galactipy/galactipy@692c9f18164adc728c3311cf11187c8d9ec45b5d) ([merge request](galactipy/galactipy!60))
+
+### :construction_site: Template Internals (5 changes)
+
+- [:wrench: Reconfigure isort groups for the template](galactipy/galactipy@742c44519a40c98cb7e1c1351a93ce6d90dbeede) ([merge request](galactipy/galactipy!60))
+- [:wrench: Include quality-of-life configuration for TUI](galactipy/galactipy@ee6d703ab5abefef32f6ec7249defef415f28bde) ([merge request](galactipy/galactipy!60))
+- [:white_check_mark: Rework BDD unit test for TUI](galactipy/galactipy@eb293fcca2d8f067419b2f3896f407d73db65cc2) ([merge request](galactipy/galactipy!60))
+- [:wrench: Add sample unit test for TUI main window](galactipy/galactipy@06814918dfd3a180b4a113a246cb5df9108d62f6) ([merge request](galactipy/galactipy!60))
+- [:wrench: Add VS Code settings for TUI applications](galactipy/galactipy@b4613d825ace129ab7f74264c91d8bd89d30aac7) ([merge request](galactipy/galactipy!60))
+
+### :pencil: Documentation (1 change)
+
+- [:pencil: Update READMEs with application types and fixes](galactipy/galactipy@feb9617b296f61bc36324988385b7ee4f275534e) ([merge request](galactipy/galactipy!60))
+
+### :scroll: Project Policies (5 changes)
+
+- [:wrench: Implement issue template for starter assignments](galactipy/galactipy@3014c7a9d1066044308efa1c51e6dde22df60948) ([merge request](galactipy/galactipy!59))
+- [:wrench: Modify issue templates to adequate statuses](galactipy/galactipy@90df8d20ccd215bd6ca28d1c5ffb813abc847daf) ([merge request](galactipy/galactipy!59))
+- [:pencil: Add work item tracking policy for project](galactipy/galactipy@fdfb20a1687edf476d58cb96c5ef0882f4d73ff8) ([merge request](galactipy/galactipy!59))
+- [:wrench: Refine project issue and MR templates](galactipy/galactipy@e4b9267d44e8271eedc3a5b7e5da08eca7fb8d3e) ([merge request](galactipy/galactipy!59))
+- [:pencil: Update roadmap management guidelines](galactipy/galactipy@c6643d23392b7abeb96c1a52abaeb9231cf23bcd) ([merge request](galactipy/galactipy!58))
+
+### :arrow_up: Dependency Updates (1 change)
+
+- [:heavy_plus_sign: Add Textual to template dependencies](galactipy/galactipy@fcef21e336ba281817390b5e1d61d14834b5fa76) ([merge request](galactipy/galactipy!60))
+
 ## 0.14.1 (2025-07-04)
 
 ### :wrench: Fixes & Refactoring (1 change)
