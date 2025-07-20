@@ -193,9 +193,7 @@ def _get_files_to_delete(
     if flags.remove_docker:
         files_to_delete.extend(docker_specific_files)
 
-    if flags.remove_bdd:
-        files_to_delete.extend(bdd_specific_files)
-
+    files_to_delete.extend(bdd_specific_files)
     files_to_delete.extend(tui_specific_files)
 
     return files_to_delete
