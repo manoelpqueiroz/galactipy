@@ -58,21 +58,21 @@ cookiecutter = "^2.6.0"
 
 
 [tool.poetry.group.dev.dependencies]
-mypy = "^1.15.0"
+mypy = "^1.17.0"
 mypy-extensions = "^1.1.0"
 pre-commit = "^4.2.0"
-bandit = "^1.8.3"
-safety = "~3.4.0"
+bandit = "^1.8.6"
+safety = "~3.6.0"
 
-ruff = "^0.11.7"
+ruff = "^0.12.4"
 
-pytest = "^8.3.5"
-pytest-cov = "^6.1.1"
+pytest = "^8.4.1"
+pytest-cov = "^6.2.1"
 pytest-cookies = "^0.7.0"
-pytest-timeout = "^2.3.1"
+pytest-timeout = "^2.4.0"
 pytest-sugar = "^1.0.0"
-pytest-mock = "^3.14.0"
-coverage = "^7.8.0"
+pytest-mock = "^3.14.1"
+coverage = "^7.9.2"
 
 invoke = "^2.2.0"
 
