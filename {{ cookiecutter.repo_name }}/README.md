@@ -184,9 +184,9 @@ For further setting up your project:
 If you want to put your project on steroids, here are a few Python tools which can help you depending on what you want to achieve with your application:
 
 - [`Typer`][wn2] is great for creating CLI applications;
-- [`Rich`][wn3] makes it easy to add beautiful formatting in the terminal;
-- [`tqdm`][wn4] is a fast, extensible progress bar for Python and CLI;
-- [`Python Prompt Toolkit`][wn5] allows you to create more advanced terminal applications, such as a text editor or even your own shell;
+- [`Textual`][wn3] allows you to create more advanced terminal applications, such as a text editor or even your own shell;
+- [`Rich`][wn4] makes it easy to add beautiful formatting in the terminal;
+- [`tqdm`][wn5] is a fast, extensible progress bar for Python and CLI;
 - [`orjson`][wn6], an ultra fast JSON parsing library;
 - [`Pydantic`][wn7] is data validation and settings management using Python type hinting;
 - [`Returns`][wn8] makes you function's output meaningful, typed, and safe;
@@ -237,21 +237,28 @@ And here are a few articles which may help you:
 ### Development features
 
 - Support for `Python {{ cookiecutter.minimal_python_version }}` and higher;
-- Uses [`Poetry`][ft1] as the dependency manager and extends functionality with [`dynamic versioning`][new1], [`virtual environment bundling`][new2], dependency [`export`][new3] and [`update resolution`][new4]. See configuration in [`pyproject.toml`][ft2];
+{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+- Provides minimal boilerplate code for a CLI with TUI application, using [`Typer`][app1] and [`Textual`][app2];
+{%- elif cookiecutter.app_type == 'cli' %}
+- Provides minimal boilerplate code for a CLI application, using [`Typer`][app1];
+{%- elif cookiecutter.app_type == 'bare_repo' %}
+- Provides minimal boilerplate files to jumpstart your project development, no code provided to restrict your design!
+{%- endif %}
+- Uses [`Poetry`][ft1] as the dependency manager and extends functionality with [`dynamic versioning`][ft2], [`virtual environment bundling`][ft3], dependency [`export`][ft4] and [`update resolution`][ft5]. See configuration in [`pyproject.toml`][ft6];
 {%- if cookiecutter.use_ruff %}
 - Automatic code formatting with [`ruff`][fo1], with ready-to-use [`pre-commit`][fo2] hooks and several rules already selected for linting;
 {%- endif %}
-- Type checks with [`mypy`][ft3], security checks with [`safety`][ft4] and [`bandit`][ft5];
-- Testing with [`pytest`][ft6]{% if cookiecutter.use_bdd %} and [`behaviour-driven development`][bdd1] configuration for managing scenarios; more details in the [Behaviour-Driven Development][bdd2] section{% endif %};
-- Code quality integrations with {% if cookiecutter.__coverage_lc == 'coveralls' %}[`Coveralls`][ft7]{% elif cookiecutter.__coverage_lc == 'codacy' %}[`Codacy`][ft7]{% endif %} via CI/CD;
-- Predefined VS Code [`settings.json`][ft8] with quality-of-life configuration for editor, workbench, debugging and more;
-- Ready-to-use [`.editorconfig`][ft9]{% if cookiecutter.create_docker %}, [`.dockerignore`][docker1]{% endif %} and [`.gitignore`][ft10] files. You don't have to worry about those things.
+- Type checks with [`mypy`][ft7], security checks with [`safety`][ft8] and [`bandit`][ft9];
+- Testing with [`pytest`][ft10]{% if cookiecutter.use_bdd %} and [`behaviour-driven development`][bdd1] configuration for managing scenarios; more details in the [Behaviour-Driven Development][bdd2] section{% endif %};
+- Code quality integrations with {% if cookiecutter.__coverage_lc == 'coveralls' %}[`Coveralls`][ft11]{% elif cookiecutter.__coverage_lc == 'codacy' %}[`Codacy`][ft11]{% endif %} via CI/CD;
+- Predefined VS Code [`settings.json`][ft12] with quality-of-life configuration for editor, workbench, debugging and more;
+- Ready-to-use [`.editorconfig`][ft13]{% if cookiecutter.create_docker %}, [`.dockerignore`][docker1]{% endif %} and [`.gitignore`][ft14] files. You don't have to worry about those things.
 
 ### Deployment features
 
 - Predefined CI/CD build workflow with {% if cookiecutter.__scm_platform_lc == 'gitlab' %}[`GitLab CI`][lab3]{% elif cookiecutter.__scm_platform_lc == 'github' %}[`Github Actions`][hub4]{% endif %};
-- Automatic package uploads to [`PyPI`][ft11] test and production repositories;
-- Everything is already set up for security checks,{% if cookiecutter.use_ruff %} codestyle checks, code formatting,{% endif %} testing, linting{% if cookiecutter.create_docker %}, docker builds{% endif %} etc with [`Invoke`][ft12]. More details in [Invoke Usage][ft13];
+- Automatic package uploads to [`PyPI`][ft15] test and production repositories;
+- Everything is already set up for security checks,{% if cookiecutter.use_ruff %} codestyle checks, code formatting,{% endif %} testing, linting{% if cookiecutter.create_docker %}, docker builds{% endif %} etc with [`Invoke`][ft16]. More details in [Invoke Usage][ft17];
 {%- if cookiecutter.create_docker %}
 - [`Dockerfile`][docker2] for your package, with CI/CD workflows to publish your image to a container registry;
 {%- endif %}
@@ -270,9 +277,9 @@ And here are a few articles which may help you:
 
 ### Open source community features
 
-- Ready-to-use [{% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates][ft14] and several [Issue templates][ft15];
+- Ready-to-use [{% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates][ft18] and several [Issue templates][ft19];
 - Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `CITATION.cff` and `SECURITY.md` are generated automatically;
-- **Loads** of predefined [badges][ft16] to make your project stand out, you can either keep them, remove as you wish or be welcome to add even more.
+- **Loads** of predefined [badges][ft20] to make your project stand out, you can either keep them, remove as you wish or be welcome to add even more.
 
 ## Installation
 
@@ -302,7 +309,7 @@ poetry run {{ cookiecutter.repo_name }} --help
 
 ### Invoke usage
 
-[`invoke`][ft12] contains a lot of functions for faster development.
+[`invoke`][ft16] contains a lot of functions for faster development.
 
 <details>
 <summary>1. Download or remove Poetry</summary>
@@ -668,9 +675,9 @@ This project was generated with [`galactipy`][bp7].
 
 [wn1]: https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
 [wn2]: https://github.com/tiangolo/typer
-[wn3]: https://github.com/willmcgugan/rich
-[wn4]: https://github.com/tqdm/tqdm
-[wn5]: https://github.com/prompt-toolkit/python-prompt-toolkit
+[wn3]: https://github.com/Textualize/textual
+[wn4]: https://github.com/willmcgugan/rich
+[wn5]: https://github.com/tqdm/tqdm
 [wn6]: https://github.com/ijl/orjson
 [wn7]: https://github.com/samuelcolvin/pydantic/
 [wn8]: https://github.com/dry-python/returns
@@ -698,31 +705,42 @@ This project was generated with [`galactipy`][bp7].
 [wno6]: https://opensource.guide/
 [wno7]: https://github.com/nayafia/lemonade-stand
 {% endif %}
+{% if cookiecutter.app_type in ['tui', 'hybrid', 'cli'] -%}
+[app1]: https://typer.tiangolo.com/
+{% endif -%}
+{% if cookiecutter.app_type in ['tui', 'hybrid'] %}
+[app2]: https://textual.textualize.io/
+{%- endif %}
+
 [ft1]: https://python-poetry.org/
-[ft2]: {{ cookiecutter.__scm_link_url }}/blob/master/pyproject.toml
-[ft3]: https://mypy.readthedocs.io
-[ft4]: https://docs.safetycli.com/safety-2/
-[ft5]: https://bandit.readthedocs.io/en/latest/
-[ft6]: https://docs.pytest.org/en/latest/
+[ft2]: https://github.com/mtkennerly/poetry-dynamic-versioning
+[ft3]: https://github.com/python-poetry/poetry-plugin-bundle
+[ft4]: https://github.com/python-poetry/poetry-plugin-export
+[ft5]: https://github.com/MousaZeidBaker/poetry-plugin-up
+[ft6]: {{ cookiecutter.__scm_link_url }}/blob/master/pyproject.toml
+[ft7]: https://mypy.readthedocs.io
+[ft8]: https://docs.safetycli.com/safety-2/
+[ft9]: https://bandit.readthedocs.io/en/latest/
+[ft10]: https://docs.pytest.org/en/latest/
 {%- if cookiecutter.__coverage_lc == 'coveralls' %}
-[ft7]: https://coveralls.io/
+[ft11]: https://coveralls.io/
 {%- elif cookiecutter.__coverage_lc == 'codacy' %}
-[ft7]: https://www.codacy.com/
+[ft11]: https://www.codacy.com/
 {%- endif %}
-[ft8]: {{ cookiecutter.__scm_link_url }}/blob/master/.vscode/settings.json
-[ft9]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
-[ft10]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitignore
-[ft11]: https://pypi.org/
-[ft12]: https://docs.pyinvoke.org/en/stable/
-[ft13]: #invoke-usage
+[ft12]: {{ cookiecutter.__scm_link_url }}/blob/master/.vscode/settings.json
+[ft13]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
+[ft14]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitignore
+[ft15]: https://pypi.org/
+[ft16]: https://docs.pyinvoke.org/en/stable/
+[ft17]: #invoke-usage
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[ft14]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/merge_request_templates/default.md
-[ft15]: {{ cookiecutter.__scm_link_url }}/tree/master/.gitlab/issue_templates
+[ft18]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/merge_request_templates/default.md
+[ft19]: {{ cookiecutter.__scm_link_url }}/tree/master/.gitlab/issue_templates
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
-[ft14]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/PULL_REQUEST_TEMPLATE.md
-[ft15]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/ISSUE_TEMPLATE
+[ft18]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/PULL_REQUEST_TEMPLATE.md
+[ft19]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/ISSUE_TEMPLATE
 {%- endif %}
-[ft16]: https://shields.io/
+[ft20]: https://shields.io/
 
 [inv1]: https://python-poetry.org/docs/#installation
 
