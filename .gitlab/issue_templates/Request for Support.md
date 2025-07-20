@@ -50,4 +50,4 @@ After reading the [Commitment to Help][4] section of the `CONTRIBUTING` guide an
 
 <!-- Add the details for your request here -->
 
-/label ~"rfs" ~"needs-triage"
+/label ~"request::improvement"

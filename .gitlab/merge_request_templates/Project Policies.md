@@ -30,7 +30,10 @@ This template should be used to propose and discuss any changes that affect know
 
 ## Submitter Checklist
 
-<!-- Mark complying items as they are delivered -->
+<!--
+  Mark complying items as they are delivered with `[x]`
+  Single out unnecessary or unworkable items with `[~]`
+-->
 
 >>> [!caution] :scroll: Policy compliance
 
@@ -58,6 +61,7 @@ For rules in configuration files:
 - [ ] I have either:
   - Evaluated that this change does not require updating a Markdown file for rule documentation;
   - Updated the documentation highlighting this change and any relevant information.
+
 >>>
 
 >>> [!tip] :reminder_ribbon: Contribution control
@@ -101,5 +105,3 @@ I attest that during the course of this development, the following interactions 
 
 [11]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
 [12]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
-
-## Related Issues

@@ -30,7 +30,10 @@ This template should be used to propose and discuss the maintenance of existing 
 
 ## Submitter Checklist
 
-<!-- Mark complying items as they are delivered -->
+<!--
+  Mark complying items as they are delivered with `[x]`
+  Single out unnecessary or unworkable items with `[~]`
+-->
 
 >>> [!caution] :scroll: Policy compliance
 
@@ -112,5 +115,3 @@ I attest that during the course of this development, the following interactions 
 [11]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
 [12]: https://www.teachfloor.com/elearning-glossary/institutional-knowledge
 [13]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
-
-## Related Issues

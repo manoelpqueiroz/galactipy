@@ -91,13 +91,20 @@ If you don't feel ready to start contributing, the following steps should help:
 - Take a look at the project's [Milestones][24] page to get familiar with the team's
   plans for future releases;
 - When you feel ready to jump into Galactipy development, a good place to start is to
-  look for issues tagged with [`seeking-contributors`][25] and/or
+  look for issues labelled with [`seeking-contributors`][25] or
   [`starter-assignment`][26];
-- After familiarising yourself with the project's [labels][27], you can contribute by
-  participating in discussions on issues marked with the [`needs`][28] label, especially
-  those with the [`needs::triage`][29] label; we are always looking for people who help
-  refine issues, spot duplicates, guide issue authors toward better clarification and
-  promote project activity through constructive discussions.
+- After familiarising yourself
+  with the project's [labels][27] and [stages][28],
+  you can contribute
+  by participating in discussions on issues
+  at any of the **Needs** statuses,
+  especially those in the [**Needs Triage**][29] stage;
+  we are always looking for people
+  who help refine issues,
+  spot duplicates,
+  guide issue authors toward better clarification
+  and promote project activity
+  through constructive discussions.
 
 If the steps above seem daunting, we can relate! Contributing to an open source project,
 whether you are a seasoned developer or perhaps a newcomer aiming to improve your
@@ -201,67 +208,168 @@ candidate contributors in more detail.
 
 #### Roadmap Management
 
-Medium and long-term vision for Galactipy is managed through the project's roadmap,
-where the general direction of development is stored and accessible for anyone to see
-and comment. Issues and Merge Requests should ideally be related to a milestone once a
-work item has been created.
+Medium and long-term vision for Galactipy
+is managed through the project's roadmap,
+where the general direction of development
+is stored and accessible
+for anyone to see and comment.
+Issues and Merge Requests should ideally
+be related to a milestone
+once a work item has been created.
 
-Any contributor can propose a new distinct deliverable to be added to the roadmap. A
-[Merge Request][31] containing the proposal must be opened with the
-[**Project Policies** template][44], detailing nature, scope and purpose of
-the milestone.
+Any contributor can propose a new distinct deliverable
+to be added to the roadmap.
+A [Merge Request][31] containing the proposal
+must be opened with the [**Project Policies** template][44],
+detailing nature, scope and purpose of the milestone.
 
-The MR must contain the proposed milestone added to the [`ROADMAP.md` table][45] for
-discussion, containing:
+The MR must detail the proposed milestone
+added to the [`ROADMAP.md` table][45]
+for discussion,
+containing:
 
-- **Title:** the proposed title for the milestone;
-- **Description:** an overview of the development, in a short summary. Details regarding
-  the milestone will be discussed in the MR and later be included in the official
-  project milestone if accepted;
-- **Theme:** the theme to which the proposed milestone is best related to. The naming is
-  open to discussion and the author is free to suggest it, along with an Emoji to better
-  convey its nature, in a `:emoji: Theme Title` pattern;
-- **Timeline:** a broad estimation of when this proposed milestone can be delivered in
-  full. Should act as a starting point for the actual work tracking to be done via the
-  official milestone.
+- **Title:**
+  the proposed title for the milestone;
+- **Description:**
+  an overview of the development,
+  in a short summary.
+  Details regarding the milestone
+  will be discussed in the MR and
+  later be included in the official project milestone
+  if accepted;
+- **Theme:**
+  the theme to which
+  the proposed milestone is best related to.
+  The naming is open to discussion and
+  the author is free to suggest it,
+  along with an Emoji to
+  better convey its nature,
+  in a `:emoji: Theme Title` pattern;
+- **Timeline:**
+  a broad estimation of when this proposed milestone
+  can be delivered in full.
+  Should act as a starting point for
+  the actual work tracking
+  to be done via
+  the official milestone.
 
-Contributors and maintainers will participate in the discussion to [refine][46] the
-scope of the milestone and either accept of reject the proposal via
-[thumbs-up/thumbs-down][47] reactions on the author's initial comment.
+Contributors and maintainers will participate in the discussion to
+[refine][46] the scope of the milestone and
+either accept of reject the proposal via [thumbs-up/thumbs-down][47] reactions
+on the author's initial comment.
 
-Once a milestone has been accepted for inclusion in the roadmap, it will be officially
-created in the [Milestones][24] page. The milestone itself should contain:
+Once a milestone has been accepted for inclusion in the roadmap,
+it will be officially created in the [Milestones][24] page.
+The milestone itself should contain:
 
 - The [Motivational Narrative][48] as a summary to the milestone's goal;
   - We suggest using the following pattern if the actor of the deliverable is not clear:
     `**In order to** {GOAL},<br>**The project will** {ACTION}.`;
-- Detailed information collected from the discussion regarding nature and scope;
-- A list of the anticipated developments that have been discussed in the MR in a
-  dedicated section;
-- Details on caveats for development and potential bottleneck mappings.
+- Detailed information collected from the discussion
+  regarding nature and scope,
+  under the **Reasoning** section;
+- A non-exhaustive list of leading developments
+  that have been discussed in the MR
+  in the **Anticipated Developments** section;
+- Details on potential bottleneck mappings
+  in the **Caveats** section.
 
-Once the official milestone is created, it should be attached to the proposal MR and the
-`ROADMAP.md` table should be updated with the actual link to the milestone before
-merging to `master`.
+Once the official milestone is created,
+it should be attached to the proposal MR and
+the `ROADMAP.md` table should be updated
+with the actual link to the milestone
+before merging to `master`.
 
 >>> [!tip]
-Milestones should be the entry door for new contributors to have a general glimpse on
-what the project has been prioritising and where it wants to go, helping newcomers get
-onboarded more quickly. Therefore, contributors writing official milestones should
-approach the task with the following goals in mind:
+Milestones should be the entry door for new contributors
+to have a general glimpse on
+what the project has been prioritising and
+where it wants to go,
+helping newcomers get onboarded more quickly.
+Therefore, contributors writing official milestones
+should approach the task with the following goals in mind:
 
 - [_Comprehensive, yet succinct_][49];
 - [_Standardised, yet conscious_][50].
 >>>
 
-After a milestone has been completed, a new Merge Request should be opened to update the
-`ROADMAP.md` table in the **Timeline** field with the following possible values:
+After a milestone has been completed,
+a new Merge Request should be opened to
+update the `ROADMAP.md` table in the **Timeline** field
+with the following possible values:
 
-- `**Delivered with <version> :airplane_departure:**`, if properly associated to a
-  [GitLab Release][51];
-- `**Delivered Internally :100:**`, if the milestone has no impact on project releases.
+- `**Delivered with <version> :airplane_departure:**`,
+  if properly associated to a [GitLab Release][51];
+- `**Delivered Internally :100:**`,
+  if the milestone has no impact on project releases.
 
-Likewise, the MRs should be associated with the completed milestone.
+Likewise,
+the MRs should be associated with
+the completed milestone.
+
+#### Work Item Tracking
+
+Galactipy development is iterative
+and structured preferably around [Merge Requests][31].
+Whenever project advancements are not immediately deliverable,
+progress is tracked through GitLab Issues and Tasks.
+Use cases for this type of work item include:
+
+- User requests
+  (since general users are not allowed to create MRs);
+- Larger scoped developments
+  which are unable to be delivered
+  in a single MR;
+- Ideas for future developments
+  which can't be prioritised
+  due to scope or team capacity.
+
+To effectively manage
+issue and task lifecycles,
+we use [GitLab Statuses][64].
+Our approach to this feature
+relies on
+keeping few options for
+in-progress and completed items
+and providing different options
+for other stages of the lifecycle.
+This allows project members to
+better relay [context][46]
+surrounding those items,
+instead of only stating
+their condition.
+
+By combining effective
+status and label assignments,
+both users and the development team
+can locate discussions
+more easily,
+streamlining communication
+and making development more agile.
+
+The following statuses
+have been implemented for the project,
+with contributors expected to
+understand
+each use case and
+when to move from one stage to another:
+
+| Status | Status Category | Description |
+|:-------|:---------------:|:------------|
+| ![Triage icon][52] **Needs Triage** | Triage | Initial stage for [User requests][65], which require a first analysis by a Galactipy contributor before work on its scope is either accepted or declined. It is also the default open state for new items if not overriden. |
+| ![Refinement icon][53] **Needs Refinement** | Triage | Describes more general ideas that might receive development at some point, but whose current state does not detail implementation or paths to delivery. Lacking scope, represents more of a desire than an actual proposal – which might actually prove unfeasible later. Should be used to inform the need for further discussions before being cleared for development. |
+| ![Criteria icon][54] **Needs Criteria** | Triage | This describes items whose scope is set, but acceptance criteria is still pending to be added before being cleared for development. In contrast with the **Needs Refinement** status, in this stage the deliverable is known and understood, but is waiting for a contributor to detail in smaller steps. |
+| ![Steps icon][55] **Needs Delivery Steps** | Triage | A specific type of triaging item, signaling pending work before the item can be cleared as a [starter assignment][26] development. In contrast with the **Needs Criteria**, this stage indicates the work item will be processed with greater detail than usual so a new contributor can pick it up and develop it with little to no friction. |
+| ![Decomposition icon][56] **Needs Decomposition** | Triage | Proposals or requests that have been deemed too large in scope to be considered a single work item and must be broken down in two or more items before proceeding. |
+| ![Greenlit icon][57] **Greenlit** | To Do | Items that have been cleared for development after having their scope and acceptance criteria properly defined. |
+| ![Pipeline icon][58] **Pipeline** | To Do | Items that have scope and acceptance criteria, but that address a specific development stream which is not currently considered the most valuable for delivery. Can be picked for development, but should be left out in favour of **Greenlit** and **Priority** items. |
+| ![Priority icon][59] **Priority** | To Do | Signals items which take priority over other cleared work items. Should be used with discretion and only in cases where lack of action can lead to significant issues to security or user experience. |
+| ![Progress icon][60] **In Progress** | In Progress | Items currently being actively worked on. |
+| ![Done icon][61] **Done** | Done | Items delivered in full. |
+| ![Canceled icon][62] **Out of Scope** | Canceled | Items deemed out of the scope of Galactipy. |
+| ![Canceled icon][62] **Cannot Implement** | Canceled | Items which are unable to be delivered by the development team in its original form, due to technical barriers or security risks. |
+| ![Canceled icon][62] **Not Feasible** | Canceled | Items which can technically be delivered, but that have been declined for development due to any other factor outside the other **Canceled** stage items. |
+| ![Duplicate icon][63] **Duplicate** | Canceled | Items marked as duplicates of previous work items. |
 
 #### GitLab Practices
 
@@ -269,7 +377,7 @@ Likewise, the MRs should be associated with the completed milestone.
 
 Issue titles should be clear to allow anyone visiting the Issue Tracker to understand
 the scope of development, and get more detail by opening the issue page if one picks
-their interest. Thus, issue titles should use imperative, just like [commits][52].
+their interest. Thus, issue titles should use imperative, just like [commits][66].
 
 Using the imperative mood for issue titles is recommended because it clearly states the
 action or goal of the issue as a command or instruction, making it easier to understand
@@ -289,59 +397,69 @@ issue.
 
 ##### Tasks Are Used as Acceptance Criteria for Issues
 
-[Tasks][53] are a specific type of work item in GitLab which can be associated with
-issues as their child items. In Galactipy development, Merge Requests are the
-[default][31] form of actionable development, while issues are used for compiling user
-requests and development intentions that can not be directly delivered through an open
-Merge Request.
+[Tasks][67] are a specific type of work item
+in GitLab
+which can be associated
+with issues as their child items.
+In Galactipy development,
+Merge Requests are
+the [default][31] form of actionable development,
+while issues are used
+for compiling user requests
+and development intentions
+that can not be directly delivered
+through an open Merge Request.
 
-In either case, Tasks must be used to complement the open issue with their acceptance
-criteria to be closed. Their titles should follow the same [rules][54] as issue titles,
-while descriptions are optional if relevant to understand implementation.
+In either case,
+Tasks must be used
+to complement the open issue
+with their acceptance criteria
+to be closed.
+Their titles should follow
+the same [rules][68] as issue titles,
+while descriptions are optional
+if relevant to understand implementation.
 
 >>> [!caution]
-The only labels allowed on tasks are `needs::refinement` and `manual-closure`.
-Otherwise, there should be no labels associated with a task.
->>>
-
-##### Usage of the `needs::refinement` Label
-
-`needs::refinement` is a special label to mark any issue or task that lacks deeper
-clarification. It should be used when an issue is created demonstrating **intention** on
-a course of action, but such course of action is not clear or might prove unfeasible
-later.
-
-Use this label for experimental issues and tasks which need more research before the
-actual actions that will lead to its implementation are evident for a contributor.
-
->>> [!important]
-Do not confuse the `needs::refinement` label with the `needs::criteria` label. The
-former is set when resolution is still unclear, the latter is set when the deliverable
-is known and understood, but is waiting for a contributor to detail in smaller steps.
+The only label allowed on tasks
+is `manual-closure`.
+Otherwise,
+there should be no labels
+associated with a task.
 >>>
 
 ##### Usage of the `seeking-contributors` Labels
 
-`seeking-contributors` is the label used to indicate work items whose authors need help
-from the community in further advancing with development.
+`seeking-contributors` is the label used
+to indicate work items
+whose authors need help from the community
+in further advancing with development.
 
-The `opinion` label marks work items which still need input and definition to be
-declared mature enough to be addressed. It works similarly to the `needs::refinement`
-issue, but whereas the latter denotes a reminder for a contributor to work on its
-scope at a later date, the `seeking-contributors::opinion` label indicates
-those items which are under active discussion, but have not reached a consensus on its
-final scope.
+The `opinion` label marks work items which
+are at a [**Triage**][28] stage
+and whose discussion has stalled.
+It signals other contributors and the community
+that more people are requested
+to provide opinion on the matter,
+as a consensus for its final scope
+has not been reached yet.
 
-The `greenlit` label, on the other hand, is used for items that do not require further
-discussion to define scope or acceptance criteria and are clear enough for other
-contributors to express interest in delivering the solution. It is similar in this
-manner to the `starter-assignment` labels, with the difference that
-`seeking-contributors::greenlit` is aimed towards contributors with intermediate
-experience in the project.
+The `delivery` label,
+on the other hand,
+is used to mark items
+at the **To Do** stage
+that can be picked up for development
+if a contributor is interested
+in delivering the solution.
+It is similar in this manner
+to the `starter-assignment` labels,
+with the difference that `seeking-contributors::delivery` is aimed
+towards contributors
+with intermediate experience in the project.
 
 >>> [!important]
 Contributors planning on refining an issue or Merge Request to mark with the
-`seeking-contributors::greenlit` label should be aware of the **Goldilocks Priority**
+`seeking-contributors::delivery` label should be aware of the **Goldilocks Priority**
 principle: the item's priority should not be so high that a core contributor should do
 it, but not too low that it isn't useful enough for a core contributor to spend time
 reviewing it, answering questions, helping get it into a release etc.
@@ -349,7 +467,7 @@ reviewing it, answering questions, helping get it into a release etc.
 
 ##### Blocks Must be Set at the Same Issue Level
 
-[Issue blocks][55] are not mandatory for development, but marking block relations
+[Issue blocks][69] are not mandatory for development, but marking block relations
 between work items is encouraged when they are clear for the issue author, but might not
 be for someone else. This helps reinforce an orderly development and improve the
 environment for newcomers and veterans alike.
@@ -363,8 +481,8 @@ Given GitLab Tasks are used for acceptance criteria of issues, breaking a delive
 down to smaller components, we prefer to keep only issues and MRs associated with
 milestones. This reduces clutter in the milestone board.
 
-However, given the [default behaviour][56] of GitLab, tasks associated with milestones
-can accumulate over time. The association should be removed by [being queried][57] in
+However, given the [default behaviour][70] of GitLab, tasks associated with milestones
+can accumulate over time. The association should be removed by [being queried][71] in
 the Issue Tracker and edited through the "Bulk edit" option.
 
 ### Versioning Customs
@@ -379,7 +497,7 @@ essential files and configurations for rapid project initiation.
 
 Galactipy’s versioning should be seen as reflecting the progression of our efforts over
 time. Given the absence of breaking changes, we choose to adhere to
-[Intended Effort Versioning][58] for consistency.
+[Intended Effort Versioning][72] for consistency.
 
 We approach our versions with the following pattern:
 
@@ -408,7 +526,7 @@ We approach our versions with the following pattern:
 We apply the [GitLab Philosophy][6] for conducting new development, which means that all
 changes revolve around open Merge Requests, and Merge Requests are the central space for
 discussing design, implementation and monitoring development health with
-[CI pipelines][59].
+[CI pipelines][73].
 
 Creation of new branches without subsequent attachment to a new MR is strongly
 discouraged. If the work is still in progress but needs to be uploaded to the
@@ -418,7 +536,7 @@ repository, name the branch with the `test-` prefix so the CI will ignore it.
 
 #### Gitmoji
 
-Galactipy uses [Gitmoji][60] to characterise the nature of each commit, you should
+Galactipy uses [Gitmoji][74] to characterise the nature of each commit, you should
 familiarise yourself with this method by looking at the list of possible Emoji to be
 used. Additionally, looking at past commits and which files they modified is also a good
 way to understand how Gitmoji should be applied to the project.
@@ -452,18 +570,18 @@ we recommend committing with the `:construction:` Gitmoji so the CI will ignore 
 Commit messages should be clear and concise, and detailing aspects of the commit through
 its body is strongly encouraged, as it helps developers to later understand
 implementation and reasoning behind changes. The article
-[_How to Write a Git Commit Message_][61] is a valuable resource and reading through it
+[_How to Write a Git Commit Message_][75] is a valuable resource and reading through it
 is strongly recommended before contributing, as developers are expected to apply those
 principles when committing.
 
 #### Git Trailers
 
-Every commit should also be identified with the respective [Git trailer][62] to
+Every commit should also be identified with the respective [Git trailer][76] to
 categorise the type of change being made. When a new version of Galactipy is released
 through a tag, a CI pipeline compiles every trailer to automate the version's release
 and update the `CHANGELOG` file in the root directory.
 
-The available trailers are listed below and defined in the [`changelog-config.yml`][63]
+The available trailers are listed below and defined in the [`changelog-config.yml`][77]
 file:
 
 |  Git trailer  |       Category in CHANGELOG        | Use Cases |
@@ -489,7 +607,7 @@ file:
 
 #### Codestyle
 
-The project uses [Ruff][64] for formatting and codestyle. Developers can check both the
+The project uses [Ruff][78] for formatting and codestyle. Developers can check both the
 linter and the formatter with the preconfigured tasks with `invoke codestyle` and
 `invoke check-linter` commands.
 
@@ -501,7 +619,7 @@ changes for approval through the Merge Request.
 
 #### Semantic Line Breaks
 
-When editing Markdown files, [Semantic Line Breaks][65] should be applied. This
+When editing Markdown files, [Semantic Line Breaks][79] should be applied. This
 increases the document's readability by other contributors and makes changes clearer
 when using `git diff`. This comes from Brian Kernighan in his 1974 book
 _"UNIX for Beginners"_:
@@ -518,11 +636,11 @@ Since most people change documents by rewriting phrases and adding, deleting and
 rearranging sentences, these precautions simplify any editing you have to do later.
 >>>
 
-On a more practical level, this [article][66] from Derek Sivers provides additional
+On a more practical level, this [article][80] from Derek Sivers provides additional
 reasons for adopting this style.
 
 The only files that should not follow this rule are issue and Merge Request templates
-inside [`.gitlab`][67] and [`CHANGELOG.md`][68].
+inside [`.gitlab`][81] and [`CHANGELOG.md`][82].
 
 ### Checks & Hooks
 
@@ -531,14 +649,14 @@ Developers are encouraged to run local tests, check codestyle and static typing 
 
 Pre-commit hooks are configured to block updates not following the rules:
 
-- All files must comply the [POSIX][69] standard;
+- All files must comply the [POSIX][83] standard;
 - Pre and post-gen hook files must comply with the Ruff linter.
 
-Ensure both Invoke and Pre-Commit are [installed][70] in your virtual environment.
+Ensure both Invoke and Pre-Commit are [installed][84] in your virtual environment.
 
 ### Continuous Integration
 
-Besides being hosted in GitLab, Galactipy uses [GitLab CI][71] to automate the following
+Besides being hosted in GitLab, Galactipy uses [GitLab CI][85] to automate the following
 development streams:
 
 - Testing;
@@ -547,22 +665,22 @@ development streams:
 - Releases;
 - GitHub mirror branch updates.
 
-For releases and mirror branch updates, a [bot user][72] is used for authoring changes
+For releases and mirror branch updates, a [bot user][86] is used for authoring changes
 through the CI/CD group variable `$GALACTIPY_BOT_API_TOKEN`.
 
 Merge Requests can not be completed unless its CI pipeline passes. The project's CI
 configuration runs under more strict rules and no jobs are allowed to fail. This
-includes the external job provided by [Codacy][73], which is used for code quality
-assurance. Take a look at the [Pull Requests][74] page for Galactipy for further
+includes the external job provided by [Codacy][87], which is used for code quality
+assurance. Take a look at the [Pull Requests][88] page for Galactipy for further
 information on reasons why a PR Quality Review job might have failed.
 
-Developers should be familiar with the [GitLab CI syntax][75] to effectively contribute
+Developers should be familiar with the [GitLab CI syntax][89] to effectively contribute
 with further automation of the development cycle.
 
 ### Licence
 
 By contributing to Galactipy, you agree that your contributions will be licensed under
-the [MIT Licence][76].
+the [MIT Licence][90].
 
 ## :book: Our Philosophy
 
@@ -571,14 +689,14 @@ deeper principles we follow to shape our approach to Galactipy development. This
 outlines our _modus operandi_ and provides insight into the mindset needed for
 successful contributions.
 
-Our project's guidelines are strongly influenced by the [GitLab Handbook][77], which
+Our project's guidelines are strongly influenced by the [GitLab Handbook][91], which
 serves as GitLab's official company manual. Their best practices are transferable to any
 team, and we have adopted several of these principles to formalise expectations for
 contributors within our development ecosystem.
 
 ### Start with a Merge Request
 
-> Adapted from the [Communication][78] section of the GitLab Handbook.
+> Adapted from the [Communication][92] section of the GitLab Handbook.
 
 When possible, it's best practice to start a discussion with a Merge Request (MR)
 instead of an issue. An MR is associated with a specific change that is proposed and
@@ -646,7 +764,7 @@ actionable. An MR is actionable, while an issue will take longer to take action 
 
 ### _Say Why, Not Just What_
 
-> Adapted from the [GitLab Values][79].
+> Adapted from the [GitLab Values][93].
 
 Transparent changes have the reasons for the change laid out clearly along with the
 change itself. This leads to fewer questions later on because people already have some
@@ -655,7 +773,7 @@ questioning, which is less efficient.
 
 This also helps with institutional memory: a year from now when you want to know why a
 decision was made, or not, the issue or MR that has the decision also shares why the
-decision was made. This is related to [Chesterton's fence][80] – it's much easier to
+decision was made. This is related to [Chesterton's fence][94] – it's much easier to
 suggest removing or changing something if you know why it exists in the first place.
 
 If you use generalized terms such as "industry standard" or "best practices", be sure to
@@ -683,7 +801,7 @@ inefficiency.
 
 ### Operate with a Bias for Action
 
-> Adapted from the [GitLab Values][81].
+> Adapted from the [GitLab Values][95].
 
 It's important that we keep our focus on action, and don't fall into the trap of
 analysis paralysis or sticking to a slow, quiet path without risk. Decisions should be
@@ -701,7 +819,7 @@ acute, allowing us to tie elements previously unnoticed that echo through the pr
 Interact with elements of the project with an observant spirit, there is always an
 unseen factor. Capture insights and reflect upon their meaning and implications for the
 project and your work. Software development is human at its core, and
-[**human systems are inherently complex**][82]. We should not let all the code,
+[**human systems are inherently complex**][96]. We should not let all the code,
 interfaces and systems we handle on our work obscure the fact that we pursue building a
 template so it can be useful and cherished by others.
 
@@ -734,7 +852,7 @@ someone else.
 ### There Are no Good First Issues
 
 The concept of labelling issues in open source projects to mark potential good
-contributions for a first timer has its origins in the [First Timers Only][83]
+contributions for a first timer has its origins in the [First Timers Only][97]
 initiative by Kent C. Dodds.
 
 At Galactipy, we tackle the notion of Good First Issues in a different way. We believe
@@ -757,7 +875,7 @@ _The best good first issues are the ones you open yourself._
   steps to conclude the demand, instead of being delivered without ever granting an
   opportunity for someone – and the community – to grow. This also means being available
   to [orient][41] contributors should they feel lost and reassure
-  [clear communication][84] with them;
+  [clear communication][98] with them;
 - For **Galactipy users** who have opened a request on the Issue Tracker, this means
   that the best solution to your request is to deliver it yourself! By approaching
   your requests as gateway to contributing to the project, you generate growth
@@ -780,7 +898,7 @@ Code maintenance within Galactipy itself encompasses:
   - [`post_gen_project.py`][20] is used to ensure the project is generated with the
     correct files and content;
 - [Tests][21] for the functions defined in pre-gen and post-gen hooks;
-- [Tasks][85] aimed at improving and speeding up local development with [Invoke][86].
+- [Tasks][99] aimed at improving and speeding up local development with [Invoke][100].
 
 Outside this narrow set of contributions, most of the development team's time will
 involve:
@@ -797,7 +915,7 @@ involve:
   - URLs linking to the repository and configuration guide for each tool provided with
     generated project as inline comments for their respective configuration sections;
   - Comment markers to guide users on additional configuration that might be needed for
-    proper functioning of generated projects; see [this section][87] for further
+    proper functioning of generated projects; see [this section][101] for further
     information.
 
 ### Preparing to Contribute
@@ -847,7 +965,7 @@ To work under a proactive proposal mindset, we always [start with a Merge Reques
 
 It is best to follow these best practices when proposing changes:
 
-- **Always** use one of the [Merge Request templates][88], applying the proper type to
+- **Always** use one of the [Merge Request templates][102], applying the proper type to
   the change being proposed. Each template contains a brief summary detailing under
   which circumstances it is best employed. This helps coordinate discussions with the
   rest of the team and facilitates the reviewer's work;
@@ -874,13 +992,13 @@ _Live by smaller iterations._
 Small MRs which are more easily reviewed lead to higher code quality, which is more
 important to Galactipy than having a minimal commit log. The smaller an MR is, the more
 likely it will be merged quickly. After that you can send more MRs to enhance and expand
-the feature. The [How to Get Faster PR Reviews][89] guide from the Kubernetes team also
+the feature. The [How to Get Faster PR Reviews][103] guide from the Kubernetes team also
 has some great points regarding this.
 
 #### Review Criteria
 
 Before considering how to contribute, it's useful to understand how contributions are
-reviewed, and why changes may be rejected. See the detailed [guide][90] for code
+reviewed, and why changes may be rejected. See the detailed [guide][104] for code
 reviewers from Google's Engineering Practices documentation. Simply put, changes that
 have many or large positives, and few negative effects or risks, are much more likely to
 be merged, and merged quickly. Risky and less valuable changes are very unlikely to be
@@ -909,7 +1027,7 @@ or hinders its probability of being merged:
 
 ### Development Workflow
 
-After cloning Galactipy and following the [development setup][70], run `invoke test` (an
+After cloning Galactipy and following the [development setup][84], run `invoke test` (an
 isolated Pytest task) and if no errors are raised, then run `invoke sweep` (the whole
 set of development checks in a single task). This step is crucial to ensure you don't
 introduce any regressions as you work on your change.
@@ -918,7 +1036,7 @@ introduce any regressions as you work on your change.
 The project uses `pytest-cookies` as a development dependency. This plugin allows
 Pytest to validate if the current state of the code and configuration files allows for
 a project to be generated without errors. While it acts as a handy tool to ensure that
-critical errors will be caught by [`test_bake_project`][91], the reality is that
+critical errors will be caught by [`test_bake_project`][105], the reality is that
 developers should be aware of limitations currently faced by the project to implement
 end-to-end tests, as its nature relates less to code and more to behaviour after file
 generation.
@@ -949,7 +1067,7 @@ A non-exhaustive list of steps to consider:
   - Do tests for the generated project pass if the `bare_repo` option used was `False`?
   - Are files rendered correctly? Are there any missing files?
   - Are files rendered without excessive blank lines or lack thereof due to Jinja
-    [whitespace control][92]?
+    [whitespace control][106]?
   - After setting up required external configuration identified the `UPDATEME` tags,
     does the project CI pass after pushing a semantic version tag to its temporary repo?
   - Have the changes for a specific configuration file being altered been applied and
@@ -979,7 +1097,7 @@ in case they need to check output.
 ### Merge Request Review Process
 
 After [starting with a Merge Request][31], ensuring you have opened an
-[admissible MR][93] and have finished contributing with changes, the review process can
+[admissible MR][107] and have finished contributing with changes, the review process can
 start.
 
 #### Contribution Acceptance Criteria
@@ -998,7 +1116,7 @@ contribution acceptance criteria below:
      restarting the failing CI job, rebasing on top of the target branch to bring in
      updates that may resolve the failure, or if it has not been fixed yet, ask a
      developer to help you fix the test;
-5. The MR contains a few logically organized commits, using [Gitmoji][94]. We do not
+5. The MR contains a few logically organized commits, using [Gitmoji][108]. We do not
    apply the squash method for merging changes;
 6. The changes can merge without problems. If not, you should rebase if you're the only
    one working on your feature branch, otherwise merge the default branch into the MR
@@ -1059,7 +1177,7 @@ confident that:
   vulnerabilities.
 
 The best way to do this, and to avoid unnecessary back-and-forth with reviewers, is to
-perform a self-review of your own Merge Request, following the [Code Review][95]
+perform a self-review of your own Merge Request, following the [Code Review][109]
 guidelines. During this self-review, try to include comments in the MR on lines where
 decisions or trade-offs were made, or where a contextual explanation might aid the
 reviewer in more easily understanding the code.
@@ -1142,7 +1260,7 @@ reviewers may spot things later that they may not have seen the first time.
   shiny new branch, read through the entire diff. Does it make sense? Did you include
   something unrelated to the overall purpose of the changes? Did you forget to remove
   any debugging code?
-- Write a detailed description as outlined in the [Merge Request guidelines][93]. Some
+- Write a detailed description as outlined in the [Merge Request guidelines][107]. Some
   reviewers may not be familiar with the product feature or area of the codebase.
   Thorough descriptions help all reviewers understand your request and test effectively;
 - If you know your change depends on another being merged first, note it in the
@@ -1213,7 +1331,7 @@ refactors the existing code). Then:
   suggestion;
 - Ensure there are no open dependencies. Check linked issues for blockers. Clarify with
   the submitters if necessary. If blocked by one or more open MRs, set an
-  [MR dependency][96];
+  [MR dependency][110];
 - After a round of line notes, it can be helpful to post a summary note such as "Looks
   good to me", or "Just a couple things to address";
 - Let the submitter know if changes are required following your review.
@@ -1224,7 +1342,7 @@ that the submitter already knows how to add a test or run a benchmark.
 Specific performance optimization techniques, coding styles, and conventions change over
 time. **The first impression you give to a new contributor never does.**
 
-[Nits][97] (requests for small changes that are not essential) are fine, but try to
+[Nits][111] (requests for small changes that are not essential) are fine, but try to
 avoid stalling the Merge Request. Most nits can typically be fixed by the reviewer but
 they can also be an opportunity for the contributor to learn a bit more about the
 project.
@@ -1274,7 +1392,7 @@ deep the reviewer can interfere with the code created by a submitter.
 - Doing things well today is usually better than doing something perfectly tomorrow.
   Shipping a kludge today is usually worse than doing something well tomorrow. When you
   are not able to find the right balance, ask other people about their opinion and use
-  the [`seeking-contributors::opinion`][98] label.
+  the [`seeking-contributors::opinion`][112] label.
 
 #### The Responsibility of the Maintainers
 
@@ -1309,7 +1427,7 @@ and explain why in a comment.
 
 ### How to Behave among Other Contributors
 
-Merge Requests, when worked under the concept of [proposals][93], turn into live and
+Merge Requests, when worked under the concept of [proposals][107], turn into live and
 open discussions. Whenever contributing to these discussions, please remind of the
 following to write your comments:
 
@@ -1354,26 +1472,26 @@ goal:
    - Keep the `CONTRIBUTING` file up to date and always reflective of the project's
      current policies and guidelines. Successful projects that reach larger audiences
      are able to do so through ease of access to knowledge surrounding them;
-   - Make a conscious attempt to keep code and configuration [organised][99], with
+   - Make a conscious attempt to keep code and configuration [organised][113], with
      relevant implementation reasoning [documented][46] via the commit description;
    - Maintain and update Git hooks to check and enforce any project standards so people
      don't have the frustration of going back and forth on the Merge Request;
    - Maintain and update CI jobs to automate further development tasks and allow
      contributors to focus on delivering new features;
-   - Be conscious of the [energy vampires][100] perturbing development and either propose
+   - Be conscious of the [energy vampires][114] perturbing development and either propose
      [actions][39] for eliminating them or seek discussion and feedback via an
-     [**Internal Improvement**][101] MR;
+     [**Internal Improvement**][115] MR;
    - Keep the GitLab repository efficient by properly labelling work items and
      associating them with the relevant project milestone;
 1. Become an advocate for new contributors:
-   - Be overly conscious of [how to behave][84] when interacting with a user publishing
-     their first request. The guidelines for [reviewers][102] also apply when
+   - Be overly conscious of [how to behave][98] when interacting with a user publishing
+     their first request. The guidelines for [reviewers][116] also apply when
      communicating with Galactipy users in their requests;
    - Before jumping to resolve a request opened by a user, the best thing you can do is
      to open a sea of opportunities: **invite the author to solve the request together**
      and in the process grant them their first contribution to the project. You already
      know the drill, use the space to guide them on our ways and standards, empower them
-     to understand how the project operates. You have [started small][103], so why not
+     to understand how the project operates. You have [started small][117], so why not
      help someone else take this small first step?
    - Likewise, there are developments you could complete in less than 10 minutes.
      Why not turn them into [starter assignments][26]? Make first contributions
@@ -1401,14 +1519,14 @@ faster communication and resolution.
 
 ### Contributing by Helping Other People
 
-Inspired by [Typer's][104] welcoming community and their positive outlook on the effect
-of [collective intelligence][105], we are committed to enabling an environment in which
+Inspired by [Typer's][118] welcoming community and their positive outlook on the effect
+of [collective intelligence][119], we are committed to enabling an environment in which
 such exponential interactions can take place. As such, one of the best ways people can
 contribute to Galactipy is by helping others, either users like you who have reached the
 members of the project with questions and requests or the development team itself.
 
 The most direct way you can provide your help to others is to look for open
-[Requests for Support][106] and try to answer other users' questions. In many cases you
+[Requests for Support][120] and try to answer other users' questions. In many cases you
 might already know the answer to them!
 
 Just remember, the most important point is: **try to be kind**. People come with their
@@ -1435,7 +1553,7 @@ Here is a general guide on how to help other users with their requests:
    general, most likely there's something related to the person's original code. In many
    cases they will only copy a fragment of the code, but that's not enough to reproduce
    the problem;
-   - You can ask them to provide a [minimal, reproducible example][107], that you can
+   - You can ask them to provide a [minimal, reproducible example][121], that you can
      copy-paste and run locally to see the same error or behavior they are seeing, or to
      understand their use case better;
    - If you are feeling too generous, you can try to create an example like that
@@ -1504,7 +1622,7 @@ We thank you in advance for your kindness and dedication!
 If you are simply having trouble using Galactipy, go through the [`README`][16] file and
 links directing to support content first, rather than consider filing a request.
 
-Galactipy implements three types of requests for users through [Issue Templates][108]:
+Galactipy implements three types of requests for users through [Issue Templates][122]:
 
 - **Requests for Correction**;
 - **Requests for Improvement**;
@@ -1536,7 +1654,7 @@ a quick response:
   facilitates our comprehension of your perspective and helps creating empathy with your
   case;
 - **Avoid duplication** by making a real effort to determine whether your request has
-  not been already made by another user before using the [Search][109] feature for all
+  not been already made by another user before using the [Search][123] feature for all
   items in the Issue Tracker;
 - It is also important to avoid requests that describe too much. Each should be
   documented in its own request. It's often unavoidable that requests can be complex,
@@ -1553,7 +1671,7 @@ a quick response:
   - To make your request more descriptive, avoid vague titles like "update files" or
     "fix issue." Instead, specify what the request comprises of;
 - Properly format your messages. Help the reader focus on what matters and understand
-  the structure of your message. [GitLab Flavoured Markdown][110] has a simple but
+  the structure of your message. [GitLab Flavoured Markdown][124] has a simple but
   effective syntax, consider taking a look before writing your request;
 - **Good requests are also professional development.** Many companies have a
   remote-first style where most discussions happen asynchronously. We truly believe that
@@ -1567,7 +1685,7 @@ issue. Try running Cookiecutter again paying attention to the parameters you hav
 provided.
 
 If you are still having difficulty generating your project as desired, open an
-[RFS][111] and provide your `cookiecutter-config-file.yml` if applicable.
+[RFS][125] and provide your `cookiecutter-config-file.yml` if applicable.
 
 Only open a Request for Correction if you have clearly identified an unexpected
 behaviour with template generation that needs to be addressed. Otherwise, if details are
@@ -1580,7 +1698,7 @@ features provided by Galactipy, either existent or yet-to-be-implemented. They a
 welcome, as they help us engage with the community on a more proactive level and work to
 deliver a solution of aggregated value to our users.
 
-But before opening an [RFI][112], take a moment to find out whether your idea fits with
+But before opening an [RFI][126], take a moment to find out whether your idea fits with
 the scope and [aims][24] of the project. It's up to _you_ to make a strong case to
 convince the project's developers of the merits of this feature. Please provide as much
 detail and context as possible.
@@ -1613,13 +1731,13 @@ namely bugs.
 
 A bug is a **demonstrable** problem that is caused by the code in the repository.
 
-Guidelines for [RFCs][113]:
+Guidelines for [RFCs][127]:
 
-- Use the [issue search][114] to check if a request has already been reported;
+- Use the [issue search][128] to check if a request has already been reported;
 - Check if the issue has been fixed by trying to reproduce it using the latest version
   of Galactipy;
 - **Isolate the problem:** create a test case to demonstrate your issue. Provide either
-  a repository, [gist][115]/[snippet][116] or code sample to demonstrate you problem.
+  a repository, [gist][129]/[snippet][130] or code sample to demonstrate you problem.
 
 We kindly ask applicants to be available for follow-up questions to clarify their
 reports if more information is needed. A good RFC should include sufficient information
@@ -1639,7 +1757,7 @@ information below is much valuable to accelerate the process:
   - Did you address any `UPDATEME` tags that could be related to the tool/service in
     question? What did you do?
 - Can you provide error logs or tracebacks to further detail the issue? Tools like
-  [`reprexpy`][117] can assist you in providing more technical detail if you are not
+  [`reprexpy`][131] can assist you in providing more technical detail if you are not
   able to;
 - Do you have any visual evidence to share for further investigation?
 
@@ -1687,8 +1805,8 @@ help overcoming the paralysis of [taking action][39]:
 - You should not rush through a code review, but also, you need to do it promptly. Your
   colleagues are waiting for you.
 
-We strongly encourage you to take further readings on the [Review Process][118], the
-[Responsibilities of the Reviewer][102] and [general communication guidelines][84] to get
+We strongly encourage you to take further readings on the [Review Process][132], the
+[Responsibilities of the Reviewer][116] and [general communication guidelines][98] to get
 more detail on how to make the most out of your contributions as a reviewer. We
 appreciate your commitment beforehand!
 
@@ -1727,14 +1845,14 @@ opportunities that influences the project's most impactful deliverables and
 communicating them to the development team:
 
 - Getting familiar with our milestones and associated items, and then opening additional
-  [**Requests for Improvement**][112] that pertain to existing milestones;
-- Commenting on [issues without associated milestones][119] and suggesting what relevant
+  [**Requests for Improvement**][126] that pertain to existing milestones;
+- Commenting on [issues without associated milestones][133] and suggesting what relevant
   developments could they be associated with for the development team to evaluate;
 - Linking issues and Merge Requests that provide combined effort towards a single goal
   of the project. If two or more development streams can be delivered with the same
   solution, we can generate increased aggregated value;
 - Becoming a [contributor][4] to act on existing milestones, propose new developments
-  not yet mapped or recommend [changes to the roadmap itself][120].
+  not yet mapped or recommend [changes to the roadmap itself][134].
 
 ### Contributing by Promoting Galactipy
 
@@ -1746,10 +1864,10 @@ support!
 
 Here's how you can promote Galactipy:
 
-- Set the [Notification level][121] to **"Watch"** on the [Galactipy organization][122]
+- Set the [Notification level][135] to **"Watch"** on the [Galactipy organization][136]
   and receive updates on most of our activity;
 - Star the project on both [GitLab][37] and [GitHub][38];
-- Use our [badge][123] on your projects generated with Galactipy;
+- Use our [badge][137] on your projects generated with Galactipy;
 - Share the project with your colleagues;
 - Write a short article on how you are using Galactipy in your projects;
 - Share your best practices and tools for project management with us, we love getting
@@ -1784,8 +1902,8 @@ Thank you so much for using Galactipy!
 [25]: https://gitlab.com/galactipy/galactipy/-/issues/?state=opened&label_name%5B%5D=seeking-contributors%3A%3A%2A&type%5B%5D=issue
 [26]: https://gitlab.com/galactipy/galactipy/-/issues/?state=opened&label_name%5B%5D=starter-assignment%3A%3A%2A&type%5B%5D=issue
 [27]: https://gitlab.com/galactipy/galactipy/-/labels
-[28]: https://gitlab.com/galactipy/galactipy/-/issues/?state=opened&label_name%5B%5D=needs%3A%3A%2A&type%5B%5D=issue
-[29]: https://gitlab.com/galactipy/galactipy/-/issues/?state=opened&label_name%5B%5D=needs%3A%3Atriage&type%5B%5D=issue
+[28]: #work-item-tracking
+[29]: https://gitlab.com/galactipy/galactipy/-/issues/?state=opened&status=Needs%20Triage&type%5B%5D=issue
 [30]: https://goauthentik.io/blog/2024-03-07-why-contributing-to-open-source-is-scary/
 [31]: #start-with-a-merge-request
 [32]: mailto:mpq.dev@pm.me
@@ -1808,75 +1926,89 @@ Thank you so much for using Galactipy!
 [49]: https://www.reforge.com/blog/user-stories-misuse
 [50]: https://www.mountaingoatsoftware.com/blog/critiquing-one-of-my-own-real-user-stories
 [51]: https://docs.gitlab.com/user/project/releases/
-[52]: https://cbea.ms/git-commit/#imperative
-[53]: https://docs.gitlab.com/user/tasks/
-[54]: #issue-titles-should-be-framed-in-imperative-mood
-[55]: https://docs.gitlab.com/user/project/issues/related_issues/#blocking-issues
-[56]: https://docs.gitlab.com/user/tasks/#add-a-task-to-a-milestone
-[57]: https://gitlab.com/galactipy/galactipy/-/issues/?state=all&type%5B%5D=task&milestone_title=Any
-[58]: https://jacobtomlinson.dev/effver/
-[59]: #continuous-integration
-[60]: https://gitmoji.dev/
-[61]: https://cbea.ms/git-commit/
-[62]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
-[63]: https://gitlab.com/galactipy/galactipy/-/blob/master/.gitlab/changelog_config.yml
-[64]: https://docs.astral.sh/ruff/
-[65]: https://sembr.org/
-[66]: https://sive.rs/1s
-[67]: https://gitlab.com/galactipy/galactipy/-/tree/master/.gitlab
-[68]: https://gitlab.com/galactipy/galactipy/-/blob/master/CHANGELOG.md
-[69]: https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap03.html#tag_03_206
-[70]: #development-setup
-[71]: https://docs.gitlab.com/topics/build_your_application/
-[72]: https://docs.gitlab.com/user/group/settings/group_access_tokens/#bot-users-for-groups
-[73]: https://app.codacy.com/gl/galactipy/galactipy/pull-requests/open
-[74]: https://app.codacy.com/gl/galactipy/galactipy/pull-requests/open
-[75]: https://docs.gitlab.com/ci/yaml/
-[76]: https://gitlab.com/galactipy/galactipy/-/blob/master/LICENCE
-[77]: https://handbook.gitlab.com/
-[78]: https://handbook.gitlab.com/handbook/communication/#start-with-a-merge-request
-[79]: https://handbook.gitlab.com/handbook/values/#say-why-not-just-what
-[80]: https://theknowledge.io/chestertons-fence-explained/
-[81]: https://handbook.gitlab.com/handbook/values/#operate-with-a-bias-for-action
-[82]: https://conversational-leadership.net/we-human-beings-are-complex/
-[83]: https://kentcdodds.com/blog/first-timers-only
-[84]: #how-to-behave-among-other-contributors
-[85]: https://gitlab.com/galactipy/galactipy/-/blob/master/tasks.py
-[86]: https://www.pyinvoke.org/
-[87]: #contributing-with-documentation-changes
-[88]: https://gitlab.com/galactipy/galactipy/-/tree/master/.gitlab/merge_request_templates
-[89]: https://github.com/kubernetes/kubernetes/blob/release-1.5/docs/devel/faster_reviews.md
-[90]: https://google.github.io/eng-practices/review/
-[91]: https://gitlab.com/galactipy/galactipy/-/blob/master/tests/test_template.py#L1
-[92]: https://jinja.palletsprojects.com/en/stable/templates/#whitespace-control
-[93]: #opening-admissible-merge-requests
-[94]: #gitmoji
-[95]: #merge-request-review-process
-[96]: https://docs.gitlab.com/user/project/merge_requests/dependencies/
-[97]: https://josipmisko.com/posts/code-review-nit
-[98]: https://gitlab.com/galactipy/galactipy/-/issues/?state=opened&label_name%5B%5D=seeking-contributors%3A%3Aopinion&type%5B%5D=issue
-[99]: https://gregorybeamer.wordpress.com/2020/11/12/why-code-organization-is-so-important-in-software/
-[100]: https://simonsinek.com/stories/the-right-way-to-stand-up-for-yourself-at-work/
-[101]: https://gitlab.com/galactipy/galactipy/-/merge_requests/new?issuable_template=Internal%20Improvements
-[102]: #the-responsibility-of-the-reviewer
-[103]: https://firstpr.me/
-[104]: https://typer.tiangolo.com/help-typer/#help-others-with-questions-in-github
-[105]: https://www.blockchain-council.org/ai/collective-intelligence-framework/
-[106]: https://gitlab.com/galactipy/galactipy/-/issues/?state=opened&label_name%5B%5D=rfs&type%5B%5D=issue
-[107]: https://stackoverflow.com/help/minimal-reproducible-example
-[108]: https://gitlab.com/galactipy/galactipy/-/tree/master/.gitlab/issue_templates
-[109]: https://gitlab.com/galactipy/galactipy/-/issues/?state=all&type%5B%5D=issue
-[110]: https://docs.gitlab.com/user/markdown/
-[111]: https://gitlab.com/galactipy/galactipy/-/issues/new?description_template=Request%20for%20Support
-[112]: https://gitlab.com/galactipy/galactipy/-/issues/new?description_template=Request%20for%20Improvement
-[113]: https://gitlab.com/galactipy/galactipy/-/issues/new?description_template=Request%20for%20Correction
-[114]: https://gitlab.com/galactipy/galactipy/-/issues/?state=opened&label_name%5B%5D=rfc&type%5B%5D=issue
-[115]: https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists
-[116]: https://docs.gitlab.com/user/snippets/
-[117]: https://reprexpy.readthedocs.io/en/latest/
-[118]: #merge-request-review-process
-[119]: https://gitlab.com/galactipy/galactipy/-/issues/?state=opened&type%5B%5D=issue&milestone_title=None
-[120]: #roadmap-management
-[121]: https://docs.gitlab.com/user/profile/notifications/#notification-levels
-[122]: https://gitlab.com/galactipy
-[123]: https://gitlab.com/galactipy/galactipy#page_with_curl-citation
+[52]: https://i.imgur.com/TvihyBU.png
+[53]: https://i.imgur.com/w3ooBe3.png
+[54]: https://i.imgur.com/vh3wx6m.png
+[55]: https://i.imgur.com/1qKaXvT.png
+[56]: https://i.imgur.com/jJqAFTw.png
+[57]: https://i.imgur.com/EUrGcQx.png
+[58]: https://i.imgur.com/t1PyyRu.png
+[59]: https://i.imgur.com/XImhPUk.png
+[60]: https://i.imgur.com/Arfse0s.png
+[61]: https://i.imgur.com/EgINyEc.png
+[62]: https://i.imgur.com/LTYh3mB.png
+[63]: https://i.imgur.com/Z82JtFn.png
+[64]: https://docs.gitlab.com/user/work_items/status/
+[65]: https://gitlab.com/galactipy/galactipy/-/issues/?state=opened&type%5B%5D=issue&label_name%5B%5D=request%3A%3A%2A
+[66]: https://cbea.ms/git-commit/#imperative
+[67]: https://docs.gitlab.com/user/tasks/
+[68]: #issue-titles-should-be-framed-in-imperative-mood
+[69]: https://docs.gitlab.com/user/project/issues/related_issues/#blocking-issues
+[70]: https://docs.gitlab.com/user/tasks/#add-a-task-to-a-milestone
+[71]: https://gitlab.com/galactipy/galactipy/-/issues/?state=all&type%5B%5D=task&milestone_title=Any
+[72]: https://jacobtomlinson.dev/effver/
+[73]: #continuous-integration
+[74]: https://gitmoji.dev/
+[75]: https://cbea.ms/git-commit/
+[76]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
+[77]: https://gitlab.com/galactipy/galactipy/-/blob/master/.gitlab/changelog_config.yml
+[78]: https://docs.astral.sh/ruff/
+[79]: https://sembr.org/
+[80]: https://sive.rs/1s
+[81]: https://gitlab.com/galactipy/galactipy/-/tree/master/.gitlab
+[82]: https://gitlab.com/galactipy/galactipy/-/blob/master/CHANGELOG.md
+[83]: https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap03.html#tag_03_206
+[84]: #development-setup
+[85]: https://docs.gitlab.com/topics/build_your_application/
+[86]: https://docs.gitlab.com/user/group/settings/group_access_tokens/#bot-users-for-groups
+[87]: https://app.codacy.com/gl/galactipy/galactipy/pull-requests/open
+[88]: https://app.codacy.com/gl/galactipy/galactipy/pull-requests/open
+[89]: https://docs.gitlab.com/ci/yaml/
+[90]: https://gitlab.com/galactipy/galactipy/-/blob/master/LICENCE
+[91]: https://handbook.gitlab.com/
+[92]: https://handbook.gitlab.com/handbook/communication/#start-with-a-merge-request
+[93]: https://handbook.gitlab.com/handbook/values/#say-why-not-just-what
+[94]: https://theknowledge.io/chestertons-fence-explained/
+[95]: https://handbook.gitlab.com/handbook/values/#operate-with-a-bias-for-action
+[96]: https://conversational-leadership.net/we-human-beings-are-complex/
+[97]: https://kentcdodds.com/blog/first-timers-only
+[98]: #how-to-behave-among-other-contributors
+[99]: https://gitlab.com/galactipy/galactipy/-/blob/master/tasks.py
+[100]: https://www.pyinvoke.org/
+[101]: #contributing-with-documentation-changes
+[102]: https://gitlab.com/galactipy/galactipy/-/tree/master/.gitlab/merge_request_templates
+[103]: https://github.com/kubernetes/kubernetes/blob/release-1.5/docs/devel/faster_reviews.md
+[104]: https://google.github.io/eng-practices/review/
+[105]: https://gitlab.com/galactipy/galactipy/-/blob/master/tests/test_template.py#L1
+[106]: https://jinja.palletsprojects.com/en/stable/templates/#whitespace-control
+[107]: #opening-admissible-merge-requests
+[108]: #gitmoji
+[109]: #merge-request-review-process
+[110]: https://docs.gitlab.com/user/project/merge_requests/dependencies/
+[111]: https://josipmisko.com/posts/code-review-nit
+[112]: https://gitlab.com/galactipy/galactipy/-/issues/?state=opened&label_name%5B%5D=seeking-contributors%3A%3Aopinion&type%5B%5D=issue
+[113]: https://gregorybeamer.wordpress.com/2020/11/12/why-code-organization-is-so-important-in-software/
+[114]: https://simonsinek.com/stories/the-right-way-to-stand-up-for-yourself-at-work/
+[115]: https://gitlab.com/galactipy/galactipy/-/merge_requests/new?issuable_template=Internal%20Improvements
+[116]: #the-responsibility-of-the-reviewer
+[117]: https://firstpr.me/
+[118]: https://typer.tiangolo.com/help-typer/#help-others-with-questions-in-github
+[119]: https://www.blockchain-council.org/ai/collective-intelligence-framework/
+[120]: https://gitlab.com/galactipy/galactipy/-/issues/?state=opened&label_name%5B%5D=request%3A%3Asupport&type%5B%5D=issue
+[121]: https://stackoverflow.com/help/minimal-reproducible-example
+[122]: https://gitlab.com/galactipy/galactipy/-/tree/master/.gitlab/issue_templates
+[123]: https://gitlab.com/galactipy/galactipy/-/issues/?state=all&type%5B%5D=issue
+[124]: https://docs.gitlab.com/user/markdown/
+[125]: https://gitlab.com/galactipy/galactipy/-/issues/new?description_template=Request%20for%20Support
+[126]: https://gitlab.com/galactipy/galactipy/-/issues/new?description_template=Request%20for%20Improvement
+[127]: https://gitlab.com/galactipy/galactipy/-/issues/new?description_template=Request%20for%20Correction
+[128]: https://gitlab.com/galactipy/galactipy/-/issues/?state=opened&label_name%5B%5D=request%3A%3Acorrection&type%5B%5D=issue
+[129]: https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists
+[130]: https://docs.gitlab.com/user/snippets/
+[131]: https://reprexpy.readthedocs.io/en/latest/
+[132]: #merge-request-review-process
+[133]: https://gitlab.com/galactipy/galactipy/-/issues/?state=opened&type%5B%5D=issue&milestone_title=None
+[134]: #roadmap-management
+[135]: https://docs.gitlab.com/user/profile/notifications/#notification-levels
+[136]: https://gitlab.com/galactipy
+[137]: https://gitlab.com/galactipy/galactipy#page_with_curl-citation
