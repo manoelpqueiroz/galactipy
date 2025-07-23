@@ -5,9 +5,10 @@
 from typing import Annotated
 
 import typer
-from rich import print
+from rich.console import Console
 
 from {{ cookiecutter.package_name }} import __version__
+from {{ cookiecutter.package_name }}.cli.styles import AppCustomStyles
 {%- if cookiecutter.app_type == 'tui' %}
 from {{ cookiecutter.package_name }}.tui.main_window import TerminalApp
 
@@ -25,12 +26,12 @@ app = typer.Typer(no_args_is_help=True)
 
 def version_callback(print_version: bool):
     if print_version:
-        print(
-            ":package:[yellow]{{ cookiecutter.project_name }}[/] "
-            f"[bold green]{__version__}[/]"
+        Console(theme=AppCustomStyles.NOCTIS).print(
+            ":package:[declaration]{{ cookiecutter.project_name }}[/] "
+            f"[bold fstring]{__version__}[/]"
         )
 
-        raise typer.Exit()
+        raise typer.Exit
 
 
 {% if cookiecutter.app_type == 'tui' -%}

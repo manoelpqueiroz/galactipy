@@ -111,7 +111,11 @@ def removal_tree(tmp_path):
 
     tui_directory = tmp_path / package_name / "tui"
     bulk_file_creation(
-        tui_directory, "main_window.py", components=[".gitkeep"], css=["demo.tcss"]
+        tui_directory,
+        "main_window.py",
+        "themes.py",
+        components=[".gitkeep"],
+        css=["demo.tcss", "noctis.tcss"],
     )
 
     return {
@@ -140,6 +144,7 @@ def removal_tree(tmp_path):
         "tui": {
             "root": tui_directory,
             "main_window": tui_directory / "main_window.py",
+            "themes": tui_directory / "themes.py",
             "components": {
                 "root": tui_directory,
                 "gitkeep": tui_directory / "components" / ".gitkeep",
@@ -147,6 +152,7 @@ def removal_tree(tmp_path):
             "css": {
                 "root": tui_directory / "css",
                 "demo": tui_directory / "css" / "demo.tcss",
+                "noctis": tui_directory / "css" / "noctis.tcss",
             },
         },
         "tests": {

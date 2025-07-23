@@ -120,8 +120,10 @@ class TestFileRemoval:
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
         assert tui_files["main_window"].exists()
+        assert tui_files["themes"].exists()
         assert tui_files["components"]["gitkeep"].exists()
         assert tui_files["css"]["demo"].exists()
+        assert tui_files["css"]["noctis"].exists()
 
         assert cli_files["root_command"].exists()
         assert not cli_files["commands"]["launch"].exists()
@@ -151,8 +153,10 @@ class TestFileRemoval:
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
         assert tui_files["main_window"].exists()
+        assert tui_files["themes"].exists()
         assert tui_files["components"]["gitkeep"].exists()
         assert tui_files["css"]["demo"].exists()
+        assert tui_files["css"]["noctis"].exists()
 
         assert cli_files["root_command"].exists()
         assert not cli_files["commands"]["launch"].exists()
@@ -179,8 +183,10 @@ class TestFileRemoval:
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
         assert tui_files["main_window"].exists()
+        assert tui_files["themes"].exists()
         assert tui_files["components"]["gitkeep"].exists()
         assert tui_files["css"]["demo"].exists()
+        assert tui_files["css"]["noctis"].exists()
 
         assert cli_files["root_command"].exists()
         assert cli_files["commands"]["root"].exists()
@@ -210,8 +216,10 @@ class TestFileRemoval:
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
         assert tui_files["main_window"].exists()
+        assert tui_files["themes"].exists()
         assert tui_files["components"]["gitkeep"].exists()
         assert tui_files["css"]["demo"].exists()
+        assert tui_files["css"]["noctis"].exists()
 
         assert cli_files["root_command"].exists()
         assert cli_files["commands"]["launch"].exists()
