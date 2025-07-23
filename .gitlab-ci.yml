@@ -36,7 +36,7 @@ workflow:
   rules:
     - if: $CI_COMMIT_TITLE =~ /(\:construction|WIP)\:.*/i
       when: never
-    - if: $CI_COMMIT_BRANCH =~ /^test.*/i
+    - if: $CI_COMMIT_BRANCH =~ /^(test|WIP).*/i
       when: never
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
     - if: $CI_COMMIT_TAG
@@ -62,8 +62,6 @@ default:
     - if: $CI_COMMIT_TAG
       when: never
     - if: $CI_PIPELINE_SOURCE == 'schedule'
-      when: never
-    - if: $GITLAB_USER_LOGIN =~ /^(project|group)_\d+_bot_\w+/i
       when: never
     - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE != 'merge_request_event'
       changes:
@@ -124,8 +122,6 @@ codacy-report:
   image: alpine:latest
   rules:
     - if: $CI_COMMIT_TAG
-      when: never
-    - if: $GITLAB_USER_LOGIN =~ /^(project|group)_\d+_bot_\w+/i
       when: never
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
       changes:

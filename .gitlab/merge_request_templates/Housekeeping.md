@@ -17,7 +17,10 @@ This template should be used to propose and discuss changes that improve project
 
 ## Submitter Checklist
 
-<!-- Mark complying items as they are delivered -->
+<!--
+  Mark complying items as they are delivered with `[x]`
+  Single out unnecessary or unworkable items with `[~]`
+-->
 
 >>> [!caution] :scroll: Policy compliance
 
@@ -40,6 +43,7 @@ This template should be used to propose and discuss changes that improve project
 - [ ] I have either:
   - Bumped the Galactipy [version][9] appropriately as my final commit for this change;
   - Kept the Galactipy version the same, as it does not change end-user files.
+
 >>>
 
 >>> [!tip] :reminder_ribbon: Contribution control
@@ -86,5 +90,3 @@ I attest that during the course of this development, the following interactions 
 
 [11]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
 [12]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
-
-## Related Issues

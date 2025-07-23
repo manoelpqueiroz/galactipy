@@ -18,7 +18,7 @@ maintainers = [
 # Keywords description https://python-poetry.org/docs/pyproject/#keywords
 keywords = []  # UPDATEME with relevant keywords
 dynamic = ["version", "classifiers"]
-{%- if not cookiecutter.bare_repo %}
+{%- if cookiecutter.app_type != 'bare_repo' %}
 
 [project.scripts]
 # Entry points for the package https://python-poetry.org/docs/pyproject/#scripts
@@ -48,17 +48,25 @@ packages = [
 
 # Pypi classifiers: https://pypi.org/classifiers/
 classifiers = [  # UPDATEME with additional classifiers
-  "Development Status :: 3 - Alpha",
+  "Development Status :: 1 - Planning",
   "Intended Audience :: Developers",
   "Operating System :: OS Independent",
   "Topic :: Software Development :: Libraries :: Python Modules",
+{%- if cookiecutter.app_type != 'bare_repo' %}
+  "Environment :: Console",
+  "Topic :: Terminals",
+{%- endif %}
   "Private :: Do Not Upload"  # TODO Remove classifier to allow publishing on PyPI
 ]
 
 
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.minimal_python_version }}"
-{%+ if not cookiecutter.bare_repo %}
+{%+ if cookiecutter.app_type == 'tui' or cookiecutter.app_type == 'hybrid' %}
+textual = "^3.5.0"
+art = "^6.5.0" # UPDATEME by removing when no longer needed
+{%- endif %}
+{%+ if cookiecutter.app_type != 'bare_repo' %}
 typer = { extras = ["all"], version = "^0.15.1" }
 rich = "^13.9.4"
 {%- endif %}
@@ -76,6 +84,9 @@ ruff = "^0.9.2"
 pytest = "^8.3.4"
 {%- if cookiecutter.use_bdd %}
 pytest-bdd = "^8.1.0"
+{%- endif %}
+{%- if cookiecutter.app_type == 'tui' or cookiecutter.app_type == 'hybrid' %}
+pytest-asyncio = "^1.0.0"
 {%- endif %}
 pytest-html = "^4.1.1"
 pytest-cov = "^6.0.0"
@@ -191,12 +202,22 @@ max-bool-expr = 3
 [tool.ruff.lint.isort]
 split-on-trailing-comma = false
 known-first-party = ["{{ cookiecutter.package_name }}"]
-sections.typing = ["typing", "types", "typing_extensions", "mypy", "mypy_extensions"]
-sections.testing = ["pytest", "tests"]
+{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+sections.app-builders = ["rich", "typer", "textual"]
+{%- elif cookiecutter.app_type == 'cli' %}
+sections.app-builders = ["rich", "typer"]
+{%- endif %}
+sections.typing = ["typing", "types", "typing_extensions", "mypy", "mypy_extensions", "pytype", "pydantic"]
+{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+sections.testing = ["pytest", {% if cookiecutter.use_bdd %}"pytest_bdd"{% endif %}, "pytest_asyncio", "tests"]
+{%- else %}
+sections.testing = ["pytest", {% if cookiecutter.use_bdd %}"pytest_bdd"{% endif %}, "tests"]
+{%- endif %}
 section-order = [
   "future",
   "typing",
   "standard-library",
+  "app-builders",
   "third-party",
   "first-party",
   "local-folder",
@@ -264,7 +285,10 @@ addopts = [
   "--pikachu",
   "--cov={{ cookiecutter.package_name }}",
   "--cov-config=pyproject.toml",
-  "--junitxml=test_report.xml"
+  "--junitxml=test_report.xml",
+{%- if cookiecutter.app_type == 'tui' or cookiecutter.app_type == 'hybrid' %}
+  "--asyncio-mode=auto",
+{%- endif %}
 ]
 
 

@@ -3,12 +3,13 @@
 >>> [!note] :bulb: To modify documents and rules for Galactipy development
 This template should be used to propose and discuss any changes that affect knowledge management of the project.
 
-:ok: **Types of changes to be proposed with this template:** changes to project documentation and issue/MR templates, changes to project guidelines, milestone creation/completion, changes to linting, styling, testing and issue triaging rules
+:ok: **Types of changes to be proposed with this template:** changes to project documentation and issue/MR templates, changes to project guidelines, changes to CI rules, milestone creation/completion, changes to linting, styling, testing and issue triaging rules
 
 :no_good: **What this type of proposal does not stand for:**
 
 - Changes that modify tool functionality;
 - Typo fixes;
+- Updates to CI pipeline jobs;
 - Changes to documentation within `{{ cookiecutter.repo_name }}`.
 >>>
 
@@ -29,7 +30,10 @@ This template should be used to propose and discuss any changes that affect know
 
 ## Submitter Checklist
 
-<!-- Mark complying items as they are delivered -->
+<!--
+  Mark complying items as they are delivered with `[x]`
+  Single out unnecessary or unworkable items with `[~]`
+-->
 
 >>> [!caution] :scroll: Policy compliance
 
@@ -57,6 +61,7 @@ For rules in configuration files:
 - [ ] I have either:
   - Evaluated that this change does not require updating a Markdown file for rule documentation;
   - Updated the documentation highlighting this change and any relevant information.
+
 >>>
 
 >>> [!tip] :reminder_ribbon: Contribution control
@@ -100,5 +105,3 @@ I attest that during the course of this development, the following interactions 
 
 [11]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
 [12]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
-
-## Related Issues

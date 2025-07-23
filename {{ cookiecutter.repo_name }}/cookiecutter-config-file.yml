@@ -17,6 +17,7 @@ default_context:
   docstring_style: "{{ cookiecutter.docstring_style }}"
   docstring_length: {{ cookiecutter.docstring_length }}
   use_bdd: {{ cookiecutter.use_bdd }}
+  commit_convention: "{{ cookiecutter.commit_convention }}"
   coverage_service: "{{ cookiecutter.coverage_service }}"
   create_docker: {{ cookiecutter.create_docker }}
-  bare_repo: {{ cookiecutter.bare_repo }}
+  app_type: "{{ cookiecutter.app_type }}"

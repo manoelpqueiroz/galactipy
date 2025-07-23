@@ -77,37 +77,121 @@ def removal_tree(tmp_path):
         ".triage-policies.yml",
         ".dockerignore",
         "pyproject.toml",
+        "file1_feature.md",
         package_test=["__main__.py"],
-        docker=["Dockerfile", "README.md"],
+        docker=["Dockerfile", "README.md", "file2_feature.md"],
     )
 
     github_directory = tmp_path / ".github"
     bulk_file_creation(github_directory, workflows=["docker.yml", "test.yml"])
+
+    feature_directory = tmp_path / "directory_feature"
+    bulk_file_creation(
+        feature_directory,
+        "sample_file_1.md",
+        subdirectory=["sample_file_2.md", "sample_file_3"],
+    )
 
     tests_directory = tmp_path / "tests"
     bulk_file_creation(
         tests_directory,
         "conftest.py",
         ".gitkeep",
-        features=[".gitkeep", "root_command.feature"],
+        features=[".gitkeep", "root_command.feature", "main_window.feature"],
         cli=["test_root_command.py"],
+        tui=["test_main_window.py"],
+        helpers=["tui_helpers.py"],
+        utils=["pytest_bdd_async.py"],
     )
 
     cli_directory = tmp_path / package_name / "cli"
-    bulk_file_creation(cli_directory, "root_command.py", commands=[".gitkeep"])
-
-    pyproject_file = tmp_path / "pyproject.toml"
-    test_file = tests_directory / "cli" / "test_root_command.py"
-    feature_file = tests_directory / "features" / "root_command.feature"
-
-    return (
-        tmp_path,
-        pyproject_file,
-        tests_directory,
-        test_file,
-        feature_file,
-        package_name,
+    bulk_file_creation(
+        cli_directory, "root_command.py", commands=[".gitkeep", "launch.py"]
     )
+
+    tui_directory = tmp_path / package_name / "tui"
+    bulk_file_creation(
+        tui_directory, "main_window.py", components=[".gitkeep"], css=["demo.tcss"]
+    )
+
+    return {
+        "root": tmp_path,
+        "package_name": package_name,
+        "pyproject": tmp_path / "pyproject.toml",
+        "features": {
+            "file1": tmp_path / "file1_feature.md",
+            "file2": tmp_path / "docker" / "file2_feature.md",
+            "directory": feature_directory,
+            "subdirectory": feature_directory / "subdirectory",
+            "sample1": feature_directory / "sample_file_1.md",
+            "sample2": feature_directory / "subdirectory" / "sample_file_2.md",
+            "sample3": feature_directory / "subdirectory" / "sample_file_3",
+        },
+        "cli": {
+            "root": cli_directory,
+            "root_command": cli_directory / "root_command.py",
+            "commands": {
+                "root": cli_directory / "commands",
+                "gitkeep": cli_directory / "commands" / ".gitkeep",
+                "launch": cli_directory / "commands" / "launch.py",
+            },
+            "main": tmp_path / package_name / "__main__.py",
+        },
+        "tui": {
+            "root": tui_directory,
+            "main_window": tui_directory / "main_window.py",
+            "components": {
+                "root": tui_directory,
+                "gitkeep": tui_directory / "components" / ".gitkeep",
+            },
+            "css": {
+                "root": tui_directory / "css",
+                "demo": tui_directory / "css" / "demo.tcss",
+            },
+        },
+        "tests": {
+            "root": tests_directory,
+            "cli": {
+                "root": tests_directory / "cli",
+                "test": tests_directory / "cli" / "test_root_command.py",
+            },
+            "tui": {
+                "root": tests_directory / "tui",
+                "test": tests_directory / "tui" / "test_main_window.py",
+            },
+            "conftest": tests_directory / "conftest.py",
+            "gitkeep": tests_directory / ".gitkeep",
+        },
+        "bdd": {
+            "root": tests_directory / "features",
+            "cli": tests_directory / "features" / "root_command.feature",
+            "tui": tests_directory / "features" / "main_window.feature",
+            "gitkeep": tests_directory / "features" / ".gitkeep",
+            "helpers": {
+                "root": tests_directory / "helpers",
+                "tui": tests_directory / "helpers" / "tui_helpers.py",
+            },
+            "utils": {
+                "root": tests_directory / "utils",
+                "bdd": tests_directory / "utils" / "pytest_bdd_async.py",
+            },
+        },
+        "github": {
+            "root": tmp_path / ".github",
+            "test_workflow": tmp_path / ".github" / "workflows" / "test.yml",
+        },
+        "gitlab": {
+            "ci": tmp_path / ".gitlab-ci.yml",
+            "triage": tmp_path / ".triage-policies.yml",
+        },
+        "docker": {
+            "root": tmp_path / "docker",
+            "dockerfile": tmp_path / "docker" / "Dockerfile",
+            "readme": tmp_path / "docker" / "README.md",
+            "github_workflow": tmp_path / ".github" / "workflows" / "docker.yml",
+            "dockerignore": tmp_path / ".dockerignore",
+        },
+    }
 
 
 @pytest.fixture
