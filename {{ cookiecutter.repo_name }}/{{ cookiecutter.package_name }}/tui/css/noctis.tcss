@@ -1,0 +1,54 @@
+/*
+    Textual limits the availability of highlighting colours to five base colours.
+
+    The original 12 base colours for the Noctis colour scheme are presented here as
+    Textual CSS classes for usage on simpler widgets and as a reference to replicate the
+    full original colour scheme where desired.
+*/
+.string {
+    color: #49e9a6;
+}
+
+.fstring {
+    color: #16b673;
+}
+
+.comment {
+    color: #5b858b;
+}
+
+.function {
+    color: #16a6b6;
+}
+
+.method {
+    color: #49d6e9;
+}
+
+.standout {
+    color: #49ace9;
+}
+
+.number {
+    color: #7060eb;
+}
+
+.keyword {
+    color: #df769b;
+}
+
+.declaration {
+    color: #e66533;
+}
+
+.property {
+    color: #d67e5c;
+}
+
+.constant {
+    color: #d5971a;
+}
+
+.variable {
+    color: #e4b781;
+}
