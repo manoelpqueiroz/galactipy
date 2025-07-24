@@ -41,7 +41,6 @@ build-backend = "poetry_dynamic_versioning.backend"
 requires-poetry = ">=2.0"
 # Placeholder for poetry-dynamic-versioning, do not change:
 # https://github.com/mtkennerly/poetry-dynamic-versioning#installation
-version = "0.0.0"
 packages = [
   {% raw %}{{% endraw %}include = "{{ cookiecutter.package_name }}"{% raw %}}{% endraw %}
 ]
@@ -58,6 +57,8 @@ classifiers = [  # UPDATEME with additional classifiers
 {%- endif %}
   "Private :: Do Not Upload"  # TODO Remove classifier to allow publishing on PyPI
 ]
+
+version = "0.0.0"  # Keep this key as the last for `tool.poetry`, as it is used by `poetry-dynamic-versioning`
 
 
 [tool.poetry.dependencies]
