@@ -3,11 +3,11 @@
     margin: 1;
     width: 100%;
     text-align: center;
-    color: $text-success;
+    color: $primary;
 }
 
 .description {
     width: 100%;
     text-align: center;
-    color: $text-secondary;
+    color: $secondary;
 }

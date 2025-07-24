@@ -1,3 +1,14 @@
+## 0.15.1 (2025-07-23)
+
+### :milky_way: Components (2 changes)
+
+- [:sparkles: Add Noctis themes to TUI interface](galactipy/galactipy@a15febccd513f85cab0f14516301208f9bf3623c) ([merge request](galactipy/galactipy!62))
+- [:sparkles: Add Noctis font colours to CLI](galactipy/galactipy@728f1708e305817fdd736befc24809b2f3dcbc6b) ([merge request](galactipy/galactipy!62))
+
+### :package: Build System & CI/CD (1 change)
+
+- [:white_check_mark: Update tests to encompass TUI theme files](galactipy/galactipy@0a98cb0d7c72e12f65a04d35cca6ba6a6d893c57) ([merge request](galactipy/galactipy!62))
+
 ## 0.15.0 (2025-07-20)
 
 ### :milky_way: Components (4 changes)
