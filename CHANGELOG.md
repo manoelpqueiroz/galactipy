@@ -1,3 +1,13 @@
+## 0.15.2 (2025-07-24)
+
+### :construction_site: Template Internals (1 change)
+
+- [:wrench: Revamp Dockerfile structure for generated projects](galactipy/galactipy@602bd27cd934bb3ca1651efe906782a249af2030) ([merge request](galactipy/galactipy!63))
+
+### :pencil: Documentation (1 change)
+
+- [:bulb: Add reminder for the version keyword in template pyproject](galactipy/galactipy@02e8607e785e43ba14cb74bb93056cfb80646c7f) ([merge request](galactipy/galactipy!63))
+
 ## 0.15.1 (2025-07-23)
 
 ### :milky_way: Components (2 changes)
