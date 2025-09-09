@@ -1,3 +1,9 @@
+## 0.15.3 (2025-09-09)
+
+### :construction_site: Template Internals (1 change)
+
+- [:wrench: Apply minor fixes to template pyproject](galactipy/galactipy@3d5151e2c04aa0069c6a06d398408f60a44acda7) ([merge request](galactipy/galactipy!64))
+
 ## 0.15.2 (2025-07-24)
 
 ### :construction_site: Template Internals (1 change)
