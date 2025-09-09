@@ -174,7 +174,9 @@ task-tags = [
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**.py" = ["D100", "D101", "D102", "D103", "D104", "S101"]
+{%- if cookiecutter.app_type != 'bare_repo' %}
 "__main__.py" = ["D100", "D101"]
+{%- endif %}
 
 [tool.ruff.lint.flake8-annotations]
 ignore-fully-untyped = true
@@ -188,8 +190,8 @@ mark-parentheses = false
 ban-relative-imports = "all"
 
 [tool.ruff.lint.pycodestyle]
-max-line-length = 88
-max-doc-length = 79
+max-line-length = {{ cookiecutter.line_length }}
+max-doc-length = {{ cookiecutter.docstring_length }}
 {%+ if cookiecutter.docstring_style != 'other' %}
 [tool.ruff.lint.pydocstyle]
 convention = "{{ cookiecutter.docstring_style }}"
@@ -218,7 +220,9 @@ section-order = [
   "future",
   "typing",
   "standard-library",
+{%- if cookiecutter.app_type != 'bare_repo' %}
   "app-builders",
+{%- endif %}
   "third-party",
   "first-party",
   "local-folder",
@@ -229,7 +233,7 @@ section-order = [
 [tool.mypy]
 # https://github.com/python/mypy
 # https://mypy.readthedocs.io/en/latest/config_file.html#using-a-pyproject-toml-file
-python_version = {{ cookiecutter.minimal_python_version }}
+python_version = "{{ cookiecutter.minimal_python_version }}"
 files = [
   "{{ cookiecutter.package_name }}",
   "tests"
@@ -296,7 +300,9 @@ addopts = [
 [tool.coverage.run]
 source = ["tests"]
 branch = true
+{%- if cookiecutter.app_type != 'bare_repo' %}
 omit = ["__main__.py"]
+{%- endif %}
 
 
 [tool.coverage.report]
