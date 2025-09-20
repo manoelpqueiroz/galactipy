@@ -7,7 +7,7 @@ repos:
       - id: check-yaml
       - id: end-of-file-fixer
         exclude: LICENCE
-{%+ if cookiecutter.use_ruff %}
+
   - repo: local
     hooks:
       - id: ruff
@@ -15,5 +15,4 @@ repos:
         entry: poetry run ruff check
         types: [python]
         language: system
-{%- endif %}
 # UPDATEME with additional hooks

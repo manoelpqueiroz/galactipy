@@ -78,9 +78,7 @@ mypy = "^1.14.1"
 mypy-extensions = "^1.0.0"
 pre-commit = "^4.1.0"
 bandit = "^1.8.2"
-{%+ if cookiecutter.use_ruff %}
 ruff = "^0.13.1"
-{%+ endif %}
 pytest = "^8.3.4"
 {%- if cookiecutter.use_bdd %}
 pytest-bdd = "^8.1.0"
@@ -111,7 +109,7 @@ style = "semver"
 metadata = false
 bump = { enable = true, index = 1 }
 
-{%+ if cookiecutter.use_ruff %}
+
 [tool.ruff]
 # https://github.com/astral-sh/ruff
 # https://docs.astral.sh/ruff/settings
@@ -233,7 +231,7 @@ section-order = [
   "testing"
 ]
 
-{% endif %}
+
 [tool.mypy]
 # https://github.com/python/mypy
 # https://mypy.readthedocs.io/en/latest/config_file.html#using-a-pyproject-toml-file

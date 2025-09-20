@@ -89,6 +89,7 @@ def mypy(
     """Run type checks with `mypy` and `pyproject.toml` configuration."""
     install_flag = "--install-types" if install_types else ""
     non_interactive_flag = "--non-interactive" if non_interactive else ""
+
     c.run(
         f"{c.venv_bin_path}/mypy --config-file pyproject.toml {install_flag} "
         f"{non_interactive_flag}",
@@ -203,7 +204,6 @@ def publish(c: Context, repo: str = "pypi", build: bool = True) -> None:
 
 
 # Formatting, linting and other checks
-{%- if cookiecutter.use_ruff %}
 @task(call(venv, hide=True), aliases=["format"])
 def codestyle(c: Context, check: bool = False) -> None:
     """Format the entire project with `ruff format`."""
@@ -219,7 +219,7 @@ def lint(c: Context, fix: bool = False) -> None:
 
     c.run(f"{c.venv_bin_path}/ruff check {flag}", pty=IS_UNIX_OS)
 
-{% endif %}
+
 @task(call(venv, hide=True))
 def test(c: Context) -> None:
     """Run tests with Pytest and `pyproject.toml` configuration."""
@@ -245,10 +245,8 @@ def security(c: Context) -> None:
 def sweep(c: Context) -> None:
     """Perform all code checks, including tests, linting and security."""
     test(c)
-    {%- if cookiecutter.use_ruff %}
     lint(c)
     codestyle(c, check=True)
-    {%- endif %}
     mypy(c)
     security(c)
 

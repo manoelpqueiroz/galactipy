@@ -12,7 +12,6 @@ default_context:
   email: "{{ cookiecutter.email }}"
   licence: "{{ cookiecutter.licence }}"
   minimal_python_version: {{ cookiecutter.minimal_python_version }}
-  use_ruff: {{ cookiecutter.use_ruff }}
   line_length: {{ cookiecutter.line_length }}
   docstring_style: "{{ cookiecutter.docstring_style }}"
   docstring_length: {{ cookiecutter.docstring_length }}

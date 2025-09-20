@@ -24,10 +24,8 @@
 {%- if cookiecutter.use_bdd %}
 [![BDD][bbbd1]][bbbd2]
 {%- endif %}
-{%- if cookiecutter.use_ruff %}
 [![Code style: Ruff][bfo1]][bfo2]
-{%- endif %}
-{%- if cookiecutter.use_ruff and cookiecutter.docstring_style in ['numpy', 'google', 'pep257'] %}
+{%- if cookiecutter.docstring_style in ['numpy', 'google', 'pep257'] %}
 [![Docstrings][bli1]][bli2]
 {%- endif %}
 {%- if cookiecutter.commit_convention == 'gitmoji' %}
@@ -43,9 +41,7 @@
 [![Poetry][bp13]][bp14]
 [![Pre-commit][bp15]][bp16]
 [![Bandit][bp17]][bp18]
-{%- if cookiecutter.use_ruff %}
 [![isort][bfo3]][bfo4]
-{%- endif %}
 [![Editorconfig][bp19]][bp20]
 {%+ if cookiecutter.licence != 'nos' %}
 <!-- Open Source benchmarks -->
@@ -245,9 +241,7 @@ And here are a few articles which may help you:
 - Provides minimal boilerplate files to jumpstart your project development, no code provided to restrict your design!
 {%- endif %}
 - Uses [`Poetry`][ft1] as the dependency manager and extends functionality with [`dynamic versioning`][ft2], [`virtual environment bundling`][ft3], dependency [`export`][ft4] and [`update resolution`][ft5]. See configuration in [`pyproject.toml`][ft6];
-{%- if cookiecutter.use_ruff %}
 - Automatic code formatting with [`ruff`][fo1], with ready-to-use [`pre-commit`][fo2] hooks and several rules already selected for linting;
-{%- endif %}
 - Type checks with [`mypy`][ft7], security checks with [`safety`][ft8] and [`bandit`][ft9];
 - Testing with [`pytest`][ft10]{% if cookiecutter.use_bdd %} and [`behaviour-driven development`][bdd1] configuration for managing scenarios; more details in the [Behaviour-Driven Development][bdd2] section{% endif %};
 - Code quality integrations with {% if cookiecutter.__coverage_lc == 'coveralls' %}[`Coveralls`][ft11]{% elif cookiecutter.__coverage_lc == 'codacy' %}[`Codacy`][ft11]{% endif %} via CI/CD;
@@ -258,7 +252,7 @@ And here are a few articles which may help you:
 
 - Predefined CI/CD build workflow with {% if cookiecutter.__scm_platform_lc == 'gitlab' %}[`GitLab CI`][lab3]{% elif cookiecutter.__scm_platform_lc == 'github' %}[`Github Actions`][hub4]{% endif %};
 - Automatic package uploads to [`PyPI`][ft15] test and production repositories;
-- Everything is already set up for security checks,{% if cookiecutter.use_ruff %} codestyle checks, code formatting,{% endif %} testing, linting{% if cookiecutter.create_docker %}, docker builds{% endif %} etc with [`Invoke`][ft16]. More details in [Invoke Usage][ft17];
+- Everything is already set up for security checks, codestyle checks, code formatting, testing, linting{% if cookiecutter.create_docker %}, docker builds{% endif %} etc with [`Invoke`][ft16]. More details in [Invoke Usage][ft17];
 {%- if cookiecutter.create_docker %}
 - [`Dockerfile`][docker2] for your package, with CI/CD workflows to publish your image to a container registry;
 {%- endif %}
@@ -356,7 +350,7 @@ invoke pre-commit-install
 
 </p>
 </details>
-{%+ if cookiecutter.use_ruff %}
+
 <details>
 <summary>3. Codestyle</summary>
 <p>
@@ -384,9 +378,8 @@ invoke check-linter
 
 </p>
 </details>
-{% endif +%}
 <details>
-<summary>{% if cookiecutter.use_ruff %}4{% else %}3{% endif %}. Code security</summary>
+<summary>4. Code security</summary>
 <p>
 
 ```bash
@@ -405,7 +398,7 @@ invoke update-dev-deps
 </details>
 
 <details>
-<summary>{% if cookiecutter.use_ruff %}5{% else %}4{% endif %}. Type checks</summary>
+<summary>5. Type checks</summary>
 <p>
 
 Run `mypy` static type checker with
@@ -418,7 +411,7 @@ invoke mypy
 </details>
 
 <details>
-<summary>{% if cookiecutter.use_ruff %}6{% else %}5{% endif %}. Tests</summary>
+<summary>6. Tests</summary>
 <p>
 
 Run `pytest` with all essential parameters predefined with
@@ -431,7 +424,7 @@ invoke test
 </details>
 
 <details>
-<summary>{% if cookiecutter.use_ruff %}7{% else %}6{% endif %}. All code-related checks</summary>
+<summary>7. All code-related checks</summary>
 <p>
 
 Of course there is a command to ~~rule~~ run all linters in one:
@@ -443,14 +436,14 @@ invoke sweep
 The same as:
 
 ```bash
-invoke test {% if cookiecutter.use_ruff %}check-linter codestyle {% endif %}mypy check-safety
+invoke test check-linter codestyle mypy check-safety
 ```
 
 </p>
 </details>
 {%+ if cookiecutter.create_docker %}
 <details>
-<summary>{% if cookiecutter.use_ruff %}8{% else %}7{% endif %}. Docker</summary>
+<summary>8. Docker</summary>
 <p>
 
 Build your Docker image with the `latest` tag preconfigured with
@@ -471,7 +464,7 @@ More information about Docker [here][docker3].
 </details>
 {% endif +%}
 <details>
-<summary>{% if cookiecutter.use_ruff and cookiecutter.create_docker %}9{% elif cookiecutter.use_ruff and not cookiecutter.create_docker %}8{% elif not cookiecutter.use_ruff and cookiecutter.create_docker %}8{% else %}7{% endif %}. Cleanup</summary>
+<summary>{% if cookiecutter.create_docker %}9{% else %}8{% endif %}. Cleanup</summary>
 <p>
 
 Delete pycache files:
@@ -799,7 +792,6 @@ This project was generated with [`galactipy`][bp7].
 [docker2]: {{ cookiecutter.__scm_link_url }}/blob/master/docker/Dockerfile
 [docker3]: {{ cookiecutter.__scm_link_url }}/tree/master/docker
 {%+ endif %}
-{%- if cookiecutter.use_ruff %}
 [bfo1]: https://img.shields.io/badge/code%20style-ruff-261230?style=for-the-badge&labelColor=grey
 [bfo2]: https://docs.astral.sh
 [bfo3]: https://img.shields.io/badge/imports-isort-1674b1?style=for-the-badge&labelColor=ef8336
@@ -807,8 +799,7 @@ This project was generated with [`galactipy`][bp7].
 
 [fo1]: https://black.readthedocs.io/en/stable/
 [fo2]: https://pre-commit.com/
-{%+ endif %}
-{%- if cookiecutter.use_ruff %}
+
 {%- if cookiecutter.docstring_style == 'numpy' %}
 [bli1]: https://img.shields.io/badge/docstrings-numpydoc-4dabcf?style=for-the-badge&labelColor=4d77cf
 [bli2]: https://numpydoc.readthedocs.io/en/latest/format.html
@@ -819,7 +810,7 @@ This project was generated with [`galactipy`][bp7].
 [bli1]: https://img.shields.io/badge/docstrings-pep257-FFD43B?style=for-the-badge&labelColor=3776ab
 [bli2]: https://peps.python.org/pep-0257/
 {%- endif %}
-{%+ endif %}
+
 {%- if cookiecutter.use_bdd %}
 [bbbd1]: https://img.shields.io/badge/BDD-23D96C?style=for-the-badge&logo=cucumber&logoColor=white
 [bbbd2]: https://cucumber.io/
