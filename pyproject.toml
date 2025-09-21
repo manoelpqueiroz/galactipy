@@ -1,7 +1,7 @@
 # Poetry pyproject.toml: https://python-poetry.org/docs/pyproject/
 [project]
 name = "galactipy"
-version = "0.15.3"
+version = "0.16.0"
 description = "Full-fledged template for Python projects."
 license = { text = "MIT" }
 readme = "README.md"
@@ -58,11 +58,10 @@ cookiecutter = "^2.6.0"
 
 
 [tool.poetry.group.dev.dependencies]
-mypy = "^1.17.1"
+mypy = "^1.18.1"
 mypy-extensions = "^1.1.0"
 pre-commit = "^4.3.0"
 bandit = "^1.8.6"
-safety = "~3.6.1"
 
 ruff = "^0.12.12"
 
@@ -71,7 +70,7 @@ pytest-cov = "^7.0.0"
 pytest-cookies = "^0.7.0"
 pytest-timeout = "^2.4.0"
 pytest-sugar = "^1.1.1"
-pytest-mock = "^3.15.0"
+pytest-mock = "^3.15.1"
 coverage = "^7.10.6"
 
 invoke = "^2.2.0"
@@ -260,3 +259,7 @@ show_missing = true
 
 [tool.coverage.paths]
 source = ["hooks"]
+
+[tool.bandit]
+# https://github.com/PyCQA/bandit
+# https://bandit.readthedocs.io/en/latest/config.html

@@ -9,11 +9,13 @@ ENV LANG=C.UTF-8 \
     PATH="$PATH:/opt/.poetry/bin"
 
 RUN apk add --no-cache --virtual .build-deps \
-    curl=~8.14.1 \
-    gcc=~14.2.0 \
-    musl-dev=~1.2.5 \
-    python3-dev=~3.12.11 \
-    libffi-dev=~3.4.8
+    curl=~8.14.1-r1 \
+    gcc=~14.2.0-r6 \
+    musl-dev=~1.2.5-r10 \
+    python3-dev=~3.12.11-r0 \
+    libffi-dev=~3.4.8-r0 \
+# HACK sqlite-libs has a vulnerability up to 3.49.2-r0, which is installed by default
+    sqlite-libs=~3.49.2-r1
 
 # Install Poetry
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
@@ -46,8 +48,10 @@ ENV LANG=C.UTF-8 \
     PYTHONUNBUFFERED=1
 
 RUN apk add --no-cache \
-    ncurses-terminfo-base=~6.5.0 \
-    ncurses-libs=~6.5.0
+    ncurses-terminfo-base=~6.5_p20250503-r0 \
+    ncurses-libs=~6.5_p20250503-r0 \
+# HACK sqlite-libs has a vulnerability up to 3.49.2-r0, which is installed by default
+    sqlite-libs=~3.49.2-r1
 {%- elif cookiecutter.app_type == 'cli' %}
     COLORTERM=truecolor \
     PYTHONUNBUFFERED=1

@@ -91,19 +91,21 @@ class TestRmDir:
         with pytest.raises(ValueError):
             rmdir(nonexistent_path)
 
-    @pytest.mark.xfail
+    @pytest.mark.xfail(
+        reason="unable to use chown inside test environment as there is no user or group `galactipy-pytest`"  # noqa: E501
+    )
     def test_remove_file_without_permission(self, tmp_path):
         file_path = tmp_path / "protected_file.txt"
         file_path.touch()
 
-        # TODO chown fails given there is no user or group "galactipy-pytest"
-        # Consider implementation through CI/CD
         chown(file_path, "galactipy-pytest", "galactipy-pytest")
 
         with pytest.raises(PermissionError):
             rmdir(file_path)
 
-    @pytest.mark.xfail
+    @pytest.mark.xfail(
+        reason="unable to use chown inside test environment as there is no user or group `galactipy-pytest`"  # noqa: E501
+    )
     def test_remove_directory_without_permission(self, tmp_path):
         protected_dir = tmp_path / "protected_dir"
         protected_dir.mkdir()

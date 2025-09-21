@@ -448,9 +448,8 @@ class TestInstructions:
     def test_print_further_instructions(
         self, capsys, mocker, rich_output, galactipy_instructions
     ):
-        mocker.patch(
-            "hooks.post_gen_project.find_spec", side_effect=[rich_output, True]
-        )
+        mocker.patch("hooks.post_gen_project.which", side_effect=[True, True])
+        mocker.patch("hooks.post_gen_project.find_spec", return_value=rich_output)
 
         print_further_instructions(
             "Galactipy",
@@ -467,9 +466,8 @@ class TestInstructions:
     def test_print_invoke_instructions(
         self, capsys, mocker, rich_output, galactipy_invoke_instructions
     ):
-        mocker.patch(
-            "hooks.post_gen_project.find_spec", side_effect=[rich_output, None]
-        )
+        mocker.patch("hooks.post_gen_project.which", side_effect=[True, None])
+        mocker.patch("hooks.post_gen_project.find_spec", return_value=rich_output)
 
         print_further_instructions(
             "Galactipy",
@@ -481,3 +479,32 @@ class TestInstructions:
 
         # STDOUT always finishes with a newline
         assert captured.out == galactipy_invoke_instructions + "\n"
+
+    @pytest.mark.parametrize(
+        "rich_output",
+        [
+            pytest.param(
+                True,
+                marks=pytest.mark.xfail(
+                    reason="rich.Console width defaults to 80, unable to mock"
+                ),
+            ),
+            None,
+        ],
+    )
+    def test_print_poetry_instructions(
+        self, capsys, mocker, rich_output, galactipy_poetry_instructions
+    ):
+        mocker.patch("hooks.post_gen_project.which", side_effect=[None, True])
+        mocker.patch("hooks.post_gen_project.find_spec", return_value=rich_output)
+
+        print_further_instructions(
+            "Galactipy",
+            "galactipy",
+            "GitLab",
+            "https://www.gitlab.com/galactipy/galactipy",
+        )
+        captured = capsys.readouterr()
+
+        # STDOUT always finishes with a newline
+        assert captured.out == galactipy_poetry_instructions + "\n"

@@ -18,7 +18,7 @@ variables:
 .filechecks: &filechecks
   - "{{ cookiecutter.repo_name }}/**/*"
   - hooks/*
-  - tests/*
+  - tests/**/*
   - utils/*
   - tasks.py
   - cookiecutter.json
@@ -27,9 +27,7 @@ variables:
 
 .default_scripts: &default_scripts
   - invoke install --ignore-pty
-  - invoke check-linter
-  - invoke test
-  - invoke check-safety
+  - invoke sweep
 
 # CI definitions
 workflow:
@@ -47,14 +45,14 @@ include:
     rules:
       - if: $CI_PIPELINE_SOURCE == 'schedule'
     inputs:
-      api_token: $GALACTIPY_BOT_TOKEN
+      api_token: $GALACTIPY_BOT_API_TOKEN
       stage: maintenance
 
 default:
   cache:
-    key: venv-$CI_COMMIT_REF_NAME-$CI_JOB_STAGE-$CI_COMMIT_SHA
+    key: venv-$CI_COMMIT_SHORT_SHA
     paths:
-      - $CI_PROJECT_DIR/.cache/pip
+      - $CI_PROJECT_DIR/.cache/pypoetry
 
 # Template job for running tests
 .test_rules:
@@ -141,7 +139,7 @@ changelog-build:
     - apk add curl jq
     - >
       curl
-      --header "PRIVATE-TOKEN: $GALACTIPY_BOT_TOKEN"
+      --header "PRIVATE-TOKEN: $GALACTIPY_BOT_API_TOKEN"
       "$CI_API_V4_URL/projects/$CI_PROJECT_ID/repository/changelog?version=$CI_COMMIT_TAG"
       |
       jq --raw-output .notes > RELEASE_NOTES.md
@@ -161,7 +159,7 @@ changelog-commit:
       cat $CHANGELOG_COMMIT_PAYLOAD
       |
       curl
-      --header "PRIVATE-TOKEN: $GALACTIPY_BOT_TOKEN"
+      --header "PRIVATE-TOKEN: $GALACTIPY_BOT_API_TOKEN"
       --header "Content-Type: application/json"
       --data @-
       --request POST
@@ -190,7 +188,7 @@ github-mirror-mr:
       cat $GH_MIRROR_MR_PAYLOAD
       |
       curl
-      --header "PRIVATE-TOKEN: $GALACTIPY_BOT_TOKEN"
+      --header "PRIVATE-TOKEN: $GALACTIPY_BOT_API_TOKEN"
       --header "Content-Type: application/json"
       --data @-
       --request POST
@@ -213,7 +211,7 @@ github-mirror-commit:
     - export MR_ID=$(cat mr_creation_response.json | jq --raw-output .iid)
     - >
       curl
-      --header "PRIVATE-TOKEN: $GALACTIPY_BOT_TOKEN"
+      --header "PRIVATE-TOKEN: $GALACTIPY_BOT_API_TOKEN"
       --request PUT
       --data '{"merge_when_pipeline_succeeds": true}'
       "$CI_API_V4_URL/projects/$CI_PROJECT_ID/merge_requests/$MR_ID/merge"
