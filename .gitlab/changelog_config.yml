@@ -27,7 +27,10 @@ template: |
   {% each entries %}
   - [{{ title }}]({{ commit.reference }})\
   {% if author.credit %} by {{ author.reference }}{% end %}\
-  {% if merge_request %} ([merge request]({{ merge_request.reference }})){% end %}\
+  {% if commit.trailers.MR %} ([merge request]({{ commit.trailers.MR }}))\
+  {% else %}\
+  {% if merge_request %} ([merge request]({{ merge_request.reference }}))\
+  {% end %}\
   {% end %}
 
   {% end %}
