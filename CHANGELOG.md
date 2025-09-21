@@ -1,3 +1,64 @@
+## 0.16.0 (2025-09-21)
+
+### :milky_way: Components (1 change)
+
+- [:fire: Remove option to dismiss Ruff](galactipy/galactipy@fab7710cad5d7a1f5c21617456acae401c5ccbd8) ([merge request](galactipy/galactipy!67))
+
+### :package: Build System & CI/CD (1 change)
+
+- [:construction_worker: Update project CI with new task nomenclature](galactipy/galactipy@3a84d3a4e33d8292d19ac50b401656ef6f9753f4) ([merge request](galactipy/galactipy!67))
+
+### :gear: Internals (3 changes)
+
+- [:wrench: Add verbosity level to test task](galactipy/galactipy@9220c01be0b7c69a8a19dc2670f3c7c5c168aa10) ([merge request](galactipy/galactipy!67))
+- [:wrench: Modify project Changelog configuration](galactipy/galactipy@885ffcb9bb7b185c5552083d7f2bb853c74b3923) ([merge request](galactipy/galactipy!67))
+- [:wrench: Rework project tasks](galactipy/galactipy@f005dd9abc8b98a47dca4164d99e51472c02f512) ([merge request](galactipy/galactipy!67))
+
+### :construction_site: Template Internals (6 changes)
+
+- [:wrench: Rewrite additional instructions output](galactipy/galactipy@3af060f37f89d87aa51e77314962960bc680b953) ([merge request](galactipy/galactipy!67))
+- [:wrench: Add verbosity level to template test task](galactipy/galactipy@31d5d6fbe92071f9af23caf185851b929a97f1ff) ([merge request](galactipy/galactipy!67))
+- [:construction_site: Specify Docker dependencies versions](galactipy/galactipy@f9bf19644eedd0519717dcfd28b30e482affdb7d) ([merge request](galactipy/galactipy!67))
+- [:construction_worker: Rework template CI](galactipy/galactipy@d69ffd2bcc22454b5814b7b1c01c527ac0363869) ([merge request](galactipy/galactipy!67))
+- [:wrench: Update template pyproject](galactipy/galactipy@9331ebe5c46196a61265d09ce6cdb25902d5f6f3) ([merge request](galactipy/galactipy!67))
+- [:art: Update template tasks](galactipy/galactipy@3c73a70112821f3dc1eb17f4dbba327bb734fa95) ([merge request](galactipy/galactipy!67))
+
+### :pencil: Documentation (1 change)
+
+- [:pencil: Rework sections for READMEs](galactipy/galactipy@f2b1d38060133d36228866df376f4ccdfcfc6177) ([merge request](galactipy/galactipy!67))
+
+### :arrow_up: Dependency Updates (2 changes)
+
+- [:arrow_up: Update project dependencies](galactipy/galactipy@fdcc22a51e59e2e20a18d36771d2777fd92fa774) ([merge request](galactipy/galactipy!67))
+- [:arrow_up: Update dev dependencies](galactipy/galactipy@f9f848546ed46ca652ba3a7cd3b9ab306c152ace) ([merge request](galactipy/galactipy!65))
+
+## 0.15.3 (2025-09-09)
+
+### :construction_site: Template Internals (1 change)
+
+- [:wrench: Apply minor fixes to template pyproject](galactipy/galactipy@3d5151e2c04aa0069c6a06d398408f60a44acda7) ([merge request](galactipy/galactipy!64))
+
+## 0.15.2 (2025-07-24)
+
+### :construction_site: Template Internals (1 change)
+
+- [:wrench: Revamp Dockerfile structure for generated projects](galactipy/galactipy@602bd27cd934bb3ca1651efe906782a249af2030) ([merge request](galactipy/galactipy!63))
+
+### :pencil: Documentation (1 change)
+
+- [:bulb: Add reminder for the version keyword in template pyproject](galactipy/galactipy@02e8607e785e43ba14cb74bb93056cfb80646c7f) ([merge request](galactipy/galactipy!63))
+
+## 0.15.1 (2025-07-23)
+
+### :milky_way: Components (2 changes)
+
+- [:sparkles: Add Noctis themes to TUI interface](galactipy/galactipy@a15febccd513f85cab0f14516301208f9bf3623c) ([merge request](galactipy/galactipy!62))
+- [:sparkles: Add Noctis font colours to CLI](galactipy/galactipy@728f1708e305817fdd736befc24809b2f3dcbc6b) ([merge request](galactipy/galactipy!62))
+
+### :package: Build System & CI/CD (1 change)
+
+- [:white_check_mark: Update tests to encompass TUI theme files](galactipy/galactipy@0a98cb0d7c72e12f65a04d35cca6ba6a6d893c57) ([merge request](galactipy/galactipy!62))
+
 ## 0.15.0 (2025-07-20)
 
 ### :milky_way: Components (4 changes)

@@ -111,7 +111,11 @@ def removal_tree(tmp_path):
 
     tui_directory = tmp_path / package_name / "tui"
     bulk_file_creation(
-        tui_directory, "main_window.py", components=[".gitkeep"], css=["demo.tcss"]
+        tui_directory,
+        "main_window.py",
+        "themes.py",
+        components=[".gitkeep"],
+        css=["demo.tcss", "noctis.tcss"],
     )
 
     return {
@@ -140,6 +144,7 @@ def removal_tree(tmp_path):
         "tui": {
             "root": tui_directory,
             "main_window": tui_directory / "main_window.py",
+            "themes": tui_directory / "themes.py",
             "components": {
                 "root": tui_directory,
                 "gitkeep": tui_directory / "components" / ".gitkeep",
@@ -147,6 +152,7 @@ def removal_tree(tmp_path):
             "css": {
                 "root": tui_directory / "css",
                 "demo": tui_directory / "css" / "demo.tcss",
+                "noctis": tui_directory / "css" / "noctis.tcss",
             },
         },
         "tests": {
@@ -203,20 +209,15 @@ def galactipy_instructions():
 
             $ cd galactipy && git init
 
-        2) If you don't have Poetry installed run:
-
-            $ invoke poetry-download
-
-        3) Initialize Poetry and install pre-commit hooks:
+        2) Initialize Poetry and install pre-commit hooks:
 
             $ invoke install
-            $ invoke pre-commit-install
 
-        4) Run codestyle:
+        3) Run the code checks for inconsistencies and issues:
 
-            $ invoke codestyle
+            $ invoke sweep
 
-        5) Upload initial code to GitLab:
+        4) Upload initial code to GitLab:
 
             $ git add .
             $ git commit -m ":tada: Initial commit"
@@ -232,9 +233,30 @@ def galactipy_invoke_instructions(galactipy_instructions):
     extra_message = """
         WARNING! Invoke was not found in your system.
 
-        Install it first via your package manager or via pip before running step 2.
+        Install it first via your package manager or via pipx before running step 2.
 
-            $ pip install invoke
+            $ pipx install invoke
     """
+
+    return galactipy_instructions + textwrap.dedent(extra_message)
+
+
+@pytest.fixture
+def galactipy_poetry_instructions(galactipy_instructions, rich_output):
+    if rich_output is not None:
+        extra_message = """
+            WARNING! Poetry was not found in your system.
+
+            Install it via your package manager or through one of the methods prescribed in their documentation.
+        """  # noqa: E501
+
+    else:
+        extra_message = """
+            WARNING! Poetry was not found in your system.
+
+            Install it via your package manager or through one of the methods prescribed in their documentation:
+
+                https://python-poetry.org/docs/#installation
+        """  # noqa: E501
 
     return galactipy_instructions + textwrap.dedent(extra_message)

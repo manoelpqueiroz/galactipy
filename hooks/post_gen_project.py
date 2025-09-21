@@ -4,7 +4,7 @@ import textwrap
 from dataclasses import dataclass
 from importlib.util import find_spec
 from pathlib import Path
-from shutil import move
+from shutil import move, which
 
 # Project root directory
 PROJECT_DIRECTORY = Path.cwd().absolute()
@@ -343,6 +343,9 @@ def print_further_instructions(
         URL for the project's repository in `scm_platform`, consisting of
         username and repository slug.
     """
+    poetry_executable = which("poetry")
+    invoke_executable = which("invoke")
+
     if find_spec("rich") is not None:
         from rich.console import Console  # noqa: PLC0415
 
@@ -356,20 +359,15 @@ def print_further_instructions(
 
                 [bold red]$[/] [green]cd[/] [underline magenta]{project_repo}[/] && [green]git[/] [yellow]init[/]
 
-            2) If you don't have Poetry installed run:
-
-                [bold red]$[/] [green]invoke[/] [blue]poetry-download[/]
-
-            3) Initialize Poetry and install pre-commit hooks:
+            2) Initialize Poetry and install pre-commit hooks:
 
                 [bold red]$[/] [green]invoke[/] [blue]install[/]
-                [bold red]$[/] [green]invoke[/] [blue]pre-commit-install[/]
 
-            4) Run codestyle:
+            3) Run the code checks for inconsistencies and issues:
 
-                [bold red]$[/] [green]invoke[/] [blue]codestyle[/]
+                [bold red]$[/] [green]invoke[/] [blue]sweep[/]
 
-            5) Upload initial code to {scm_platform}:
+            4) Upload initial code to {scm_platform}:
 
                 [bold red]$[/] [green]git[/] [yellow]add[/] [blue].[/]
                 [bold red]$[/] [green]git[/] [yellow]commit[/] [blue]-m[/] [yellow]":tada: Initial commit"[/]
@@ -378,14 +376,23 @@ def print_further_instructions(
             """  # noqa: E501
         )
 
-        if find_spec("invoke") is None:
+        if poetry_executable is None:
+            message += textwrap.dedent(
+                """
+                [bold red]WARNING![/] Poetry was not found in your system.
+
+                Install it via your package manager or through one of the methods prescribed in their [link=https://python-poetry.org/docs/#installation]documentation[/].
+                """  # noqa: E501
+            )
+
+        if invoke_executable is None:
             message += textwrap.dedent(
                 """
                 [bold red]WARNING![/] Invoke was not found in your system.
 
-                Install it first via your package manager or via pip before running step 2.
+                Install it first via your package manager or via [link=https://pipx.pypa.io/latest/installation/]pipx[/] before running step 2.
 
-                    [bold red]$[/] [green]pip[/] [yellow]install[/] invoke
+                    [bold red]$[/] [green]pipx[/] [yellow]install[/] invoke
                 """  # noqa: E501
             )
 
@@ -400,20 +407,15 @@ def print_further_instructions(
 
                 $ cd {project_repo} && git init
 
-            2) If you don't have Poetry installed run:
-
-                $ invoke poetry-download
-
-            3) Initialize Poetry and install pre-commit hooks:
+            2) Initialize Poetry and install pre-commit hooks:
 
                 $ invoke install
-                $ invoke pre-commit-install
 
-            4) Run codestyle:
+            3) Run the code checks for inconsistencies and issues:
 
-                $ invoke codestyle
+                $ invoke sweep
 
-            5) Upload initial code to {scm_platform}:
+            4) Upload initial code to {scm_platform}:
 
                 $ git add .
                 $ git commit -m ":tada: Initial commit"
@@ -422,14 +424,25 @@ def print_further_instructions(
             """
         )
 
-        if find_spec("invoke") is None:
+        if poetry_executable is None:
+            message += textwrap.dedent(
+                """
+                WARNING! Poetry was not found in your system.
+
+                Install it via your package manager or through one of the methods prescribed in their documentation:
+
+                    https://python-poetry.org/docs/#installation
+                """  # noqa: E501
+            )
+
+        if invoke_executable is None:
             message += textwrap.dedent(
                 """
                 WARNING! Invoke was not found in your system.
 
-                Install it first via your package manager or via pip before running step 2.
+                Install it first via your package manager or via pipx before running step 2.
 
-                    $ pip install invoke
+                    $ pipx install invoke
                 """  # noqa: E501
             )
 
