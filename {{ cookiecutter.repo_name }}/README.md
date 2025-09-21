@@ -66,96 +66,35 @@ _{{ cookiecutter.project_description }}_
 
 </div>
 
-## Very first steps
+## Installation
 
-### Initialize your code
-
-1. Initialize `git` inside your repo:
-
-```bash
-cd {{ cookiecutter.repo_name }} && git init
-```
-
-2. If you don't have `Poetry` installed run:
+{% if cookiecutter.app_type != 'bare_repo' -%}
+Use [`pipx`][fs1] to install {{ cookiecutter.project_name }}
+in an isolated environment:
 
 ```bash
-invoke poetry-download
+pipx install {{ cookiecutter.repo_name }}
 ```
 
-> This installs Poetry as a [standalone application][fs1]. If you prefer, install it through your distribution's package manager.
-
-3. Initialize Poetry and install `pre-commit` hooks:
+Then you can run it from the command line:
 
 ```bash
-invoke install
-invoke pre-commit-install
+{{ cookiecutter.repo_name }} --help
 ```
-
-4. Run the codestyle:
+{% else -%}
+Use [`pip`][fs1] to install {{ cookiecutter.project_name }}:
 
 ```bash
-invoke codestyle
+pip install -U {{ cookiecutter.repo_name }}
 ```
-
-5. Upload initial code to {{ cookiecutter.scm_platform }}:
-
-```bash
-git add .
-git commit -m ":tada: Initial commit"
-git branch -M main
-git remote add origin {{ cookiecutter.__scm_base_url }}.git
-git push -u origin main
-```
-
-### Set up bots
-{%+ if cookiecutter.__scm_platform_lc == 'gitlab' %}
-- Set up a [Repository Access Token][lab1] to enable automatic releases and issue closing.
-{% elif cookiecutter.__scm_platform_lc == 'github' -%}
-- Set up [Dependabot][hub1] to ensure you have the latest dependencies;
-- Set up [Stale bot][hub2] for automatic issue closing.
 {%- endif %}
 
-### Poetry
+## :reminder_ribbon: Contributing
 
-Want to know more about Poetry? Check [its documentation][fs2].
-
-<details>
-<summary>Details about Poetry</summary>
-<p>
-
-Poetry's [commands][fs3] are very intuitive and easy to learn, like:
-
-- `poetry add numpy@latest`
-- `poetry run pytest`
-- `poetry publish --build`
-
-etc.
-</p>
-</details>
-
-### Building and releasing your package
-
-In order to release a new version of the application, a few steps are needed.
-
-Make sure you have a PyPI account and generate an API token, you can then register it in your repository with
-
-```bash
-invoke pypi-config <API_token>
-```
-
-Then, you're all good to build and publish your package in one go!
-
-```bash
-invoke publish
-```
-
-You should also [push a tag][fs5] to `GitLab` or `GitHub` and create a `Release` for your application on the platform to ensure users can check the latest version contents.
-
-Of course, you can also rely solely on the CI tools provided by Galactipy to handle building, publishing and releasing automatically, with minimal configuration required! :partying_face:
-
-{% if cookiecutter.create_docker -%}
-Pushing a tag to your repository will also set up the automated workflows to build and publish your image to {% if cookiecutter.__scm_platform_lc == 'gitlab' %}the GitLab Container Registry{% else %}Docker Hub{% endif %}.
-{%- endif %}
+There are several ways
+to contribute to {{ cookiecutter.project_name }}.
+Refer to our [CONTRIBUTING guide][bp9]
+for all relevant details.
 
 ## :dart: What's next
 
@@ -243,7 +182,7 @@ And here are a few articles which may help you:
 - Uses [`Poetry`][ft1] as the dependency manager and extends functionality with [`dynamic versioning`][ft2], [`virtual environment bundling`][ft3], dependency [`export`][ft4] and [`update resolution`][ft5]. See configuration in [`pyproject.toml`][ft6];
 - Automatic code formatting with [`ruff`][fo1], with ready-to-use [`pre-commit`][fo2] hooks and several rules already selected for linting;
 - Type checks with [`mypy`][ft7], security checks with [`safety`][ft8] and [`bandit`][ft9];
-- Testing with [`pytest`][ft10]{% if cookiecutter.use_bdd %} and [`behaviour-driven development`][bdd1] configuration for managing scenarios; more details in the [Behaviour-Driven Development][bdd2] section{% endif %};
+- Testing with [`pytest`][ft10]{% if cookiecutter.use_bdd %} and [`behaviour-driven development`][bdd1] configuration for managing scenarios;{% endif %}
 - Code quality integrations with {% if cookiecutter.__coverage_lc == 'coveralls' %}[`Coveralls`][ft11]{% elif cookiecutter.__coverage_lc == 'codacy' %}[`Codacy`][ft11]{% endif %} via CI/CD;
 - Predefined VS Code [`settings.json`][ft12] with quality-of-life configuration for editor, workbench, debugging and more;
 - Ready-to-use [`.editorconfig`][ft13]{% if cookiecutter.create_docker %}, [`.dockerignore`][docker1]{% endif %} and [`.gitignore`][ft14] files. You don't have to worry about those things.
@@ -252,7 +191,7 @@ And here are a few articles which may help you:
 
 - Predefined CI/CD build workflow with {% if cookiecutter.__scm_platform_lc == 'gitlab' %}[`GitLab CI`][lab3]{% elif cookiecutter.__scm_platform_lc == 'github' %}[`Github Actions`][hub4]{% endif %};
 - Automatic package uploads to [`PyPI`][ft15] test and production repositories;
-- Everything is already set up for security checks, codestyle checks, code formatting, testing, linting{% if cookiecutter.create_docker %}, docker builds{% endif %} etc with [`Invoke`][ft16]. More details in [Invoke Usage][ft17];
+- Everything is already set up for security checks, codestyle checks, code formatting, testing, linting{% if cookiecutter.create_docker %}, docker builds{% endif %} etc with [`Invoke`][ft16];
 {%- if cookiecutter.create_docker %}
 - [`Dockerfile`][docker2] for your package, with CI/CD workflows to publish your image to a container registry;
 {%- endif %}
@@ -271,298 +210,15 @@ And here are a few articles which may help you:
 
 ### Open source community features
 
-- Ready-to-use [{% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates][ft18] and several [Issue templates][ft19];
+- Ready-to-use [{% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates][ft17] and several [Issue templates][ft18];
 - Files such as: `LICENCE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `CITATION.cff` and `SECURITY.md` are generated automatically;
-- **Loads** of predefined [badges][ft20] to make your project stand out, you can either keep them, remove as you wish or be welcome to add even more.
-
-## Installation
-
-```bash
-pip install -U {{ cookiecutter.repo_name }}
-```
-
-or install with `Poetry`:
-
-```bash
-poetry add {{ cookiecutter.repo_name }}
-```
-
-{%- if cookiecutter.app_type != 'bare_repo' %}
-Then you can run
-
-```bash
-{{ cookiecutter.repo_name }} --help
-```
-
-or with `Poetry`:
-
-```bash
-poetry run {{ cookiecutter.repo_name }} --help
-```
-{%- endif %}
-
-### Invoke usage
-
-[`invoke`][ft16] contains a lot of functions for faster development.
-
-<details>
-<summary>1. Download or remove Poetry</summary>
-<p>
-
-To download and install Poetry as a [standalone application][fs1] run:
-
-```bash
-invoke poetry-download
-```
-
-To uninstall
-
-```bash
-invoke poetry-remove
-```
-
-Alternatively, you can install it via your package manager (preferred) or any method provided by the [documentation][inv1].
-
-</p>
-</details>
-
-<details>
-<summary>2. Install all dependencies and pre-commit hooks</summary>
-<p>
-
-Install requirements with
-
-```bash
-invoke install
-```
-
-And then add Poetry plugins to make development easier with
-
-```bash
-invoke poetry-plugins
-```
-
-Pre-commit hooks could be installed after `git init` via
-
-```bash
-invoke pre-commit-install
-```
-
-</p>
-</details>
-
-<details>
-<summary>3. Codestyle</summary>
-<p>
-
-Automatic formatting uses `ruff`, and can be run with
-
-```bash
-invoke codestyle
-
-# or use synonym
-invoke format
-```
-
-For formatting checks only, without rewriting files:
-
-```bash
-invoke codestyle --check
-```
-
-Aside from the formatter, you can also use `ruff` to lint project files with several preconfigured rules defined in `pyproject.toml`:
-
-```bash
-invoke check-linter
-```
-
-</p>
-</details>
-<details>
-<summary>4. Code security</summary>
-<p>
-
-```bash
-invoke check-safety
-```
-
-This command launches `Poetry` integrity checks as well as identifies security issues with `Safety` and `Bandit`.
-
-Update all dev libraries to the latest version using one command:
-
-```bash
-invoke update-dev-deps
-```
-
-</p>
-</details>
-
-<details>
-<summary>5. Type checks</summary>
-<p>
-
-Run `mypy` static type checker with
-
-```bash
-invoke mypy
-```
-
-</p>
-</details>
-
-<details>
-<summary>6. Tests</summary>
-<p>
-
-Run `pytest` with all essential parameters predefined with
-
-```bash
-invoke test
-```
-
-</p>
-</details>
-
-<details>
-<summary>7. All code-related checks</summary>
-<p>
-
-Of course there is a command to ~~rule~~ run all linters in one:
-
-```bash
-invoke sweep
-```
-
-The same as:
-
-```bash
-invoke test check-linter codestyle mypy check-safety
-```
-
-</p>
-</details>
-{%+ if cookiecutter.create_docker %}
-<details>
-<summary>8. Docker</summary>
-<p>
-
-Build your Docker image with the `latest` tag preconfigured with
-
-```bash
-invoke docker-build
-```
-
-Remove docker image with
-
-```bash
-invoke docker-remove
-```
-
-More information about Docker [here][docker3].
-
-</p>
-</details>
-{% endif +%}
-<details>
-<summary>{% if cookiecutter.create_docker %}9{% else %}8{% endif %}. Cleanup</summary>
-<p>
-
-Delete pycache files:
-
-```bash
-invoke pycache-remove
-```
-
-Remove package build:
-
-```bash
-invoke build-remove
-```
-
-Delete .DS_STORE files:
-
-```bash
-invoke dsstore-remove
-```
-
-Remove .mypycache:
-
-```bash
-invoke mypycache-remove
-```
-
-Or to remove all above run:
-
-```bash
-invoke cleanup
-```
-
-</p>
-</details>
-
-{% if cookiecutter.use_bdd %}
-# Behaviour-Driven Development
-
-A `features` directory is placed under `tests`, with [`pytest-bdd`][bdd3] added as a dependency. You should create `.feature` files inside this folder to specify them and describe scenarios using the [Gherkin][bdd4] language:
-
-```
-# tests/features/divide.feature
-Feature: Divide numbers
-  Scenario: Full division
-    When I ask the calculator to divide "21" by "7"
-    Then the screen should return "3" as an integer
-
-  Scenario: Division by zero
-    When I ask the calculator to divide any number by "0"
-    Then the screen should return an error message
-```
-
-You would then use `pytest-bdd` to wrap each scenario referred in the feature file as a step by step validation:
-
-```py
-from mypackage import divide
-from pytest_bdd import scenario, when, then
-
-@scenario("divide.feature", "Full Division")
-def test_full_division():
-    pass
-
-@when("I ask the calculator to divide \"21\" by \"7\"")
-def divide_21_7():
-    calculation = divide(21, 7)
-
-    return calculation
-
-@then("The screen should return \"3\" as an integer")
-def return_integer():
-    assert calculation.display == "3"
-
-
-@scenario("divide.feature", "Division by Zero")
-def test_zero_division():
-    pass
-
-@when("I ask the calculator to divide any number by \"0\"")
-def divide_by_zero():
-    calculation = divide(15, 0)
-
-    return calculation
-
-@then("The screen should return an error message")
-def return_integer():
-    assert calculation.display == "Error"
-```
-
-Then you can simply use `pytest` as you normally would to run the test suite and check the results.
-
-For more information on behaviour-driven development and more advanced cases, please check out the [Cucumber documentation][bdd5].
-{% endif %}
+- **Loads** of predefined [badges][ft19] to make your project stand out, you can either keep them, remove as you wish or be welcome to add even more.
 
 ## :chart_with_upwards_trend: Releases
 
 You can see the list of available releases on the [{{ cookiecutter.scm_platform }} Releases][r1] page.
 
-We follow [Semantic Versions][fs4] specification.
+We follow [Semantic Versions][fs2] specification.
 {%+ if cookiecutter.__scm_platform_lc == 'gitlab' %}
 We use [`GitLab Changelog`][lab5] entries to track changes. You can categorise commits and Merge Requests made to this project using [git trailers][lab10] in your commit messages.
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
@@ -660,11 +316,12 @@ This project was generated with [`galactipy`][bp7].
 [bcov3]: https://img.shields.io/codacy/coverage/d5402a91aa7b4234bd1c19b5e86a63be?style=for-the-badge&logo=codacy
 [bcov4]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}/coverage -->
 {% endif +%}
-[fs1]: https://github.com/python-poetry/install.python-poetry.org
-[fs2]: https://python-poetry.org/docs/
-[fs3]: https://python-poetry.org/docs/cli/#commands
-[fs4]: https://semver.org/
-[fs5]: https://git-scm.com/book/en/v2/Git-Basics-Tagging
+{% if cookiecutter.app_type != 'bare_repo' -%}
+[fs1]: https://pipx.pypa.io/latest/installation/
+{% else -%}
+[fs1]: https://pip.pypa.io/en/stable/installation/
+{% endif -%}
+[fs2]: https://semver.org/
 
 [wn1]: https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
 [wn2]: https://github.com/tiangolo/typer
@@ -725,17 +382,14 @@ This project was generated with [`galactipy`][bp7].
 [ft14]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitignore
 [ft15]: https://pypi.org/
 [ft16]: https://docs.pyinvoke.org/en/stable/
-[ft17]: #invoke-usage
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[ft18]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/merge_request_templates/default.md
-[ft19]: {{ cookiecutter.__scm_link_url }}/tree/master/.gitlab/issue_templates
+[ft17]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/merge_request_templates/default.md
+[ft18]: {{ cookiecutter.__scm_link_url }}/tree/master/.gitlab/issue_templates
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
-[ft18]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/PULL_REQUEST_TEMPLATE.md
-[ft19]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/ISSUE_TEMPLATE
+[ft17]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/PULL_REQUEST_TEMPLATE.md
+[ft18]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/ISSUE_TEMPLATE
 {%- endif %}
-[ft20]: https://shields.io/
-
-[inv1]: https://python-poetry.org/docs/#installation
+[ft19]: https://shields.io/
 
 [r1]: {{ cookiecutter.__scm_link_url }}/releases
 {%+ if cookiecutter.__scm_platform_lc == 'gitlab' %}
@@ -747,13 +401,10 @@ This project was generated with [`galactipy`][bp7].
 [bscm6]: https://img.shields.io/gitlab/pipeline-status/{{ cookiecutter.scm_username }}%2F{{ cookiecutter.repo_name }}?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
 [bscm7]: {{ cookiecutter.__scm_link_url }}/pipelines
 
-[lab1]: https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html
 [lab2]: https://docs.gitlab.com/ee/ci/
 [lab3]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab-ci.yml
 [lab4]: {{ cookiecutter.__scm_link_url }}/blob/master/CHANGELOG.md
 [lab5]: https://docs.gitlab.com/ee/user/project/changelogs.html
-[lab6]: https://gitlab.com/explore/catalog/components/gitlab-triage
-[lab7]: {{ cookiecutter.__scm_link_url }}/blob/master/.triage-policies.yml
 [lab8]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/changelog_config.yml
 [lab9]: https://gitlab.com/explore/catalog/components/gitlab-triage
 [lab10]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
@@ -767,7 +418,6 @@ This project was generated with [`galactipy`][bp7].
 [bscm7]: {{ cookiecutter.__scm_link_url }}/actions/workflows/build.yml
 
 [hub1]: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates#enabling-dependabot-version-updates
-[hub2]: https://github.com/marketplace/actions/close-stale-issues
 [hub3]: https://help.github.com/en/actions
 [hub4]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/workflows/build.yml
 [hub5]: https://docs.github.com/en/code-security/dependabot
@@ -790,7 +440,6 @@ This project was generated with [`galactipy`][bp7].
 
 [docker1]: {{ cookiecutter.__scm_link_url }}/blob/master/.dockerignore
 [docker2]: {{ cookiecutter.__scm_link_url }}/blob/master/docker/Dockerfile
-[docker3]: {{ cookiecutter.__scm_link_url }}/tree/master/docker
 {%+ endif %}
 [bfo1]: https://img.shields.io/badge/code%20style-ruff-261230?style=for-the-badge&labelColor=grey
 [bfo2]: https://docs.astral.sh
@@ -816,10 +465,6 @@ This project was generated with [`galactipy`][bp7].
 [bbbd2]: https://cucumber.io/
 
 [bdd1]: https://cucumber.io/
-[bdd2]: #behaviour-driven-development
-[bdd3]: https://pytest-bdd.readthedocs.io/en/latest/
-[bdd4]: https://cucumber.io/docs/gherkin/reference
-[bdd5]: https://cucumber.io/docs
 {%- endif %}
 {%- if cookiecutter.commit_convention == 'gitmoji' %}
 [bcv1]: https://img.shields.io/badge/%F0%9F%98%9C_gitmoji-ffdd67?style=for-the-badge
