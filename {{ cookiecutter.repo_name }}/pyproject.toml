@@ -214,9 +214,9 @@ sections.app-builders = ["rich", "typer"]
 {%- endif %}
 sections.typing = ["typing", "types", "typing_extensions", "mypy", "mypy_extensions", "pytype", "pydantic"]
 {%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
-sections.testing = ["pytest", {% if cookiecutter.use_bdd %}"pytest_bdd"{% endif %}, "pytest_asyncio", "tests"]
+sections.testing = ["pytest",{% if cookiecutter.use_bdd %} "pytest_bdd",{% endif %} "pytest_asyncio", "pytest_mock", "pyfakefs", "testinfra"]
 {%- else %}
-sections.testing = ["pytest", {% if cookiecutter.use_bdd %}"pytest_bdd"{% endif %}, "tests"]
+sections.testing = ["pytest",{% if cookiecutter.use_bdd %} "pytest_bdd",{% endif %} "pytest_mock", "pyfakefs", "testinfra"]
 {%- endif %}
 section-order = [
   "future",
@@ -227,8 +227,8 @@ section-order = [
 {%- endif %}
   "third-party",
   "first-party",
+  "testing",
   "local-folder",
-  "testing"
 ]
 
 
