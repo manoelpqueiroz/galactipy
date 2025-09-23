@@ -21,6 +21,10 @@ class TerminalApp(App):
         CSS_DIRECTORY / "noctis.tcss",
     ]
 
+    def __init__(self, theme: str):
+        super().__init__()
+        self.default_theme = theme
+
     def compose(self) -> ComposeResult:
         """Create child widgets for the app."""
         # UPDATEME by replacing with your own widgets
@@ -33,9 +37,9 @@ class TerminalApp(App):
         for theme in AppCustomThemes:
             self.register_theme(theme.value)
 
-        self.theme = "noctis"
+        self.theme = self.default_theme
 
 
 if __name__ == "__main__":
-    app = TerminalApp()
+    app = TerminalApp("noctis")
     app.run()

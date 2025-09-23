@@ -7,6 +7,6 @@ launch_app = typer.Typer()
 @launch_app.command()
 def launch():
     """Launch the {{ cookiecutter.project_name }} interface."""
-    interface = TerminalApp()
+    interface = TerminalApp("noctis")
 
     interface.run()

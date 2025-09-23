@@ -56,7 +56,7 @@ def main(
     {%- if cookiecutter.app_type == 'tui' %}
     """Launch the {{ cookiecutter.project_name }} interface."""
     if ctx.invoked_subcommand is None:
-        interface = TerminalApp()
+        interface = TerminalApp("noctis")
         interface.run()
     {%- elif cookiecutter.app_type == 'hybrid' or cookiecutter.app_type == 'cli' %}
     """{{ cookiecutter.project_description }}.
