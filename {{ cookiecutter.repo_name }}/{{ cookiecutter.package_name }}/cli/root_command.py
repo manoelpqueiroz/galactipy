@@ -2,6 +2,9 @@
 # https://typer.tiangolo.com/tutorial/
 # See recommended configuration for multicommand applications at:
 # https://typer.tiangolo.com/tutorial/one-file-per-command/#main-module-mainpy
+{%- if cookiecutter.app_type == 'tui' %}
+from pathlib import Path
+{%- endif %}
 from typing import Annotated
 
 import typer
@@ -11,6 +14,7 @@ from {{ cookiecutter.package_name }} import __version__
 from {{ cookiecutter.package_name }}.cli.styles import AppCustomStyles
 {%- if cookiecutter.app_type == 'tui' %}
 from {{ cookiecutter.package_name }}.tui.main_window import TerminalApp
+from {{ cookiecutter.package_name }}.config import resolve_app_manager
 
 app = typer.Typer()
 {%- elif cookiecutter.app_type == 'hybrid' %}
@@ -38,6 +42,14 @@ def version_callback(print_version: bool):
 @app.callback(invoke_without_command=True)
 def main(
     ctx: typer.Context,
+    config: Annotated[
+        Path,
+        typer.Option(
+            "--config",
+            "-c",
+            help="Specify a custom configuration file to launch the application.",
+        ),
+    ] = None,
 {% elif cookiecutter.app_type == 'hybrid' or cookiecutter.app_type == 'cli' -%}
 @app.callback()
 def main(
@@ -56,7 +68,9 @@ def main(
     {%- if cookiecutter.app_type == 'tui' %}
     """Launch the {{ cookiecutter.project_name }} interface."""
     if ctx.invoked_subcommand is None:
-        interface = TerminalApp("noctis")
+        _, APP_MANAGER = resolve_app_manager(False, config)
+
+        interface = TerminalApp(APP_MANAGER.settings.theme)
         interface.run()
     {%- elif cookiecutter.app_type == 'hybrid' or cookiecutter.app_type == 'cli' %}
     """{{ cookiecutter.project_description }}.
