@@ -12,6 +12,7 @@ from rich.console import Console
 
 from {{ cookiecutter.package_name }} import __version__
 from {{ cookiecutter.package_name }}.cli.styles import AppCustomStyles
+from {{ cookiecutter.package_name }}.cli.commands.config import config_app
 {%- if cookiecutter.app_type == 'tui' %}
 from {{ cookiecutter.package_name }}.tui.main_window import TerminalApp
 from {{ cookiecutter.package_name }}.config import resolve_app_manager
@@ -26,6 +27,7 @@ app.add_typer(launch_app)
 
 app = typer.Typer(no_args_is_help=True)
 {%- endif %}
+app.add_typer(config_app, name="config")
 
 
 def version_callback(print_version: bool):
