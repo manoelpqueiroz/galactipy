@@ -1,6 +1,6 @@
 {%- if cookiecutter.app_type == 'tui' or cookiecutter.app_type == 'hybrid' %}
-from {{ cookiecutter.package_name }}.tui.main_window import TerminalApp
 from {{ cookiecutter.package_name }}.config import AppManager
+from {{ cookiecutter.package_name }}.tui.main_window import TerminalApp
 
 APP_MANAGER = AppManager.default()
 

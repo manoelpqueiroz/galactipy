@@ -1,12 +1,14 @@
+from typing import Annotated
+
 from ast import literal_eval
 from pathlib import Path
-from typing import Annotated
 
 import typer
 
 from {{ cookiecutter.package_name }}.config import resolve_app_manager
 
 config_extend_app = typer.Typer(no_args_is_help=True)
+
 
 @config_extend_app.command(name="extend")
 def extend_command(
@@ -18,9 +20,7 @@ def extend_command(
     secret: Annotated[
         bool,
         typer.Option(
-            "--secret",
-            "-s",
-            help="Store configuration in the secret manager instead.",
+            "--secret", "-s", help="Store configuration in the secret manager instead."
         ),
     ] = False,
     create: Annotated[
@@ -32,7 +32,7 @@ def extend_command(
                 "Add the provided value in an array if the setting is not set. Will "
                 "raise an error otherwise."
             ),
-        )
+        ),
     ] = False,
 ):
     """Extend an array key in the configuration file.

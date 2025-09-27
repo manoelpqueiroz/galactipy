@@ -1,13 +1,14 @@
-from pathlib import Path
 from typing import Annotated
 
-from rich import print
+from pathlib import Path
+
 import typer
-from dynamanager import Dynamanager
+from rich import print
 
 from {{ cookiecutter.package_name }}.config import resolve_app_manager
 
 config_get_app = typer.Typer(no_args_is_help=True)
+
 
 @config_get_app.command()
 def get(
@@ -22,7 +23,7 @@ def get(
         typer.Option(
             "--secret",
             "-s",
-            help="Retrieve configuration from the secret manager instead."
+            help="Retrieve configuration from the secret manager instead.",
         ),
     ] = False,
 ):
@@ -33,6 +34,6 @@ def get(
         print(APP_MANAGER[config_type].to_dict())
 
     else:
-    print(APP_MANAGER[config_type, key])
+        print(APP_MANAGER[config_type, key])
 
     raise typer.Exit

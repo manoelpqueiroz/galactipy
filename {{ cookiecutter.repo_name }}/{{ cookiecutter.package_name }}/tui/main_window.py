@@ -3,21 +3,21 @@
 # https://textual.textualize.io/tutorial/
 from pathlib import Path
 
-from art import text2art
-
 from textual.app import App, ComposeResult
 from textual.widgets import Footer, Label
 
+from art import text2art
+
 from {{ cookiecutter.package_name }}.tui.themes import AppCustomThemes
 
-
 CSS_DIRECTORY = Path(__file__).parent / "css"
+
 
 class TerminalApp(App):
     """Textual app to serve as the {{ cookiecutter.project_name }} interface."""
 
     CSS_PATH = [
-        CSS_DIRECTORY / "demo.tcss", # UPDATEME by removing when no longer needed
+        CSS_DIRECTORY / "demo.tcss",  # UPDATEME by removing when no longer needed
         CSS_DIRECTORY / "noctis.tcss",
     ]
 

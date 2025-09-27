@@ -2,20 +2,20 @@
 # https://typer.tiangolo.com/tutorial/
 # See recommended configuration for multicommand applications at:
 # https://typer.tiangolo.com/tutorial/one-file-per-command/#main-module-mainpy
-{%- if cookiecutter.app_type == 'tui' %}
-from pathlib import Path
-{%- endif %}
 from typing import Annotated
+{% if cookiecutter.app_type == 'tui' %}
+from pathlib import Path
 
+{% endif -%}
 import typer
 from rich.console import Console
 
 from {{ cookiecutter.package_name }} import __version__
-from {{ cookiecutter.package_name }}.cli.styles import AppCustomStyles
 from {{ cookiecutter.package_name }}.cli.commands.config import config_app
+from {{ cookiecutter.package_name }}.cli.styles import AppCustomStyles
 {%- if cookiecutter.app_type == 'tui' %}
-from {{ cookiecutter.package_name }}.tui.main_window import TerminalApp
 from {{ cookiecutter.package_name }}.config import resolve_app_manager
+from {{ cookiecutter.package_name }}.tui.main_window import TerminalApp
 
 app = typer.Typer()
 {%- elif cookiecutter.app_type == 'hybrid' %}
@@ -64,7 +64,7 @@ def main(
             help="Print the current version of this program and exit.",
             callback=version_callback,
             is_eager=True,
-        )
+        ),
     ] = False,
 ):
     {%- if cookiecutter.app_type == 'tui' %}

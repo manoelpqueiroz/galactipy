@@ -1,12 +1,14 @@
+from typing import Annotated
+
 from ast import literal_eval
 from pathlib import Path
-from typing import Annotated
 
 import typer
 
 from {{ cookiecutter.package_name }}.config import resolve_app_manager
 
 config_set_app = typer.Typer(no_args_is_help=True)
+
 
 @config_set_app.command(name="set")
 def set_command(
@@ -18,9 +20,7 @@ def set_command(
     secret: Annotated[
         bool,
         typer.Option(
-            "--secret",
-            "-s",
-            help="Store configuration in the secret manager instead."
+            "--secret", "-s", help="Store configuration in the secret manager instead."
         ),
     ] = False,
 ):

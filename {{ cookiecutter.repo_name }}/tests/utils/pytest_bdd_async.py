@@ -1,8 +1,9 @@
 """Allow asynchronous functions to be used with the `pytest-bdd` framework."""
 
-from functools import wraps
+from typing import Callable
+
 import inspect
-from typing import Dict, Any, Callable
+from functools import wraps
 
 
 # HACK Workaround for the lack of native asynchronous support in pytest-bdd, see:

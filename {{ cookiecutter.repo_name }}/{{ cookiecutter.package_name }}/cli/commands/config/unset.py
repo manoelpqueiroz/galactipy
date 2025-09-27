@@ -1,11 +1,13 @@
-from pathlib import Path
 from typing import Annotated
+
+from pathlib import Path
 
 import typer
 
 from {{ cookiecutter.package_name }}.config import resolve_app_manager
 
 config_unset_app = typer.Typer(no_args_is_help=True)
+
 
 @config_unset_app.command()
 def unset(
@@ -18,7 +20,7 @@ def unset(
         typer.Option(
             "--secret",
             "-s",
-            help="Retrieve configuration from the secret manager instead."
+            help="Retrieve configuration from the secret manager instead.",
         ),
     ] = False,
 ):
