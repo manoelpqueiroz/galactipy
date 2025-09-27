@@ -50,8 +50,8 @@ def generate_test_config(mock_config_path):
     assert settings_file.exists()
     assert secrets_file.exists()
 
-{% if cookiecutter.use_bdd %}
     return {"instance": manager, "file": settings_file}
+{%- if cookiecutter.use_bdd %}
 
 
 @pytest.fixture
@@ -62,8 +62,6 @@ def sandbox_manager(valid_config_manager):
 @pytest.fixture
 def sandbox_config_file(valid_config_manager):
     return valid_config_manager["file"]
-{%- else %}
-    yield {"instance": manager, "file": settings_file}
 {%- endif %}
 
 
@@ -76,7 +74,9 @@ def event_loop():
     yield loop
 
     loop.close()
-{%- else %}
+
+
+{% else -%}
 @pytest.fixture
 def setup_sample_manager(generate_test_config):
     manager = generate_test_config["instance"]
@@ -87,5 +87,5 @@ def setup_sample_manager(generate_test_config):
 
     assert manager["settings", "test"] == "somevalue"
 
-    yield {"instance": manager, "file": generate_test_config["file"]}
+    return {"instance": manager, "file": generate_test_config["file"]}
 {%- endif %}

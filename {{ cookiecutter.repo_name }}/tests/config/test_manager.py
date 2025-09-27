@@ -159,10 +159,13 @@ def test_runtime_manager(mock_config_path):
 @pytest.mark.backend
 @pytest.mark.config
 @pytest.mark.standard
-@pytest.mark.parametrize("configuration_type,expected_envvar", [
-("settings", "{{ cookiecutter.__envvar }}"),
-("secrets", "{{ cookiecutter.__envvar }}_SECRET"),
-])
+@pytest.mark.parametrize(
+    ("configuration_type", "expected_envvar"),
+    (
+        ["settings", "{{ cookiecutter.__envvar }}"],
+        ["secrets", "{{ cookiecutter.__envvar }}_SECRET"],
+    ),
+)
 def test_default_manager(mock_config_path, configuration_type, expected_envvar):
     manager_instance = AppManager.default()
 
@@ -178,10 +181,13 @@ def test_default_manager(mock_config_path, configuration_type, expected_envvar):
 @pytest.mark.backend
 @pytest.mark.config
 @pytest.mark.standard
-@pytest.mark.parametrize("configuration_type,expected_envvar", [
-("settings", "{{ cookiecutter.__envvar }}"),
-("secrets", "{{ cookiecutter.__envvar }}_SECRET"),
-])
+@pytest.mark.parametrize(
+    ("configuration_type", "expected_envvar"),
+    (
+        ["settings", "{{ cookiecutter.__envvar }}"],
+        ["secrets", "{{ cookiecutter.__envvar }}_SECRET"],
+    ),
+)
 def test_custom_manager(tmp_path, configuration_type, expected_envvar):
     custom_file = tmp_path / "test.toml"
     custom_file.touch()
@@ -204,13 +210,19 @@ def test_custom_manager(tmp_path, configuration_type, expected_envvar):
 @pytest.mark.config
 @pytest.mark.standard
 @pytest.mark.parametrize(
-    "is_secret,uses_custom_path,configuration_type,manager_length,file_in_base_dir",
-    [
-        (False, False, "settings", 2, True),
-        (True, False, "secrets", 2, True),
-        (False, True, "settings", 1, False),
-        (True, True, "secrets", 1, False),
-    ]
+    (
+        "is_secret",
+        "uses_custom_path",
+        "configuration_type",
+        "manager_length",
+        "file_in_base_dir",
+    ),
+    (
+        [False, False, "settings", 2, True],
+        [True, False, "secrets", 2, True],
+        [False, True, "settings", 1, False],
+        [True, True, "secrets", 1, False],
+    ),
 )
 def test_application_resolution(
     mock_config_path,

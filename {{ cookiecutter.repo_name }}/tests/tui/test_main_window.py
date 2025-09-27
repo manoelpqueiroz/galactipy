@@ -3,8 +3,8 @@
 {% if cookiecutter.use_bdd -%}
 from pytest_bdd import given, parsers, scenario, then, when
 
-from tests.utils import async_step
 from tests.helpers import AppInterface
+from tests.utils import async_step
 
 {% else -%}
 import pytest

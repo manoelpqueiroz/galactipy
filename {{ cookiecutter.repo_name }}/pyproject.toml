@@ -190,6 +190,8 @@ suppress-dummy-args = true
 [tool.ruff.lint.flake8-pytest-style]
 fixture-parentheses = false
 mark-parentheses = false
+parametrize-values-type = "tuple"
+parametrize-values-row-type = "list"
 
 [tool.ruff.lint.flake8-tidy-imports]
 ban-relative-imports = "all"

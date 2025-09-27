@@ -317,7 +317,7 @@ def test_extend_empty_string():
 @when(
     parsers.parse(
         'the extend program receives the key "{key}" with an empty string and the '
-        '`--create-on-missing` option set to {flag}'
+        "`--create-on-missing` option set to {flag}"
     ),
     target_fixture="cli_run",
 )
@@ -629,8 +629,7 @@ class TestExtendCommand:
 
         if flag:
             results = runner.invoke(
-                config_extend_app,
-                args=[key, "", "--create-on-missing", "--path", file],
+                config_extend_app, args=[key, "", "--create-on-missing", "--path", file]
             )
 
         else:
