@@ -117,7 +117,7 @@ def install(c: Context, ignore_pty: bool = False) -> None:
     local_pty = False if ignore_pty else IS_UNIX_OS
 
     c.run(f"{poetry_path} lock -n", pty=local_pty)
-    c.run(f"{poetry_path} install -n", pty=local_pty)
+    c.run(f"{poetry_path} sync -n", pty=local_pty)
 
 
 # Formatting, linting and other checks
