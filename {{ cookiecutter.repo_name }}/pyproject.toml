@@ -65,13 +65,13 @@ version = "0.0.0"  # Keep this key as the last for `tool.poetry`, as it is used 
 python = "^{{ cookiecutter.minimal_python_version }}"
 {%+ if cookiecutter.app_type == 'tui' or cookiecutter.app_type == 'hybrid' %}
 textual = "^6.1.0"
-art = "^6.5.0" # UPDATEME by removing when no longer needed
+art = "^6.5.0"  # UPDATEME by removing when no longer needed
 {%- endif %}
 {%+ if cookiecutter.app_type != 'bare_repo' %}
 typer = { extras = ["all"], version = "^0.18.0" }
 rich = "^14.1.0"
 
-dynamanager = "^0.1.1"
+dynamanager = "^0.1.3"
 platformdirs = "^4.4.0"
 {%- endif %}
 
@@ -173,7 +173,7 @@ task-tags = [
   "NEEDSWORK",
   "UPDATEME",
   "TODO",
-  "REFACTOR"
+  "REFACTOR",
 ]  # UPDATEME by modifying or removing this setting after addressing all UPDATEMEs
 
 [tool.ruff.lint.per-file-ignores]
@@ -229,8 +229,8 @@ section-order = [
   "app-builders",
 {%- endif %}
   "third-party",
-  "first-party",
   "testing",
+  "first-party",
   "local-folder",
 ]
 
@@ -278,7 +278,7 @@ norecursedirs =[
   "docs",
   ".tox",
   ".git",
-  "__pycache__"
+  "__pycache__",
 ]
 doctest_optionflags = ["NUMBER", "NORMALIZE_WHITESPACE", "IGNORE_EXCEPTION_DETAIL"]
 timeout = 10
@@ -308,14 +308,17 @@ addopts = [
 source = ["tests"]
 branch = true
 {%- if cookiecutter.app_type != 'bare_repo' %}
-omit = ["__main__.py"]
+omit = [
+  "__main__.py",
+  "*/config/constants.py",
+]
 {%- endif %}
 
 
 [tool.coverage.report]
 exclude_also = [
   "def main",
-  "if __name__ == .__main__.:"
+  "if __name__ == .__main__.:",
 ]
 fail_under = 90
 show_missing = true
