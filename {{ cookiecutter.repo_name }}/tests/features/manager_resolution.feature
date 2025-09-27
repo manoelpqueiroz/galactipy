@@ -1,3 +1,4 @@
+@backend @config
 Feature: Resolve application manager definitions
   The AppManager class allows for both the default configuration or a custom
   configuration to be provided for the application. In real-case scenarios, there is
@@ -6,6 +7,7 @@ Feature: Resolve application manager definitions
 
   This interplay must be resolved before the configuration in question is called.
 
+  @standard
   Scenario Outline: Application resolution
     When the resolver receives a request with <is_secret> and <uses_custom_path>
     Then it returns a manager with <manager_length> domains

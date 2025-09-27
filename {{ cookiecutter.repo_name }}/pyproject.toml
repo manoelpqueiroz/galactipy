@@ -237,7 +237,7 @@ section-order = [
 
 [tool.mypy]
 # https://github.com/python/mypy
-# https://mypy.readthedocs.io/en/latest/config_file.html#using-a-pyproject-toml-file
+# https://mypy.readthedocs.io/en/stable/config_file.html#using-a-pyproject-toml-file
 python_version = "{{ cookiecutter.minimal_python_version }}"
 files = [
   "{{ cookiecutter.package_name }}",
@@ -267,7 +267,7 @@ warn_unused_ignores = true
 
 [tool.pytest.ini_options]
 # https://github.com/pytest-dev/pytest
-# https://docs.pytest.org/en/6.2.x/customize.html#pyproject-toml
+# https://docs.pytest.org/en/stable/customize.html#pyproject-toml
 # Directories that are not visited by pytest collector:
 norecursedirs =[
   "hooks",
@@ -281,6 +281,29 @@ norecursedirs =[
   "__pycache__",
 ]
 doctest_optionflags = ["NUMBER", "NORMALIZE_WHITESPACE", "IGNORE_EXCEPTION_DETAIL"]
+markers = [
+  "backend",
+  "frontend",
+{%- if cookiecutter.app_type != 'bare_repo' %}
+  "cli",
+{%- endif %}
+  "standard",
+  "validation",
+  "edge",
+  "security",
+  "performance",
+  "persistence",
+  "config",
+  "customization",
+  "compatibility",
+  "async",
+  "integration",
+  "database",
+  "api",
+  "identity",
+  "networking",
+  "monitoring",
+]
 timeout = 10
 {%- if cookiecutter.use_bdd %}
 bdd_features_base_dir = "tests/features/"
@@ -304,7 +327,7 @@ addopts = [
 
 [tool.coverage.run]
 # https://github.com/nedbat/coveragepy
-# https://coverage.readthedocs.io/en/7.10.6/config.html
+# https://coverage.readthedocs.io/en/latest/config.html
 source = ["tests"]
 branch = true
 {%- if cookiecutter.app_type != 'bare_repo' %}

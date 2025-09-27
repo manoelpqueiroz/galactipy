@@ -1,3 +1,4 @@
+@cli @config
 Feature: Command-line configuration program
 
   Background:
@@ -7,39 +8,46 @@ Feature: Command-line configuration program
     Background:
       Given the configuration has a "test" key with a value of "somevalue"
 
+    @standard
     Scenario: Get the entire configuration
       When the get program receives no arguments
       Then the terminal prints the entire configuration as a dictionary
       And the program exits without errors
 
+    @standard
     Scenario: Get a specific configuration value
       When the get program receives the "test" key
       Then the terminal prints "somevalue" to the user
       And the program exits without errors
 
+    @standard
     Scenario: Get an invalid configuration value
       When the get program receives the "notest" key
       Then the program raises a key error
       And the program exits with status 1
 
   Rule: Setting values
+    @standard
     Scenario: Set a new value
       Given the key "test" does not exist in the configuration
       When the set program receives the "test" key with "newvalue" value
       Then the configuration adds a new key "test" with value "newvalue"
       And the program exits without errors
 
+    @standard
     Scenario: Override an existing value
       Given the configuration has a "test" key with a value of "somevalue"
       When the set program receives the "test" key with "newvalue" value
       Then the configuration replaces the value for the "test" key with "newvalue"
       And the program exits without errors
 
+    @edge
     Scenario: Set empty string
       When the set program receives the key "test" with an empty string
       Then the terminal shows a "Could not parse the value" message
       And the program exits with status 1
 
+    @standard
     Scenario Outline: Set a sequence value
       When the set program receives the "test" key and value <value_argument>
       Then the key "test" becomes available in the configuration
@@ -54,6 +62,7 @@ Feature: Command-line configuration program
         | ('a', 'b', 'c')                      |
         | [{"a": 1, "b": 2}, {"c": 3, "d": 4}] |
 
+    @standard
     Scenario Outline: Set a boolean value
       When the set program receives the "test" key and value <value_argument>
       Then the key "test" becomes available in the configuration
@@ -69,6 +78,7 @@ Feature: Command-line configuration program
         | TRUE           |
         | FALSE          |
 
+    @standard
     Scenario Outline: Set a mapping value
       When the set program receives the "test" key and value <value_argument>
       Then the key "test" becomes available in the configuration
@@ -80,6 +90,7 @@ Feature: Command-line configuration program
         | {"a": 0, "b": 1} |
 
   Rule: Extending list values
+    @standard
     Scenario: Extend non-existing key without creating
       Given the key "test" does not exist in the configuration
       When the extend program receives the key "test" and "newvalue" value with the `--create-on-missing` option set to <flag>
@@ -90,6 +101,7 @@ Feature: Command-line configuration program
         | flag  |
         | False |
 
+    @standard
     Scenario: Create array key
       Given the key "test" does not exist in the configuration
       When the extend program receives the key "test" and "newvalue" value with the `--create-on-missing` option set to <flag>
@@ -103,6 +115,7 @@ Feature: Command-line configuration program
         | flag | length |
         | True | 1      |
 
+    @standard
     Scenario Outline: Extend existing key
       Given the configuration has a "test" key with a list type value
       And the value for "test" has <initial_length> elements
@@ -116,6 +129,7 @@ Feature: Command-line configuration program
         | True  | 3              | 4            |
         | False | 3              | 4            |
 
+    @edge
     Scenario Outline: Extend a scalar value
       Given the configuration has a "test" key with a value of "somevalue"
       When the extend program receives the key "test" and "newvalue" value with the `--create-on-missing` option set to <flag>
@@ -127,6 +141,7 @@ Feature: Command-line configuration program
         | True  |
         | False |
 
+    @edge
     Scenario: Extend with empty string
       Given the configuration has a "test" key with a list type value
       When the extend program receives the key "test" with an empty string and the `--create-on-missing` option set to <flag>
@@ -137,6 +152,7 @@ Feature: Command-line configuration program
         | True  |
         | False |
 
+  @standard
   Rule: Unsetting values
     Background:
       Given the configuration has a "test" key with a value of "somevalue"

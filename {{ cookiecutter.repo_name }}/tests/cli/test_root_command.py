@@ -62,6 +62,8 @@ def valid_command_menu(cli_run, command):
     assert f"Usage: root {command}" in cli_run.output
     assert cli_run.exit_code == 0
 {%- else -%}
+@pytest.mark.cli
+@pytest.mark.standard
 def test_cli_with_version_arg(version_string):
     result = runner.invoke(app, args=["--version"])
 
@@ -69,6 +71,8 @@ def test_cli_with_version_arg(version_string):
     assert result.exit_code == 0
 
 
+@pytest.mark.cli
+@pytest.mark.edge
 @pytest.mark.parametrize("invalid", ["any", "some", "testing", "help", "run"])
 def test_cli_with_invalid_command(invalid):
     result = runner.invoke(app, args=[invalid])
@@ -77,6 +81,8 @@ def test_cli_with_invalid_command(invalid):
 
 
 # UPDATEME when new command groups are added to the CLI
+@pytest.mark.cli
+@pytest.mark.standard
 @pytest.mark.parametrize("valid", ["config"])
 def test_cli_with_valid_command(valid):
     result = runner.invoke(app, args=[valid])

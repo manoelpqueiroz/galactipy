@@ -221,12 +221,18 @@ def lint(c: Context, fix: bool = False) -> None:
 
 
 @task(call(venv, hide=True), incrementable=["verbosity"])
-def test(c: Context, verbosity: int = 0) -> None:  # noqa: PT028
+def test(c: Context, marks: str = None, verbosity: int = 0) -> None:  # noqa: PT028
     """Run tests with Pytest and `pyproject.toml` configuration."""
     verbosity_level = min(verbosity, 3)
-    flag = "-" + verbosity_level * "v" if verbosity_level > 0 else ""
+    verbosity_flag = "-" + verbosity_level * "v" if verbosity_level > 0 else ""
 
-    c.run(f"{c.venv_bin_path}/pytest -c pyproject.toml {flag} tests", pty=IS_UNIX_OS)
+    marks_flag = f"-m {marks}" if marks is not None else ""
+
+    c.run(
+        f"{c.venv_bin_path}/pytest -c pyproject.toml {verbosity_flag} {marks_flag} "
+        "tests",
+        pty=IS_UNIX_OS,
+    )
 
 
 @task(call(venv, hide=True))

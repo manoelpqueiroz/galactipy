@@ -1,3 +1,4 @@
+@backend @config @standard
 Feature: Application Manager
 
   Scenario: Manage at runtime

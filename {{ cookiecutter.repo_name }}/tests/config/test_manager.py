@@ -146,6 +146,9 @@ def check_base_directory_contents(
 
     assert base_file.exists() == file_in_base_dir
 {%- else %}
+@pytest.mark.backend
+@pytest.mark.config
+@pytest.mark.standard
 def test_runtime_manager(mock_config_path):
     manager_instance = AppManager()
 
@@ -153,6 +156,9 @@ def test_runtime_manager(mock_config_path):
     assert manager_instance.base_config_dir == mock_config_path
 
 
+@pytest.mark.backend
+@pytest.mark.config
+@pytest.mark.standard
 @pytest.mark.parametrize("configuration_type,expected_envvar", [
 ("settings", "{{ cookiecutter.__envvar }}"),
 ("secrets", "{{ cookiecutter.__envvar }}_SECRET"),
@@ -169,6 +175,9 @@ def test_default_manager(mock_config_path, configuration_type, expected_envvar):
     )
 
 
+@pytest.mark.backend
+@pytest.mark.config
+@pytest.mark.standard
 @pytest.mark.parametrize("configuration_type,expected_envvar", [
 ("settings", "{{ cookiecutter.__envvar }}"),
 ("secrets", "{{ cookiecutter.__envvar }}_SECRET"),
@@ -191,6 +200,9 @@ def test_custom_manager(tmp_path, configuration_type, expected_envvar):
     )
 
 
+@pytest.mark.backend
+@pytest.mark.config
+@pytest.mark.standard
 @pytest.mark.parametrize(
     "is_secret,uses_custom_path,configuration_type,manager_length,file_in_base_dir",
     [

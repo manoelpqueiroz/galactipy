@@ -7,6 +7,8 @@ from tests.utils import async_step
 from tests.helpers import AppInterface
 
 {% else -%}
+import pytest
+
 from {{ cookiecutter.package_name }}.tui.main_window import TerminalApp
 {%- endif %}
 
@@ -33,6 +35,8 @@ async def press_ctrl_q(interface_run, keypress):
 def successful_termination(interface_run):
     assert interface_run.return_code == 0
 {%- else -%}
+@pytest.mark.frontend
+@pytest.mark.standard
 async def test_app_exit(valid_config_data):
     interface = TerminalApp(valid_config_data["THEME"])
 

@@ -368,7 +368,10 @@ def test_unset_non_existing_value():
 def ensure_setting_error(cli_run):
     assert cli_run.exc_info[0] is SettingNotFoundError
 {%- else %}
+@pytest.mark.cli
+@pytest.mark.config
 class TestGetCommand:
+    @pytest.mark.standard
     def test_get_entire_config(self, setup_sample_manager):
         manager, file = setup_sample_manager.values()
         config_dict = manager.settings.to_dict()
@@ -380,6 +383,7 @@ class TestGetCommand:
         assert results.exit_code == 0
 
 
+    @pytest.mark.standard
     def test_get_specific_value(self, setup_sample_manager):
         manager, file = setup_sample_manager.values()
 
@@ -390,6 +394,7 @@ class TestGetCommand:
         assert results.exit_code == 0
 
 
+    @pytest.mark.standard
     def test_get_invalid_value(self, setup_sample_manager):
         manager, file = setup_sample_manager.values()
 
@@ -399,7 +404,10 @@ class TestGetCommand:
         assert results.exit_code == 1
 
 
+@pytest.mark.cli
+@pytest.mark.config
 class TestSetCommand:
+    @pytest.mark.standard
     def test_set_new_value(self, generate_test_config):
         manager, file = generate_test_config.values()
         key = "test"
@@ -414,6 +422,7 @@ class TestSetCommand:
         assert results.exit_code == 0
 
 
+    @pytest.mark.standard
     def test_set_existing_value(self, setup_sample_manager):
         manager, file = setup_sample_manager.values()
         key = "test"
@@ -426,6 +435,7 @@ class TestSetCommand:
         assert results.exit_code == 0
 
 
+    @pytest.mark.edge
     def test_set_empty_string(self, generate_test_config):
         manager, file = generate_test_config.values()
 
@@ -436,6 +446,7 @@ class TestSetCommand:
         assert results.exit_code == 1
 
 
+    @pytest.mark.standard
     @pytest.mark.parametrize(
         "value",
         (
@@ -461,6 +472,7 @@ class TestSetCommand:
         assert results.exit_code == 0
 
 
+    @pytest.mark.standard
     @pytest.mark.parametrize(
         "value", ("true", "false", "True", "False", "TRUE", "FALSE")
     )
@@ -479,6 +491,7 @@ class TestSetCommand:
         assert results.exit_code == 0
 
 
+    @pytest.mark.standard
     def test_set_dict_values(self, generate_test_config):
         manager, file = generate_test_config.values()
         key = "test"
@@ -495,7 +508,10 @@ class TestSetCommand:
         assert results.exit_code == 0
 
 
+@pytest.mark.cli
+@pytest.mark.config
 class TestExtendCommand:
+    @pytest.mark.standard
     def test_extend_without_creating(self, generate_test_config):
         manager, file = generate_test_config.values()
         key = "test"
@@ -513,6 +529,7 @@ class TestExtendCommand:
         assert results.exit_code == 1
 
 
+    @pytest.mark.standard
     def test_extend_with_creating(self, generate_test_config):
         manager, file = generate_test_config.values()
         key = "test"
@@ -533,6 +550,7 @@ class TestExtendCommand:
         assert results.exit_code == 0
 
 
+    @pytest.mark.standard
     @pytest.mark.parametrize("flag", (True, False))
     def test_extend_existing_key(self, generate_test_config, flag):
         manager, file = generate_test_config.values()
@@ -567,6 +585,7 @@ class TestExtendCommand:
         assert results.exit_code == 0
 
 
+    @pytest.mark.edge
     @pytest.mark.parametrize("flag", (True, False))
     def test_extend_scalar_value(self, setup_sample_manager, flag):
         manager, file = setup_sample_manager.values()
@@ -597,6 +616,7 @@ class TestExtendCommand:
         assert results.exit_code == 1
 
 
+    @pytest.mark.edge
     @pytest.mark.parametrize("flag", (True, False))
     def test_extend_empty_string(self, generate_test_config, flag):
         manager, file = generate_test_config.values()
@@ -622,6 +642,9 @@ class TestExtendCommand:
         assert results.exit_code == 1
 
 
+@pytest.mark.cli
+@pytest.mark.config
+@pytest.mark.standard
 class TestUnsetCommand:
     def test_unset_existing_value(self, setup_sample_manager):
         manager, file = setup_sample_manager.values()
