@@ -1,3 +1,5 @@
+"""Store or override values in the {{ cookiecutter.project_name }} configuration."""
+
 from typing import Annotated
 
 from ast import literal_eval

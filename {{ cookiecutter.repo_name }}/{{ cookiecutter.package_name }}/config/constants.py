@@ -1,3 +1,5 @@
+"""Retrieve foundational values for enabling standard behaviour for {{ cookiecutter.project_name }}."""
+
 from platformdirs import user_config_path
 
 from {{ cookiecutter.package_name }} import __version__

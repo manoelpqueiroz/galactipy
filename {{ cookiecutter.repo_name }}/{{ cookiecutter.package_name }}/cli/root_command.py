@@ -2,6 +2,8 @@
 # https://typer.tiangolo.com/tutorial/
 # See recommended configuration for multicommand applications at:
 # https://typer.tiangolo.com/tutorial/one-file-per-command/#main-module-mainpy
+"""{{ cookiecutter.project_description }}."""
+
 from typing import Annotated
 {% if cookiecutter.app_type == 'tui' %}
 from pathlib import Path

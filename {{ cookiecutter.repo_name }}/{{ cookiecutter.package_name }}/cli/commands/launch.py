@@ -1,5 +1,8 @@
+"""Launch the {{ cookiecutter.project_name }} interface."""
+
 from pathlib import Path
 from typing import Annotated
+
 import typer
 
 from {{ cookiecutter.package_name }}.tui.main_window import TerminalApp

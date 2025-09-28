@@ -1,3 +1,5 @@
+"""Helper functions for streamlining {{ cookiecutter.project_name }} functionality."""
+
 from dynamanager import Dynamanager
 
 from {{ cookiecutter.package_name }}.config.manager import AppManager

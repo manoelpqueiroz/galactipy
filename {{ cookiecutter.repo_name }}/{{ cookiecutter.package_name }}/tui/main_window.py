@@ -1,6 +1,8 @@
 # UPDATEME With additional components in `tui/components/`
 # See Textual documentation at:
 # https://textual.textualize.io/tutorial/
+"""Assemble a Textual application for a terminal user interface."""
+
 from pathlib import Path
 
 from textual.app import App, ComposeResult

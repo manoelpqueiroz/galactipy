@@ -1,3 +1,5 @@
+"""Manage configuration for {{ cookiecutter.project_name }} via the CLI."""
+
 import typer
 
 from {{ cookiecutter.package_name }}.cli.commands.config.extend import config_extend_app

@@ -1,3 +1,5 @@
+"""Retrieve existing values from the {{ cookiecutter.project_name }} configuration."""
+
 from typing import Annotated
 
 from pathlib import Path
