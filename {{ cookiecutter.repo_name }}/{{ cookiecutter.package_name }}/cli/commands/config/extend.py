@@ -9,20 +9,26 @@ import typer
 
 from {{ cookiecutter.package_name }}.config import resolve_app_manager
 
-config_extend_app = typer.Typer(no_args_is_help=True)
+config_extend_app = typer.Typer(no_args_is_help=True, rich_markup_mode="rich")
 
 
 @config_extend_app.command(name="extend")
 def extend_command(
-    key: Annotated[str, typer.Argument(help="The configuration key to be extended.")],
-    value: Annotated[str, typer.Argument(help="The value to be appended to the key.")],
+    key: Annotated[
+        str, typer.Argument(help=":key: The configuration key to be extended.")
+    ],
+    value: Annotated[
+        str, typer.Argument(help=":keycap_#: The value to be appended to the key.")
+    ],
     path: Annotated[
-        Path, typer.Option(help="Specify a custom configuration file.")
+        Path, typer.Option(help=":bus_stop: Specify a custom configuration file.")
     ] = None,
     secret: Annotated[
         bool,
         typer.Option(
-            "--secret", "-s", help="Store configuration in the secret manager instead."
+            "--secret",
+            "-s",
+            help=":lock: Store configuration in the secret manager instead.",
         ),
     ] = False,
     create: Annotated[
@@ -31,15 +37,15 @@ def extend_command(
             "--create-on-missing",
             "-c",
             help=(
-                "Add the provided value in an array if the setting is not set. Will "
-                "raise an error otherwise."
+                ":new: Add the provided value in an array if the setting is not set. "
+                "Will raise an error otherwise."
             ),
         ),
     ] = False,
 ):
-    """Extend an array key in the configuration file.
+    """:straight_ruler: Extend an array key in the configuration file.
 
-    If no setting exists for the key, will create an array with the single value
+    If no setting exists for the key, can create an array with the single value
     provided.
     """
     config_type, APP_MANAGER = resolve_app_manager(secret, path)

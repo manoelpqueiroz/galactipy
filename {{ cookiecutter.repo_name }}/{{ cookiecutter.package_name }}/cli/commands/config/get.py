@@ -15,21 +15,21 @@ config_get_app = typer.Typer(no_args_is_help=True)
 @config_get_app.command()
 def get(
     key: Annotated[
-        str, typer.Argument(help="The configuration key to be retrieved.")
+        str, typer.Argument(help=":key: The configuration key to be retrieved.")
     ] = None,
     path: Annotated[
-        Path, typer.Option(help="Specify a custom configuration file.")
+        Path, typer.Option(help=":bus_stop: Specify a custom configuration file.")
     ] = None,
     secret: Annotated[
         bool,
         typer.Option(
             "--secret",
             "-s",
-            help="Retrieve configuration from the secret manager instead.",
+            help=":lock: Retrieve configuration from the secret manager instead.",
         ),
     ] = False,
 ):
-    """Retrieve a key from the configuration file."""
+    """:inbox_tray: Retrieve a key from the configuration file."""
     config_type, APP_MANAGER = resolve_app_manager(secret, path)
 
     if key is None:

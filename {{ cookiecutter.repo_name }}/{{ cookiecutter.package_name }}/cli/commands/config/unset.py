@@ -13,20 +13,22 @@ config_unset_app = typer.Typer(no_args_is_help=True)
 
 @config_unset_app.command()
 def unset(
-    key: Annotated[str, typer.Argument(help="The configuration key to be removed.")],
+    key: Annotated[
+        str, typer.Argument(help=":key: The configuration key to be removed.")
+    ],
     path: Annotated[
-        Path, typer.Option(help="Specify a custom configuration file.")
+        Path, typer.Option(help=":bus_stop: Specify a custom configuration file.")
     ] = None,
     secret: Annotated[
         bool,
         typer.Option(
             "--secret",
             "-s",
-            help="Retrieve configuration from the secret manager instead.",
+            help=":lock: Retrieve configuration from the secret manager instead.",
         ),
     ] = False,
 ):
-    """Remove a top-level key from the configuration."""
+    """:fire: [red]Remove[/] a top-level key from the configuration."""
     config_type, APP_MANAGER = resolve_app_manager(secret, path)
 
     APP_MANAGER.unset(f"{config_type}.{key}")

@@ -14,19 +14,25 @@ config_set_app = typer.Typer(no_args_is_help=True)
 
 @config_set_app.command(name="set")
 def set_command(
-    key: Annotated[str, typer.Argument(help="The configuration key to be stored.")],
-    value: Annotated[str, typer.Argument(help="The value to be stored with the key.")],
+    key: Annotated[
+        str, typer.Argument(help=":key: The configuration key to be stored.")
+    ],
+    value: Annotated[
+        str, typer.Argument(help=":keycap_#: The value to be stored with the key.")
+    ],
     path: Annotated[
-        Path, typer.Option(help="Specify a custom configuration file.")
+        Path, typer.Option(help=":bus_stop: Specify a custom configuration file.")
     ] = None,
     secret: Annotated[
         bool,
         typer.Option(
-            "--secret", "-s", help="Store configuration in the secret manager instead."
+            "--secret",
+            "-s",
+            help=":lock: Store configuration in the secret manager instead.",
         ),
     ] = False,
 ):
-    """Store a key in the configuration file."""
+    """:floppy_disk: Store a key in the configuration file."""
     config_type, APP_MANAGER = resolve_app_manager(secret, path)
 
     try:

@@ -19,15 +19,15 @@ from {{ cookiecutter.package_name }}.cli.styles import AppCustomStyles
 from {{ cookiecutter.package_name }}.config import resolve_app_manager
 from {{ cookiecutter.package_name }}.tui.main_window import TerminalApp
 
-app = typer.Typer()
+app = typer.Typer(rich_markup_mode="rich")
 {%- elif cookiecutter.app_type == 'hybrid' %}
 from {{ cookiecutter.package_name }}.cli.commands.launch import launch_app
 
-app = typer.Typer(no_args_is_help=True)
+app = typer.Typer(no_args_is_help=True, rich_markup_mode="rich")
 app.add_typer(launch_app)
 {%- elif cookiecutter.app_type == 'cli' %}
 
-app = typer.Typer(no_args_is_help=True)
+app = typer.Typer(no_args_is_help=True, rich_markup_mode="rich")
 {%- endif %}
 app.add_typer(config_app, name="config")
 
@@ -51,7 +51,10 @@ def main(
         typer.Option(
             "--config",
             "-c",
-            help="Specify a custom configuration file to launch the application.",
+            help=(
+                ":bus_stop: Specify a custom configuration file to launch the "
+                "application."
+            ),
         ),
     ] = None,
 {% elif cookiecutter.app_type == 'hybrid' or cookiecutter.app_type == 'cli' -%}
@@ -63,14 +66,14 @@ def main(
         typer.Option(
             "--version",
             "-v",
-            help="Print the current version of this program and exit.",
+            help=":bulb: Print the current version of this program and exit.",
             callback=version_callback,
             is_eager=True,
         ),
     ] = False,
 ):
     {%- if cookiecutter.app_type == 'tui' %}
-    """Launch the {{ cookiecutter.project_name }} interface."""
+    """:pager: Launch the {{ cookiecutter.project_name }} interface."""
     if ctx.invoked_subcommand is None:
         _, APP_MANAGER = resolve_app_manager(False, config)
 

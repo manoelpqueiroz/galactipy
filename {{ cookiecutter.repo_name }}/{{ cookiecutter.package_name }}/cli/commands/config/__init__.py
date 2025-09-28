@@ -9,7 +9,10 @@ from {{ cookiecutter.package_name }}.cli.commands.config.unset import config_uns
 
 config_app = typer.Typer(
     no_args_is_help=True,
-    help="Perform operations with {{ cookiecutter.project_name }} configuration."
+    rich_markup_mode="rich",
+    help=(
+        ":gear: Perform operations with {{ cookiecutter.project_name }} configuration."
+    ),
 )
 
 config_app.add_typer(config_get_app)

@@ -8,7 +8,7 @@ import typer
 from {{ cookiecutter.package_name }}.tui.main_window import TerminalApp
 from {{ cookiecutter.package_name }}.config import resolve_app_manager
 
-launch_app = typer.Typer()
+launch_app = typer.Typer(rich_markup_mode="rich")
 
 @launch_app.command()
 def launch(
@@ -17,11 +17,14 @@ def launch(
         typer.Option(
             "--config",
             "-c",
-            help="Specify a custom configuration file to launch the application.",
+            help=(
+                ":bus_stop: Specify a custom configuration file to launch the "
+                "application."
+            ),
         ),
     ] = None
 ):
-    """Launch the {{ cookiecutter.project_name }} interface."""
+    """:pager: Launch the {{ cookiecutter.project_name }} interface."""
     _, APP_MANAGER = resolve_app_manager(False, config)
 
     interface = TerminalApp(APP_MANAGER.settings.theme)
