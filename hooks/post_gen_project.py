@@ -289,7 +289,7 @@ def _get_bdd_specific_files(
         removals.extend(
             [
                 directory / "tests" / "helpers",
-                directory / "tests" / "utils",
+                directory / "tests" / "utils" / "pytest_bdd_async.py",
                 directory / "tests" / "features" / "main_window.feature",
             ]
         )

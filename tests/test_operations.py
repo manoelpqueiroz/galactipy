@@ -155,7 +155,7 @@ class TestFileRemoval:
         assert bdd_files["manager"].exists()
         assert bdd_files["resolution"].exists()
         assert bdd_files["helpers"]["tui"].exists()
-        assert bdd_files["utils"]["bdd"].exists()
+        assert bdd_files["utils"]["async"].exists()
         assert bdd_files["utils"]["parsers"].exists()
         assert not bdd_files["gitkeep"].exists()
 
@@ -248,7 +248,7 @@ class TestFileRemoval:
         assert bdd_files["manager"].exists()
         assert bdd_files["resolution"].exists()
         assert bdd_files["helpers"]["tui"].exists()
-        assert bdd_files["utils"]["bdd"].exists()
+        assert bdd_files["utils"]["async"].exists()
         assert bdd_files["utils"]["parsers"].exists()
         assert not bdd_files["gitkeep"].exists()
 
@@ -337,7 +337,10 @@ class TestFileRemoval:
         assert bdd_files["resolution"].exists()
         assert not bdd_files["gitkeep"].exists()
         assert not bdd_files["helpers"]["root"].exists()
-        assert not bdd_files["utils"]["root"].exists()
+
+        assert bdd_files["utils"]["root"].exists()
+        assert bdd_files["utils"]["parsers"].exists()
+        assert not bdd_files["utils"]["async"].exists()
 
     def test_cli_no_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
