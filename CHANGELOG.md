@@ -1,3 +1,46 @@
+## 0.17.0 (2025-09-29)
+
+### :milky_way: Components (7 changes)
+
+- [:children_crossing: Use Rich markup for enhanced CLI help messages](galactipy/galactipy@9a90c7406ef028a72a1ee0da8df8aa932cd365eb) ([merge request](galactipy/galactipy!69))
+- [:sparkles: Include tests marks for the template](galactipy/galactipy@85b1af6a0d286c9a7a910c2532b2ff5b2e4ca999) ([merge request](galactipy/galactipy!69))
+- [:art: Improve `AppManager` API](galactipy/galactipy@a97a3e3682acc88711884ce3b05cca20847a7b3b) ([merge request](galactipy/galactipy!69))
+- [:sparkles: Implement configuration commands in the CLI](galactipy/galactipy@578557b68b0c436e647bf7567c336eec5d19a459) ([merge request](galactipy/galactipy!69))
+- [:sparkles: Integrate configuration management into terminal app](galactipy/galactipy@01283d6bc98cefe87fa22e7ed6e3bba449877667) ([merge request](galactipy/galactipy!69))
+- [:sparkles: Implement config manager functionality for template](galactipy/galactipy@a60c0d23fc746b86ed741a447a28f680ed684c2d) ([merge request](galactipy/galactipy!69))
+- [:art: Enable default theme specification](galactipy/galactipy@221b8670cb41b37fac3e77acd320b95df7b5922f) ([merge request](galactipy/galactipy!69))
+
+### :wrench: Fixes & Refactoring (4 changes)
+
+- [:rotating_light: Fix additional linter warnings](galactipy/galactipy@63f8aa93da3344c25342b6d466e0e20862bbaaa7) ([merge request](galactipy/galactipy!69))
+- [:rotating_light: Fix linter warnings for the template](galactipy/galactipy@14e48278abedf599c3ff372f94dc88b388f66551) ([merge request](galactipy/galactipy!69))
+- [:recycle: Improve strucutre for previous CLI and TUI tests](galactipy/galactipy@083a385667c384f29ee25cdfb4deb0a8520fc137) ([merge request](galactipy/galactipy!69))
+- [:adhesive_bandage: Remove the actual Ruff option](galactipy/galactipy@9fe19ca72b0b5d276b252f423c5c9f6af7c83952) ([merge request](galactipy/galactipy!69))
+
+### :package: Build System & CI/CD (1 change)
+
+- [:white_check_mark: Add config tests](galactipy/galactipy@f4b09250dbe6b5d008a68d275a25b3db4ad30412) ([merge request](galactipy/galactipy!69))
+
+### :gear: Internals (2 changes)
+
+- [:wrench: Update file removals for configuration management](galactipy/galactipy@81268efc21c14f828da94e0c478ff02b587449c1) ([merge request](galactipy/galactipy!69))
+- [:art: Replace Poetry installation command for the project](galactipy/galactipy@ad025afb8845dc460b023b5292dd7d94a4ca4d6d) ([merge request](galactipy/galactipy!69))
+
+### :construction_site: Template Internals (4 changes)
+
+- [:art: Replace Poetry installation command for the template](galactipy/galactipy@51eb50f4ccf8777cb9fbb5c24395d04397e8c916) ([merge request](galactipy/galactipy!69))
+- [:wrench: Update template `pyproject.toml`](galactipy/galactipy@5d0c6af8a693a28e438b30939a5a2f2d4cd00536) ([merge request](galactipy/galactipy!69))
+- [:adhesive_bandage: Fix pyproject isort group rendering](galactipy/galactipy@8fc9e2f0c59dca91a537b6c63e3fdc55e6efad9b) ([merge request](galactipy/galactipy!69))
+- [:adhesive_bandage: Fix minor issue with VS Code icon rendering](galactipy/galactipy@985b85e4cfa63839c13d6f7d258f3c85a9b527cf) ([merge request](galactipy/galactipy!69))
+
+### :pencil: Documentation (1 change)
+
+- [:pencil: Add docstrings for template modules](galactipy/galactipy@4bbb9341ea4fba65ecfe9205de92ac0aa3bb7c5f) ([merge request](galactipy/galactipy!69))
+
+### :arrow_up: Dependency Updates (1 change)
+
+- [:heavy_plus_sign: Add Dynamanager to template dependencies](galactipy/galactipy@b1f6107e866790d682f9cac16cca5af4b3730d44) ([merge request](galactipy/galactipy!69))
+
 ## 0.16.0 (2025-09-21)
 
 ### :milky_way: Components (1 change)
