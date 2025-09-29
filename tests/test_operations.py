@@ -111,9 +111,11 @@ class TestFileRemoval:
 
     def test_tui_with_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
+        config_command_files = cli_files["commands"]["config"]
         tui_files = removal_tree["tui"]
         bdd_files = removal_tree["bdd"]
         test_files = removal_tree["tests"]
+        config_files = removal_tree["config"]
 
         config = ProjectFlags(False, False, False, False, "tui")
 
@@ -130,23 +132,40 @@ class TestFileRemoval:
         assert cli_files["commands"]["gitkeep"].exists()
         assert cli_files["main"].exists()
 
+        assert config_command_files["get"].exists()
+        assert config_command_files["set"].exists()
+        assert config_command_files["extend"].exists()
+        assert config_command_files["unset"].exists()
+
+        assert config_files["constants"].exists()
+        assert config_files["helpers"].exists()
+        assert config_files["manager"].exists()
+
         assert test_files["root"].exists()
         assert test_files["tui"]["test"].exists()
         assert test_files["cli"]["test"].exists()
+        assert test_files["cli"]["config"].exists()
+        assert test_files["manager"]["test"].exists()
         assert test_files["conftest"].exists()
         assert not test_files["gitkeep"].exists()
 
         assert bdd_files["tui"].exists()
         assert bdd_files["cli"].exists()
-        assert not bdd_files["gitkeep"].exists()
+        assert bdd_files["config"].exists()
+        assert bdd_files["manager"].exists()
+        assert bdd_files["resolution"].exists()
         assert bdd_files["helpers"]["tui"].exists()
         assert bdd_files["utils"]["bdd"].exists()
+        assert bdd_files["utils"]["parsers"].exists()
+        assert not bdd_files["gitkeep"].exists()
 
     def test_tui_no_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
+        config_command_files = cli_files["commands"]["config"]
         tui_files = removal_tree["tui"]
         bdd_files = removal_tree["bdd"]
         test_files = removal_tree["tests"]
+        config_files = removal_tree["config"]
 
         config = ProjectFlags(False, False, True, False, "tui")
 
@@ -163,8 +182,19 @@ class TestFileRemoval:
         assert cli_files["commands"]["gitkeep"].exists()
         assert cli_files["main"].exists()
 
+        assert config_command_files["get"].exists()
+        assert config_command_files["set"].exists()
+        assert config_command_files["extend"].exists()
+        assert config_command_files["unset"].exists()
+
+        assert config_files["constants"].exists()
+        assert config_files["helpers"].exists()
+        assert config_files["manager"].exists()
+
         assert test_files["tui"]["test"].exists()
         assert test_files["cli"]["test"].exists()
+        assert test_files["cli"]["config"].exists()
+        assert test_files["manager"]["test"].exists()
         assert test_files["conftest"].exists()
         assert not test_files["gitkeep"].exists()
 
@@ -174,9 +204,11 @@ class TestFileRemoval:
 
     def test_hybrid_with_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
+        config_command_files = cli_files["commands"]["config"]
         tui_files = removal_tree["tui"]
         bdd_files = removal_tree["bdd"]
         test_files = removal_tree["tests"]
+        config_files = removal_tree["config"]
 
         config = ProjectFlags(False, False, False, False, "hybrid")
 
@@ -194,22 +226,39 @@ class TestFileRemoval:
         assert not cli_files["commands"]["gitkeep"].exists()
         assert cli_files["main"].exists()
 
+        assert config_command_files["get"].exists()
+        assert config_command_files["set"].exists()
+        assert config_command_files["extend"].exists()
+        assert config_command_files["unset"].exists()
+
+        assert config_files["constants"].exists()
+        assert config_files["helpers"].exists()
+        assert config_files["manager"].exists()
+
         assert test_files["tui"]["test"].exists()
         assert test_files["cli"]["test"].exists()
+        assert test_files["cli"]["config"].exists()
+        assert test_files["manager"]["test"].exists()
         assert test_files["conftest"].exists()
         assert not test_files["gitkeep"].exists()
 
         assert bdd_files["tui"].exists()
         assert bdd_files["cli"].exists()
-        assert not bdd_files["gitkeep"].exists()
+        assert bdd_files["config"].exists()
+        assert bdd_files["manager"].exists()
+        assert bdd_files["resolution"].exists()
         assert bdd_files["helpers"]["tui"].exists()
         assert bdd_files["utils"]["bdd"].exists()
+        assert bdd_files["utils"]["parsers"].exists()
+        assert not bdd_files["gitkeep"].exists()
 
     def test_hybrid_no_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
+        config_command_files = cli_files["commands"]["config"]
         tui_files = removal_tree["tui"]
         bdd_files = removal_tree["bdd"]
         test_files = removal_tree["tests"]
+        config_files = removal_tree["config"]
 
         config = ProjectFlags(False, False, True, False, "hybrid")
 
@@ -226,8 +275,19 @@ class TestFileRemoval:
         assert not cli_files["commands"]["gitkeep"].exists()
         assert cli_files["main"].exists()
 
+        assert config_command_files["get"].exists()
+        assert config_command_files["set"].exists()
+        assert config_command_files["extend"].exists()
+        assert config_command_files["unset"].exists()
+
+        assert config_files["constants"].exists()
+        assert config_files["helpers"].exists()
+        assert config_files["manager"].exists()
+
         assert test_files["tui"]["test"].exists()
         assert test_files["cli"]["test"].exists()
+        assert test_files["cli"]["config"].exists()
+        assert test_files["manager"]["test"].exists()
         assert test_files["conftest"].exists()
         assert not test_files["gitkeep"].exists()
 
@@ -237,9 +297,11 @@ class TestFileRemoval:
 
     def test_cli_with_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
+        config_command_files = cli_files["commands"]["config"]
         tui_files = removal_tree["tui"]
         bdd_files = removal_tree["bdd"]
         test_files = removal_tree["tests"]
+        config_files = removal_tree["config"]
 
         config = ProjectFlags(False, False, False, False, "cli")
 
@@ -252,22 +314,38 @@ class TestFileRemoval:
         assert cli_files["commands"]["gitkeep"].exists()
         assert cli_files["main"].exists()
 
+        assert config_files["constants"].exists()
+        assert config_files["helpers"].exists()
+        assert config_files["manager"].exists()
+
+        assert config_command_files["get"].exists()
+        assert config_command_files["set"].exists()
+        assert config_command_files["extend"].exists()
+        assert config_command_files["unset"].exists()
+
         assert not test_files["tui"]["root"].exists()
         assert test_files["cli"]["test"].exists()
+        assert test_files["cli"]["config"].exists()
+        assert test_files["manager"]["test"].exists()
         assert test_files["conftest"].exists()
         assert not test_files["gitkeep"].exists()
 
         assert not bdd_files["tui"].exists()
         assert bdd_files["cli"].exists()
+        assert bdd_files["config"].exists()
+        assert bdd_files["manager"].exists()
+        assert bdd_files["resolution"].exists()
         assert not bdd_files["gitkeep"].exists()
         assert not bdd_files["helpers"]["root"].exists()
         assert not bdd_files["utils"]["root"].exists()
 
     def test_cli_no_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
+        config_command_files = cli_files["commands"]["config"]
         tui_files = removal_tree["tui"]
         bdd_files = removal_tree["bdd"]
         test_files = removal_tree["tests"]
+        config_files = removal_tree["config"]
 
         config = ProjectFlags(False, False, True, False, "cli")
 
@@ -280,8 +358,19 @@ class TestFileRemoval:
         assert cli_files["commands"]["gitkeep"].exists()
         assert cli_files["main"].exists()
 
+        assert config_files["constants"].exists()
+        assert config_files["helpers"].exists()
+        assert config_files["manager"].exists()
+
+        assert config_command_files["get"].exists()
+        assert config_command_files["set"].exists()
+        assert config_command_files["extend"].exists()
+        assert config_command_files["unset"].exists()
+
         assert not test_files["tui"]["root"].exists()
         assert test_files["cli"]["test"].exists()
+        assert test_files["cli"]["config"].exists()
+        assert test_files["manager"]["test"].exists()
         assert test_files["conftest"].exists()
         assert not test_files["gitkeep"].exists()
 
@@ -291,9 +380,11 @@ class TestFileRemoval:
 
     def test_bare_with_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
+        config_command_files = cli_files["commands"]["config"]
         tui_files = removal_tree["tui"]
         bdd_files = removal_tree["bdd"]
         test_files = removal_tree["tests"]
+        config_files = removal_tree["config"]
 
         config = ProjectFlags(False, False, False, False, "bare_repo")
 
@@ -304,24 +395,34 @@ class TestFileRemoval:
         assert not cli_files["root"].exists()
         assert not cli_files["main"].exists()
 
+        assert not config_command_files["root"].exists()
+
+        assert not config_files["root"].exists()
+
         assert test_files["root"].exists()
         assert not test_files["tui"]["root"].exists()
         assert not test_files["cli"]["root"].exists()
+        assert not test_files["manager"]["root"].exists()
         assert not test_files["conftest"].exists()
         assert test_files["gitkeep"].exists()
 
         assert bdd_files["root"].exists()
         assert not bdd_files["tui"].exists()
         assert not bdd_files["cli"].exists()
+        assert not bdd_files["config"].exists()
+        assert not bdd_files["manager"].exists()
+        assert not bdd_files["resolution"].exists()
         assert bdd_files["gitkeep"].exists()
         assert not bdd_files["helpers"]["root"].exists()
         assert not bdd_files["utils"]["root"].exists()
 
     def test_bare_no_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
+        config_command_files = cli_files["commands"]["config"]
         tui_files = removal_tree["tui"]
         bdd_files = removal_tree["bdd"]
         test_files = removal_tree["tests"]
+        config_files = removal_tree["config"]
 
         config = ProjectFlags(False, False, True, False, "bare_repo")
 
@@ -332,9 +433,14 @@ class TestFileRemoval:
         assert not cli_files["root"].exists()
         assert not cli_files["main"].exists()
 
+        assert not config_command_files["root"].exists()
+
+        assert not config_files["root"].exists()
+
         assert test_files["root"].exists()
         assert not test_files["tui"]["root"].exists()
         assert not test_files["cli"]["root"].exists()
+        assert not test_files["manager"]["root"].exists()
         assert not test_files["conftest"].exists()
         assert test_files["gitkeep"].exists()
 

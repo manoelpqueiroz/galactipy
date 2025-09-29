@@ -97,16 +97,29 @@ def removal_tree(tmp_path):
         tests_directory,
         "conftest.py",
         ".gitkeep",
-        features=[".gitkeep", "root_command.feature", "main_window.feature"],
-        cli=["test_root_command.py"],
+        features=[
+            ".gitkeep",
+            "root_command.feature",
+            "main_window.feature",
+            "config_command.feature",
+            "app_manager.feature",
+            "manager_resolution.feature",
+        ],
+        cli=["test_root_command.py", "test_config_command.py"],
         tui=["test_main_window.py"],
+        config=["test_manager.py"],
         helpers=["tui_helpers.py"],
-        utils=["pytest_bdd_async.py"],
+        utils=["parsers.py", "pytest_bdd_async.py"],
     )
 
     cli_directory = tmp_path / package_name / "cli"
     bulk_file_creation(
         cli_directory, "root_command.py", commands=[".gitkeep", "launch.py"]
+    )
+
+    commands_directory = cli_directory / "commands"
+    bulk_file_creation(
+        commands_directory, config=["extend.py", "get.py", "set.py", "unset.py"]
     )
 
     tui_directory = tmp_path / package_name / "tui"
@@ -117,6 +130,9 @@ def removal_tree(tmp_path):
         components=[".gitkeep"],
         css=["demo.tcss", "noctis.tcss"],
     )
+
+    config_directory = tmp_path / package_name / "config"
+    bulk_file_creation(config_directory, "constants.py", "helpers.py", "manager.py")
 
     return {
         "root": tmp_path,
@@ -138,6 +154,13 @@ def removal_tree(tmp_path):
                 "root": cli_directory / "commands",
                 "gitkeep": cli_directory / "commands" / ".gitkeep",
                 "launch": cli_directory / "commands" / "launch.py",
+                "config": {
+                    "root": cli_directory / "commands" / "config",
+                    "extend": cli_directory / "commands" / "config" / "extend.py",
+                    "get": cli_directory / "commands" / "config" / "get.py",
+                    "set": cli_directory / "commands" / "config" / "set.py",
+                    "unset": cli_directory / "commands" / "config" / "unset.py",
+                },
             },
             "main": tmp_path / package_name / "__main__.py",
         },
@@ -155,15 +178,26 @@ def removal_tree(tmp_path):
                 "noctis": tui_directory / "css" / "noctis.tcss",
             },
         },
+        "config": {
+            "root": config_directory,
+            "constants": config_directory / "constants.py",
+            "helpers": config_directory / "helpers.py",
+            "manager": config_directory / "manager.py",
+        },
         "tests": {
             "root": tests_directory,
             "cli": {
                 "root": tests_directory / "cli",
                 "test": tests_directory / "cli" / "test_root_command.py",
+                "config": tests_directory / "cli" / "test_config_command.py",
             },
             "tui": {
                 "root": tests_directory / "tui",
                 "test": tests_directory / "tui" / "test_main_window.py",
+            },
+            "manager": {
+                "root": tests_directory / "config",
+                "test": tests_directory / "config" / "test_manager.py",
             },
             "conftest": tests_directory / "conftest.py",
             "gitkeep": tests_directory / ".gitkeep",
@@ -171,7 +205,10 @@ def removal_tree(tmp_path):
         "bdd": {
             "root": tests_directory / "features",
             "cli": tests_directory / "features" / "root_command.feature",
+            "config": tests_directory / "features" / "config_command.feature",
             "tui": tests_directory / "features" / "main_window.feature",
+            "manager": tests_directory / "features" / "app_manager.feature",
+            "resolution": tests_directory / "features" / "manager_resolution.feature",
             "gitkeep": tests_directory / "features" / ".gitkeep",
             "helpers": {
                 "root": tests_directory / "helpers",
@@ -180,6 +217,7 @@ def removal_tree(tmp_path):
             "utils": {
                 "root": tests_directory / "utils",
                 "bdd": tests_directory / "utils" / "pytest_bdd_async.py",
+                "parsers": tests_directory / "utils" / "parsers.py",
             },
         },
         "github": {
