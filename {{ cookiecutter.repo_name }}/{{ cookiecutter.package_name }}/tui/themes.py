@@ -6,6 +6,7 @@ to the TUI app, see https://textual.textualize.io/guide/design/ for more informa
 """
 
 from enum import Enum
+
 from textual.theme import Theme
 
 # Noctis VS Code theme colours, full colorscheme definition at:
@@ -35,9 +36,7 @@ NOCTIS_THEME = Theme(
     panel="#041d20",
     boost="#083d44ee",
     dark=True,
-    variables={
-        "border": "#062e32",
-    },
+    variables={"border": "#062e32"},
     **NOCTIS_AUX_COLOURS_DARK,
 )
 
@@ -50,9 +49,7 @@ NOCTIS_AZUREUS_THEME = Theme(
     panel="#062132",
     boost="#003c61ee",
     dark=True,
-    variables={
-        "border": "#0a3652",
-    },
+    variables={"border": "#0a3652"},
     **NOCTIS_AUX_COLOURS_DARK,
 )
 
@@ -65,9 +62,7 @@ NOCTIS_MINIMUS_THEME = Theme(
     panel="#17232b",
     boost="#1d3544ee",
     dark=True,
-    variables={
-        "border": "#243742",
-    },
+    variables={"border": "#243742"},
     **NOCTIS_AUX_COLOURS_DARK,
 )
 
@@ -80,9 +75,7 @@ NOCTIS_BORDO_THEME = Theme(
     panel="#2c2528",
     boost="#453138aa",
     dark=True,
-    variables={
-        "border": "#8f566a33",
-    },
+    variables={"border": "#8f566a33"},
     **NOCTIS_AUX_COLOURS_DARK,
 )
 
@@ -95,9 +88,7 @@ NOCTIS_UVA_THEME = Theme(
     panel="#232136",
     boost="#35305aee",
     dark=True,
-    variables={
-        "border": "#363253",
-    },
+    variables={"border": "#363253"},
     **NOCTIS_AUX_COLOURS_DARK,
 )
 
@@ -110,9 +101,7 @@ NOCTIS_VIOLA_THEME = Theme(
     panel="#2b2136",
     boost="#402d53ee",
     dark=True,
-    variables={
-        "border": "#422b5a",
-    },
+    variables={"border": "#422b5a"},
     **NOCTIS_AUX_COLOURS_DARK,
 )
 
@@ -125,9 +114,7 @@ NOCTIS_LUX_THEME = Theme(
     panel="#f0e9d6",
     boost="#d1ebefcc",
     dark=False,
-    variables={
-        "border": "#d1e8eb",
-    },
+    variables={"border": "#d1e8eb"},
     **NOCTIS_AUX_COLOURS_LIGHT,
 )
 
@@ -140,9 +127,7 @@ NOCTIS_LILAC_THEME = Theme(
     panel="#e2dff6",
     boost="#d5d2ef99",
     dark=False,
-    variables={
-        "border": "#c9c2f9",
-    },
+    variables={"border": "#c9c2f9"},
     **NOCTIS_AUX_COLOURS_LIGHT,
 )
 
@@ -155,11 +140,10 @@ NOCTIS_HIBERNUS_THEME = Theme(
     panel="#caedf2",
     boost="#d1ebefcc",
     dark=True,
-    variables={
-        "border": "#d1e8eb",
-    },
+    variables={"border": "#d1e8eb"},
     **NOCTIS_AUX_COLOURS_LIGHT,
 )
+
 
 class AppCustomThemes(Enum):
     NOCTIS = NOCTIS_THEME

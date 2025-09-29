@@ -81,6 +81,177 @@ Then you can run it from the command line:
 ```bash
 {{ cookiecutter.repo_name }} --help
 ```
+
+## Command-line Usage
+
+{% if cookiecutter.app_type == 'tui' %}
+You can simply
+launch the {{ cookiecutter.project_name }}
+by calling `{{ cookiecutter.repo_name }}`
+directly.
+
+The top-level command
+is also callable
+with other options
+for fine-grained
+control of the application:
+
+> _`{{ cookiecutter.repo_name }} [--version | -v] [--config | -c]`_
+>> **`--version`**
+>>
+>> **`-v`**
+>>
+>> Print
+>> the current version of the program
+>> and exit.
+>
+>> **`--config`**
+>>
+>> **`-c`**
+>>
+>> Specify a custom configuration file
+>> to launch the application.
+{% elif cookiecutter.app_type == 'hybrid' %}
+The top-level command
+is the entry point
+for additional
+operations:
+
+> _`{{ cookiecutter.repo_name }} [--version | -v]`_
+>> **`--version`**
+>>
+>> **`-v`**
+>>
+>> Print
+>> the current version of the program
+>> and exit.
+
+### Launch the Interface
+
+Launch the terminal interface
+with the `{{ cookiecutter.repo_name }} launch` command:
+
+> _`{{ cookiecutter.repo_name }} launch [--config | -c]`_
+>> **`--config`**
+>>
+>> **`-c`**
+>>
+>> Specify a custom configuration file
+>> to launch the application.
+{% elif cookiecutter.app_type == 'cli' %}
+The top-level command
+is the entry point
+for additional
+operations:
+
+> _`{{ cookiecutter.repo_name }} [--version | -v]`_
+>> **`--version`**
+>>
+>> **`-v`**
+>>
+>> Print
+>> the current version of the program
+>> and exit.
+{% endif %}
+### Manage the Configuration
+
+The `{{ cookiecutter.repo_name }} config` command provides
+additional subcommands
+to manipulate
+the settings
+for your {{ cookiecutter.project_name }} installation:
+
+> _`{{ cookiecutter.repo_name }} config get [--path] [--secret | -s] KEY`_
+>> **`KEY`**
+>>
+>> The configuration key
+>> to be retrieved. **[required]**
+>
+>> **`--path`**
+>>
+>> Specify
+>> a custom configuration file.
+>
+>> **`--secret`**
+>>
+>> **`-s`**
+>>
+>> Retrieve configuration
+>> from the secret manager instead.
+
+> _`{{ cookiecutter.repo_name }} config set [--path] [--secret | -s] KEY VALUE`_
+>> **`KEY`**
+>>
+>> The configuration key
+>> to be retrieved. **[required]**
+>
+>> **`VALUE`**
+>>
+>> The value to be stored
+>> with the key. **[required]**
+>
+>> **`--path`**
+>>
+>> Specify
+>> a custom configuration file.
+>
+>> **`--secret`**
+>>
+>> **`-s`**
+>>
+>> Store configuration
+>> in the secret manager instead.
+
+> _`{{ cookiecutter.repo_name }} config extend [--path] [--secret | -s] [--create-on-missing | -c] KEY VALUE`_
+>> **`KEY`**
+>>
+>> The configuration key
+>> to be extended. **[required]**
+>
+>> **`VALUE`**
+>>
+>> The value to be appended
+>> to the key. **[required]**
+>
+>> **`--path`**
+>>
+>> Specify
+>> a custom configuration file.
+>
+>> **`--secret`**
+>>
+>> **`-s`**
+>>
+>> Store configuration
+>> in the secret manager instead.
+>
+>> **`--create-on-missing`**
+>>
+>> **`-c`**
+>>
+>> Add the provided value
+>> in an array
+>> if the setting is not set.
+>> Will raise an error
+>> otherwise.
+
+> _`{{ cookiecutter.repo_name }} config unset [--path] [--secret | -s] KEY`_
+>> **`KEY`**
+>>
+>> The configuration key
+>> to be removed. **[required]**
+>
+>> **`--path`**
+>>
+>> Specify
+>> a custom configuration file.
+>
+>> **`--secret`**
+>>
+>> **`-s`**
+>>
+>> Retrieve configuration
+>> from the secret manager instead.
 {% else -%}
 Use [`pip`][fs1] to install {{ cookiecutter.project_name }}:
 

@@ -27,7 +27,6 @@
     "3.12",
     "3.13"
   ],
-  "use_ruff": true,
   "line_length": 88,
   "docstring_style": [
     "numpy",
@@ -76,7 +75,6 @@
       "nos": "Not open source"
     },
     "minimal_python_version": "Minimal Python version",
-    "use_ruff": "Use Ruff for linting and formatting?",
     "line_length": "Maximum line length",
     "docstring_style": "Which docstring style would you like to use?",
     "docstring_length": "Docstring maximum line length",
@@ -109,6 +107,7 @@
     [3, 12],
     [3, 13]
   ],
+  "__envvar": "{{ cookiecutter.package_name.upper() }}",
   "__mpvr": "{{ cookiecutter.minimal_python_version.replace('.', '') }}",
   "__scm_platform_lc": "{{ cookiecutter.scm_platform.lower() }}",
   "__scm_platform_redux": "{{ 'gl' if cookiecutter.__scm_platform_lc == 'gitlab' else 'gh' }}",

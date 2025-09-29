@@ -1,4 +1,3 @@
-# type: ignore[attr-defined]
 """{{ cookiecutter.project_description }}."""
 
 # Placeholder for poetry-dynamic-versioning, do not change:

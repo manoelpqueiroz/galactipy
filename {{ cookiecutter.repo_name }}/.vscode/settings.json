@@ -122,7 +122,7 @@
 {%- else %}
         "**/.gitlab/merge_request_templates/*/**"
 {%- endif %}
-{%- if cookiecutter.app_type == 'tui' or cookiecutter.app_type == 'hybrid' %}
+{%- if cookiecutter.app_type in ['tui', 'hybrid'] and cookiecutter.use_bdd %}
     ],
     "vsicons.associations.files": [
         {
@@ -152,6 +152,40 @@
     "files.associations": {
         "*.tcss": "css"
     }
+{%- elif cookiecutter.app_type in ['tui', 'hybrid'] %}
+    ],
+    "vsicons.associations.files": [
+        {
+            "icon": "css",
+            "extensions": [
+                "tcss"
+            ],
+            "format": "svg"
+        },
+    ],
+    "vsicons.associations.folders": [
+        {
+            "icon": "app",
+            "extensions": [
+                "tui"
+            ],
+            "format": "svg"
+        }
+    ],
+    "files.associations": {
+        "*.tcss": "css"
+    }
+{%- elif cookiecutter.use_bdd %}
+    ],
+    "vsicons.associations.folders": [
+        {
+            "icon": "model",
+            "extensions": [
+                "features"
+            ],
+            "format": "svg"
+        }
+    ]
 {%- else %}
     ]
 {%- endif %}{%- raw %}

@@ -129,7 +129,7 @@ def install(c: Context, ignore_pty: bool = False) -> None:
     local_pty = False if ignore_pty else IS_UNIX_OS
 
     c.run(f"{poetry_path} lock -n", pty=local_pty)
-    c.run(f"{poetry_path} install -n", pty=local_pty)
+    c.run(f"{poetry_path} sync -n", pty=local_pty)
 
 
 # Packaging-related tasks
@@ -221,12 +221,18 @@ def lint(c: Context, fix: bool = False) -> None:
 
 
 @task(call(venv, hide=True), incrementable=["verbosity"])
-def test(c: Context, verbosity: int = 0) -> None:  # noqa: PT028
+def test(c: Context, marks: str = None, verbosity: int = 0) -> None:  # noqa: PT028
     """Run tests with Pytest and `pyproject.toml` configuration."""
     verbosity_level = min(verbosity, 3)
-    flag = "-" + verbosity_level * "v" if verbosity_level > 0 else ""
+    verbosity_flag = "-" + verbosity_level * "v" if verbosity_level > 0 else ""
 
-    c.run(f"{c.venv_bin_path}/pytest -c pyproject.toml {flag} tests", pty=IS_UNIX_OS)
+    marks_flag = f"-m {marks}" if marks is not None else ""
+
+    c.run(
+        f"{c.venv_bin_path}/pytest -c pyproject.toml {verbosity_flag} {marks_flag} "
+        "tests",
+        pty=IS_UNIX_OS,
+    )
 
 
 @task(call(venv, hide=True))
@@ -240,7 +246,7 @@ def security(c: Context) -> None:
     """Perform security checks with Bandit."""
     c.run(
         f"{c.venv_bin_path}/bandit -ll -c pyproject.toml --recursive {{ cookiecutter.package_name }}",
-        pty=IS_UNIX_OS
+        pty=IS_UNIX_OS,
     )
 
 
@@ -296,13 +302,13 @@ def container(
 
     c.run(
         f"docker build . {docker_images} -f ./docker/Dockerfile --no-cache",
-        pty=IS_UNIX_OS
+        pty=IS_UNIX_OS,
     )
 
 
 @task(iterable=["tags"], aliases=["docker-remove", "rmi"])
 def prune(
-    c: Context,tags: list[str], repository: str = DEFAULT_DOCKER_REPOSITORY
+    c: Context, tags: list[str], repository: str = DEFAULT_DOCKER_REPOSITORY
 ) -> None:
     """Remove specified Docker images created for {{ cookiecutter.repo_name }}."""
     if len(tags) == 0:
@@ -358,7 +364,7 @@ def remove_pytest(c: Context) -> None:
     """Remove Pytest cache files from project directory."""
     c.run(
         FILE_REMOVER.format(r"(.pytest_cache|.coverage|test_report.xml)"),
-        pty=IS_UNIX_OS
+        pty=IS_UNIX_OS,
     )
 
 

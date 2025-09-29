@@ -65,11 +65,14 @@ version = "0.0.0"  # Keep this key as the last for `tool.poetry`, as it is used 
 python = "^{{ cookiecutter.minimal_python_version }}"
 {%+ if cookiecutter.app_type == 'tui' or cookiecutter.app_type == 'hybrid' %}
 textual = "^6.1.0"
-art = "^6.5.0" # UPDATEME by removing when no longer needed
+art = "^6.5.0"  # UPDATEME by removing when no longer needed
 {%- endif %}
 {%+ if cookiecutter.app_type != 'bare_repo' %}
 typer = { extras = ["all"], version = "^0.18.0" }
 rich = "^14.1.0"
+
+dynamanager = "^0.1.3"
+platformdirs = "^4.4.0"
 {%- endif %}
 
 [tool.poetry.group.dev.dependencies]
@@ -170,7 +173,7 @@ task-tags = [
   "NEEDSWORK",
   "UPDATEME",
   "TODO",
-  "REFACTOR"
+  "REFACTOR",
 ]  # UPDATEME by modifying or removing this setting after addressing all UPDATEMEs
 
 [tool.ruff.lint.per-file-ignores]
@@ -187,6 +190,8 @@ suppress-dummy-args = true
 [tool.ruff.lint.flake8-pytest-style]
 fixture-parentheses = false
 mark-parentheses = false
+parametrize-values-type = "tuple"
+parametrize-values-row-type = "list"
 
 [tool.ruff.lint.flake8-tidy-imports]
 ban-relative-imports = "all"
@@ -214,9 +219,9 @@ sections.app-builders = ["rich", "typer"]
 {%- endif %}
 sections.typing = ["typing", "types", "typing_extensions", "mypy", "mypy_extensions", "pytype", "pydantic"]
 {%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
-sections.testing = ["pytest", {% if cookiecutter.use_bdd %}"pytest_bdd"{% endif %}, "pytest_asyncio", "tests"]
+sections.testing = ["pytest",{% if cookiecutter.use_bdd %} "pytest_bdd",{% endif %} "pytest_asyncio", "pytest_mock", "pyfakefs", "testinfra"]
 {%- else %}
-sections.testing = ["pytest", {% if cookiecutter.use_bdd %}"pytest_bdd"{% endif %}, "tests"]
+sections.testing = ["pytest",{% if cookiecutter.use_bdd %} "pytest_bdd",{% endif %} "pytest_mock", "pyfakefs", "testinfra"]
 {%- endif %}
 section-order = [
   "future",
@@ -226,15 +231,15 @@ section-order = [
   "app-builders",
 {%- endif %}
   "third-party",
+  "testing",
   "first-party",
   "local-folder",
-  "testing"
 ]
 
 
 [tool.mypy]
 # https://github.com/python/mypy
-# https://mypy.readthedocs.io/en/latest/config_file.html#using-a-pyproject-toml-file
+# https://mypy.readthedocs.io/en/stable/config_file.html#using-a-pyproject-toml-file
 python_version = "{{ cookiecutter.minimal_python_version }}"
 files = [
   "{{ cookiecutter.package_name }}",
@@ -264,7 +269,7 @@ warn_unused_ignores = true
 
 [tool.pytest.ini_options]
 # https://github.com/pytest-dev/pytest
-# https://docs.pytest.org/en/6.2.x/customize.html#pyproject-toml
+# https://docs.pytest.org/en/stable/customize.html#pyproject-toml
 # Directories that are not visited by pytest collector:
 norecursedirs =[
   "hooks",
@@ -275,9 +280,32 @@ norecursedirs =[
   "docs",
   ".tox",
   ".git",
-  "__pycache__"
+  "__pycache__",
 ]
 doctest_optionflags = ["NUMBER", "NORMALIZE_WHITESPACE", "IGNORE_EXCEPTION_DETAIL"]
+markers = [
+  "backend",
+  "frontend",
+{%- if cookiecutter.app_type != 'bare_repo' %}
+  "cli",
+{%- endif %}
+  "standard",
+  "validation",
+  "edge",
+  "security",
+  "performance",
+  "persistence",
+  "config",
+  "customization",
+  "compatibility",
+  "async",
+  "integration",
+  "database",
+  "api",
+  "identity",
+  "networking",
+  "monitoring",
+]
 timeout = 10
 {%- if cookiecutter.use_bdd %}
 bdd_features_base_dir = "tests/features/"
@@ -301,18 +329,21 @@ addopts = [
 
 [tool.coverage.run]
 # https://github.com/nedbat/coveragepy
-# https://coverage.readthedocs.io/en/7.10.6/config.html
+# https://coverage.readthedocs.io/en/latest/config.html
 source = ["tests"]
 branch = true
 {%- if cookiecutter.app_type != 'bare_repo' %}
-omit = ["__main__.py"]
+omit = [
+  "__main__.py",
+  "*/config/constants.py",
+]
 {%- endif %}
 
 
 [tool.coverage.report]
 exclude_also = [
   "def main",
-  "if __name__ == .__main__.:"
+  "if __name__ == .__main__.:",
 ]
 fail_under = 90
 show_missing = true

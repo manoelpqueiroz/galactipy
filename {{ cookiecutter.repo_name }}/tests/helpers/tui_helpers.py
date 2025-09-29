@@ -6,8 +6,8 @@ from {{ cookiecutter.package_name }}.tui.main_window import TerminalApp
 class AppInterface:
     """Encapsulates the terminal interface test setup."""
 
-    def __init__(self):
-        self.instance = TerminalApp()
+    def __init__(self, theme):
+        self.instance = TerminalApp(theme)
         self.pilot = self.instance.run_test()
 
     @property
