@@ -1,11 +1,11 @@
 from hooks.pre_gen_project import (
-    MAX_USERNAME_LENGTH,
-    MIN_USERNAME_LENGTH,
+    MAX_NAMESPACE_LENGTH,
+    MIN_NAMESPACE_LENGTH,
+    RESERVED_NAMESPACES,
     RESERVED_PROJECTS,
-    RESERVED_USERNAMES,
+    validate_namespace,
     validate_package_name,
     validate_repo_name,
-    validate_username,
 )
 
 import pytest
@@ -210,7 +210,7 @@ def test_invalid_package_names(invalid_package):
     ],
 )
 def test_valid_usernames(valid_username):
-    assert validate_username(valid_username, RESERVED_USERNAMES) is None  # type: ignore[func-returns-value]
+    assert validate_namespace(valid_username, RESERVED_NAMESPACES) is None  # type: ignore[func-returns-value]
 
 
 @pytest.mark.parametrize(
@@ -237,7 +237,7 @@ def test_valid_usernames(valid_username):
 )
 def test_invalid_usernames(invalid_username):
     with pytest.raises(ValueError):
-        validate_username(invalid_username, RESERVED_USERNAMES)
+        validate_namespace(invalid_username, RESERVED_NAMESPACES)
 
 
 def test_username_length():
@@ -246,8 +246,8 @@ def test_username_length():
     for n in range(260):
         username = string * n
 
-        if MIN_USERNAME_LENGTH <= n <= MAX_USERNAME_LENGTH:
-            assert validate_username(username, RESERVED_USERNAMES) is None  # type: ignore[func-returns-value]
+        if MIN_NAMESPACE_LENGTH <= n <= MAX_NAMESPACE_LENGTH:
+            assert validate_namespace(username, RESERVED_NAMESPACES) is None  # type: ignore[func-returns-value]
         else:
             with pytest.raises(ValueError):
-                validate_username(username, RESERVED_USERNAMES)
+                validate_namespace(username, RESERVED_NAMESPACES)

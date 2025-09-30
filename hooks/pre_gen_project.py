@@ -5,14 +5,14 @@ import sys
 
 REPO_NAME = "{{ cookiecutter.repo_name }}"
 PACKAGE_NAME = "{{ cookiecutter.package_name }}"
-USERNAME = "{{ cookiecutter.scm_username }}"
+NAMESPACE = "{{ cookiecutter.scm_namespace }}"
 # Integer value wrapped inside strings to avoid raising errors when testing
 LINE_LENGTH_PARAMETER = "{{ cookiecutter.line_length }}"
 DOCSTRING_LENGTH_PARAMETER = "{{ cookiecutter.docstring_length }}"
 
 
-MIN_USERNAME_LENGTH = 2
-MAX_USERNAME_LENGTH = 255
+MIN_NAMESPACE_LENGTH = 2
+MAX_NAMESPACE_LENGTH = 255
 MIN_LINE_LENGTH = 50
 MAX_LINE_LENGTH = 300
 
@@ -69,7 +69,7 @@ RESERVED_PROJECTS = [
 ]
 
 # https://docs.gitlab.com/ee/user/reserved_names.html#reserved-group-names
-RESERVED_USERNAMES = [
+RESERVED_NAMESPACES = [
     r"\-",
     ".well-known",
     "404.html",
@@ -171,7 +171,7 @@ def validate_package_name(package_name: str) -> None:
         raise ValueError(message)
 
 
-def validate_username(username: str, reserved_names: list[str]) -> None:
+def validate_namespace(namespace: str, reserved_names: list[str]) -> None:
     """Ensure that `username` is valid under GitLab and GitHub restrictions.
 
     Parameters
@@ -186,17 +186,17 @@ def validate_username(username: str, reserved_names: list[str]) -> None:
     ValueError
         If `username` is not a valid GitLab or GitHub username.
     """
-    if not (MIN_USERNAME_LENGTH <= len(username) <= MAX_USERNAME_LENGTH):
+    if not (MIN_NAMESPACE_LENGTH <= len(namespace) <= MAX_NAMESPACE_LENGTH):
         message = (
-            f"ERROR: scm_username must be between 2 and 255. Got `{len(username)}`."
+            f"ERROR: scm_namespace must be between 2 and 255. Got `{len(namespace)}`."
         )
         raise ValueError(message)
 
-    message = f"ERROR: `{username}` is not a valid name for user or organisation."
+    message = f"ERROR: `{namespace}` is not a valid name for user or organisation."
 
-    if USERNAME_REGEX.fullmatch(username) is None:
+    if USERNAME_REGEX.fullmatch(namespace) is None:
         raise ValueError(message)
-    if username in reserved_names:
+    if namespace in reserved_names:
         raise ValueError(message)
 
 
@@ -247,7 +247,7 @@ def main() -> None:  # noqa: D103
 
         validate_package_name(package_name=PACKAGE_NAME)
 
-        validate_username(username=USERNAME, reserved_names=RESERVED_USERNAMES)
+        validate_namespace(namespace=NAMESPACE, reserved_names=RESERVED_NAMESPACES)
 
         validate_line_length(line_length=int(LINE_LENGTH_PARAMETER))
 
