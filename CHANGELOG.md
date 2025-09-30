@@ -1,3 +1,9 @@
+## 0.17.1 (2025-09-30)
+
+### :wrench: Fixes & Refactoring (1 change)
+
+- [:ambulance: Fix broken project generation for CLI with BDD](galactipy/galactipy@5540787a641143646fcc46dc86b7cfd463335afa) ([merge request](galactipy/galactipy!71))
+
 ## 0.17.0 (2025-09-29)
 
 ### :milky_way: Components (7 changes)
