@@ -1,4 +1,4 @@
-{%- set docker_repo = 'registry.gitlab.com/' ~ cookiecutter.scm_username ~ '/' ~ cookiecutter.repo_name if cookiecutter.__scm_platform_lc == 'gitlab' else cookiecutter.scm_username ~ '/' ~ cookiecutter.repo_name -%}
+{%- set docker_repo = 'registry.gitlab.com/' ~ cookiecutter.scm_namespace ~ '/' ~ cookiecutter.repo_name if cookiecutter.__scm_platform_lc == 'gitlab' else cookiecutter.scm_namespace ~ '/' ~ cookiecutter.repo_name -%}
 # Docker for {{ cookiecutter.project_name }}
 
 ## Installation

@@ -15,7 +15,7 @@
           author_member:
             source: project
             condition: not_member_of
-            source_id: {% endraw %}{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}{% raw %}
+            source_id: {% endraw %}{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}{% raw %}
         actions:
           labels:
             - stale
@@ -50,7 +50,7 @@
           author_member:
             source: project
             condition: not_member_of
-            source_id: {% endraw %}{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}{% raw %}
+            source_id: {% endraw %}{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}{% raw %}
         actions:
           status: close
           comment: >

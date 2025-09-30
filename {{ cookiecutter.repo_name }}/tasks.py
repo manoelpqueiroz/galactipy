@@ -27,9 +27,9 @@ PROJECT_NAME = "{{ cookiecutter.repo_name }}"
 {%+ if cookiecutter.create_docker %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 DOCKER_REGISTRY = "registry.gitlab.com"
-DEFAULT_DOCKER_REPOSITORY = f"{DOCKER_REGISTRY}/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}"
+DEFAULT_DOCKER_REPOSITORY = f"{DOCKER_REGISTRY}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}"
 {%- else %}
-DEFAULT_DOCKER_REPOSITORY = "{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}"
+DEFAULT_DOCKER_REPOSITORY = "{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}"
 {%- endif %}
 DEFAULT_DOCKER_TAG = "latest"
 DEFAULT_DOCKER_IMAGE = f"{DEFAULT_DOCKER_REPOSITORY}:{DEFAULT_DOCKER_TAG}"
