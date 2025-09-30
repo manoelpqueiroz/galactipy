@@ -282,9 +282,9 @@ For further setting up your project:
   - It assumes your main git branch is `master`. If you wish to use another branch name for development, be aware of changes you will have to make in the Issue and Merge Request templates and `README.md` file so links won't break when you push them to your repo;
   - It generates a PyPI badge assuming you will be able to publish your project under `{{ cookiecutter.repo_name }}`, change it otherwise;
 {%- if cookiecutter.create_docker and cookiecutter.__scm_platform_lc == 'github' %}
-  - It generates a Docker badge assuming you also use `{{ cookiecutter.scm_username }}` for Docker Hub and you will push your image under `{{ cookiecutter.repo_name }}`, change it otherwise.
+  - It generates a Docker badge assuming you also use `{{ cookiecutter.scm_namespace }}` for Docker Hub and you will push your image under `{{ cookiecutter.repo_name }}`, change it otherwise.
 {%- elif cookiecutter.create_docker and cookiecutter.__scm_platform_lc == 'gitlab' %}
-  - It assumes you will be pushing container images to the GitLab Container Registry at `{{ cookiecutter.scm_username}}/{{ cookiecutter.repo_name }}`, change it otherwise.
+  - It assumes you will be pushing container images to the GitLab Container Registry at `{{ cookiecutter.scm_namespace}}/{{ cookiecutter.repo_name }}`, change it otherwise.
 {%- endif %}
 
 If you want to put your project on steroids, here are a few Python tools which can help you depending on what you want to achieve with your application:
@@ -464,9 +464,9 @@ This project was generated with [`galactipy`][bp7].
 [bp21]: https://img.shields.io/badge/semantic%20versions-4053D6?style=for-the-badge&logo=semver
 {%+ if cookiecutter.licence != 'nos' %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[blic1]: https://img.shields.io/gitlab/license/{{ cookiecutter.scm_username}}/{{ cookiecutter.repo_name }}?style=for-the-badge
+[blic1]: https://img.shields.io/gitlab/license/{{ cookiecutter.scm_namespace}}/{{ cookiecutter.repo_name }}?style=for-the-badge
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
-[blic1]: https://img.shields.io/github/license/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}?style=for-the-badge
+[blic1]: https://img.shields.io/github/license/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}?style=for-the-badge
 {%- endif %}
 [blic2]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
 
@@ -478,14 +478,14 @@ This project was generated with [`galactipy`][bp7].
 [boss4]: https://ossrank.com/p/200 -->
 {% endif +%}
 {% if cookiecutter.__coverage_lc == 'coveralls' %}
-[bcov1]: https://img.shields.io/coverallsCoverage/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=coveralls
-[bcov2]: https://coveralls.io/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}
+[bcov1]: https://img.shields.io/coverallsCoverage/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=coveralls
+[bcov2]: https://coveralls.io/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}
 {% elif cookiecutter.__coverage_lc == 'codacy' %}
-<!-- TODO Replace the hash `d5402a91aa7b4234bd1c19b5e86a63be` with your project ID in the "Codacy Badge" section available at https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}/settings
+<!-- TODO Replace the hash `d5402a91aa7b4234bd1c19b5e86a63be` with your project ID in the "Codacy Badge" section available at https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/settings
 [bcov1]: https://img.shields.io/codacy/grade/d5402a91aa7b4234bd1c19b5e86a63be?style=for-the-badge&logo=codacy
-[bcov2]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}/dashboard
+[bcov2]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/dashboard
 [bcov3]: https://img.shields.io/codacy/coverage/d5402a91aa7b4234bd1c19b5e86a63be?style=for-the-badge&logo=codacy
-[bcov4]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}/coverage -->
+[bcov4]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/coverage -->
 {% endif +%}
 {% if cookiecutter.app_type != 'bare_repo' -%}
 [fs1]: https://pipx.pypa.io/latest/installation/
@@ -565,11 +565,11 @@ This project was generated with [`galactipy`][bp7].
 [r1]: {{ cookiecutter.__scm_link_url }}/releases
 {%+ if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [bscm1]: https://img.shields.io/badge/GitLab-330F63?style=for-the-badge&logo=gitlab&logoColor=white
-[bscm2]: https://img.shields.io/gitlab/v/release/{{ cookiecutter.scm_username }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&logo=semantic-release&color=FFCA28
-[bscm3]: https://img.shields.io/gitlab/issues/open/{{ cookiecutter.scm_username }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&color=fca326
-[bscm4]: https://img.shields.io/gitlab/merge-requests/open/{{ cookiecutter.scm_username }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&color=6fdac9
+[bscm2]: https://img.shields.io/gitlab/v/release/{{ cookiecutter.scm_namespace }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&logo=semantic-release&color=FFCA28
+[bscm3]: https://img.shields.io/gitlab/issues/open/{{ cookiecutter.scm_namespace }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&color=fca326
+[bscm4]: https://img.shields.io/gitlab/merge-requests/open/{{ cookiecutter.scm_namespace }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&color=6fdac9
 [bscm5]: {{ cookiecutter.__scm_link_url }}/merge_requests
-[bscm6]: https://img.shields.io/gitlab/pipeline-status/{{ cookiecutter.scm_username }}%2F{{ cookiecutter.repo_name }}?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
+[bscm6]: https://img.shields.io/gitlab/pipeline-status/{{ cookiecutter.scm_namespace }}%2F{{ cookiecutter.repo_name }}?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
 [bscm7]: {{ cookiecutter.__scm_link_url }}/pipelines
 
 [lab2]: https://docs.gitlab.com/ee/ci/
@@ -581,11 +581,11 @@ This project was generated with [`galactipy`][bp7].
 [lab10]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
 {%- elif cookiecutter.__scm_platform_lc == 'github' %}
 [bscm1]: https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
-[bscm2]: https://img.shields.io/github/v/release/{{ cookiecutter.scm_username}}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=semantic-release&color=347d39
-[bscm3]: https://img.shields.io/github/issues/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}?style=for-the-badge&color=bc4c00
-[bscm4]: https://img.shields.io/github/issues-pr/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}?style=for-the-badge&color=1f883d
+[bscm2]: https://img.shields.io/github/v/release/{{ cookiecutter.scm_namespace}}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=semantic-release&color=347d39
+[bscm3]: https://img.shields.io/github/issues/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}?style=for-the-badge&color=bc4c00
+[bscm4]: https://img.shields.io/github/issues-pr/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}?style=for-the-badge&color=1f883d
 [bscm5]: {{ cookiecutter.__scm_link_url }}/pulls
-[bscm6]: https://img.shields.io/github/actions/workflow/status/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}/build.yml?style=for-the-badge&logo=github
+[bscm6]: https://img.shields.io/github/actions/workflow/status/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/build.yml?style=for-the-badge&logo=github
 [bscm7]: {{ cookiecutter.__scm_link_url }}/actions/workflows/build.yml
 
 [hub1]: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates#enabling-dependabot-version-updates
@@ -602,11 +602,11 @@ This project was generated with [`galactipy`][bp7].
 {%- endif %}
 {%+ if cookiecutter.create_docker %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[bdocker1]: https://img.shields.io/gitlab/v/release/{{ cookiecutter.scm_username }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&logo=linux-containers&logoColor=C5F4EC&label=image&color=C5F4EC
+[bdocker1]: https://img.shields.io/gitlab/v/release/{{ cookiecutter.scm_namespace }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&logo=linux-containers&logoColor=C5F4EC&label=image&color=C5F4EC
 [bdocker2]: {{ cookiecutter.__scm_base_url }}/container_registry
 {%- else %}
-[bdocker1]: https://img.shields.io/docker/v/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=docker&logoColor=lightblue&label=image&color=lightblue
-[bdocker2]: https://hub.docker.com/r/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}
+[bdocker1]: https://img.shields.io/docker/v/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=docker&logoColor=lightblue&label=image&color=lightblue
+[bdocker2]: https://hub.docker.com/r/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}
 {%- endif %}
 
 [docker1]: {{ cookiecutter.__scm_link_url }}/blob/master/.dockerignore

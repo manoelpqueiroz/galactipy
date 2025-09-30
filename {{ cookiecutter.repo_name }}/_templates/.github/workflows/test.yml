@@ -12,14 +12,14 @@ jobs:
     strategy:
       matrix:
         test-python-version: [{% endraw %}{% for version in cookiecutter._all_python_version if version[0] >= list_python_version[0] and version[1] > list_python_version[1] %}"{{ version[0] }}.{{ version[1] }}"{% if not loop.last %}, {% endif %}{% endfor %}{% raw %}]
-    uses: {% endraw %}{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}{% raw %}/.github/workflows/test_template.yml@master
+    uses: {% endraw %}{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}{% raw %}/.github/workflows/test_template.yml@master
     with:
       python-version: ${{ matrix.test-python-version }}
       upload-coverage: false
 
   test-and-coverage:
     name: Tests & Coverage
-    uses: {% endraw %}{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}{% raw %}/.github/workflows/test_template.yml@master
+    uses: {% endraw %}{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}{% raw %}/.github/workflows/test_template.yml@master
     with:
       python-version: "{% endraw %}{{ cookiecutter.minimal_python_version }}{% raw %}"
       upload-coverage: true{% endraw %}

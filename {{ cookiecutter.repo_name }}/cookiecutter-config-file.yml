@@ -8,7 +8,7 @@ default_context:
   project_description: "{{ cookiecutter.project_description }}"
   author: "{{ cookiecutter.author }}"
   scm_platform: "{{ cookiecutter.scm_platform }}"
-  scm_username: "{{ cookiecutter.scm_username }}"
+  scm_namespace: "{{ cookiecutter.scm_namespace }}"
   email: "{{ cookiecutter.email }}"
   licence: "{{ cookiecutter.licence }}"
   minimal_python_version: {{ cookiecutter.minimal_python_version }}

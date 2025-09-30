@@ -137,25 +137,25 @@ Cookiecutter will ask you to fill some variables in order to generate the files 
 
 The input variables, with their default values, are as follows:
 
-|      **Parameter**       |      **Default value**      | **Description**                                                                                                                                                |
-| :----------------------: | :-------------------------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|      `project_name`      |      `Python Project`       | A suitable name by which people will refer to, you are free to name it however you wish to.                                                                    |
-|       `repo_name`        |   based on `project_name`   | Name of the repository to develop the project on. [Check the availability of possible names][htu1] before creating the project.                                |
-|      `package_name`      |   based on `project_name`   | PyPI-compliant Python package name. [Check the availability of possible names][htu1] before creating the project.                                              |
-|  `project_description`   |   based on `project_name`   | A brief description of your project.                                                                                                                           |
-|         `author`         | `Manoel Pereira de Queiroz` | Name of the author or organisation. Used to generate `LICENCE` and to specify ownership in `pyproject.toml`.                                                   |
-|      `scm_platform`      |          `GitLab Free`           | One of `GitLab Free`, `GitLab Premium/Ultimate` and `GitHub`. Depending on the choice you will have [different features][htu2] to work with.                                                   |
-|      `scm_username`      |      `manoelpqueiroz`       | GitHub or GitLab username for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for either platform.                               |
-|         `email`          |   based on `scm_username`   | Email for `CODE_OF_CONDUCT.md`, `SECURITY.md` files and to specify the ownership of the project in `pyproject.toml`.                                           |
-|        `licence`         |            `MIT`            | One of `MIT`, `BSD-3`, `GNU GPL v3.0`, `GNU AGLP v3.0`, `GNU LGPL v3.0`, `Mozilla Public License 2.0` and `Apache Software License 2.0`, or `Not open source`. |
-| `minimal_python_version` |            `3.9`            | Minimal Python version. All versions since `3.9` are available to choose. It is used for builds, pipelines and formatters.                                     |
-|      `line_length`       |             88              | The max length per line. NOTE: This value must be between 50 and 300.                                                       |
-|    `docstring_style`     |           `numpy`           | One of `numpy`, `pep257` or `google`. You can choose `other` to disable checks on your docstrings.                          |
-|    `docstring_length`    |   based on `line_lenght`    | The max length for docstrings. NOTE: This value must be between 50 and 300 and lower of equal to `line_lenght`.             |
-|        `use_bdd`         |           `True`            | :small_red_triangle: Option to use [behaviour-driven development][ft15] for managing tests.                                                                    |
-|    `coverage_service`    |         `Coveralls`         | One of `Coveralls` for code coverage and `Codacy` for code quality and static analysis.                                                                        |
-|        `app_type`        |     `Integrated CLI+TUI`    | One of `Integrated CLI+TUI` for a straight TUI application, `Hybrid CLI/TUI` for a CLI application with a preset TUI command, `CLI-only application` with minimal app configuration and `Bare repository` for no sample files at all. Employs [`Typer`][ft2] and [`Textual`][ft3] as libraries.                                                                      |
-|     `create_docker`      |           `True`            | :small_red_triangle: Option to create a [Dockerfile][ft28] to build an image for your project.                                                                 |
+|      **Parameter**       |      **Default value**       | **Description**                                                                                                                                                                                                                                                                                 |
+| :----------------------: | :--------------------------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|      `project_name`      |       `Python Project`       | A suitable name by which people will refer to, you are free to name it however you wish to.                                                                                                                                                                                                     |
+|       `repo_name`        |   based on `project_name`    | Name of the repository to develop the project on. [Check the availability of possible names][htu1] before creating the project.                                                                                                                                                                 |
+|      `package_name`      |   based on `project_name`    | PyPI-compliant Python package name. [Check the availability of possible names][htu1] before creating the project.                                                                                                                                                                               |
+|  `project_description`   |   based on `project_name`    | A brief description of your project.                                                                                                                                                                                                                                                            |
+|         `author`         | `The Galactipy Contributors` | Name of the author or organisation. Used to generate `LICENCE` and to specify ownership in `pyproject.toml`.                                                                                                                                                                                    |
+|      `scm_platform`      |        `GitLab Free`         | One of `GitLab Free`, `GitLab Premium/Ultimate` and `GitHub`. Depending on the choice you will have [different features][htu2] to work with.                                                                                                                                                    |
+|     `scm_namespace`      |         `galactipy`          | GitHub or GitLab namespace for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for either platform.                                                                                                                                                               |
+|         `email`          |   based on `scm_namespace`   | Email for `CODE_OF_CONDUCT.md`, `SECURITY.md` files and to specify the ownership of the project in `pyproject.toml`.                                                                                                                                                                            |
+|        `licence`         |            `MIT`             | One of `MIT`, `BSD-3`, `GNU GPL v3.0`, `GNU AGLP v3.0`, `GNU LGPL v3.0`, `Mozilla Public License 2.0` and `Apache Software License 2.0`, or `Not open source`.                                                                                                                                  |
+| `minimal_python_version` |            `3.9`             | Minimal Python version. All versions since `3.9` are available to choose. It is used for builds, pipelines and formatters.                                                                                                                                                                      |
+|      `line_length`       |              88              | The max length per line. NOTE: This value must be between 50 and 300.                                                                                                                                                                                                                           |
+|    `docstring_style`     |           `numpy`            | One of `numpy`, `pep257` or `google`. You can choose `other` to disable checks on your docstrings.                                                                                                                                                                                              |
+|    `docstring_length`    |    based on `line_lenght`    | The max length for docstrings. NOTE: This value must be between 50 and 300 and lower of equal to `line_lenght`.                                                                                                                                                                                 |
+|        `use_bdd`         |            `True`            | :small_red_triangle: Option to use [behaviour-driven development][ft15] for managing tests.                                                                                                                                                                                                     |
+|    `coverage_service`    |         `Coveralls`          | One of `Coveralls` for code coverage and `Codacy` for code quality and static analysis.                                                                                                                                                                                                         |
+|        `app_type`        |     `Integrated CLI+TUI`     | One of `Integrated CLI+TUI` for a straight TUI application, `Hybrid CLI/TUI` for a CLI application with a preset TUI command, `CLI-only application` with minimal app configuration and `Bare repository` for no sample files at all. Employs [`Typer`][ft2] and [`Textual`][ft3] as libraries. |
+|     `create_docker`      |            `True`            | :small_red_triangle: Option to create a [Dockerfile][ft28] to build an image for your project.                                                                                                                                                                                                  |
 
 > [!note]
 > Input variables marked with :small_red_triangle: are boolean variables, you can dismiss those by typing either `0`, `false`, `f`, `no`, `n` or `off`.
@@ -298,11 +298,11 @@ with the `invoke --list` command.
 
 #### Environment Setup
 
-| Command | Details |
-|:-------:|---------|
-| `invoke install` | :small_red_triangle: Sets up the Poetry virtual environment, installs the dependencies, pre-commit hooks and runs a [Mypy][ft12] check. |
-| `invoke pyproject` | Checks `pyproject.toml` integrity. |
-| `invoke update` | Updates dependencies to their latest compatible release requirements, with an option to update to the latest versions overall. |
+|      Command       | Details                                                                                                                                 |
+| :----------------: | --------------------------------------------------------------------------------------------------------------------------------------- |
+|  `invoke install`  | :small_red_triangle: Sets up the Poetry virtual environment, installs the dependencies, pre-commit hooks and runs a [Mypy][ft12] check. |
+| `invoke pyproject` | Checks `pyproject.toml` integrity.                                                                                                      |
+|  `invoke update`   | Updates dependencies to their latest compatible release requirements, with an option to update to the latest versions overall.          |
 
 >>> [!warning]
 :small_red_triangle: Invoke must be installed and callable.
@@ -312,14 +312,14 @@ to set up the repository.
 
 #### Quality Assurance Tasks
 
-| Command | Details |
-|:-------:|---------|
-| `invoke codestyle` | Format files with [Ruff][b19], with an option to check files only. |
-| `invoke lint` | Check compliance with linting rules, with an option to correct those considered fixable by Ruff. |
-| `invoke mypy` | Run [Mypy][ft12] to check for static typing. |
-| `invoke test` | Run the test suite with [Pytest][ft14]. |
-| `invoke coverage` | Generate the coverage file for upload to [Coveralls][ft17] or [Codacy][ft18]. |
-| `invoke security` | Run security checks with [Bandit][ft13] and check `pyproject.toml` integrity. |
+|      Command       | Details                                                                                          |
+| :----------------: | ------------------------------------------------------------------------------------------------ |
+| `invoke codestyle` | Format files with [Ruff][b19], with an option to check files only.                               |
+|   `invoke lint`    | Check compliance with linting rules, with an option to correct those considered fixable by Ruff. |
+|   `invoke mypy`    | Run [Mypy][ft12] to check for static typing.                                                     |
+|   `invoke test`    | Run the test suite with [Pytest][ft14].                                                          |
+| `invoke coverage`  | Generate the coverage file for upload to [Coveralls][ft17] or [Codacy][ft18].                    |
+| `invoke security`  | Run security checks with [Bandit][ft13] and check `pyproject.toml` integrity.                    |
 
 The **`invoke sweep`** task groups all tasks
 except for `coverage`
@@ -327,11 +327,11 @@ into a single command.
 
 #### Project Building & Publishing
 
-| Command | Details |
-|:-------:|---------|
-| `invoke build` | Build the project wheels. |
-| `invoke config` | :small_red_triangle: Configure PyPI repositories, requiring at least an API token, with optional repository name and URL arguments. |
-| `invoke publish` | Publish the project to a registry, defaulting to the canonical PyPI repository, with an option to build the project wheels. |
+|     Command      | Details                                                                                                                             |
+| :--------------: | ----------------------------------------------------------------------------------------------------------------------------------- |
+|  `invoke build`  | Build the project wheels.                                                                                                           |
+| `invoke config`  | :small_red_triangle: Configure PyPI repositories, requiring at least an API token, with optional repository name and URL arguments. |
+| `invoke publish` | Publish the project to a registry, defaulting to the canonical PyPI repository, with an option to build the project wheels.         |
 
 >>> [!note]
 :small_red_triangle: When provided with no `--repo` option,
@@ -349,24 +349,24 @@ pointing to the desired custom registry.
 
 #### Docker Operations
 
-| Command | Details |
-|:-------:|---------|
-| `invoke login` | Log in to a container registry. For GitHub users, points to [Docker Hub][ft41]. For GitLab users, points to the repository's [integrated container registry][ft42]. |
-| `invoke container` | Build local container images, with the option to set multiple tags and an alternate repository to point. |
-| `invoke push` | Push all project images to a container registry, with the option to set an alternate repository to push. |
-| `invoke prune` | Remove all local images built for the project, with the option to set an alternate repository to point. |
+|      Command       | Details                                                                                                                                                             |
+| :----------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|   `invoke login`   | Log in to a container registry. For GitHub users, points to [Docker Hub][ft41]. For GitLab users, points to the repository's [integrated container registry][ft42]. |
+| `invoke container` | Build local container images, with the option to set multiple tags and an alternate repository to point.                                                            |
+|   `invoke push`    | Push all project images to a container registry, with the option to set an alternate repository to push.                                                            |
+|   `invoke prune`   | Remove all local images built for the project, with the option to set an alternate repository to point.                                                             |
 
 #### Cleanup Tasks
 
-| Command | Details |
-|:-------:|---------|
-| `invoke remove-cache` | Remove `__pycache__` files from the local repository. |
-| `invoke remove-dsstore` | Remove the `.DS_Store` directory from the local repository. |
-| `invoke remove-mypy` | Remove the `.mypy_cache` directory from the local repository. |
-| `invoke remove-ipynb` | Remove the `.ipynb_checkpoints` directory from the local repository. |
-| `invoke remove-pytest` | Remove the `.pytest_cache` directory and the `.coverage` and `test_report.xml` files from the local repository. |
-| `invoke remove-ruff` | Remove the `.ruff_cache` directory from the local repository. |
-| `invoke remove-build` | Remove wheels built locally. |
+|         Command         | Details                                                                                                         |
+| :---------------------: | --------------------------------------------------------------------------------------------------------------- |
+|  `invoke remove-cache`  | Remove `__pycache__` files from the local repository.                                                           |
+| `invoke remove-dsstore` | Remove the `.DS_Store` directory from the local repository.                                                     |
+|  `invoke remove-mypy`   | Remove the `.mypy_cache` directory from the local repository.                                                   |
+|  `invoke remove-ipynb`  | Remove the `.ipynb_checkpoints` directory from the local repository.                                            |
+| `invoke remove-pytest`  | Remove the `.pytest_cache` directory and the `.coverage` and `test_report.xml` files from the local repository. |
+|  `invoke remove-ruff`   | Remove the `.ruff_cache` directory from the local repository.                                                   |
+|  `invoke remove-build`  | Remove wheels built locally.                                                                                    |
 
 The **`invoke cleanup`** task groups all tasks
 except for `remove-build`
@@ -452,7 +452,7 @@ For further setting up your project:
 - In order to reduce user prompts and keep things effective, the template generates files with a few assumptions:
   - It assumes your main git branch is `master`. If you wish to use another branch name for development, be aware of changes you will have to make in the Issue and Merge Request templates and `README.md` file so links won't break when you push them to your repo;
   - It generates a PyPI badge assuming you will be able to publish your project under `repo_name`, change it otherwise;
-  - It generates a Docker badge assuming you also use `scm_username` for Docker Hub and you will push your image under `repo_name`, change it otherwise;
+  - It generates a Docker badge assuming you also use `scm_namespace` for Docker Hub and you will push your image under `repo_name`, change it otherwise;
 
 If you want to put your project on steroids, here are a few Python tools which can help you depending on what you want to achieve with your application:
 

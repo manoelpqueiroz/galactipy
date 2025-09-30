@@ -19,7 +19,7 @@ AUTHOR = "{{ cookiecutter.author }}"
 # Values to generate repository information
 SCM_PLATFORM = "{{ cookiecutter.__scm_platform_base }}"
 SCM_PLATFORM_LC = "{{ cookiecutter.__scm_platform_lc }}"
-SCM_USERNAME = "{{ cookiecutter.scm_username }}"
+SCM_NAMESPACE = "{{ cookiecutter.scm_namespace }}"
 SCM_BASE_URL = "{{ cookiecutter.__scm_base_url }}"
 
 APP_TYPE = "{{ cookiecutter.app_type }}"
