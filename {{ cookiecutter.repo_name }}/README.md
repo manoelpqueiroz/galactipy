@@ -375,7 +375,7 @@ And here are a few articles which may help you:
 
 ### Project management features
 
-- Issue and {% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates for easy integration with {{ cookiecutter.scm_platform }};
+- Issue and {% if cookiecutter.__scm_platform_lc == 'github' %}Pull{% else %}Merge{% endif %} Request templates for easy integration with {{ cookiecutter.__scm_platform_base }};
 - Workflows to mark and close abandoned issues after a period of inactivity with {% if cookiecutter.__scm_platform_lc == 'gitlab' %}GitLab [`Triage Policies`][lab9]{% elif cookiecutter.__scm_platform_lc == 'github' %}[`Stale Bot`][hub8]{% endif %};
 - {% if cookiecutter.commit_convention == 'gitmoji' %}[Gitmoji][bcv2]{% elif cookiecutter.commit_convention == 'conventional' %}[Conventional Commits][bcv2]{% elif cookiecutter.commit_convention == 'conventional-gitmoji' %}A mix of both [Gitmoji][cv1] and [Conventional Commits][bcv2]{% endif %} as the standard for commit titles.
 
@@ -387,7 +387,7 @@ And here are a few articles which may help you:
 
 ## :chart_with_upwards_trend: Releases
 
-You can see the list of available releases on the [{{ cookiecutter.scm_platform }} Releases][r1] page.
+You can see the list of available releases on the [{{ cookiecutter.__scm_platform_base }} Releases][r1] page.
 
 We follow [Semantic Versions][fs2] specification.
 {%+ if cookiecutter.__scm_platform_lc == 'gitlab' %}
@@ -429,8 +429,8 @@ This project is licenced under the terms of the `{{ cookiecutter.licence }}` lic
   author = {% raw %}{{% endraw %}{{ cookiecutter.author }}{% raw %}}{% endraw %},
   title = {% raw %}{{% endraw %}{{ cookiecutter.project_description }}{% raw %}}{% endraw %},
   year = {% raw %}{{% endraw %}{% now 'utc', '%Y' %}{% raw %}}{% endraw %},
-  publisher = {% raw %}{{% endraw %}{{ cookiecutter.scm_platform }}{% raw %}}{% endraw %},
-  journal = {% raw %}{{% endraw %}{{ cookiecutter.scm_platform }} repository{% raw %}}{% endraw %},
+  publisher = {% raw %}{{% endraw %}{{ cookiecutter.__scm_platform_base }}{% raw %}}{% endraw %},
+  journal = {% raw %}{{% endraw %}{{ cookiecutter.__scm_platform_base }} repository{% raw %}}{% endraw %},
   howpublished = {% raw %}{{% endraw %}\url{% raw %}{{% endraw %}{{ cookiecutter.__scm_base_url}}{% raw %}}}{% endraw %}
 }
 ```

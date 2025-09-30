@@ -5,7 +5,8 @@
   "project_description": "Awesome `{{ cookiecutter.repo_name }}` is a Python cli/package created with https://gitlab.com/galactipy/galactipy",
   "author": "The Galactipy Contributors",
   "scm_platform": [
-    "GitLab",
+    "GitLab Free",
+    "GitLab Premium/Ultimate",
     "GitHub"
   ],
   "scm_username": "galactipy",
@@ -109,7 +110,8 @@
   ],
   "__envvar": "{{ cookiecutter.package_name.upper() }}",
   "__mpvr": "{{ cookiecutter.minimal_python_version.replace('.', '') }}",
-  "__scm_platform_lc": "{{ cookiecutter.scm_platform.lower() }}",
+  "__scm_platform_base": "{{ 'GitLab' if 'GitLab' in cookiecutter.scm_platform else 'GitHub' }}",
+  "__scm_platform_lc": "{{ cookiecutter.__scm_platform_base.lower() }}",
   "__scm_platform_redux": "{{ 'gl' if cookiecutter.__scm_platform_lc == 'gitlab' else 'gh' }}",
   "__scm_base_url": "https://{{ cookiecutter.__scm_platform_lc }}.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}",
   "__scm_link_url": "https://{{ cookiecutter.__scm_platform_lc }}.com/{{ cookiecutter.scm_username }}/{{ cookiecutter.repo_name }}{% if cookiecutter.__scm_platform_lc == 'gitlab' %}/-{% endif %}",
