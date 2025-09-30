@@ -1,0 +1,6 @@
+{%- set page_title = 'Version ' -%}
+{{ '=' * (page_title | length) }}
+{{ page_title }}
+{{ '=' * (page_title | length) }}
+
+* Initial release of {{ cookiecutter.project_name }}.
