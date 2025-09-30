@@ -216,7 +216,7 @@ def removal_tree(tmp_path):
             },
             "utils": {
                 "root": tests_directory / "utils",
-                "bdd": tests_directory / "utils" / "pytest_bdd_async.py",
+                "async": tests_directory / "utils" / "pytest_bdd_async.py",
                 "parsers": tests_directory / "utils" / "parsers.py",
             },
         },
