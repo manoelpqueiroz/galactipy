@@ -1,3 +1,13 @@
+## 0.18.0 (2025-09-30)
+
+### :milky_way: Components (1 change)
+
+- [:sparkles: Add option for GitLab Premium/Ultimate](galactipy/galactipy@24e76564d2454862cc1b64bf5b47d46cee3af130) ([merge request](galactipy/galactipy!72))
+
+### :wrench: Fixes & Refactoring (1 change)
+
+- [:speech_balloon: Refine configuration variables and values](galactipy/galactipy@7cf7464de416be932fe09dfbd6e5d7f51f906423) ([merge request](galactipy/galactipy!72))
+
 ## 0.17.1 (2025-09-30)
 
 ### :wrench: Fixes & Refactoring (1 change)
