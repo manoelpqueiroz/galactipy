@@ -24,6 +24,7 @@ IS_UNIX_OS = os.name != "nt"
 BIN_DIR = "bin" if IS_UNIX_OS else "Scripts"
 
 PROJECT_NAME = "{{ cookiecutter.repo_name }}"
+PACKAGE_NAME = "{{ cookiecutter.package_name }}"
 {%+ if cookiecutter.create_docker %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 DOCKER_REGISTRY = "registry.gitlab.com"
@@ -245,7 +246,7 @@ def coverage(c: Context) -> None:
 def security(c: Context) -> None:
     """Perform security checks with Bandit."""
     c.run(
-        f"{c.venv_bin_path}/bandit -ll -c pyproject.toml --recursive {{ cookiecutter.package_name }}",
+        f"{c.venv_bin_path}/bandit -ll -c pyproject.toml --recursive {PACKAGE_NAME}",
         pty=IS_UNIX_OS,
     )
 
