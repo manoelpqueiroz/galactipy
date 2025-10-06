@@ -1,3 +1,9 @@
+## 0.18.1 (2025-10-06)
+
+### :construction_site: Template Internals (1 change)
+
+- [:adhesive_bandage: Improve `tasks.py` variable usage](galactipy/galactipy@4ea243518c51e30c0ac5bb165fa951355678c4b9) ([merge request](galactipy/galactipy!76))
+
 ## 0.18.0 (2025-09-30)
 
 ### :milky_way: Components (1 change)
