@@ -39,6 +39,7 @@ DEFAULT_DOCKER_IMAGE = f"{DEFAULT_DOCKER_REPOSITORY}:{DEFAULT_DOCKER_TAG}"
 # Reusable command templates
 if IS_UNIX_OS:
     FILE_REMOVER = 'find . | grep -E "{}" | xargs rm -rf'
+    FILE_OPENER = "xdg-open {}"
 
 else:
     FILE_REMOVER = (
@@ -46,6 +47,7 @@ else:
         '| Where-Object {% raw %}{{ $_.Name -match "{}" }}{% endraw %} '
         "| Remove-Item -Recurse"
     )
+    FILE_OPENER = "start {}"
 
 
 def get_poetry_command() -> Path:
@@ -237,9 +239,13 @@ def test(c: Context, marks: str = None, verbosity: int = 0) -> None:  # noqa: PT
 
 
 @task(call(venv, hide=True))
-def coverage(c: Context) -> None:
+def coverage(c: Context, report: bool = False) -> None:
     """Generate coverage file in XML for integration with {{ cookiecutter.coverage_service }}."""
     c.run(f"{c.venv_bin_path}/coverage xml", pty=IS_UNIX_OS)
+
+    if report:
+        c.run(f"{c.venv_bin_path}/coverage html", pty=IS_UNIX_OS)
+        c.run(FILE_OPENER.format("htmlcov/index.html"))
 
 
 @task(call(venv, hide=True), pyproject, aliases=["safety", "check-safety", "sec"])
@@ -364,7 +370,9 @@ def remove_ipynb(c: Context) -> None:
 def remove_pytest(c: Context) -> None:
     """Remove Pytest cache files from project directory."""
     c.run(
-        FILE_REMOVER.format(r"(.pytest_cache|.coverage|test_report.xml)"),
+        FILE_REMOVER.format(
+            r"(.pytest_cache|.coverage|test_report.xml|htmlcov|assets)"
+        ),
         pty=IS_UNIX_OS,
     )
 
