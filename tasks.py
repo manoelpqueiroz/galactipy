@@ -1,4 +1,7 @@
+from typing import Callable
+
 import os
+from dataclasses import dataclass
 from pathlib import Path
 from shutil import which
 
@@ -25,14 +28,70 @@ PROJECT_NAME = "galactipy"
 
 # Reusable command templates
 if IS_UNIX_OS:
-    FILE_REMOVER = 'find . | grep -E "{}" | xargs rm -rf'
+    FILE_REMOVER = 'find . -not -path "./.git/*" | grep -E "{}" | xargs rm -rf'
+    FILE_OPENER = "xdg-open {}"
 
 else:
     FILE_REMOVER = (
-        "Get-ChildItem -Recurse "
-        '| Where-Object {{ $_.Name -match "{}" }} '
-        "| Remove-Item -Recurse"
+        "Get-ChildItem -Recurse -Exclude .git "
+        '| Where-Object {{ $_.FullName -notlike "*\\.git\\*" '
+        '-and $_.Name -match "{}" }} '
+        "| Remove-Item -Recurse -Force"
     )
+    FILE_OPENER = "start {}"
+
+
+@dataclass
+class TaskResult:
+    """Dataclass to store Invoke task runs exit code."""
+
+    name: str
+    return_code: int
+
+    @property
+    def failed(self) -> bool:
+        """Return the task's exit code."""
+        return self.return_code != 0
+
+
+class TaskRunner:
+    """Helper class to track and report task execution results."""
+
+    def __init__(self):
+        self.results: list[TaskResult] = []
+
+    def run_task(
+        self, task_func: Callable, task_name: str, *args, **kwargs
+    ) -> TaskResult:
+        """Execute a task and track its result."""
+        return_code = task_func(*args, **kwargs)
+        result = TaskResult(task_name, return_code)
+
+        self.results.append(result)
+
+        return result
+
+    def get_failed_tasks(self) -> list[TaskResult]:
+        """Get all tasks that failed."""
+        return [result for result in self.results if result.failed]
+
+    def has_failures(self) -> bool:
+        """Check if any tasks failed."""
+        return any(result.failed for result in self.results)
+
+    def get_failure_summary(self) -> str:
+        """Generate a detailed failure summary."""
+        failed = self.get_failed_tasks()
+
+        if not failed:
+            return "All tasks completed successfully"
+
+        failed_names = [
+            f"{task.name} (exit code {task.return_code})" for task in failed
+        ]
+        failed_output = ", ".join(failed_names)
+
+        return f"Unsuccessful tasks: {failed_output}"
 
 
 def get_poetry_command() -> Path:
@@ -61,7 +120,9 @@ def venv(c: Context, hide: bool = False) -> None:
     """Add Poetry executable and project environment binaries to context."""
     poetry_path = get_poetry_command()
 
-    result = c.run(f"{poetry_path} env info --path", hide=hide, warn=True)
+    result = c.run(
+        f"{poetry_path} env info --path", hide=hide, warn=True, pty=IS_UNIX_OS
+    )
 
     if result.failed:
         msg = f"unable to fetch Poetry virtual environment for {PROJECT_NAME}"
@@ -72,17 +133,23 @@ def venv(c: Context, hide: bool = False) -> None:
 
 @task(call(venv, hide=True))
 def mypy(
-    c: Context, install_types: bool = False, non_interactive: bool = False
-) -> None:
+    c: Context,
+    install_types: bool = False,
+    non_interactive: bool = False,
+    warn: bool = False,
+) -> int:
     """Run type checks with `mypy` and `pyproject.toml` configuration."""
     install_flag = "--install-types" if install_types else ""
     non_interactive_flag = "--non-interactive" if non_interactive else ""
 
-    c.run(
+    result = c.run(
         f"{c.venv_bin_path}/mypy --config-file pyproject.toml {install_flag} "
         f"{non_interactive_flag}",
         pty=IS_UNIX_OS,
+        warn=warn,
     )
+
+    return result.return_code
 
 
 @task(call(venv, hide=True), aliases=["pre-commit-install", "install-hooks"])
@@ -122,53 +189,134 @@ def install(c: Context, ignore_pty: bool = False) -> None:
 
 # Formatting, linting and other checks
 @task(call(venv, hide=True), aliases=["format"])
-def codestyle(c: Context, check: bool = False) -> None:
+def codestyle(c: Context, check: bool = False, warn: bool = False) -> int:
     """Format the entire project with `ruff format`."""
     flag = "--check" if check else ""
 
-    c.run(f"{c.venv_bin_path}/ruff format {flag}", pty=IS_UNIX_OS)
+    result = c.run(f"{c.venv_bin_path}/ruff format {flag}", pty=IS_UNIX_OS, warn=warn)
+
+    return result.return_code
 
 
 @task(call(venv, hide=True), aliases=["check-linter"])
-def lint(c: Context, fix: bool = False) -> None:
+def lint(c: Context, fix: bool = False, warn: bool = False) -> int:
     """Check linting rules with `ruff check`."""
     flag = "--fix" if fix else ""
 
-    c.run(f"{c.venv_bin_path}/ruff check {flag}", pty=IS_UNIX_OS)
+    result = c.run(f"{c.venv_bin_path}/ruff check {flag}", pty=IS_UNIX_OS, warn=warn)
+
+    return result.return_code
+
+
+@task(call(venv, hide=True))
+def ruff(c: Context) -> None:
+    """Perform formatting and linting in a single task with Ruff."""
+    runner = TaskRunner()
+
+    runner.run_task(codestyle, "Ruff format", c, check=False, warn=True)
+    runner.run_task(lint, "Ruff check", c, fix=True, warn=True)
+
+    if runner.has_failures():
+        failed_count = len(runner.get_failed_tasks())
+        failed_summary = runner.get_failure_summary()
+
+        descriptive_message = "A Ruff task" if failed_count == 1 else "Both Ruff tasks"
+
+        msg = f"{descriptive_message} returned warnings. {failed_summary}"
+
+        raise Exit(msg)
 
 
 @task(call(venv, hide=True), incrementable=["verbosity"])
-def test(c: Context, verbosity: int = 0) -> None:  # noqa: PT028
+def test(c: Context, verbosity: int = 0, warn: bool = False) -> int:  # noqa: PT028
     """Run tests with Pytest and `pyproject.toml` configuration."""
     verbosity_level = min(verbosity, 3)
     flag = "-" + verbosity_level * "v" if verbosity_level > 0 else ""
 
-    c.run(f"{c.venv_bin_path}/pytest -c pyproject.toml {flag} tests", pty=IS_UNIX_OS)
+    result = c.run(
+        f"{c.venv_bin_path}/pytest -c pyproject.toml {flag} tests",
+        pty=IS_UNIX_OS,
+        warn=warn,
+    )
+
+    return result.return_code
 
 
 @task(call(venv, hide=True))
-def coverage(c: Context) -> None:
+def coverage(c: Context, report: bool = False, warn: bool = False) -> int | None:
     """Generate coverage file in XML for integration with Codacy."""
-    c.run(f"{c.venv_bin_path}/coverage xml", pty=IS_UNIX_OS)
+    xml_result = c.run(f"{c.venv_bin_path}/coverage xml", pty=IS_UNIX_OS)
+    html_result = c.run(f"{c.venv_bin_path}/coverage html", pty=IS_UNIX_OS)
+
+    if warn:
+        return max(xml_result.return_code, html_result.return_code)
+
+    if report:
+        c.run(FILE_OPENER.format("htmlcov/index.html"))
+
+    return None
+
+
+@task(call(venv, hide=True))
+def report(c: Context) -> None:
+    """Run test and type checking suites, and open their HTML reports."""
+    runner = TaskRunner()
+
+    runner.run_task(test, "Pytest", c, warn=True)
+    runner.run_task(mypy, "Type checks", c, warn=True)
+    runner.run_task(coverage, "Coverage", c, warn=True)
+
+    c.run(FILE_OPENER.format("htmlcov/index.html"))
+    c.run(FILE_OPENER.format("mypycov/index.html"))
+
+    if runner.has_failures():
+        failed_count = len(runner.get_failed_tasks())
+        failed_summary = runner.get_failure_summary()
+
+        descriptive_message = (
+            "One coverage check" if failed_count == 1 else "Both coverage checks"
+        )
+
+        msg = f"{descriptive_message} did not pass. {failed_summary}"
+        raise Exit(msg)
 
 
 @task(call(venv, hide=True), pyproject, aliases=["safety", "check-safety", "sec"])
-def security(c: Context) -> None:
+def security(c: Context, warn: bool = False) -> int:
     """Perform security checks with Bandit."""
-    c.run(
+    result = c.run(
         f"{c.venv_bin_path}/bandit -ll -c pyproject.toml --recursive hooks",
         pty=IS_UNIX_OS,
+        warn=warn,
     )
+
+    return result.return_code
 
 
 @task(call(venv, hide=True))
 def sweep(c: Context) -> None:
     """Perform all code checks, including tests, linting and security."""
-    test(c)
-    lint(c)
-    codestyle(c, check=True)
-    mypy(c)
-    security(c)
+    runner = TaskRunner()
+
+    # Execute all tasks and track results
+    runner.run_task(test, "Pytest", c, warn=True)
+    runner.run_task(lint, "Ruff check", c, warn=True)
+    runner.run_task(codestyle, "Ruff format", c, check=True, warn=True)
+    runner.run_task(mypy, "Type checks", c, warn=True)
+    runner.run_task(security, "Security check", c, warn=True)
+
+    if runner.has_failures():
+        failed_count = len(runner.get_failed_tasks())
+        total_count = len(runner.results)
+        failed_summary = runner.get_failure_summary()
+
+        pluralized_text = "task" if failed_count == 1 else "tasks"
+
+        msg = (
+            f"Sweep completed with {failed_count}/{total_count} {pluralized_text} not "
+            f"passing.\n{failed_summary}"
+        )
+        raise Exit(msg)
 
 
 # Cleaning commands for Bash, Zsh and PowerShell
@@ -187,7 +335,10 @@ def remove_dsstore(c: Context) -> None:
 @task(aliases=["rm-mypy", "clean-mypy"])
 def remove_mypy(c: Context) -> None:
     """Remove mypy cache files from project directory."""
-    c.run(FILE_REMOVER.format(".mypy_cache"), pty=IS_UNIX_OS)
+    c.run(
+        FILE_REMOVER.format(r"(.mypy_cache|mypy_report.xml|mypycov|mypy_coverage)"),
+        pty=IS_UNIX_OS,
+    )
 
 
 @task(aliases=["rm-ipynb", "clean-ipynb"])
@@ -200,7 +351,9 @@ def remove_ipynb(c: Context) -> None:
 def remove_pytest(c: Context) -> None:
     """Remove Pytest cache files from project directory."""
     c.run(
-        FILE_REMOVER.format(r"(.pytest_cache|.coverage|test_report.xml)"),
+        FILE_REMOVER.format(
+            r"(.pytest_cache|.coverage|test_report.xml|htmlcov|assets)"
+        ),
         pty=IS_UNIX_OS,
     )
 

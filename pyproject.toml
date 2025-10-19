@@ -58,7 +58,7 @@ cookiecutter = "^2.6.0"
 
 
 [tool.poetry.group.dev.dependencies]
-mypy = "^1.18.1"
+mypy = { extras = ["reports"], version = "^1.18.1" }
 mypy-extensions = "^1.1.0"
 pre-commit = "^4.3.0"
 bandit = "^1.8.6"
@@ -136,7 +136,7 @@ ignore = ["D200", "PT011"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**.py" = ["D100", "D101", "D102", "D103", "D104", "S101"]
-"tasks.py" = ["D100"]
+"tasks.py" = ["D100", "ANN002", "ANN003"]
 
 [tool.ruff.lint.flake8-annotations]
 ignore-fully-untyped = true
@@ -189,6 +189,10 @@ section-order = [
 # https://github.com/python/mypy
 # https://mypy.readthedocs.io/en/latest/config_file.html#using-a-pyproject-toml-file
 files = ["hooks", "tests"]
+html_report = "mypycov"
+cobertura_xml_report = "mypy_coverage"
+junit_xml = "mypy_report.xml"
+
 pretty = true
 show_traceback = true
 color_output = true
