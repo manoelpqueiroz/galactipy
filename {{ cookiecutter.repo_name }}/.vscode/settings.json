@@ -122,8 +122,11 @@
 {%- else %}
         "**/.gitlab/merge_request_templates/*/**"
 {%- endif %}
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] and cookiecutter.use_bdd %}
+{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
     ],
+    "files.associations": {
+        "*.tcss": "css"
+    },
     "vsicons.associations.files": [
         {
             "icon": "css",
@@ -140,6 +143,14 @@
                 "tui"
             ],
             "format": "svg"
+        },
+        {
+            "icon": "log",
+            "extensions": [
+                "logging"
+            ],
+            "format": "svg"
+{%- if cookiecutter.use_bdd %}
         },
         {
             "icon": "model",
@@ -147,34 +158,27 @@
                 "features"
             ],
             "format": "svg"
+{%- endif %}
         }
-    ],
-    "files.associations": {
-        "*.tcss": "css"
-    }
-{%- elif cookiecutter.app_type in ['tui', 'hybrid'] %}
-    ],
-    "vsicons.associations.files": [
-        {
-            "icon": "css",
-            "extensions": [
-                "tcss"
-            ],
-            "format": "svg"
-        },
+{%- elif cookiecutter.app_type == 'cli' %}
     ],
     "vsicons.associations.folders": [
         {
-            "icon": "app",
+            "icon": "log",
             "extensions": [
-                "tui"
+                "logging"
             ],
             "format": "svg"
+{%- if cookiecutter.use_bdd %}
+        },
+        {
+            "icon": "model",
+            "extensions": [
+                "features"
+            ],
+            "format": "svg"
+{%- endif %}
         }
-    ],
-    "files.associations": {
-        "*.tcss": "css"
-    }
 {%- elif cookiecutter.use_bdd %}
     ],
     "vsicons.associations.folders": [
@@ -185,8 +189,6 @@
             ],
             "format": "svg"
         }
+{%- endif %}
     ]
-{%- else %}
-    ]
-{%- endif %}{%- raw %}
-}{% endraw %}
+}
