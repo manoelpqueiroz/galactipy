@@ -158,6 +158,7 @@ test_report.xml
 .hypothesis/
 .pytest_cache/
 cover/
+.benchmarks/
 
 # Translations
 *.mo
@@ -243,6 +244,9 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+mypycov/
+mypy_coverage/
+mypy_report.xml
 .dmypy.json
 dmypy.json
 
