@@ -1,3 +1,15 @@
+## 0.18.2 (2025-10-19)
+
+### :gear: Internals (1 change)
+
+- [:wrench: Add quality of life improvements to project tasks](galactipy/galactipy@350583ff0155b7f23d37f40d48fa26f2264c4ecf) ([merge request](galactipy/galactipy!77))
+
+### :construction_site: Template Internals (3 changes)
+
+- [:wrench: Refine template linting behaviour](galactipy/galactipy@613e87f4b2a4875c432d0257cab94de3a49496a1) ([merge request](galactipy/galactipy!77))
+- [:wrench: Carry quality of life updates to template tasks](galactipy/galactipy@0080392e0593eb63d8e15939a70f8830097e716d) ([merge request](galactipy/galactipy!77))
+- [:children_crossing: Add option to generate HTML coverage](galactipy/galactipy@80e5e41ca91c382ca5e4f8bd94baa845a8582be6) ([merge request](galactipy/galactipy!77))
+
 ## 0.18.1 (2025-10-06)
 
 ### :construction_site: Template Internals (1 change)
