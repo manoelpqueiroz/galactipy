@@ -213,6 +213,7 @@ def _get_cli_specific_files(directory: Path, package_name: str) -> list[Path]:
         directory / package_name / "cli",
         directory / package_name / "__main__.py",
         directory / package_name / "config",
+        directory / package_name / "logging",
         directory / "tests" / "cli",
         directory / "tests" / "conftest.py",
         directory / "tests" / "config",

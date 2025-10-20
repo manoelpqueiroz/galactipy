@@ -73,6 +73,8 @@ rich = "^14.1.0"
 
 orbittings = "^0.2.0"
 platformdirs = "^4.4.0"
+
+nebulog = "^0.1.0"
 {%- endif %}
 
 [tool.poetry.group.dev.dependencies]
