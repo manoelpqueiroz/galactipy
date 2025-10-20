@@ -413,6 +413,8 @@ def sweep(c: Context) -> None:
         msg = (
             f"Sweep completed with {failed_count}/{total_count} {pluralized_text} not "
             f"passing.\n{failed_summary}"
+        )
+
         raise Exit(msg)
 
 {%+ if cookiecutter.create_docker %}
