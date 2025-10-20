@@ -1,3 +1,13 @@
+## 0.18.3 (2025-10-20)
+
+### :wrench: Fixes & Refactoring (1 change)
+
+- [:ambulance: Fix missing closing parenthesis for template tasks](galactipy/galactipy@3aac2aabdc7b293c85e7e3d7a4a33faee5626de6) ([merge request](galactipy/galactipy!78))
+
+### :package: Build System & CI/CD (1 change)
+
+- [:construction_worker: Fix GitLab CI misbehaviour](galactipy/galactipy@dfc6e821f0113027fb6b574c7e79336eb856dd99) ([merge request](galactipy/galactipy!78))
+
 ## 0.18.2 (2025-10-19)
 
 ### :gear: Internals (1 change)
