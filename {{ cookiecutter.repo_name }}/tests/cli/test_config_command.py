@@ -1,7 +1,7 @@
 from typer.testing import CliRunner
 
 from dynaconf.base import BoxList
-from dynamanager.exceptions import SettingNotFoundError
+from orbittings.exceptions import SettingNotFoundError
 
 {% if cookiecutter.use_bdd -%}
 from pytest_bdd import given, parsers, scenario, then, when

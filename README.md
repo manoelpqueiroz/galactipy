@@ -59,7 +59,7 @@ In this [cookiecutter :cookie:][ft1] template we combine state-of-the-art librar
   and management
   for your application
   super easy
-  with [`Dynamanager`][ft4];
+  with [`Orbittings`][ft4];
 - Uses [`Poetry`][ft5] as the dependency manager and extends functionality with [`dynamic versioning`][ft6], [`virtual environment bundling`][ft7], dependency [`export`][ft8] and [`update resolution`][ft9]; see configuration in [`pyproject.toml`][ft10];
 - Automatic code formatting with [`ruff`][b19], with ready-to-use [`pre-commit`][ft11] hooks and several rules already selected for linting;
 - Type checks with [`mypy`][ft12], security checks with [`bandit`][ft13];
@@ -613,7 +613,7 @@ We would be equally grateful if you could also do any of the following:
 [ft1]: https://cookiecutter.readthedocs.io/en/stable/
 [ft2]: https://typer.tiangolo.com/
 [ft3]: https://textual.textualize.io/
-[ft4]: https://gitlab.com/galactipy/dynamanager
+[ft4]: https://gitlab.com/galactipy/orbittings
 [ft5]: https://python-poetry.org/
 [ft6]: https://github.com/mtkennerly/poetry-dynamic-versioning
 [ft7]: https://github.com/python-poetry/poetry-plugin-bundle
