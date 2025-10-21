@@ -29,9 +29,14 @@ def unset(
     ] = False,
 ):
     """:fire: [red]Remove[/] a top-level key from the configuration."""
+    logger.info("Removing configuration key via CLI", key=key, is_secret=secret)
+
+    if path is not None:
+        logger.info("Using custom configuration file", config=path)
+
     config_type, APP_MANAGER = resolve_app_manager(secret, path)
 
     APP_MANAGER.unset(f"{config_type}.{key}")
     APP_MANAGER.save(config_type)
 
-    raise typer.Exit
+    logger.debug("{{ cookiecutter.project_name }} exited successfully")

@@ -9,6 +9,8 @@ from typing import Annotated
 from pathlib import Path
 
 {% endif -%}
+from nebulog import logger
+
 import typer
 from rich.console import Console
 
@@ -17,15 +19,20 @@ from {{ cookiecutter.package_name }}.cli.commands.config import config_app
 from {{ cookiecutter.package_name }}.cli.styles import AppCustomStyles
 {%- if cookiecutter.app_type == 'tui' %}
 from {{ cookiecutter.package_name }}.config import resolve_app_manager
+from {{ cookiecutter.package_name }}.logging import setup_app_logging
 from {{ cookiecutter.package_name }}.tui.main_window import TerminalApp
 
 app = typer.Typer(rich_markup_mode="rich")
 {%- elif cookiecutter.app_type == 'hybrid' %}
 from {{ cookiecutter.package_name }}.cli.commands.launch import launch_app
+from {{ cookiecutter.package_name }}.config.constants import get_default_log_path
+from {{ cookiecutter.package_name }}.logging import setup_app_logging
 
 app = typer.Typer(no_args_is_help=True, rich_markup_mode="rich")
 app.add_typer(launch_app)
 {%- elif cookiecutter.app_type == 'cli' %}
+from {{ cookiecutter.package_name }}.config.constants import get_default_log_path
+from {{ cookiecutter.package_name }}.logging import setup_app_logging
 
 app = typer.Typer(no_args_is_help=True, rich_markup_mode="rich")
 {%- endif %}
@@ -71,14 +78,36 @@ def main(
             is_eager=True,
         ),
     ] = False,
+{% if cookiecutter.app_type == 'tui' -%}
+    debug: Annotated[
+        bool,
+        typer.Option(
+            "--debug",
+            "-d",
+            help=(
+                ":bug: Log operations to the terminal at the "
+                "[b][logging.level.debug]DEBUG[/] level."
+            ),
+        )
+    ] = False,
+{%- endif %}
 ):
     {%- if cookiecutter.app_type == 'tui' %}
     """:pager: Launch the {{ cookiecutter.project_name }} interface."""
+    setup_app_logging(debug=debug)
+
     if ctx.invoked_subcommand is None:
+        logger.info("Calling {{ cookiecutter.project_name }} via CLI")
+
+        if config is not None:
+            logger.info("Using custom configuration file", config=config)
+
         _, APP_MANAGER = resolve_app_manager(False, config)
 
         interface = TerminalApp(APP_MANAGER.settings.theme)
         interface.run()
+
+        logger.debug("{{ cookiecutter.project_name }} exited successfully")
     {%- elif cookiecutter.app_type == 'hybrid' or cookiecutter.app_type == 'cli' %}
     """{{ cookiecutter.project_description }}.
 

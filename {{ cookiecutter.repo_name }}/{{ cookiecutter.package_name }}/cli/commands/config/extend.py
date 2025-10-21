@@ -5,9 +5,12 @@ from typing import Annotated
 from ast import literal_eval
 from pathlib import Path
 
+from nebulog import logger
+
 import typer
 
 from {{ cookiecutter.package_name }}.config import resolve_app_manager
+from {{ cookiecutter.package_name }}.logging import setup_app_logging
 
 config_extend_app = typer.Typer(no_args_is_help=True, rich_markup_mode="rich")
 
@@ -48,6 +51,13 @@ def extend_command(
     If no setting exists for the key, can create an array with the single value
     provided.
     """
+    setup_app_logging(debug=False)
+
+    logger.info("Extending array key via CLI", key=key, value=value, is_secret=secret)
+
+    if path is not None:
+        logger.info("Using custom configuration file", config=path)
+
     config_type, APP_MANAGER = resolve_app_manager(secret, path)
 
     try:
@@ -91,5 +101,11 @@ def extend_command(
             err=True,
         )
         exit_code = 1
+
+    if exit_code != 0:
+        logger.debug("{{ cookiecutter.project_name }} exited successfully")
+
+    else:
+        logger.debug("{{ cookiecutter.project_name }} exited with an error")
 
     raise typer.Exit(exit_code)
