@@ -116,6 +116,7 @@ class TestFileRemoval:
         bdd_files = removal_tree["bdd"]
         test_files = removal_tree["tests"]
         config_files = removal_tree["config"]
+        logging_files = removal_tree["logging"]
 
         config = ProjectFlags(False, False, False, False, "tui")
 
@@ -140,6 +141,10 @@ class TestFileRemoval:
         assert config_files["constants"].exists()
         assert config_files["helpers"].exists()
         assert config_files["manager"].exists()
+
+        assert logging_files["formatters"].exists()
+        assert logging_files["parsers"].exists()
+        assert logging_files["tools"].exists()
 
         assert test_files["root"].exists()
         assert test_files["tui"]["test"].exists()
@@ -166,6 +171,7 @@ class TestFileRemoval:
         bdd_files = removal_tree["bdd"]
         test_files = removal_tree["tests"]
         config_files = removal_tree["config"]
+        logging_files = removal_tree["logging"]
 
         config = ProjectFlags(False, False, True, False, "tui")
 
@@ -191,6 +197,10 @@ class TestFileRemoval:
         assert config_files["helpers"].exists()
         assert config_files["manager"].exists()
 
+        assert logging_files["formatters"].exists()
+        assert logging_files["parsers"].exists()
+        assert logging_files["tools"].exists()
+
         assert test_files["tui"]["test"].exists()
         assert test_files["cli"]["test"].exists()
         assert test_files["cli"]["config"].exists()
@@ -209,6 +219,7 @@ class TestFileRemoval:
         bdd_files = removal_tree["bdd"]
         test_files = removal_tree["tests"]
         config_files = removal_tree["config"]
+        logging_files = removal_tree["logging"]
 
         config = ProjectFlags(False, False, False, False, "hybrid")
 
@@ -235,6 +246,10 @@ class TestFileRemoval:
         assert config_files["helpers"].exists()
         assert config_files["manager"].exists()
 
+        assert logging_files["formatters"].exists()
+        assert logging_files["parsers"].exists()
+        assert logging_files["tools"].exists()
+
         assert test_files["tui"]["test"].exists()
         assert test_files["cli"]["test"].exists()
         assert test_files["cli"]["config"].exists()
@@ -259,6 +274,7 @@ class TestFileRemoval:
         bdd_files = removal_tree["bdd"]
         test_files = removal_tree["tests"]
         config_files = removal_tree["config"]
+        logging_files = removal_tree["logging"]
 
         config = ProjectFlags(False, False, True, False, "hybrid")
 
@@ -284,6 +300,10 @@ class TestFileRemoval:
         assert config_files["helpers"].exists()
         assert config_files["manager"].exists()
 
+        assert logging_files["formatters"].exists()
+        assert logging_files["parsers"].exists()
+        assert logging_files["tools"].exists()
+
         assert test_files["tui"]["test"].exists()
         assert test_files["cli"]["test"].exists()
         assert test_files["cli"]["config"].exists()
@@ -302,6 +322,7 @@ class TestFileRemoval:
         bdd_files = removal_tree["bdd"]
         test_files = removal_tree["tests"]
         config_files = removal_tree["config"]
+        logging_files = removal_tree["logging"]
 
         config = ProjectFlags(False, False, False, False, "cli")
 
@@ -317,6 +338,10 @@ class TestFileRemoval:
         assert config_files["constants"].exists()
         assert config_files["helpers"].exists()
         assert config_files["manager"].exists()
+
+        assert logging_files["formatters"].exists()
+        assert logging_files["parsers"].exists()
+        assert logging_files["tools"].exists()
 
         assert config_command_files["get"].exists()
         assert config_command_files["set"].exists()
@@ -349,6 +374,7 @@ class TestFileRemoval:
         bdd_files = removal_tree["bdd"]
         test_files = removal_tree["tests"]
         config_files = removal_tree["config"]
+        logging_files = removal_tree["logging"]
 
         config = ProjectFlags(False, False, True, False, "cli")
 
@@ -364,6 +390,10 @@ class TestFileRemoval:
         assert config_files["constants"].exists()
         assert config_files["helpers"].exists()
         assert config_files["manager"].exists()
+
+        assert logging_files["formatters"].exists()
+        assert logging_files["parsers"].exists()
+        assert logging_files["tools"].exists()
 
         assert config_command_files["get"].exists()
         assert config_command_files["set"].exists()
@@ -388,6 +418,7 @@ class TestFileRemoval:
         bdd_files = removal_tree["bdd"]
         test_files = removal_tree["tests"]
         config_files = removal_tree["config"]
+        logging_files = removal_tree["logging"]
 
         config = ProjectFlags(False, False, False, False, "bare_repo")
 
@@ -401,6 +432,8 @@ class TestFileRemoval:
         assert not config_command_files["root"].exists()
 
         assert not config_files["root"].exists()
+
+        assert not logging_files["root"].exists()
 
         assert test_files["root"].exists()
         assert not test_files["tui"]["root"].exists()
@@ -426,6 +459,7 @@ class TestFileRemoval:
         bdd_files = removal_tree["bdd"]
         test_files = removal_tree["tests"]
         config_files = removal_tree["config"]
+        logging_files = removal_tree["logging"]
 
         config = ProjectFlags(False, False, True, False, "bare_repo")
 
@@ -439,6 +473,8 @@ class TestFileRemoval:
         assert not config_command_files["root"].exists()
 
         assert not config_files["root"].exists()
+
+        assert not logging_files["root"].exists()
 
         assert test_files["root"].exists()
         assert not test_files["tui"]["root"].exists()
@@ -507,6 +543,9 @@ class TestFileRemoval:
         cli_root = removal_tree["cli"]["root"]
         tui_root = removal_tree["tui"]["root"]
 
+        config_root = removal_tree["config"]["root"]
+        logging_root = removal_tree["logging"]["root"]
+
         bdd_root = removal_tree["bdd"]["root"]
         helpers_root = removal_tree["bdd"]["helpers"]["root"]
         utils_root = removal_tree["bdd"]["utils"]["root"]
@@ -531,6 +570,8 @@ class TestFileRemoval:
 
         assert not cli_root.exists()
         assert not tui_root.exists()
+        assert not config_root.exists()
+        assert not logging_root.exists()
         assert not tests_cli_root.exists()
         assert not tests_tui_root.exists()
 
