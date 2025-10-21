@@ -1,7 +1,7 @@
 # Poetry pyproject.toml: https://python-poetry.org/docs/pyproject/
 [project]
 name = "{{ cookiecutter.repo_name }}"
-description = "{{ cookiecutter.project_description }}"
+description = "{{ cookiecutter.project_description }}."
 {%- if cookiecutter.licence == 'nos' %}
 license = "Proprietary"
 {%- else %}
@@ -41,12 +41,10 @@ build-backend = "poetry_dynamic_versioning.backend"
 requires-poetry = ">=2.0"
 # Placeholder for poetry-dynamic-versioning, do not change:
 # https://github.com/mtkennerly/poetry-dynamic-versioning#installation
-packages = [
-  {% raw %}{{% endraw %}include = "{{ cookiecutter.package_name }}"{% raw %}}{% endraw %}
-]
+packages = [{% raw %}{{% endraw %} include = "{{ cookiecutter.package_name }}" {% raw %}}{% endraw %}]
 
 # Pypi classifiers: https://pypi.org/classifiers/
-classifiers = [  # UPDATEME with additional classifiers
+classifiers = [ # UPDATEME with additional classifiers
   "Development Status :: 1 - Planning",
   "Intended Audience :: Developers",
   "Operating System :: OS Independent",
@@ -55,7 +53,7 @@ classifiers = [  # UPDATEME with additional classifiers
   "Environment :: Console",
   "Topic :: Terminals",
 {%- endif %}
-  "Private :: Do Not Upload"  # TODO Remove classifier to allow publishing on PyPI
+  "Private :: Do Not Upload", # TODO Remove classifier to allow publishing on PyPI
 ]
 
 version = "0.0.0"  # Keep this key as the last for `tool.poetry`, as it is used by `poetry-dynamic-versioning`
@@ -136,7 +134,7 @@ docstring-code-line-length = {{ cookiecutter.docstring_length }}
 skip-magic-trailing-comma = true
 
 [tool.ruff.lint]
-select = [  # UPDATEME with additional rules from https://docs.astral.sh/ruff/rules/
+select = [ # UPDATEME with additional rules from https://docs.astral.sh/ruff/rules/
   "F",
   "E",
   "W",
@@ -184,7 +182,7 @@ task-tags = [
   "UPDATEME",
   "TODO",
   "REFACTOR",
-]  # UPDATEME by modifying or removing this setting after addressing all UPDATEMEs
+] # UPDATEME by modifying or removing this setting after addressing all UPDATEMEs
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**.py" = [
@@ -234,28 +232,50 @@ max-bool-expr = 3
 [tool.ruff.lint.isort]
 split-on-trailing-comma = false
 known-first-party = ["{{ cookiecutter.package_name }}"]
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
-sections.app-builders = ["rich", "typer", "textual"]
-{%- elif cookiecutter.app_type == 'cli' %}
-sections.app-builders = ["rich", "typer"]
-{%- endif %}
-sections.typing = ["typing", "types", "typing_extensions", "mypy", "mypy_extensions", "pytype", "pydantic"]
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
-sections.testing = ["pytest",{% if cookiecutter.use_bdd %} "pytest_bdd",{% endif %} "pytest_asyncio", "pytest_mock", "pyfakefs", "testinfra"]
-{%- else %}
-sections.testing = ["pytest",{% if cookiecutter.use_bdd %} "pytest_bdd",{% endif %} "pytest_mock", "pyfakefs", "testinfra"]
-{%- endif %}
 section-order = [
   "future",
   "typing",
   "standard-library",
 {%- if cookiecutter.app_type != 'bare_repo' %}
+  "logging",
   "app-builders",
+  "config",
 {%- endif %}
   "third-party",
   "testing",
   "first-party",
   "local-folder",
+]
+
+[tool.ruff.lint.isort.sections]
+{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+app-builders = ["rich", "typer", "textual"]
+{%- elif cookiecutter.app_type == 'cli' %}
+app-builders = ["rich", "typer"]
+{%- endif %}
+{%- if cookiecutter.app_type != 'bare_repo' %}
+logging = ["logging", "loguru", "nebulog"]
+config = ["dynaconf", "orbittings"]
+{%- endif %}
+typing = [
+  "typing",
+  "types",
+  "typing_extensions",
+  "mypy",
+  "mypy_extensions",
+  "pytype",
+]
+testing = [
+  "pytest",
+{%- if cookiecutter.use_bdd %}
+  "pytest_bdd",
+{%- endif %}
+{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+  "pytest_asyncio",
+{%- endif %}
+  "pytest_mock",
+  "pyfakefs",
+  "testinfra",
 ]
 
 
@@ -302,7 +322,7 @@ disable_error_code = ["import", "name-defined", "attr-defined"]
 # https://github.com/pytest-dev/pytest
 # https://docs.pytest.org/en/stable/customize.html#pyproject-toml
 # Directories that are not visited by pytest collector:
-norecursedirs =[
+norecursedirs = [
   "hooks",
   "*.egg",
   ".eggs",
@@ -313,7 +333,11 @@ norecursedirs =[
   ".git",
   "__pycache__",
 ]
-doctest_optionflags = ["NUMBER", "NORMALIZE_WHITESPACE", "IGNORE_EXCEPTION_DETAIL"]
+doctest_optionflags = [
+  "NUMBER",
+  "NORMALIZE_WHITESPACE",
+  "IGNORE_EXCEPTION_DETAIL",
+]
 markers = [
   "backend",
   "frontend",
@@ -364,18 +388,12 @@ addopts = [
 source = ["tests"]
 branch = true
 {%- if cookiecutter.app_type != 'bare_repo' %}
-omit = [
-  "__main__.py",
-  "*/config/constants.py",
-]
+omit = ["__main__.py", "*/config/constants.py"]
 {%- endif %}
 
 
 [tool.coverage.report]
-exclude_also = [
-  "def main",
-  "if __name__ == .__main__.:",
-]
+exclude_also = ["def main", "if __name__ == .__main__.:"]
 fail_under = 90
 show_missing = true
 
