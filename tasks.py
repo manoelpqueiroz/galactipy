@@ -1,6 +1,5 @@
-from typing import Callable
-
 import os
+from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 from shutil import which

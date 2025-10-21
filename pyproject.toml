@@ -92,7 +92,7 @@ extend-exclude = [
 ] # https://github.com/astral-sh/ruff/issues/9585
 output-format = "grouped"
 show-fixes = true
-target-version = "py39"
+target-version = "py310"
 
 [tool.ruff.format]
 docstring-code-format = true
