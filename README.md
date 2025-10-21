@@ -49,7 +49,7 @@ In this [cookiecutter :cookie:][ft1] template we combine state-of-the-art librar
 
 ### Development features
 
-- Supports `Python 3.9` and higher;
+- Supports `Python 3.10` and higher;
 - Provides
   minimal boilerplate code
   for CLI/TUI applications
@@ -148,7 +148,7 @@ The input variables, with their default values, are as follows:
 |     `scm_namespace`      |         `galactipy`          | GitHub or GitLab namespace for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for either platform.                                                                                                                                                               |
 |         `email`          |   based on `scm_namespace`   | Email for `CODE_OF_CONDUCT.md`, `SECURITY.md` files and to specify the ownership of the project in `pyproject.toml`.                                                                                                                                                                            |
 |        `licence`         |            `MIT`             | One of `MIT`, `BSD-3`, `GNU GPL v3.0`, `GNU AGLP v3.0`, `GNU LGPL v3.0`, `Mozilla Public License 2.0` and `Apache Software License 2.0`, or `Not open source`.                                                                                                                                  |
-| `minimal_python_version` |            `3.9`             | Minimal Python version. All versions since `3.9` are available to choose. It is used for builds, pipelines and formatters.                                                                                                                                                                      |
+| `minimal_python_version` |            `3.10`            | Minimal Python version. All versions since `3.10` are available to choose. It is used for builds, pipelines and formatters.                                                                                                                                                                     |
 |      `line_length`       |              88              | The max length per line. NOTE: This value must be between 50 and 300.                                                                                                                                                                                                                           |
 |    `docstring_style`     |           `numpy`            | One of `numpy`, `pep257` or `google`. You can choose `other` to disable checks on your docstrings.                                                                                                                                                                                              |
 |    `docstring_length`    |    based on `line_lenght`    | The max length for docstrings. NOTE: This value must be between 50 and 300 and lower of equal to `line_lenght`.                                                                                                                                                                                 |
@@ -569,7 +569,7 @@ We would be equally grateful if you could also do any of the following:
 
 <!-- Anchors -->
 
-[b1]: https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue?style=for-the-badge
+[b1]: https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13%20%7C%203.14-blue?style=for-the-badge
 [b2]: https://kutt.it/WlS8Qj
 [b3]: https://img.shields.io/badge/GitLab-0B2640?style=for-the-badge&logo=gitlab&logoColor=white
 [b4]: https://img.shields.io/gitlab/v/release/galactipy%2Fgalactipy?style=for-the-badge&logo=semantic-release&color=253747
