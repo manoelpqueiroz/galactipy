@@ -7,10 +7,10 @@ from pathlib import Path
 from nebulog import logger
 
 import typer
-from rich import print
 
 from {{ cookiecutter.package_name }}.config import resolve_app_manager
 from {{ cookiecutter.package_name }}.logging import setup_app_logging
+from {{ cookiecutter.package_name }}.cli.helpers import pretty_print_setting
 
 config_get_app = typer.Typer(no_args_is_help=True)
 
@@ -42,10 +42,6 @@ def get(
 
     config_type, APP_MANAGER = resolve_app_manager(secret, path)
 
-    if key is None:
-        print(APP_MANAGER[config_type].to_dict())
-
-    else:
-        print(APP_MANAGER[config_type, key])
+    pretty_print_setting(APP_MANAGER, key, config_type)
 
     logger.debug("{{ cookiecutter.project_name }} exited successfully")
