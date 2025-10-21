@@ -33,7 +33,7 @@ RUN poetry bundle venv /opt/{{ cookiecutter.repo_name }}-bundle --only main && \
     apk del .build-deps
 
 # Production stage for minimal runtime
-FROM python:3.9-alpine AS runtime
+FROM python:{{ cookiecutter.minimal_python_version }}-alpine AS runtime
 
 ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
