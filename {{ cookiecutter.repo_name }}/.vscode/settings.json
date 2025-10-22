@@ -145,6 +145,13 @@
             "format": "svg"
         },
         {
+            "icon": "theme",
+            "extensions": [
+                "styling"
+            ],
+            "format": "svg"
+        },
+        {
             "icon": "log",
             "extensions": [
                 "logging"
@@ -163,6 +170,13 @@
 {%- elif cookiecutter.app_type == 'cli' %}
     ],
     "vsicons.associations.folders": [
+        {
+            "icon": "theme",
+            "extensions": [
+                "styling"
+            ],
+            "format": "svg"
+        },
         {
             "icon": "log",
             "extensions": [
