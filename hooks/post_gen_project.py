@@ -239,9 +239,6 @@ def _get_tui_related_files(
     if app_type in ["tui", "cli"]:
         removals.append(directory / package_name / "cli" / "commands" / "launch.py")
 
-    elif app_type == "hybrid":
-        removals.append(directory / package_name / "cli" / "commands" / ".gitkeep")
-
     if app_type in ["cli", "bare_repo"]:
         removals.extend([directory / package_name / "tui", directory / "tests" / "tui"])
 
