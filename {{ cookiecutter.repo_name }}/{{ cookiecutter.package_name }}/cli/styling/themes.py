@@ -44,5 +44,5 @@ NOCTIS_THEME = Theme(
 
 
 @dataclass(frozen=True)
-class AppCustomStyles:
+class AppCustomThemes:
     NOCTIS = NOCTIS_THEME

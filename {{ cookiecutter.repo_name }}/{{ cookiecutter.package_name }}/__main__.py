@@ -11,7 +11,7 @@ app.run()
 {%- elif cookiecutter.app_type == 'cli' %}
 """Run the {{ cookiecutter.project_name }} commands in a module script."""
 
-from {{ cookiecutter.package_name }}.cli.root_command import app
+from {{ cookiecutter.package_name }}.cli.commands.root_command import app
 
 app(prog_name="{{ cookiecutter.repo_name }}-mod")
 {%- endif %}

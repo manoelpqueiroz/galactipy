@@ -405,8 +405,8 @@ as a step-by-step validation:
 
 ```py
 from typer.testing import CliRunner
-from python_project.cli.root_command import app
 from pytest_bdd import scenario, when, then, parsers
+from python_project.cli.commands.root_command import app
 
 runner = CliRunner()
 

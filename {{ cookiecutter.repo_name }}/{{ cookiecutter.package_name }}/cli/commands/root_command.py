@@ -16,7 +16,7 @@ from rich.console import Console
 
 from {{ cookiecutter.package_name }} import __version__
 from {{ cookiecutter.package_name }}.cli.commands.config import config_app
-from {{ cookiecutter.package_name }}.cli.styles import AppCustomStyles
+from {{ cookiecutter.package_name }}.cli.styling import AppCustomThemes
 {%- if cookiecutter.app_type == 'tui' %}
 from {{ cookiecutter.package_name }}.config import resolve_app_manager
 from {{ cookiecutter.package_name }}.logging import setup_app_logging
@@ -41,7 +41,7 @@ app.add_typer(config_app, name="config")
 
 def version_callback(print_version: bool):
     if print_version:
-        Console(theme=AppCustomStyles.NOCTIS).print(
+        Console(theme=AppCustomThemes.NOCTIS).print(
             ":package:[declaration]{{ cookiecutter.project_name }}[/] "
             f"[bold fstring]{__version__}[/]"
         )
