@@ -111,7 +111,11 @@ class TestFileRemoval:
 
     def test_tui_with_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
+
         config_command_files = cli_files["commands"]["config"]
+        helper_files = cli_files["helpers"]
+        styling_files = cli_files["styling"]
+
         tui_files = removal_tree["tui"]
         bdd_files = removal_tree["bdd"]
         test_files = removal_tree["tests"]
@@ -128,15 +132,19 @@ class TestFileRemoval:
         assert tui_files["css"]["demo"].exists()
         assert tui_files["css"]["noctis"].exists()
 
-        assert cli_files["root_command"].exists()
+        assert cli_files["commands"]["root_command"].exists()
         assert not cli_files["commands"]["launch"].exists()
-        assert cli_files["commands"]["gitkeep"].exists()
         assert cli_files["main"].exists()
 
         assert config_command_files["get"].exists()
         assert config_command_files["set"].exists()
         assert config_command_files["extend"].exists()
         assert config_command_files["unset"].exists()
+
+        assert helper_files["converter"].exists()
+        assert helper_files["printer"].exists()
+
+        assert styling_files["themes"].exists()
 
         assert config_files["constants"].exists()
         assert config_files["helpers"].exists()
@@ -166,7 +174,11 @@ class TestFileRemoval:
 
     def test_tui_no_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
+
         config_command_files = cli_files["commands"]["config"]
+        helper_files = cli_files["helpers"]
+        styling_files = cli_files["styling"]
+
         tui_files = removal_tree["tui"]
         bdd_files = removal_tree["bdd"]
         test_files = removal_tree["tests"]
@@ -183,15 +195,19 @@ class TestFileRemoval:
         assert tui_files["css"]["demo"].exists()
         assert tui_files["css"]["noctis"].exists()
 
-        assert cli_files["root_command"].exists()
+        assert cli_files["commands"]["root_command"].exists()
         assert not cli_files["commands"]["launch"].exists()
-        assert cli_files["commands"]["gitkeep"].exists()
         assert cli_files["main"].exists()
 
         assert config_command_files["get"].exists()
         assert config_command_files["set"].exists()
         assert config_command_files["extend"].exists()
         assert config_command_files["unset"].exists()
+
+        assert helper_files["converter"].exists()
+        assert helper_files["printer"].exists()
+
+        assert styling_files["themes"].exists()
 
         assert config_files["constants"].exists()
         assert config_files["helpers"].exists()
@@ -214,7 +230,11 @@ class TestFileRemoval:
 
     def test_hybrid_with_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
+
         config_command_files = cli_files["commands"]["config"]
+        helper_files = cli_files["helpers"]
+        styling_files = cli_files["styling"]
+
         tui_files = removal_tree["tui"]
         bdd_files = removal_tree["bdd"]
         test_files = removal_tree["tests"]
@@ -231,16 +251,20 @@ class TestFileRemoval:
         assert tui_files["css"]["demo"].exists()
         assert tui_files["css"]["noctis"].exists()
 
-        assert cli_files["root_command"].exists()
+        assert cli_files["commands"]["root_command"].exists()
         assert cli_files["commands"]["root"].exists()
         assert cli_files["commands"]["launch"].exists()
-        assert not cli_files["commands"]["gitkeep"].exists()
         assert cli_files["main"].exists()
 
         assert config_command_files["get"].exists()
         assert config_command_files["set"].exists()
         assert config_command_files["extend"].exists()
         assert config_command_files["unset"].exists()
+
+        assert helper_files["converter"].exists()
+        assert helper_files["printer"].exists()
+
+        assert styling_files["themes"].exists()
 
         assert config_files["constants"].exists()
         assert config_files["helpers"].exists()
@@ -269,7 +293,11 @@ class TestFileRemoval:
 
     def test_hybrid_no_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
+
         config_command_files = cli_files["commands"]["config"]
+        helper_files = cli_files["helpers"]
+        styling_files = cli_files["styling"]
+
         tui_files = removal_tree["tui"]
         bdd_files = removal_tree["bdd"]
         test_files = removal_tree["tests"]
@@ -286,15 +314,19 @@ class TestFileRemoval:
         assert tui_files["css"]["demo"].exists()
         assert tui_files["css"]["noctis"].exists()
 
-        assert cli_files["root_command"].exists()
+        assert cli_files["commands"]["root_command"].exists()
         assert cli_files["commands"]["launch"].exists()
-        assert not cli_files["commands"]["gitkeep"].exists()
         assert cli_files["main"].exists()
 
         assert config_command_files["get"].exists()
         assert config_command_files["set"].exists()
         assert config_command_files["extend"].exists()
         assert config_command_files["unset"].exists()
+
+        assert helper_files["converter"].exists()
+        assert helper_files["printer"].exists()
+
+        assert styling_files["themes"].exists()
 
         assert config_files["constants"].exists()
         assert config_files["helpers"].exists()
@@ -317,7 +349,11 @@ class TestFileRemoval:
 
     def test_cli_with_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
+
         config_command_files = cli_files["commands"]["config"]
+        helper_files = cli_files["helpers"]
+        styling_files = cli_files["styling"]
+
         tui_files = removal_tree["tui"]
         bdd_files = removal_tree["bdd"]
         test_files = removal_tree["tests"]
@@ -330,9 +366,8 @@ class TestFileRemoval:
 
         assert not tui_files["root"].exists()
 
-        assert cli_files["root_command"].exists()
+        assert cli_files["commands"]["root_command"].exists()
         assert not cli_files["commands"]["launch"].exists()
-        assert cli_files["commands"]["gitkeep"].exists()
         assert cli_files["main"].exists()
 
         assert config_files["constants"].exists()
@@ -347,6 +382,11 @@ class TestFileRemoval:
         assert config_command_files["set"].exists()
         assert config_command_files["extend"].exists()
         assert config_command_files["unset"].exists()
+
+        assert helper_files["converter"].exists()
+        assert helper_files["printer"].exists()
+
+        assert styling_files["themes"].exists()
 
         assert not test_files["tui"]["root"].exists()
         assert test_files["cli"]["test"].exists()
@@ -369,7 +409,11 @@ class TestFileRemoval:
 
     def test_cli_no_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
+
         config_command_files = cli_files["commands"]["config"]
+        helper_files = cli_files["helpers"]
+        styling_files = cli_files["styling"]
+
         tui_files = removal_tree["tui"]
         bdd_files = removal_tree["bdd"]
         test_files = removal_tree["tests"]
@@ -382,9 +426,8 @@ class TestFileRemoval:
 
         assert not tui_files["root"].exists()
 
-        assert cli_files["root_command"].exists()
+        assert cli_files["commands"]["root_command"].exists()
         assert not cli_files["commands"]["launch"].exists()
-        assert cli_files["commands"]["gitkeep"].exists()
         assert cli_files["main"].exists()
 
         assert config_files["constants"].exists()
@@ -400,6 +443,11 @@ class TestFileRemoval:
         assert config_command_files["extend"].exists()
         assert config_command_files["unset"].exists()
 
+        assert helper_files["converter"].exists()
+        assert helper_files["printer"].exists()
+
+        assert styling_files["themes"].exists()
+
         assert not test_files["tui"]["root"].exists()
         assert test_files["cli"]["test"].exists()
         assert test_files["cli"]["config"].exists()
@@ -413,7 +461,11 @@ class TestFileRemoval:
 
     def test_bare_with_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
+
         config_command_files = cli_files["commands"]["config"]
+        helper_files = cli_files["helpers"]
+        styling_files = cli_files["styling"]
+
         tui_files = removal_tree["tui"]
         bdd_files = removal_tree["bdd"]
         test_files = removal_tree["tests"]
@@ -430,6 +482,8 @@ class TestFileRemoval:
         assert not cli_files["main"].exists()
 
         assert not config_command_files["root"].exists()
+        assert not helper_files["root"].exists()
+        assert not styling_files["root"].exists()
 
         assert not config_files["root"].exists()
 
@@ -454,7 +508,11 @@ class TestFileRemoval:
 
     def test_bare_no_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
+
         config_command_files = cli_files["commands"]["config"]
+        helper_files = cli_files["helpers"]
+        styling_files = cli_files["styling"]
+
         tui_files = removal_tree["tui"]
         bdd_files = removal_tree["bdd"]
         test_files = removal_tree["tests"]
@@ -471,6 +529,8 @@ class TestFileRemoval:
         assert not cli_files["main"].exists()
 
         assert not config_command_files["root"].exists()
+        assert not helper_files["root"].exists()
+        assert not styling_files["root"].exists()
 
         assert not config_files["root"].exists()
 

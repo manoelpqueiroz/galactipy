@@ -114,7 +114,10 @@ def removal_tree(tmp_path):
 
     cli_directory = tmp_path / package_name / "cli"
     bulk_file_creation(
-        cli_directory, "root_command.py", commands=[".gitkeep", "launch.py"]
+        cli_directory,
+        commands=["root_command.py", "launch.py"],
+        styling=["themes.py"],
+        helpers=["converter.py", "printer.py"],
     )
 
     commands_directory = cli_directory / "commands"
@@ -154,10 +157,9 @@ def removal_tree(tmp_path):
         },
         "cli": {
             "root": cli_directory,
-            "root_command": cli_directory / "root_command.py",
             "commands": {
                 "root": cli_directory / "commands",
-                "gitkeep": cli_directory / "commands" / ".gitkeep",
+                "root_command": cli_directory / "commands" / "root_command.py",
                 "launch": cli_directory / "commands" / "launch.py",
                 "config": {
                     "root": cli_directory / "commands" / "config",
@@ -166,6 +168,15 @@ def removal_tree(tmp_path):
                     "set": cli_directory / "commands" / "config" / "set.py",
                     "unset": cli_directory / "commands" / "config" / "unset.py",
                 },
+            },
+            "helpers": {
+                "root": cli_directory / "helpers",
+                "converter": cli_directory / "helpers" / "converter.py",
+                "printer": cli_directory / "helpers" / "printer.py",
+            },
+            "styling": {
+                "root": cli_directory / "styling",
+                "themes": cli_directory / "styling" / "themes.py",
             },
             "main": tmp_path / package_name / "__main__.py",
         },
