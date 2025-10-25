@@ -44,7 +44,7 @@ def launch(
 
     logger.info("Calling {{ cookiecutter.project_name }} via CLI")
 
-    if config is not None:
+    if config is not None:  # pragma: no cover
         logger.info("Using custom configuration file", config=config)
 
     _, APP_MANAGER = resolve_app_manager(False, config)

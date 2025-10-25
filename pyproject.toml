@@ -1,7 +1,7 @@
 # Poetry pyproject.toml: https://python-poetry.org/docs/pyproject/
 [project]
 name = "galactipy"
-version = "0.19.1"
+version = "0.20.0"
 description = "Full-fledged template for Python projects."
 license = { text = "MIT" }
 readme = "README.md"
@@ -136,6 +136,7 @@ ignore = ["D200", "PT011"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**.py" = ["D100", "D101", "D102", "D103", "D104", "S101"]
+"tests/test_operations.py" = ["PLR0915"]
 "tasks.py" = ["D100", "ANN002", "ANN003"]
 
 [tool.ruff.lint.flake8-annotations]

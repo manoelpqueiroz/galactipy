@@ -1,5 +1,14 @@
 @cli
 Feature: Command-line interface
+{%- if cookiecutter.app_type == 'tui' %}
+
+  @frontend @standard
+  Scenario: Launch application from CLI
+    Given a valid configuration file
+    When the program receives no arguments
+    Then the terminal launches the TUI interface
+    And the program exits successfully
+{%- endif %}
 
   @standard
   Scenario: Check program version

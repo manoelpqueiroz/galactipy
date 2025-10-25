@@ -100,13 +100,18 @@ def removal_tree(tmp_path):
         features=[
             ".gitkeep",
             "root_command.feature",
+            "launch_command.feature",
             "main_window.feature",
             "config_command.feature",
             "app_manager.feature",
             "manager_resolution.feature",
             "log_parser.feature",
         ],
-        cli=["test_root_command.py", "test_config_command.py"],
+        cli=[
+            "test_root_command.py",
+            "test_launch_command.py",
+            "test_config_command.py",
+        ],
         tui=["test_main_window.py"],
         config=["test_manager.py"],
         helpers=["tui_helpers.py"],
@@ -213,6 +218,7 @@ def removal_tree(tmp_path):
             "cli": {
                 "root": tests_directory / "cli",
                 "test": tests_directory / "cli" / "test_root_command.py",
+                "launch": tests_directory / "cli" / "test_launch_command.py",
                 "config": tests_directory / "cli" / "test_config_command.py",
             },
             "tui": {
@@ -233,6 +239,7 @@ def removal_tree(tmp_path):
         "bdd": {
             "root": tests_directory / "features",
             "cli": tests_directory / "features" / "root_command.feature",
+            "launch": tests_directory / "features" / "launch_command.feature",
             "config": tests_directory / "features" / "config_command.feature",
             "tui": tests_directory / "features" / "main_window.feature",
             "manager": tests_directory / "features" / "app_manager.feature",

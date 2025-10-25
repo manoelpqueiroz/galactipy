@@ -74,7 +74,12 @@ def test_get_individual_value():
     pass
 
 
-@given(parsers.parse('the configuration has a "{key}" key with a value of {value} and type {value_type}'))
+@given(
+    parsers.parse(
+        'the configuration has a "{key}" key with a value of {value} and type '
+        "{value_type}"
+    )
+)
 def set_individual_test_key(sandbox_manager, key, value, value_type):
     if value_type == "string":
         saved_value = value
