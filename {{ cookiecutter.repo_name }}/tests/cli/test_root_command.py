@@ -14,6 +14,34 @@ runner = CliRunner()
 
 
 {% if cookiecutter.use_bdd -%}
+{% if cookiecutter.app_type == 'tui' -%}
+@scenario("root_command.feature", "Launch application from CLI")
+def test_launch_app():
+    pass
+
+
+@when("the program receives no arguments", target_fixture="results")
+def launch_application(mocker, sandbox_config_file):
+    mock_interface = mocker.patch(
+        "python_project.cli.commands.root_command.TerminalApp"
+    ).return_value
+
+    results = runner.invoke(app, args=["--config", sandbox_config_file])
+
+    return {"cli_run": results, "interface": mock_interface}
+
+
+@then("the terminal launches the TUI interface")
+def ensure_launch_tui(results):
+    results["interface"].run.assert_called_once()
+
+
+@then("the program exits successfully")
+def successful_termination(results):
+    assert results["cli_run"].exit_code == 0
+
+
+{% endif -%}
 @scenario("root_command.feature", "Check program version")
 def test_cli_with_version_arg():
     pass
@@ -62,6 +90,24 @@ def valid_command_menu(cli_run, command):
     assert f"Usage: root {command}" in cli_run.output
     assert cli_run.exit_code == 0
 {%- else -%}
+{% if cookiecutter.app_type == 'tui' -%}
+@pytest.mark.cli
+@pytest.mark.frontend
+@pytest.mark.standard
+def test_launch_app(mocker, setup_sample_manager):
+    manager, file = setup_sample_manager.values()
+
+    mock_interface = mocker.patch(
+        "python_project.cli.commands.root_command.TerminalApp"
+    ).return_value
+
+    results = runner.invoke(app, args=["--config", file])
+
+    mock_interface.run.assert_called_once()
+    results.exit_code == 0
+
+
+{% endif -%}
 @pytest.mark.cli
 @pytest.mark.standard
 def test_cli_with_version_arg(version_string):
