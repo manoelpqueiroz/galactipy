@@ -88,4 +88,12 @@ def setup_sample_manager(generate_test_config):
     assert manager["settings", "test"] == "somevalue"
 
     return {"instance": manager, "file": generate_test_config["file"]}
+
+
+@pytest.fixture
+def sample_log():
+    return (
+        "2025-10-23 18:56:00.000 | 0:00:00.000000 | {} | test.py:{}    | This is a "
+        "test message for the parser      {}"
+)
 {%- endif %}

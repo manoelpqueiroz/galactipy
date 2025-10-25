@@ -145,6 +145,7 @@ pip-delete-this-directory.txt
 
 # Unit test / coverage reports
 htmlcov/
+assets/
 .tox/
 .nox/
 .coverage
@@ -243,6 +244,9 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+mypycov/
+mypy_coverage/
+mypy_report.xml
 .dmypy.json
 dmypy.json
 

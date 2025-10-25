@@ -1,11 +1,11 @@
 """Helper functions for streamlining {{ cookiecutter.project_name }} functionality."""
 
-from dynamanager import Dynamanager
+from orbittings import Nucleus
 
 from {{ cookiecutter.package_name }}.config.manager import AppManager
 
 
-def resolve_app_manager(is_secret=False, custom_path=None) -> Dynamanager:
+def resolve_app_manager(is_secret=False, custom_path=None) -> Nucleus:
     config_type = "secrets" if is_secret else "settings"
 
     if custom_path is None:

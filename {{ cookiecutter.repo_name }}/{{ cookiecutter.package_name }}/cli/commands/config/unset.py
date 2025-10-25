@@ -4,6 +4,8 @@ from typing import Annotated
 
 from pathlib import Path
 
+from nebulog import logger
+
 import typer
 
 from {{ cookiecutter.package_name }}.config import resolve_app_manager
@@ -29,9 +31,14 @@ def unset(
     ] = False,
 ):
     """:fire: [red]Remove[/] a top-level key from the configuration."""
+    logger.info("Removing configuration key via CLI", key=key, is_secret=secret)
+
+    if path is not None:  # pragma: no cover
+        logger.info("Using custom configuration file", config=path)
+
     config_type, APP_MANAGER = resolve_app_manager(secret, path)
 
     APP_MANAGER.unset(f"{config_type}.{key}")
     APP_MANAGER.save(config_type)
 
-    raise typer.Exit
+    logger.debug("{{ cookiecutter.project_name }} exited successfully")

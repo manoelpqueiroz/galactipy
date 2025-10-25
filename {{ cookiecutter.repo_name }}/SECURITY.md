@@ -7,7 +7,7 @@
 
 Vulnerabilities can be reported by emailing core members:
 
-- {{ cookiecutter.author }} <[{{ cookiecutter.email }}][1]>
+- {{ cookiecutter.copyright }} <[{{ cookiecutter.email }}][1]>
 
 Please include the requested information listed below (as much as you can provide) to help us better understand the nature and scope of the possible issue:
 

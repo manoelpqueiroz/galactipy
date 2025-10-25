@@ -104,17 +104,22 @@ def removal_tree(tmp_path):
             "config_command.feature",
             "app_manager.feature",
             "manager_resolution.feature",
+            "log_parser.feature",
         ],
         cli=["test_root_command.py", "test_config_command.py"],
         tui=["test_main_window.py"],
         config=["test_manager.py"],
         helpers=["tui_helpers.py"],
         utils=["parsers.py", "pytest_bdd_async.py"],
+        logging=["test_regex_parser.py"],
     )
 
     cli_directory = tmp_path / package_name / "cli"
     bulk_file_creation(
-        cli_directory, "root_command.py", commands=[".gitkeep", "launch.py"]
+        cli_directory,
+        commands=["root_command.py", "launch.py"],
+        styling=["themes.py"],
+        helpers=["converter.py", "printer.py"],
     )
 
     commands_directory = cli_directory / "commands"
@@ -134,6 +139,11 @@ def removal_tree(tmp_path):
     config_directory = tmp_path / package_name / "config"
     bulk_file_creation(config_directory, "constants.py", "helpers.py", "manager.py")
 
+    logging_directory = tmp_path / package_name / "logging"
+    bulk_file_creation(
+        logging_directory, "formatters.py", "parsers.py", "text_tools.py"
+    )
+
     return {
         "root": tmp_path,
         "package_name": package_name,
@@ -149,10 +159,9 @@ def removal_tree(tmp_path):
         },
         "cli": {
             "root": cli_directory,
-            "root_command": cli_directory / "root_command.py",
             "commands": {
                 "root": cli_directory / "commands",
-                "gitkeep": cli_directory / "commands" / ".gitkeep",
+                "root_command": cli_directory / "commands" / "root_command.py",
                 "launch": cli_directory / "commands" / "launch.py",
                 "config": {
                     "root": cli_directory / "commands" / "config",
@@ -161,6 +170,15 @@ def removal_tree(tmp_path):
                     "set": cli_directory / "commands" / "config" / "set.py",
                     "unset": cli_directory / "commands" / "config" / "unset.py",
                 },
+            },
+            "helpers": {
+                "root": cli_directory / "helpers",
+                "converter": cli_directory / "helpers" / "converter.py",
+                "printer": cli_directory / "helpers" / "printer.py",
+            },
+            "styling": {
+                "root": cli_directory / "styling",
+                "themes": cli_directory / "styling" / "themes.py",
             },
             "main": tmp_path / package_name / "__main__.py",
         },
@@ -184,6 +202,12 @@ def removal_tree(tmp_path):
             "helpers": config_directory / "helpers.py",
             "manager": config_directory / "manager.py",
         },
+        "logging": {
+            "root": logging_directory,
+            "formatters": logging_directory / "formatters.py",
+            "parsers": logging_directory / "parsers.py",
+            "tools": logging_directory / "text_tools.py",
+        },
         "tests": {
             "root": tests_directory,
             "cli": {
@@ -199,6 +223,10 @@ def removal_tree(tmp_path):
                 "root": tests_directory / "config",
                 "test": tests_directory / "config" / "test_manager.py",
             },
+            "logging": {
+                "root": tests_directory / "logging",
+                "test": tests_directory / "logging" / "test_regex_parser.py",
+            },
             "conftest": tests_directory / "conftest.py",
             "gitkeep": tests_directory / ".gitkeep",
         },
@@ -209,6 +237,7 @@ def removal_tree(tmp_path):
             "tui": tests_directory / "features" / "main_window.feature",
             "manager": tests_directory / "features" / "app_manager.feature",
             "resolution": tests_directory / "features" / "manager_resolution.feature",
+            "regex": tests_directory / "features" / "log_parser.feature",
             "gitkeep": tests_directory / "features" / ".gitkeep",
             "helpers": {
                 "root": tests_directory / "helpers",

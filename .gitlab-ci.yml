@@ -16,7 +16,7 @@ variables:
 
 # Anchors and script templates
 .filechecks: &filechecks
-  - "{{ cookiecutter.repo_name }}/**/*"
+  - '{{ cookiecutter.repo_name }}/**/*'
   - hooks/*
   - tests/**/*
   - utils/*
