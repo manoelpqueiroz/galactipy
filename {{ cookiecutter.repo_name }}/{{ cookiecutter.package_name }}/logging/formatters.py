@@ -16,16 +16,13 @@ FILE_FORMATTER_WITH_EXTRA = _FILE_BASE_TEMPLATE + " {extra}\n{exception}"
 FILE_FORMATTER_WITHOUT_EXTRA = _FILE_BASE_TEMPLATE + "\n{exception}"
 
 
-def _format_location_string(record: dict, justify_left: bool) -> str:
+def _format_location_string(record: dict) -> str:
     """Extract and format location information as `file:line`."""
     file_name = record["file"].name
     line_number = record["line"]
     padding = LOGGER_FORMATTER.get_location_padding()
 
-    if justify_left:
-        return f"{file_name}:{line_number}".ljust(padding)
-
-    return f"{file_name}:{line_number}".rjust(padding)
+    return f"{file_name}:{line_number}".ljust(padding)
 
 
 def file_formatter(record: dict) -> str:
@@ -36,7 +33,7 @@ def file_formatter(record: dict) -> str:
     record : dict
         The Loguru record dictionary with the information about the logging context.
     """
-    record.update({"location_string": _format_location_string(record, True)})
+    record.update({"location_string": _format_location_string(record)})
 
     if record["extra"]:
         return FILE_FORMATTER_WITH_EXTRA

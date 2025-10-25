@@ -51,7 +51,7 @@ class LoggerFormatter:
     @lru_cache(maxsize=1)
     def get_longest_filename(self) -> int:
         """Find the longest filename in the project."""
-        if not self.python_modules:
+        if not self.python_modules:  # pragma: no cover
             return 0
 
         return max(len(module.stem) for module in self.python_modules)
@@ -73,7 +73,7 @@ class LoggerFormatter:
         try:
             with filepath.open("r", encoding="utf-8") as file:
                 return sum(1 for _ in file)
-        except (OSError, UnicodeDecodeError) as e:
+        except (OSError, UnicodeDecodeError) as e:  # pragma: no cover
             logger.warning(f"Could not read file {filepath}: {e}")
             return 0
 
@@ -86,7 +86,7 @@ class LoggerFormatter:
         int
             Number of digits of the largest line count.
         """
-        if not self.python_modules:
+        if not self.python_modules:  # pragma: no cover
             return 1
 
         largest_linecount = max(
@@ -110,69 +110,3 @@ class LoggerFormatter:
             + self.get_project_linecount_oom()
             + self.ADDITIONAL_CHARACTERS
         )
-
-    def get_wrapper_limit(self) -> int:
-        """Calculate the maximum width for message wrapping.
-
-        Returns
-        -------
-        int
-            Maximum character width for wrapped messages.
-        """
-        terminal = get_terminal_size()
-
-        wrapper_limit = (
-            terminal.columns
-            - len(self.SHELL_LJUST_TEMPLATE)
-            - len(self.SHELL_RJUST_TEMPLATE)
-            - self.get_location_padding()
-        )
-
-        return max(wrapper_limit, self.MINIMUM_WRAPPER_WIDTH)  # Ensure minimum width
-
-    def split_message(self, message: str) -> tuple[str, Optional[str]]:
-        """Split a message into wrapped lines for proper formatting.
-
-        Parameters
-        ----------
-        message : str
-            The message string to split and format.
-
-        Returns
-        -------
-        tuple
-            A tuple with `message` wrapped as `first_line` and `continuation_lines`. The
-            latter will be None if message fits in one line.
-        """
-        if not message:
-            return "", None
-
-        message_lines = wrap(message, width=self.get_wrapper_limit())
-
-        if not message_lines:
-            return "", None
-
-        first_line = message_lines[0].ljust(self.get_wrapper_limit())
-
-        if len(message_lines) == 1:
-            return first_line, None
-
-        continuation_lines = self._format_continuation_lines(message_lines[1:])
-        return first_line, continuation_lines
-
-    def _format_continuation_lines(self, continuation_lines: list[str]) -> str:
-        """Format continuation lines with proper indentation.
-
-        Parameters
-        ----------
-        continuation_lines : list
-            Lines to be formatted as continuation lines.
-
-        Returns
-        -------
-        str
-            Formatted continuation lines with the indent defined in
-            `SHELL_LJUST_TEMPLATE`.
-        """
-        indent = " " * len(self.SHELL_LJUST_TEMPLATE)
-        return indent + f"\n{indent}".join(continuation_lines)

@@ -2,16 +2,15 @@
 
 from typing import Annotated
 
-from ast import literal_eval
 from pathlib import Path
 
 from nebulog import logger
 
 import typer
 
+from {{ cookiecutter.package_name }}.cli.helpers import BasicConverter as Text
 from {{ cookiecutter.package_name }}.config import resolve_app_manager
 from {{ cookiecutter.package_name }}.logging import setup_app_logging
-from {{ cookiecutter.package_name }}.cli.helpers import BasicConverter, parse_converter
 
 config_extend_app = typer.Typer(no_args_is_help=True, rich_markup_mode="rich")
 
@@ -22,10 +21,10 @@ def extend_command(
         str, typer.Argument(help=":key: The configuration key to be extended.")
     ],
     value: Annotated[
-        BasicConverter,
+        Text,
         typer.Argument(
             help=":keycap_#: The value to be stored with the key.",
-            parser=parse_converter,
+            parser=Text,
         ),
     ],
     path: Annotated[

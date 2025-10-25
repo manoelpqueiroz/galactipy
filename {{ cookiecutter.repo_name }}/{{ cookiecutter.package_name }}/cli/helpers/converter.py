@@ -14,40 +14,59 @@ There are alternatives to this implementation:
 
 """
 from ast import literal_eval
+from typing import Any, Optional, Union
+
+from nebulog import logger
+
 
 class BasicConverter:
-    def __init__(self, value: str):
+    """Converts string inputs to appropriate Python types.
+
+    Parameters
+    ----------
+    value : str
+        A string passed to a Typer CLI command for parsing.
+    """
+
+    BOOLEAN_VALUES = ("true", "false")
+    NUMERIC_PREFIXES = "+-"
+    CONTAINER_PREFIXES = "[{("
+    CONTAINER_TYPES = (list, tuple, dict)
+
+    def __init__(self, value: str) -> None:
+        if not isinstance(value, str):  # pragma: no cover
+            msg = (
+                f"BasicConverter only accepts strings; got {type(value).__name__} "
+                "instead"
+            )
+            raise ValueError(msg)
+
         self.input = value
-        self.output = self.coalesce(self.input)
+        self.output = self._convert_value(self.input)
 
-    def coalesce(self, value: str):
-        if not isinstance(value, str):
-            return value
-
-        if len(value) == 0:
+    def _convert_value(self, value: str) -> Any:
+        if not value:  # Empty string
             return None
 
-        if value.casefold() in ["true", "false"]:
+        if value.casefold() in self.BOOLEAN_VALUES:
             return literal_eval(value.capitalize())
 
+        return self._parse_by_first_character(value)
+
+    def _parse_by_first_character(self, value: str) -> Any:
         first_char = value[0]
 
-        if first_char.isdigit() or first_char in "+-":
-            result = self._parse_numeric_value(value)
+        if first_char.isdigit() or first_char in self.NUMERIC_PREFIXES:
+            return self._parse_numeric_value(value)
 
-        elif first_char in "[{(":
-            result = self._parse_container_value(value)
+        if first_char in self.CONTAINER_PREFIXES:
+            return self._parse_container_value(value)
 
-        elif first_char in "'\"":
-            result = self._parse_quoted_string(value)
+        # Return as string if no other type matches
+        return value
 
-        else:
-            return value
-
-        return result
-
-    def _parse_numeric_value(self, value: str):
-        # Try integer first
+    def _parse_numeric_value(self, value: str) -> Optional[Union[int, float]]:
+        # Try integer first (more specific check)
         if "." not in value and "e" not in value.lower():
             try:
                 return int(value)
@@ -60,40 +79,25 @@ class BasicConverter:
             return float(value)
 
         except ValueError:
-            pass
+            return value
 
-        return None
-
-    def _parse_container_value(self, value: str):
+    def _parse_container_value(self, value: str) -> Optional[Union[list, tuple, dict]]:
         try:
             result = literal_eval(value)
 
-            if isinstance(result, (list, tuple, dict, set, frozenset)):
-                return result
+            if isinstance(result, set):
+                logger.warning(
+                    f"Parsed a {type(result).__name__} object, will convert to tuple"
+                )
+                return tuple(result)
+
+            return result
 
         except (ValueError, SyntaxError):
-            pass
+            return None
 
-        return None
-
-    def _parse_quoted_string(self, value: str):
-        try:
-            result = literal_eval(value)
-
-            if isinstance(result, str):
-                return result
-
-        except (ValueError, SyntaxError):
-            pass
-
-        return None
-
-    def __str__(self):
+    def __str__(self) -> str:
         return str(self.output)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return repr(self.output)
-
-
-def parse_converter(value: str):
-    return BasicConverter(value)

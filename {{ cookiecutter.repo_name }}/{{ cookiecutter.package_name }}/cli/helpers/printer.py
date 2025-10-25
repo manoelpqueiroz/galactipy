@@ -28,8 +28,7 @@ def _format_value_for_printing(value):
     if isinstance(value, DynaBox):
         return value.to_dict()
 
-    elif isinstance(value, BoxList):
+    if isinstance(value, BoxList):
         return value.to_list()
 
-    else:
-        return value
+    return value
