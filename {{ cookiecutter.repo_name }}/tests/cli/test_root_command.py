@@ -8,7 +8,7 @@ from pytest_bdd import parsers, scenario, then, when
 import pytest
 {%- endif %}
 
-from {{ cookiecutter.package_name }}.cli.root_command import app
+from {{ cookiecutter.package_name }}.cli.commands.root_command import app
 
 runner = CliRunner()
 

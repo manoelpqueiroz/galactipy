@@ -5,6 +5,8 @@
 
 from pathlib import Path
 
+from nebulog import logger
+
 from textual.app import App, ComposeResult
 from textual.widgets import Footer, Label
 
@@ -25,6 +27,8 @@ class TerminalApp(App):
 
     def __init__(self, theme: str):
         super().__init__()
+
+        logger.info("Launching {{ cookiecutter.project_name }} TUI", theme=theme)
         self.default_theme = theme
 
     def compose(self) -> ComposeResult:
@@ -36,6 +40,8 @@ class TerminalApp(App):
 
     def on_mount(self) -> None:
         """Execute instructions when launching the interface."""
+        logger.info("Mounting the application interface")
+
         for theme in AppCustomThemes:
             self.register_theme(theme.value)
 

@@ -14,7 +14,7 @@ PROJECT_PACKAGE = "{{ cookiecutter.package_name }}"
 
 # Values to generate correct licence
 LICENCE = "{{ cookiecutter.licence }}"
-AUTHOR = "{{ cookiecutter.author }}"
+AUTHOR = "{{ cookiecutter.copyright }}"
 
 # Values to generate repository information
 SCM_PLATFORM = "{{ cookiecutter.__scm_platform_base }}"
@@ -213,9 +213,11 @@ def _get_cli_specific_files(directory: Path, package_name: str) -> list[Path]:
         directory / package_name / "cli",
         directory / package_name / "__main__.py",
         directory / package_name / "config",
+        directory / package_name / "logging",
         directory / "tests" / "cli",
         directory / "tests" / "conftest.py",
         directory / "tests" / "config",
+        directory / "tests" / "logging",
     ]
 
 
@@ -237,9 +239,6 @@ def _get_tui_related_files(
 
     if app_type in ["tui", "cli"]:
         removals.append(directory / package_name / "cli" / "commands" / "launch.py")
-
-    elif app_type == "hybrid":
-        removals.append(directory / package_name / "cli" / "commands" / ".gitkeep")
 
     if app_type in ["cli", "bare_repo"]:
         removals.extend([directory / package_name / "tui", directory / "tests" / "tui"])
@@ -282,6 +281,7 @@ def _get_bdd_specific_files(
                 directory / "tests" / "features" / "config_command.feature",
                 directory / "tests" / "features" / "app_manager.feature",
                 directory / "tests" / "features" / "manager_resolution.feature",
+                directory / "tests" / "features" / "log_parser.feature",
             ]
         )
 

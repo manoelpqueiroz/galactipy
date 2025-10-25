@@ -4,9 +4,11 @@ from typing import Annotated
 
 from pathlib import Path
 
-import typer
-from rich import print
+from nebulog import logger
 
+import typer
+
+from {{ cookiecutter.package_name }}.cli.helpers import pretty_print_setting
 from {{ cookiecutter.package_name }}.config import resolve_app_manager
 
 config_get_app = typer.Typer(no_args_is_help=True)
@@ -30,12 +32,13 @@ def get(
     ] = False,
 ):
     """:inbox_tray: Retrieve a key from the configuration file."""
+    logger.info("Retrieving configuration key via CLI", key=key, is_secret=secret)
+
+    if path is not None:  # pragma: no cover
+        logger.info("Using custom configuration file", config=path)
+
     config_type, APP_MANAGER = resolve_app_manager(secret, path)
 
-    if key is None:
-        print(APP_MANAGER[config_type].to_dict())
+    pretty_print_setting(APP_MANAGER, key, config_type)
 
-    else:
-        print(APP_MANAGER[config_type, key])
-
-    raise typer.Exit
+    logger.debug("{{ cookiecutter.project_name }} exited successfully")

@@ -3,7 +3,7 @@
 from enum import Enum
 from pathlib import Path
 
-from dynamanager import Dynamanager
+from orbittings import Nucleus
 
 from {{ cookiecutter.package_name }}.config.constants import (
     generate_default_config_schema,
@@ -16,13 +16,13 @@ class EnvKeys(Enum):
     SECRETS = "{{ cookiecutter.__envvar }}_SECRET"
 
 
-class AppManager(Dynamanager):
+class AppManager(Nucleus):
     """Manage configuration files and settings for {{ cookiecutter.project_name }}."""
 
     def __init__(self):
         """Initialize the manager.
 
-        Creates an instance of a `Dynamanager` object with preset default contents and
+        Creates an instance of a `Nucleus` object with preset default contents and
         base directory, both defined in the `constants` module.
         """
         super().__init__(

@@ -11,8 +11,8 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "{{ cookiecutter.project_name }}"
-copyright = "{% raw %}{% now 'local', '%Y' %}{% endraw %}, {{ cookiecutter.author }}"
-author = "{{ cookiecutter.author }}"
+copyright = "{% raw %}{% now 'local', '%Y' %}{% endraw %}, {{ cookiecutter.copyright }}"
+author = "{{ cookiecutter.copyright }}"
 release = "someversion" # TODO Find a way to use metadata
 
 

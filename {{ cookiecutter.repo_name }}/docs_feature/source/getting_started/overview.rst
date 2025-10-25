@@ -87,7 +87,7 @@ question, you can ask over there using the "Question" issue template.
 Community
 ---------
 
-{{ cookiecutter.project_name }} is being actively developed by {{ cookiecutter.author }},
+{{ cookiecutter.project_name }} is being actively developed by {{ cookiecutter.copyright }},
 dedicating time and energy to make it a helpful{% if cookiecutter.licence != 'nos' %} open source{% endif %} project for its users.
 
 If you're interested in contributing, please visit the :ref:`Contributing Guide
