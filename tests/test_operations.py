@@ -51,7 +51,7 @@ class TestTemplateGeneration:
             generate_templates(project_root, invalid_scm)
 
 
-class TestFileRemoval:
+class TestServiceRemovals:
     def test_remove_gitlab(self, removal_tree):
         gitlab_files = removal_tree["gitlab"]
         ci_file = gitlab_files["ci"]
@@ -109,6 +109,8 @@ class TestFileRemoval:
         assert removal_tree["bdd"]["cli"].exists()
         assert removal_tree["github"]["test_workflow"].exists()
 
+
+class TestApplicationOptions:
     def test_tui_with_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
 
@@ -159,6 +161,7 @@ class TestFileRemoval:
         assert test_files["cli"]["test"].exists()
         assert test_files["cli"]["config"].exists()
         assert test_files["manager"]["test"].exists()
+        assert test_files["logging"]["test"].exists()
         assert test_files["conftest"].exists()
         assert not test_files["gitkeep"].exists()
 
@@ -167,6 +170,7 @@ class TestFileRemoval:
         assert bdd_files["config"].exists()
         assert bdd_files["manager"].exists()
         assert bdd_files["resolution"].exists()
+        assert bdd_files["regex"].exists()
         assert bdd_files["helpers"]["tui"].exists()
         assert bdd_files["utils"]["async"].exists()
         assert bdd_files["utils"]["parsers"].exists()
@@ -221,6 +225,7 @@ class TestFileRemoval:
         assert test_files["cli"]["test"].exists()
         assert test_files["cli"]["config"].exists()
         assert test_files["manager"]["test"].exists()
+        assert test_files["logging"]["test"].exists()
         assert test_files["conftest"].exists()
         assert not test_files["gitkeep"].exists()
 
@@ -278,6 +283,7 @@ class TestFileRemoval:
         assert test_files["cli"]["test"].exists()
         assert test_files["cli"]["config"].exists()
         assert test_files["manager"]["test"].exists()
+        assert test_files["logging"]["test"].exists()
         assert test_files["conftest"].exists()
         assert not test_files["gitkeep"].exists()
 
@@ -286,6 +292,7 @@ class TestFileRemoval:
         assert bdd_files["config"].exists()
         assert bdd_files["manager"].exists()
         assert bdd_files["resolution"].exists()
+        assert bdd_files["regex"].exists()
         assert bdd_files["helpers"]["tui"].exists()
         assert bdd_files["utils"]["async"].exists()
         assert bdd_files["utils"]["parsers"].exists()
@@ -340,6 +347,7 @@ class TestFileRemoval:
         assert test_files["cli"]["test"].exists()
         assert test_files["cli"]["config"].exists()
         assert test_files["manager"]["test"].exists()
+        assert test_files["logging"]["test"].exists()
         assert test_files["conftest"].exists()
         assert not test_files["gitkeep"].exists()
 
@@ -392,6 +400,7 @@ class TestFileRemoval:
         assert test_files["cli"]["test"].exists()
         assert test_files["cli"]["config"].exists()
         assert test_files["manager"]["test"].exists()
+        assert test_files["logging"]["test"].exists()
         assert test_files["conftest"].exists()
         assert not test_files["gitkeep"].exists()
 
@@ -400,6 +409,7 @@ class TestFileRemoval:
         assert bdd_files["config"].exists()
         assert bdd_files["manager"].exists()
         assert bdd_files["resolution"].exists()
+        assert bdd_files["regex"].exists()
         assert not bdd_files["gitkeep"].exists()
         assert not bdd_files["helpers"]["root"].exists()
 
@@ -452,6 +462,7 @@ class TestFileRemoval:
         assert test_files["cli"]["test"].exists()
         assert test_files["cli"]["config"].exists()
         assert test_files["manager"]["test"].exists()
+        assert test_files["logging"]["test"].exists()
         assert test_files["conftest"].exists()
         assert not test_files["gitkeep"].exists()
 
@@ -493,6 +504,7 @@ class TestFileRemoval:
         assert not test_files["tui"]["root"].exists()
         assert not test_files["cli"]["root"].exists()
         assert not test_files["manager"]["root"].exists()
+        assert not test_files["logging"]["root"].exists()
         assert not test_files["conftest"].exists()
         assert test_files["gitkeep"].exists()
 
@@ -502,6 +514,7 @@ class TestFileRemoval:
         assert not bdd_files["config"].exists()
         assert not bdd_files["manager"].exists()
         assert not bdd_files["resolution"].exists()
+        assert not bdd_files["regex"].exists()
         assert bdd_files["gitkeep"].exists()
         assert not bdd_files["helpers"]["root"].exists()
         assert not bdd_files["utils"]["root"].exists()
@@ -540,62 +553,13 @@ class TestFileRemoval:
         assert not test_files["tui"]["root"].exists()
         assert not test_files["cli"]["root"].exists()
         assert not test_files["manager"]["root"].exists()
+        assert not test_files["logging"]["root"].exists()
         assert not test_files["conftest"].exists()
         assert test_files["gitkeep"].exists()
 
         assert not bdd_files["root"].exists()
         assert not bdd_files["helpers"]["root"].exists()
         assert not bdd_files["utils"]["root"].exists()
-
-    def test_remove_feature_files(self, removal_tree):
-        feature_files = removal_tree["features"]
-
-        file1 = feature_files["file1"]
-        file2 = feature_files["file2"]
-        directory = feature_files["directory"]
-
-        config = ProjectFlags(False, False, False, True, "cli")
-
-        remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
-
-        assert not file1.exists()
-        assert not file2.exists()
-        assert not directory.exists()
-
-        assert removal_tree["bdd"]["cli"].exists()
-        assert removal_tree["docker"]["dockerfile"].exists()
-        assert removal_tree["docker"]["readme"].exists()
-
-        assert removal_tree["pyproject"].exists()
-        assert removal_tree["tests"]["root"].exists()
-        assert removal_tree["tests"]["conftest"].exists()
-
-    def test_keep_feature_files(self, removal_tree):
-        feature_files = removal_tree["features"]
-
-        file1 = feature_files["file1"]
-        file2 = feature_files["file2"]
-        sample1 = feature_files["sample1"]
-        sample2 = feature_files["sample2"]
-        sample3 = feature_files["sample3"]
-
-        config = ProjectFlags(False, False, False, False, "cli")
-
-        remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
-
-        assert file1.exists()
-        assert file2.exists()
-        assert sample1.exists()
-        assert sample2.exists()
-        assert sample3.exists()
-
-        assert removal_tree["bdd"]["cli"].exists()
-        assert removal_tree["docker"]["dockerfile"].exists()
-        assert removal_tree["docker"]["readme"].exists()
-
-        assert removal_tree["pyproject"].exists()
-        assert removal_tree["tests"]["root"].exists()
-        assert removal_tree["tests"]["conftest"].exists()
 
     def test_remove_all(self, removal_tree):
         pyproject = removal_tree["pyproject"]
@@ -651,6 +615,58 @@ class TestFileRemoval:
 
         assert pyproject.exists()
         assert test_gitkeep.exists()
+
+
+class TestFeatureFiles:
+    def test_remove_feature_files(self, removal_tree):
+        feature_files = removal_tree["features"]
+
+        file1 = feature_files["file1"]
+        file2 = feature_files["file2"]
+        directory = feature_files["directory"]
+
+        config = ProjectFlags(False, False, False, True, "cli")
+
+        remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
+
+        assert not file1.exists()
+        assert not file2.exists()
+        assert not directory.exists()
+
+        assert removal_tree["bdd"]["cli"].exists()
+        assert removal_tree["docker"]["dockerfile"].exists()
+        assert removal_tree["docker"]["readme"].exists()
+
+        assert removal_tree["pyproject"].exists()
+        assert removal_tree["tests"]["root"].exists()
+        assert removal_tree["tests"]["conftest"].exists()
+
+    def test_keep_feature_files(self, removal_tree):
+        feature_files = removal_tree["features"]
+
+        file1 = feature_files["file1"]
+        file2 = feature_files["file2"]
+        sample1 = feature_files["sample1"]
+        sample2 = feature_files["sample2"]
+        sample3 = feature_files["sample3"]
+
+        config = ProjectFlags(False, False, False, False, "cli")
+
+        remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
+
+        assert file1.exists()
+        assert file2.exists()
+        assert sample1.exists()
+        assert sample2.exists()
+        assert sample3.exists()
+
+        assert removal_tree["bdd"]["cli"].exists()
+        assert removal_tree["docker"]["dockerfile"].exists()
+        assert removal_tree["docker"]["readme"].exists()
+
+        assert removal_tree["pyproject"].exists()
+        assert removal_tree["tests"]["root"].exists()
+        assert removal_tree["tests"]["conftest"].exists()
 
 
 class TestInstructions:

@@ -104,12 +104,14 @@ def removal_tree(tmp_path):
             "config_command.feature",
             "app_manager.feature",
             "manager_resolution.feature",
+            "log_parser.feature",
         ],
         cli=["test_root_command.py", "test_config_command.py"],
         tui=["test_main_window.py"],
         config=["test_manager.py"],
         helpers=["tui_helpers.py"],
         utils=["parsers.py", "pytest_bdd_async.py"],
+        logging=["test_regex_parser.py"],
     )
 
     cli_directory = tmp_path / package_name / "cli"
@@ -221,6 +223,10 @@ def removal_tree(tmp_path):
                 "root": tests_directory / "config",
                 "test": tests_directory / "config" / "test_manager.py",
             },
+            "logging": {
+                "root": tests_directory / "logging",
+                "test": tests_directory / "logging" / "test_regex_parser.py",
+            },
             "conftest": tests_directory / "conftest.py",
             "gitkeep": tests_directory / ".gitkeep",
         },
@@ -231,6 +237,7 @@ def removal_tree(tmp_path):
             "tui": tests_directory / "features" / "main_window.feature",
             "manager": tests_directory / "features" / "app_manager.feature",
             "resolution": tests_directory / "features" / "manager_resolution.feature",
+            "regex": tests_directory / "features" / "log_parser.feature",
             "gitkeep": tests_directory / "features" / ".gitkeep",
             "helpers": {
                 "root": tests_directory / "helpers",
