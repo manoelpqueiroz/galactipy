@@ -1,7 +1,7 @@
 # Poetry pyproject.toml: https://python-poetry.org/docs/pyproject/
 [project]
 name = "galactipy"
-version = "0.19.0"
+version = "0.19.1"
 description = "Full-fledged template for Python projects."
 license = { text = "MIT" }
 readme = "README.md"
