@@ -1,3 +1,22 @@
+## 0.20.0 (2025-10-25)
+
+### :milky_way: Components (2 changes)
+
+- [:children_crossing: Ensure 100% coverage for CLI-only apps](galactipy/galactipy@3b291f716f1e22cfd366a0490bfed9dd3ac16e29) ([merge request](galactipy/galactipy!82))
+- [:children_crossing: Add scenarios to test TUI launch](galactipy/galactipy@c2372f82764a3eb15410cf803374886a9ae76917) ([merge request](galactipy/galactipy!82))
+
+### :package: Build System & CI/CD (1 change)
+
+- [:white_check_mark: Increment tests with launch command file removals](galactipy/galactipy@fbde8ad76420758ee5feaa08ed37175fa556fdac) ([merge request](galactipy/galactipy!82))
+
+### :gear: Internals (1 change)
+
+- [:wrench: Update file removals with launch command tests](galactipy/galactipy@e0340d5e78cb9edeaeb51761a1febed780858538) ([merge request](galactipy/galactipy!82))
+
+### :pencil: Documentation (1 change)
+
+- [:pencil: Update project `README.md` with code coverage feature](galactipy/galactipy@d3bad3df07c3d4219236bb40fbcff4ef33c17839) ([merge request](galactipy/galactipy!82))
+
 ## 0.19.1 (2025-10-25)
 
 ### :wrench: Fixes & Refactoring (2 changes)
