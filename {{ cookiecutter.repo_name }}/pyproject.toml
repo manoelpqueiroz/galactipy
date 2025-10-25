@@ -68,6 +68,7 @@ textual = "^6.1.0"
 art = "^6.5.0"  # UPDATEME by removing when no longer needed
 {%- endif %}
 {%+ if cookiecutter.app_type != 'bare_repo' %}
+click = "~8.1.0" # HACK Click shouldn't require explicit declaration, but versions 8.2+ break Typer's behaviour
 typer = { extras = ["all"], version = "^0.18.0" }
 rich = "^14.1.0"
 
