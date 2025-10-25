@@ -238,7 +238,12 @@ def _get_tui_related_files(
     removals = []
 
     if app_type in ["tui", "cli"]:
-        removals.append(directory / package_name / "cli" / "commands" / "launch.py")
+        removals.extend(
+            [
+                directory / package_name / "cli" / "commands" / "launch.py",
+                directory / "tests" / "cli" / "test_launch_command.py",
+            ]
+        )
 
     if app_type in ["cli", "bare_repo"]:
         removals.extend([directory / package_name / "tui", directory / "tests" / "tui"])
@@ -278,6 +283,7 @@ def _get_bdd_specific_files(
                 directory / "tests" / "utils",
                 directory / "tests" / "features" / "main_window.feature",
                 directory / "tests" / "features" / "root_command.feature",
+                directory / "tests" / "features" / "launch_command.feature",
                 directory / "tests" / "features" / "config_command.feature",
                 directory / "tests" / "features" / "app_manager.feature",
                 directory / "tests" / "features" / "manager_resolution.feature",
@@ -291,8 +297,12 @@ def _get_bdd_specific_files(
                 directory / "tests" / "helpers",
                 directory / "tests" / "utils" / "pytest_bdd_async.py",
                 directory / "tests" / "features" / "main_window.feature",
+                directory / "tests" / "features" / "launch_command.feature",
             ]
         )
+
+    elif app_type == "tui":
+        removals.append(directory / "tests" / "features" / "launch_command.feature")
 
     return removals
 
