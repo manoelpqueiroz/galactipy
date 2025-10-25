@@ -1,3 +1,10 @@
+## 0.19.1 (2025-10-25)
+
+### :wrench: Fixes & Refactoring (2 changes)
+
+- [:pencil2: Correct `CHANGELOG.md` for v0.19.0](galactipy/galactipy@8bad0feab96faf9d5fa05cbfbd8f7f25a0cdd650) ([merge request](galactipy/galactipy!81))
+- [:rewind: Revert modifications to `changelog_config.yml`](galactipy/galactipy@a696766ebfb5ab53cf359016ba34a3dba35254a6) ([merge request](galactipy/galactipy!81))
+
 ## 0.19.0 (2025-10-25)
 
 ### :milky_way: Components (6 changes)
