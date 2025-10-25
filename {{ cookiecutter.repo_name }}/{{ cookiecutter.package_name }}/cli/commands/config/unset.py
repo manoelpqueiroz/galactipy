@@ -4,6 +4,8 @@ from typing import Annotated
 
 from pathlib import Path
 
+from nebulog import logger
+
 import typer
 
 from {{ cookiecutter.package_name }}.config import resolve_app_manager

@@ -10,12 +10,21 @@ import typer
 
 from {{ cookiecutter.package_name }}.cli.helpers import BasicConverter as Text
 from {{ cookiecutter.package_name }}.config import resolve_app_manager
-from {{ cookiecutter.package_name }}.logging import setup_app_logging
 
 config_set_app = typer.Typer(no_args_is_help=True)
 
 
-@config_set_app.command(name="set")
+HELP_MSG = (
+    ":floppy_disk: Store a key in the configuration file.\n\n"
+    ":rotating_light: [bold red]NOTE:[/] To store a [b][i]negative[/i][/b] number in "
+    "the configuration, you must pass the double dash separator to prevent the "
+    "application from interpreting the value as a flag:\n\n"
+    "[bold yellow]$[/] [green]{{ cookiecutter.repo_name }}[/] config set somekey "
+    "[blue]--[/] -1"
+)
+
+
+@config_set_app.command(name="set", help=HELP_MSG)
 def set_command(
     key: Annotated[
         str, typer.Argument(help=":key: The configuration key to be stored.")
@@ -38,9 +47,7 @@ def set_command(
         ),
     ] = False,
 ):
-    """:floppy_disk: Store a key in the configuration file."""
-    setup_app_logging(debug=False)
-
+    """Store a key in the configuration file."""
     logger.info(
         "Storing configuration key via CLI",
         key=key,

@@ -78,7 +78,7 @@ def main(
             is_eager=True,
         ),
     ] = False,
-{% if cookiecutter.app_type == 'tui' -%}
+{%- if cookiecutter.app_type == 'tui' %}
     debug: Annotated[
         bool,
         typer.Option(
@@ -86,9 +86,9 @@ def main(
             "-d",
             help=(
                 ":bug: Log operations to the terminal at the "
-                "[b][logging.level.debug]DEBUG[/] level."
+                "[b][logging.level.debug]DEBUG[/logging.level.debug][/b] level."
             ),
-        )
+        ),
     ] = False,
 {%- endif %}
 ):

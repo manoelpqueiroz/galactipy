@@ -34,7 +34,7 @@ def launch(
             "-d",
             help=(
                 ":bug: Log operations to the terminal at the "
-                "[b][logging.level.debug]DEBUG[/] level."
+                "[b][logging.level.debug]DEBUG[/logging.level.debug][/b] level."
             ),
         )
     ] = False,

@@ -10,12 +10,23 @@ import typer
 
 from {{ cookiecutter.package_name }}.cli.helpers import BasicConverter as Text
 from {{ cookiecutter.package_name }}.config import resolve_app_manager
-from {{ cookiecutter.package_name }}.logging import setup_app_logging
 
-config_extend_app = typer.Typer(no_args_is_help=True, rich_markup_mode="rich")
+config_extend_app = typer.Typer(no_args_is_help=True)
 
 
-@config_extend_app.command(name="extend")
+HELP_MSG = (
+    ":straight_ruler: Extend an array key in the configuration file.\n\n"
+    "If no setting exists for the key, you cancreate an array with the single value "
+    "provided.\n\n"
+    ":rotating_light: [bold red]NOTE:[/] To extend a value in the configuration with a "
+    "[b][i]negative[/i][/b] number, you must pass the double dash separator to prevent "
+    "the application from interpreting it as a flag:\n\n"
+    "[bold yellow]$[/] [green]{{ cookiecutter.repo_name }}[/] config extend somekey "
+    "[blue]--[/] -1"
+)
+
+
+@config_extend_app.command(name="extend", help=HELP_MSG)
 def extend_command(
     key: Annotated[
         str, typer.Argument(help=":key: The configuration key to be extended.")
@@ -50,13 +61,7 @@ def extend_command(
         ),
     ] = False,
 ):
-    """:straight_ruler: Extend an array key in the configuration file.
-
-    If no setting exists for the key, can create an array with the single value
-    provided.
-    """
-    setup_app_logging(debug=False)
-
+    """Extend an array key in the configuration file."""
     logger.info(
         "Extending array key via CLI", key=key, value=value.output, is_secret=secret
     )
