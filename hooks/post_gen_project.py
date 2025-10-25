@@ -217,6 +217,7 @@ def _get_cli_specific_files(directory: Path, package_name: str) -> list[Path]:
         directory / "tests" / "cli",
         directory / "tests" / "conftest.py",
         directory / "tests" / "config",
+        directory / "tests" / "logging",
     ]
 
 
@@ -280,6 +281,7 @@ def _get_bdd_specific_files(
                 directory / "tests" / "features" / "config_command.feature",
                 directory / "tests" / "features" / "app_manager.feature",
                 directory / "tests" / "features" / "manager_resolution.feature",
+                directory / "tests" / "features" / "log_parser.feature",
             ]
         )
 
