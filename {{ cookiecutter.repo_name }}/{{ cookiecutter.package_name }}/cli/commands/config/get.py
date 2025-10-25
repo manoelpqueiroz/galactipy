@@ -10,6 +10,7 @@ import typer
 
 from {{ cookiecutter.package_name }}.cli.helpers import pretty_print_setting
 from {{ cookiecutter.package_name }}.config import resolve_app_manager
+from {{ cookiecutter.package_name }}.logging import setup_app_logging
 
 config_get_app = typer.Typer(no_args_is_help=True)
 
@@ -32,6 +33,8 @@ def get(
     ] = False,
 ):
     """:inbox_tray: Retrieve a key from the configuration file."""
+    setup_app_logging(debug=False)
+
     logger.info("Retrieving configuration key via CLI", key=key, is_secret=secret)
 
     if path is not None:  # pragma: no cover

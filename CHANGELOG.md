@@ -1,30 +1,57 @@
+## 0.20.0 (2025-10-25)
+
+### :milky_way: Components (2 changes)
+
+- [:children_crossing: Ensure 100% coverage for CLI-only apps](galactipy/galactipy@3b291f716f1e22cfd366a0490bfed9dd3ac16e29) ([merge request](galactipy/galactipy!82))
+- [:children_crossing: Add scenarios to test TUI launch](galactipy/galactipy@c2372f82764a3eb15410cf803374886a9ae76917) ([merge request](galactipy/galactipy!82))
+
+### :package: Build System & CI/CD (1 change)
+
+- [:white_check_mark: Increment tests with launch command file removals](galactipy/galactipy@fbde8ad76420758ee5feaa08ed37175fa556fdac) ([merge request](galactipy/galactipy!82))
+
+### :gear: Internals (1 change)
+
+- [:wrench: Update file removals with launch command tests](galactipy/galactipy@e0340d5e78cb9edeaeb51761a1febed780858538) ([merge request](galactipy/galactipy!82))
+
+### :pencil: Documentation (1 change)
+
+- [:pencil: Update project `README.md` with code coverage feature](galactipy/galactipy@d3bad3df07c3d4219236bb40fbcff4ef33c17839) ([merge request](galactipy/galactipy!82))
+
+## 0.19.1 (2025-10-25)
+
+### :wrench: Fixes & Refactoring (2 changes)
+
+- [:pencil2: Correct `CHANGELOG.md` for v0.19.0](galactipy/galactipy@8bad0feab96faf9d5fa05cbfbd8f7f25a0cdd650) ([merge request](galactipy/galactipy!81))
+- [:rewind: Revert modifications to `changelog_config.yml`](galactipy/galactipy@a696766ebfb5ab53cf359016ba34a3dba35254a6) ([merge request](galactipy/galactipy!81))
+
 ## 0.19.0 (2025-10-25)
 
-### v:milky_way: Components (6 changes)
+### :milky_way: Components (6 changes)
 
 - [:speech_balloon: Separate copyright holder and maintainer into distinct variables](galactipy/galactipy@1f27b87b8224a8974d43f15f7a7bc929154c50a3) ([merge request](galactipy/galactipy!79))
 - [:art: Improve CLI commands API](galactipy/galactipy@09159e6b95eef6170e8235b17001bc46104f2835) ([merge request](galactipy/galactipy!79))
 - [:art: Simplify backend API](galactipy/galactipy@72cd6e3077475dd4b974efaab296b6b542bd27eb) ([merge request](galactipy/galactipy!79))
 - [:truck: Restructure `cli` package](galactipy/galactipy@7d7e094f854a8eed11953c06813cb22b828b6feb) ([merge request](galactipy/galactipy!79))
+- [:art: Add helper code for CLI value type resolution](galactipy/galactipy@57e0be6e8f26ef357afb2ef28e29b6eb6789d093) ([merge request](galactipy/galactipy!79))
 - [:sparkles: Structure logging for CLI commands and TUI application](galactipy/galactipy@f20a86a2cfd2c835e776e21765197533adc66f64) ([merge request](galactipy/galactipy!79))
 - [:sparkles: Implement logging capabilities for the template](galactipy/galactipy@d8ff0cb3150b235e8b9a4fc686fc042c0b5057b1) ([merge request](galactipy/galactipy!79))
 
-### v:wrench: Fixes & Refactoring (1 change)
+### :wrench: Fixes & Refactoring (1 change)
 
 - [:adhesive_bandage: Improve Jinja statements for VS Code settings](galactipy/galactipy@e695c7194190fbe7ed965df7e9bd7b9977a5b097) ([merge request](galactipy/galactipy!79))
 
-### v:package: Build System & CI/CD (3 changes)
+### :package: Build System & CI/CD (3 changes)
 
 - [:white_check_mark: Update tests for logging feature](galactipy/galactipy@594cbbdf72f149eb1ec5828ade3ba29608b4a9ed) ([merge request](galactipy/galactipy!79))
 - [:white_check_mark: Update file removal tests](galactipy/galactipy@55369ca457b157d4f0e81f2218935c2476166bf0) ([merge request](galactipy/galactipy!79))
 - [:white_check_mark: Add tests for logging package removals](galactipy/galactipy@7ada26a6a52e6ead9b6645b55fa2ecefcc0906ca) ([merge request](galactipy/galactipy!79))
 
-### v:gear: Internals (2 changes)
+### :gear: Internals (2 changes)
 
 - [:wrench: Update file removals for logging](galactipy/galactipy@fb7edbef61701bd2552b36318beae0b5a0238eec) ([merge request](galactipy/galactipy!79))
 - [:adhesive_bandage: Fix minor issues with project configuration files](galactipy/galactipy@0f263e48e623e75b5488e5bf858bbe2b23942df6) ([merge request](galactipy/galactipy!79))
 
-### v:construction_site: Template Internals (6 changes)
+### :construction_site: Template Internals (6 changes)
 
 - [:wrench: Raise template coverage threshold](galactipy/galactipy@80f60c1f6b36910925fdbb63b99b56c9e855fdd1) ([merge request](galactipy/galactipy!79))
 - [:white_check_mark: Increment testing for the template](galactipy/galactipy@507e5a18b3d72a770e55af262487e9eae45b9d1a) ([merge request](galactipy/galactipy!79))
@@ -33,19 +60,15 @@
 - [:adhesive_bandage: Modify template for Dockerfile and GitLab changelog](galactipy/galactipy@8634078e812798824ab57b003f532f9bbecec174) ([merge request](galactipy/galactipy!79))
 - [:wrench: Improve template `pyproject.toml` structure](galactipy/galactipy@71caa7f95f54d7b3c3fb3e0feabbd869d7e17f80) ([merge request](galactipy/galactipy!79))
 
-### v:pencil: Documentation (1 change)
+### :pencil: Documentation (1 change)
 
 - [:pencil: Update project `README.md` with better feature documentation](galactipy/galactipy@9056096100ff67e903739f99328fcdf5e0aca6a5) ([merge request](galactipy/galactipy!79))
 
-### v:arrow_up: Dependency Updates (3 changes)
+### :arrow_up: Dependency Updates (3 changes)
 
 - [:adhesive_bandage: Pin Click to v8.1](galactipy/galactipy@a4d3252b3bc66a66dd29e659560c1fed83cb9343) ([merge request](galactipy/galactipy!79))
 - [:arrow_up: Deprecate Python 3.9 and add Python 3.14](galactipy/galactipy@028b966f48ab227e4b32fe0e448fdf979992add8) ([merge request](galactipy/galactipy!79))
 - [:truck: Move settings library to Orbittings](galactipy/galactipy@3022bfddbf30951e6f48d59fd88ab2ee09868958) ([merge request](galactipy/galactipy!79))
-
-### venhacement (1 change)
-
-- [:art: Add helper code for CLI value type resolution](galactipy/galactipy@57e0be6e8f26ef357afb2ef28e29b6eb6789d093) ([merge request](galactipy/galactipy!79))
 
 ## 0.18.3 (2025-10-20)
 

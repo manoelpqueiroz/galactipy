@@ -10,6 +10,7 @@ import typer
 
 from {{ cookiecutter.package_name }}.cli.helpers import BasicConverter as Text
 from {{ cookiecutter.package_name }}.config import resolve_app_manager
+from {{ cookiecutter.package_name }}.logging import setup_app_logging
 
 config_set_app = typer.Typer(no_args_is_help=True)
 
@@ -48,6 +49,8 @@ def set_command(
     ] = False,
 ):
     """Store a key in the configuration file."""
+    setup_app_logging(debug=False)
+
     logger.info(
         "Storing configuration key via CLI",
         key=key,

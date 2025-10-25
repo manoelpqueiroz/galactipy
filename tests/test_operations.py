@@ -159,6 +159,7 @@ class TestApplicationOptions:
         assert test_files["root"].exists()
         assert test_files["tui"]["test"].exists()
         assert test_files["cli"]["test"].exists()
+        assert not test_files["cli"]["launch"].exists()
         assert test_files["cli"]["config"].exists()
         assert test_files["manager"]["test"].exists()
         assert test_files["logging"]["test"].exists()
@@ -167,6 +168,7 @@ class TestApplicationOptions:
 
         assert bdd_files["tui"].exists()
         assert bdd_files["cli"].exists()
+        assert not bdd_files["launch"].exists()
         assert bdd_files["config"].exists()
         assert bdd_files["manager"].exists()
         assert bdd_files["resolution"].exists()
@@ -223,6 +225,7 @@ class TestApplicationOptions:
 
         assert test_files["tui"]["test"].exists()
         assert test_files["cli"]["test"].exists()
+        assert not test_files["cli"]["launch"].exists()
         assert test_files["cli"]["config"].exists()
         assert test_files["manager"]["test"].exists()
         assert test_files["logging"]["test"].exists()
@@ -281,6 +284,7 @@ class TestApplicationOptions:
 
         assert test_files["tui"]["test"].exists()
         assert test_files["cli"]["test"].exists()
+        assert test_files["cli"]["launch"].exists()
         assert test_files["cli"]["config"].exists()
         assert test_files["manager"]["test"].exists()
         assert test_files["logging"]["test"].exists()
@@ -289,6 +293,7 @@ class TestApplicationOptions:
 
         assert bdd_files["tui"].exists()
         assert bdd_files["cli"].exists()
+        assert bdd_files["launch"].exists()
         assert bdd_files["config"].exists()
         assert bdd_files["manager"].exists()
         assert bdd_files["resolution"].exists()
@@ -345,6 +350,7 @@ class TestApplicationOptions:
 
         assert test_files["tui"]["test"].exists()
         assert test_files["cli"]["test"].exists()
+        assert test_files["cli"]["launch"].exists()
         assert test_files["cli"]["config"].exists()
         assert test_files["manager"]["test"].exists()
         assert test_files["logging"]["test"].exists()
@@ -398,6 +404,7 @@ class TestApplicationOptions:
 
         assert not test_files["tui"]["root"].exists()
         assert test_files["cli"]["test"].exists()
+        assert not test_files["cli"]["launch"].exists()
         assert test_files["cli"]["config"].exists()
         assert test_files["manager"]["test"].exists()
         assert test_files["logging"]["test"].exists()
@@ -406,6 +413,7 @@ class TestApplicationOptions:
 
         assert not bdd_files["tui"].exists()
         assert bdd_files["cli"].exists()
+        assert not bdd_files["launch"].exists()
         assert bdd_files["config"].exists()
         assert bdd_files["manager"].exists()
         assert bdd_files["resolution"].exists()
@@ -460,6 +468,7 @@ class TestApplicationOptions:
 
         assert not test_files["tui"]["root"].exists()
         assert test_files["cli"]["test"].exists()
+        assert not test_files["cli"]["launch"].exists()
         assert test_files["cli"]["config"].exists()
         assert test_files["manager"]["test"].exists()
         assert test_files["logging"]["test"].exists()
@@ -511,6 +520,7 @@ class TestApplicationOptions:
         assert bdd_files["root"].exists()
         assert not bdd_files["tui"].exists()
         assert not bdd_files["cli"].exists()
+        assert not bdd_files["launch"].exists()
         assert not bdd_files["config"].exists()
         assert not bdd_files["manager"].exists()
         assert not bdd_files["resolution"].exists()
