@@ -399,7 +399,11 @@ exclude_also = [
   "def __repr__",
   "if __name__ == .__main__.:",
 ]
+{%- if cookiecutter.app_type != 'bare_repo' %}
+fail_under = 95
+{%- else %}
 fail_under = 90
+{%- endif %}
 show_missing = true
 
 
