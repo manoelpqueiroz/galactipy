@@ -426,7 +426,7 @@ This project is licenced under the terms of the `{{ cookiecutter.licence }}` lic
 
 ```bibtex
 {% raw %}@misc{{% endraw %}{{ cookiecutter.project_name }},
-  author = {% raw %}{{% endraw %}{{ cookiecutter.author }}{% raw %}}{% endraw %},
+  author = {% raw %}{{% endraw %}{{ cookiecutter.copyright }}{% raw %}}{% endraw %},
   title = {% raw %}{{% endraw %}{{ cookiecutter.project_description }}{% raw %}}{% endraw %},
   year = {% raw %}{{% endraw %}{% now 'utc', '%Y' %}{% raw %}}{% endraw %},
   publisher = {% raw %}{{% endraw %}{{ cookiecutter.__scm_platform_base }}{% raw %}}{% endraw %},

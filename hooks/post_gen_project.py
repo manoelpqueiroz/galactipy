@@ -14,7 +14,7 @@ PROJECT_PACKAGE = "{{ cookiecutter.package_name }}"
 
 # Values to generate correct licence
 LICENCE = "{{ cookiecutter.licence }}"
-AUTHOR = "{{ cookiecutter.author }}"
+AUTHOR = "{{ cookiecutter.copyright }}"
 
 # Values to generate repository information
 SCM_PLATFORM = "{{ cookiecutter.__scm_platform_base }}"

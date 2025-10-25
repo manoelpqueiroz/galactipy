@@ -6,7 +6,8 @@ default_context:
   repo_name: "{{ cookiecutter.repo_name }}"
   package_name: "{{ cookiecutter.package_name }}"
   project_description: "{{ cookiecutter.project_description }}"
-  author: "{{ cookiecutter.author }}"
+  copyright: "{{ cookiecutter.copyright }}"
+  maintainer: "{{ cookiecutter.maintainer }}"
   scm_platform: "{{ cookiecutter.scm_platform }}"
   scm_namespace: "{{ cookiecutter.scm_namespace }}"
   email: "{{ cookiecutter.email }}"
@@ -15,8 +16,8 @@ default_context:
   line_length: {{ cookiecutter.line_length }}
   docstring_style: "{{ cookiecutter.docstring_style }}"
   docstring_length: {{ cookiecutter.docstring_length }}
-  use_bdd: {{ cookiecutter.use_bdd }}
   commit_convention: "{{ cookiecutter.commit_convention }}"
+  use_bdd: {{ cookiecutter.use_bdd }}
   coverage_service: "{{ cookiecutter.coverage_service }}"
   create_docker: {{ cookiecutter.create_docker }}
   app_type: "{{ cookiecutter.app_type }}"

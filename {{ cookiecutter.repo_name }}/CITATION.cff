@@ -8,7 +8,7 @@ message: >-
   metadata from this file.
 type: software
 authors:
-  - name: {{ cookiecutter.author }}
+  - name: {{ cookiecutter.maintainer }}
     email: {{ cookiecutter.email }}
 repository-code: '{{ cookiecutter.__scm_base_url }}'
 repository: '{{ cookiecutter.__scm_base_url }}'

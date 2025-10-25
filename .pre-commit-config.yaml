@@ -7,7 +7,7 @@ repos:
       - id: check-yaml
         exclude: ^{{ cookiecutter.repo_name }}/
       - id: end-of-file-fixer
-        exclude: LICENCE
+        exclude: (LICENCE|_licences)
 
   - repo: local
     hooks:

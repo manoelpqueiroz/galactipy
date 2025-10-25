@@ -10,10 +10,10 @@ license = {% raw %}{{% endraw %} text = "{{ cookiecutter.licence }}" {% raw %}}{
 readme = "README.md"
 requires-python = ">={{ cookiecutter.minimal_python_version }}"
 authors = [
-  {% raw %}{{% endraw %} name = "{{ cookiecutter.author }}", email = "{{ cookiecutter.email }}" {% raw %}}{% endraw %},
+  {% raw %}{{% endraw %} name = "{{ cookiecutter.maintainer }}", email = "{{ cookiecutter.email }}" {% raw %}}{% endraw %},
 ]
 maintainers = [
-  {% raw %}{{% endraw %} name = "{{ cookiecutter.author }}", email = "{{ cookiecutter.email }}" {% raw %}}{% endraw %},
+  {% raw %}{{% endraw %} name = "{{ cookiecutter.maintainer }}", email = "{{ cookiecutter.email }}" {% raw %}}{% endraw %},
 ]
 # Keywords description https://python-poetry.org/docs/pyproject/#keywords
 keywords = []  # UPDATEME with relevant keywords
@@ -224,7 +224,7 @@ max-doc-length = {{ cookiecutter.docstring_length }}
 convention = "{{ cookiecutter.docstring_style }}"
 {%+ endif %}
 [tool.ruff.lint.flake8-copyright]
-author = "{{ cookiecutter.author }}"
+author = "{{ cookiecutter.copyright }}"
 
 [tool.ruff.lint.pylint]
 max-bool-expr = 3
