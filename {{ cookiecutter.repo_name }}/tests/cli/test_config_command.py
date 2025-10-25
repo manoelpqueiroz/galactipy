@@ -1,3 +1,5 @@
+from ast import literal_eval
+
 from typer.testing import CliRunner
 
 from dynaconf.base import BoxList
@@ -33,7 +35,9 @@ def test_get_entire_config():
 
 
 @given(
-    parsers.parse('the configuration has a "{key}" key with a value of "{value}"'),
+    parsers.parse(
+        'the configuration contains the key-value pair of "{key}" and "{value}"'
+    ),
     target_fixture="config_dict",
 )
 def set_test_key(sandbox_manager, key, value):
@@ -65,9 +69,25 @@ def successful_termination(cli_run):
     assert cli_run.exit_code == 0
 
 
-@scenario("config_command.feature", "Get a specific configuration value")
-def test_get_specific_value():
+@scenario("config_command.feature", "Get individual configuration value")
+def test_get_individual_value():
     pass
+
+
+@given(parsers.parse('the configuration has a "{key}" key with a value of {value} and type {value_type}'))
+def set_individual_test_key(sandbox_manager, key, value, value_type):
+    if value_type == "string":
+        saved_value = value
+
+    else:
+        saved_value = literal_eval(value)
+
+    sandbox_manager["settings", key] = saved_value
+
+    sandbox_manager.save_all()
+    sandbox_manager.reload_all()
+
+    assert sandbox_manager["settings", key] == saved_value
 
 
 @when(
@@ -80,9 +100,9 @@ def get_key(sandbox_manager, sandbox_config_file, key):
     return results
 
 
-@then(parsers.parse('the terminal prints "{value}" to the user'))
-def get_command_output(cli_run, value):
-    assert cli_run.output == value + "\n"
+@then(parsers.parse("the terminal prints {output} to the user"))
+def get_command_output(cli_run, output):
+    assert cli_run.output == f"{output}\n"
 
 
 @scenario("config_command.feature", "Get an invalid configuration value")
@@ -162,7 +182,7 @@ def setup_set_empty_string(sandbox_manager, sandbox_config_file, key):
 
 @then(parsers.parse('the terminal shows a "{msg}" message'))
 def failed_value_parsing(cli_run, msg):
-    assert cli_run.output == f'{msg} ""\n'
+    assert cli_run.output == f"{msg}\n"
 
 
 @scenario("config_command.feature", "Set a sequence value")
@@ -174,7 +194,7 @@ def test_set_sequence_values():
     parsers.parse('the set program receives the "{key}" key and value {value}'),
     target_fixture="cli_run",
 )
-def setup_sequence_value(sandbox_manager, sandbox_config_file, key, value):
+def setup_non_string_value(sandbox_manager, sandbox_config_file, key, value):
     results = runner.invoke(
         config_set_app, args=[key, value, "--path", sandbox_config_file]
     )
@@ -201,10 +221,81 @@ def test_set_boolean_values():
 
 
 @then(parsers.parse('the value for "{key}" is of a boolean type'))
-def check_dict_type_value(sandbox_manager, key):
+def check_bool_type_value(sandbox_manager, key):
     value = sandbox_manager["settings", key]
 
     assert isinstance(value, bool)
+
+
+@scenario("config_command.feature", "Set positive integer value")
+def test_set_positive_integer_values():
+    pass
+
+
+@then(parsers.parse('the value for "{key}" is of an integer type'))
+def check_int_type_value(sandbox_manager, key):
+    value = sandbox_manager["settings", key]
+
+    assert isinstance(value, int)
+
+
+@scenario("config_command.feature", "Set valid negative integer value")
+def test_set_negative_integer_values():
+    pass
+
+
+@when(
+    parsers.parse(
+        'the set program receives the "{key}" key and value {value} with a double dash'
+    ),
+    target_fixture="cli_run",
+)
+def setup_negative_number(sandbox_manager, sandbox_config_file, key, value):
+    results = runner.invoke(
+        config_set_app, args=[key, "--path", sandbox_config_file, "--", value]
+    )
+    sandbox_manager.reload_all()
+
+    return results
+
+
+@scenario("config_command.feature", "Set positive float value")
+def test_set_positive_float_values():
+    pass
+
+
+@then(parsers.parse('the value for "{key}" is of a float type'))
+def check_float_type_value(sandbox_manager, key):
+    value = sandbox_manager["settings", key]
+
+    assert isinstance(value, float)
+
+
+@scenario("config_command.feature", "Set valid negative float value")
+def test_set_negative_float_values():
+    pass
+
+
+@scenario("config_command.feature", "Set invalid negative numbers")
+def test_set_invalid_negative_numbers():
+    pass
+
+
+@then("the program exits with status 2")
+def ensure_status_2(cli_run):
+    assert cli_run.exit_code == 2
+
+
+@scenario("config_command.feature", "Set near numeric values")
+def test_set_near_numeric_value():
+    pass
+
+
+@then(parsers.parse('the value for "{key}" is of a string type'))
+def check_string_type_value(sandbox_manager, key):
+    value = sandbox_manager["settings", key]
+
+    assert isinstance(value, str)
 
 
 @scenario("config_command.feature", "Set a mapping value")
@@ -213,10 +304,15 @@ def test_set_dict_values():
 
 
 @then(parsers.parse('the value for "{key}" is of a dictionary type'))
-def check_bool_type_value(sandbox_manager, key):
+def check_dict_type_value(sandbox_manager, key):
     value = sandbox_manager["settings", key]
 
     assert isinstance(value, dict)
+
+
+@scenario("config_command.feature", "Set malformed collection type")
+def test_malformed_collection():
+    pass
 
 
 @scenario("config_command.feature", "Extend non-existing key without creating")
@@ -379,20 +475,35 @@ class TestGetCommand:
         results = runner.invoke(config_get_app, args=["--path", file])
         manager.reload_all()
 
-        assert results.output == str(config_dict) + "\n"
         assert results.exit_code == 0
-
+        assert results.output == str(config_dict) + "\n"
 
     @pytest.mark.standard
-    def test_get_specific_value(self, setup_sample_manager):
-        manager, file = setup_sample_manager.values()
+    @pytest.mark.parametrize(
+        ("value", "output"),
+        (
+            ("somevalue", "'somevalue'"),
+            ([1, 2, "a"], "[1, 2, 'a']"),
+            ({"a": 1, "b": 2}, "{'a': 1, 'b': 2}"),
+        ),
+    )
+    def test_get_individual_value(
+        self, generate_test_config, value, output
+    ):
+        manager, file = generate_test_config.values()
+
+        manager["settings", "test"] = value
+
+        manager.save_all()
+        manager.reload_all()
+
+        assert manager["settings", "test"] == value
 
         results = runner.invoke(config_get_app, args=["test", "--path", file])
         manager.reload_all()
 
-        assert results.output == "somevalue\n"
         assert results.exit_code == 0
-
+        assert results.output == f"{output}\n"
 
     @pytest.mark.standard
     def test_get_invalid_value(self, setup_sample_manager):
@@ -400,8 +511,8 @@ class TestGetCommand:
 
         results = runner.invoke(config_get_app, args=["notest", "--path", file])
 
-        assert results.exc_info[0] is KeyError
         assert results.exit_code == 1
+        assert results.exc_info[0] is KeyError
 
 
 @pytest.mark.cli
@@ -418,9 +529,8 @@ class TestSetCommand:
         results = runner.invoke(config_set_app, args=[key, value, "--path", file])
         manager.reload_all()
 
-        assert manager["settings", key] == value
         assert results.exit_code == 0
-
+        assert manager["settings", key] == value
 
     @pytest.mark.standard
     def test_set_existing_value(self, setup_sample_manager):
@@ -431,9 +541,8 @@ class TestSetCommand:
         results = runner.invoke(config_set_app, args=[key, value, "--path", file])
         manager.reload_all()
 
-        assert manager["settings", key] == value
         assert results.exit_code == 0
-
+        assert manager["settings", key] == value
 
     @pytest.mark.edge
     def test_set_empty_string(self, generate_test_config):
@@ -442,9 +551,8 @@ class TestSetCommand:
         results = runner.invoke(config_set_app, args=["test", "", "--path", file])
         manager.reload_all()
 
-        assert results.output == 'Could not parse the value ""\n'
         assert results.exit_code == 1
-
+        assert results.output == 'Could not parse the value ""\n'
 
     @pytest.mark.standard
     @pytest.mark.parametrize(
@@ -452,8 +560,10 @@ class TestSetCommand:
         (
             "[0, 1, 2]",
             "(0, 1, 2)",
+            "{0, 1, 2}",
             "['a', 'b', 'c']",
             "('a', 'b', 'c')",
+            "{'a', 'b', 'c'}",
             '[{"a": 1, "b": 2}, {"c": 3, "d": 4}]',
         ),
     )
@@ -468,9 +578,8 @@ class TestSetCommand:
 
         read_value = manager["settings", key]
 
-        assert isinstance(read_value, BoxList)
         assert results.exit_code == 0
-
+        assert isinstance(read_value, BoxList)
 
     @pytest.mark.standard
     @pytest.mark.parametrize(
@@ -487,9 +596,141 @@ class TestSetCommand:
 
         read_value = manager["settings", key]
 
-        assert isinstance(read_value, bool)
         assert results.exit_code == 0
+        assert isinstance(read_value, bool)
 
+    @pytest.mark.standard
+    @pytest.mark.parametrize("value", ("0", "2", "69", "818", "6128", "85195091098098"))
+    def test_set_positive_integer_values(self, generate_test_config, value):
+        manager, file = generate_test_config.values()
+        key = "test"
+
+        results = runner.invoke(config_set_app, args=[key, value, "--path", file])
+        manager.reload_all()
+
+        assert manager.get(f"settings.{key}") is not None
+
+        read_value = manager["settings", key]
+
+        assert results.exit_code == 0
+        assert isinstance(read_value, int)
+
+    @pytest.mark.standard
+    @pytest.mark.parametrize("value", ("-1", "-28", "-351", "-6815", "-1298091902859"))
+    def test_set_negative_integer_values(self, generate_test_config, value):
+        manager, file = generate_test_config.values()
+        key = "test"
+
+        results = runner.invoke(config_set_app, args=[key, "--path", file, "--", value])
+        manager.reload_all()
+
+        assert manager.get(f"settings.{key}") is not None
+
+        read_value = manager["settings", key]
+
+        assert results.exit_code == 0
+        assert isinstance(read_value, int)
+
+    @pytest.mark.standard
+    @pytest.mark.parametrize(
+        "value",
+        (
+            "0.0",
+            "0.05",
+            "81.098088",
+            "1518e3",
+            "1.81889e15",
+            "151.8189E7",
+            "0.181809E12",
+            "1.81889e-15",
+            "0.181809E-12",
+        )
+    )
+    def test_set_positive_float_values(self, generate_test_config, value):
+        manager, file = generate_test_config.values()
+        key = "test"
+
+        results = runner.invoke(config_set_app, args=[key, value, "--path", file])
+        manager.reload_all()
+
+        assert manager.get(f"settings.{key}") is not None
+
+        read_value = manager["settings", key]
+
+        assert results.exit_code == 0
+        assert isinstance(read_value, float)
+
+    @pytest.mark.standard
+    @pytest.mark.parametrize(
+        "value",
+        (
+            "-0.05",
+            "-81.098088",
+            "-1518e3",
+            "-1.81889e15",
+            "-151.8189E7",
+            "-0.181809E12",
+            "-1.81889e-15",
+            "-0.181809E-12",
+        )
+    )
+    def test_set_negative_float_values(self, generate_test_config, value):
+        manager, file = generate_test_config.values()
+        key = "test"
+
+        results = runner.invoke(config_set_app, args=[key, "--path", file, "--", value])
+        manager.reload_all()
+
+        assert manager.get(f"settings.{key}") is not None
+
+        read_value = manager["settings", key]
+
+        assert results.exit_code == 0
+        assert isinstance(read_value, float)
+
+    @pytest.mark.edge
+    @pytest.mark.parametrize(
+        "value",
+        (
+            "-1",
+            "-28",
+            "-351",
+            "-6815",
+            "-1298091902859",
+            "-0.05",
+            "-81.098088",
+            "-1518e3",
+            "-1.81889e15",
+            "-151.8189E7",
+            "-0.181809E12",
+            "-1.81889e-15",
+            "-0.181809E-12",
+        ),
+    )
+    def test_set_invalid_negative_numbers(self, generate_test_config, value):
+        manager, file = generate_test_config.values()
+        key = "test"
+
+        results = runner.invoke(config_set_app, args=[key, value, "--path", file])
+        manager.reload_all()
+
+        assert results.exit_code == 2
+
+    @pytest.mark.edge
+    @pytest.mark.parametrize("value", ("1f", "1.0x100"))
+    def test_set_near_numeric_value(self, generate_test_config, value):
+        manager, file = generate_test_config.values()
+        key = "test"
+
+        results = runner.invoke(config_set_app, args=[key, value, "--path", file])
+        manager.reload_all()
+
+        assert manager.get(f"settings.{key}") is not None
+
+        read_value = manager["settings", key]
+
+        assert results.exit_code == 0
+        assert isinstance(read_value, str)
 
     @pytest.mark.standard
     def test_set_dict_values(self, generate_test_config):
@@ -504,8 +745,31 @@ class TestSetCommand:
 
         read_value = manager["settings", key]
 
-        assert isinstance(read_value, dict)
         assert results.exit_code == 0
+        assert isinstance(read_value, dict)
+
+    @pytest.mark.edge
+    @pytest.mark.parametrize(
+        "value",
+        (
+            "[1, 2",
+            "(1, 2",
+            "{1, 2",
+            "['a', 'b'",
+            "('a', 'b'",
+            "{'a', 'b'",
+            "{'a', 'b'",
+            "{'a': 0",
+        ),
+    )
+    def test_malformed_collection(self, generate_test_config, value):
+        manager, file = generate_test_config.values()
+
+        results = runner.invoke(config_set_app, args=["test", value, "--path", file])
+        manager.reload_all()
+
+        assert results.exit_code == 1
+        assert results.output == f'Could not parse the value "{value}"\n'
 
 
 @pytest.mark.cli
@@ -525,9 +789,8 @@ class TestExtendCommand:
             "run the command with the `--create-on-missing` option\n"
         )
 
-        assert results.output == msg
         assert results.exit_code == 1
-
+        assert results.output == msg
 
     @pytest.mark.standard
     def test_extend_with_creating(self, generate_test_config):
@@ -544,11 +807,10 @@ class TestExtendCommand:
 
         read_value = manager["settings", key]
 
+        assert results.exit_code == 0
         assert isinstance(read_value, BoxList)
         assert len(read_value) == 1
         assert read_value[-1] == value
-        assert results.exit_code == 0
-
 
     @pytest.mark.standard
     @pytest.mark.parametrize("flag", (True, False))
@@ -579,11 +841,10 @@ class TestExtendCommand:
 
         read_value = manager["settings", key]
 
+        assert results.exit_code == 0
         assert isinstance(read_value, BoxList)
         assert len(read_value) == 4
         assert read_value[-1] == value
-        assert results.exit_code == 0
-
 
     @pytest.mark.edge
     @pytest.mark.parametrize("flag", (True, False))
@@ -612,9 +873,8 @@ class TestExtendCommand:
             f"{current_value} instead\n"
         )
 
-        assert results.output == msg
         assert results.exit_code == 1
-
+        assert results.output == msg
 
     @pytest.mark.edge
     @pytest.mark.parametrize("flag", (True, False))
@@ -637,8 +897,8 @@ class TestExtendCommand:
 
         manager.reload_all()
 
-        assert results.output == 'Could not parse the value ""\n'
         assert results.exit_code == 1
+        assert results.output == 'Could not parse the value ""\n'
 
 
 @pytest.mark.cli
@@ -655,13 +915,12 @@ class TestUnsetCommand:
         assert manager.get(f"settings.{key}") is None
         assert results.exit_code == 0
 
-
     def test_unset_non_existing_value(self, setup_sample_manager):
         manager, file = setup_sample_manager.values()
 
         results = runner.invoke(config_unset_app, args=["notest", "--path", file])
         manager.reload_all()
 
-        assert results.exc_info[0] is SettingNotFoundError
         assert results.exit_code == 1
+        assert results.exc_info[0] is SettingNotFoundError
 {%- endif %}

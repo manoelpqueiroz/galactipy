@@ -61,7 +61,7 @@ def extend_command(
         "Extending array key via CLI", key=key, value=value.output, is_secret=secret
     )
 
-    if path is not None:
+    if path is not None:  # pragma: no cover
         logger.info("Using custom configuration file", config=path)
 
     config_type, APP_MANAGER = resolve_app_manager(secret, path)

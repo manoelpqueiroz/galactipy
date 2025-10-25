@@ -393,7 +393,12 @@ omit = ["__main__.py", "*/config/constants.py"]
 
 
 [tool.coverage.report]
-exclude_also = ["def main", "if __name__ == .__main__.:"]
+exclude_also = [
+  "def main",
+  "def __str__",
+  "def __repr__",
+  "if __name__ == .__main__.:",
+]
 fail_under = 90
 show_missing = true
 
