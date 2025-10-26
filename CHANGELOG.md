@@ -1,3 +1,22 @@
+## 0.20.1 (2025-10-26)
+
+### :package: Build System & CI/CD (1 change)
+
+- [:construction_worker: Update template directory glob pattern](galactipy/galactipy@6a757866a9959921f2b4c0850a1fc9f8a6fa396a) ([merge request](galactipy/galactipy!84))
+
+### :gear: Internals (1 change)
+
+- [:wrench: Simplify test coverage report for the project](galactipy/galactipy@3a8ff85f728093cbf6876168bb7cf1b9097f67b1) ([merge request](galactipy/galactipy!84))
+
+### :construction_site: Template Internals (2 changes)
+
+- [:construction_worker: Update template CI syntax](galactipy/galactipy@aa0b1d695f410a25ac2a406fa35db4c2eb2e2730) ([merge request](galactipy/galactipy!84))
+- [:wrench: Simplify test coverage report for the template](galactipy/galactipy@a0635f99aaebfa677ef9c5b683d39b257cb9cee4) ([merge request](galactipy/galactipy!84))
+
+### :pencil: Documentation (1 change)
+
+- [:pencil: Update Invoke documentation](galactipy/galactipy@67c58a3d5a439b63711c5230bfa7cb01ae0b9157) ([merge request](galactipy/galactipy!84))
+
 ## 0.20.0 (2025-10-25)
 
 ### :milky_way: Components (2 changes)
