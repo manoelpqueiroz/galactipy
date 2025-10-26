@@ -113,7 +113,6 @@ test-py313:
     expire_in: 1 week
   script:
     - *default_scripts
-    - invoke coverage
 
 codacy-report:
   stage: coverage
