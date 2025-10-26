@@ -112,7 +112,6 @@ test-py{{ version[0] }}{{ version[1] }}:
   script:
     - *test_scripts
 {%- if version[0] == list_python_version[0] and version[1] == list_python_version[1] %}
-    - invoke coverage
   artifacts:
     name: coverage_$CI_COMMIT_REF_NAME_$CI_JOB_NAME_$CI_JOB_STARTED_AT
     paths:
