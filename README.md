@@ -122,14 +122,16 @@ and best development practices for Python.
 
 ### :magic_wand: We Assemble the Tools to Ship, You Bring Your Code to Life
 
-- The boilerplate code
+- The boilerplate code provided
+  with the template
   is already
   100% covered
-  by unit tests
-  so you can fully commit
-  to working on your project
-  instead of dealing
-  with test cases;
+  by unit tests;
+  you can dive in
+  directly into
+  your project's implementation
+  without the hassle of
+  handling test cases;
 - Predefined CI/CD build workflow
   with [**GitLab CI**][ft25]
   and [**Github Actions**][ft26];
@@ -408,11 +410,11 @@ to set up the repository.
 |   `invoke lint`    | Check compliance with linting rules, with an option to correct those considered fixable by Ruff. |
 |   `invoke mypy`    | Run [Mypy][ft14] to check for static typing.                                                     |
 |   `invoke test`    | Run the test suite with [Pytest][ft16].                                                          |
-| `invoke coverage`  | Generate the coverage file for upload to [Coveralls][ft19] or [Codacy][ft20].                    |
+|  `invoke report`   | Run the `test` and `mypy` tasks and open their HTML coverage reports.                            |
 | `invoke security`  | Run security checks with [Bandit][ft15] and check `pyproject.toml` integrity.                    |
 
 The **`invoke sweep`** task groups all tasks
-except for `coverage`
+except for `report`
 into a single command.
 
 #### Project Building & Publishing
