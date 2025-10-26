@@ -20,11 +20,8 @@ jobs:
       with:
         python-version: "{% endraw %}{{ cookiecutter.minimal_python_version }}{% raw %}"
 
-    - name: 💽 Install Invoke
-      run: pip install invoke
-
     - name: 💽 Install poetry
-      run: invoke poetry-download
+      uses: snok/install-poetry@v1
 
     - name: 📦 Build
       run: invoke build
