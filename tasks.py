@@ -238,35 +238,25 @@ def test(c: Context, verbosity: int = 0, warn: bool = False) -> int:  # noqa: PT
         warn=warn,
     )
 
+    c.run(f"{c.venv_bin_path}/coverage xml", pty=IS_UNIX_OS, warn=True)
+    c.run(f"{c.venv_bin_path}/coverage html", pty=IS_UNIX_OS, warn=True)
+
     return result.return_code
 
 
-@task(call(venv, hide=True))
-def coverage(c: Context, report: bool = False, warn: bool = False) -> int | None:
-    """Generate coverage file in XML for integration with Codacy."""
-    xml_result = c.run(f"{c.venv_bin_path}/coverage xml", pty=IS_UNIX_OS)
-    html_result = c.run(f"{c.venv_bin_path}/coverage html", pty=IS_UNIX_OS)
-
-    if warn:
-        return max(xml_result.return_code, html_result.return_code)
-
-    if report:
-        c.run(FILE_OPENER.format("htmlcov/index.html"))
-
-    return None
-
-
-@task(call(venv, hide=True))
-def report(c: Context) -> None:
+@task(call(venv, hide=True), aliases=["coverage"])
+def report(c: Context, pytest: bool = False, annotations: bool = False) -> None:
     """Run test and type checking suites, and open their HTML reports."""
     runner = TaskRunner()
 
     runner.run_task(test, "Pytest", c, warn=True)
     runner.run_task(mypy, "Type checks", c, warn=True)
-    runner.run_task(coverage, "Coverage", c, warn=True)
 
-    c.run(FILE_OPENER.format("htmlcov/index.html"))
-    c.run(FILE_OPENER.format("mypycov/index.html"))
+    if not annotations:
+        c.run(FILE_OPENER.format("htmlcov/index.html"))
+
+    if not pytest:
+        c.run(FILE_OPENER.format("mypycov/index.html"))
 
     if runner.has_failures():
         failed_count = len(runner.get_failed_tasks())

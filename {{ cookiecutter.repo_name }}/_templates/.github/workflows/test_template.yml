@@ -28,11 +28,10 @@ jobs:
       with:
         python-version: ${{ inputs.python-version }}
 
-    - name: 💽 Install Invoke
-      run: pip install invoke
-
     - name: 💽 Install poetry
-      run: invoke poetry-download
+      uses: snok/install-poetry@v1
+      with:
+        virtualenvs-in-project: true
 
     - name: 🫙 Set up cache
       uses: actions/cache@v2.1.6
@@ -42,23 +41,18 @@ jobs:
 
     - name: 📥 Install dependencies
       run: |
-        poetry config virtualenvs.in-project true
         poetry install
 
     - name: ✒️ Run style checks
       run: |
         invoke codestyle --check
-        invoke check-linter
+        invoke lint
 
     - name: ☑️ Run tests
       run: invoke test
 
     - name: 👮 Run safety checks
-      run: invoke check-safety
-
-    - name: 🕵️ Generate coverage
-      if: ${{ inputs.upload-coverage }}
-      run: invoke coverage
+      run: invoke security
 
     - name: 📤 Upload Coverage to {% endraw %}{{ cookiecutter.coverage_service }}{% raw %}
       if: ${{ inputs.upload-coverage }}{% endraw %}
