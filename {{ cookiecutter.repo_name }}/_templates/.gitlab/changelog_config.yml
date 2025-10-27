@@ -230,8 +230,49 @@ categories:
   detect: ":gem: Lean Practices Gains"
   diligence: ":gem: Lean Practices Gains"
   rskm: ":gem: Lean Practices Gains"
-{%- endraw %}{% endif %}{% raw %}
+{%- endraw %}{% else %}{% raw %}
+  feature: ":new: Additions"
+  add: ":new: Additions"
+  added: ":new: Additions"
 
+  change: ":arrow_right: Changes"
+  changes: ":arrow_right: Changes"
+  changed: ":arrow_right: Changes"
+  update: ":arrow_right: Changes"
+  updates: ":arrow_right: Changes"
+  updated: ":arrow_right: Changes"
+
+  deprecation: ":city_dusk: Deprecations & Removals"
+  deprecations: ":city_dusk: Deprecations & Removals"
+  deprecate: ":city_dusk: Deprecations & Removals"
+  deprecated: ":city_dusk: Deprecations & Removals"
+  removal: ":city_dusk: Deprecations & Removals"
+  removals: ":city_dusk: Deprecations & Removals"
+  remove: ":city_dusk: Deprecations & Removals"
+  removed: ":city_dusk: Deprecations & Removals"
+  sunset: ":city_dusk: Deprecations & Removals"
+
+  bug: ":toolbox: Fixes"
+  bugfix: ":toolbox: Fixes"
+  fix: ":toolbox: Fixes"
+  fixed: ":toolbox: Fixes"
+  hotfix: ":toolbox: Fixes"
+  security: ":toolbox: Fixes"
+  sec: ":toolbox: Fixes"
+  critical: ":toolbox: Fixes"
+  leak: ":toolbox: Fixes"
+  injection: ":toolbox: Fixes"
+
+  dependencies: ":up: Dependencies Updates"
+  dep: ":up: Dependencies Updates"
+  deps: ":up: Dependencies Updates"
+
+  documentation: ":books: Documentation"
+  doc: ":books: Documentation"
+  docs: ":books: Documentation"
+
+  other: ":black_circle: Other Developments"
+{%- endraw %}{% endif %}{% raw %}
 template: |
   {% if categories %}
   {% each categories %}
