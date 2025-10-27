@@ -1,3 +1,11 @@
+## 0.20.2 (2025-10-27)
+
+### :construction_site: Template Internals (3 changes)
+
+- [:sparkles: Update Release Drafter categories](galactipy/galactipy@b2875ebb9be94787cb55002210e1b78632a020aa) ([merge request](galactipy/galactipy!85))
+- [:sparkles: Include Git trailers for bare repo option](galactipy/galactipy@863751f66fcc9b5dbf39e81a33a9e7918507cd54) ([merge request](galactipy/galactipy!85))
+- [:sparkles: Overhaul Git trailers for the template](galactipy/galactipy@0341fc613dd31a4147699ce3d21a63ad5a6f3391) ([merge request](galactipy/galactipy!85))
+
 ## 0.20.1 (2025-10-26)
 
 ### :package: Build System & CI/CD (1 change)
