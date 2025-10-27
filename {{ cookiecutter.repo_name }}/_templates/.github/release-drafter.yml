@@ -5,18 +5,86 @@ name-template: "v$NEXT_PATCH_VERSION"
 tag-template: "v$NEXT_PATCH_VERSION"
 
 categories:
-  - title: ":rocket: Features"
-    labels: [enhancement, feature]
-  - title: ":wrench: Fixes & Refactoring"
-    labels: [bug, refactoring, bugfix, fix]
-  - title: ":package: Build System & CI/CD"
-    labels: [build, ci, testing]
-  - title: ":boom: Breaking Changes"
-    labels: [breaking]
-  - title: ":memo: Documentation"
-    labels: [documentation]
-  - title: ":arrow_up: Dependencies updates"
-    labels: [dependencies]
+{%- if cookiecutter.app_type != 'bare_repo' %}
+  # 1. Changes that users directly face
+  - title: ":satellite_orbital: Command-line Interface" # specifically the CLI API that bridges the interface to the actual program
+    labels: [cli, command, commands, terminal, output, shell]
+  - title: ":keyboard: CLI Usage" # developments that change how the user interacts with the CLI, like options and arguments
+    labels: [flag, flags, option, options, opt, opts, argument, arguments, arg, args, usage]
+{%- if cookiecutter.app_type != 'cli' %}
+  - title: ":computer: User Interface Improvements" # widgets, screens, layout, readability etc.
+    labels: [tui, ui, layout, screen, element, elements, panel, panels, widget, widgets, accessibility]
+  - title: ":video_game: User Experience" # encompasses all interaction processes of the user with the TUI, the TUI's behaviour
+    labels: [ux, xp, interaction, navigation, nav, shortcut, shortcuts]
+{%- endif %}
+  - title: ":peacock: Customisation"
+    labels: [customization, customize, theme, themes, theming, style, styles, styling]
+  # Developments that help users navigate and use the application with more ease,
+  # like tutorials, notifications, command helpers, argument/option groups, help panels etc.
+  - title: ":beginner: Nudging"
+    labels: [nudge, nudges, nudging, tutorial, tutorials, hint, hints, help, helper, helpers]
+  - title: ":electric_plug: Extensibility" # entry points, plugin enablers, improvements to type hints etc.
+    labels: [plugin, plugins, hook, hooks, event, events, entrypoint, entrypoints, extension, extensions, extend, scaffold, scaffolds, scaffolding, type, types, typing]
+  - title: ":link: Compatibility & Integrations" # external services and tools
+    labels: [api, rest, restful, integration, integrations, integrate, compatibility, compat, service, services, webservice, webservices, external]
+  - title: ":earth_americas: Localisation"
+    labels: [localization, localize, translation, translations, translate]
+
+  # 2. Changes that impact users, but are not directly visible
+  - title: ":jigsaw: Application Components" # Components in the backend
+    labels: [component, components, module, modules, backend, performance, improvement, improvements, improve]
+  - title: ":floppy_disk: Database Changes"
+    labels: [database, db, data, schema]
+  - title: ":city_sunset: Deprecations & Removals"
+    labels: [deprecation, deprecations, deprecate, removal, removals, remove, sunset]
+  - title: ":toolbox: Fixes" # Fixes for wrongful behaviour
+    labels: [bug, bugfix, fix, hotfix, security, sec, critical, leak, injection]
+
+  # 3. Changes that are irrelevant to users
+  - title: ":factory_worker: Codebase Renovation" # architectural changes, refactoring and other improvements done under the hood
+    labels: [architecture, arch, refactor, refactors, refactoring, rework, reworks, reworking, plumbing]
+  - title: ":up: Dependencies Updates"
+    labels: [dependencies, dep, deps]
+  - title: ":comet: Build & Release Optimisation" # how the project is set up for compilation
+    labels: [build, building, packaging, script, scripts, ci, workflow, workflows, environment, env, infrastructure, infra, iac]
+  - title: ":repeat: Design & Validation" # code integrity, tests and scenarios in BDD
+{%- if cookiecutter.use_bdd %}
+    labels: [design, ideation, test, tests, testing, bdd, scenario, scenarios, story, stories]
+{%- else %}
+    labels: [design, ideation, test, tests, testing]
+{%- endif %}
+  - title: ":suspension_railway: Developer Experience" # changes to internal configuration to standardise and ease development workflow
+    labels: [dev, devx, devdep, devdeps, pyproject, tool, tools, specification, specifications, spec, specs]
+
+  # 4. Knowledge Management
+  - title: ":books: Documentation" # Formal Documentation
+    labels: [documentation, doc, docs]
+  - title: ":scroll: Project Policies"
+    labels: [policy, policies, rule, rules, milestone, milestones, epic, epics, roadmap, template, templates, templating]
+  - title: ":gem: Lean Practices Gains" # Internal improvements to detect and report issues, targeting CI/CD maturity
+    labels: [monitor, monitoring, tracker, trackers, tracking, log, logs, logging, alert, alerts, detection, detect, diligence, rskm]
+{%- else %}
+  - title: ":new: Additions"
+    labels: [feature, add, added]
+
+  - title: ":arrow_right: Changes"
+    labels: [change, changes, changed, update, updates, updated]
+
+  - title: ":city_sunset: Deprecations & Removals"
+    labels: [deprecation, deprecations, deprecate, removal, removals, remove, sunset]
+
+  - title: ":toolbox: Fixes"
+    labels: [bug, bugfix, fix, hotfix, security, sec, critical, leak, injection]
+
+  - title: ":up: Dependencies Updates"
+    labels: [dependencies, dep, deps]
+
+  - title: ":books: Documentation"
+    labels: [documentation, doc, docs]
+
+  - title: ":black_circle: Other Developments"
+    labels: [other]
+{%- endif %}
 
 template: |
   ## What's Changed
