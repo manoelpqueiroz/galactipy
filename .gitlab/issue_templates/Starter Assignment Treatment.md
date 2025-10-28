@@ -91,6 +91,6 @@ Should you feel interested in delivering this item after reading this treatment,
 
 - Comment on this thread mentioning you would like to work on this starter assignment;
 - Assign the work item to you by clicking on the _"assign yourself"_ link at the right panel;
-- Read the `CONTRIBUTING` guide to become familiar with our procedures before you start working on the solution.
+- Read the [`CONTRIBUTING`][4] guide to become familiar with our procedures before you start working on the solution.
 
 /status Needs Delivery Steps

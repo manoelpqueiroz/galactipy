@@ -57,10 +57,9 @@ This template should be used to propose changes resolving a major issue with the
 
 - [ ] I have assembled the minimal configuration to resolve the root cause of the issue;
 - [ ] I have tested my implementation to confirm the issue is resolved;
-- [ ] I have either:
-  - Bumped the Galactipy [version][9] appropriately as my final commit for this change;
-  - Kept the Galactipy version the same, as it does not change end-user files.
-
+- Regarding versioning: <!-- Pick only one -->
+  - [ ] I have bumped the Galactipy [version][9] appropriately as my final commit for this change;
+  - [ ] I have kept the Galactipy version the same, as it does not change end-user files.
 >>>
 
 >>> [!tip] :reminder_ribbon: Contribution control
@@ -82,9 +81,9 @@ I attest that the proposed change meets the [Contribution Acceptance Criteria][1
 
 - [ ] The change is as small as possible;
 - [ ] The root cause of the issue is addressed without workarounds;
-- [ ] The change either:
-  - Does not require any addition or modification to unit tests;
-  - Modifies Cookiecutter pre-gen and/or post-gen hooks, with proper tests being added;
+- The change: <!-- Pick only one -->
+  - [ ] Does not require any addition or modification to unit tests;
+  - [ ] Modifies Cookiecutter pre-gen and/or post-gen hooks, with proper tests being added;
 - [ ] The commit history is logical;
 - [ ] The commit history applies the proper Gitmoji;
 - [ ] The commit title applies imperative mood;

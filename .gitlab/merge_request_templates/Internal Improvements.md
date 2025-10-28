@@ -54,10 +54,9 @@ This template should be used to propose and discuss changes to tools used to man
 
 - [ ] I have assembled the minimal configuration to implement the proposed change without breaking functionality;
 - [ ] I have provided a way for other developers to understand when and how to use the tool being added/changed/replaced;
-- [ ] I have either:
-  - Evaluated that this change does not require updating the documentation;
-  - Updated the documentation highlighting this change and any relevant information.
-
+- Regarding documentation and knowledge management: <!-- Pick only one -->
+  - [ ] I have evaluated that this change does not require updating the documentation;
+  - [ ] I have updated the documentation highlighting this change and any relevant information.
 >>>
 
 >>> [!tip] :reminder_ribbon: Contribution control
@@ -83,9 +82,9 @@ I attest that the proposed change meets the [Contribution Acceptance Criteria][1
 
 - [ ] The change is as small as possible;
 - [ ] Only one specific feature is implemented and does not combine things;
-- [ ] The change either:
-  - Does not require updating the documentation;
-  - Proper documentation was added, promoting and preserving [institutional knowledge][11];
+- The change: <!-- Pick only one -->
+  - [ ] Does not require updating the documentation;
+  - [ ] Added the proper documentation on the topic, promoting and preserving [institutional knowledge][11];
 - [ ] The commit history is logical;
 - [ ] The commit history applies the proper Gitmoji;
 - [ ] The commit title applies imperative mood;

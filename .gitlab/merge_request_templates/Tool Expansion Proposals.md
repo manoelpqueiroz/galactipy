@@ -83,9 +83,9 @@ I attest that the proposed change meets the [Contribution Acceptance Criteria][1
 - [ ] The change is as small as possible;
 - [ ] Only one specific feature is implemented and does not combine things;
 - [ ] Proper documentation was added, promoting and preserving [institutional knowledge][12];
-- [ ] The change either:
-  - Does not require any addition or modification to unit tests;
-  - Modifies Cookiecutter pre-gen and/or post-gen hooks, with proper tests being added;
+- The change: <!-- Pick only one -->
+  - [ ] Does not require any addition or modification to unit tests;
+  - [ ] Modifies Cookiecutter pre-gen and/or post-gen hooks, with proper tests being added;
 - [ ] The commit history is logical;
 - [ ] The commit history applies the proper Gitmoji;
 - [ ] The commit title applies imperative mood;

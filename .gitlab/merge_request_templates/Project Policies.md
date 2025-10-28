@@ -49,19 +49,16 @@ This template should be used to propose and discuss any changes that affect know
 >>>
 
 >>> [!important] :clipboard: Proposal control
-For Markdown file changes:
 
-- [ ] I have detailed the proposal in the appropriate file;
-- [ ] I have improved content rendering by leveraging [GitLab Flavored Markdown][9];
-- [ ] I have enriched my proposal with links to point readers to further information where relevant, whether internal or external.
-
-For rules in configuration files:
-
-- [ ] I have applied the correct syntax to keep the tool functional for developers;
-- [ ] I have either:
-  - Evaluated that this change does not require updating a Markdown file for rule documentation;
-  - Updated the documentation highlighting this change and any relevant information.
-
+- [ ] The proposal changes policy documents;
+  - [ ] I have detailed the proposal in the appropriate file;
+  - [ ] I have improved content rendering by leveraging [GitLab Flavored Markdown][9];
+  - [ ] I have enriched my proposal with links to point readers to further information where relevant, whether internal or external.
+- [ ] The proposal changes internal configuration files:
+  - [ ] I have applied the correct syntax to keep the tool functional for developers;
+  - Regarding change documentation: <!-- Pick only one -->
+    - [ ] I have evaluated that this configuration change does not require updating a policy file or comment to substantiate it;
+    - [ ] I have updated the documentation highlighting this change and any relevant information.
 >>>
 
 >>> [!tip] :reminder_ribbon: Contribution control
