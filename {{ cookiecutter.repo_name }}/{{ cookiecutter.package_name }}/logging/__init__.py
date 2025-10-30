@@ -23,6 +23,15 @@ def setup_app_logging(*, debug: bool = False):
         backtrace=False,
     )
 
+    # Special log file for bug reporting, containing only the last run produced
+    logger.add(
+        get_default_log_path("report.log"),
+        format=file_formatter,
+        level="TRACE",
+        mode="w",
+        backtrace=False,
+    )
+
     logger.add(
         get_default_log_path("app.jsonl"),
         serialize=True,
