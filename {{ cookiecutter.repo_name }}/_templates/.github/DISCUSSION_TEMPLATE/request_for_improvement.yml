@@ -1,0 +1,104 @@
+labels: [rfi, sts-need-triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        > [!IMPORTANT]
+        > Please run through all items under the **`Applicant Checklist`** section and follow the [_why, not just what_]({{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#say-why-not-just-what) directive.
+        >
+        > ---
+        >
+        > :ok: **Use this template for:** requests for new features and updates to existing features, such as:
+        >
+        > - Configuration options improvements;
+        > - Upgrades to output formatting, including logs;
+        > - Input validation enhancements;
+{%- if cookiecutter.app_type != 'cli' %}
+        > - Shortcuts and navigation;
+        > - Screen layout and widgets;
+        > - Search and filtering functionality;
+        > - Accessibility options;
+{%- endif %}
+        > - Customisation;
+        > - Clearer instructions and documentation;
+        > - Integration with other tools, frameworks and platforms;
+        > - Increased modularity for extending the application.
+        >
+        > :no_good: **Refrain from using this template if:**
+        >
+        > - Your request involves addressing unexpected behaviour :arrow_right: use a **`Request for Correction`**;
+        > - You are unsure your request involves an actual feature :arrow_right: attempt a **`Request for Support`** first;
+        > - You feel your request is not clear enough yet :arrow_right: a **`Request for Support`** is also recommended.
+  - type: checkboxes
+    attributes:
+      label: Applicant Checklist
+      description: Please check all items before proceeding.
+      options:
+        - label: I am using the latest version of {{ cookiecutter.project_name }};
+          required: true
+        - label: I have looked at issues and PRs associated with the current [projects]({{ cookiecutter.__scm_link_url }}/projects?query=is%3Aopen);
+          required: true
+        - label: I have read the [`CONTRIBUTING`]({{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contributing-through-user-requests) guide and I have understood how to improve communication between me and the development team;
+        - label: I provided a concise and clear title for this discussion;
+        - label: I have provided the development team the context surrounding this issue as most detailed as I possibly can;
+        - label: I have followed the [_why, not just what_]({{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#say-why-not-just-what) directive to open this request;
+          required: true
+        - label: I am confident this discussion does not fall in another category.
+  - type: textarea
+    attributes:
+      label: Previous Queries
+      description: "I have explored the [Issue Tracker]({{ cookiecutter.__scm_link_url }}/issues?q=is%3Aissue) looking for duplicates, attempting searches with the following terms:"
+      placeholder: |
+        - ...
+        - ...
+        - ...
+    validations:
+      required: true
+  - type: checkboxes
+    attributes:
+      label: Commitment to Project Support
+      description: "After reading the [Commitment to Help]({{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#commitment-to-help) section of the `CONTRIBUTING` guide and submitting this request, I commit to one of:"
+      options:
+        - label: Read [open discussions]({{ cookiecutter.__scm_link_url }}/issues) until I find **2** where I can help someone and add a comment to help there;
+        - label: Hit the "Watch" button in this repository to receive notifications about the project and help **2** people that ask questions in the future;
+        - label: Review **1** Pull Request by cloning the project and following the [review process]({{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contributing-by-reviewing-changes).
+  - type: dropdown
+    attributes:
+      label: 💭 Request Details
+      description: How would you classify this request?
+      options:
+        - ⌨️ Changes to CLI behaviour
+{%- if cookiecutter.app_type != 'cli' %}
+        - 📱 Changes in the user interface and user experience
+{%- endif %}
+        - 🦚 Customisation options
+        - ℹ️ Improvements to documentation and help menus
+        - 🔌 Proposal for package extension
+        - 🔗 Compatibility/integration with another tool/platform
+        - Something entirely different
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: What improvement do you propose?
+      description: Describe _what_ your request refers to, with as much detail as possible.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Why should we consider this improvement for the project?
+      description: |
+        Defend the reasons why this improvement is important moving forward.
+
+        What problem does it solve?
+        What benefits does it bring and to whom?
+        What would be considered a successful outcome for this development from your perspective?
+
+        Feel free to bring some of your personal experience as a {{ cookiecutter.project_name }} user to let us understand the circumstances that led to this request.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Additional Context
+      description: |
+        Add any other information here: screenshots, links and any content that helps us better visualise your desired outcome are welcome!
