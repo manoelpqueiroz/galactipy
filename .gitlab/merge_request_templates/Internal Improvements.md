@@ -87,8 +87,8 @@ I attest that the proposed change meets the [Contribution Acceptance Criteria][1
   - [ ] Added the proper documentation on the topic, promoting and preserving [institutional knowledge][11];
 - [ ] The commit history is logical;
 - [ ] The commit history applies the proper Gitmoji;
-- [ ] The commit title applies imperative mood;
-- [ ] The commit descriptions sufficiently explains design choices;
+- [ ] The commit titles apply the imperative mood;
+- [ ] The commit descriptions sufficiently explain design choices;
 - [ ] Issues marked for automatic closing are accurate;
 - [ ] Issues requiring manual check have been addressed.
 >>>

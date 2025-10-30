@@ -11,7 +11,7 @@ This template should be used to propose and discuss changes that improve project
 - Changes to documentation outside `{{ cookiecutter.repo_name }}`.
 >>>
 
-## What change do you propose with this MR
+## What change do you propose with this MR?
 
 <!-- Describe WHAT your proposal refers to -->
 
@@ -74,8 +74,8 @@ I attest that the proposed change meets the [Contribution Acceptance Criteria][1
   - [ ] Modifies Cookiecutter pre-gen and/or post-gen hooks, with proper tests being added;
 - [ ] The commit history is logical;
 - [ ] The commit history applies the proper Gitmoji;
-- [ ] The commit title applies imperative mood;
-- [ ] The commit descriptions sufficiently explains design choices;
+- [ ] The commit titles apply the imperative mood;
+- [ ] The commit descriptions sufficiently explain design choices;
 - [ ] Issues marked for automatic closing are accurate;
 - [ ] Issues requiring manual check have been addressed;
 - [ ] The proposed Galactipy version adheres to our view on [EffVer][9].
