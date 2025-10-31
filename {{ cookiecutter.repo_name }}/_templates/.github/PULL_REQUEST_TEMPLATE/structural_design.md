@@ -1,6 +1,8 @@
 # :crayon: Structural Design Deliberation
 
-> [!NOTE] :bulb: To define development decisions on current and future behaviour of the software
+> [!NOTE]
+> :bulb: **To define development decisions on current and future behaviour of the software**
+>
 > This template should be used to discuss and validate high-level design decisions. These decisions shall be persisted in repository files for latter implementation.
 >
 > :ok: **Types of changes to be proposed with this template:** application behaviour specification,{% if cookiecutter.use_bdd %} BDD scenarios,{% endif %} previously undetected test cases, feature flags
@@ -29,7 +31,8 @@
   Single out unnecessary or unworkable items with `[~]`
 -->
 
-> [!CAUTION] :scroll: Policy compliance
+> [!CAUTION]
+> :scroll: **Policy compliance**
 >
 > - [ ] I have read the [`CONTRIBUTING`][1] guide for proposing changes;
 > - [ ] I provided a concise and clear title for this discussion;
@@ -42,13 +45,15 @@
 > - [ ] I have added the proper [Git trailers][8] to my commits;
 > - [ ] I have followed the [Styling Guide][9] for code and Markdown files.
 
-> [!IMPORTANT] :petri_dish: Design control
+> [!IMPORTANT]
+> :petri_dish: **Design control**
 >
 > - [ ] I am confident I have sufficiently described the design choices being validated;
 > - [ ] I have covered all the possible edge cases I could identify;
 > - [ ] I have indicated all relevant [test marks][10] for this design.
 
-> [!TIP] :reminder_ribbon: Contribution control
+> [!TIP]
+> :reminder_ribbon: **Contribution control**
 >
 > - [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][11] or the Related Issues section;
 > - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
@@ -71,7 +76,9 @@
 
 ## Maintainer Checklist
 
-> [!WARNING] :passport_control: MANDATORY
+> [!WARNING]
+> :passport_control: **MANDATORY**
+>
 > I attest that the proposed change meets the [Contribution Acceptance Criteria][10]:
 >
 > - [ ] The commit history is logical;
@@ -85,7 +92,9 @@
 > - [ ] Issues marked for automatic closing are accurate;
 > - [ ] Issues requiring manual check have been addressed.
 
-> [!TIP] :pen_fountain: Discretionary
+> [!TIP]
+> :fountain_pen: **Discretionary**
+>
 > I attest that during the course of this development, the following interactions have taken place:
 >
 > - [ ] We have discussed our opinions on the proposed design;

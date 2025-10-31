@@ -1,6 +1,8 @@
 # :bullettrain_side: Internal Improvement
 
-> [!NOTE] :bulb: Improves {{ cookiecutter.project_name }} developer experience
+> [!NOTE]
+> :bulb: **Improves {{ cookiecutter.project_name }} developer experience**
+>
 > This template should be used to propose and discuss changes to tools used to manage {{ cookiecutter.project_name }} development.
 >
 > :ok: **Types of changes to be proposed with this template:** new tools to be used during development, updates to existing tools, replacement of current tools with alternatives, Invoke tasks, updates to CI pipelines, monitoring initiatives, alert automations, error tracking, environment setup, build optimisations, scripts/containers
@@ -36,7 +38,8 @@
   Single out unnecessary or unworkable items with `[~]`
 -->
 
-> [!CAUTION] :scroll: Policy compliance
+> [!CAUTION]
+> :scroll: **Policy compliance**
 >
 > - [ ] I have read the [`CONTRIBUTING`][1] guide for proposing changes;
 > - [ ] I provided a concise and clear title for this discussion;
@@ -48,7 +51,8 @@
 > - [ ] I have added the proper [Git trailers][7] to my commits;
 > - [ ] I have followed the [Styling Guide][8] for code and Markdown files.
 
-> [!IMPORTANT] :technologist: Development control
+> [!IMPORTANT]
+> :technologist: **Development control**
 >
 > - [ ] I have assembled the minimal configuration to implement the proposed change without breaking functionality;
 > - [ ] I have provided a way for other developers to understand when and how to use the tool being added/changed/replaced;
@@ -56,7 +60,8 @@
 >   - [ ] I have evaluated that this change does not require updating the documentation;
 >   - [ ] I have updated the documentation highlighting this change and any relevant information.
 
-> [!TIP] :reminder_ribbon: Contribution control
+> [!TIP]
+> :reminder_ribbon: **Contribution control**
 >
 > - [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][9] or the Related Issues section;
 > - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
@@ -73,7 +78,9 @@
 
 ## Reviewer Checklist
 
-> [!WARNING] :passport_control: MANDATORY
+> [!WARNING]
+> :passport_control: **MANDATORY**
+>
 > I attest that the proposed change meets the [Contribution Acceptance Criteria][10]:
 >
 > - [ ] The change is as small as possible;
@@ -92,7 +99,9 @@
 > - [ ] Issues marked for automatic closing are accurate;
 > - [ ] Issues requiring manual check have been addressed.
 
-> [!TIP] :pen_fountain: Discretionary
+> [!TIP]
+> :fountain_pen: **Discretionary**
+>
 > I attest that during the course of this development, the following interactions have taken place:
 >
 > - [ ] We have discussed our opinions on the chosen solution and implementation;

@@ -1,6 +1,8 @@
 # :fire_extinguisher: Priority Patching Request
 
-> [!NOTE] :bulb: Emergency developments that must be prioritised
+> [!NOTE]
+> :bulb: **Emergency developments that must be prioritised**
+>
 > This template should be used to propose changes resolving a major issue with the project.
 >
 > :exclamation: **Use this template on any of the following conditions (this is a non-exhausting list):**
@@ -30,7 +32,8 @@
   Single out unnecessary or unworkable items with `[~]`
 -->
 
-> [!CAUTION] :scroll: Policy compliance
+> [!CAUTION]
+> :scroll: **Policy compliance**
 >
 > - [ ] I have read the [`CONTRIBUTING`][1] guide for proposing changes;
 > - [ ] I have read the [`SECURITY`][2] guide to correctly address issue confidentiality;
@@ -45,19 +48,22 @@
 
 ## Assignee Checklist
 
-> [!CAUTION] :scroll: Policy compliance
+> [!CAUTION]
+> :scroll: **Policy compliance**
 >
 > - [ ] I have followed the [commit customs][5] for the project;
 > - [ ] I have explained the [reasoning][6] behind my design choices through the commit descriptions;
 > - [ ] I have added the proper [Git trailers][7] to my commits;
 > - [ ] I have followed the [Styling Guide][8] for code and Markdown files.
 
-> [!IMPORTANT] :technologist: Development control
+> [!IMPORTANT]
+> :technologist: **Development control**
 >
 > - [ ] I have assembled the minimal configuration to resolve the root cause of the issue;
 > - [ ] I have tested my implementation to confirm the issue is resolved.
 
-> [!TIP] :reminder_ribbon: Contribution control
+> [!TIP]
+> :reminder_ribbon: **Contribution control**
 >
 > - [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][9] or the Related Issues section.
 
@@ -69,7 +75,9 @@
 
 ## Reviewer Checklist
 
-> [!WARNING] :passport_control: MANDATORY
+> [!WARNING]
+> :passport_control: **MANDATORY**
+>
 > I attest that the proposed change meets the [Contribution Acceptance Criteria][10]:
 >
 > - [ ] The change is as small as possible;
@@ -89,7 +97,9 @@
 > - [ ] Issues requiring manual check have been addressed;
 > - [ ] The proposed {{ cookiecutter.project_name }} version adheres to our view on [EffVer][11].
 
-> [!TIP] :pen_fountain: Discretionary
+> [!TIP]
+> :fountain_pen: **Discretionary**
+>
 > I attest that during the course of this development, the following interactions have taken place:
 >
 > - [ ] We have discussed our opinions on the chosen solution and implementation;

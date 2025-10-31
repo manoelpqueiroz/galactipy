@@ -1,6 +1,6 @@
 # :earth_americas: Localisation Initiative
 
-> [!NOTE] :bulb: Pack containing translated files for {{ cookiecutter.project_name }}
+> [!NOTE]
 > This template should be used to validate localisation advancements.
 
 ## Summary
@@ -16,7 +16,8 @@
   Single out unnecessary or unworkable items with `[~]`
 -->
 
-> [!CAUTION] :scroll: Policy compliance
+> [!CAUTION]
+> :scroll: **Policy compliance**
 >
 > - [ ] I have read the [`CONTRIBUTING`][1] guide for proposing changes;
 > - [ ] I provided a concise and clear title for this discussion;
@@ -28,7 +29,8 @@
 > - [ ] I have added the proper [Git trailers][7] to my commits;
 > - [ ] I have followed the [Styling Guide][8] for code and Markdown files.
 
-> [!IMPORTANT] :technologist: Development control
+> [!IMPORTANT]
+> :technologist: **Development control**
 >
 > - Regarding the user interface:
 {%- if cookiecutter.app_type != 'cli' %}
@@ -40,7 +42,8 @@
 > - [ ] I have attested the change does not erase persisted user data;
 > - [ ] I have followed best design practices to organise the changes.
 
-> [!TIP] :reminder_ribbon: Contribution control
+> [!TIP]
+> :reminder_ribbon: **Contribution control**
 >
 > - [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][9] or the Related Issues section;
 > - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
@@ -57,7 +60,9 @@
 
 ## Reviewer Checklist
 
-> [!WARNING] :passport_control: MANDATORY
+> [!WARNING]
+> :passport_control: **MANDATORY**
+>
 > I attest that the proposed change meets the [Contribution Acceptance Criteria][10]:
 >
 > - [ ] The change is as small as possible;
@@ -73,7 +78,9 @@
 > - [ ] Issues requiring manual check have been addressed;
 > - [ ] The proposed {{ cookiecutter.project_name }} version adheres to our view on [EffVer][11].
 
-> [!TIP] :pen_fountain: Discretionary
+> [!TIP]
+> :fountain_pen: **Discretionary**
+>
 > I attest that during the course of this development, the following interactions have taken place:
 >
 > - [ ] We have covered all the edge cases we could come up with;

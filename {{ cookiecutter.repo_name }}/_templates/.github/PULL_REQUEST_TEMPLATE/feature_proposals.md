@@ -1,6 +1,8 @@
 # :pinata: Feature Proposal
 
-> [!NOTE] :bulb: To reshape user-facing parts of the {{ cookiecutter.project_name }} API
+> [!NOTE]
+> :bulb: **To reshape user-facing parts of the {{ cookiecutter.project_name }} API**
+>
 > This template should be used to propose and discuss incremental or novel working application units offered to users.
 >
 > :ok: **Types of changes to be proposed with this template:** user interface elements/capabilities, customization options,{% if cookiecutter.app_type != 'bare_repo' %} command structure and flags,{% endif %} accessibility options, entry points and logic for extensions, hooks and events
@@ -41,7 +43,8 @@
   Single out unnecessary or unworkable items with `[~]`
 -->
 
-> [!CAUTION] :scroll: Policy compliance
+> [!CAUTION]
+> :scroll: **Policy compliance**
 >
 > - [ ] I have read the [`CONTRIBUTING`][1] guide for proposing changes;
 > - [ ] I provided a concise and clear title for this discussion;
@@ -53,7 +56,8 @@
 > - [ ] I have added the proper [Git trailers][7] to my commits;
 > - [ ] I have followed the [Styling Guide][8] for code and Markdown files.
 
-> [!IMPORTANT] :technologist: Development control
+> [!IMPORTANT]
+> :technologist: **Development control**
 >
 > - [ ] I have verified the feature does not conflict with other existing features;
 {%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
@@ -72,7 +76,8 @@
 > - [ ] I have written docstrings for objects at a convenient level of detail;
 > - [ ] I have added the relevant test cases to validate the expected program behaviour.
 
-> [!TIP] :reminder_ribbon: Contribution control
+> [!TIP]
+> :reminder_ribbon: **Contribution control**
 >
 > - [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][9] or the Related Issues section;
 > - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
@@ -89,7 +94,9 @@
 
 ## Reviewer Checklist
 
-> [!WARNING] :passport_control: MANDATORY
+> [!WARNING]
+> :passport_control: **MANDATORY**
+>
 > I attest that the proposed change meets the [Contribution Acceptance Criteria][10]:
 >
 > - [ ] The change is as small as possible;
@@ -110,7 +117,9 @@
 > - [ ] Issues requiring manual check have been addressed;
 > - [ ] The proposed {{ cookiecutter.project_name }} version adheres to our view on [EffVer][12].
 
-> [!TIP] :pen_fountain: Discretionary
+> [!TIP]
+> :fountain_pen: **Discretionary**
+>
 > I attest that during the course of this development, the following interactions have taken place:
 >
 > - [ ] We have discussed our opinions on the chosen solution and implementation;

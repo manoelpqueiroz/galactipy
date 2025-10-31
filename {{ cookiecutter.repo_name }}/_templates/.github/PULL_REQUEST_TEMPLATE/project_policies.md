@@ -1,6 +1,8 @@
 # :scroll: Project Policy Proposal
 
-> [!NOTE] :bulb: To modify documents and rules for {{ cookiecutter.project_name }} development
+> [!NOTE]
+> :bulb: **To modify documents and rules for {{ cookiecutter.project_name }} development**
+>
 > This template should be used to propose and discuss any changes that affect knowledge management of the project.
 >
 > :ok: **Types of changes to be proposed with this template:** changes to project documentation and issue/PR templates, changes to project guidelines, changes to CI rules, project creation/completion, roadmap updates, changes to linting, styling, testing and issue triaging rules
@@ -34,7 +36,8 @@
   Single out unnecessary or unworkable items with `[~]`
 -->
 
-> [!CAUTION] :scroll: Policy compliance
+> [!CAUTION]
+> :scroll: **Policy compliance**
 >
 > - [ ] I have read the [`CONTRIBUTING`][1] guide for proposing changes;
 > - [ ] I provided a concise and clear title for this discussion;
@@ -46,7 +49,8 @@
 > - [ ] I have added the proper [Git trailers][7] to my commits;
 > - [ ] I have followed the [Styling Guide][8] for code and Markdown files.
 
-> [!IMPORTANT] :clipboard: Proposal control
+> [!IMPORTANT]
+> :clipboard: **Proposal control**
 >
 > - [ ] The proposal changes policy documents;
 >   - [ ] I have detailed the proposal in the appropriate file;
@@ -58,7 +62,8 @@
 >     - [ ] I have evaluated that this configuration change does not require updating a policy file or comment to substantiate it;
 >     - [ ] I have updated the documentation highlighting this change and any relevant information.
 
-> [!TIP] :reminder_ribbon: Contribution control
+> [!TIP]
+> :reminder_ribbon: **Contribution control**
 >
 > - [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][10] or the Related Issues section;
 > - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
@@ -76,7 +81,9 @@
 
 ## Maintainer Checklist
 
-> [!WARNING] :passport_control: MANDATORY
+> [!WARNING]
+> :passport_control: **MANDATORY**
+>
 > I attest that the proposed change meets the [Contribution Acceptance Criteria][11]:
 >
 > - [ ] The proposal does not change non-policy files;
@@ -91,7 +98,9 @@
 > - [ ] Issues marked for automatic closing are accurate;
 > - [ ] Issues requiring manual check have been addressed.
 
-> [!TIP] :pen_fountain: Discretionary
+> [!TIP]
+> :fountain_pen: **Discretionary**
+>
 > I attest that during the course of this development, the following interactions have taken place:
 >
 > - [ ] We have discussed our opinions on the proposed policy;

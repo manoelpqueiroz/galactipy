@@ -1,6 +1,8 @@
 # :house_abandoned: Housekeeping
 
-> [!NOTE] :bulb: Proposals for keeping project units tidy
+> [!NOTE]
+> :bulb: **Proposals for keeping project units tidy**
+>
 > This template should be used to propose and discuss changes that improve project maintainability over time, generally with incremental changes.
 >
 > :ok: **Types of changes to be proposed with this template:** bugs, typo fixes, dependency updates, tool version migration, code refactoring, module organisation, test maintenance, isolated deprecations and removals
@@ -27,7 +29,8 @@
   Single out unnecessary or unworkable items with `[~]`
 -->
 
-> [!CAUTION] :scroll: Policy compliance
+> [!CAUTION]
+> :scroll: **Policy compliance**
 >
 > - [ ] I have read the [`CONTRIBUTING`][1] guide for proposing changes;
 > - [ ] I provided a concise and clear title for this discussion;
@@ -39,13 +42,15 @@
 > - [ ] I have added the proper [Git trailers][7] to my commits;
 > - [ ] I have followed the [Styling Guide][8] for code and Markdown files.
 
-> [!IMPORTANT] :technologist: Development control
+> [!IMPORTANT]
+> :technologist: **Development control**
 >
 > - Regarding file changes: <!-- Pick only one -->
 >   - [ ] I have changed source code files, without breaking the public API;
 >   - [ ] I have changed configuration files, without causing unexpected incompatibility.
 
-> [!TIP] :reminder_ribbon: Contribution control
+> [!TIP]
+> :reminder_ribbon: **Contribution control**
 >
 > - [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][9] or the Related Issues section;
 > - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
@@ -62,7 +67,9 @@
 
 ## Reviewer Checklist
 
->>> [!WARNING] :passport_control: MANDATORY
+> [!WARNING]
+> :passport_control: **MANDATORY**
+>
 > I attest that the proposed change meets the [Contribution Acceptance Criteria][10]:
 >
 > - [ ] The change is as small as possible;
@@ -82,7 +89,9 @@
 > - [ ] Issues requiring manual check have been addressed;
 > - [ ] The proposed {{ cookiecutter.project_name }} version adheres to our view on [EffVer][11].
 
->>> [!TIP] :pen_fountain: Discretionary
+> [!TIP]
+> :fountain_pen: **Discretionary**
+>
 > I attest that during the course of this development, the following interactions have taken place:
 >
 > - [ ] We have found [opportunities][12] for future development and have created work items to take action on later.

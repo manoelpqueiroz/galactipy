@@ -1,6 +1,8 @@
 # :bridge_at_night: Interface Architecture Revision
 
-> [!NOTE] :bulb: Improves the underlying structure of user-facing components
+> [!NOTE]
+> :bulb: **Improves the underlying structure of user-facing components**
+>
 > This template should be used to propose modifications to elements that communicate with the backend and function directly beneath the front-end implementation layer.
 >
 > :ok: **Types of changes to be proposed with this template:** command parsing and logic, configuration file parsing, user input validation,{% if cookiecutter.app_type != 'cli' %} layers/patterns/workflows for rendering, UI overhauls,{% endif %} extensibility logic impacts
@@ -39,7 +41,8 @@
   Single out unnecessary or unworkable items with `[~]`
 -->
 
-> [!CAUTION] :scroll: Policy compliance
+> [!CAUTION]
+> :scroll: **Policy compliance**
 >
 > - [ ] I have read the [`CONTRIBUTING`][1] guide for proposing changes;
 > - [ ] I provided a concise and clear title for this discussion;
@@ -51,7 +54,8 @@
 > - [ ] I have added the proper [Git trailers][7] to my commits;
 > - [ ] I have followed the [Styling Guide][8] for code and Markdown files.
 
->>> [!IMPORTANT] :technologist: Development control
+> [!IMPORTANT]
+> :technologist: **Development control**
 >
 > - Regarding impact: <!-- Pick only one -->
 >   - [ ] I have verified the change does not affect library extensibility or modularity;
@@ -70,7 +74,8 @@
 > - [ ] I have included the relevant logging calls for debugging;
 > - [ ] I have written docstrings for objects at a convenient level of detail.
 
->>> [!TIP] :reminder_ribbon: Contribution control
+> [!TIP]
+> :reminder_ribbon: **Contribution control**
 >
 > - [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][9] or the Related Issues section;
 > - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
@@ -87,7 +92,9 @@
 
 ## Reviewer Checklist
 
-> [!WARNING] :passport_control: MANDATORY
+> [!WARNING]
+> :passport_control: **MANDATORY**
+>
 > I attest that the proposed change meets the [Contribution Acceptance Criteria][10]:
 >
 > - [ ] The change is as small as possible;
@@ -110,7 +117,9 @@
 > - [ ] Issues requiring manual check have been addressed;
 > - [ ] The proposed {{ cookiecutter.project_name }} version adheres to our view on [EffVer][12].
 
-> [!TIP] :pen_fountain: Discretionary
+> [!TIP]
+> :fountain_pen: **Discretionary**
+>
 > I attest that during the course of this development, the following interactions have taken place:
 >
 > - [ ] We have discussed our opinions on the chosen solution and implementation;

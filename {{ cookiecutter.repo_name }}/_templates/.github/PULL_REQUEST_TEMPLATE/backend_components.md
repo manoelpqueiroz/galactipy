@@ -1,6 +1,8 @@
 # :puzzle_piece: Backend Components Update
 
-> [!NOTE] :bulb: Changes to non-user-facing parts of the {{ cookiecutter.project_name }} API
+> [!NOTE]
+> :bulb: **Changes to non-user-facing parts of the {{ cookiecutter.project_name }} API**
+>
 > This template should be used to propose and discuss improvements to backend elements of the application that assist its fluid usage by users.
 >
 > :ok: **Types of changes to be proposed with this template:** public and private modules API, core logic implementation, utility functions, performance improvements, database-related changes, data storage/management, background processing, API integrations
@@ -44,7 +46,8 @@
   Single out unnecessary or unworkable items with `[~]`
 -->
 
-> [!CAUTION] :scroll: Policy compliance
+> [!CAUTION]
+> :scroll: **Policy compliance**
 >
 > - [ ] I have read the [`CONTRIBUTING`][1] guide for proposing changes;
 > - [ ] I provided a concise and clear title for this discussion;
@@ -56,7 +59,8 @@
 > - [ ] I have added the proper [Git trailers][7] to my commits;
 > - [ ] I have followed the [Styling Guide][8] for code and Markdown files.
 
-> [!IMPORTANT] :technologist: Development control
+> [!IMPORTANT]
+> :technologist: **Development control**
 >
 > - Regarding user impact: <!-- Pick only one -->
 >   - [ ] I have verified the change does not break the user experience with the application;
@@ -73,7 +77,8 @@
 > - [ ] I have written docstrings for objects at a convenient level of detail;
 > - [ ] I have added the relevant test cases to validate the expected program behaviour.
 
-> [!TIP] :reminder_ribbon: Contribution control
+> [!TIP]
+> :reminder_ribbon: **Contribution control**
 >
 > - [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][9] or the Related Issues section;
 > - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
@@ -90,7 +95,9 @@
 
 ## Reviewer Checklist
 
-> [!WARNING] :passport_control: MANDATORY
+> [!WARNING]
+> :passport_control: **MANDATORY**
+>
 > I attest that the proposed change meets the [Contribution Acceptance Criteria][10]:
 >
 > - [ ] The change is as small as possible;
@@ -113,7 +120,9 @@
 > - [ ] Issues requiring manual check have been addressed;
 > - [ ] The proposed {{ cookiecutter.project_name }} version adheres to our view on [EffVer][12].
 
-> [!TIP] :pen_fountain: Discretionary
+> [!TIP]
+> :fountain_pen: **Discretionary**
+>
 > I attest that during the course of this development, the following interactions have taken place:
 >
 > - [ ] We have discussed our opinions on the chosen solution and implementation;
