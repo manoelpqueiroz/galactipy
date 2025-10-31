@@ -11,7 +11,7 @@ This template should be used to propose and discuss changes that improve project
 - Changes to documentation outside `{{ cookiecutter.repo_name }}`.
 >>>
 
-## What change do you propose with this MR
+## What change do you propose with this MR?
 
 <!-- Describe WHAT your proposal refers to -->
 
@@ -37,13 +37,12 @@ This template should be used to propose and discuss changes that improve project
 
 >>> [!important] :technologist: Development control
 
-- [ ] I have either:
-  - Changed configuration files, without causing incompatibility;
-  - Changed documentation files only;
-- [ ] I have either:
-  - Bumped the Galactipy [version][9] appropriately as my final commit for this change;
-  - Kept the Galactipy version the same, as it does not change end-user files.
-
+- Regarding file changes: <!-- Pick only one -->
+  - [ ] I have changed configuration files, without causing incompatibility;
+  - [ ] I have changed documentation files only;
+- Regarding versioning: <!-- Pick only one -->
+  - [ ] I have bumped the Galactipy [version][9] appropriately as my final commit for this change;
+  - [ ] I have kept the Galactipy version the same, as it does not change end-user files.
 >>>
 
 >>> [!tip] :reminder_ribbon: Contribution control
@@ -70,13 +69,13 @@ I attest that the proposed change meets the [Contribution Acceptance Criteria][1
 
 - [ ] The change is as small as possible;
 - [ ] Only one specific change and does not combine things;
-- [ ] The change either:
-  - Does not require any addition or modification to unit tests;
-  - Modifies Cookiecutter pre-gen and/or post-gen hooks, with proper tests being added;
+- The change: <!-- Pick only one -->
+  - [ ] Does not require any addition or modification to unit tests;
+  - [ ] Modifies Cookiecutter pre-gen and/or post-gen hooks, with proper tests being added;
 - [ ] The commit history is logical;
 - [ ] The commit history applies the proper Gitmoji;
-- [ ] The commit title applies imperative mood;
-- [ ] The commit descriptions sufficiently explains design choices;
+- [ ] The commit titles apply the imperative mood;
+- [ ] The commit descriptions sufficiently explain design choices;
 - [ ] Issues marked for automatic closing are accurate;
 - [ ] Issues requiring manual check have been addressed;
 - [ ] The proposed Galactipy version adheres to our view on [EffVer][9].

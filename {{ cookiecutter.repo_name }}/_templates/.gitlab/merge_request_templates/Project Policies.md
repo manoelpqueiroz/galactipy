@@ -1,16 +1,16 @@
 # :scroll: Project Policy Proposal
 
->>> [!note] :bulb: To modify documents and rules for Galactipy development
+>>> [!note] :bulb: To modify documents and rules for {{ cookiecutter.project_name }} development
 This template should be used to propose and discuss any changes that affect knowledge management of the project.
 
-:ok: **Types of changes to be proposed with this template:** changes to project documentation and issue/MR templates, changes to project guidelines, changes to CI rules, milestone creation/completion, changes to linting, styling, testing and issue triaging rules
+:ok: **Types of changes to be proposed with this template:** changes to project documentation and issue/MR templates, changes to project guidelines, changes to CI rules,{% if cookiecutter.scm_platform == 'GitLab Free' %} milestone creation/completion,{% endif %} roadmap updates, changes to linting, styling, testing and issue triaging rules
 
 :no_good: **What this type of proposal does not stand for:**
 
 - Changes that modify tool functionality;
 - Typo fixes;
-- Updates to CI pipeline jobs;
-- Changes to documentation within `{{ cookiecutter.repo_name }}`.
+- Updates to CI pipeline jobs scripts/steps;
+- Developer tool additions or updates.
 >>>
 
 ## What do you propose with this MR?
@@ -25,7 +25,7 @@ This template should be used to propose and discuss any changes that affect know
   How is it going to help communication across the project once it is implemented?
   Why is it relevant enough to be formalised?
 
-  Feel free to bring some of your personal experience as a Galactipy user to let us understand the circumstances that led to this proposal
+  Feel free to bring some of your personal experience as a {{ cookiecutter.project_name }} contributor to let us understand the circumstances that led to this proposal
 -->
 
 ## Submitter Checklist
@@ -39,9 +39,13 @@ This template should be used to propose and discuss any changes that affect know
 
 - [ ] I have read the [`CONTRIBUTING`][1] guide for proposing changes;
 - [ ] I provided a concise and clear title for this discussion;
-- [ ] I have presented my proposal following [Galactipy's philosophy][2] principles;
+- [ ] I have presented my proposal following the [{{ cookiecutter.project_name }} philosophy][2];
 - [ ] I have added the proper [labels][3] to start this discussion;
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+- [ ] I have associated the proposal with the adequate [epic][4];
+{%- else %}
 - [ ] I have associated the proposal with the adequate [development milestone][4];
+{%- endif %}
 - [ ] I have followed the [commit customs][5] for the project;
 - [ ] I have explained the [reasoning][6] behind my design choices through the commit descriptions;
 - [ ] I have added the proper [Git trailers][7] to my commits;
@@ -56,7 +60,7 @@ This template should be used to propose and discuss any changes that affect know
   - [ ] I have enriched my proposal with links to point readers to further information where relevant, whether internal or external.
 - [ ] The proposal changes internal configuration files:
   - [ ] I have applied the correct syntax to keep the tool functional for developers;
-  - Regarding change documentation: <!-- Pick only one -->
+  - Regarding documentation changes: <!-- Pick only one -->
     - [ ] I have evaluated that this configuration change does not require updating a policy file or comment to substantiate it;
     - [ ] I have updated the documentation highlighting this change and any relevant information.
 >>>
@@ -67,14 +71,18 @@ This template should be used to propose and discuss any changes that affect know
 - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
 >>>
 
-[1]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
-[2]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#book-our-philosophy
-[3]: https://gitlab.com/galactipy/galactipy/-/labels
-[4]: https://gitlab.com/galactipy/galactipy/-/milestones
-[5]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#commit-customs
-[6]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#say-why-not-just-what
-[7]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#git-trailers
-[8]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#styling
+[1]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
+[2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#book-our-philosophy
+[3]: {{ cookiecutter.__scm_link_url }}/labels
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+[4]: {{ cookiecutter.__gitlab_org }}/epics
+{%- else %}
+[4]: {{ cookiecutter.__scm_link_url }}/milestones
+{%- endif %}
+[5]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#commit-customs
+[6]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#say-why-not-just-what
+[7]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#git-trailers
+[8]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#styling
 [9]: https://docs.gitlab.com/user/markdown/
 [10]: https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically
 
@@ -85,7 +93,11 @@ I attest that the proposed change meets the [Contribution Acceptance Criteria][1
 
 - [ ] The proposal does not change non-policy files;
 - [ ] The commit history is logical;
+{%- if cookiecutter.commit_convention == 'gitmoji' %}
 - [ ] The commit history applies the proper Gitmoji;
+{%- else %}
+- [ ] The commit history applies the proper conventional types;
+{%- endif %}
 - [ ] The commit titles apply the imperative mood;
 - [ ] The commit descriptions sufficiently explain design choices;
 - [ ] Issues marked for automatic closing are accurate;
@@ -100,5 +112,5 @@ I attest that during the course of this development, the following interactions 
 - [ ] We have found [opportunities][12] for future development and have created work items to take action on later.
 >>>
 
-[11]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
-[12]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
+[11]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
+[12]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress

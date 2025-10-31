@@ -1,9 +1,9 @@
 # :bullettrain_side: Internal Improvement
 
->>> [!note] :bulb: Improves Galactipy developer experience
-This template should be used to propose and discuss changes to tools used to manage Galactipy development.
+>>> [!note] :bulb: Improves {{ cookiecutter.project_name }} developer experience
+This template should be used to propose and discuss changes to tools used to manage {{ cookiecutter.project_name }} development.
 
-:ok: **Types of changes to be proposed with this template:** new tools to be used during development, updates to existing tools, replacement of current tools with alternatives, Invoke tasks, updates to CI pipelines
+:ok: **Types of changes to be proposed with this template:** new tools to be used during development, updates to existing tools, replacement of current tools with alternatives, Invoke tasks, updates to CI pipelines, monitoring initiatives, alert automations, error tracking, environment setup, build optimisations, scripts/containers
 
 :no_good: **What this type of proposal does not stand for:**
 
@@ -12,7 +12,7 @@ This template should be used to propose and discuss changes to tools used to man
 - Updates to documentation files for the project;
 - Project dependency updates;
 - Modifications to CI job rules only;
-- Modifications to tools and files inside `{{ cookiecutter.repo_name }}`.
+- Mere updates to current tools syntax.
 >>>
 
 ## What improvement do you propose with this MR?
@@ -27,7 +27,7 @@ This template should be used to propose and discuss changes to tools used to man
   What benefits does it bring to developers?
   What would be considered a successful outcome for this development from your perspective?
 
-  Feel free to bring some of your personal experience as a Galactipy user to let us understand the circumstances that led to this proposal
+  Feel free to bring some of your personal experience as a {{ cookiecutter.project_name }} developer to let us understand the circumstances that led to this proposal
 -->
 
 ## Submitter Checklist
@@ -41,9 +41,13 @@ This template should be used to propose and discuss changes to tools used to man
 
 - [ ] I have read the [`CONTRIBUTING`][1] guide for proposing changes;
 - [ ] I provided a concise and clear title for this discussion;
-- [ ] I have presented my proposal following [Galactipy's philosophy][2] principles;
+- [ ] I have presented my proposal following the [{{ cookiecutter.project_name }} philosophy][2];
 - [ ] I have added the proper [labels][3] to start this discussion;
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+- [ ] I have associated the proposal with the adequate [epic][4];
+{%- else %}
 - [ ] I have associated the proposal with the adequate [development milestone][4];
+{%- endif %}
 - [ ] I have followed the [commit customs][5] for the project;
 - [ ] I have explained the [reasoning][6] behind my design choices through the commit descriptions;
 - [ ] I have added the proper [Git trailers][7] to my commits;
@@ -65,14 +69,18 @@ This template should be used to propose and discuss changes to tools used to man
 - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
 >>>
 
-[1]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
-[2]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#book-our-philosophy
-[3]: https://gitlab.com/galactipy/galactipy/-/labels
-[4]: https://gitlab.com/galactipy/galactipy/-/milestones
-[5]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#commit-customs
-[6]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#say-why-not-just-what
-[7]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#git-trailers
-[8]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#styling
+[1]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
+[2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#book-our-philosophy
+[3]: {{ cookiecutter.__scm_link_url }}/labels
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+[4]: {{ cookiecutter.__gitlab_org }}/epics
+{%- else %}
+[4]: {{ cookiecutter.__scm_link_url }}/milestones
+{%- endif %}
+[5]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#commit-customs
+[6]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#say-why-not-just-what
+[7]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#git-trailers
+[8]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#styling
 [9]: https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically
 
 ## Reviewer Checklist
@@ -86,7 +94,11 @@ I attest that the proposed change meets the [Contribution Acceptance Criteria][1
   - [ ] Does not require updating the documentation;
   - [ ] Added the proper documentation on the topic, promoting and preserving [institutional knowledge][11];
 - [ ] The commit history is logical;
+{%- if cookiecutter.commit_convention == 'gitmoji' %}
 - [ ] The commit history applies the proper Gitmoji;
+{%- else %}
+- [ ] The commit history applies the proper conventional types;
+{%- endif %}
 - [ ] The commit titles apply the imperative mood;
 - [ ] The commit descriptions sufficiently explain design choices;
 - [ ] Issues marked for automatic closing are accurate;
@@ -103,6 +115,6 @@ I attest that during the course of this development, the following interactions 
 - [ ] We have found [opportunities][12] for future development and have created work items to take action on later.
 >>>
 
-[10]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
+[10]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
 [11]: https://www.teachfloor.com/elearning-glossary/institutional-knowledge
-[12]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
+[12]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress

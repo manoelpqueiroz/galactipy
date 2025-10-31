@@ -19,17 +19,17 @@
 - Make sure to [track progress][7] consistently to keep yourself and your mentor updated on your contribution's status. Keep communication with your mentor and development updates flowing.
 >>>
 
-[1]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#fostering-an-inviting-community
-[2]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#the-responsibility-of-the-reviewer
+[1]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#fostering-an-inviting-community
+[2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#the-responsibility-of-the-reviewer
 [3]: https://engineerinclusion.com/barriers-and-bridges-to-effective-communication/
-[4]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md
-[5]: https://gitlab.com/galactipy/galactipy/-/blob/master/CODE_OF_CONDUCT.md
-[6]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
-[7]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#work-item-tracking
+[4]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md
+[5]: {{ cookiecutter.__scm_link_url }}/blob/master/CODE_OF_CONDUCT.md
+[6]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
+[7]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#work-item-tracking
 
 ## :microphone2: Overview
 
-This is a starter assignment designed to help you get familiar with contributing to Galactipy. By completing this task, you'll be able to make your first contribution to the project and set yourself up for future success.
+This is a starter assignment designed to help you get familiar with contributing to {{ cookiecutter.project_name }}. By completing this task, you'll be able to make your first contribution to the project and set yourself up for future success.
 
 Please read carefully all the sections below. They have been provided by an active contributor to the project, aiming to be as easily accessible as possible for you to pick the work up.
 
@@ -93,4 +93,8 @@ Should you feel interested in delivering this item after reading this treatment,
 - Assign the work item to you by clicking on the _"assign yourself"_ link at the right panel;
 - Read the [`CONTRIBUTING`][4] guide to become familiar with our procedures before you start working on the solution.
 
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
 /status Needs Delivery Steps
+{%- else %}
+/label ~"starter-assignment" ~"sts-needs-delivery-steps"
+{%- endif %}

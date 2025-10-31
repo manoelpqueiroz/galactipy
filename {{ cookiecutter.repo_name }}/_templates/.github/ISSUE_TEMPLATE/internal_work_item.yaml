@@ -1,0 +1,40 @@
+name: 📇 Internal Work Item
+description: Manage development iteration with issues.
+labels: [seeking-contributors, seeking-input, sts-needs-refinement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        > [!IMPORTANT]
+        > Please read the [`CONTRIBUTING`]({{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md) guide for best practices when opening issues and run through the items under the **`Author Checklist`**.
+        >
+        > ---
+        >
+        > :ok: **Use this template for:** breaking down larger developments into actionable and iterable steps, preserve ideas for future development.
+        >
+        > :no_entry: ***DO NOT use this template if you do not have a Developer role in this project.***
+  - type: textarea
+    attributes:
+      label: 🤔 Circumstances and Context
+      description: Insert all necessary information regarding this work item, linking to other resources if applicable.
+    validations:
+      required: true
+  - type: checkboxes
+    attributes:
+      label: Author Checklist
+      description: Leaving list items unchecked is not an impediment to opening the Internal Work Item.
+      options:
+        - label: I am confident this work item is not immediately deliverable via a [Pull Request]({{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#start-with-a-pull-request);
+          required: true
+        - label: I have provided a concise and clear title for this issue;
+          required: true
+        - label: I have populated this issue with as much detail as possible, including links to issues, PRs and external sources;
+        - label: I have assigned proper labels for this issue;
+        - label: I have added the **acceptance criteria** for closing the issue as [sub-issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/learning-about-issues/about-issues#about-sub-issues).
+  - type: checkboxes
+    attributes:
+      label: Reviewer Checklist
+      description: Leave this list unchecked for latter completion.
+      options:
+        - label: I attest that the **acceptance criteria** are well-defined and encompass all expected development for this issue;
+        - label: I have labelled the work item with the appropriate [status tag]({{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#work-item-tracking).

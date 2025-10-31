@@ -1,13 +1,13 @@
 # :wave: Request for Support
 
 >>> [!important]
-:bulb: **Seek help from the development team for Galactipy usage.**
+:bulb: **Seek help from the development team for {{ cookiecutter.project_name }} usage.**
 
 Please run through all items under the **`Applicant Checklist`** section and provide details on the reasons that brought you to open this discussion.
 
 ---
 
-:ok: **Use this template for:** general questions on how to use Galactipy, when you are experiencing issues but are unsure why, questions for the developers regarding design decisions.
+:ok: **Use this template for:** general questions on how to use {{ cookiecutter.project_name }}, when you are experiencing issues but are unsure why, questions for the developers regarding design decisions.
 
 :no_good: **Refrain from using this template if:**
 
@@ -19,35 +19,39 @@ Please run through all items under the **`Applicant Checklist`** section and pro
 
 <!-- Please check all that apply with an `x` (like `[x]`); checking is not mandatory -->
 
-- [ ] I am using the latest version for generating projects with Galactipy;
+- [ ] I am using the latest version of {{ cookiecutter.project_name }};
 - [ ] I have explored the [Issue Tracker][1] for similar cases, attempting searches with the following terms:
   <!-- List all searches you have performed -->
   - `...`
   - `...`
-- [ ] I have looked at Galactipy's [`README`][2] for information on my topic of interest;
+- [ ] I have looked at {{ cookiecutter.project_name }}'s [`README`][2] for information on my topic of interest;
 - [ ] I have read the [`CONTRIBUTING`][3] guide and I have understood how to improve communication between me and the development team;
 - [ ] I provided a concise and clear title for this discussion;
 - [ ] I am confident this discussion does not fall in another category.
 
-[1]: https://gitlab.com/galactipy/galactipy/-/issues/?state=all&type%5B%5D=issue
-[2]: https://gitlab.com/galactipy/galactipy/-/blob/master/README.md
-[3]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contributing-through-user-requests
+[1]: {{ cookiecutter.__scm_link_url }}/issues/?state=all&type%5B%5D=issue
+[2]: {{ cookiecutter.__scm_link_url }}/blob/master/README.md
+[3]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contributing-through-user-requests
 
 ### Commitment to Project Support
 
 After reading the [Commitment to Help][4] section of the `CONTRIBUTING` guide and submitting this request, I commit to one of:
 
 - [ ] Read [open discussions][5] until I find **2** where I can help someone and add a comment to help there;
-- [ ] Hit the ["Watch"][6] button in this repository to receive notifications about the project and help **2** people that ask questions in the future;
+- [ ] Hit the ["Watch"][7] button in this repository to receive notifications about the project and help **2** people that ask questions in the future;
 - [ ] Review **1** Merge Request by cloning the project and following the [review process][7].
 
-[4]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#commitment-to-help
-[5]: https://gitlab.com/galactipy/galactipy/-/issues/?type%5B%5D=issue
-[6]: https://gitlab.com/gitlab-org/gitlab-foss/-/issues/234#note_17497758
-[7]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contributing-by-reviewing-changes
+[4]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#commitment-to-help
+[5]: {{ cookiecutter.__scm_link_url }}/issues/?type%5B%5D=issue
+[7]: https://gitlab.com/gitlab-org/gitlab-foss/-/issues/234#note_17497758
+[7]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contributing-by-reviewing-changes
 
 ## :speech_balloon: Context
 
 <!-- Add the details for your request here -->
 
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
 /label ~"request::support"
+{%- else %}
+/label ~"rfs" ~"sts-needs-triage"
+{%- endif %}

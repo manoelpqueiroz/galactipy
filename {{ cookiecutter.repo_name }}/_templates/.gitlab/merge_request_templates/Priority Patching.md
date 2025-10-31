@@ -6,8 +6,8 @@ This template should be used to propose changes resolving a major issue with the
 :exclamation: **Use this template on any of the following conditions (this is a non-exhausting list):**
 
 - Security issues;
-- Reverting/addressing changes that crash project generation;
-- Reverting/addressing changes that make generated projects unusable;
+- Reverting/addressing changes that crash the application;
+- Reverting/addressing changes that make the application unusable;
 - Pipeline failures.
 >>>
 
@@ -15,10 +15,12 @@ This template should be used to propose changes resolving a major issue with the
 
 <!-- Describe WHAT the request raises attention about, with as much detail as possible -->
 
+> **Proposed Version:** <!-- What is your proposed version following the EffVer scheme? -->
+
 ## Why is this issue critical?
 
 <!--
-  How seriously does this affect Galactipy users?
+  How seriously does this affect {{ cookiecutter.project_name }} users?
   What security risks does this pose?
 -->
 
@@ -34,14 +36,14 @@ This template should be used to propose changes resolving a major issue with the
 - [ ] I have read the [`CONTRIBUTING`][1] guide for proposing changes;
 - [ ] I have read the [`SECURITY`][2] guide to correctly address issue confidentiality;
 - [ ] I provided a concise and clear title for this discussion;
-- [ ] I have presented my case following [Galactipy's philosophy][3] principles;
+- [ ] I have presented my case following the [{{ cookiecutter.project_name }} philosophy][3];
 - [ ] I have added the proper [labels][4] to start this discussion.
 >>>
 
-[1]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
-[2]: https://gitlab.com/galactipy/galactipy/-/blob/master/SECURITY.md
-[3]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#book-our-philosophy
-[4]: https://gitlab.com/galactipy/galactipy/-/labels
+[1]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
+[2]: {{ cookiecutter.__scm_link_url }}/blob/master/SECURITY.md
+[3]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#book-our-philosophy
+[4]: {{ cookiecutter.__scm_link_url }}/labels
 
 ## Assignee Checklist
 
@@ -56,41 +58,41 @@ This template should be used to propose changes resolving a major issue with the
 >>> [!important] :technologist: Development control
 
 - [ ] I have assembled the minimal configuration to resolve the root cause of the issue;
-- [ ] I have tested my implementation to confirm the issue is resolved;
-- Regarding versioning: <!-- Pick only one -->
-  - [ ] I have bumped the Galactipy [version][9] appropriately as my final commit for this change;
-  - [ ] I have kept the Galactipy version the same, as it does not change end-user files.
+- [ ] I have tested my implementation to confirm the issue is resolved.
 >>>
 
 >>> [!tip] :reminder_ribbon: Contribution control
 
-- [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][10] or the Related Issues section.
+- [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][9] or the Related Issues section.
 >>>
 
-[5]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#commit-customs
-[6]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#say-why-not-just-what
-[7]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#git-trailers
-[8]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#styling
-[9]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#versioning-customs
-[10]: https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically
+[5]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#commit-customs
+[6]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#say-why-not-just-what
+[7]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#git-trailers
+[8]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#styling
+[9]: https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically
 
 ## Reviewer Checklist
 
 >>> [!warning] :passport_control: MANDATORY
-I attest that the proposed change meets the [Contribution Acceptance Criteria][11]:
+I attest that the proposed change meets the [Contribution Acceptance Criteria][10]:
 
 - [ ] The change is as small as possible;
 - [ ] The root cause of the issue is addressed without workarounds;
 - The change: <!-- Pick only one -->
   - [ ] Does not require any addition or modification to unit tests;
-  - [ ] Modifies Cookiecutter pre-gen and/or post-gen hooks, with proper tests being added;
+  - [ ] Modifies internal code logic, with proper tests being added or updated;
 - [ ] The commit history is logical;
+{%- if cookiecutter.commit_convention == 'gitmoji' %}
 - [ ] The commit history applies the proper Gitmoji;
+{%- else %}
+- [ ] The commit history applies the proper conventional types;
+{%- endif %}
 - [ ] The commit titles apply the imperative mood;
 - [ ] The commit descriptions sufficiently explain design choices;
 - [ ] Issues marked for automatic closing are accurate;
 - [ ] Issues requiring manual check have been addressed;
-- [ ] The proposed Galactipy version adheres to our view on [EffVer][9].
+- [ ] The proposed {{ cookiecutter.project_name }} version adheres to our view on [EffVer][11].
 >>>
 
 >>> [!tip] :pen_fountain: Discretionary
@@ -103,5 +105,6 @@ I attest that during the course of this development, the following interactions 
 - [ ] We have found [opportunities][12] for future development and have created work items to take action on later.
 >>>
 
-[11]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
-[12]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
+[10]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
+[11]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#versioning-customs
+[12]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
