@@ -1,3 +1,4 @@
+# TODO Configure the "Requests for Support" category on your GitHub repository (https://docs.github.com/en/discussions/managing-discussions-for-your-community/managing-categories-for-discussions)
 labels: [rfs, sts-need-triage]
 body:
   - type: markdown
