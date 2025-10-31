@@ -67,11 +67,15 @@ body:
       label: 💭 Request Details
       description: How would you classify this request?
       options:
+{%- if cookiecutter.app_type != 'bare_repo' %}
         - ⌨️ Changes to CLI behaviour
-{%- if cookiecutter.app_type != 'cli' %}
+{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
         - 📱 Changes in the user interface and user experience
 {%- endif %}
         - 🦚 Customisation options
+{%- else %}
+        - ✨ New features;
+{%- endif %}
         - ℹ️ Improvements to documentation and help menus
         - 🔌 Proposal for package extension
         - 🔗 Compatibility/integration with another tool/platform

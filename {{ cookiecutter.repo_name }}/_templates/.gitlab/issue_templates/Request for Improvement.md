@@ -79,11 +79,15 @@ After reading the [Commitment to Help][5] section of the `CONTRIBUTING` guide an
 
 How would you classify this request?
 
+{%- if cookiecutter.app_type != 'bare_repo' %}
 - [ ] :keyboard: Changes to CLI behaviour;
-{%- if cookiecutter.app_type != 'cli' %}
+{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
 - [ ] :iphone: Changes in the user interface and user experience;
 {%- endif %}
 - [ ] :peacock: Customisation options;
+{%- else %}
+- [ ] :sparkles: New features;
+{%- endif %}
 - [ ] :information_source: Improvements to documentation and help menus;
 - [ ] :electric_plug: Proposal for package extension;
 - [ ] :link: Compatibility/integration with another tool/platform;

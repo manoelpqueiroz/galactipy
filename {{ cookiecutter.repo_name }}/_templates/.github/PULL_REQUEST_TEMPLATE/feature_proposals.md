@@ -3,13 +3,13 @@
 > [!NOTE] :bulb: To reshape user-facing parts of the {{ cookiecutter.project_name }} API
 > This template should be used to propose and discuss incremental or novel working application units offered to users.
 >
-> :ok: **Types of changes to be proposed with this template:** user interface elements/capabilities, customization options, command structure and flags, accessibility options, entry points and logic for extensions, hooks and events
+> :ok: **Types of changes to be proposed with this template:** user interface elements/capabilities, customization options,{% if cookiecutter.app_type != 'bare_repo' %} command structure and flags,{% endif %} accessibility options, entry points and logic for extensions, hooks and events
 >
 > :no_good: **What this type of proposal does not stand for:**
 >
 > - Backend developments with no direct significance to the user;
 > - Changes to the current user experience without additive functionality;
-{%- if cookiecutter.app_type != 'cli'%}
+{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
 > - Changes to interface architecture layers for rendering purposes;
 {%- endif %}
 > - Data and input validation;
@@ -56,7 +56,7 @@
 > [!IMPORTANT] :technologist: Development control
 >
 > - [ ] I have verified the feature does not conflict with other existing features;
-{%- if cookiecutter.app_type != 'cli' %}
+{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
 > Regarding technical delivery:
 >   - [ ] I have verified the feature does not break UI elements;
 >   - [ ] I have verified the added/updated UI elements do not clash with pre-existing ones;

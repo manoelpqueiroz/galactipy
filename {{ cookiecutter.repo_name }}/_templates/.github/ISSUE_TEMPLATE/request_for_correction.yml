@@ -66,6 +66,7 @@ body:
     attributes:
       label: How to Reproduce
       description: If applicable, list a step-by-step attempt at replicating the situation.
+{%- if cookiecutter.app_type != 'bare_repo' %}
   - type: textarea
     attributes:
       label: Configuration
@@ -88,3 +89,4 @@ body:
         %USERPROFILE%\AppData\Local\{{ cookiecutter.repo_name }}\Logs\report.log (Windows)
     validations:
       required: true
+{%- endif %}

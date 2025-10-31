@@ -3,7 +3,7 @@
 >>> [!note] :bulb: Improves the underlying structure of user-facing components
 This template should be used to propose modifications to elements that communicate with the backend and function directly beneath the front-end implementation layer.
 
-:ok: **Types of changes to be proposed with this template:** command parsing and logic, configuration file parsing, user input validation, layers/patterns/workflows for rendering, UI overhauls, extensibility logic impacts
+:ok: **Types of changes to be proposed with this template:** command parsing and logic, configuration file parsing, user input validation,{% if cookiecutter.app_type != 'cli' %} layers/patterns/workflows for rendering, UI overhauls,{% endif %} extensibility logic impacts
 
 :no_good: **What this type of proposal does not stand for:**
 

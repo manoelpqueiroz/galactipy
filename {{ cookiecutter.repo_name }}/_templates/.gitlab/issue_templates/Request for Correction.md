@@ -52,7 +52,7 @@ Please run through all items under the **`Applicant Checklist`** section and be 
 [3]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contributing-through-user-requests
 [4]: {{ cookiecutter.__scm_link_url }}/blob/master/SECURITY.md
 
-## :thought_balloon: Context
+## :speech_balloon: Context
 
 <!--
   Provide a clear and concise description of the issue you are facing
@@ -65,13 +65,14 @@ Please run through all items under the **`Applicant Checklist`** section and be 
   If applicable, list a step-by-step attempt at replicating the situation
 -->
 
+{% if cookiecutter.app_type != 'bare_repo' %}
 ### Configuration
 
 <!--
   Provide your configuration file contents, located at:
 
   ~/.config/{{ cookiecutter.repo_name }}/settings.toml (Linux/MacOS)
-  C:\Users\user\AppData\Local\{{ cookiecutter.repo_name }}\settings.toml (Windows)
+  %USERPROFILE%\AppData\Local\{{ cookiecutter.repo_name }}\settings.toml (Windows)
 -->
 
 ### Log Output
@@ -80,8 +81,9 @@ Please run through all items under the **`Applicant Checklist`** section and be 
   Provide the log file output generated after reproducing the situation, located at:
 
   ~/.local/state/log/{{ cookiecutter.repo_name }}/report.log (Linux/MacOS)
-  C:\Users\user\AppData\Local\{{ cookiecutter.repo_name }}\Logs\report.log (Windows)
+  %USERPROFILE%\AppData\Local\{{ cookiecutter.repo_name }}\Logs\report.log (Windows)
 -->
+{%- endif %}
 
 {%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
 /label ~"request::correction"

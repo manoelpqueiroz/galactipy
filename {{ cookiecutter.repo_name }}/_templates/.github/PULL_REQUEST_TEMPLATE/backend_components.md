@@ -7,7 +7,9 @@
 >
 > :no_good: **What this type of proposal does not stand for:**
 >
+{% if cookiecutter.app_type != 'bare_repo' -%}
 > - Direct changes to the CLI behaviour and functionality;
+{%- endif %}
 {%- if cookiecutter.app_type != 'cli' %}
 > - Direct changes to the TUI behaviour and functionality;
 {%- endif %}
@@ -26,7 +28,9 @@
   Defend the reasons why this improvement is important moving forward
   What problem does it solve?
   What benefits does it bring to users?
+{% if cookiecutter.app_type != 'bare_repo' -%}
   Does it make front-end interfaces clearer and more accessible for usage?
+{%- endif %}
   What would be considered a successful outcome for this development from your perspective?
   How much developer support for this implementation should be expected?
 
