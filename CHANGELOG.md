@@ -1,3 +1,37 @@
+## 0.20.3 (2025-10-31)
+
+### :milky_way: Components (2 changes)
+
+- [:sparkles: Update issue and PR templates for GitHub](galactipy/galactipy@3250804dfd7088b1502ea3c4e3f72bfb29983d36) ([merge request](galactipy/galactipy!87))
+- [:sparkles: Add preconfigured log file for bug reporting](galactipy/galactipy@ac64572e028a9d708a7c93a6b9891bbb97052e5f) ([merge request](galactipy/galactipy!87))
+
+### :wrench: Fixes & Refactoring (1 change)
+
+- [:pencil2: Fix GitHub alerts rendering](galactipy/galactipy@67ebac3e11eac747461528f4f5941efac655054c) ([merge request](galactipy/galactipy!87))
+
+### :package: Build System & CI/CD (1 change)
+
+- [:white_check_mark: Update file removal tests](galactipy/galactipy@521094c889f8faba91021fbd1b7eff8718db8599) ([merge request](galactipy/galactipy!87))
+
+### :gear: Internals (2 changes)
+
+- [:wrench: Update file removals for bare repo templates](galactipy/galactipy@59ca13bb948ba6ccb2a9fdc27f2cafb4ebdf4308) ([merge request](galactipy/galactipy!87))
+- [:pencil2: Fix minor typos with project issue and MR templates](galactipy/galactipy@cca1ca216e31d94c256498ad0644ca9057ff101a) ([merge request](galactipy/galactipy!87))
+
+### :construction_site: Template Internals (2 changes)
+
+- [:wrench: Adapt issue/MR templates for bare repo option](galactipy/galactipy@c18040a5c99b18e7a527195964dbb27b02194b92) ([merge request](galactipy/galactipy!87))
+- [:sparkles: Update issue and MR templates for GitLab](galactipy/galactipy@e152b17a6fc3ded54860a66c77d593f351deedd0) ([merge request](galactipy/galactipy!87))
+
+### :pencil: Documentation (1 change)
+
+- [:pencil: Clarify GitHub PR template usage in project `README.md`](galactipy/galactipy@c4d2e53256a3c91ef41aa07749509b2e3c1cbf12) ([merge request](galactipy/galactipy!87))
+
+### :scroll: Project Policies (2 changes)
+
+- [:wrench: Improve usage of task lists for project issue and MR templates](galactipy/galactipy@32c147d1cde63a7ea958f1b1f1887a69eaaa1ef5) ([merge request](galactipy/galactipy!87))
+- [:pencil: Update `CONTRIBUTING.md` with additional policies](galactipy/galactipy@9cdc01b714c8aee84bb345bb7f63a1461ab5dc79) ([merge request](galactipy/galactipy!86))
+
 ## 0.20.2 (2025-10-27)
 
 ### :construction_site: Template Internals (3 changes)
