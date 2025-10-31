@@ -1,3 +1,13 @@
+## 0.20.4 (2025-10-31)
+
+### :wrench: Fixes & Refactoring (1 change)
+
+- [:truck: Fix filenames for GitHub discussion templates](galactipy/galactipy@dcfd542353a468660c9ebe9e963cf99026261b7f) ([merge request](galactipy/galactipy!88))
+
+### :pencil: Documentation (1 change)
+
+- [:bulb: Include reference to GitHub discussions category creation](galactipy/galactipy@79eb394b881727ac758fa68a4fd27f052f223293) ([merge request](galactipy/galactipy!88))
+
 ## 0.20.3 (2025-10-31)
 
 ### :milky_way: Components (2 changes)
