@@ -164,7 +164,9 @@ def _get_files_to_delete(
     """
     files_to_delete: list[Path] = []
 
-    cli_specific_files = _get_cli_specific_files(directory, package_name)
+    cli_specific_files = _get_cli_specific_files(
+        directory, package_name, flags.remove_gitlab
+    )
     tui_specific_files = _get_tui_related_files(directory, package_name, flags.app_type)
 
     bdd_specific_files = _get_bdd_specific_files(
@@ -199,7 +201,9 @@ def _get_files_to_delete(
     return files_to_delete
 
 
-def _get_cli_specific_files(directory: Path, package_name: str) -> list[Path]:
+def _get_cli_specific_files(
+    directory: Path, package_name: str, is_github: bool
+) -> list[Path]:
     """Return select files to remove when CLI option is disabled.
 
     Parameters
@@ -208,8 +212,11 @@ def _get_cli_specific_files(directory: Path, package_name: str) -> list[Path]:
         Root directory of the project.
     package_name : str
         Name of the package under the root directory of the project.
+    is_github : bool
+        Flag to determine whether to remove templates files for GitLab or
+        GitHub.
     """
-    return [
+    removals = [
         directory / package_name / "cli",
         directory / package_name / "__main__.py",
         directory / package_name / "config",
@@ -219,6 +226,33 @@ def _get_cli_specific_files(directory: Path, package_name: str) -> list[Path]:
         directory / "tests" / "config",
         directory / "tests" / "logging",
     ]
+
+    if is_github:
+        removals.extend(
+            [
+                directory
+                / ".github"
+                / "PULL_REQUEST_TEMPLATE"
+                / "interface_architecture.md",
+                directory / ".github" / "PULL_REQUEST_TEMPLATE" / "user_experience.md",
+            ]
+        )
+
+    else:
+        removals.extend(
+            [
+                directory
+                / ".gitlab"
+                / "merge_request_templates"
+                / "Interface Architecture.md",
+                directory
+                / ".gitlab"
+                / "merge_request_templates"
+                / "User Experience.md",
+            ]
+        )
+
+    return removals
 
 
 def _get_tui_related_files(
