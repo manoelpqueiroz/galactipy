@@ -178,6 +178,9 @@ class TestApplicationOptions:
         assert bdd_files["utils"]["parsers"].exists()
         assert not bdd_files["gitkeep"].exists()
 
+        assert removal_tree["gitlab"]["ux"].exists()
+        assert removal_tree["gitlab"]["arch"].exists()
+
     def test_tui_no_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
 
@@ -235,6 +238,9 @@ class TestApplicationOptions:
         assert not bdd_files["root"].exists()
         assert not bdd_files["helpers"]["root"].exists()
         assert not bdd_files["utils"]["root"].exists()
+
+        assert removal_tree["gitlab"]["ux"].exists()
+        assert removal_tree["gitlab"]["arch"].exists()
 
     def test_hybrid_with_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
@@ -303,6 +309,9 @@ class TestApplicationOptions:
         assert bdd_files["utils"]["parsers"].exists()
         assert not bdd_files["gitkeep"].exists()
 
+        assert removal_tree["gitlab"]["ux"].exists()
+        assert removal_tree["gitlab"]["arch"].exists()
+
     def test_hybrid_no_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
 
@@ -360,6 +369,9 @@ class TestApplicationOptions:
         assert not bdd_files["root"].exists()
         assert not bdd_files["helpers"]["root"].exists()
         assert not bdd_files["utils"]["root"].exists()
+
+        assert removal_tree["gitlab"]["ux"].exists()
+        assert removal_tree["gitlab"]["arch"].exists()
 
     def test_cli_with_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
@@ -425,6 +437,9 @@ class TestApplicationOptions:
         assert bdd_files["utils"]["parsers"].exists()
         assert not bdd_files["utils"]["async"].exists()
 
+        assert removal_tree["gitlab"]["ux"].exists()
+        assert removal_tree["gitlab"]["arch"].exists()
+
     def test_cli_no_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
 
@@ -479,6 +494,9 @@ class TestApplicationOptions:
         assert not bdd_files["helpers"]["root"].exists()
         assert not bdd_files["utils"]["root"].exists()
 
+        assert removal_tree["gitlab"]["ux"].exists()
+        assert removal_tree["gitlab"]["arch"].exists()
+
     def test_bare_with_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
 
@@ -529,6 +547,9 @@ class TestApplicationOptions:
         assert not bdd_files["helpers"]["root"].exists()
         assert not bdd_files["utils"]["root"].exists()
 
+        assert not removal_tree["gitlab"]["ux"].exists()
+        assert not removal_tree["gitlab"]["arch"].exists()
+
     def test_bare_no_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
 
@@ -571,6 +592,9 @@ class TestApplicationOptions:
         assert not bdd_files["helpers"]["root"].exists()
         assert not bdd_files["utils"]["root"].exists()
 
+        assert not removal_tree["gitlab"]["ux"].exists()
+        assert not removal_tree["gitlab"]["arch"].exists()
+
     def test_remove_all(self, removal_tree):
         pyproject = removal_tree["pyproject"]
 
@@ -597,6 +621,9 @@ class TestApplicationOptions:
         file1 = removal_tree["features"]["file1"]
         file2 = removal_tree["features"]["file2"]
         directory = removal_tree["features"]["directory"]
+
+        ux_template = removal_tree["github"]["ux"]
+        arch_template = removal_tree["github"]["arch"]
 
         config = ProjectFlags(True, True, True, True, "bare_repo")
 
@@ -625,6 +652,9 @@ class TestApplicationOptions:
 
         assert pyproject.exists()
         assert test_gitkeep.exists()
+
+        assert not ux_template.exists()
+        assert not arch_template.exists()
 
 
 class TestFeatureFiles:
