@@ -117,6 +117,9 @@
   "__scm_base_url": "https://{{ cookiecutter.__scm_platform_lc }}.com/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}",
   "__scm_link_url": "https://{{ cookiecutter.__scm_platform_lc }}.com/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}{% if cookiecutter.__scm_platform_lc == 'gitlab' %}/-{% endif %}",
   "__gitlab_org": "https://gitlab.com/groups/{{ cookiecutter.scm_namespace }}/-",
+  "__mr_term": "{{ 'Merge Request' if cookiecutter.__scm_platform_redux == 'gl' else 'Pull Request' }}",
+  "__mr_acronym": "{{ 'MR' if cookiecutter.__scm_platform_redux == 'gl' else 'PR' }}",
+  "__mr_term_slug": "{{ 'merge-request' if cookiecutter.__scm_platform_redux == 'gl' else 'pull-request' }}",
   "__coverage_lc": "{{ cookiecutter.coverage_service.lower() }}",
   "__debug": false,
   "_copy_without_render": [
