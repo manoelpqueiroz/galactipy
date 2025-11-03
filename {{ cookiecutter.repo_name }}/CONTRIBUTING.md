@@ -694,7 +694,11 @@ a new {{ cookiecutter.__mr_term }} should be opened to
 update the `ROADMAP.md` table in the **Timeline** field
 with the following possible values:
 
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 - `**Delivered with <version> :airplane_departure:**`,
+{% else -%}
+- `**Delivered with <version> :flight_departure:**`,
+{%- endif %}
   if properly associated to a [{{ cookiecutter.__scm_platform_base }} Release][road7];
 - `**Delivered Internally :100:**`,
   if the {{ roadmap_item }} has no impact on project releases.
@@ -1784,33 +1788,57 @@ are listed below:
 |  `source-docs`  |           :bulb:            |
 |     `beer`      |           :beers:           |
 |     `text`      |      :speech_balloon:       |
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 |      `db`       |         :card_box:          |
+{%- else %}
+|      `db`       |       :card_file_box:       |
+{%- endif %}
 |   `logs-add`    |        :loud_sound:         |
 |    `logs-rm`    |           :mute:            |
 |    `people`     |    :busts_in_silhouette:    |
 |      `ux`       |     :children_crossing:     |
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 |     `arch`      |     :construction_site:     |
+{%- else %}
+|     `arch`      |   :building_construction:   |
+{%- endif %}
 |    `design`     |          :iphone:           |
 |     `mock`      |           :clown:           |
 |      `egg`      |            :egg:            |
 |    `ignore`     |        :see_no_evil:        |
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 |     `snap`      |     :camera_with_flash:     |
+{%- else %}
+|     `snap`      |       :camera_flash:        |
+{%- endif %}
 |  `experiment`   |          :alembic:          |
 |      `seo`      |            :mag:            |
 |     `types`     |           :label:           |
 |     `seed`      |         :seedling:          |
 |     `flag`      |  :triangular_flag_on_post:  |
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 |     `catch`     |           :goal:            |
+{%- else %}
+|     `catch`     |         :goal_net:          |
+{%- endif %}
 |   `animation`   |           :dizzy:           |
 |  `deprecation`  |        :wastebasket:        |
 |     `auth`      |     :passport_control:      |
 |  `fix-simple`   |     :adhesive_bandage:      |
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 |  `exploration`  |     :face_with_monocle:     |
+{%- else %}
+|  `exploration`  |       :monocle_face:        |
+{%- endif %}
 |     `dead`      |          :coffin:           |
 |   `test-fail`   |         :test_tube:         |
 |     `logic`     |          :necktie:          |
 |    `health`     |        :stethoscope:        |
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 |     `infra`     |           :brick:           |
+{%- else %}
+|     `infra`     |          :bricks:           |
+{%- endif %}
 |     `devxp`     |       :technologist:        |
 |     `money`     |     :money_with_wings:      |
 |   `threading`   |          :thread:           |
