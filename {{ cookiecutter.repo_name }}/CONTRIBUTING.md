@@ -961,6 +961,11 @@ with their usage:
 |   User Experience   |       `ux-navigation`        | Improves user navigation in the user interface.                                                                   |
 {%- endif %}
 |   User Experience   |         `ux-nudging`         | Helps users understand the application with more ease, like help panels, notifications etc.                       |
+
+> [!IMPORTANT]
+> The project labels are also used
+> to define Changelog categories
+> in [Release Drafter][labels1].
 {%- endif %}
 
 ##### Work Item Lifecycle
@@ -5249,6 +5254,10 @@ what we are doing matters!
 [road7]: https://docs.gitlab.com/user/project/releases/
 {%- else %}
 [road7]: https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases
+{%- endif %}
+
+{% if cookiecutter.__scm_platform_lc == 'github' -%}
+[labels1]: {{ cookiecutter.__scm_link_url }}/.github/release-drafter.yml
 {%- endif %}
 
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
