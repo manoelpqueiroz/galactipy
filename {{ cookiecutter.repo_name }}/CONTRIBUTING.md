@@ -560,7 +560,7 @@ can be found below:
     whether for
     internal or external use,
     to ensure maintenance
-    of our [institutional knowledge][dev2];
+    of our [institutional knowledge][knowledge];
   - Upkeeping repository order
     through our [practices][practices];
   - Being an exemplar advocate
@@ -569,12 +569,12 @@ can be found below:
   displaying the aforementioned conduct,
   the contributor must express
   their actual interest
-  in attaining a [role][dev3]
+  in attaining a [role][dev2]
   in the upstream repository.
 
 We also recommend interested individuals
 to follow
-the guide to the [_Pragmatic Open Source Contributor_][dev4],
+the guide to the [_Pragmatic Open Source Contributor_][dev3],
 which goes
 into the attitude
 for candidate contributors
@@ -1054,6 +1054,146 @@ in the Issue Tracker
 and edited
 through the "Bulk edit" option.
 {% endif -%}
+
+{% if cookiecutter.use_bdd -%}
+### Behaviour-Driven Development
+
+{% if cookiecutter.licence != 'nos' -%}
+At {{ cookiecutter.project_name }},
+we believe building software
+goes beyond just coding
+its implementation.
+More often than not,
+open source projects
+face extreme hurdles
+to effectively
+deliver aggregated value
+to their users
+due to a lenient _laissez-faire_ approach
+to project development.
+This leaves users frustrated
+when desired features
+go unlaunched
+and can eventually signal a project's doom,
+as users migrate
+to alternative solutions which,
+while not perfect,
+address the singular pivotal element
+that guarantee their adoption:
+**making the user feel like they matter**.
+
+We have adopted a mission
+to turn our project development
+more structured
+and better prepared
+to handle scaling adequately
+with the community's expectations
+on the development team's capabilities.
+We believe the best practice
+we could embrace
+towards this vision
+is to leverage
+[Behaviour-Driven Development][bdd1]
+for our development cycle.
+
+{% endif -%}
+We expect all contributors
+to understand
+and adopt BDD best practices
+during development,
+striving to formulate unclear specifications,
+engaging with other contributors
+to debate different implementation choices
+and safeguarding [institutional knowledge][knowledge].
+
+We understand that
+adopting BDD might seem like
+an additional step
+that slows down
+our development process
+at first glance.
+However,
+we are committed to BDD
+because it aligns with {{ cookiecutter.project_name }}'s [core values][philosophy] of
+collaboration,
+transparency
+and continuous improvement.
+
+By focusing on
+{%- if cookiecutter.app_type != 'bare_repo' %}
+the behaviour of our application
+{%- else %}
+the behaviour of our library
+{%- endif %}
+from the end-user's perspective
+through BDD,
+we ensure that everyone
+— developers, testers, and users —
+shares a clear  understanding
+of what we aim to achieve.
+This approach promotes upfront clarity,
+reducing misunderstandings and misalignments
+down the line.
+It also encourages us
+to articulate requirements
+in plain language,
+fostering better communication
+and collaboration among team members.
+
+While there may be
+an initial learning curve
+for those unfamiliar
+with the paradigm,
+the long-term benefits are substantial.
+It results in
+more sustainable and maintainable code,
+ultimately accelerating our development cycle
+and ensuring we deliver value consistently.
+{%- if cookiecutter.licence != 'nos' %}
+It also reinforces
+our commitment
+to creating an environment
+where contributions are
+diverse
+— involving not only the work of
+software developers,
+but also
+product managers,
+designers,
+researchers
+_and_ users
+—
+contributors are valued
+and everyone feels empowered to grow and succeed.
+{%- endif %}
+
+#### References for BDD
+
+The structured approach BDD offers
+will help us maintain
+the high standards we strive for,
+ensuring that every contribution
+aligns with our shared vision and goals.
+
+To help contributors
+to get more familiar
+with BDD practices,
+we provide a suggested list of references below:
+
+- [The Cucumber documentation][bdd1],
+  especially their [article on BDD][bdd2];
+- The [Modern Software Engineering channel BDD playlist][bdd3],
+  with special consideration to
+  the following videos:
+  - [_3 Reasons why BDD Is Failing You_][bdd4];
+  - [_The Truth about Cucumber & BDD_][bdd5];
+- The [`pytest-bdd` documentation][bdd6],
+  as {{ cookiecutter.project_name }} uses this library
+  to parse the feature files
+  with test scenarios;
+- Automation Panda's [BDD Guide][bdd7];
+- [_Behaviour-Driven Development: A Data Scientist Perspective_][bdd8].
+{%- endif %}
 
 ### Versioning Customs
 
@@ -4742,6 +4882,10 @@ what we are doing matters!
 [behaviour]: #how-to-behave-among-other-contributors
 {%- endif %}
 
+{% if cookiecutter.licence != 'nos' or cookiecutter.use_bdd %}
+[knowledge]: https://www.teachfloor.com/elearning-glossary/institutional-knowledge
+{%- endif %}
+
 [intro1]: {{ cookiecutter.__scm_link_url }}/issues
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [intro2]: {{ cookiecutter.__scm_link_url }}/merge_requests
@@ -4817,13 +4961,12 @@ what we are doing matters!
 
 [dev1]: {{ cookiecutter.__scm_base_url }}
 {%- if cookiecutter.licence != 'nos' %}
-[dev2]: https://www.teachfloor.com/elearning-glossary/institutional-knowledge
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[dev3]: https://docs.gitlab.com/user/permissions/
+[dev2]: https://docs.gitlab.com/user/permissions/
 {%- else %}
-[dev3]: https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/roles-in-an-organization
+[dev2]: https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/roles-in-an-organization
 {%- endif %}
-[dev4]: https://diurnal.st/2025/03/02/the-pragmatic-open-source-contributor.html
+[dev3]: https://diurnal.st/2025/03/02/the-pragmatic-open-source-contributor.html
 {%- endif %}
 
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
@@ -4878,6 +5021,17 @@ what we are doing matters!
 {% if cookiecutter.scm_platform == 'GitLab Free' -%}
 [practices4]: https://docs.gitlab.com/user/tasks/#add-a-task-to-a-milestone
 [practices5]: {{ cookiecutter.__scm_link_url }}/issues?state=all&type%5B%5D=task&milestone_title=Any
+{%- endif %}
+
+{% if cookiecutter.use_bdd -%}
+[bdd1]: https://cucumber.io/docs/
+[bdd2]: https://cucumber.io/docs/bdd/
+[bdd3]: https://youtube.com/playlist?list=PLwLLcwQlnXByKR1Fo7UnE6gQAbx-JfYJZ
+[bdd4]: https://youtu.be/LuCqnxGxIPE
+[bdd5]: https://youtu.be/YUkk2lGLxjA
+[bdd6]: https://pytest-bdd.readthedocs.io/en/latest/
+[bdd7]: https://automationpanda.com/bdd/
+[bdd8]: https://data-ai.theodo.com/en/technical-blog/behavior-driven-development-data-scientist-perspective
 {%- endif %}
 
 [version1]: https://jacobtomlinson.dev/effver/
