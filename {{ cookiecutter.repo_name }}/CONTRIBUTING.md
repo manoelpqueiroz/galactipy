@@ -13,8 +13,15 @@
   'Apache-2.0': 'Apache Software License 2.0',
   'nos': 'Non-OSS'
 } %}
+{%- set docstring_mapping = {
+  'numpy': 'numpydoc',
+  'google': 'Google Python Style',
+  'pep257': 'PEP 257',
+  'other': 'custom'
+} %}
 {%- set roadmap_item = roadmap_mapping[cookiecutter.scm_platform] %}
 {%- set licence_name = licence_mapping[cookiecutter.licence] %}
+{%- set docstring_name = docstring_mapping[cookiecutter.docstring_style] %}
 {%- set roadmap_item_undefined = 'an' ~ roadmap_item if roadmap_item == 'epic' else 'a' ~ roadmap_item %}
 {%- set task_item = 'task' if cookiecutter.__scm_platform_lc == 'gitlab' else 'sub-issue' %}
 # How to Contribute
@@ -1520,6 +1527,45 @@ to Ruff rules and conventions
 for the project,
 use a [Project Policy Proposal {{ cookiecutter.__mr_acronym }}][road1].
 
+#### Docstring Convention
+
+{% if cookiecutter.docstring_style != 'other' -%}
+We choose to write our docstrings
+using the [{{ docstring_name }}][style1a] standard.
+Please be aware
+to adhere to it
+when making your contributions.
+
+We enforce the following rules
+for docstrings:
+
+- Public functions, classes and methods
+  must always contain
+  the short summary
+  and parameter sections;
+  if return types
+  and/or exceptions
+  are defined,
+  they must also be included
+  in the docstring;
+  extended summaries
+  are left to the contributor's discretion;
+- Private functions, classes and methods
+  must define only the short summary;
+  other sections
+  are left to the contributor's discretion;
+- Objects defined in the `tests` directory
+  are not obliged
+  to define docstrings.
+{% else -%}
+<!-- UPDATEME with your docstring convention details and usage guidelines -->
+We choose to write our docstrings
+using a custom standard.
+Please be aware
+to adhere to it
+when making your contributions.
+{%- endif %}
+
 #### Semantic Line Breaks
 
 When editing Markdown files,
@@ -2666,6 +2712,53 @@ A non-exhaustive list of steps to consider:
 {%- else %}
 <!-- UPDATEME with context specific to your project -->
 {%- endif %}
+
+#### Test Markers
+
+When writing tests,
+we strongly encourage developers
+{%- if cookiecutter.use_bdd %}
+to leverage [feature file tags][workflow1]
+{%- else %}
+to leverage [custom Pytest markers][workflow1]
+{%- endif %}
+to improve test collection
+and organisation.
+This allows the team
+to get more context
+if tests start to fail
+after introducing a change.
+
+The following markers are specified
+in [`pyproject.toml`][workflow2]:
+
+|     Marker      | Specification                                                                                                                   |
+| :-------------: | ------------------------------------------------------------------------------------------------------------------------------- |
+|    `backend`    | Tests validating the behaviour of back end components.                                                                          |
+|   `frontend`    | Tests validating the behaviour of the user-facing components.                                                                   |
+{%- if cookiecutter.app_type != 'bare_repo' %}
+|      `cli`      | Tests validating command-line interface behaviour.                                                                              |
+{%- endif %}
+|   `standard`    | Tests defining behaviour for program operations considered the standard procedure.                                              |
+|  `validation`   | Tests related to data input validation and handling.                                                                            |
+|     `edge`      | Tests defining the expected behaviour of the program in edge cases.                                                             |
+|   `security`    | Tests validating security aspects of the program.                                                                               |
+|  `performance`  | Tests aimed at certifying expected performance from program operations, usually against benchmarks.                             |
+|  `persistence`  | Tests which certify that data is consistently and correctly persisted.                                                          |
+|    `config`     | Tests related to modifications in user configuration for the program.                                                           |
+| `customization` | Tests related to customization options.                                                                                         |
+| `compatibility` | Tests validating compatibility of {{ cookiecutter.project_name }} accross its different versions.                               |
+|     `async`     | Tests validating asynchronous code.                                                                                             |
+|  `integration`  | Tests certifying integration with external services, libraries and platforms.                                                   |
+|   `database`    | Tests specifically aimed at validating database operations.                                                                     |
+|      `api`      | Tests validating integration with external API schemas.                                                                         |
+|   `identity`    | Tests related to user identity verification and validation.                                                                     |
+|  `networking`   | Tests validating expected connection standards and quality to other services, whether internal or external.                     |
+|  `monitoring`   | Tests certifying that program healthchecks provide the necessary information to external systems and files in case of failures. |
+
+To propose changes
+to the marker options,
+do so through a [Project Policy Proposal][road1].
 
 #### Feature Flags
 
@@ -4805,6 +4898,13 @@ what we are doing matters!
 {%- endif %}
 
 [style1]: https://docs.astral.sh/ruff/
+{%- if cookiecutter.docstring_style == 'numpy' %}
+[style1a]: https://numpydoc.readthedocs.io/en/latest/format.html
+{%- elif cookiecutter.docstring_style == 'google' %}
+[style1a]: https://google.github.io/styleguide/pyguide.html#s3.8-comments-and-docstrings
+{%- elif cookiecutter.docstring_style == 'pep257' %}
+[style1a]: https://peps.python.org/pep-0257/
+{%- endif %}
 [style2]: https://sembr.org/
 [style3]: https://sive.rs/1s
 [style4]: {{ cookiecutter.__scm_link_url }}/tree/master/.{{ cookiecutter.__scm_platform_lc }}
@@ -4861,6 +4961,13 @@ what we are doing matters!
 {%- endif %}
 [prepare2]: https://github.com/kubernetes/kubernetes/blob/release-1.5/docs/devel/faster_reviews.md
 [prepare3]: https://google.github.io/eng-practices/review/
+
+{% if cookiecutter.use_bdd -%}
+[workflow1]: https://pytest-bdd.readthedocs.io/en/latest/#organizing-your-scenarios
+{% else -%}
+[workflow1]: https://docs.pytest.org/en/stable/example/markers.html#mark-examples
+{%- endif %}
+[workflow2]: {{ cookiecutter.__scm_link_url }}/blob/master/pyproject.toml
 
 {%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
 [mr0]: https://docs.gitlab.com/user/project/merge_requests/dependencies/
