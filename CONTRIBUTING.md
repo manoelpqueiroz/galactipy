@@ -98,7 +98,7 @@ via your IDE or the terminal:
    your virtual environment:
 
 ```sh
-poetry env use 3.13 # Or replace with your Python version
+poetry env use 3.14 # Or replace with your Python version
 eval $(poetry env activate)
 ```
 
@@ -106,7 +106,7 @@ eval $(poetry env activate)
 
 ```sh
 poetry install # Or, preferably, `invoke install` if available
-invoke pre-commit-install
+invoke hooks
 ```
 
 4. Run the sweeping task
@@ -814,7 +814,7 @@ providing essential files
 and configurations
 for rapid project initiation.
 
-Galactipy’s versioning
+Galactipy's versioning
 should be seen
 as reflecting
 the progression of our efforts
@@ -920,7 +920,7 @@ as `quick-win` labelled issues:
   mark planned developments
   that are easy to deliver
   and are used
-  to trach such initiatives;
+  to track such initiatives;
 - **Flash branches**
   indicate changes
   that are intended
@@ -1420,7 +1420,7 @@ if you know
 why it exists
 in the first place.
 
-If you use generalized terms
+If you use generalised terms
 such as "industry standard"
 or "best practices",
 be sure to give context,
@@ -1558,7 +1558,7 @@ to how we approach
 collaboration,
 documentation,
 and community engagement.
-It emphasizes the importance of
+It emphasises the importance of
 actively sharing knowledge,
 experiences,
 and ideas
@@ -1942,7 +1942,7 @@ the more likely it will be merged quickly.
 After that
 you can send more MRs
 to enhance and expand the feature.
-The [How to Get Faster PR Reviews][changes5] guide
+The [_How to Get Faster PR Reviews_][changes5] guide
 from the Kubernetes team
 also has some great points regarding this.
 
@@ -2167,7 +2167,7 @@ it meets the contribution acceptance criteria below:
      ask a developer
      to help you fix the test;
 5. The MR contains
-   a few logically organized commits,
+   a few logically organised commits,
    using [Gitmoji][mr2].
    We do not apply the squash method
    for merging changes;
@@ -2471,7 +2471,7 @@ and helps authors catch mistakes earlier.
      MRs that are too small
      increase the number of total reviews,
      which can cause the opposite effect;
-4. Minimize the number of reviewers
+4. Minimise the number of reviewers
    in a single MR.
 
 ##### Recommendations for Facilitating Reviews
@@ -2599,7 +2599,7 @@ is an opportunity to grow the community.
 
 Review a bit at a time,
 do not overwhelm new contributors.
-It is tempting to micro-optimize
+It is tempting to micro-optimise
 and make everything about
 relative performance,
 perfect grammar,
@@ -3037,7 +3037,7 @@ and commoditised,
 offering little incentive for newcomers
 to engage deeply with the project.
 In contrast,
-"starter assignments" emphasize action
+"starter assignments" emphasise action
 and significance,
 providing value
 for both new contributors
