@@ -721,6 +721,250 @@ Use cases for this type of work item include:
   which can't be prioritised
   due to scope or team capacity.
 
+##### Labels
+
+{{ cookiecutter.project_name }} defines
+the following labels
+to mark
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+issues
+{%- else %}
+issues,
+discussions
+{%- endif %}
+and {{ cookiecutter.__mr_term }}s,
+contributors should be familiar
+with their usage:
+
+{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+|               Label               | Usage                                                                                                             |
+| :-------------------------------: | ----------------------------------------------------------------------------------------------------------------- |
+|       ~"backend::external"        | Changes to modules interacting directly with external APIs.                                                       |
+|      ~"backend::components"       | Changes to internal modules and utils.                                                                            |
+|       ~"backend::database"        | Changes to database schema and operations.                                                                        |
+|     ~"blocked-by-dependency"      | Resolution requires development on upstream dependency.                                                           |
+|           ~"ci::build"            | Improves the project's deployment reliability through automated validation.                                       |
+{%- if cookiecutter.create_docker %}
+|           ~"ci::docker"           | Changes how {{ cookiecutter.project_name }} containers are built and provided to users.                           |
+{%- endif %}
+|           ~"ci::tasks"            | Structures automated tasks of different functions to run on scheduled pipelines.                                  |
+{%- if cookiecutter.app_type != 'bare_repo' %}
+|           ~"cli::arch"            | Changes to logic in the layer directly below the CLI, including input validation and file parsing.                |
+|         ~"cli::commands"          | Changes to the CLI command structure and capabilities, including the addition of new commands.                    |
+|       ~"cli::deprecations"        | Marks deprecations for future removal to CLI features.                                                            |
+|          ~"cli::options"          | Changes to available options and option flag behaviour for CLI users.                                             |
+|         ~"cli::removals"          | CLI feature sunsetting.                                                                                           |
+{%- else %}
+|          ~"deprecations"          | Marks deprecations for future removal.                                                                            |
+{%- endif %}
+|       ~"design::discovery"        | Debates high-level concepts for new {{ cookiecutter.project_name }} features.                                     |
+|      ~"design::formulation"       | Specifies expected behaviour for {{ cookiecutter.project_name }} features under different possible circumstances. |
+|      ~"design::reassessment"      | Reevaluates a previous design that did not consider all possible cases.                                           |
+|         ~"docs::nudging"          | Updates formal documentation with tips and tricks for better {{ cookiecutter.project_name }} usage.               |
+|          ~"docs::guides"          | Updates formal documentation with structured user guides.                                                         |
+|        ~"docs::technical"         | Updates formal documentation with API reference or development guides.                                            |
+|    ~"internals::configuration"    | Regulates current development toolset behaviour.                                                                  |
+|  ~"internals::developer-output"   | Boosts team productivity with incremental automation and simplification.                                          |
+|       ~"internals::invoke"        | Streamlines local development operations.                                                                         |
+|          ~"localization"          | Updates translation files for other languages.                                                                    |
+|   ~"maintenance::configuration"   | Updates current development toolset syntax and options.                                                           |
+|   ~"maintenance::dependencies"    | Upgrades project dependencies.                                                                                    |
+|        ~"maintenance::bot"        | Work items managed automatically by a project GitLab Bot.                                                         |
+|     ~"maintenance::knowledge"     | Updates already existing information for knowledge retention and sharing.                                         |
+|   ~"maintenance::test-coverage"   | Changes being enforced due to software regression.                                                                |
+|      ~"maintenance::toolset"      | Updates or replaces current development tools functionality.                                                      |
+|          ~"manual-check"          | Requires manual validation to certain or all acceptance criteria.                                                 |
+|         ~"manual-closure"         | Items that should not be closed through commit closing patterns.                                                  |
+|            ~"plugins"             | Updates logic to enable third-party extensions based on the core {{ cookiecutter.project_name }} implementation.  |
+|          ~"policies::ci"          | Changes to rules triggering CI jobs.                                                                              |
+|      ~"policies::guidelines"      | Changes to project guidelines in `CONTRIBUTING.md` or the formal documentation.                                   |
+|       ~"policies::roadmap"        | Work items related to debates and proposals relating to the project roadmap.                                      |
+|        ~"policies::rules"         | Changes to rules for development tools (e.g., Ruff/mypy rules, issue triaging etc.).                              |
+|      ~"policies::templates"       | Changes to issue and {{ cookiecutter.__mr_term }} templates.                                                      |
+|           ~"quick-win"            | Development requires low effort.                                                                                  |
+|          ~"refactoring"           | Reestructures existing source code without changing its functionality.                                            |
+{%- if cookiecutter.app_type == 'bare_repo' %}
+|            ~"removals"            | Feature sunsetting.                                                                                               |
+{%- endif %}
+|      ~"request::correction"       | For work items for when something is not working properly.                                                        |
+|      ~"request::improvement"      | For work items containing suggestions for new features from the community.                                        |
+|        ~"request::support"        | For issues opened by users seeking advice regarding {{ cookiecutter.project_name }}.                              |
+| ~"seeking-contributors::delivery" | Proposal is polished and can be picked up if you feel inclined to.                                                |
+| ~"seeking-contributors::opinion"  | In need of help to further discuss and define scope.                                                              |
+|             ~"stale"              | Work items without activity that are marked for closing.                                                          |
+| ~"starter-assignment::quick-win"  | Development requires low effort and is ideal for first-time contributors.                                         |
+| ~"starter-assignment::supervised" | Proposal and delivery steps are clear and can be picked up by first-time contributors.                            |
+{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+|       ~"ui::accessibility"        | Promotes accessibility options for users in the interface.                                                        |
+|            ~"ui::arch"            | Changes to rendering logic in the layer directly below the user interface.                                        |
+|        ~"ui::deprecations"        | Marks deprecations for future removal to UI features.                                                             |
+|          ~"ui::features"          | Introduces new functions and capabilities to the user interface.                                                  |
+|           ~"ui::layout"           | Changes the disposition of elements and text in the user interface.                                               |
+|          ~"ui::removals"          | User interface feature sunsetting.                                                                                |
+{%- endif %}
+|        ~"up-for-a-change"         | Author-based label to express interest in delivering their own request.                                           |
+|          ~"ux::advanced"          | Updates features available to power users of {{ cookiecutter.project_name }}.                                     |
+|       ~"ux::customization"        | Improves options available for program customisation by users.                                                    |
+|           ~"ux::flags"            | Implements feature flags for {{ cookiecutter.project_name }}.                                                     |
+|         ~"ux::migration"          | Offers predefined migration options to users in the case of breaking changes.                                     |
+{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+|         ~"ux::navigation"         | Improves user navigation in the user interface.                                                                   |
+{%- endif %}
+|          ~"ux::nudging"           | Helps users understand the application with more ease, like help panels, notifications etc.                       |
+{% elif cookiecutter.scm_platform == 'GitLab Free' -%}
+| Development Domain  |             Label             | Usage                                                                                                             |
+| :-----------------: | :---------------------------: | ----------------------------------------------------------------------------------------------------------------- |
+|      Back-End       |      ~"backend-external"      | Changes to modules interacting directly with external APIs.                                                       |
+|      Back-End       |     ~"backend-components"     | Changes to internal modules and utils.                                                                            |
+|      Back-End       |      ~"backend-database"      | Changes to database schema and operations.                                                                        |
+|         N/A         |   ~"blocked-by-dependency"    | Resolution requires development on upstream dependency.                                                           |
+|         CI          |          ~"ci-build"          | Improves the project's deployment reliability through automated validation.                                       |
+{%- if cookiecutter.create_docker %}
+|         CI          |         ~"ci-docker"          | Changes how {{ cookiecutter.project_name }} containers are built and provided to users.                           |
+{%- endif %}
+|         CI          |          ~"ci-tasks"          | Structures automated tasks of different functions to run on scheduled pipelines.                                  |
+{%- if cookiecutter.app_type != 'bare_repo' %}
+|         CLI         |          ~"cli-arch"          | Changes to logic in the layer directly below the CLI, including input validation and file parsing.                |
+|         CLI         |        ~"cli-commands"        | Changes to the CLI command structure and capabilities, including the addition of new commands.                    |
+|         CLI         |      ~"cli-deprecations"      | Marks deprecations for future removal to CLI features.                                                            |
+|         CLI         |        ~"cli-options"         | Changes to available options and option flag behaviour for CLI users.                                             |
+|         CLI         |        ~"cli-removals"        | CLI feature sunsetting.                                                                                           |
+{%- else %}
+|         N/A         |        ~"deprecations"        | Marks deprecations for future removal. sunsetting.                                                                |
+{%- endif %}
+|       Design        |      ~"design-discovery"      | Debates high-level concepts for new {{ cookiecutter.project_name }} features.                                     |
+|       Design        |     ~"design-formulation"     | Specifies expected behaviour for {{ cookiecutter.project_name }} features under different possible circumstances. |
+|       Design        |    ~"design-reassessment"     | Reevaluates a previous design that did not consider all possible cases.                                           |
+|    Documentation    |        ~"docs-nudging"        | Updates formal documentation with tips and tricks for better {{ cookiecutter.project_name }} usage.               |
+|    Documentation    |        ~"docs-guides"         | Updates formal documentation with structured user guides.                                                         |
+|    Documentation    |       ~"docs-technical"       | Updates formal documentation with API reference or development guides.                                            |
+| Internal Operations |  ~"internals-configuration"   | Regulates current development toolset behaviour.                                                                  |
+| Internal Operations | ~"internals-developer-output" | Boosts team productivity with incremental automation and simplification.                                          |
+| Internal Operations |      ~"internals-invoke"      | Streamlines local development operations.                                                                         |
+|         N/A         |        ~"localization"        | Updates translation files for other languages.                                                                    |
+|     Maintenance     | ~"maintenance-configuration"  | Updates current development toolset syntax and options.                                                           |
+|     Maintenance     |  ~"maintenance-dependencies"  | Upgrades project dependencies.                                                                                    |
+|     Maintenance     |      ~"maintenance-bot"       | Work items managed automatically by a project GitLab Bot.                                                         |
+|     Maintenance     |   ~"maintenance-knowledge"    | Updates already existing information for knowledge retention and sharing.                                         |
+|     Maintenance     | ~"maintenance-test-coverage"  | Changes being enforced due to software regression.                                                                |
+|     Maintenance     |    ~"maintenance-toolset"     | Updates or replaces current development tools functionality.                                                      |
+|         N/A         |        ~"manual-check"        | Requires manual validation to certain or all acceptance criteria.                                                 |
+|         N/A         |       ~"manual-closure"       | Items that should not be closed through commit closing patterns.                                                  |
+|         N/A         |          ~"plugins"           | Updates logic to enable third-party extensions based on the core {{ cookiecutter.project_name }} implementation.  |
+|      Policies       |        ~"policies-ci"         | Changes to rules triggering CI jobs.                                                                              |
+|      Policies       |    ~"policies-guidelines"     | Changes to project guidelines in `CONTRIBUTING.md` or the formal documentation.                                   |
+|      Policies       |      ~"policies-roadmap"      | Work items related to debates and proposals relating to the project roadmap.                                      |
+|      Policies       |       ~"policies-rules"       | Changes to rules for development tools (e.g., Ruff/mypy rules, issue triaging etc.).                              |
+|      Policies       |     ~"policies-templates"     | Changes to issue and {{ cookiecutter.__mr_term }} templates.                                                      |
+|         N/A         |         ~"quick-win"          | Development requires low effort.                                                                                  |
+|         N/A         |        ~"refactoring"         | Reestructures existing source code without changing its functionality.                                            |
+{%- if cookiecutter.app_type == 'bare_repo' %}
+|         N/A         |          ~"removals"          | Feature sunsetting.                                                                                               |
+{%- endif %}
+|    User Requests    |            ~"rfc"             | For work items for when something is not working properly.                                                        |
+|    User Requests    |            ~"rfi"             | For work items containing suggestions for new features from the community.                                        |
+|    User Requests    |            ~"rfs"             | For issues opened by users seeking advice regarding {{ cookiecutter.project_name }}.                              |
+|         N/A         |    ~"seeking-contributors"    | Umbrella label to mark work items requiring contributor involvement.                                              |
+|         N/A         |      ~"seeking-builders"      | Proposal is polished and can be picked up if you feel inclined to.                                                |
+|         N/A         |       ~"seeking-input"        | In need of help to further discuss and define scope.                                                              |
+|         N/A         |           ~"stale"            | Work items without activity that are marked for closing.                                                          |
+|         N/A         |     ~"starter-assignment"     | Proposal and delivery steps are clear and can be picked up by first-time contributors.                            |
+{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+|   User Interface    |      ~"ui-accessibility"      | Promotes accessibility options for users in the interface.                                                        |
+|   User Interface    |          ~"ui-arch"           | Changes to rendering logic in the layer directly below the user interface.                                        |
+|   User Interface    |      ~"ui-deprecations"       | Marks deprecations for future removal to UI features.                                                             |
+|   User Interface    |        ~"ui-features"         | Introduces new functions and capabilities to the user interface.                                                  |
+|   User Interface    |         ~"ui-layout"          | Changes the disposition of elements and text in the user interface.                                               |
+|   User Interface    |        ~"ui-removals"         | User interface feature sunsetting.                                                                                |
+{%- endif %}
+|         N/A         |      ~"up-for-a-change"       | Author-based label to express interest in delivering their own request.                                           |
+|   User Experience   |        ~"ux-advanced"         | Updates features available to power users of {{ cookiecutter.project_name }}.                                     |
+|   User Experience   |      ~"ux-customization"      | Improves options available for program customisation by users.                                                    |
+|   User Experience   |          ~"ux-flags"          | Implements feature flags for {{ cookiecutter.project_name }}.                                                     |
+|   User Experience   |        ~"ux-migration"        | Offers predefined migration options to users in the case of breaking changes.                                     |
+{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+|   User Experience   |       ~"ux-navigation"        | Improves user navigation in the user interface.                                                                   |
+{%- endif %}
+|   User Experience   |         ~"ux-nudging"         | Helps users understand the application with more ease, like help panels, notifications etc.                       |
+{% else -%}
+| Development Domain  |            Label             | Usage                                                                                                             |
+| :-----------------: | :--------------------------: | ----------------------------------------------------------------------------------------------------------------- |
+|      Back-End       |      `backend-external`      | Changes to modules interacting directly with external APIs.                                                       |
+|      Back-End       |     `backend-components`     | Changes to internal modules and utils.                                                                            |
+|      Back-End       |      `backend-database`      | Changes to database schema and operations.                                                                        |
+|         N/A         |   `blocked-by-dependency`    | Resolution requires development on upstream dependency.                                                           |
+|         CI          |          `ci-build`          | Improves the project's deployment reliability through automated validation.                                       |
+{%- if cookiecutter.create_docker %}
+|         CI          |         `ci-docker`          | Changes how {{ cookiecutter.project_name }} containers are built and provided to users.                           |
+{%- endif %}
+|         CI          |          `ci-tasks`          | Structures automated tasks of different functions to run on scheduled pipelines.                                  |
+{%- if cookiecutter.app_type != 'bare_repo' %}
+|         CLI         |          `cli-arch`          | Changes to logic in the layer directly below the CLI, including input validation and file parsing.                |
+|         CLI         |        `cli-commands`        | Changes to the CLI command structure and capabilities, including the addition of new commands.                    |
+|         CLI         |      `cli-deprecations`      | Marks deprecations for future removal to CLI features.                                                            |
+|         CLI         |        `cli-options`         | Changes to available options and option flag behaviour for CLI users.                                             |
+|         CLI         |        `cli-removals`        | CLI feature sunsetting.                                                                                           |
+{%- else %}
+|         N/A         |        `deprecations`        | Marks deprecations for future removal.                                                                            |
+{%- endif %}
+|       Design        |      `design-discovery`      | Debates high-level concepts for new {{ cookiecutter.project_name }} features.                                     |
+|       Design        |     `design-formulation`     | Specifies expected behaviour for {{ cookiecutter.project_name }} features under different possible circumstances. |
+|       Design        |    `design-reassessment`     | Reevaluates a previous design that did not consider all possible cases.                                           |
+|    Documentation    |        `docs-nudging`        | Updates formal documentation with tips and tricks for better {{ cookiecutter.project_name }} usage.               |
+|    Documentation    |        `docs-guides`         | Updates formal documentation with structured user guides.                                                         |
+|    Documentation    |       `docs-technical`       | Updates formal documentation with API reference or development guides.                                            |
+| Internal Operations |  `internals-configuration`   | Regulates current development toolset behaviour.                                                                  |
+| Internal Operations | `internals-developer-output` | Boosts team productivity with incremental automation and simplification.                                          |
+| Internal Operations |      `internals-invoke`      | Streamlines local development operations.                                                                         |
+|         N/A         |        `localization`        | Updates translation files for other languages.                                                                    |
+|     Maintenance     | `maintenance-configuration`  | Updates current development toolset syntax and options.                                                           |
+|     Maintenance     |  `maintenance-dependencies`  | Upgrades project dependencies.                                                                                    |
+|     Maintenance     |      `maintenance-bot`       | Work items managed automatically by a project GitLab Bot.                                                         |
+|     Maintenance     |   `maintenance-knowledge`    | Updates already existing information for knowledge retention and sharing.                                         |
+|     Maintenance     | `maintenance-test-coverage`  | Changes being enforced due to software regression.                                                                |
+|     Maintenance     |    `maintenance-toolset`     | Updates or replaces current development tools functionality.                                                      |
+|         N/A         |        `manual-check`        | Requires manual validation to certain or all acceptance criteria.                                                 |
+|         N/A         |       `manual-closure`       | Items that should not be closed through commit closing patterns.                                                  |
+|         N/A         |          `plugins`           | Updates logic to enable third-party extensions based on the core {{ cookiecutter.project_name }} implementation.  |
+|      Policies       |        `policies-ci`         | Changes to rules triggering CI jobs.                                                                              |
+|      Policies       |    `policies-guidelines`     | Changes to project guidelines in `CONTRIBUTING.md` or the formal documentation.                                   |
+|      Policies       |      `policies-roadmap`      | Work items related to debates and proposals relating to the project roadmap.                                      |
+|      Policies       |       `policies-rules`       | Changes to rules for development tools (e.g., Ruff/mypy rules, issue triaging etc.).                              |
+|      Policies       |     `policies-templates`     | Changes to issue and {{ cookiecutter.__mr_term }} templates.                                                      |
+|         N/A         |         `quick-win`          | Development requires low effort.                                                                                  |
+|         N/A         |        `refactoring`         | Reestructures existing source code without changing its functionality.                                            |
+{%- if cookiecutter.app_type == 'bare_repo' %}
+|         N/A         |          `removals`          | Feature sunsetting.                                                                                               |
+{%- endif %}
+|    User Requests    |            `rfc`             | For work items for when something is not working properly.                                                        |
+|    User Requests    |            `rfi`             | For work items containing suggestions for new features from the community.                                        |
+|    User Requests    |            `rfs`             | For issues opened by users seeking advice regarding {{ cookiecutter.project_name }}.                              |
+|         N/A         |    `seeking-contributors`    | Umbrella label to mark work items requiring contributor involvement.                                              |
+|         N/A         |      `seeking-builders`      | Proposal is polished and can be picked up if you feel inclined to.                                                |
+|         N/A         |       `seeking-input`        | In need of help to further discuss and define scope.                                                              |
+|         N/A         |           `stale`            | Work items without activity that are marked for closing.                                                          |
+|         N/A         |     `starter-assignment`     | Proposal and delivery steps are clear and can be picked up by first-time contributors.                            |
+{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+|   User Interface    |      `ui-accessibility`      | Promotes accessibility options for users in the interface.                                                        |
+|   User Interface    |          `ui-arch`           | Changes to rendering logic in the layer directly below the user interface.                                        |
+|   User Interface    |      `ui-deprecations`       | Marks deprecations for future removal to UI features.                                                             |
+|   User Interface    |        `ui-features`         | Introduces new functions and capabilities to the user interface.                                                  |
+|   User Interface    |         `ui-layout`          | Changes the disposition of elements and text in the user interface.                                               |
+|   User Interface    |        `ui-removals`         | User interface feature sunsetting.                                                                                |
+{%- endif %}
+|         N/A         |      `up-for-a-change`       | Author-based label to express interest in delivering their own request.                                           |
+|   User Experience   |        `ux-advanced`         | Updates features available to power users of {{ cookiecutter.project_name }}.                                     |
+|   User Experience   |      `ux-customization`      | Improves options available for program customisation by users.                                                    |
+|   User Experience   |          `ux-flags`          | Implements feature flags for {{ cookiecutter.project_name }}.                                                     |
+|   User Experience   |        `ux-migration`        | Offers predefined migration options to users in the case of breaking changes.                                     |
+{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+|   User Experience   |       `ux-navigation`        | Improves user navigation in the user interface.                                                                   |
+{%- endif %}
+|   User Experience   |         `ux-nudging`         | Helps users understand the application with more ease, like help panels, notifications etc.                       |
+{%- endif %}
+
+##### Work Item Lifecycle
+
 To effectively manage
 issue and {{ task_item }} lifecycles,
 {%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
@@ -781,6 +1025,21 @@ when to move from one stage to another:
 | ![Canceled icon][status14] **Not Feasible**            |    Canceled     | Items which can technically be delivered, but that have been declined for development due to any other factor outside the other **Canceled** stage items.                                                                                                                                                                                                                 |
 | ![Canceled icon][status14] **Redundant**               |    Canceled     | Items whose scope has become superfluous to the project due to design changes in other domains.                                                                                                                                                                                                                                                                           |
 | ![Duplicate icon][status15] **Duplicate**              |    Canceled     | Items marked as duplicates of previous work items.                                                                                                                                                                                                                                                                                                                        |
+
+Task lifecycles are made simpler
+to reduce overhead
+on the development team,
+defining only the
+![Triage icon][status2] **Created**,
+![Progress icon][status12] **Ongoing**,
+![Canceled icon][status14] **Aborted**
+and ![Duplicate icon][status15] **Duplicate**
+stages.
+Developers, however,
+are not obligated
+to mark their tasks
+as "Ongoing"
+if development will be short lived.
 {% else -%}
 |          Status          |           Label           | Status Category | Description                                                                                                                                                                                                                                                                                                                                                               |
 | :----------------------: | :-----------------------: | :-------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -799,6 +1058,9 @@ when to move from one stage to another:
 |     **Not Feasible**     |      `sts-declined`       |    Canceled     | Items which can technically be delivered, but that have been declined for development due to any other factor outside the other **Canceled** stage items.                                                                                                                                                                                                                 |
 |      **Redundant**       |      `sts-redundant`      |    Canceled     | Items whose scope has become superfluous to the project due to design changes in other domains.                                                                                                                                                                                                                                                                           |
 |      **Duplicate**       |      `sts-duplicate`      |    Canceled     | Items marked as duplicates of previous work items.                                                                                                                                                                                                                                                                                                                        |
+
+{{ task_item.capitalize() }}s do not require
+a lifecycle label.
 {%- endif %}
 
 #### General Practices
