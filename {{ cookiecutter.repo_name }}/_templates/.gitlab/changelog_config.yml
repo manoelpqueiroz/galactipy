@@ -141,6 +141,8 @@ categories:
   critical: ":toolbox: Fixes"
   leak: ":toolbox: Fixes"
   injection: ":toolbox: Fixes"
+  typo: ":toolbox: Fixes"
+  typos: ":toolbox: Fixes"
 
   # 3. Changes that are irrelevant to users
   # Codebase Renovation: architectural changes, refactoring and other improvements done under the hood
@@ -262,6 +264,8 @@ categories:
   critical: ":toolbox: Fixes"
   leak: ":toolbox: Fixes"
   injection: ":toolbox: Fixes"
+  typo: ":toolbox: Fixes"
+  typos: ":toolbox: Fixes"
 
   dependencies: ":up: Dependencies Updates"
   dep: ":up: Dependencies Updates"
