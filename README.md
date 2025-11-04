@@ -38,7 +38,7 @@ _Expand your project structure from atoms of code to **galactic** dimensions._ :
 ## TL;DR
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v0.20.5
+cookiecutter gl:galactipy/galactipy --checkout v0.21.0
 ```
 
 **All you need is the latest version of cookiecutter!** :wink:
@@ -229,7 +229,7 @@ pip install -U cookiecutter
 then go to a directory where you want to create your project and run:
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v0.20.5
+cookiecutter gl:galactipy/galactipy --checkout v0.21.0
 ```
 
 ### Input variables
@@ -252,7 +252,7 @@ The input variables, with their default values, are as follows:
 |        `licence`         |            `MIT`             | One of `MIT`, `BSD-3`, `GNU GPL v3.0`, `GNU AGLP v3.0`, `GNU LGPL v3.0`, `Mozilla Public License 2.0` and `Apache Software License 2.0`, or `Not open source`.                                                                                                                              |
 | `minimal_python_version` |            `3.10`            | Minimal Python version. All versions since `3.10` are available to choose. It is used for builds, pipelines and formatters.                                                                                                                                                                 |
 |      `line_length`       |              88              | The max length per line. NOTE: This value must be between 50 and 300.                                                                                                                                                                                                                       |
-|    `docstring_style`     |           `numpy`            | One of `numpy`, `pep257` or `google`. You can choose `other` to disable checks on your docstrings.                                                                                                                                                                                          |
+|    `docstring_style`     |           `numpy`            | One of `numpy`, `google`, `pep287` or `other`. This latter option will only render the docstring short summaries, while the former ones will detail arguments and returns for public methods and functions.                                                                                 |
 |    `docstring_length`    |    based on `line_lenght`    | The max length for docstrings. NOTE: This value must be between 50 and 300 and lower of equal to `line_lenght`.                                                                                                                                                                             |
 |   `commit_convention`    |          `gitmoji`           | One of `Gitmoji`, `Conventional Commits` and `Conventional Commits with Gitmoji` for the commit standard to follow.                                                                                                                                                                         |
 |        `use_bdd`         |            `True`            | :small_red_triangle: Option to use [behaviour-driven development][ft17] for managing tests.                                                                                                                                                                                                 |

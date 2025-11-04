@@ -20,13 +20,27 @@ from nebulog import logger
 
 
 class BasicConverter:
-    """Converts string inputs to appropriate Python types.
+{%- if cookiecutter.docstring_style != 'other' %}
+    """Convert string inputs to appropriate Python types.
+{%- if cookiecutter.docstring_style == 'numpy' %}
 
     Parameters
     ----------
     value : str
         A string passed to a Typer CLI command for parsing.
+{%- elif cookiecutter.docstring_style == 'google' %}
+
+    Args:
+        value: A string passed to a Typer CLI command for parsing.
+{%- else %}
+
+    :param value: A string passed to a Typer CLI command for parsing.
+    :type value: str
+{%- endif %}
     """
+{%- else %}
+    """Convert string inputs to appropriate Python types."""
+{%- endif %}
 
     BOOLEAN_VALUES = ("true", "false")
     NUMERIC_PREFIXES = "+-"
@@ -34,6 +48,7 @@ class BasicConverter:
     CONTAINER_TYPES = (list, tuple, dict)
 
     def __init__(self, value: str) -> None:
+        """Initialise the converter, storing input value and converted output value."""
         if not isinstance(value, str):  # pragma: no cover
             msg = (
                 f"BasicConverter only accepts strings; got {type(value).__name__} "
@@ -45,6 +60,7 @@ class BasicConverter:
         self.output = self._convert_value(self.input)
 
     def _convert_value(self, value: str) -> Any:
+        """Parse a string into a boolean, numeric or container type."""
         if not value:  # Empty string
             return None
 
@@ -54,6 +70,7 @@ class BasicConverter:
         return self._parse_by_first_character(value)
 
     def _parse_by_first_character(self, value: str) -> Any:
+        """Parse a string by its first character, either a numeric or container type."""
         first_char = value[0]
 
         if first_char.isdigit() or first_char in self.NUMERIC_PREFIXES:
@@ -66,6 +83,7 @@ class BasicConverter:
         return value
 
     def _parse_numeric_value(self, value: str) -> Optional[Union[int, float]]:
+        """Parse a string into a numeric value, whether integer, float or scientific."""
         # Try integer first (more specific check)
         if "." not in value and "e" not in value.lower():
             try:
@@ -82,6 +100,11 @@ class BasicConverter:
             return value
 
     def _parse_container_value(self, value: str) -> Optional[Union[list, tuple, dict]]:
+        """Parse a string into a valid container value.
+
+        Will parse strings into lists, tuples and dictionaries as-is, but will convert
+        sets into tuples, as sets are not valid for TOML configuration files.
+        """
         try:
             result = literal_eval(value)
 
@@ -97,7 +120,9 @@ class BasicConverter:
             return None
 
     def __str__(self) -> str:
+        """Return the string representation of the parsed value for printing."""
         return str(self.output)
 
     def __repr__(self) -> str:
+        """Return the string representation of the parsed value."""
         return repr(self.output)

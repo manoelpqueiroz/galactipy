@@ -33,7 +33,7 @@
   "docstring_style": [
     "numpy",
     "google",
-    "pep257",
+    "pep287",
     "other"
   ],
   "docstring_length": "{{ cookiecutter.line_length }}",
@@ -78,7 +78,13 @@
     },
     "minimal_python_version": "Minimal Python version",
     "line_length": "Maximum line length",
-    "docstring_style": "Which docstring style would you like to use?",
+    "docstring_style": {
+      "__prompt__": "Which docstring style would you like to use?",
+      "numpy": "Numpydoc",
+      "google": "Google Python Style",
+      "pep287": "PEP 287 (reST Docstrings)",
+      "other": "Other"
+    },
     "docstring_length": "Docstring maximum line length",
     "use_bdd": "Use behaviour-driven development for testing?",
     "commit_convention": {
