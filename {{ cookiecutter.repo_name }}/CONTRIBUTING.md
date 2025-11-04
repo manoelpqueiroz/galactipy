@@ -1039,33 +1039,34 @@ each use case and
 when to move from one stage to another:
 
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
-| Status                                                 | Status Category | Description                                                                                                                                                                                                                                                                                                                                                               |
-| :----------------------------------------------------- | :-------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| ![Triage icon][status2] **Needs Triage**               |     Triage      | Initial stage for [User requests][status3], which require a first analysis by a {{ cookiecutter.project_name }} contributor before work on its scope is either accepted or declined. It is also the default open state for new items if not overriden.                                                                                                                    |
-| ![Refinement icon][status4] **Needs Refinement**       |     Triage      | Describes more general ideas that might receive development at some point, but whose current state does not detail implementation or paths to delivery. Lacking scope, represents more of a desire than an actual proposal – which might actually prove unfeasible later. Should be used to inform the need for further discussions before being cleared for development. |
-| ![Criteria icon][status5] **Needs Criteria**           |     Triage      | This describes items whose scope is set, but acceptance criteria is still pending to be added before being cleared for development. In contrast with the **Needs Refinement** status, in this stage the deliverable is known and understood, but is waiting for a contributor to detail in smaller steps.                                                                 |
-| ![Steps icon][status6] **Needs Delivery Steps**        |     Triage      | A specific type of triaging item, signaling pending work before the item can be cleared as a [starter assignment][starter] development. In contrast with the **Needs Criteria**, this stage indicates the work item will be processed with greater detail than usual so a new contributor can pick it up and develop it with little to no friction.                       |
-| ![Decomposition icon][status7] **Needs Decomposition** |     Triage      | Proposals or requests that have been deemed too large in scope to be considered a single work item and must be broken down in two or more items before proceeding.                                                                                                                                                                                                        |
-| ![Greenlit icon][status8] **Greenlit**                 |      To Do      | Items that have been cleared for development after having their scope and acceptance criteria properly defined.                                                                                                                                                                                                                                                           |
-| ![Pipeline icon][status9] **Pipeline**                 |      To Do      | Items that have scope and acceptance criteria, but that address a specific development stream which is not currently considered the most valuable for delivery. Can be picked for development, but should be left out in favour of **Greenlit** and **Priority** items.                                                                                                   |
-| ![Priority icon][status10] **Priority**                |      To Do      | Signals items which take priority over other cleared work items. Should be used with discretion and only in cases where lack of action can lead to significant issues to security or user experience.                                                                                                                                                                     |
-| ![Deferred icon][status11] **Deferred**                |      To Do      | Signals items that, despite having scope and acceptance criteria, are deliberately being deprioritised for development (e.g., due to an upstream block).                                                                                                                                                                                                                  |
-| ![Progress icon][status12] **In Progress**             |   In Progress   | Items currently being actively worked on.                                                                                                                                                                                                                                                                                                                                 |
-| ![Done icon][status13] **Done**                        |      Done       | Items delivered in full.                                                                                                                                                                                                                                                                                                                                                  |
-| ![Canceled icon][status14] **Out of Scope**            |    Canceled     | Items deemed out of the scope of {{ cookiecutter.project_name }}.                                                                                                                                                                                                                                                                                                         |
-| ![Canceled icon][status14] **Cannot Implement**        |    Canceled     | Items which are unable to be delivered by the development team in its original form, due to technical barriers or security risks.                                                                                                                                                                                                                                         |
-| ![Canceled icon][status14] **Not Feasible**            |    Canceled     | Items which can technically be delivered, but that have been declined for development due to any other factor outside the other **Canceled** stage items.                                                                                                                                                                                                                 |
-| ![Canceled icon][status14] **Redundant**               |    Canceled     | Items whose scope has become superfluous to the project due to design changes in other domains.                                                                                                                                                                                                                                                                           |
-| ![Duplicate icon][status15] **Duplicate**              |    Canceled     | Items marked as duplicates of previous work items.                                                                                                                                                                                                                                                                                                                        |
+| Status                                               | Status Category | Description                                                                                                                                                                                                                                                                                                                                                               |
+| :--------------------------------------------------- | :-------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| ![Triage icon][icon1] **Needs Triage**               |     Triage      | Initial stage for [User requests][status2], which require a first analysis by a {{ cookiecutter.project_name }} contributor before work on its scope is either accepted or declined. It is also the default open state for new items if not overriden.                                                                                                                    |
+| ![Refinement icon][icon2] **Needs Refinement**       |     Triage      | Describes more general ideas that might receive development at some point, but whose current state does not detail implementation or paths to delivery. Lacking scope, represents more of a desire than an actual proposal – which might actually prove unfeasible later. Should be used to inform the need for further discussions before being cleared for development. |
+| ![Criteria icon][icon3] **Needs Criteria**           |     Triage      | This describes items whose scope is set, but acceptance criteria is still pending to be added before being cleared for development. In contrast with the **Needs Refinement** status, in this stage the deliverable is known and understood, but is waiting for a contributor to detail in smaller steps.                                                                 |
+| ![Steps icon][icon4] **Needs Delivery Steps**        |     Triage      | A specific type of triaging item, signaling pending work before the item can be cleared as a [starter assignment][starter] development. In contrast with the **Needs Criteria**, this stage indicates the work item will be processed with greater detail than usual so a new contributor can pick it up and develop it with little to no friction.                       |
+| ![Decomposition icon][icon5] **Needs Decomposition** |     Triage      | Proposals or requests that have been deemed too large in scope to be considered a single work item and must be broken down in two or more items before proceeding.                                                                                                                                                                                                        |
+| ![Greenlit icon][icon6] **Greenlit**                 |      To Do      | Items that have been cleared for development after having their scope and acceptance criteria properly defined.                                                                                                                                                                                                                                                           |
+| ![Pipeline icon][icon7] **Pipeline**                 |      To Do      | Items that have scope and acceptance criteria, but that address a specific development stream which is not currently considered the most valuable for delivery. Can be picked for development, but should be left out in favour of **Greenlit** and **Priority** items.                                                                                                   |
+| ![Priority icon][icon8] **Priority**                 |      To Do      | Signals items which take priority over other cleared work items. Should be used with discretion and only in cases where lack of action can lead to significant issues to security or user experience.                                                                                                                                                                     |
+| ![Deferred icon][icon9] **Deferred**                 |      To Do      | Signals items that, despite having scope and acceptance criteria, are deliberately being deprioritised for development (e.g., due to an upstream block).                                                                                                                                                                                                                  |
+| ![Progress icon][icon10] **In Progress**             |   In Progress   | Items currently being actively worked on.                                                                                                                                                                                                                                                                                                                                 |
+| ![Done icon][icon11] **Done**                        |      Done       | Items delivered in full.                                                                                                                                                                                                                                                                                                                                                  |
+| ![Canceled icon][icon12] **Out of Scope**            |    Canceled     | Items deemed out of the scope of {{ cookiecutter.project_name }}.                                                                                                                                                                                                                                                                                                         |
+| ![Canceled icon][icon12] **Cannot Implement**        |    Canceled     | Items which are unable to be delivered by the development team in its original form, due to technical barriers or security risks.                                                                                                                                                                                                                                         |
+| ![Canceled icon][icon12] **Not Feasible**            |    Canceled     | Items which can technically be delivered, but that have been declined for development due to any other factor outside the other **Canceled** stage items.                                                                                                                                                                                                                 |
+| ![Redundant icon][icon13] **Redundant**              |    Canceled     | Items whose scope has become superfluous to the project due to design changes in other domains.                                                                                                                                                                                                                                                                           |
+| ![Duplicate icon][icon14] **Duplicate**              |    Canceled     | Items marked as duplicates of previous work items.                                                                                                                                                                                                                                                                                                                        |
 
 Task lifecycles are made simpler
 to reduce overhead
 on the development team,
 defining only the
-![Triage icon][status2] **Created**,
-![Progress icon][status12] **Ongoing**,
-![Canceled icon][status14] **Aborted**
-and ![Duplicate icon][status15] **Duplicate**
+![Created icon][icon15] **Created**,
+![Ongoing icon][icon16] **Ongoing**,
+![Done icon][icon11] **Done**,
+![Aborted icon][icon17] **Aborted**
+and ![Duplicate icon][icon14] **Duplicate**
 stages.
 Developers, however,
 are not obligated
@@ -5367,20 +5368,25 @@ what we are doing matters!
 
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
 [status1]: https://docs.gitlab.com/user/work_items/status/
-[status2]: https://i.imgur.com/TvihyBU.png
-[status3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&label_name%5B%5D=request%3A%3A%2A
-[status4]: https://i.imgur.com/w3ooBe3.png
-[status5]: https://i.imgur.com/vh3wx6m.png
-[status6]: https://i.imgur.com/1qKaXvT.png
-[status7]: https://i.imgur.com/jJqAFTw.png
-[status8]: https://i.imgur.com/EUrGcQx.png
-[status9]: https://i.imgur.com/t1PyyRu.png
-[status10]: https://i.imgur.com/XImhPUk.png
-[status11]: https://i.imgur.com/XImhPUk.png
-[status12]: https://i.imgur.com/Arfse0s.png
-[status13]: https://i.imgur.com/EgINyEc.png
-[status14]: https://i.imgur.com/LTYh3mB.png
-[status15]: https://i.imgur.com/Z82JtFn.png
+[status2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&label_name%5B%5D=request%3A%3A%2A
+
+[icon1]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/triage.png
+[icon2]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/refinement.png
+[icon3]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/criteria.png
+[icon4]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/steps.png
+[icon5]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/decomposition.png
+[icon6]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/greenlit.png
+[icon7]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/pipeline.png
+[icon8]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/priority.png
+[icon9]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/deferred.png
+[icon10]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/progress.png
+[icon11]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/done.png
+[icon12]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/canceled.png
+[icon13]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/redundant.png
+[icon14]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/duplicate.png
+[icon15]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/created.png
+[icon16]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/ongoing.png
+[icon17]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/aborted.png
 {%- endif %}
 
 [practices1]: https://cbea.ms/git-commit/#imperative
