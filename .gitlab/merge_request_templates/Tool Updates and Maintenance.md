@@ -51,15 +51,15 @@ This template should be used to propose and discuss the maintenance of existing 
 >>> [!important] :technologist: Development control
 
 - [ ] I have assembled the minimal configuration to implement the proposed change without breaking functionality;
-- [ ] I have either:
-  - Evaluated that this change does not require updating links to tool/service configuration;
-  - Updated links to repository and configuration reference of the tool/service as inline comments where appropriate;
-- [ ] I have either:
-  - Evaluated that this change does not require updating the documentation;
-  - Updated the documentation highlighting this change and any relevant information;
-- [ ] I have either:
-  - Evaluated that this change does not require specifying or changing `TODO`/`UPDATEME` comments;
-  - Included or removed the relevant `TODO` and `UPDATEME` comments to orient users on next steps after generating projects with Galactipy;
+- Regarding user redirection to external pages: <!-- Pick only one -->
+  - [ ] I have evaluated that this change does not require updating links to tool/service configuration;
+  - [ ] I have updated links to repository and configuration reference of the tool/service as inline comments where appropriate;
+- Regarding documentation and knowledge management: <!-- Pick only one -->
+  - [ ] I have evaluated that this change does not require updating the documentation;
+  - [ ] I have updated the documentation highlighting this change and any relevant information.
+- Regarding user nugding:
+  - [ ] I have evaluated that this change does not require specifying or changing `TODO`/`UPDATEME` comments;
+  - [ ] I have included or removed the relevant `TODO` and `UPDATEME` comments to orient users on next steps after generating projects with Galactipy;
 - [ ] I have bumped the Galactipy [version][9] appropriately as my final commit for this change.
 >>>
 
@@ -87,16 +87,16 @@ I attest that the proposed change meets the [Contribution Acceptance Criteria][1
 
 - [ ] The change is as small as possible;
 - [ ] Only one specific feature is implemented and does not combine things;
-- [ ] The change either:
-  - Does not require updating the documentation;
-  - Proper documentation was added, promoting and preserving [institutional knowledge][12];
-- [ ] The change either:
-  - Does not require any addition or modification to unit tests;
-  - Modifies Cookiecutter pre-gen and/or post-gen hooks, with proper tests being added;
+- The change: <!-- Pick only one -->
+  - [ ] Does not require updating the documentation;
+  - [ ] Added the proper documentation on the topic, promoting and preserving [institutional knowledge][12];
+- The change: <!-- Pick only one -->
+  - [ ] Does not require any addition or modification to unit tests;
+  - [ ] Modifies Cookiecutter pre-gen and/or post-gen hooks, with proper tests being added;
 - [ ] The commit history is logical;
 - [ ] The commit history applies the proper Gitmoji;
-- [ ] The commit title applies imperative mood;
-- [ ] The commit descriptions sufficiently explains design choices;
+- [ ] The commit titles apply the imperative mood;
+- [ ] The commit descriptions sufficiently explain design choices;
 - [ ] Issues marked for automatic closing are accurate;
 - [ ] Issues requiring manual check have been addressed;
 - [ ] The proposed Galactipy version adheres to our view on [EffVer][9].

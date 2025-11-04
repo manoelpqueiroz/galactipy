@@ -360,7 +360,7 @@ markers = [
   "identity",
   "networking",
   "monitoring",
-]
+] # UPDATEME with your own custom markers
 timeout = 10
 {%- if cookiecutter.use_bdd %}
 bdd_features_base_dir = "tests/features/"
@@ -385,7 +385,7 @@ addopts = [
 [tool.coverage.run]
 # https://github.com/nedbat/coveragepy
 # https://coverage.readthedocs.io/en/latest/config.html
-source = ["tests"]
+source = ["."]
 branch = true
 {%- if cookiecutter.app_type != 'bare_repo' %}
 omit = ["__main__.py", "*/config/constants.py"]

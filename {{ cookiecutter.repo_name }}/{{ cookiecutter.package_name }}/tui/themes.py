@@ -146,6 +146,8 @@ NOCTIS_HIBERNUS_THEME = Theme(
 
 
 class AppCustomThemes(Enum):
+    """Define custom Textual themes for rendering {{ cookiecutter.project_name }} with."""
+
     NOCTIS = NOCTIS_THEME
 
     AZUREUS = NOCTIS_AZUREUS_THEME

@@ -26,13 +26,41 @@ def _format_location_string(record: dict) -> str:
 
 
 def file_formatter(record: dict) -> str:
+{%- if cookiecutter.docstring_style != 'other' %}
     """Define the default formatting for Loguru calls to be stored in the log files.
+{%- if cookiecutter.docstring_style == 'numpy' %}
 
     Parameters
     ----------
     record : dict
         The Loguru record dictionary with the information about the logging context.
+
+    Returns
+    -------
+    str
+        A formatted string with standardised padding for the individual parts of the log
+        entry.
+{%- elif cookiecutter.docstring_style == 'google' %}
+
+    Args:
+        record: The Loguru record dictionary with the information about the logging
+            context.
+
+    Returns: A formatted string with standardised padding for the individual parts of
+        the log entry.
+{%- else %}
+
+    :param record: The Loguru record dictionary with the information about the logging
+        context.
+    :type record: dict
+    :return: A formatted string with standardised padding for the individual parts of
+        the log entry.
+    :rtype: str
+{%- endif %}
     """
+{%- else %}
+    """Define the default formatting for Loguru calls to be stored in the log files."""
+{%- endif %}
     record.update({"location_string": _format_location_string(record)})
 
     if record["extra"]:

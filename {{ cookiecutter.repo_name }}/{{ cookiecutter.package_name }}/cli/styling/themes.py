@@ -45,4 +45,6 @@ NOCTIS_THEME = Theme(
 
 @dataclass(frozen=True)
 class AppCustomThemes:
+    """Define custom Rich themes for console output with {{ cookiecutter.project_name }}."""
+
     NOCTIS = NOCTIS_THEME

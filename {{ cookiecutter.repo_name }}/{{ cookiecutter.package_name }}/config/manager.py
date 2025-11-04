@@ -12,19 +12,21 @@ from {{ cookiecutter.package_name }}.config.constants import (
 
 
 class EnvKeys(Enum):
+    """Enum listing the environment variables prefixes for {{ cookiecutter.project_name }} settings."""
+
     SETTINGS = "{{ cookiecutter.__envvar }}"
     SECRETS = "{{ cookiecutter.__envvar }}_SECRET"
 
 
 class AppManager(Nucleus):
-    """Manage configuration files and settings for {{ cookiecutter.project_name }}."""
+    """Extend the Orbittings `Nucleus` class to manage {{ cookiecutter.project_name }} configuration.
+
+    Creates an instance of a `Nucleus` object with preset default contents and base
+    directory, both defined in the `constants` module.
+    """
 
     def __init__(self):
-        """Initialize the manager.
-
-        Creates an instance of a `Nucleus` object with preset default contents and
-        base directory, both defined in the `constants` module.
-        """
+        """Initialise the manager by calling the `Nucleus` superclass."""
         super().__init__(
             default_contents=generate_default_config_schema(),
             base_dir=get_default_config(),
@@ -41,7 +43,9 @@ class AppManager(Nucleus):
 
     @classmethod
     def custom(cls, path: Path, is_secret: bool):
-        """Provide a `AppManager` instance with a single domain and custom definitions.
+{%- if cookiecutter.docstring_style != 'other' %}
+        """Provide a manager instance with a single domain and custom definitions.
+{%- if cookiecutter.docstring_style == 'numpy' %}
 
         Parameters
         ----------
@@ -49,7 +53,22 @@ class AppManager(Nucleus):
             Path to a valid custom TOML configuration file for {{ cookiecutter.project_name }}.
         is_secret : bool
             Flag to treat the given `path` as a settings or secrets file.
+{%- elif cookiecutter.docstring_style == 'google' %}
+
+        Args:
+            path: Path to a valid custom TOML configuration file for {{ cookiecutter.project_name }}.
+            is_secret: Flag to treat the given `path` as a settings or secrets file.
+{%- else %}
+
+        :param path: Path to a valid custom TOML configuration file for {{ cookiecutter.project_name }}.
+        :type path: Path
+        :param is_secret: Flag to treat the given `path` as a settings or secrets file.
+        :type is_secret: bool
+{%- endif %}
         """
+{%- else %}
+        """Provide a manager instance with a single domain and custom definitions."""
+{%- endif %}
         instance = cls()
 
         if is_secret:

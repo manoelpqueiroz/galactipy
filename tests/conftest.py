@@ -40,13 +40,25 @@ def template_tree(tmp_path):
         github_dir,
         ".stale.yml",
         "dependabot.yml",
-        "PULL_REQUEST_TEMPLATE.md",
         "release-drafter.yml",
+        DISCUSSION_TEMPLATE=["request_for_improvement.yml", "request_for_support.yml"],
         ISSUE_TEMPLATE=[
-            "bug_report.md",
             "config.yml",
-            "feature_request.md",
-            "question.md",
+            "internal_work_item.md",
+            "request_for_correction.md",
+            "starter_assignment_treatment.md",
+        ],
+        PULL_REQUEST_TEMPLATE=[
+            "backend_components.md",
+            "feature_proposals.md",
+            "housekeeping.md",
+            "interface_architecture.md",
+            "internal_improvements.md",
+            "localisation.md",
+            "priority_patching.md",
+            "project_policies.md",
+            "structural_design.md",
+            "user_experience.md",
         ],
         workflows=[
             "test.yml",
@@ -60,8 +72,25 @@ def template_tree(tmp_path):
     bulk_file_creation(
         gitlab_dir,
         "changelog_config.yml",
-        issue_templates=["Bug Report.md", "Feature Request.md", "Question.md"],
-        merge_request_templates=["default.md"],
+        issue_templates=[
+            "Internal Work Item.md",
+            "Request for Correction.md",
+            "Request for Improvement.md",
+            "Request for Support.md",
+            "Starter Assignment Treatment.md",
+        ],
+        merge_request_templates=[
+            "Backend Components.md",
+            "Feature Proposals.md",
+            "Housekeeping.md",
+            "Interface Architecture.md",
+            "Internal Improvements.md",
+            "Localisation.md",
+            "Priority Patching.md",
+            "Project Policies.md",
+            "Structural Design.md",
+            "User Experience.md",
+        ],
     )
 
     return tmp_path, template_root
@@ -83,7 +112,17 @@ def removal_tree(tmp_path):
     )
 
     github_directory = tmp_path / ".github"
-    bulk_file_creation(github_directory, workflows=["docker.yml", "test.yml"])
+    bulk_file_creation(
+        github_directory,
+        workflows=["docker.yml", "test.yml"],
+        PULL_REQUEST_TEMPLATE=["interface_architecture.md", "user_experience.md"],
+    )
+
+    gitlab_directory = tmp_path / ".gitlab"
+    bulk_file_creation(
+        gitlab_directory,
+        merge_request_templates=["Interface Architecture.md", "User Experience.md"],
+    )
 
     feature_directory = tmp_path / "directory_feature"
     bulk_file_creation(
@@ -259,10 +298,23 @@ def removal_tree(tmp_path):
         "github": {
             "root": tmp_path / ".github",
             "test_workflow": tmp_path / ".github" / "workflows" / "test.yml",
+            "ux": tmp_path / ".github" / "PULL_REQUEST_TEMPLATE" / "user_experience.md",
+            "arch": tmp_path
+            / ".github"
+            / "PULL_REQUEST_TEMPLATE"
+            / "interface_architecture.md",
         },
         "gitlab": {
             "ci": tmp_path / ".gitlab-ci.yml",
             "triage": tmp_path / ".triage-policies.yml",
+            "ux": tmp_path
+            / ".gitlab"
+            / "merge_request_templates"
+            / "User Experience.md",
+            "arch": tmp_path
+            / ".gitlab"
+            / "merge_request_templates"
+            / "Interface Architecture.md",
         },
         "docker": {
             "root": tmp_path / "docker",

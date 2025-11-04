@@ -16,7 +16,7 @@ variables:
 
 # Anchors and script templates
 .filechecks: &filechecks
-  - '{{ cookiecutter.repo_name }}/**/*'
+  - "*cookiecutter.repo_name*/**/*"
   - hooks/*
   - tests/**/*
   - utils/*
@@ -113,7 +113,6 @@ test-py313:
     expire_in: 1 week
   script:
     - *default_scripts
-    - invoke coverage
 
 codacy-report:
   stage: coverage

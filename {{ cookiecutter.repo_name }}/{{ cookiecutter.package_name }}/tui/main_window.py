@@ -18,7 +18,27 @@ CSS_DIRECTORY = Path(__file__).parent / "css"
 
 
 class TerminalApp(App):
+{%- if cookiecutter.docstring_style != 'other' %}
+    """Textual app to serve as the {{ cookiecutter.project_name }} interface.
+{%- if cookiecutter.docstring_style == 'numpy' %}
+
+    Parameters
+    ----------
+    theme : str
+        Theme name to launch the application with.
+{%- elif cookiecutter.docstring_style == 'google' %}
+
+    Args:
+        theme: Theme name to launch the application with.
+{%- else %}
+
+    :param theme: Theme name to launch the application with.
+    :type theme: str
+{%- endif %}
+    """
+{%- else %}
     """Textual app to serve as the {{ cookiecutter.project_name }} interface."""
+{%- endif %}
 
     CSS_PATH = [
         CSS_DIRECTORY / "demo.tcss",  # UPDATEME by removing when no longer needed
@@ -26,6 +46,7 @@ class TerminalApp(App):
     ]
 
     def __init__(self, theme: str):
+        """Initialise the Terminal User Interface."""
         super().__init__()
 
         logger.info("Launching {{ cookiecutter.project_name }} TUI", theme=theme)

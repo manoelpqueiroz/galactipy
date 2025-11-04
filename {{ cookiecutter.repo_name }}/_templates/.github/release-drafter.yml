@@ -5,18 +5,151 @@ name-template: "v$NEXT_PATCH_VERSION"
 tag-template: "v$NEXT_PATCH_VERSION"
 
 categories:
-  - title: ":rocket: Features"
-    labels: [enhancement, feature]
-  - title: ":wrench: Fixes & Refactoring"
-    labels: [bug, refactoring, bugfix, fix]
-  - title: ":package: Build System & CI/CD"
-    labels: [build, ci, testing]
-  - title: ":boom: Breaking Changes"
-    labels: [breaking]
-  - title: ":memo: Documentation"
-    labels: [documentation]
-  - title: ":arrow_up: Dependencies updates"
-    labels: [dependencies]
+{%- if cookiecutter.app_type != 'bare_repo' %}
+  # 1. Changes that users directly face
+  - title: ":satellite_orbital: Command-line Interface" # specifically the CLI API that bridges the interface to the actual program
+    labels:
+      - cli-arch
+      - cli-commands
+  - title: ":keyboard: CLI Usage" # developments that change how the user interacts with the CLI, like options and arguments
+    labels:
+      - cli-options
+{%- if cookiecutter.app_type != 'cli' %}
+  - title: ":computer: User Interface Improvements" # widgets, screens, layout, readability etc.
+    labels:
+      - ui-accessibility
+      - ui-arch
+      - ui-features
+      - ui-layout
+  - title: ":video_game: User Experience" # encompasses all interaction processes of the user with the TUI, the TUI's behaviour
+    labels:
+      - ux-advanced
+      - ux-flags
+      - ux-navigation
+{%- endif %}
+  - title: ":peacock: Customisation"
+    labels:
+      - ux-customization
+  # Developments that help users navigate and use the application with more ease,
+  # like tutorials, notifications, command helpers, argument/option groups, help panels etc.
+  - title: ":beginner: Nudging"
+    labels:
+      - docs-nudging
+      - ux-nudging
+  - title: ":electric_plug: Extensibility" # entry points, plugin enablers, improvements to type hints etc.
+    labels:
+      - plugins
+  - title: ":link: Compatibility & Integrations" # external services and tools
+    labels:
+      - backend-external
+  - title: ":earth_americas: Localisation"
+    labels:
+      - localization
+
+  # 2. Changes that impact users, but are not directly visible
+  - title: ":jigsaw: Application Components" # Components in the backend
+    labels:
+      - backend-components
+  - title: ":floppy_disk: Database Changes"
+    labels:
+      - backend-database
+  - title: ":city_sunset: Deprecations & Removals"
+{%- if cookiecutter.app_type != 'cli' %}
+    labels:
+      - cli-deprecations
+      - cli-removals
+      - ui-deprecations
+      - ui-removals
+{%- else %}
+    labels:
+      - cli-deprecations
+      - cli-removals
+{%- endif %}
+  - title: ":toolbox: Fixes" # Fixes for wrongful behaviour
+    labels:
+      - rfc
+
+  # 3. Changes that are irrelevant to users
+  - title: ":factory_worker: Codebase Renovation" # architectural changes, refactoring and other improvements done under the hood
+    labels:
+      - refactoring
+  - title: ":up: Dependencies Updates"
+    labels:
+      - maintenance-dependencies
+  - title: ":comet: Build & Release Optimisation" # how the project is set up for compilation
+    labels:
+      - ci-build
+{%- if cookiecutter.create_docker %}
+      - ci-docker
+{%- endif %}
+  - title: ":repeat: Design & Validation" # code integrity, tests and scenarios in BDD
+    labels:
+      - design-discovery
+      - design-formulation
+      - design-reassessment
+      - maintenance-test-coverage
+  - title: ":suspension_railway: Developer Experience" # changes to internal configuration to standardise and ease development workflow
+    labels:
+      - internals-configuration
+      - internals-developer-output
+      - internals-invoke
+
+  # 4. Knowledge Management
+  - title: ":books: Documentation" # Formal Documentation
+    labels:
+      - docs-guides
+      - docs-technical
+      - maintenance-knowledge
+  - title: ":scroll: Project Policies"
+    labels:
+      - policies-ci
+      - policies-guidelines
+      - policies-roadmap
+      - policies-rules
+      - policies-templates
+  - title: ":gem: Lean Practices Gains" # Internal improvements to detect and report issues, targeting CI/CD maturity
+    labels:
+      - maintenance-toolset
+{%- else %}
+  - title: ":new: Additions"
+    labels:
+      - rfi
+
+  - title: ":arrow_right: Changes"
+    labels:
+      - backend-components
+      - maintenance-test-coverage
+
+  - title: ":city_sunset: Deprecations & Removals"
+    labels:
+      - deprecations
+      - removals
+
+  - title: ":toolbox: Fixes"
+    labels:
+      - refactoring
+      - rfc
+
+  - title: ":up: Dependencies Updates"
+    labels:
+      - maintenance-dependencies
+
+  - title: ":books: Documentation"
+    labels:
+      - docs-nudging
+      - docs-guide
+      - docs-technical
+      - maintenance-knowledge
+
+  - title: ":black_circle: Other Developments"
+    labels:
+      - design-discovery
+      - design-formulation
+      - design-reassessment
+      - internals-configuration
+      - internals-developer-output
+      - internals-invoke
+{%- endif %}
 
 template: |
   ## What's Changed

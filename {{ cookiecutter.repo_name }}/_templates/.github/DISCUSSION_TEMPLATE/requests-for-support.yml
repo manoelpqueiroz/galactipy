@@ -1,0 +1,53 @@
+# TODO Configure the "Requests for Support" category on your GitHub repository (https://docs.github.com/en/discussions/managing-discussions-for-your-community/managing-categories-for-discussions)
+labels: [rfs, sts-need-triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        > [!IMPORTANT]
+        > Please run through all items under the **`Applicant Checklist`** section and provide details on the reasons that brought you to open this discussion.
+        >
+        > ---
+        >
+        > :ok: **Use this template for:** general questions on how to use {{ cookiecutter.project_name }}, when you are experiencing issues but are unsure why, questions for the developers regarding design decisions.
+        >
+        > :no_good: **Refrain from using this template if:**
+        >
+        > - You have a clear request for a new feature or an update to an existing feature :arrow_right: use the **`Request for Improvement`** template instead;
+        > - Your templates are experiencing an unexpected behaviour which you have identified :arrow_right: a **`Request for Correction`** is more suitable.
+  - type: checkboxes
+    attributes:
+      label: Applicant Checklist
+      description: Please check all items before proceeding.
+      options:
+        - label: I am using the latest version of {{ cookiecutter.project_name }};
+          required: true
+        - label: I have looked at {{ cookiecutter.project_name }}'s [`README`]({{ cookiecutter.__scm_link_url }}/blob/master/README.md) for information on my topic of interest;
+        - label: I have read the [`CONTRIBUTING`]({{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contributing-through-user-requests) guide and I have understood how to improve communication between me and the development team;
+        - label: I provided a concise and clear title for this discussion;
+          required: true
+        - label: I am confident this discussion does not fall in another category.
+  - type: textarea
+    attributes:
+      label: Previous Queries
+      description: "I have explored the [Issue Tracker]({{ cookiecutter.__scm_link_url }}/issues?q=is%3Aissue) looking for duplicates, attempting searches with the following terms:"
+      placeholder: |
+        - ...
+        - ...
+        - ...
+    validations:
+      required: true
+  - type: checkboxes
+    attributes:
+      label: Commitment to Project Support
+      description: "After reading the [Commitment to Help]({{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#commitment-to-help) section of the `CONTRIBUTING` guide and submitting this request, I commit to one of:"
+      options:
+        - label: Read [open discussions]({{ cookiecutter.__scm_link_url }}/issues) until I find **2** where I can help someone and add a comment to help there;
+        - label: Hit the "Watch" button in this repository to receive notifications about the project and help **2** people that ask questions in the future;
+        - label: Review **1** Pull Request by cloning the project and following the [review process]({{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contributing-by-reviewing-changes).
+  - type: textarea
+    attributes:
+      label: 💬 Context
+      description: Add the details for your request here.
+    validations:
+      required: true

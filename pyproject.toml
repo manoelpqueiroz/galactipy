@@ -1,7 +1,7 @@
 # Poetry pyproject.toml: https://python-poetry.org/docs/pyproject/
 [project]
 name = "galactipy"
-version = "0.20.0"
+version = "0.21.0"
 description = "Full-fledged template for Python projects."
 license = { text = "MIT" }
 readme = "README.md"
@@ -251,9 +251,8 @@ addopts = [
 
 
 [tool.coverage.run]
-source = ["tests"]
+source = ["."]
 branch = true
-omit = ["test_template.py"]
 
 
 [tool.coverage.report]

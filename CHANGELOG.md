@@ -1,3 +1,121 @@
+## 0.21.0 (2025-11-04)
+
+### :milky_way: Components (2 changes)
+
+- [:speech_balloon: Implement alternative docstrings for template](galactipy/galactipy@d794fa24e7be1c34cdeec31cc799d3c5ddf0f3bc) ([merge request](galactipy/galactipy!91))
+- [:wrench: Alter docstring style option to PEP 287](galactipy/galactipy@b4e257dfb71b705b92aba6c3d26477fab9c42fcb) ([merge request](galactipy/galactipy!91))
+
+### :pencil: Documentation (1 change)
+
+- [:pencil: Update docstring style input variable explanation](galactipy/galactipy@a2e7d1774482f4af83ad68e0f9d8702682e33c5a) ([merge request](galactipy/galactipy!91))
+
+## 0.20.5 (2025-11-04)
+
+### :milky_way: Components (2 changes)
+
+- [:sparkles: Provide the general `CONTRIBUTING.md` file for the template](galactipy/galactipy@83cde0c58f8f022ad2f612ab2b3d24334d7d3bbb) ([merge request](galactipy/galactipy!89))
+- [:pencil: Add template `ROADMAP.md` file](galactipy/galactipy@54ef7d39d318065234de6711562f8295007d26a5) ([merge request](galactipy/galactipy!89))
+
+### :wrench: Fixes & Refactoring (2 changes)
+
+- [:pencil2: Fix scroll emoji rendering](galactipy/galactipy@c16ae6ba44e16980125b242ec8e188bafbc7352f) ([merge request](galactipy/galactipy!90))
+- [:pencil2: Fix minor text inconsistencies in project `CONTRIBUTING.md`](galactipy/galactipy@d1c8926d7177170ff016530ff3974ec907287662) ([merge request](galactipy/galactipy!89))
+
+### :construction_site: Template Internals (10 changes)
+
+- [:pencil: Update template status icons](galactipy/galactipy@2508c9b7badeb95c236cc9c15e6c52316b58a5ab) ([merge request](galactipy/galactipy!89))
+- [:pencil: Include BDD in contribution prerequisites](galactipy/galactipy@7fe26a8ab8dc8e30ec29df864e97a342ba8666a4) ([merge request](galactipy/galactipy!89))
+- [:pencil: Add template badges for quick navigation](galactipy/galactipy@3a2f22e45cf418968c4e67631f98caf2e042b97f) ([merge request](galactipy/galactipy!89))
+- [:speech_balloon: Review GitHub emoji rendering for template `CONTRIBUTING.md`](galactipy/galactipy@1a68c0c07db418a03d1964119ac2fc0a31d93f74) ([merge request](galactipy/galactipy!89))
+- [:wrench: Adapt Release Drafter configuration to template labels](galactipy/galactipy@c95c66d64d301f2872c8796546f3bb93e4d3d1db) ([merge request](galactipy/galactipy!89))
+- [:pencil: Specify labels for the template](galactipy/galactipy@009bd0ad2b53cbcab2b2aea0e00cfd4e746f36b7) ([merge request](galactipy/galactipy!89))
+- [:pencil: Add section on BDD for template `CONTRIBUTING.md`](galactipy/galactipy@ae70ea841ef8fa16a4122efaa5818575acc17b15) ([merge request](galactipy/galactipy!89))
+- [:pencil: Add sections on docstring convention and test markers](galactipy/galactipy@2f22a3f09a97a957c67415c0e24de210668be386) ([merge request](galactipy/galactipy!89))
+- [:wrench: Enable keywords for typos in template Changelog config](galactipy/galactipy@ba06422b5a5560cd3f1eda641f9e35828112b508) ([merge request](galactipy/galactipy!89))
+- [:wrench: Alter Changelog category for internal improvements](galactipy/galactipy@dcd94ebb16c82ec13805986b4d01139a74d1161b) ([merge request](galactipy/galactipy!89))
+
+### :pencil: Documentation (2 changes)
+
+- [:pencil: Update project statuses and icons](galactipy/galactipy@cd951e5003a13042922572b4c99d82db2b439896) ([merge request](galactipy/galactipy!89))
+- [:pencil: Detail CONTRIBUTING feature in project `README.md`](galactipy/galactipy@e05d631060d58e9a7a462cc3b5fe102d21ed84ef) ([merge request](galactipy/galactipy!89))
+
+### :scroll: Project Policies (3 changes)
+
+- [:pencil: Convert project `ROADMAP.md` to SemBr convention](galactipy/galactipy@1a0939fca1d5b275bbe59abf9caa21c2fb8cc042) ([merge request](galactipy/galactipy!89))
+- [:pencil: Convert project `CONTRIBUTING.md` to SemBr convention](galactipy/galactipy@085d82a743af13f5bd95afe62a00d699e2a81413) ([merge request](galactipy/galactipy!89))
+- [:pencil: Split project `CONTRIBUTING.md` anchors in clusters](galactipy/galactipy@e108ec4ea2eef87b79508d38b7d27551cddef897) ([merge request](galactipy/galactipy!89))
+
+## 0.20.4 (2025-10-31)
+
+### :wrench: Fixes & Refactoring (1 change)
+
+- [:truck: Fix filenames for GitHub discussion templates](galactipy/galactipy@dcfd542353a468660c9ebe9e963cf99026261b7f) ([merge request](galactipy/galactipy!88))
+
+### :pencil: Documentation (1 change)
+
+- [:bulb: Include reference to GitHub discussions category creation](galactipy/galactipy@79eb394b881727ac758fa68a4fd27f052f223293) ([merge request](galactipy/galactipy!88))
+
+## 0.20.3 (2025-10-31)
+
+### :milky_way: Components (2 changes)
+
+- [:sparkles: Update issue and PR templates for GitHub](galactipy/galactipy@3250804dfd7088b1502ea3c4e3f72bfb29983d36) ([merge request](galactipy/galactipy!87))
+- [:sparkles: Add preconfigured log file for bug reporting](galactipy/galactipy@ac64572e028a9d708a7c93a6b9891bbb97052e5f) ([merge request](galactipy/galactipy!87))
+
+### :wrench: Fixes & Refactoring (1 change)
+
+- [:pencil2: Fix GitHub alerts rendering](galactipy/galactipy@67ebac3e11eac747461528f4f5941efac655054c) ([merge request](galactipy/galactipy!87))
+
+### :package: Build System & CI/CD (1 change)
+
+- [:white_check_mark: Update file removal tests](galactipy/galactipy@521094c889f8faba91021fbd1b7eff8718db8599) ([merge request](galactipy/galactipy!87))
+
+### :gear: Internals (2 changes)
+
+- [:wrench: Update file removals for bare repo templates](galactipy/galactipy@59ca13bb948ba6ccb2a9fdc27f2cafb4ebdf4308) ([merge request](galactipy/galactipy!87))
+- [:pencil2: Fix minor typos with project issue and MR templates](galactipy/galactipy@cca1ca216e31d94c256498ad0644ca9057ff101a) ([merge request](galactipy/galactipy!87))
+
+### :construction_site: Template Internals (2 changes)
+
+- [:wrench: Adapt issue/MR templates for bare repo option](galactipy/galactipy@c18040a5c99b18e7a527195964dbb27b02194b92) ([merge request](galactipy/galactipy!87))
+- [:sparkles: Update issue and MR templates for GitLab](galactipy/galactipy@e152b17a6fc3ded54860a66c77d593f351deedd0) ([merge request](galactipy/galactipy!87))
+
+### :pencil: Documentation (1 change)
+
+- [:pencil: Clarify GitHub PR template usage in project `README.md`](galactipy/galactipy@c4d2e53256a3c91ef41aa07749509b2e3c1cbf12) ([merge request](galactipy/galactipy!87))
+
+### :scroll: Project Policies (2 changes)
+
+- [:wrench: Improve usage of task lists for project issue and MR templates](galactipy/galactipy@32c147d1cde63a7ea958f1b1f1887a69eaaa1ef5) ([merge request](galactipy/galactipy!87))
+- [:pencil: Update `CONTRIBUTING.md` with additional policies](galactipy/galactipy@9cdc01b714c8aee84bb345bb7f63a1461ab5dc79) ([merge request](galactipy/galactipy!86))
+
+## 0.20.2 (2025-10-27)
+
+### :construction_site: Template Internals (3 changes)
+
+- [:sparkles: Update Release Drafter categories](galactipy/galactipy@b2875ebb9be94787cb55002210e1b78632a020aa) ([merge request](galactipy/galactipy!85))
+- [:sparkles: Include Git trailers for bare repo option](galactipy/galactipy@863751f66fcc9b5dbf39e81a33a9e7918507cd54) ([merge request](galactipy/galactipy!85))
+- [:sparkles: Overhaul Git trailers for the template](galactipy/galactipy@0341fc613dd31a4147699ce3d21a63ad5a6f3391) ([merge request](galactipy/galactipy!85))
+
+## 0.20.1 (2025-10-26)
+
+### :package: Build System & CI/CD (1 change)
+
+- [:construction_worker: Update template directory glob pattern](galactipy/galactipy@6a757866a9959921f2b4c0850a1fc9f8a6fa396a) ([merge request](galactipy/galactipy!84))
+
+### :gear: Internals (1 change)
+
+- [:wrench: Simplify test coverage report for the project](galactipy/galactipy@3a8ff85f728093cbf6876168bb7cf1b9097f67b1) ([merge request](galactipy/galactipy!84))
+
+### :construction_site: Template Internals (2 changes)
+
+- [:construction_worker: Update template CI syntax](galactipy/galactipy@aa0b1d695f410a25ac2a406fa35db4c2eb2e2730) ([merge request](galactipy/galactipy!84))
+- [:wrench: Simplify test coverage report for the template](galactipy/galactipy@a0635f99aaebfa677ef9c5b683d39b257cb9cee4) ([merge request](galactipy/galactipy!84))
+
+### :pencil: Documentation (1 change)
+
+- [:pencil: Update Invoke documentation](galactipy/galactipy@67c58a3d5a439b63711c5230bfa7cb01ae0b9157) ([merge request](galactipy/galactipy!84))
+
 ## 0.20.0 (2025-10-25)
 
 ### :milky_way: Components (2 changes)
