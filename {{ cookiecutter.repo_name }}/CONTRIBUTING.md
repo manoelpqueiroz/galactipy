@@ -16,7 +16,7 @@
 {%- set docstring_mapping = {
   'numpy': 'numpydoc',
   'google': 'Google Python Style',
-  'pep257': 'PEP 257',
+  'pep287': 'PEP 257',
   'other': 'custom'
 } %}
 {%- set roadmap_item = roadmap_mapping[cookiecutter.scm_platform] %}
@@ -5437,7 +5437,7 @@ what we are doing matters!
 [style1a]: https://numpydoc.readthedocs.io/en/latest/format.html
 {%- elif cookiecutter.docstring_style == 'google' %}
 [style1a]: https://google.github.io/styleguide/pyguide.html#s3.8-comments-and-docstrings
-{%- elif cookiecutter.docstring_style == 'pep257' %}
+{%- elif cookiecutter.docstring_style == 'pep287' %}
 [style1a]: https://peps.python.org/pep-0257/
 {%- endif %}
 [style2]: https://sembr.org/
