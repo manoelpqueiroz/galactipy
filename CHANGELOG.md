@@ -1,3 +1,14 @@
+## 0.21.0 (2025-11-04)
+
+### :milky_way: Components (2 changes)
+
+- [:speech_balloon: Implement alternative docstrings for template](galactipy/galactipy@d794fa24e7be1c34cdeec31cc799d3c5ddf0f3bc) ([merge request](galactipy/galactipy!91))
+- [:wrench: Alter docstring style option to PEP 287](galactipy/galactipy@b4e257dfb71b705b92aba6c3d26477fab9c42fcb) ([merge request](galactipy/galactipy!91))
+
+### :pencil: Documentation (1 change)
+
+- [:pencil: Update docstring style input variable explanation](galactipy/galactipy@a2e7d1774482f4af83ad68e0f9d8702682e33c5a) ([merge request](galactipy/galactipy!91))
+
 ## 0.20.5 (2025-11-04)
 
 ### :milky_way: Components (2 changes)
