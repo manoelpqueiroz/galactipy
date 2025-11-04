@@ -38,7 +38,7 @@ _Expand your project structure from atoms of code to **galactic** dimensions._ :
 ## TL;DR
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v0.20.4
+cookiecutter gl:galactipy/galactipy --checkout v0.20.5
 ```
 
 **All you need is the latest version of cookiecutter!** :wink:
@@ -164,9 +164,20 @@ and best development practices for Python.
 
 ### :knot: Nurture the Community around Your Project from Day One
 
+- With Galactipy templates,
+  you get more than a `CONTRIBUTING.md` file;
+  you take a complete development philosophy,
+  drawing inspiration
+  from some of the most distinguished
+  open source projects;
+  we provide
+  extensive yet user-friendly guidelines,
+  enabling your project
+  to onboard new contributors
+  and scale effortlessly
+  with minimal adjustments;
 - Files such as
   `LICENCE`,
-  `CONTRIBUTING.md`,
   `CODE_OF_CONDUCT.md`,
   `CITATION.cff`
   and `SECURITY.md`
@@ -218,7 +229,7 @@ pip install -U cookiecutter
 then go to a directory where you want to create your project and run:
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v0.20.4
+cookiecutter gl:galactipy/galactipy --checkout v0.20.5
 ```
 
 ### Input variables

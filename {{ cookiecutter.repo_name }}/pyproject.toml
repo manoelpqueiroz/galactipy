@@ -360,7 +360,7 @@ markers = [
   "identity",
   "networking",
   "monitoring",
-]
+] # UPDATEME with your own custom markers
 timeout = 10
 {%- if cookiecutter.use_bdd %}
 bdd_features_base_dir = "tests/features/"
