@@ -1,3 +1,39 @@
+## 0.20.5 (2025-11-04)
+
+### :milky_way: Components (2 changes)
+
+- [:sparkles: Provide the general `CONTRIBUTING.md` file for the template](galactipy/galactipy@83cde0c58f8f022ad2f612ab2b3d24334d7d3bbb) ([merge request](galactipy/galactipy!89))
+- [:pencil: Add template `ROADMAP.md` file](galactipy/galactipy@54ef7d39d318065234de6711562f8295007d26a5) ([merge request](galactipy/galactipy!89))
+
+### :wrench: Fixes & Refactoring (2 changes)
+
+- [:pencil2: Fix scroll emoji rendering](galactipy/galactipy@c16ae6ba44e16980125b242ec8e188bafbc7352f) ([merge request](galactipy/galactipy!90))
+- [:pencil2: Fix minor text inconsistencies in project `CONTRIBUTING.md`](galactipy/galactipy@d1c8926d7177170ff016530ff3974ec907287662) ([merge request](galactipy/galactipy!89))
+
+### :construction_site: Template Internals (10 changes)
+
+- [:pencil: Update template status icons](galactipy/galactipy@2508c9b7badeb95c236cc9c15e6c52316b58a5ab) ([merge request](galactipy/galactipy!89))
+- [:pencil: Include BDD in contribution prerequisites](galactipy/galactipy@7fe26a8ab8dc8e30ec29df864e97a342ba8666a4) ([merge request](galactipy/galactipy!89))
+- [:pencil: Add template badges for quick navigation](galactipy/galactipy@3a2f22e45cf418968c4e67631f98caf2e042b97f) ([merge request](galactipy/galactipy!89))
+- [:speech_balloon: Review GitHub emoji rendering for template `CONTRIBUTING.md`](galactipy/galactipy@1a68c0c07db418a03d1964119ac2fc0a31d93f74) ([merge request](galactipy/galactipy!89))
+- [:wrench: Adapt Release Drafter configuration to template labels](galactipy/galactipy@c95c66d64d301f2872c8796546f3bb93e4d3d1db) ([merge request](galactipy/galactipy!89))
+- [:pencil: Specify labels for the template](galactipy/galactipy@009bd0ad2b53cbcab2b2aea0e00cfd4e746f36b7) ([merge request](galactipy/galactipy!89))
+- [:pencil: Add section on BDD for template `CONTRIBUTING.md`](galactipy/galactipy@ae70ea841ef8fa16a4122efaa5818575acc17b15) ([merge request](galactipy/galactipy!89))
+- [:pencil: Add sections on docstring convention and test markers](galactipy/galactipy@2f22a3f09a97a957c67415c0e24de210668be386) ([merge request](galactipy/galactipy!89))
+- [:wrench: Enable keywords for typos in template Changelog config](galactipy/galactipy@ba06422b5a5560cd3f1eda641f9e35828112b508) ([merge request](galactipy/galactipy!89))
+- [:wrench: Alter Changelog category for internal improvements](galactipy/galactipy@dcd94ebb16c82ec13805986b4d01139a74d1161b) ([merge request](galactipy/galactipy!89))
+
+### :pencil: Documentation (2 changes)
+
+- [:pencil: Update project statuses and icons](galactipy/galactipy@cd951e5003a13042922572b4c99d82db2b439896) ([merge request](galactipy/galactipy!89))
+- [:pencil: Detail CONTRIBUTING feature in project `README.md`](galactipy/galactipy@e05d631060d58e9a7a462cc3b5fe102d21ed84ef) ([merge request](galactipy/galactipy!89))
+
+### :scroll: Project Policies (3 changes)
+
+- [:pencil: Convert project `ROADMAP.md` to SemBr convention](galactipy/galactipy@1a0939fca1d5b275bbe59abf9caa21c2fb8cc042) ([merge request](galactipy/galactipy!89))
+- [:pencil: Convert project `CONTRIBUTING.md` to SemBr convention](galactipy/galactipy@085d82a743af13f5bd95afe62a00d699e2a81413) ([merge request](galactipy/galactipy!89))
+- [:pencil: Split project `CONTRIBUTING.md` anchors in clusters](galactipy/galactipy@e108ec4ea2eef87b79508d38b7d27551cddef897) ([merge request](galactipy/galactipy!89))
+
 ## 0.20.4 (2025-10-31)
 
 ### :wrench: Fixes & Refactoring (1 change)
