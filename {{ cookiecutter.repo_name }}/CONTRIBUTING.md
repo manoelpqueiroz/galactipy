@@ -245,15 +245,15 @@ should help:
 {%- if cookiecutter.__scm_platform_lc == 'github' %}
   and discussions
 {%- endif %}
-  labelled with [`seeking-contributors`][topic3]
-  or [`starter-assignment`][topic4];
+  labelled with [`seeking-contributors`][query6]
+  or [`starter-assignment`][query3];
 - After familiarising yourself
-  with the project's [labels][topic5] and [stages][tracking],
+  with the project's [labels][topic3] and [stages][tracking],
   you can contribute
   by participating in discussions on issues
   at any of the **Needs** statuses,
 {% if cookiecutter.licence != 'nos' -%}
-  especially those in the [**Needs Triage**][topic6] stage;
+  especially those in the [**Needs Triage**][query4] stage;
   we are always looking for people
   who help refine issues,
   spot duplicates,
@@ -267,7 +267,7 @@ Contributing to an open source project,
 whether you are a seasoned developer
 or perhaps a newcomer
 aiming to improve your software skills,
-[can be scary][topic7]
+[can be scary][topic4]
 due to a plethora of reasons.
 As maintainers,
 we are committed
@@ -309,7 +309,7 @@ with your first steps here:
   doubts
   and suggestions.
   If still unsure,
-  reach us by [e-mail][topic8]
+  reach us by [e-mail][topic5]
   to introduce yourself,
   we will help you
   with further orientation;
@@ -319,7 +319,7 @@ with your first steps here:
   take your time
   by simply observing repo activity
   (you can set the option
-  to [watch][topic9] the repository),
+  to [watch][topic6] the repository),
   reading the archives
   and documentation
   to soak up the culture
@@ -356,7 +356,7 @@ with your first steps here:
   as you work up
   to the more complex contributions
   that {{ cookiecutter.project_name }} needs.
-  Check [starter assignment][topic4] issues,
+  Check [starter assignment][query3] issues,
   or [find your own][gfi]
   that deserves your time and effort.
 
@@ -483,7 +483,7 @@ an even more robust contributor:
 >    and every feedback.
 {%- endif %}
 {%- else %}
-  especially those in the [**Needs Triage**][topic6] stage.
+  especially those in the [**Needs Triage**][query4] stage.
 {%- endif %}
 
 ## :classical_building: Fundamental Policies
@@ -538,7 +538,7 @@ can be found below:
   is valuable,
   whether in issue and {{ cookiecutter.__mr_acronym }} discussions
   or directly
-  through [e-mail][topic8] contact;
+  through [e-mail][topic5] contact;
 - Follow the formal proposal process
   and be an advocate of our guidelines,
   not only safeguarding
@@ -708,6 +708,25 @@ the {{ cookiecutter.__mr_acronym }}s should be associated with
 the completed {{ roadmap_item }}.
 
 #### Work Item Tracking
+
+[![Issues][badge1]][query1]
+{%- if cookiecutter.scm_platform == 'GitLab Free' %}
+[![Tasks][badge1a]][query1a]
+{%- endif %}
+
+[![Needs Contributors][badge2]][query2]
+[![Needs Triage][badge3]][query3]
+[![Designs][badge4]][query4]
+
+[![Starter Assignments][badge5]][query5]
+[![Needs Delivery][badge6]][query6]
+[![Quick Wins][badge7]][query7]
+
+[![Stale Issues][badge8]][query8]
+
+[![RFCs][badge9]][query9]
+[![RFIs][badge10]][query10]
+[![RFSs][badge11]][query11]
 
 {{ cookiecutter.project_name }} development is iterative
 and structured preferably around [{{ cookiecutter.__mr_term }}s][swmr].
@@ -1320,7 +1339,7 @@ tasks associated with milestones
 can accumulate over time.
 The association
 should be removed
-by [being queried][practices5]
+by [being queried][query1a]
 in the Issue Tracker
 and edited
 through the "Bulk edit" option.
@@ -2141,7 +2160,7 @@ will be licensed under
 the [{{ licence_name }}][licence1].
 {% else -%}
 {{ cookiecutter.project_name }} is _**not**_ open source sotware.
-Please [contact][topic8] the maintainer
+Please [contact][topic5] the maintainer
 for more information
 on licencing the project.
 {%- endif %}
@@ -2845,6 +2864,8 @@ will involve:
 
 #### Choosing What to Contribute
 
+[![Needs Triage][badge3]][query3]
+
 Everyone benefits
 if contributors focus on changes
 that are useful,
@@ -2857,7 +2878,7 @@ a contributor will already have
 a particular new change or fix
 in mind.
 If seeking ideas,
-consult the list of [starter assignments][topic4].
+consult the list of [starter assignments][query3].
 
 Before proceeding,
 contributors should evaluate
@@ -2880,7 +2901,7 @@ and actionable:
   rather than consider filing an issue
   or proposing an {{ cookiecutter.__mr_acronym }}.
   When in doubt,
-  email [`{{ cookiecutter.email }}`][topic8] first
+  email [`{{ cookiecutter.email }}`][topic5] first
   about the possible change;
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 - Search the [Issue Tracker][intro1]
@@ -3886,9 +3907,9 @@ created by a submitter.
   ask other people
   about their opinion
 {%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
-  and use the [`seeking-contributors::opinion`][mr2] label.
+  and use the [`seeking-contributors::opinion`][query2] label.
 {%- else %}
-  and use the [`seeking-input`][mr2] label.
+  and use the [`seeking-input`][query2] label.
 {%- endif %}
 
 #### The Responsibility of the Maintainers
@@ -4262,6 +4283,8 @@ faster communication and resolution.
 
 ### Contributing by Helping Other People
 
+[![RFSs][badge11]][query11]
+
 Inspired by [Typer's][help1] welcoming community
 and their positive outlook
 on the effect of [collective intelligence][help2],
@@ -4279,7 +4302,7 @@ or the development team itself.
 
 The most direct way
 you can provide your help to others
-is to look for open [Requests for Support][help3]
+is to look for open [Requests for Support][query11]
 and try to answer other users' questions.
 In many cases
 you might already know the answer to them!
@@ -4340,7 +4363,7 @@ with their requests:
    but that's not enough
    to reproduce the problem;
    - You can ask them
-     to provide a [minimal, reproducible example][help4],
+     to provide a [minimal, reproducible example][help3],
      that you can copy-paste
      and run locally
      to see the same error or behavior
@@ -4819,6 +4842,8 @@ is to make one [that comes from yourself][gfi].
 
 #### Specific Guidelines for Requests for Correction
 
+[![RFCs][badge9]][query9]
+
 Requests for Correction are used
 to track unexpected behaviour
 from template generation,
@@ -4830,7 +4855,7 @@ the code in the repository.
 
 Guidelines for [RFCs][request6]:
 
-- Use the [issue search][request7]
+- Use the [issue search][query9]
   to check if a request
   has already been reported;
 - Check if the issue has been fixed
@@ -4841,7 +4866,7 @@ Guidelines for [RFCs][request6]:
   to demonstrate your issue.
   Provide either
   a repository,
-  [gist][request8]/[snippet][request9]
+  [gist][request7]/[snippet][request8]
   or code sample
   to demonstrate you problem.
 
@@ -4884,9 +4909,9 @@ to accelerate the process:
   containing only the last executed run of the program
   to facilitate bug reporting;
   additionally,
-  tools like [`reprexpy`][request10]
+  tools like [`reprexpy`][request9]
 {%- else %}
-  Tools like [`reprexpy`][request10]
+  Tools like [`reprexpy`][request9]
 {%- endif %}
   can assist you
   in providing more technical detail
@@ -5052,6 +5077,11 @@ to integrate your changes to the project.
 
 ### Contributing to Roadmap Maintenance
 
+[![Issues][badge1]][query1]
+{%- if cookiecutter.scm_platform == 'GitLab Free' %}
+[![Tasks][badge1a]][query1a]
+{%- endif %}
+
 The project roadmap is maintained
 through [{{ cookiecutter.__scm_platform_base }} {{ roadmap_item.capitalize() }}s][topic2].
 It provides an overview
@@ -5076,7 +5106,7 @@ to the development team:
   and then
   opening additional [**Requests for Improvement**][request5]
   that pertain to existing {{ roadmap_item }}s;
-- Commenting on [issues without associated {{ roadmap_item }}s][maintenance1]
+- Commenting on [issues without associated {{ roadmap_item }}s][query1]
   and suggesting what relevant developments
   could they be associated with
   for the development team to evaluate;
@@ -5112,7 +5142,7 @@ Here's how you can promote {{ cookiecutter.project_name }}:
 - Set the [Notification level][promo0] to **"Watch"**
   on the [{{ cookiecutter.scm_namespace.capitalize() }} organisation][promo1]
 {% else -%}
-- Set the [Notification level][topic9] to **"Watch"**
+- Set the [Notification level][topic6] to **"Watch"**
   on the [{{ cookiecutter.project_name }} repository][dev1]
 {%- endif %}
   and receive updates
@@ -5177,6 +5207,59 @@ what we are doing matters!
 [behaviour]: #how-to-behave-among-other-contributors
 {%- endif %}
 
+[badge1]: https://img.shields.io/badge/issues_without_{{ roadmap_item }}-006272?style=for-the-badge
+{%- if cookiecutter.scm_platform == 'GitLab Free' %}
+[badge1a]: https://img.shields.io/badge/{{ task_item }}s_with_{{ roadmap_item }}-08b1ab?style=for-the-badge
+{%- endif %}
+[badge2]: https://img.shields.io/badge/seeking_input-69ad6b?style=for-the-badge
+[badge3]: https://img.shields.io/badge/needs_triage-4285f4?style=for-the-badge
+[badge4]: https://img.shields.io/badge/designs_under_discussion-ff2f82?style=for-the-badge
+[badge5]: https://img.shields.io/badge/starter_assignments-66aa9c?style=for-the-badge
+[badge6]: https://img.shields.io/badge/seeking_contributors-9ccfcd?style=for-the-badge
+[badge7]: https://img.shields.io/badge/quick_wins-5ebc8b?style=for-the-badge
+[badge8]: https://img.shields.io/badge/stale_issues-9400d3?style=for-the-badge
+[badge9]: https://img.shields.io/badge/requests_for_correction-dc143c?style=for-the-badge
+[badge10]: https://img.shields.io/badge/requests_for_improvement-0055ff?style=for-the-badge
+[badge11]: https://img.shields.io/badge/requests_for_support-ed9121?style=for-the-badge
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+[query1]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&parent_id=None
+[query2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Aopinion&type%5B%5D=issue
+[query3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment%3A%3A%2A&type%5B%5D=issue
+[query4]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&status=Needs%20Triage&type%5B%5D=issue
+[query5]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=design%3A%3A%2A&type%5B%5D=issue
+[query6]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Adelivery&type%5B%5D=issue
+[query7]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&or%5Blabel_name%5D%5B%5D=quick-win&or%5Blabel_name%5D%5B%5D=starter-assignment%3A%3Aquick-win
+[query8]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=stale&type%5B%5D=issue
+[query9]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Acorrection&type%5B%5D=issue
+[query10]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Aimprovement&type%5B%5D=issue
+[query11]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Asupport&type%5B%5D=issue
+{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+[query1]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&milestone_title=None
+[query1a]: {{ cookiecutter.__scm_link_url }}/issues?state=all&type%5B%5D=task&milestone_title=Any
+[query2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-input&type%5B%5D=issue
+[query3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment&type%5B%5D=issue
+[query4]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=sts-needs-triage&type%5B%5D=issue
+[query5]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5D%5B%5D=design-discovery&or%5Blabel_name%5D%5B%5D=design-formulation&or%5Blabel_name%5D%5B%5D=design-reassessment&type%5B%5D=issue
+[query6]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-builders&type%5B%5D=issue
+[query7]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=quick-win&type%5B%5D=issue
+[query8]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=stale&type%5B%5D=issue
+[query9]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfc&type%5B%5D=issue
+[query10]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfc&type%5B%5D=issue
+[query11]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfs&type%5B%5D=issue
+{%- else %}
+[query1]: {{ cookiecutte.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20no%3Aproject
+[query2]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-input
+[query3]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astarter-assignment
+[query4]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Asts-needs-triage
+[query5]: {{ cookiecutter.__scm_link_url }}/issues?q=label%3Adesign-discovery%20OR%20label%3Adesign-formulation%20OR%20label%3Adesign-reassessment
+[query6]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-builders
+[query7]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aquick-win
+[query8]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astale
+[query9]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Arfc
+[query10]: {{ cookiecutter.__scm_link_url }}/discussions/categories/requests-for-improvement
+[query11]: {{ cookiecutter.__scm_link_url }}/discussions/categories/requests-for-support
+{%- endif %}
+
 {% if cookiecutter.licence != 'nos' or cookiecutter.use_bdd %}
 [knowledge]: https://www.teachfloor.com/elearning-glossary/institutional-knowledge
 {%- endif %}
@@ -5222,32 +5305,19 @@ what we are doing matters!
 {%- endif %}
 {%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
 [topic2]: {{ cookiecutter.__gitlab_org }}/epics
-[topic3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3A%2A&type%5B%5D=issue
-[topic4]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment%3A%3A%2A&type%5B%5D=issue
 {%- elif cookiecutter.scm_platform == 'GitLab Free' %}
 [topic2]: {{ cookiecutter.__scm_link_url }}/milestones
-[topic3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors&type%5B%5D=issue
-[topic4]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment&type%5B%5D=issue
 {%- else %}
 [topic2]: {{ cookiecutter.__scm_link_url }}/projects
-[topic3]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors
-[topic4]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astarter-assignment
 {%- endif %}
-[topic5]: {{ cookiecutter.__scm_link_url }}/labels
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
-[topic6]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&status=Needs%20Triage&type%5B%5D=issue
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
-[topic6]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=sts-needs-triage&type%5B%5D=issue
-{%- else %}
-[topic6]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Asts-needs-triage
-{%- endif %}
+[topic3]: {{ cookiecutter.__scm_link_url }}/labels
 {%- if cookiecutter.licence != 'nos' %}
-[topic7]: https://goauthentik.io/blog/2024-03-07-why-contributing-to-open-source-is-scary/
-[topic8]: mailto:{{ cookiecutter.email }}
+[topic4]: https://goauthentik.io/blog/2024-03-07-why-contributing-to-open-source-is-scary/
+[topic5]: mailto:{{ cookiecutter.email }}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[topic9]: https://gitlab.com/gitlab-org/gitlab-foss/-/issues/234#note_17497758
+[topic6]: https://gitlab.com/gitlab-org/gitlab-foss/-/issues/234#note_17497758
 {%- else %}
-[topic9]: https://docs.github.com/en/subscriptions-and-notifications/get-started/configuring-notifications#about-participating-and-watching-notifications
+[topic6]: https://docs.github.com/en/subscriptions-and-notifications/get-started/configuring-notifications#about-participating-and-watching-notifications
 {%- endif %}
 {%- endif %}
 
@@ -5319,7 +5389,6 @@ what we are doing matters!
 {%- endif %}
 {% if cookiecutter.scm_platform == 'GitLab Free' -%}
 [practices4]: https://docs.gitlab.com/user/tasks/#add-a-task-to-a-milestone
-[practices5]: {{ cookiecutter.__scm_link_url }}/issues?state=all&type%5B%5D=task&milestone_title=Any
 {%- endif %}
 
 {% if cookiecutter.use_bdd -%}
@@ -5426,13 +5495,6 @@ what we are doing matters!
 [mr0]: https://docs.gitlab.com/user/project/merge_requests/dependencies/
 {%- endif %}
 [mr1]: https://josipmisko.com/posts/code-review-nit
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
-[mr2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Aopinion&type%5B%5D=issue
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
-[mr2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-input&type%5B%5D=issue
-{%- else %}
-[mr2]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-input
-{%- endif %}
 
 {% if cookiecutter.licence != 'nos' -%}
 [community1]: https://gregorybeamer.wordpress.com/2020/11/12/why-code-organization-is-so-important-in-software/
@@ -5449,14 +5511,7 @@ what we are doing matters!
 
 [help1]: https://typer.tiangolo.com/help-typer/#help-others-with-questions-in-github
 [help2]: https://www.blockchain-council.org/ai/collective-intelligence-framework/
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
-[help3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Asupport&type%5B%5D=issue
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
-[help3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfs&type%5B%5D=issue
-{%- else %}
-[help3]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Arfs
-{%- endif %}
-[help4]: https://stackoverflow.com/help/minimal-reproducible-example
+[help3]: https://stackoverflow.com/help/minimal-reproducible-example
 
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [request1]: {{ cookiecutter.__scm_link_url }}/tree/master/.gitlab/issue_templates
@@ -5465,11 +5520,6 @@ what we are doing matters!
 [request4]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Support
 [request5]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Improvement
 [request6]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Correction
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
-[request7]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Acorrection&type%5B%5D=issue
-{%- else %}
-[request7]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfc&type%5B%5D=issue
-{%- endif %}
 {%- else %}
 [request1]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/ISSUE_TEMPLATE
 [request1a]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/DISCUSSION_TEMPLATE
@@ -5479,19 +5529,10 @@ what we are doing matters!
 [request4]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-support
 [request5]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-improvement
 [request6]: {{ cookiecutter.__scm_link_url }}/issues/new?template=request_for_correction.yml
-[request7]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Arfc
 {%- endif %}
-[request8]: https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists
-[request9]: https://docs.gitlab.com/user/snippets/
-[request10]: https://reprexpy.readthedocs.io/en/latest/
-
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
-[maintenance1]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&parent_id=None
-{% elif cookiecutter.scm_platform == 'GitLab Free' -%}
-[maintenance1]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&milestone_title=None
-{% else -%}
-[maintenance1]: {{ cookiecutte.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20no%3Aproject
-{%- endif %}
+[request7]: https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists
+[request8]: https://docs.gitlab.com/user/snippets/
+[request9]: https://reprexpy.readthedocs.io/en/latest/
 
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [promo0]: https://docs.gitlab.com/user/profile/notifications/#notification-levels
