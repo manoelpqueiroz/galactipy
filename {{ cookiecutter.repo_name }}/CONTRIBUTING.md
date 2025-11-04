@@ -99,6 +99,10 @@ contributing as a developer:
   requires a {{ cookiecutter.__scm_platform_base }} account;
 - {{ cookiecutter.__mr_term }}s should
   adhere to the [{{ cookiecutter.project_name }} Philosophy][philosophy];
+{%- if cookiecutter.use_bdd %}
+- Follow [Behaviour-Driven Development][bdd]
+  principles during contributions;
+{%- endif %}
 - Commits should
   adhere to our [commit customs][commiting];
 - The project's [codestyle][codestyle] should
@@ -5188,6 +5192,9 @@ what we are doing matters!
 [imperative]: #issue-titles-should-be-framed-in-imperative-mood
 [setup]: #development-setup
 [admission]: #opening-admissible-merge-requests
+{%- if cookiecutter.use_bdd %}
+[bdd]: #behaviour-driven-development
+{%- endif %}
 {%- if cookiecutter.commit_convention == 'gitmoji' %}
 [convention]: #gitmoji
 {%- elif cookiecutter.commit_convention == 'conventional' %}
