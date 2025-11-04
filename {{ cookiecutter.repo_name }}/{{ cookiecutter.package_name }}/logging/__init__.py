@@ -1,3 +1,5 @@
+"""Define logging capabilites for {{ cookiecutter.project_name }}."""
+
 import sys
 
 from nebulog import install, logger
@@ -7,6 +9,30 @@ from {{ cookiecutter.package_name }}.logging.formatters import file_formatter
 
 
 def setup_app_logging(*, debug: bool = False):
+{%- if cookiecutter.docstring_style != 'other' %}
+    """Configure the available loggers at {{ cookiecutter.project_name }} runtime.
+{%- if cookiecutter.docstring_style == 'numpy' %}
+
+    Parameters
+    ----------
+    debug : bool, default False
+        Define whether logs will be called at the DEBUG level or a higher level
+        depending on the type of logger.
+{%- elif cookiecutter.docstring_style == 'google' %}
+
+    Args:
+        debug: Define whether logs will be called at the DEBUG level or a higher level
+        depending on the type of logger.
+{%- else %}
+
+    :param debug: Define whether logs will be called at the DEBUG level or a higher
+        level depending on the type of logger.
+    :type debug: bool
+{%- endif %}
+    """
+{%- else %}
+    """Configure the available loggers at {{ cookiecutter.project_name }} runtime."""
+{%- endif %}
     file_log_level = "DEBUG" if debug else "INFO"
     shell_log_level = "DEBUG" if debug else "WARNING"
 
