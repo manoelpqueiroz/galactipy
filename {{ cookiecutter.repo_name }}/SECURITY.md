@@ -152,7 +152,7 @@ your report:
      of the mailing list being notified,
      a copy of the advisory
      will be published
-     on the [{{ cookiecutter.__scm_platform_base }} Advisory Database][2].
+     on the [{{ cookiecutter.__scm_platform_base }} Advisory Database][4].
 
 > [!IMPORTANT]
 > Typically,
@@ -356,9 +356,12 @@ and vulnerability reporting:
 ### :thinking: Use Contexts
 
 {{ cookiecutter.project_name }} can be used
+{%- if cookiecutter.app_type != 'bare_repo' %}
 as a **Python CLI program**,
+{%- if cookiecutter.app_type != 'cli' %}
 a **terminal application**
 via a Terminal User Interface (TUI)
+{%- endif %}
 or as a pure **Python library**.
 Each use context is detailed below
 and each has its own threat model
@@ -367,7 +370,7 @@ and security posture notes.
 #### Python CLI Program
 
 {{ cookiecutter.project_name }} ships as a Python module
-distributed via [PyPI](https://pypi.org/project/your-package-name/).
+distributed via [PyPI][2].
 The CLI program is built using Typer
 and can be installed and executed
 directly from the command-line.
@@ -403,6 +406,7 @@ safe evaluations
 of configuration files and variables
 to avoid arbitrary code execution.
 
+{% if cookiecutter.app_type != 'cli' -%}
 #### TUI Application
 
 {{ cookiecutter.project_name }} also ships as a TUI application
@@ -438,11 +442,16 @@ and validation mechanisms
 as the CLI and library components.
 This ensures consistent security practices
 across all usage contexts.
+{%- endif %}
+{%- else %}
+as a pure **Python library**.
+{%- endif %}
 
 ### :man_supervillain: Threat Model
 
 #### Underlying Primitives
 
+{% if cookiecutter.app_type != 'bare_repo' -%}
 {{ cookiecutter.project_name }} uses Python Standard Library modules,
 including `pathlib` and `logging` (via Nebulog).
 These primitives could have bugs or vulnerabilities
@@ -459,9 +468,13 @@ Users are encouraged
 to follow Python security advisories
 and keep their Python installations
 up to date.
+{% else -%}
+<!-- UPDATEME with your underlying primitives for building the threat model -->
+{%- endif %}
 
 #### Underlying Libraries
 
+{% if cookiecutter.app_type != 'bare_repo' -%}
 {{ cookiecutter.project_name }} uses
 several key dependencies
 that are critical
@@ -505,13 +518,17 @@ These libraries are popular and well-maintained,
 but users should monitor
 for security advisories
 and keep dependencies updated.
+{% else -%}
+<!-- UPDATEME with your underlying libraries considerations within the threat model -->
+{%- endif %}
 
 #### Build Pipelines
 
+{% if cookiecutter.app_type != 'bare_repo' -%}
 {{ cookiecutter.project_name }} does not perform downloads
 or invoke external programs.
 The logic behind {{ cookiecutter.project_name }}
-does not access environment variables
+does not access sensitive environment variables
 or execute loaded code.
 Thus,
 especially considering
@@ -526,9 +543,13 @@ to configuration files
 in user-controlled locations
 and does not modify system files
 or execute arbitrary code.
+{% else -%}
+<!-- UPDATEME with application potential harmful behaviour if used in CI build pipelines -->
+{%- endif %}
 
 #### File Access
 
+{% if cookiecutter.app_type != 'bare_repo' -%}
 There are several places
 where dynamic input
 turns into file system operations:
@@ -588,6 +609,9 @@ to prevent unauthorized file access:
 - No external downloads
   or system command execution
   occur during normal operation.
+{% else -%}
+<!-- UPDATEME with how, where and when your application accesses files in the user's system -->
+{%- endif %}
 
 ### :x: NOT Security Issues
 
@@ -649,6 +673,7 @@ The same applies to scripts and software
 which are not installed by default
 through `pip`.
 
+{% if cookiecutter.app_type != 'bare_repo' -%}
 #### Visible Command-line Arguments
 
 Sensitive user inputs
@@ -662,6 +687,7 @@ users are encouraged
 to avoid passing sensitive data
 via command-line arguments,
 as per standard security best practices.
+{%- endif %}
 
 #### Busy Loops
 
@@ -684,6 +710,7 @@ where an attacker has write access
 to the same directory
 where {{ cookiecutter.project_name }} is directed to save files.
 
+{% if cookiecutter.app_type != 'bare_repo' -%}
 #### Tricking a User to Run a Command Line
 
 A creative,
@@ -699,6 +726,7 @@ Such an attacker can just as well
 have the user run a much worse command
 that can do something fatal
 (like `sudo rm -rf /`).
+{%- endif %}
 
 #### Upstream Dependencies
 
@@ -718,6 +746,8 @@ in upstream dependencies
 and updates their versions promptly
 in the case of vulnerabilites.
 
+<!-- UPDATEME with additional understanding on what should not be considered security issues -->
+
 ### :octagonal_sign: Security Measures
 
 {{ cookiecutter.project_name }} implements
@@ -727,9 +757,11 @@ to enhance code security:
 - Type hints
   and static analysis
   to prevent common errors;
+{%- if cookiecutter.app_type != 'bare_repo' %}
 - User input validation
   during configuration operations
   to prevent injection attacks;
+{%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'github' %}
 - Dependency scanning
   and updates
@@ -750,6 +782,7 @@ to enhance code security:
 Security guarantees provided
 by the project:
 
+{% if cookiecutter.app_type != 'bare_repo' -%}
 - {{ cookiecutter.project_name }} does not
   spawn external programs;
 - {{ cookiecutter.project_name }} does not allow
@@ -781,13 +814,16 @@ by:
 - Handling settings file misconfigurations
   explicitly
   via the Orbittings API.
+{% else -%}
+<!-- UPDATEME with guarantees your project and upstream dependencies give in regards to security -->
+{%- endif %}
 
 ### :speech_balloon: Comments on This Policy
 
 If you have any suggestions
 on how our security processes
 could be improved,
-please open a [Request for Improvement][3]
+please open a [Request for Improvement][4]
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 on our Issue Tracker.
 {%- else %}
@@ -801,10 +837,11 @@ in due time.
 <!-- UPDATEME with security policies of third-party libraries relevant to {{ cookiecutter.project_name }} -->
 
 [1]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md
+[2]: https://pypi.org/project/{{ cookiecutter.repo_name }}/
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[2]: https://advisories.gitlab.com/
-[3]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Improvement
+[4]: https://advisories.gitlab.com/
+[4]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Improvement
 {%- else %}
-[2]: https://github.com/advisories
-[3]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-improvement
+[4]: https://github.com/advisories
+[4]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-improvement
 {%- endif %}
