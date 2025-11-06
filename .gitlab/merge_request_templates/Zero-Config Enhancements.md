@@ -53,12 +53,12 @@ This template should be used to propose and discuss changes to the default confi
 
 - [ ] I have modified files to sufficiently improve user experience without causing incompatibility in project generation;
 - [ ] I have assured the configuration improvement works as expected;
-- [ ] I have either:
-  - Evaluated that this change does not require updating the documentation;
-  - Updated the documentation highlighting this change and any relevant information;
-- [ ] I have either:
-  - Evaluated that this change does not require specifying or changing `TODO`/`UPDATEME` comments;
-  - Included or removed the relevant `TODO` and `UPDATEME` comments to orient users on next steps after generating projects with Galactipy;
+- Regarding documentation and knowledge management: <!-- Pick only one -->
+  - [ ] I have evaluated that this change does not require updating the documentation;
+  - [ ] I have updated the documentation highlighting this change and any relevant information.
+- Regarding user nugding:
+  - [ ] I have evaluated that this change does not require specifying or changing `TODO`/`UPDATEME` comments;
+  - [ ] I have included or removed the relevant `TODO` and `UPDATEME` comments to orient users on next steps after generating projects with Galactipy;
 - [ ] I have bumped the Galactipy [version][9] appropriately as my final commit for this change.
 >>>
 

@@ -116,6 +116,7 @@
     [3, 13]
   ],
   "__envvar": "{{ cookiecutter.package_name.upper() }}",
+  "__security_email": "{{ cookiecutter.email.replace('.', ' dot ').replace('@', ' at ').replace('_', ' underscore ').replace('-', ' dash ') }}",
   "__mpvr": "{{ cookiecutter.minimal_python_version.replace('.', '') }}",
   "__scm_platform_base": "{{ 'GitLab' if 'GitLab' in cookiecutter.scm_platform else 'GitHub' }}",
   "__scm_platform_lc": "{{ cookiecutter.__scm_platform_base.lower() }}",
