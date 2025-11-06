@@ -71,6 +71,27 @@ of the possible issue:
 This information will help us
 triage your report more quickly.
 
+> [!IMPORTANT]
+> If you need to provide secure information
+> or your report needs to be encrypted,
+> please use our PGP key
+> to encrypt your message
+> before sending.
+<!-- UPDATEME by listing your key data and replacing the commands below with their output
+> <details>
+>
+> **Key fingerprint:**
+> ```
+> gpg --list-keys --with-fingerprint <ID>
+> ```
+>
+> **Key data:**
+> ```
+> gpg --export --armor <ID>
+> ```
+> </details>
+-->
+
 We prefer all communications
 to be in **English**.
 
