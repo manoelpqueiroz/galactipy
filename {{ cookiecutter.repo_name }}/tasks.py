@@ -1,8 +1,7 @@
 """Collection of tasks for development streamlining in {{ cookiecutter.project_name }}."""
 
-from typing import Callable, Optional
-
 import os
+from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 from shutil import which
@@ -150,7 +149,7 @@ def mypy(
     install_types: bool = False,
     non_interactive: bool = False,
     warn: bool = False,
-) -> Optional[int]:
+) -> int | None:
     """Run type checks with `mypy` and `pyproject.toml` configuration."""
     install_flag = "--install-types" if install_types else ""
     non_interactive_flag = "--non-interactive" if non_interactive else ""
@@ -203,7 +202,7 @@ def install(c: Context, ignore_pty: bool = False) -> None:
 # Packaging-related tasks
 @task(aliases=["pypi-config"])
 def config(
-    c: Context, api_token: str, repo: str = "pypi", url: Optional[str] = None
+    c: Context, api_token: str, repo: str = "pypi", url: str | None = None
 ) -> None:
     """Configure a PyPI API token for package uploads.
 

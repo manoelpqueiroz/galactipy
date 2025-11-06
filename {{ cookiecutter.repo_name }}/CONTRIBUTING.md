@@ -104,7 +104,7 @@ contributing as a developer:
   principles during contributions;
 {%- endif %}
 - Commits should
-  adhere to our [commit customs][commiting];
+  adhere to our [commit customs][committing];
 - The project's [codestyle][codestyle] should
   be followed strictly;
 - Work item management should
@@ -809,7 +809,7 @@ with their usage:
 |        ~"policies::rules"         | Changes to rules for development tools (e.g., Ruff/mypy rules, issue triaging etc.).                              |
 |      ~"policies::templates"       | Changes to issue and {{ cookiecutter.__mr_term }} templates.                                                      |
 |           ~"quick-win"            | Development requires low effort.                                                                                  |
-|          ~"refactoring"           | Reestructures existing source code without changing its functionality.                                            |
+|          ~"refactoring"           | Restructures existing source code without changing its functionality.                                             |
 {%- if cookiecutter.app_type == 'bare_repo' %}
 |            ~"removals"            | Feature sunsetting.                                                                                               |
 {%- endif %}
@@ -884,7 +884,7 @@ with their usage:
 |      Policies       |       ~"policies-rules"       | Changes to rules for development tools (e.g., Ruff/mypy rules, issue triaging etc.).                              |
 |      Policies       |     ~"policies-templates"     | Changes to issue and {{ cookiecutter.__mr_term }} templates.                                                      |
 |         N/A         |         ~"quick-win"          | Development requires low effort.                                                                                  |
-|         N/A         |        ~"refactoring"         | Reestructures existing source code without changing its functionality.                                            |
+|         N/A         |        ~"refactoring"         | Restructures existing source code without changing its functionality.                                             |
 {%- if cookiecutter.app_type == 'bare_repo' %}
 |         N/A         |          ~"removals"          | Feature sunsetting.                                                                                               |
 {%- endif %}
@@ -959,7 +959,7 @@ with their usage:
 |      Policies       |       `policies-rules`       | Changes to rules for development tools (e.g., Ruff/mypy rules, issue triaging etc.).                              |
 |      Policies       |     `policies-templates`     | Changes to issue and {{ cookiecutter.__mr_term }} templates.                                                      |
 |         N/A         |         `quick-win`          | Development requires low effort.                                                                                  |
-|         N/A         |        `refactoring`         | Reestructures existing source code without changing its functionality.                                            |
+|         N/A         |        `refactoring`         | Restructures existing source code without changing its functionality.                                             |
 {%- if cookiecutter.app_type == 'bare_repo' %}
 |         N/A         |          `removals`          | Feature sunsetting.                                                                                               |
 {%- endif %}
@@ -3002,7 +3002,7 @@ when proposing changes:
   when making design decisions.
   Communicating the [intent][swnjw] behind your changes
   can also help expedite {{ cookiecutter.__mr_term }} reviews;
-- Follow our [commit customs][commiting],
+- Follow our [commit customs][committing],
   as consistent commit messages
   that follow these guidelines
   make the history more readable.
@@ -3208,7 +3208,7 @@ in [`pyproject.toml`][workflow2]:
 |  `persistence`  | Tests which certify that data is consistently and correctly persisted.                                                          |
 |    `config`     | Tests related to modifications in user configuration for the program.                                                           |
 | `customization` | Tests related to customization options.                                                                                         |
-| `compatibility` | Tests validating compatibility of {{ cookiecutter.project_name }} accross its different versions.                               |
+| `compatibility` | Tests validating compatibility of {{ cookiecutter.project_name }} across its different versions.                                |
 |     `async`     | Tests validating asynchronous code.                                                                                             |
 |  `integration`  | Tests certifying integration with external services, libraries and platforms.                                                   |
 |   `database`    | Tests specifically aimed at validating database operations.                                                                     |
@@ -5183,7 +5183,7 @@ what we are doing matters!
 [swnjw]: #say-why-not-just-what
 [starter]: #about-starter-assignments
 [philosophy]: #book-our-philosophy
-[commiting]: #commit-customs
+[committing]: #commit-customs
 [codestyle]: #codestyle
 [practices]: #general-practices
 [workflow]: #development-workflow
@@ -5441,7 +5441,7 @@ what we are doing matters!
 [style1a]: https://peps.python.org/pep-0257/
 {%- endif %}
 [style2]: https://sembr.org/
-[style3]: https://sive.rs/1s
+[style3]: https://sive.rs/1s <!-- codespell:ignore -->
 [style4]: {{ cookiecutter.__scm_link_url }}/tree/master/.{{ cookiecutter.__scm_platform_lc }}
 [style5]: {{ cookiecutter.__scm_link_url }}/blob/master/CHANGELOG.md
 
