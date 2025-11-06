@@ -1,3 +1,26 @@
+## 0.22.0 (2025-11-06)
+
+### :wrench: Fixes & Refactoring (1 change)
+
+- [:pencil: Include Jinja conditionals for template `SECURITY.md`](galactipy/galactipy@384c1c1e756cfd1ef2ddc0ae681caa027f1bb274) ([merge request](galactipy/galactipy!93))
+
+### :construction_site: Template Internals (3 changes)
+
+- [:pencil: Provide GPG data guidelines for template](galactipy/galactipy@bdd43fcef96c93e8f32d347881daef0c4885e7cf) ([merge request](galactipy/galactipy!93))
+- [:pencil: Provide use contexts and threat model for template `SECURITY.md`](galactipy/galactipy@881ee67453ae1f9710775ec244e4f54481d5eb27) ([merge request](galactipy/galactipy!93))
+- [:pencil: Provide template `SECURITY.md` with static content](galactipy/galactipy@19ecc6848844411fe0caa0bc95d6ed9f443d59e5) ([merge request](galactipy/galactipy!93))
+
+### :pencil: Documentation (1 change)
+
+- [:pencil: Update GitLab alerts for project `README.md`](galactipy/galactipy@4e4b68884ee92b2f18066868183aca06d97e43a1) ([merge request](galactipy/galactipy!93))
+
+### :scroll: Project Policies (4 changes)
+
+- [:pencil: Provide GPG data for the project](galactipy/galactipy@a15f60cbb4b943f46c77a0cd354ec79eff40dd3b) ([merge request](galactipy/galactipy!93))
+- [:pencil: Add project `SECURITY.md` dynamic content](galactipy/galactipy@9602f9ace34322de1ca857cd02402c6b48361b1a) ([merge request](galactipy/galactipy!93))
+- [:pencil: Rework project `SECURITY.md` file](galactipy/galactipy@a525224f75c1422dad3879fba8cd114db3906825) ([merge request](galactipy/galactipy!93))
+- [:wrench: Adjust Zero-Config Enhancement template to current standard](galactipy/galactipy@b16d5478a7a91fdea11188a64870ed88ae1867f4) ([merge request](galactipy/galactipy!93))
+
 ## 0.21.0 (2025-11-04)
 
 ### :milky_way: Components (2 changes)
