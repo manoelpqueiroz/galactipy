@@ -55,6 +55,79 @@ of the possible issue:
 This information will help us
 triage your report more quickly.
 
+> [!IMPORTANT]
+> If you need to provide secure information
+> or your report needs to be encrypted,
+> please use our PGP key
+> to encrypt your message
+> before sending.
+> <details>
+>
+> **Key fingerprint:**
+> ```
+> pub   rsa4096 2025-08-28 [SC]
+> E3E6 AB38 0C5B 3451 71FA  C076 83D1 10FE 5ADE 9DD2
+> uid           [ultimate] Manoel Pereira de Queiroz <mpq.dev@pm.me>
+> sub   rsa4096 2025-08-28 [E]
+> ```
+>
+> **Key data:**
+> ```
+> -----BEGIN PGP PUBLIC KEY BLOCK-----
+>
+> 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
+> zSCCVd4=
+> =zZ9a
+> -----END PGP PUBLIC KEY BLOCK-----
+> ```
+> </details>
+
 We prefer all communications
 to be in **English**.
 
