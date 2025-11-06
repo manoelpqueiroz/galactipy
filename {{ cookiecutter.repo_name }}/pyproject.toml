@@ -411,6 +411,10 @@ show_missing = true
 source = ["{{ cookiecutter.package_name }}"]
 
 [tool.bandit]
-# UPDATEME with your desired configuration
+# UPDATEME with your desired Bandit configuration
 # https://github.com/PyCQA/bandit
 # https://bandit.readthedocs.io/en/latest/config.html
+
+[tool.codespell]
+# UPDATEME with your desired Codespell configuration
+# https://github.com/codespell-project/codespell

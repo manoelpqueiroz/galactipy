@@ -22,6 +22,15 @@ repos:
         name: Check Unresolved Merge Conflicts
         args: [--assume-in-merge]
 
+  # Coding standards hooks
+  - repo: local
+    hooks:
+    - id: mypy
+      language: python
+      name: Mypy Static Type Checking
+      entry: mypy --config-file pyproject.toml
+      pass_filenames: false
+
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.14.3
     hooks:
@@ -30,4 +39,27 @@ repos:
         args: [--fix]
       - id: ruff-format
         name: Ruff Formatter
+
+  # Hooks to catch common mistakes
+  - repo: https://github.com/albertas/deadcode
+    rev: '2.4.1'
+    hooks:
+      - id: deadcode
+        name: Dead Code Check
+
+  - repo: https://github.com/crate-ci/typos
+    rev: v1.39.0
+    hooks:
+      - id: typos
+        name: Typo Checks
+        exclude: (\.git|\.docker)ignore
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.4.1
+    hooks:
+    - id: codespell
+      name: Codespell Checks
+      additional_dependencies:
+        - tomli
+
 # UPDATEME with additional hooks
