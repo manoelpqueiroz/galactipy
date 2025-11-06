@@ -62,4 +62,22 @@ repos:
       additional_dependencies:
         - tomli
 
+  # Check configuration file schemas
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: '0.34.1'
+    hooks:
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+      - id: check-gitlab-ci
+        name: Check GitLab CI file schema
+{%- else %}
+      - id: check-github-issue-config
+        name: Check GitHub Issues configuration file
+      - id: check-github-issue-forms
+        name: Check GitHub Issue Forms schema
+      - id: check-github-workflows
+        name: Check GitHub workflows schema
+      - id: check-dependabot
+        name: Check Dependabot schema
+{%- endif %}
+
 # UPDATEME with additional hooks
