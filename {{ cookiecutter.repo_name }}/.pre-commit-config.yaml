@@ -1,18 +1,21 @@
-default_stages: [commit, push]
+default_stages: [pre-commit, pre-push]
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.5.0
+    rev: v6.0.0
     hooks:
       - id: check-yaml
+        name: Check YAML Syntax
       - id: end-of-file-fixer
+        name: Fix End-of-files
         exclude: LICENCE
 
-  - repo: local
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.14.3
     hooks:
-      - id: ruff
-        name: ruff
-        entry: poetry run ruff check
-        types: [python]
-        language: system
+      - id: ruff-check
+        name: Ruff Linter
+        args: [--fix]
+      - id: ruff-format
+        name: Ruff Formatter
 # UPDATEME with additional hooks
