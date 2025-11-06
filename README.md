@@ -260,7 +260,7 @@ The input variables, with their default values, are as follows:
 |     `create_docker`      |            `True`            | :small_red_triangle: Option to create a [Dockerfile][ft30] to build an image for your project.                                                                                                                                                                                              |
 |        `app_type`        |     `Integrated CLI+TUI`     | One of `Integrated CLI+TUI` for a straight TUI application, `Hybrid CLI/TUI` for a CLI application with a preset TUI command, `CLI-only application` with minimal app configuration and `Bare repository` for no sample files at all. Employs [Typer][ft2] and [Textual][ft3] as libraries. |
 
-> [!note]
+> [!NOTE]
 > Input variables marked with :small_red_triangle: are boolean variables, you can dismiss those by typing either `0`, `false`, `f`, `no`, `n` or `off`.
 
 All input values will be saved in the `cookiecutter-config-file.yml` file so that you won't lose them. :wink:
@@ -366,7 +366,7 @@ provided by Galactipy
 to handle building, publishing and releasing automatically,
 with minimal configuration required! :partying_face:
 
->>> [!note]
+>>> [!NOTE]
 To allow releasing
 directly via CI/CD workflows,
 besides setting up
@@ -407,7 +407,7 @@ with the `invoke --list` command.
 | `invoke pyproject` | Checks `pyproject.toml` integrity.                                                                                                      |
 |  `invoke update`   | Updates dependencies to their latest compatible release requirements, with an option to update to the latest versions overall.          |
 
->>> [!warning]
+>>> [!WARNING]
 :small_red_triangle: Invoke must be installed and callable.
 Otherwise, it is recommended to run `poetry install`
 to set up the repository.
@@ -436,7 +436,7 @@ into a single command.
 | `invoke config`  | :small_red_triangle: Configure PyPI repositories, requiring at least an API token, with optional repository name and URL arguments. |
 | `invoke publish` | Publish the project to a registry, defaulting to the canonical PyPI repository, with an option to build the project wheels.         |
 
->>> [!note]
+>>> [!NOTE]
 :small_red_triangle: When provided with no `--repo` option,
 Invoke will configure the connection
 to the [canonical PyPI repository][ft27],
