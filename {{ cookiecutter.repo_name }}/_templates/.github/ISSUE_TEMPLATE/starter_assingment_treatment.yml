@@ -30,7 +30,6 @@ body:
         Please read carefully all the sections below. They have been provided by an active contributor to the project, aiming to be as easily accessible as possible for you to pick the work up.
 
         If you feel interested in taking on this challenge, please state so by commenting on this thread, and if you have any questions, the team will be pleased to answer them! :wink:
-      render: true
   - type: textarea
     attributes:
       label: 🆘 Problem Statement
