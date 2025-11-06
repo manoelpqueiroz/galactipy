@@ -1042,7 +1042,7 @@ when to move from one stage to another:
 | Status                                               | Status Category | Description                                                                                                                                                                                                                                                                                                                                                               |
 | :--------------------------------------------------- | :-------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | ![Triage icon][icon1] **Needs Triage**               |     Triage      | Initial stage for [User requests][status2], which require a first analysis by a {{ cookiecutter.project_name }} contributor before work on its scope is either accepted or declined. It is also the default open state for new items if not overriden.                                                                                                                    |
-| ![Refinement icon][icon2] **Needs Refinement**       |     Triage      | Describes more general ideas that might receive development at some point, but whose current state does not detail implementation or paths to delivery. Lacking scope, represents more of a desire than an actual proposal – which might actually prove unfeasible later. Should be used to inform the need for further discussions before being cleared for development. |
+| ![Refinement icon][icon2] **Needs Refinement**       |     Triage      | Describes more general ideas that might receive development at some point, but whose current state does not detail implementation or paths to delivery. Lacking scope, represents more of a desire than an actual proposal – which might actually prove infeasible later. Should be used to inform the need for further discussions before being cleared for development. |
 | ![Criteria icon][icon3] **Needs Criteria**           |     Triage      | This describes items whose scope is set, but acceptance criteria is still pending to be added before being cleared for development. In contrast with the **Needs Refinement** status, in this stage the deliverable is known and understood, but is waiting for a contributor to detail in smaller steps.                                                                 |
 | ![Steps icon][icon4] **Needs Delivery Steps**        |     Triage      | A specific type of triaging item, signaling pending work before the item can be cleared as a [starter assignment][starter] development. In contrast with the **Needs Criteria**, this stage indicates the work item will be processed with greater detail than usual so a new contributor can pick it up and develop it with little to no friction.                       |
 | ![Decomposition icon][icon5] **Needs Decomposition** |     Triage      | Proposals or requests that have been deemed too large in scope to be considered a single work item and must be broken down in two or more items before proceeding.                                                                                                                                                                                                        |
@@ -1077,7 +1077,7 @@ if development will be short lived.
 |          Status          |           Label           | Status Category | Description                                                                                                                                                                                                                                                                                                                                                               |
 | :----------------------: | :-----------------------: | :-------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |     **Needs Triage**     |    `sts-needs-triage`     |     Triage      | Initial stage for User Requests, which require a first analysis by a {{ cookiecutter.project_name }} contributor before work on its scope is either accepted or declined.                                                                                                                                                                                                 |
-|   **Needs Refinement**   |  `sts-needs-refinement`   |     Triage      | Describes more general ideas that might receive development at some point, but whose current state does not detail implementation or paths to delivery. Lacking scope, represents more of a desire than an actual proposal – which might actually prove unfeasible later. Should be used to inform the need for further discussions before being cleared for development. |
+|   **Needs Refinement**   |  `sts-needs-refinement`   |     Triage      | Describes more general ideas that might receive development at some point, but whose current state does not detail implementation or paths to delivery. Lacking scope, represents more of a desire than an actual proposal – which might actually prove infeasible later. Should be used to inform the need for further discussions before being cleared for development. |
 |    **Needs Criteria**    |   `sts-needs-criteria`    |     Triage      | This describes items whose scope is set, but acceptance criteria is still pending to be added before being cleared for development. In contrast with the **Needs Refinement** status, in this stage the deliverable is known and understood, but is waiting for a contributor to detail in smaller steps.                                                                 |
 | **Needs Delivery Steps** |     `sts-needs-steps`     |     Triage      | A specific type of triaging item, signaling pending work before the item can be cleared as a [starter assignment][starter] development. In contrast with the **Needs Criteria**, this stage indicates the work item will be processed with greater detail than usual so a new contributor can pick it up and develop it with little to no friction.                       |
 | **Needs Decomposition**  | `sts-needs-decomposition` |     Triage      | Proposals or requests that have been deemed too large in scope to be considered a single work item and must be broken down in two or more items before proceeding.                                                                                                                                                                                                        |
@@ -3014,14 +3014,14 @@ with the amount of changes in a single {{ cookiecutter.__mr_acronym }}
 as small as possible.
 If you want
 to contribute a large feature,
-think very carefully about
+think carefully about
 what the minimum valuable change is.
 Can you split the functionality
 into two smaller {{ cookiecutter.__mr_acronym }}s?
 Can you submit
 only a fraction of the code?
 Can you start
-with a very simple proof-of-concept?
+with a minimal proof-of-concept?
 Can you do
 just a part of the refactor?
 
@@ -3060,7 +3060,7 @@ are much more likely
 to be merged,
 and merged quickly.
 Risky and less valuable changes
-are very unlikely to be merged,
+are unlikely to be merged,
 and may be rejected outright
 rather than receive iterations of review.
 
@@ -4404,7 +4404,7 @@ with their requests:
 When things are great,
 everything is easier,
 so that doesn't need much instructions.
-But when things are difficult,
+When things are difficult,
 here are some guidelines.
 
 Try to find the good side.
@@ -4435,7 +4435,7 @@ That's really not nice,
 and when it happens,
 it lowers our priority
 to solve their problems.
-But still,
+Still,
 try to breathe,
 and be gentle with your answers.
 
@@ -4721,7 +4721,7 @@ of a quick response:
     avoid vague titles like
     "update files" or "fix issue."
     Instead, specify
-    what the request comprises of;
+    what the request comprises;
 - Properly format your messages.
   Help the reader focus on what matters
   and understand the structure of your message.
@@ -4780,14 +4780,15 @@ when users feel a need for development
 related to features provided by {{ cookiecutter.project_name }},
 either existent
 or yet-to-be-implemented.
-They are very welcome,
+They are much welcome,
 as they help us engage with the community
 on a more proactive level
 and work to deliver a solution
 of aggregated value
 to our users.
 
-But before opening an [RFI][request5],
+Nevertheless,
+before opening an [RFI][request5],
 take a moment to find out
 whether your idea fits with the scope
 and [aims][topic2] of the project.
@@ -4999,7 +5000,8 @@ is correct.
 Try to think of edge cases
 when testing or evaluating the code,
 double check the test coverage.
-But do not frown
+However,
+do not frown
 if you merged the {{ cookiecutter.__mr_term }}
 and something broke after all.
 This is the learning path
