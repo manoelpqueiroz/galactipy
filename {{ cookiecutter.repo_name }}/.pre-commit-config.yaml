@@ -4,11 +4,23 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
+      - id: check-toml
+        name: Check TOML Syntax
       - id: check-yaml
         name: Check YAML Syntax
+      - id: check-json
+        name: Check JSON Syntax
+        exclude: '.vscode/settings.json'
+      - id: pretty-format-json
+        name: Format JSON files
+        args: [--autofix, --indent, '4']
+        exclude: '.vscode/settings.json'
       - id: end-of-file-fixer
         name: Fix End-of-files
-        exclude: LICENCE
+        exclude: (LICENCE|CODE_OF_CONDUCT.md)
+      - id: check-merge-conflict
+        name: Check Unresolved Merge Conflicts
+        args: [--assume-in-merge]
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.14.3
