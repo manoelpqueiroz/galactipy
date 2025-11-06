@@ -40,7 +40,8 @@
         "--doctest-continue-on-failure",
         "--pikachu",
         "--cov={% endraw %}{{ cookiecutter.package_name }}{% raw %}",
-        "--cov-config=pyproject.toml"
+        "--cov-config=pyproject.toml",
+        "--junitxml=test_report.xml"
     ],
     "[python]": {
         "editor.bracketPairColorization.enabled": false
@@ -55,7 +56,7 @@
     "todo-tree.highlights.defaultHighlight": {
         "foreground": "#444444",
         "background": "#FFFFFF",
-        "fontWeight": "bold",
+        "fontWeight": "bold"
     },
     "todo-tree.highlights.customHighlight": {
         "TODO": {
@@ -134,7 +135,7 @@
                 "tcss"
             ],
             "format": "svg"
-        },
+        }
     ],
     "vsicons.associations.folders": [
         {
