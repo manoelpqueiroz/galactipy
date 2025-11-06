@@ -152,4 +152,77 @@ for security updates.
 > [!NOTE]
 > Current Galactipy release: **`v0.21.0`**
 
+## :octagonal_sign: Security Measures
+
+Galactipy implements
+the following measures
+to enhance code security:
+
+- Type hints
+  and static analysis
+  to prevent common errors;
+- User input validation
+  during project setup
+  to prevent injection attacks;
+- Dependency scanning
+  and updates
+  through Renovate;
+- Automated security scans
+  using Bandit locally
+  and Codacy externally;
+- Signed commits
+  and releases.
+
+## :lock_with_ink_pen: Security Guarantess
+
+Security guarantees provided
+by the project:
+
+- Galactipy does not
+  access environment variables;
+- Galactipy does not
+  spawn external programs;
+- Galactipy does not allow
+  execution of abribtrary or unsafe code
+  in pre and post-gen hooks;
+- Galactipy templates
+  do not expose sensitive data
+  in generated files;
+- Galactipy
+  does not introduce injection risks
+  or uncontrolled behaviour
+  due to malformed
+  Jinja statements;
+- Galactipy
+  does not introduce injection risks
+  or uncontrolled behaviour
+  in generated Python scripts;
+- Galactipy templates
+  provide default content
+  that avoid security misconfigurations;
+- Galactipy templates
+  provide clear documentation
+  about security considerations
+  for the generated project.
+
+The Cookiecutter package
+guarantees additional levels of containment
+by:
+
+- Running hook scripts locally
+  on the user's machine
+  with the user's own permissions;
+- Using Jinja templating,
+  which is sandboxed to the extent
+  of rendering variables and conditionals
+  based on user input;
+- Not accessing environment variables
+  or executing random code
+  beyond the defined hooks;
+- Copying files from the template repository
+  with support to
+  exclude some files from rendering
+  to prevent executing or modifying files
+  unintentionally.
+
 [1]: https://advisories.gitlab.com/
