@@ -7,7 +7,7 @@ from platformdirs import user_config_path, user_log_path
 from {{ cookiecutter.package_name }} import __version__
 
 
-def get_default_config():
+def get_default_config() -> Path:
 {%- if cookiecutter.docstring_style != 'other' %}
     """Retrieve the default configuration path for {{ cookiecutter.project_name }}.
 {%- if cookiecutter.docstring_style == 'numpy' %}
@@ -15,13 +15,13 @@ def get_default_config():
     Returns
     -------
     Path
-        A Path object pointing to the User Config Path where configuration for {{ cookiecutter.project_name }}
-        will be stored.
+        A Path object pointing to the User Config Path where configuration for
+        {{ cookiecutter.project_name }} will be stored.
 {%- elif cookiecutter.docstring_style == 'google' %}
 
     Returns:
-        A Path object pointing to the User Config Path where configuration for {{ cookiecutter.project_name }}
-        will be stored.
+        A Path object pointing to the User Config Path where configuration for
+        {{ cookiecutter.project_name }} will be stored.
 {%- else %}
 
     :return: A Path object pointing to the User Config Path where configuration for
@@ -35,7 +35,7 @@ def get_default_config():
     return user_config_path("{{ cookiecutter.repo_name }}")
 
 
-def get_default_log_path(filename: str | Path):
+def get_default_log_path(filename: str | Path) -> Path:
 {%- if cookiecutter.docstring_style != 'other' %}
     """Retrieve the default path to store {{ cookiecutter.project_name }} logs.
 {%- if cookiecutter.docstring_style == 'numpy' %}

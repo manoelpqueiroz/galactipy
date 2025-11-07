@@ -47,4 +47,4 @@ NOCTIS_THEME = Theme(
 class AppCustomThemes:
     """Define custom Rich themes for console output with {{ cookiecutter.project_name }}."""
 
-    NOCTIS = NOCTIS_THEME
+    NOCTIS: Theme = NOCTIS_THEME

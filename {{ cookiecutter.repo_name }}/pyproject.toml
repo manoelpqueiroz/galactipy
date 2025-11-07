@@ -198,7 +198,7 @@ select = [ # UPDATEME with additional rules from https://docs.astral.sh/ruff/rul
   "ASYNC",
 {%- endif %}
 ]
-ignore = ["D200"]
+ignore = ["D200", "TD004"]
 task-tags = [
   "BUG",
   "HACK",
@@ -213,6 +213,7 @@ task-tags = [
 ] # UPDATEME by modifying or removing this setting after addressing all UPDATEMEs and DEFINEs
 
 [tool.ruff.lint.per-file-ignores]
+"python_project/cli/commands/**.py" = ["FBT", "ARG001", "RUF013"]
 "tests/**.py" = [
   "D100",
   "D101",
@@ -227,6 +228,7 @@ task-tags = [
   "PLR2004",
 ]
 "tasks.py" = ["FBT", "ANN002", "ANN003"]
+"text_tools.py" = ["B019"]
 
 [tool.ruff.lint.flake8-annotations]
 ignore-fully-untyped = true
@@ -242,7 +244,7 @@ parametrize-values-row-type = "list"
 ban-relative-imports = "all"
 
 [tool.ruff.lint.flake8-type-checking]
-exempt-modules = ["typing", "typing_extensions", "collections"]
+exempt-modules = ["typing", "typing_extensions", "collections", "pathlib"]
 quote-annotations = true
 
 [tool.ruff.lint.pycodestyle]
@@ -251,12 +253,12 @@ max-doc-length = {{ cookiecutter.docstring_length }}
 {%+ if cookiecutter.docstring_style != 'other' %}
 [tool.ruff.lint.pydocstyle]
 convention = "{{ cookiecutter.docstring_style }}"
-{%+ endif %}
-[tool.ruff.lint.pylint]
-max-bool-expr = 3
 
 [tool.ruff.lint.pydoclint]
 ignore-one-line-docstrings = true
+{%+ endif %}
+[tool.ruff.lint.pylint]
+max-bool-expr = 3
 
 [tool.ruff.lint.isort]
 split-on-trailing-comma = false

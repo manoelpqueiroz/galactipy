@@ -37,7 +37,7 @@ def ensure_launch_tui(results):
 
 
 @then("the program exits successfully")
-def successful_termination(results):
+def successful_termination_results(results):
     assert results["cli_run"].exit_code == 0
 
 
@@ -58,7 +58,7 @@ def version_display(cli_run, version_string):
 
 
 @then("the program exits without errors")
-def successful_termination(cli_run):
+def successful_termination_run(cli_run):
     assert cli_run.exit_code == 0
 
 

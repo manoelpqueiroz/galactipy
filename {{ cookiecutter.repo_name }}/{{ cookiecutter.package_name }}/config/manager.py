@@ -1,6 +1,7 @@
 """Configuration manager for {{ cookiecutter.project_name }}."""
 
-from enum import Enum
+from typing import Self
+
 from pathlib import Path
 
 from orbittings import Nucleus
@@ -9,13 +10,10 @@ from {{ cookiecutter.package_name }}.config.constants import (
     generate_default_config_schema,
     get_default_config,
 )
-
-
-class EnvKeys(Enum):
-    """Enum listing the environment variables prefixes for {{ cookiecutter.project_name }} settings."""
-
-    SETTINGS = "{{ cookiecutter.__envvar }}"
-    SECRETS = "{{ cookiecutter.__envvar }}_SECRET"
+from {{ cookiecutter.package_name }}.config.mappings import (
+    ConfigurationDomain,
+    EnvvarPrefix,
+)
 
 
 class AppManager(Nucleus):
@@ -33,16 +31,16 @@ class AppManager(Nucleus):
         )
 
     @classmethod
-    def default(cls):
-        """Provide a `AppManager` instance with default settings and secrets files."""
+    def default(cls) -> Self:
+        """Provide an `AppManager` instance with default settings and secrets files."""
         instance = cls()
-        instance.add("settings", envvar_prefix=EnvKeys.SETTINGS.value)
-        instance.add("secrets", envvar_prefix=EnvKeys.SECRETS.value)
+        instance.add("settings", envvar_prefix=EnvvarPrefix.SETTINGS.value)
+        instance.add("secrets", envvar_prefix=EnvvarPrefix.SECRETS.value)
 
         return instance
 
     @classmethod
-    def custom(cls, path: Path, is_secret: bool):
+    def custom(cls, path: Path, domain: str | ConfigurationDomain) -> Self:
 {%- if cookiecutter.docstring_style != 'other' %}
         """Provide a manager instance with a single domain and custom definitions.
 {%- if cookiecutter.docstring_style == 'numpy' %}
@@ -51,34 +49,48 @@ class AppManager(Nucleus):
         ----------
         path : Path
             Path to a valid custom TOML configuration file for {{ cookiecutter.project_name }}.
-        is_secret : bool
+        domain : {"settings", "secrets"}
             Flag to treat the given `path` as a settings or secrets file.
+
+        Returns
+        -------
+        AppManager
+            A manager instance with a single domain and custom definitions.
 {%- elif cookiecutter.docstring_style == 'google' %}
 
         Args:
             path: Path to a valid custom TOML configuration file for {{ cookiecutter.project_name }}.
-            is_secret: Flag to treat the given `path` as a settings or secrets file.
+            domain: Flag to treat the given `path` as a settings or secrets file.
+
+        Returns: A manager instance with a single domain and custom definitions.
 {%- else %}
 
         :param path: Path to a valid custom TOML configuration file for {{ cookiecutter.project_name }}.
         :type path: Path
-        :param is_secret: Flag to treat the given `path` as a settings or secrets file.
-        :type is_secret: bool
+        :param domain: Flag to treat the given `path` as a settings or secrets file.
+        :type domain: Literal["settings", "secrets"]
+        :return: A manager instance with a single domain and custom definitions.
+        :rtype: AppManager
 {%- endif %}
         """
 {%- else %}
         """Provide a manager instance with a single domain and custom definitions."""
 {%- endif %}
         instance = cls()
+        domain = ConfigurationDomain(domain)
 
-        if is_secret:
+        if domain == ConfigurationDomain.SETTINGS:
             instance.add(
-                "secrets", custom_config=path, envvar_prefix=EnvKeys.SECRETS.value
+                domain.value,
+                custom_config=path,
+                envvar_prefix=EnvvarPrefix.SETTINGS.value,
             )
 
         else:
             instance.add(
-                "settings", custom_config=path, envvar_prefix=EnvKeys.SETTINGS.value
+                domain.value,
+                custom_config=path,
+                envvar_prefix=EnvvarPrefix.SECRETS.value,
             )
 
         return instance

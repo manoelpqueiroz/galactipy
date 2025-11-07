@@ -81,11 +81,7 @@ def test_get_individual_value():
     )
 )
 def set_individual_test_key(sandbox_manager, key, value, value_type):
-    if value_type == "string":
-        saved_value = value
-
-    else:
-        saved_value = literal_eval(value)
+    saved_value = value if value_type == "string" else literal_eval(value)
 
     sandbox_manager["settings", key] = saved_value
 

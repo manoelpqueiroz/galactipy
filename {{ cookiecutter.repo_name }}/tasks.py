@@ -114,6 +114,11 @@ def get_poetry_command() -> Path:
     Path
         Path to the Poetry executable. If no path is found, will use the system's
         default paths for a Poetry installation.
+
+    Raises
+    ------
+    invoke.exceptions.Exit
+        If the Poetry executable is not found in the system.
     """
     poetry_command = which("poetry")
 
@@ -216,7 +221,7 @@ def config(
 
     If an alternate registry is provided to the `repo` argument, the `url` argument must
     also be provided, except for the "testpypi" repo.
-    """
+    """  # noqa: DOC501
     poetry_path = get_poetry_command()
     package_registry_url_configurator = "{path} config repositories.{repo} {url}"
 
@@ -269,7 +274,7 @@ def publish(c: Context, repo: str = "pypi", build: bool = True) -> None:
 
     if result.failed:
         msg = (
-            "unable to upload to the package registry for {repo}"
+            f"unable to upload to the package registry for {repo}"
             "\n\nDid you set up your API token with `invoke config`?"
             "\nIs the registry URL correctly set up?"
             '\nDid you remove any "Private :: Do Not Upload" classifiers from '
@@ -320,7 +325,7 @@ def ruff(c: Context) -> None:
 @task(call(venv, hide=True), incrementable=["verbosity"])
 def test(
     c: Context,
-    marks: str = None,  # noqa: PT028
+    marks: str | None = None,  # noqa: PT028
     verbosity: int = 0,  # noqa: PT028
     warn: bool = False,  # noqa: PT028
 ) -> int:
@@ -421,11 +426,7 @@ def login(c: Context, username: str, password: str) -> None:
 def login(c: Context, username: str) -> None:
     """Log in to Docker Hub using the one-time device confirmation code."""
 {%- endif %}
-    if IS_UNIX_OS:
-        password_cmd = f"echo {password}"
-
-    else:
-        password_cmd = f"Write-Host {password}"
+    password_cmd = f"echo {password}" if IS_UNIX_OS else f"Write-Host {password}"
 
     c.run(
         f"{password_cmd} | "

@@ -8,7 +8,10 @@ from nebulog import logger
 
 import typer
 
-from {{ cookiecutter.package_name }}.config import resolve_app_manager
+from {{ cookiecutter.package_name }}.config import (
+    ConfigurationDomain,
+    resolve_app_manager,
+)
 from {{ cookiecutter.package_name }}.logging import setup_app_logging
 
 config_unset_app = typer.Typer(no_args_is_help=True)
@@ -30,18 +33,19 @@ def unset(
             help=":lock: Retrieve configuration from the secret manager instead.",
         ),
     ] = False,
-):
+) -> None:
     """:fire: [red]Remove[/] a top-level key from the configuration."""
     setup_app_logging(debug=False)
+    domain = ConfigurationDomain.from_flag(is_secret=secret)
 
     logger.info("Removing configuration key via CLI", key=key, is_secret=secret)
 
     if path is not None:  # pragma: no cover
         logger.info("Using custom configuration file", config=path)
 
-    config_type, APP_MANAGER = resolve_app_manager(secret, path)
+    app_manager = resolve_app_manager(domain, path)
 
-    APP_MANAGER.unset(f"{config_type}.{key}")
-    APP_MANAGER.save(config_type)
+    app_manager.unset(f"{domain.value}.{key}")
+    app_manager.save(domain.value)
 
     logger.debug("{{ cookiecutter.project_name }} exited successfully")

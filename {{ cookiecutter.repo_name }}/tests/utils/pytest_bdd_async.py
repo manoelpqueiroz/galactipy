@@ -28,10 +28,8 @@ class AsyncStepConverter:
 
         @wraps(step_func)
         def sync_wrapper(*args, **kwargs):
-            if has_event_loop:
-                loop = kwargs["event_loop"]
-            else:
-                loop = kwargs.pop("event_loop")
+            loop = kwargs["event_loop"] if has_event_loop else kwargs.pop("event_loop")
+
             return loop.run_until_complete(step_func(*args, **kwargs))
 
         return sync_wrapper
