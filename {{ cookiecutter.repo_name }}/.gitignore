@@ -159,6 +159,8 @@ test_report.xml
 .pytest_cache/
 cover/
 .benchmarks/
+.cucumber-data.json
+bdd/report.html
 
 # Translations
 *.mo
