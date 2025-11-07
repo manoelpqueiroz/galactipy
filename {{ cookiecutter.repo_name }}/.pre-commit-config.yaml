@@ -1,18 +1,103 @@
-default_stages: [commit, push]
+default_stages: [pre-commit, pre-push]
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.5.0
+    rev: v6.0.0
     hooks:
+      - id: check-toml
+        name: Check TOML Syntax
       - id: check-yaml
+        name: Check YAML Syntax
+      - id: check-json
+        name: Check JSON Syntax
+        exclude: '.vscode/settings.json'
+      - id: pretty-format-json
+        name: Format JSON files
+        args: [--autofix, --indent, '4']
+        exclude: '.vscode/settings.json'
       - id: end-of-file-fixer
-        exclude: LICENCE
+        name: Fix End-of-files
+        exclude: (LICENCE|CODE_OF_CONDUCT.md)
+      - id: check-merge-conflict
+        name: Check Unresolved Merge Conflicts
+        args: [--assume-in-merge]
 
+  # Coding standards hooks
   - repo: local
     hooks:
-      - id: ruff
-        name: ruff
-        entry: poetry run ruff check
-        types: [python]
-        language: system
+    - id: mypy
+      language: python
+      name: Mypy Static Type Checking
+      entry: mypy --config-file pyproject.toml
+      pass_filenames: false
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.14.3
+    hooks:
+      - id: ruff-check
+        name: Ruff Linter
+        args: [--fix]
+      - id: ruff-format
+        name: Ruff Formatter
+
+  # Hooks to catch common mistakes
+  - repo: https://github.com/albertas/deadcode
+    rev: '2.4.1'
+    hooks:
+      - id: deadcode
+        name: Dead Code Check
+
+  - repo: https://github.com/crate-ci/typos
+    rev: v1.39.0
+    hooks:
+      - id: typos
+        name: Typo Checks
+        exclude: (\.git|\.docker)ignore
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.4.1
+    hooks:
+    - id: codespell
+      name: Codespell Checks
+      additional_dependencies:
+        - tomli
+
+  # Check configuration file schemas
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: '0.34.1'
+    hooks:
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+      - id: check-gitlab-ci
+        name: Check GitLab CI file schema
+{%- else %}
+      - id: check-github-issue-config
+        name: Check GitHub Issues configuration file
+      - id: check-github-issue-forms
+        name: Check GitHub Issue Forms schema
+      - id: check-github-workflows
+        name: Check GitHub workflows schema
+      - id: check-dependabot
+        name: Check Dependabot schema
+{%- endif %}
+{%- if cookiecutter.commit_convention == 'conventional' %}
+
+  # Commit convention compliance
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v4.9.1
+    hooks:
+      - id: commitizen
+        name: Commit convention compliance
+      - id: commitizen-branch
+        name: Branch history commit convention compliance
+        stages: [pre-push]
+{%- elif cookiecutter.commit_convention == 'conventional-gitmoji' %}
+
+  # Commit convention compliance
+  - repo: https://github.com/ljnsn/cz-conventional-gitmoji
+    rev: v0.7.0
+    hooks:
+      - id: conventional-gitmoji
+        name: Commit convention compliance
+{% endif -%}
+
 # UPDATEME with additional hooks

@@ -87,7 +87,7 @@ I attest that the proposed change meets the [Contribution Acceptance Criteria][1
 >>>
 
 >>> [!tip] :pen_fountain: Discretionary
-I attest that during the course of this development, the following interactions have taken place:
+I attest that during this development, the following interactions have taken place:
 
 - [ ] We have covered all the edge cases we could come up with;
 - [ ] We have found [opportunities][12] for future development and have created work items to take action on later.
@@ -96,4 +96,3 @@ I attest that during the course of this development, the following interactions 
 [10]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
 [11]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#versioning-customs
 [12]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
-

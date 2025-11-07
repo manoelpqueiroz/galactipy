@@ -1,8 +1,7 @@
 """Allow asynchronous functions to be used with the `pytest-bdd` framework."""
 
-from typing import Callable
-
 import inspect
+from collections.abc import Callable
 from functools import wraps
 
 

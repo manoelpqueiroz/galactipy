@@ -6,7 +6,7 @@
 
 As of
 **November 2025**,
-there are no unpatched vulnerabilites
+there are no unpatched vulnerabilities
 of medium or higher severity
 that have been publicly known
 for more than 60 days
@@ -223,7 +223,7 @@ is supported
 for security updates.
 
 > [!NOTE]
-> Current Galactipy release: **`v0.22.0`**
+> Current Galactipy release: **`v0.23.0`**
 
 ## :octagonal_sign: Security Measures
 
@@ -246,7 +246,7 @@ to enhance code security:
 - Signed commits
   and releases.
 
-## :lock_with_ink_pen: Security Guarantess
+## :lock_with_ink_pen: Security Guarantees
 
 Security guarantees provided
 by the project:

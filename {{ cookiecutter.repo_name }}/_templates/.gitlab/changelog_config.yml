@@ -25,7 +25,7 @@ categories:
   args: ":keyboard: CLI Usage"
   usage: ":keyboard: CLI Usage"
 {%- endraw %}{% if cookiecutter.app_type != 'cli' %}{% raw %}
-  # User Inteface Improvements, like widgets, screens, layout and readability
+  # User Interface Improvements, like widgets, screens, layout and readability
   tui: ":computer: User Interface Improvements"
   ui: ":computer: User Interface Improvements"
   layout: ":computer: User Interface Improvements"

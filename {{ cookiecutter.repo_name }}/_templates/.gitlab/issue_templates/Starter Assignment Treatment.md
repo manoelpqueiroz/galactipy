@@ -64,7 +64,7 @@ If you feel interested in taking on this challenge, please state so by commentin
 <!--
   If you have any tips or caveats that will further help the new contributor succeed without hiccups along the way, feel free to bring your experience as a more seasoned developer to the table.
 
-  Additionaly, provide links to any useful resources like documentation of other libraries and blog posts that might prove insightful for the new contributor during their work.
+  Additionally, provide links to any useful resources like documentation of other libraries and blog posts that might prove insightful for the new contributor during their work.
 -->
 
 ## :index_pointing_at_the_viewer: What We Need from You

@@ -104,7 +104,7 @@ contributing as a developer:
   principles during contributions;
 {%- endif %}
 - Commits should
-  adhere to our [commit customs][commiting];
+  adhere to our [commit customs][committing];
 - The project's [codestyle][codestyle] should
   be followed strictly;
 - Work item management should
@@ -809,7 +809,7 @@ with their usage:
 |        ~"policies::rules"         | Changes to rules for development tools (e.g., Ruff/mypy rules, issue triaging etc.).                              |
 |      ~"policies::templates"       | Changes to issue and {{ cookiecutter.__mr_term }} templates.                                                      |
 |           ~"quick-win"            | Development requires low effort.                                                                                  |
-|          ~"refactoring"           | Reestructures existing source code without changing its functionality.                                            |
+|          ~"refactoring"           | Restructures existing source code without changing its functionality.                                             |
 {%- if cookiecutter.app_type == 'bare_repo' %}
 |            ~"removals"            | Feature sunsetting.                                                                                               |
 {%- endif %}
@@ -884,7 +884,7 @@ with their usage:
 |      Policies       |       ~"policies-rules"       | Changes to rules for development tools (e.g., Ruff/mypy rules, issue triaging etc.).                              |
 |      Policies       |     ~"policies-templates"     | Changes to issue and {{ cookiecutter.__mr_term }} templates.                                                      |
 |         N/A         |         ~"quick-win"          | Development requires low effort.                                                                                  |
-|         N/A         |        ~"refactoring"         | Reestructures existing source code without changing its functionality.                                            |
+|         N/A         |        ~"refactoring"         | Restructures existing source code without changing its functionality.                                             |
 {%- if cookiecutter.app_type == 'bare_repo' %}
 |         N/A         |          ~"removals"          | Feature sunsetting.                                                                                               |
 {%- endif %}
@@ -959,7 +959,7 @@ with their usage:
 |      Policies       |       `policies-rules`       | Changes to rules for development tools (e.g., Ruff/mypy rules, issue triaging etc.).                              |
 |      Policies       |     `policies-templates`     | Changes to issue and {{ cookiecutter.__mr_term }} templates.                                                      |
 |         N/A         |         `quick-win`          | Development requires low effort.                                                                                  |
-|         N/A         |        `refactoring`         | Reestructures existing source code without changing its functionality.                                            |
+|         N/A         |        `refactoring`         | Restructures existing source code without changing its functionality.                                             |
 {%- if cookiecutter.app_type == 'bare_repo' %}
 |         N/A         |          `removals`          | Feature sunsetting.                                                                                               |
 {%- endif %}
@@ -1042,7 +1042,7 @@ when to move from one stage to another:
 | Status                                               | Status Category | Description                                                                                                                                                                                                                                                                                                                                                               |
 | :--------------------------------------------------- | :-------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | ![Triage icon][icon1] **Needs Triage**               |     Triage      | Initial stage for [User requests][status2], which require a first analysis by a {{ cookiecutter.project_name }} contributor before work on its scope is either accepted or declined. It is also the default open state for new items if not overriden.                                                                                                                    |
-| ![Refinement icon][icon2] **Needs Refinement**       |     Triage      | Describes more general ideas that might receive development at some point, but whose current state does not detail implementation or paths to delivery. Lacking scope, represents more of a desire than an actual proposal – which might actually prove unfeasible later. Should be used to inform the need for further discussions before being cleared for development. |
+| ![Refinement icon][icon2] **Needs Refinement**       |     Triage      | Describes more general ideas that might receive development at some point, but whose current state does not detail implementation or paths to delivery. Lacking scope, represents more of a desire than an actual proposal – which might actually prove infeasible later. Should be used to inform the need for further discussions before being cleared for development. |
 | ![Criteria icon][icon3] **Needs Criteria**           |     Triage      | This describes items whose scope is set, but acceptance criteria is still pending to be added before being cleared for development. In contrast with the **Needs Refinement** status, in this stage the deliverable is known and understood, but is waiting for a contributor to detail in smaller steps.                                                                 |
 | ![Steps icon][icon4] **Needs Delivery Steps**        |     Triage      | A specific type of triaging item, signaling pending work before the item can be cleared as a [starter assignment][starter] development. In contrast with the **Needs Criteria**, this stage indicates the work item will be processed with greater detail than usual so a new contributor can pick it up and develop it with little to no friction.                       |
 | ![Decomposition icon][icon5] **Needs Decomposition** |     Triage      | Proposals or requests that have been deemed too large in scope to be considered a single work item and must be broken down in two or more items before proceeding.                                                                                                                                                                                                        |
@@ -1077,7 +1077,7 @@ if development will be short lived.
 |          Status          |           Label           | Status Category | Description                                                                                                                                                                                                                                                                                                                                                               |
 | :----------------------: | :-----------------------: | :-------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |     **Needs Triage**     |    `sts-needs-triage`     |     Triage      | Initial stage for User Requests, which require a first analysis by a {{ cookiecutter.project_name }} contributor before work on its scope is either accepted or declined.                                                                                                                                                                                                 |
-|   **Needs Refinement**   |  `sts-needs-refinement`   |     Triage      | Describes more general ideas that might receive development at some point, but whose current state does not detail implementation or paths to delivery. Lacking scope, represents more of a desire than an actual proposal – which might actually prove unfeasible later. Should be used to inform the need for further discussions before being cleared for development. |
+|   **Needs Refinement**   |  `sts-needs-refinement`   |     Triage      | Describes more general ideas that might receive development at some point, but whose current state does not detail implementation or paths to delivery. Lacking scope, represents more of a desire than an actual proposal – which might actually prove infeasible later. Should be used to inform the need for further discussions before being cleared for development. |
 |    **Needs Criteria**    |   `sts-needs-criteria`    |     Triage      | This describes items whose scope is set, but acceptance criteria is still pending to be added before being cleared for development. In contrast with the **Needs Refinement** status, in this stage the deliverable is known and understood, but is waiting for a contributor to detail in smaller steps.                                                                 |
 | **Needs Delivery Steps** |     `sts-needs-steps`     |     Triage      | A specific type of triaging item, signaling pending work before the item can be cleared as a [starter assignment][starter] development. In contrast with the **Needs Criteria**, this stage indicates the work item will be processed with greater detail than usual so a new contributor can pick it up and develop it with little to no friction.                       |
 | **Needs Decomposition**  | `sts-needs-decomposition` |     Triage      | Proposals or requests that have been deemed too large in scope to be considered a single work item and must be broken down in two or more items before proceeding.                                                                                                                                                                                                        |
@@ -3002,7 +3002,7 @@ when proposing changes:
   when making design decisions.
   Communicating the [intent][swnjw] behind your changes
   can also help expedite {{ cookiecutter.__mr_term }} reviews;
-- Follow our [commit customs][commiting],
+- Follow our [commit customs][committing],
   as consistent commit messages
   that follow these guidelines
   make the history more readable.
@@ -3014,14 +3014,14 @@ with the amount of changes in a single {{ cookiecutter.__mr_acronym }}
 as small as possible.
 If you want
 to contribute a large feature,
-think very carefully about
+think carefully about
 what the minimum valuable change is.
 Can you split the functionality
 into two smaller {{ cookiecutter.__mr_acronym }}s?
 Can you submit
 only a fraction of the code?
 Can you start
-with a very simple proof-of-concept?
+with a minimal proof-of-concept?
 Can you do
 just a part of the refactor?
 
@@ -3060,7 +3060,7 @@ are much more likely
 to be merged,
 and merged quickly.
 Risky and less valuable changes
-are very unlikely to be merged,
+are unlikely to be merged,
 and may be rejected outright
 rather than receive iterations of review.
 
@@ -3208,7 +3208,7 @@ in [`pyproject.toml`][workflow2]:
 |  `persistence`  | Tests which certify that data is consistently and correctly persisted.                                                          |
 |    `config`     | Tests related to modifications in user configuration for the program.                                                           |
 | `customization` | Tests related to customization options.                                                                                         |
-| `compatibility` | Tests validating compatibility of {{ cookiecutter.project_name }} accross its different versions.                               |
+| `compatibility` | Tests validating compatibility of {{ cookiecutter.project_name }} across its different versions.                                |
 |     `async`     | Tests validating asynchronous code.                                                                                             |
 |  `integration`  | Tests certifying integration with external services, libraries and platforms.                                                   |
 |   `database`    | Tests specifically aimed at validating database operations.                                                                     |
@@ -4404,7 +4404,7 @@ with their requests:
 When things are great,
 everything is easier,
 so that doesn't need much instructions.
-But when things are difficult,
+When things are difficult,
 here are some guidelines.
 
 Try to find the good side.
@@ -4435,7 +4435,7 @@ That's really not nice,
 and when it happens,
 it lowers our priority
 to solve their problems.
-But still,
+Still,
 try to breathe,
 and be gentle with your answers.
 
@@ -4721,7 +4721,7 @@ of a quick response:
     avoid vague titles like
     "update files" or "fix issue."
     Instead, specify
-    what the request comprises of;
+    what the request comprises;
 - Properly format your messages.
   Help the reader focus on what matters
   and understand the structure of your message.
@@ -4780,14 +4780,15 @@ when users feel a need for development
 related to features provided by {{ cookiecutter.project_name }},
 either existent
 or yet-to-be-implemented.
-They are very welcome,
+They are much welcome,
 as they help us engage with the community
 on a more proactive level
 and work to deliver a solution
 of aggregated value
 to our users.
 
-But before opening an [RFI][request5],
+Nevertheless,
+before opening an [RFI][request5],
 take a moment to find out
 whether your idea fits with the scope
 and [aims][topic2] of the project.
@@ -4999,7 +5000,8 @@ is correct.
 Try to think of edge cases
 when testing or evaluating the code,
 double check the test coverage.
-But do not frown
+However,
+do not frown
 if you merged the {{ cookiecutter.__mr_term }}
 and something broke after all.
 This is the learning path
@@ -5183,7 +5185,7 @@ what we are doing matters!
 [swnjw]: #say-why-not-just-what
 [starter]: #about-starter-assignments
 [philosophy]: #book-our-philosophy
-[commiting]: #commit-customs
+[committing]: #commit-customs
 [codestyle]: #codestyle
 [practices]: #general-practices
 [workflow]: #development-workflow
@@ -5255,7 +5257,7 @@ what we are doing matters!
 [query10]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfc&type%5B%5D=issue
 [query11]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfs&type%5B%5D=issue
 {%- else %}
-[query1]: {{ cookiecutte.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20no%3Aproject
+[query1]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20no%3Aproject
 [query2]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-input
 [query3]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astarter-assignment
 [query4]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Asts-needs-triage
@@ -5441,7 +5443,7 @@ what we are doing matters!
 [style1a]: https://peps.python.org/pep-0257/
 {%- endif %}
 [style2]: https://sembr.org/
-[style3]: https://sive.rs/1s
+[style3]: https://sive.rs/1s <!-- codespell:ignore -->
 [style4]: {{ cookiecutter.__scm_link_url }}/tree/master/.{{ cookiecutter.__scm_platform_lc }}
 [style5]: {{ cookiecutter.__scm_link_url }}/blob/master/CHANGELOG.md
 

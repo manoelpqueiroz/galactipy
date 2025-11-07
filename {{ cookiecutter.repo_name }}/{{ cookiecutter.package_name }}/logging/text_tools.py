@@ -1,11 +1,7 @@
 """Perform basic string operations to refine logger formatting."""
 
-from typing import Optional
-
 from functools import lru_cache
 from pathlib import Path
-from shutil import get_terminal_size
-from textwrap import wrap
 
 from nebulog import logger
 
@@ -43,11 +39,11 @@ class LoggerFormatter:
     SHELL_RJUST_TEMPLATE = " x "  # Separator between message and location
     MINIMUM_WRAPPER_WIDTH = 20
 
-    def __init__(self, project_root: Optional[Path] = None):
+    def __init__(self, project_root: Path | None = None):
         """Initialize formatter with project root directory."""
         self.project_root = self._resolve_project_root(project_root)
 
-    def _resolve_project_root(self, project_root: Optional[Path]) -> Path:
+    def _resolve_project_root(self, project_root: Path | None) -> Path:
         """Resolve the project root directory."""
         return project_root if project_root is not None else Path(__file__).parents[1]
 

@@ -163,7 +163,7 @@ def test_set_existing_value():
         'the configuration replaces the value for the "{key}" key with "{new_value}"'
     )
 )
-def check_overriden_value(sandbox_manager, key, new_value):
+def check_overridden_value(sandbox_manager, key, new_value):
     assert sandbox_manager["settings", key] == new_value
 
 
