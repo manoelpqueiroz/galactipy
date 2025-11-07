@@ -63,6 +63,17 @@ repos:
       additional_dependencies:
         - tomli
 
+  - repo: https://github.com/Argmaster/autocopyright
+    rev: v1.1.0
+    hooks:
+    - id: autocopyright
+      args: [
+        -s, '#',
+        -d, {{ cookiecutter.package_name }},
+        -g, '*.py',
+        -l, .licence_header.txt,
+      ]
+
   # Check configuration file schemas
   - repo: https://github.com/python-jsonschema/check-jsonschema
     rev: '0.34.1'
@@ -101,6 +112,7 @@ repos:
       name: Commit convention compliance
 {%- endif %}
 
+  # Repository maintenance
   - repo: https://github.com/python-poetry/poetry
     rev: '2.2.1'
     hooks:

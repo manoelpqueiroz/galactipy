@@ -188,7 +188,6 @@ select = [ # UPDATEME with additional rules from https://docs.astral.sh/ruff/rul
   "TRY",
   "FLY",
   "YTT",
-  "CPY",
   "RUF",
   "DOC",
   "TRY",
@@ -253,10 +252,6 @@ max-doc-length = {{ cookiecutter.docstring_length }}
 [tool.ruff.lint.pydocstyle]
 convention = "{{ cookiecutter.docstring_style }}"
 {%+ endif %}
-[tool.ruff.lint.flake8-copyright]
-author = "{{ cookiecutter.copyright }}"
-notice-rgx = "Copyright \\(C\\) {% now 'local', '%Y' %}"
-
 [tool.ruff.lint.pylint]
 max-bool-expr = 3
 
