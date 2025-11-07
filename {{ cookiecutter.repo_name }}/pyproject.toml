@@ -114,12 +114,12 @@ poetry-plugin-up = "^0.9.0"
 poetry-plugin-bundle = "^1.5.0"
 
 [tool.poetry-dynamic-versioning]
+# https://github.com/mtkennerly/poetry-dynamic-versioning#configuration
 enable = true
 vcs = "git"
 style = "semver"
 metadata = false
 bump = { enable = true, index = 1 }
-
 
 {% if cookiecutter.commit_convention == 'conventional' -%}
 [tool.commitizen.types]
