@@ -92,12 +92,17 @@ def generate_licence(directory: Path, licence: str | None) -> None:
     licence : str
         Chosen licence.
     """
-    if licence is not None:
-        licence_origin = directory / "_licences" / f"{licence}.txt"
+    licence_filename = f"{licence}.txt"
 
+    if licence is not None:
+        licence_origin = directory / "_licences" / licence_filename
         licence_origin.rename(directory / "LICENCE")
 
+        licence_header = directory / "_headers" / licence_filename
+        licence_header.rename(directory / ".licence_header.txt")
+
     rmdir(directory / "_licences")
+    rmdir(directory / "_headers")
 
 
 def generate_templates(directory: Path, scm_platform: str) -> None:
