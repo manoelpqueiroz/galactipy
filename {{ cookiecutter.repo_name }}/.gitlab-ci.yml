@@ -57,7 +57,13 @@ default:
 
 workflow:
   rules:
-    - if: $CI_COMMIT_TITLE =~ /(\:construction|WIP)\:.*/i
+{%- if cookiecutter.commit_convention == 'gitmoji' %}
+    - if: $CI_COMMIT_TITLE =~ /^(\:construction|WIP)\:/i
+{%- elif cookiecutter.commit_convention == 'conventional' %}
+    - if: $CI_COMMIT_TITLE =~ /^WIP(\([^)]*\))?!?\:/i
+{%- else %}
+    - if: $CI_COMMIT_TITLE =~ /^🚧\sWIP(\([^)]*\))?!?\:/i
+{%- endif %}
       when: never
     - if: $CI_COMMIT_BRANCH =~ /^(test|WIP).*/i
       when: never
@@ -245,3 +251,7 @@ release-{{ cookiecutter.repo_name }}-stable:
   release:
     tag_name: $CI_COMMIT_TAG
     description: RELEASE_NOTES.md
+    assets:
+      links:
+        - name: Published package
+          url: https://pypi.org/project/{{ cookiecutter.repo_name }}/
