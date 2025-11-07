@@ -4,23 +4,23 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
-      - id: check-toml
-        name: Check TOML Syntax
-      - id: check-yaml
-        name: Check YAML Syntax
-      - id: check-json
-        name: Check JSON Syntax
-        exclude: '.vscode/settings.json'
-      - id: pretty-format-json
-        name: Format JSON files
-        args: [--autofix, --indent, '4']
-        exclude: '.vscode/settings.json'
-      - id: end-of-file-fixer
-        name: Fix End-of-files
-        exclude: (LICENCE|CODE_OF_CONDUCT.md)
-      - id: check-merge-conflict
-        name: Check Unresolved Merge Conflicts
-        args: [--assume-in-merge]
+    - id: check-toml
+      name: Check TOML Syntax
+    - id: check-yaml
+      name: Check YAML Syntax
+    - id: check-json
+      name: Check JSON Syntax
+      exclude: '.vscode/settings.json'
+    - id: pretty-format-json
+      name: Format JSON files
+      args: [--autofix, --indent, '4']
+      exclude: '.vscode/settings.json'
+    - id: end-of-file-fixer
+      name: Fix End-of-files
+      exclude: (LICENCE|CODE_OF_CONDUCT.md)
+    - id: check-merge-conflict
+      name: Check Unresolved Merge Conflicts
+      args: [--assume-in-merge]
 
   # Coding standards hooks
   - repo: local
@@ -32,33 +32,34 @@ repos:
       pass_filenames: false
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.14.3
+    rev: v0.14.4
     hooks:
-      - id: ruff-check
-        name: Ruff Linter
-        args: [--fix]
-      - id: ruff-format
-        name: Ruff Formatter
+    - id: ruff-check
+      name: Ruff Linter
+      args: [--fix]
+    - id: ruff-format
+      name: Ruff Formatter
 
   # Hooks to catch common mistakes
   - repo: https://github.com/albertas/deadcode
     rev: '2.4.1'
     hooks:
-      - id: deadcode
-        name: Dead Code Check
+    - id: deadcode
+      name: Dead Code Check
 
   - repo: https://github.com/crate-ci/typos
     rev: v1.39.0
     hooks:
-      - id: typos
-        name: Typo Checks
-        exclude: (\.git|\.docker)ignore
+    - id: typos
+      name: Typo Checks
+      exclude: (\.git|\.docker)ignore
 
   - repo: https://github.com/codespell-project/codespell
     rev: v2.4.1
     hooks:
     - id: codespell
       name: Codespell Checks
+      exclude: (LICENCE|CODE_OF_CONDUCT.md)
       additional_dependencies:
         - tomli
 
@@ -67,17 +68,17 @@ repos:
     rev: '0.34.1'
     hooks:
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-      - id: check-gitlab-ci
-        name: Check GitLab CI file schema
+    - id: check-gitlab-ci
+      name: Check GitLab CI file schema
 {%- else %}
-      - id: check-github-issue-config
-        name: Check GitHub Issues configuration file
-      - id: check-github-issue-forms
-        name: Check GitHub Issue Forms schema
-      - id: check-github-workflows
-        name: Check GitHub workflows schema
-      - id: check-dependabot
-        name: Check Dependabot schema
+    - id: check-github-issue-config
+      name: Check GitHub Issues configuration file
+    - id: check-github-issue-forms
+      name: Check GitHub Issue Forms schema
+    - id: check-github-workflows
+      name: Check GitHub workflows schema
+    - id: check-dependabot
+      name: Check Dependabot schema
 {%- endif %}
 {%- if cookiecutter.commit_convention == 'conventional' %}
 
@@ -85,19 +86,33 @@ repos:
   - repo: https://github.com/commitizen-tools/commitizen
     rev: v4.9.1
     hooks:
-      - id: commitizen
-        name: Commit convention compliance
-      - id: commitizen-branch
-        name: Branch history commit convention compliance
-        stages: [pre-push]
+    - id: commitizen
+      name: Commit convention compliance
+    - id: commitizen-branch
+      name: Branch history commit convention compliance
+      stages: [pre-push]
 {%- elif cookiecutter.commit_convention == 'conventional-gitmoji' %}
 
   # Commit convention compliance
   - repo: https://github.com/ljnsn/cz-conventional-gitmoji
     rev: v0.7.0
     hooks:
-      - id: conventional-gitmoji
-        name: Commit convention compliance
-{% endif -%}
+    - id: conventional-gitmoji
+      name: Commit convention compliance
+{%- endif %}
+
+  - repo: https://github.com/python-poetry/poetry
+    rev: '2.2.1'
+    hooks:
+    - id: poetry-check
+      name: Check Poetry file consistency
+    - id: poetry-lock
+      name: Update lock file
+
+  - repo: https://gitlab.com/vojko.pribudic.foss/pre-commit-update
+    rev: v0.9.0
+    hooks:
+    - id: pre-commit-update
+      name: Pre-commit autoupdate
 
 # UPDATEME with additional hooks
