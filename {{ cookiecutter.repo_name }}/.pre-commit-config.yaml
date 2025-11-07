@@ -5,21 +5,21 @@ repos:
     rev: v6.0.0
     hooks:
     - id: check-toml
-      name: Check TOML Syntax
+      name: Check TOML syntax
     - id: check-yaml
-      name: Check YAML Syntax
+      name: Check YAML syntax
     - id: check-json
-      name: Check JSON Syntax
+      name: Check JSON syntax
       exclude: '.vscode/settings.json'
     - id: pretty-format-json
       name: Format JSON files
       args: [--autofix, --indent, '4']
       exclude: '.vscode/settings.json'
     - id: end-of-file-fixer
-      name: Fix End-of-files
-      exclude: (LICENCE|CODE_OF_CONDUCT.md)
+      name: Fix end-of-files
+      exclude: (LICENCE|CODE_OF_CONDUCT.md|.licence_header.txt)
     - id: check-merge-conflict
-      name: Check Unresolved Merge Conflicts
+      name: Check unresolved merge conflicts
       args: [--assume-in-merge]
 
   # Coding standards hooks
@@ -27,39 +27,39 @@ repos:
     hooks:
     - id: mypy
       language: python
-      name: Mypy Static Type Checking
+      name: Mypy static type checking
       entry: mypy --config-file pyproject.toml
       pass_filenames: false
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.14.4
     hooks:
-    - id: ruff-check
-      name: Ruff Linter
-      args: [--fix]
     - id: ruff-format
-      name: Ruff Formatter
+      name: Ruff formatter
+    - id: ruff-check
+      name: Ruff linter
+      args: [--fix]
 
   # Hooks to catch common mistakes
   - repo: https://github.com/albertas/deadcode
     rev: '2.4.1'
     hooks:
     - id: deadcode
-      name: Dead Code Check
+      name: Dead code check
 
   - repo: https://github.com/crate-ci/typos
     rev: v1.39.0
     hooks:
     - id: typos
-      name: Typo Checks
+      name: Typo checks
       exclude: (\.git|\.docker)ignore
 
   - repo: https://github.com/codespell-project/codespell
     rev: v2.4.1
     hooks:
     - id: codespell
-      name: Codespell Checks
-      exclude: (LICENCE|CODE_OF_CONDUCT.md)
+      name: Codespell checks
+      exclude: (LICENCE|CODE_OF_CONDUCT.md|.licence_header.txt)
       additional_dependencies:
         - tomli
 
@@ -67,6 +67,7 @@ repos:
     rev: v1.1.0
     hooks:
     - id: autocopyright
+      name: Copyright marks
       args: [
         -s, '#',
         -d, {{ cookiecutter.package_name }},
