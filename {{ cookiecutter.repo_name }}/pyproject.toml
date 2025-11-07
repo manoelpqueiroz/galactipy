@@ -16,7 +16,7 @@ maintainers = [
   {% raw %}{{% endraw %} name = "{{ cookiecutter.maintainer }}", email = "{{ cookiecutter.email }}" {% raw %}}{% endraw %},
 ]
 # Keywords description https://python-poetry.org/docs/pyproject/#keywords
-keywords = []  # UPDATEME with relevant keywords
+keywords = []  # DEFINE the keywords for your project
 dynamic = ["version", "classifiers"]
 {%- if cookiecutter.app_type != 'bare_repo' %}
 
@@ -196,6 +196,7 @@ task-tags = [
   "FIX",
   "NEEDSWORK",
   "UPDATEME",
+  "DEFINE",
   "TODO",
   "REFACTOR",
 ] # UPDATEME by modifying or removing this setting after addressing all UPDATEMEs

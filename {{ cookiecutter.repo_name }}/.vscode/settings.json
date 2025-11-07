@@ -71,6 +71,10 @@
             "icon": "pencil",
             "iconColour": "#e65339"
         },
+        "DEFINE": {
+            "icon": "comment-discussion",
+            "iconColour": "#4be6ad"
+        },
         "BUG": {
             "icon": "bug",
             "iconColour": "#e63946",
