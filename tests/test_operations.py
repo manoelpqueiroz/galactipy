@@ -16,20 +16,30 @@ LICENCES_TO_CHECK.remove(None)
 class TestLicenceGeneration:
     @pytest.mark.parametrize("chosen_licence", LICENCES_TO_CHECK)
     def test_generate_licence(self, licence_tree, chosen_licence):
-        project_root, licence_root, licence_file = licence_tree
+        project_root, licence_root, licence_file, header_root, header_file = (
+            licence_tree
+        )
 
         generate_licence(project_root, chosen_licence)
 
         assert licence_file.exists()
         assert not licence_root.exists()
 
+        assert header_file.exists()
+        assert not header_root.exists()
+
     def test_non_oss_licence(self, licence_tree):
-        project_root, licence_root, licence_file = licence_tree
+        project_root, licence_root, licence_file, header_root, header_file = (
+            licence_tree
+        )
 
         generate_licence(project_root, None)
 
         assert not licence_file.exists()
         assert not licence_root.exists()
+
+        assert not header_file.exists()
+        assert not header_root.exists()
 
 
 class TestTemplateGeneration:
@@ -45,7 +55,7 @@ class TestTemplateGeneration:
 
     @pytest.mark.parametrize("invalid_scm", ["bitbucket", "gitea", "azure"])
     def test_generate_invalid_templates(self, template_tree, invalid_scm):
-        project_root, template_root = template_tree
+        project_root, _ = template_tree
 
         with pytest.raises(FileNotFoundError):
             generate_templates(project_root, invalid_scm)
