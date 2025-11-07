@@ -1,3 +1,26 @@
+## 0.23.0 (2025-11-07)
+
+### :wrench: Fixes & Refactoring (4 changes)
+
+- [:rotating_light: Fix jsonschema hook warnings](galactipy/galactipy@bb0947a09f748b7092aa7989d9c84265cee1c57b) ([merge request](galactipy/galactipy!95))
+- [:pencil2: Fix malformed Cookiecutter variable in template `CONTRIBUTING.md`](galactipy/galactipy@b8ebaae6e1937fe8897bd0d056dd8c03006b4a8f) ([merge request](galactipy/galactipy!95))
+- [:rotating_light: Fix typos in project `SECURITY.md`](galactipy/galactipy@184352e5547d8f699a09b7889dff847da7ed03d7) ([merge request](galactipy/galactipy!95))
+- [:rotating_light: Fix pre-commit warnings for common mistake hooks](galactipy/galactipy@0cd8c754efd56a5dc7d68854006153b916149099) ([merge request](galactipy/galactipy!95))
+
+### :construction_site: Template Internals (7 changes)
+
+- [:safety_vest: Add commit message validation hooks](galactipy/galactipy@97f378343f0ab2d3faec40f5c823ab445f0890d6) ([merge request](galactipy/galactipy!95))
+- [:pencil2: Fix proselint warnings for template](galactipy/galactipy@d9b9ec585e65df4ee22719881c7fab1bbe6b83ae) ([merge request](galactipy/galactipy!95))
+- [:safety_vest: Add jsonschema hooks for GitLab and GitHub](galactipy/galactipy@963b8ec6905b5c03b823f926643ce6db319fb3e1) ([merge request](galactipy/galactipy!95))
+- [:safety_vest: Add hooks for Mypy and common mistakes](galactipy/galactipy@216337271f89f93ae8447464888c37fecb681c2e) ([merge request](galactipy/galactipy!95))
+- [:rotating_light: Fix pre-commit warnings for vanilla hooks](galactipy/galactipy@3301d83441fc11ad437700fc2b57387276f10bb3) ([merge request](galactipy/galactipy!95))
+- [:safety_vest: Add vanilla pre-commit hooks](galactipy/galactipy@4e0e88a3cf750a68407604469d7f3abcab6ed217) ([merge request](galactipy/galactipy!95))
+- [:safety_vest: Update template pre-commit syntax and hooks](galactipy/galactipy@918940098def2e603fbc3014078928b2a5bd84b2) ([merge request](galactipy/galactipy!95))
+
+### :scroll: Project Policies (1 change)
+
+- [:safety_vest: Update project pre-commit syntax and hooks](galactipy/galactipy@c22f8cd2cd4ca882610c7ac8bbecec9f1240af01) ([merge request](galactipy/galactipy!95))
+
 ## 0.22.0 (2025-11-06)
 
 ### :wrench: Fixes & Refactoring (1 change)
