@@ -36,7 +36,7 @@ include:
   - component: $CI_SERVER_FQDN/to-be-continuous/docker/gitlab-ci-docker@6.0.0
     rules:
       - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-      - if: $CI_COMMIT_TAG # HACK Fine-tuning for running only on release tags not working at upstream (https://gitlab.com/to-be-continuous/docker/-/issues/107)
+      - if: $CI_COMMIT_TAG # FYI Fine-tuning for running only on release tags not working at upstream (https://gitlab.com/to-be-continuous/docker/-/issues/107)
     inputs:
       context-path: $CI_PROJECT_DIR
       file: $CI_PROJECT_DIR/docker/Dockerfile

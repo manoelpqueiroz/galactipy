@@ -261,7 +261,7 @@ def publish(c: Context, repo: str = "pypi", build: bool = True) -> None:
     """Publish {{ cookiecutter.project_name }} to a package registry."""
     poetry_path = get_poetry_command()
 
-    # HACK If PyPI is specifically specified as a repo, Poetry fails to recognize it
+    # FYI If PyPI is specifically specified as a repo, Poetry fails to recognize it
     repo_flag = f"--repository {repo}" if repo != "pypi" else ""
     build_flag = "--build" if build else ""
 

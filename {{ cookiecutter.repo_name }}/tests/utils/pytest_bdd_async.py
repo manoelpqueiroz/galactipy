@@ -5,7 +5,7 @@ from collections.abc import Callable
 from functools import wraps
 
 
-# HACK Workaround for the lack of native asynchronous support in pytest-bdd, see:
+# FYI pytest-bdd does not support async operations natively, this is a workaround
 # https://github.com/pytest-dev/pytest-bdd/issues/223
 # https://github.com/pytest-dev/pytest-asyncio/issues/195
 class AsyncStepConverter:

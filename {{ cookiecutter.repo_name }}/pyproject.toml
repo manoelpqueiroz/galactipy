@@ -66,7 +66,7 @@ textual = "^6.5.0"
 art = "^6.5.0"  # UPDATEME by removing when no longer needed
 {%- endif %}
 {%+ if cookiecutter.app_type != 'bare_repo' %}
-click = "~8.1.0" # HACK Click shouldn't require explicit declaration, but versions 8.2+ break Typer's behaviour
+click = "~8.1.0" # FYI Click shouldn't require explicit declaration, but versions 8.2+ break Typer's behaviour
 typer = { extras = ["all"], version = "^0.20.0" }
 rich = "^14.2.0"
 
@@ -202,6 +202,7 @@ ignore = ["D200", "TD004"]
 task-tags = [
   "BUG",
   "HACK",
+  "FYI",
   "FIXME",
   "FIXIT",
   "FIX",
