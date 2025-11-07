@@ -167,7 +167,15 @@ def mypy(
 @task(call(venv, hide=True), aliases=["pre-commit-install", "install-hooks"])
 def hooks(c: Context) -> None:
     """Install pre-commit hooks."""
-    c.run(f"{c.venv_bin_path}/pre-commit install", pty=IS_UNIX_OS)
+    c.run(
+        f"{c.venv_bin_path}/pre-commit install --hook-type pre-commit", pty=IS_UNIX_OS
+    )
+    c.run(
+        f"{c.venv_bin_path}/pre-commit install --hook-type pre-push", pty=IS_UNIX_OS
+    )
+    c.run(
+        f"{c.venv_bin_path}/pre-commit install --hook-type commit-msg", pty=IS_UNIX_OS
+    )
 
 
 # Poetry tasks

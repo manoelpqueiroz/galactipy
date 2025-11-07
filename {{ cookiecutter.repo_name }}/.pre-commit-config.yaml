@@ -79,5 +79,25 @@ repos:
       - id: check-dependabot
         name: Check Dependabot schema
 {%- endif %}
+{%- if cookiecutter.commit_convention == 'conventional' %}
+
+  # Commit convention compliance
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v4.9.1
+    hooks:
+      - id: commitizen
+        name: Commit convention compliance
+      - id: commitizen-branch
+        name: Branch history commit convention compliance
+        stages: [pre-push]
+{%- elif cookiecutter.commit_convention == 'conventional-gitmoji' %}
+
+  # Commit convention compliance
+  - repo: https://github.com/ljnsn/cz-conventional-gitmoji
+    rev: v0.7.0
+    hooks:
+      - id: conventional-gitmoji
+        name: Commit convention compliance
+{% endif -%}
 
 # UPDATEME with additional hooks
