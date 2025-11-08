@@ -13,8 +13,9 @@ There are alternatives to this implementation:
    Pydantic support for Typer.
 
 """
+from typing import Any
+
 from ast import literal_eval
-from typing import Any, Optional, Union
 
 from nebulog import logger
 
@@ -82,7 +83,7 @@ class BasicConverter:
         # Return as string if no other type matches
         return value
 
-    def _parse_numeric_value(self, value: str) -> Optional[Union[int, float]]:
+    def _parse_numeric_value(self, value: str) -> int | float | None:
         """Parse a string into a numeric value, whether integer, float or scientific."""
         # Try integer first (more specific check)
         if "." not in value and "e" not in value.lower():
@@ -99,7 +100,7 @@ class BasicConverter:
         except ValueError:
             return value
 
-    def _parse_container_value(self, value: str) -> Optional[Union[list, tuple, dict]]:
+    def _parse_container_value(self, value: str) -> list | tuple | dict | None:
         """Parse a string into a valid container value.
 
         Will parse strings into lists, tuples and dictionaries as-is, but will convert

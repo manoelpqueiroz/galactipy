@@ -101,7 +101,7 @@
 > [!TIP]
 > :fountain_pen: **Discretionary**
 >
-> I attest that during the course of this development, the following interactions have taken place:
+> I attest that during this development, the following interactions have taken place:
 >
 > - [ ] We have discussed our opinions on the proposed policy;
 > - [ ] We have explored possible alternative ideas;

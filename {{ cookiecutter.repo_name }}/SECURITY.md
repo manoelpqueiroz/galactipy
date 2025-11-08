@@ -10,7 +10,7 @@
 
 As of
 **{% now 'local', '%B %Y' %}**,
-there are no unpatched vulnerabilites
+there are no unpatched vulnerabilities
 of medium or higher severity
 that have been publicly known
 for more than 60 days
@@ -116,7 +116,7 @@ you can expect:
 
 ### :loudspeaker: Disclosure Policy
 
-The folllowing process
+The following process
 will be triggered
 once you send
 your report:
@@ -738,13 +738,13 @@ and well-maintained,
 the project does not consider
 problems that can be triggered
 only by the use of a legacy dependency
-security vulnerabilites.
+security vulnerabilities.
 
 The project actively monitors
 for security advisories
 in upstream dependencies
 and updates their versions promptly
-in the case of vulnerabilites.
+in the case of vulnerabilities.
 
 <!-- UPDATEME with additional understanding on what should not be considered security issues -->
 
@@ -777,7 +777,7 @@ to enhance code security:
 - Signed commits
   and releases.
 
-### :lock_with_ink_pen: Security Guarantess
+### :lock_with_ink_pen: Security Guarantees
 
 Security guarantees provided
 by the project:

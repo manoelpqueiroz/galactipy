@@ -30,7 +30,6 @@ body:
         Please read carefully all the sections below. They have been provided by an active contributor to the project, aiming to be as easily accessible as possible for you to pick the work up.
 
         If you feel interested in taking on this challenge, please state so by commenting on this thread, and if you have any questions, the team will be pleased to answer them! :wink:
-      render: true
   - type: textarea
     attributes:
       label: 🆘 Problem Statement
@@ -63,7 +62,7 @@ body:
       description: |
         If you have any tips or caveats that will further help the new contributor succeed without hiccups along the way, feel free to bring your experience as a more seasoned developer to the table.
 
-        Additionaly, provide links to any useful resources like documentation of other libraries and blog posts that might prove insightful for the new contributor during their work.
+        Additionally, provide links to any useful resources like documentation of other libraries and blog posts that might prove insightful for the new contributor during their work.
   - type: textarea
     attributes:
       label: 🫵 What We Need from You

@@ -92,7 +92,7 @@
 > [!TIP]
 > :fountain_pen: **Discretionary**
 >
-> I attest that during the course of this development, the following interactions have taken place:
+> I attest that during this development, the following interactions have taken place:
 >
 > - [ ] We have found [opportunities][12] for future development and have created work items to take action on later.
 

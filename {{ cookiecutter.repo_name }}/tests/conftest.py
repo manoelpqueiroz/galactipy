@@ -1,7 +1,7 @@
 {% if cookiecutter.use_bdd -%}
 import asyncio
 
-{%- endif %}
+{% endif -%}
 from rich.text import Text
 
 import pytest

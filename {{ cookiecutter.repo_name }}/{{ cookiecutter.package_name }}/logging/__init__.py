@@ -1,4 +1,4 @@
-"""Define logging capabilites for {{ cookiecutter.project_name }}."""
+"""Define logging capabilities for {{ cookiecutter.project_name }}."""
 
 import sys
 
