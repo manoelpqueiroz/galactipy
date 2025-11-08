@@ -1,4 +1,6 @@
+{%- if cookiecutter.use_bdd %}
 from ast import literal_eval
+{%- endif %}
 
 from typer.testing import CliRunner
 
@@ -481,9 +483,9 @@ class TestGetCommand:
     @pytest.mark.parametrize(
         ("value", "output"),
         (
-            ("somevalue", "'somevalue'"),
-            ([1, 2, "a"], "[1, 2, 'a']"),
-            ({"a": 1, "b": 2}, "{'a': 1, 'b': 2}"),
+            ["somevalue", "'somevalue'"],
+            [[1, 2, "a"], "[1, 2, 'a']"],
+            [{"a": 1, "b": 2}, "{'a': 1, 'b': 2}"],
         ),
     )
     def test_get_individual_value(
@@ -506,7 +508,7 @@ class TestGetCommand:
 
     @pytest.mark.standard
     def test_get_invalid_value(self, setup_sample_manager):
-        manager, file = setup_sample_manager.values()
+        _, file = setup_sample_manager.values()
 
         results = runner.invoke(config_get_app, args=["notest", "--path", file])
 
@@ -756,7 +758,6 @@ class TestSetCommand:
             "{1, 2",
             "['a', 'b'",
             "('a', 'b'",
-            "{'a', 'b'",
             "{'a', 'b'",
             "{'a': 0",
         ),

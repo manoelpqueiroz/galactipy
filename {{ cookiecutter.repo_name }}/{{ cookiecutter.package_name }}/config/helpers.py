@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 
 
 def resolve_app_manager(
-    domain: Literal["settings", "secrets"] | "ConfigurationDomain",
+    domain: "Literal['settings', 'secrets'] | ConfigurationDomain",
     custom_path: Path | None = None,
 ) -> "Nucleus":
 {%- if cookiecutter.docstring_style != 'other' %}

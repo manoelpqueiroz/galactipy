@@ -226,7 +226,13 @@ task-tags = [
   "ANN002",
   "ANN003",
   "ANN201",
+  "B010",
   "PLR2004",
+{%- if not cookiecutter.use_bdd %}
+  "PLR0913",
+  "PLR0917",
+  "PLR6301",
+{%- endif %}
 ]
 "tasks.py" = ["FBT", "ANN002", "ANN003"]
 "text_tools.py" = ["B019"]
@@ -238,8 +244,10 @@ suppress-dummy-args = true
 [tool.ruff.lint.flake8-pytest-style]
 fixture-parentheses = false
 mark-parentheses = false
+{%- if not cookiecutter.use_bdd %}
 parametrize-values-type = "tuple"
 parametrize-values-row-type = "list"
+{%- endif %}
 
 [tool.ruff.lint.flake8-tidy-imports]
 ban-relative-imports = "all"

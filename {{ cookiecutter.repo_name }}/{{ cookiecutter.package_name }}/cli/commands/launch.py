@@ -38,7 +38,7 @@ def launch(
             ),
         )
     ] = False,
-):
+) -> None:
     """:pager: Launch the {{ cookiecutter.project_name }} interface."""
     setup_app_logging(debug=debug)
 

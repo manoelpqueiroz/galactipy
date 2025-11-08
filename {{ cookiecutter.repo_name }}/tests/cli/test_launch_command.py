@@ -41,7 +41,7 @@ def successful_termination(results):
 @pytest.mark.frontend
 @pytest.mark.standard
 def test_launch_app(mocker, setup_sample_manager):
-    manager, file = setup_sample_manager.values()
+    _, file = setup_sample_manager.values()
 
     mock_interface = mocker.patch(
         "python_project.cli.commands.launch.TerminalApp"
@@ -50,5 +50,5 @@ def test_launch_app(mocker, setup_sample_manager):
     results = runner.invoke(launch_app, args=["--config", file])
 
     mock_interface.run.assert_called_once()
-    results.exit_code == 0
+    assert results.exit_code == 0
 {%- endif %}

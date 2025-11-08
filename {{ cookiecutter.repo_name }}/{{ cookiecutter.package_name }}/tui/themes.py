@@ -11,6 +11,7 @@ from enum import Enum
 
 from textual.theme import Theme
 
+
 class NoctisAuxColours(TypedDict):
     """Typed dictionary for shared Noctis colours across themes."""
 
@@ -19,6 +20,7 @@ class NoctisAuxColours(TypedDict):
     error: str
     success: str
     accent: str
+
 
 # Noctis VS Code theme colours, full colorscheme definition at:
 # https://github.com/liviuschera/noctis

@@ -95,7 +95,7 @@ def valid_command_menu(cli_run, command):
 @pytest.mark.frontend
 @pytest.mark.standard
 def test_launch_app(mocker, setup_sample_manager):
-    manager, file = setup_sample_manager.values()
+    _, file = setup_sample_manager.values()
 
     mock_interface = mocker.patch(
         "python_project.cli.commands.root_command.TerminalApp"
@@ -104,7 +104,7 @@ def test_launch_app(mocker, setup_sample_manager):
     results = runner.invoke(app, args=["--config", file])
 
     mock_interface.run.assert_called_once()
-    results.exit_code == 0
+    assert results.exit_code == 0
 
 
 {% endif -%}

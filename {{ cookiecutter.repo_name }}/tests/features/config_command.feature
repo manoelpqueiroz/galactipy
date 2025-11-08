@@ -212,7 +212,6 @@ Feature: Command-line configuration program
         | ['a', 'b'      |
         | ('a', 'b'      |
         | {'a', 'b'      |
-        | {'a', 'b'      |
         | {'a': 0        |
 
   Rule: Extending list values

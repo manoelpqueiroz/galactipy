@@ -8,8 +8,8 @@ from typing import Annotated
 {% if cookiecutter.app_type == 'tui' %}
 from pathlib import Path
 
-{% endif -%}
 from nebulog import logger
+{%- endif %}
 
 import typer
 from rich.console import Console
@@ -25,14 +25,10 @@ from {{ cookiecutter.package_name }}.tui.main_window import TerminalApp
 app = typer.Typer(rich_markup_mode="rich")
 {%- elif cookiecutter.app_type == 'hybrid' %}
 from {{ cookiecutter.package_name }}.cli.commands.launch import launch_app
-from {{ cookiecutter.package_name }}.config.constants import get_default_log_path
-from {{ cookiecutter.package_name }}.logging import setup_app_logging
 
 app = typer.Typer(no_args_is_help=True, rich_markup_mode="rich")
 app.add_typer(launch_app)
 {%- elif cookiecutter.app_type == 'cli' %}
-from {{ cookiecutter.package_name }}.config.constants import get_default_log_path
-from {{ cookiecutter.package_name }}.logging import setup_app_logging
 
 app = typer.Typer(no_args_is_help=True, rich_markup_mode="rich")
 {%- endif %}
