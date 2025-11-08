@@ -175,9 +175,7 @@ def hooks(c: Context) -> None:
     c.run(
         f"{c.venv_bin_path}/pre-commit install --hook-type pre-commit", pty=IS_UNIX_OS
     )
-    c.run(
-        f"{c.venv_bin_path}/pre-commit install --hook-type pre-push", pty=IS_UNIX_OS
-    )
+    c.run(f"{c.venv_bin_path}/pre-commit install --hook-type pre-push", pty=IS_UNIX_OS)
     c.run(
         f"{c.venv_bin_path}/pre-commit install --hook-type commit-msg", pty=IS_UNIX_OS
     )
