@@ -214,7 +214,10 @@ task-tags = [
 ] # UPDATEME by modifying or removing this setting after addressing all UPDATEMEs and DEFINEs
 
 [tool.ruff.lint.per-file-ignores]
-"python_project/cli/commands/**.py" = ["FBT", "ARG001", "RUF013"]
+{%- if cookiecutter.app_type != 'bare_repo' %}
+"{{ cookiecutter.package_name }}/cli/commands/**.py" = ["FBT", "ARG001", "RUF013"]
+"text_tools.py" = ["B019"]
+{%- endif %}
 "tests/**.py" = [
   "D100",
   "D101",
@@ -235,7 +238,6 @@ task-tags = [
 {%- endif %}
 ]
 "tasks.py" = ["FBT", "ANN002", "ANN003"]
-"text_tools.py" = ["B019"]
 
 [tool.ruff.lint.flake8-annotations]
 ignore-fully-untyped = true
