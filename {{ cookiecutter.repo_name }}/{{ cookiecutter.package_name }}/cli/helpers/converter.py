@@ -52,17 +52,10 @@ class BasicConverter:
 
     def __init__(self, value: str) -> None:
         """Initialise the converter, storing input value and converted output value."""
-        if not isinstance(value, str):  # pragma: no cover
-            msg = (
-                f"BasicConverter only accepts strings; got {type(value).__name__} "
-                "instead"
-            )
-            raise TypeError(msg)
-
         self.input = value
         self.output = self._convert_value(self.input)
 
-    def _convert_value(self, value: str) -> PrimitiveTypes:
+    def _convert_value(self, value: str) -> PrimitiveTypes | None:
         """Parse a string into a boolean, numeric or container type."""
         if not value:  # Empty string
             return None
@@ -72,7 +65,7 @@ class BasicConverter:
 
         return self._parse_by_first_character(value)
 
-    def _parse_by_first_character(self, value: str) -> NonBooleanPrimitives:
+    def _parse_by_first_character(self, value: str) -> NonBooleanPrimitives | None:
         """Parse a string by its first character, either a numeric or container type."""
         first_char = value[0]
 
@@ -86,7 +79,7 @@ class BasicConverter:
         return value
 
     @staticmethod
-    def parse_numeric_value(value: str) -> int | float | None:
+    def parse_numeric_value(value: str) -> str | int | float | None:
         """Parse a string into a numeric value, whether integer, float or scientific."""
         # Try integer first (more specific check)
         if "." not in value and "e" not in value.lower():

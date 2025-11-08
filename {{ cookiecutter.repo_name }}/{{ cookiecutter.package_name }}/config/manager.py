@@ -1,6 +1,7 @@
 """Configuration manager for {{ cookiecutter.project_name }}."""
 
-from typing import Self
+from typing import Literal
+from typing_extensions import Self
 
 from pathlib import Path
 
@@ -40,7 +41,9 @@ class AppManager(Nucleus):
         return instance
 
     @classmethod
-    def custom(cls, path: Path, domain: str | ConfigurationDomain) -> Self:
+    def custom(
+        cls, path: Path, domain: Literal["settings", "secrets"] | ConfigurationDomain
+    ) -> Self:
 {%- if cookiecutter.docstring_style != 'other' %}
         """Provide a manager instance with a single domain and custom definitions.
 {%- if cookiecutter.docstring_style == 'numpy' %}

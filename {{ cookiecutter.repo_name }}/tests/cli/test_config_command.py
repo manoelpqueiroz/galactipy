@@ -11,12 +11,10 @@ from pytest_bdd import given, parsers, scenario, then, when
 import pytest
 {%- endif %}
 
-from {{ cookiecutter.package_name }}.cli.commands.config import (
-    config_extend_app,
-    config_get_app,
-    config_set_app,
-    config_unset_app,
-)
+from {{ cookiecutter.package_name }}.cli.commands.config.extend import config_extend_app
+from {{ cookiecutter.package_name }}.cli.commands.config.get import config_get_app
+from {{ cookiecutter.package_name }}.cli.commands.config.set import config_set_app
+from {{ cookiecutter.package_name }}.cli.commands.config.unset import config_unset_app
 {% if cookiecutter.use_bdd -%}
 from tests.utils.parsers import boolean_parser
 

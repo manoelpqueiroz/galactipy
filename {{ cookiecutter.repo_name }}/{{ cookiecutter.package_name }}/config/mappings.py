@@ -1,7 +1,5 @@
 """Mapping objects for the {{ cookiecutter.project_name }} configuration manager."""
 
-from typing import Self
-
 from enum import Enum
 
 
@@ -19,7 +17,7 @@ class ConfigurationDomain(Enum):
     SECRETS = "secrets"
 
     @classmethod
-    def from_flag(cls, *, is_secret: bool) -> Self:
+    def from_flag(cls, *, is_secret: bool) -> "ConfigurationDomain":
         """Return the appropriate domain based on the secret flag.
 
         Parameters

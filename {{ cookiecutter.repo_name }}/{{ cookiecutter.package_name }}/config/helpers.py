@@ -9,9 +9,12 @@ from {{ cookiecutter.package_name }}.config.manager import AppManager
 if TYPE_CHECKING:
     from orbittings import Nucleus
 
+    from {{ cookiecutter.package_name }}.config.mappings import ConfigurationDomain
+
 
 def resolve_app_manager(
-    domain: Literal["settings", "secrets"], custom_path: Path | None = None
+    domain: Literal["settings", "secrets"] | "ConfigurationDomain",
+    custom_path: Path | None = None,
 ) -> "Nucleus":
 {%- if cookiecutter.docstring_style != 'other' %}
     """Resolve the Orbittings Manager to be used for other operations.

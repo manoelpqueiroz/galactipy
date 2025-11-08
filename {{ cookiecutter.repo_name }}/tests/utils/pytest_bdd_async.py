@@ -24,7 +24,9 @@ class AsyncStepConverter:
                 "event_loop", inspect.Parameter.POSITIONAL_OR_KEYWORD
             )
             parameters.append(event_loop_param)
-            step_func.__signature__ = signature.replace(parameters=parameters)
+            setattr(
+                step_func, "__signature__", signature.replace(parameters=parameters)
+            )
 
         @wraps(step_func)
         def sync_wrapper(*args, **kwargs):

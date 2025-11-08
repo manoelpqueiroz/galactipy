@@ -345,6 +345,13 @@ check_untyped_defs = true
 warn_return_any = true
 strict_equality = true
 
+{% if cookiecutter.app_type != 'bare_repo' -%}
+[[tool.mypy.overrides]]
+module = "{{ cookiecutter.package_name }}.cli.*"
+
+implicit_optional = true
+
+{% endif -%}
 [[tool.mypy.overrides]]
 module = "tests"
 disable_error_code = ["import", "name-defined", "attr-defined"]
