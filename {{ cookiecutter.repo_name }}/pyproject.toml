@@ -1,5 +1,7 @@
-# Poetry pyproject.toml: https://python-poetry.org/docs/pyproject/
+# Pyproject configuration file
 [project]
+# General configuration
+# https://packaging.python.org/en/latest/guides/writing-pyproject-toml/
 name = "{{ cookiecutter.repo_name }}"
 description = "{{ cookiecutter.project_description }}."
 {%- if cookiecutter.licence == 'nos' %}
@@ -38,15 +40,16 @@ build-backend = "poetry_dynamic_versioning.backend"
 
 
 [tool.poetry]
+# Poetry configuration
+# https://python-poetry.org/docs/pyproject/
 requires-poetry = ">=2.0"
-# Placeholder for poetry-dynamic-versioning, do not change:
 # https://github.com/mtkennerly/poetry-dynamic-versioning#installation
 packages = [{% raw %}{{% endraw %} include = "{{ cookiecutter.package_name }}" {% raw %}}{% endraw %}]
 
-# Pypi classifiers: https://pypi.org/classifiers/
+# Pypi classifiers
+# https://pypi.org/classifiers/
 classifiers = [ # UPDATEME with additional classifiers
   "Development Status :: 1 - Planning",
-  "Intended Audience :: Developers",
   "Operating System :: OS Independent",
   "Topic :: Software Development :: Libraries :: Python Modules",
 {%- if cookiecutter.app_type != 'bare_repo' %}
@@ -56,7 +59,8 @@ classifiers = [ # UPDATEME with additional classifiers
   "Private :: Do Not Upload", # TODO Remove classifier to allow publishing on PyPI
 ]
 
-version = "0.0.0"  # Keep this key as the last for `tool.poetry`, as it is used by `poetry-dynamic-versioning`
+# Placeholder for poetry-dynamic-versioning, DO NOT CHANGE
+version = "0.0.0"  # Keep this key as the last for `tool.poetry`
 
 
 [tool.poetry.dependencies]
@@ -68,8 +72,8 @@ art = "^6.5.0"  # UPDATEME by removing when no longer needed
 {%- endif %}
 {%- if cookiecutter.app_type != 'bare_repo' %}
 
-click = "~8.1.0" # FYI Click shouldn't require explicit declaration, but versions 8.2+ break Typer's behaviour
 typer = { extras = ["all"], version = "^0.20.0" }
+click = "~8.1.0" # FYI Click shouldn't require explicit declaration, but versions 8.2+ break Typer's behaviour
 rich = "^14.2.0"
 
 orbittings = "^0.2.0"
@@ -79,12 +83,15 @@ nebulog = "^0.1.0"
 {%- endif %}
 
 [tool.poetry.group.dev.dependencies]
+pre-commit = "^4.3.0"
 invoke = "^2.2.1"
+ruff = "^0.14.4"
+
+bandit = "^1.8.6"
+
 mypy = { extras = ["reports"], version = "^1.18.2" }
 mypy-extensions = "^1.1.0"
-pre-commit = "^4.3.0"
-bandit = "^1.8.6"
-ruff = "^0.14.4"
+
 pytest = "^8.4.2"
 {%- if cookiecutter.use_bdd %}
 pytest-bdd = "^8.1.0"
@@ -373,26 +380,24 @@ disable_error_code = ["import", "name-defined", "attr-defined"]
 [tool.pytest.ini_options]
 # https://github.com/pytest-dev/pytest
 # https://docs.pytest.org/en/stable/customize.html#pyproject-toml
-# Directories that are not visited by pytest collector:
-norecursedirs = [
-  "hooks",
-  "*.egg",
-  ".eggs",
-  "dist",
-  "build",
-  "docs",
-  ".tox",
-  ".git",
-  "_darcs",
-  "node_modules",
-  "venv",
-  "__pycache__",
+# Extra options:
+addopts = [
+  "--strict-markers",
+  "--tb=short",
+  "--doctest-modules",
+  "--doctest-continue-on-failure",
+  "--pikachu",
+  "--cov={{ cookiecutter.package_name }}",
+  "--cov-config=pyproject.toml",
+  "--junitxml=test_report.xml",
+{%- if cookiecutter.use_bdd %}
+  "--bdd-report=bdd/report.html",
+{%- endif %}
+{%- if cookiecutter.app_type == 'tui' or cookiecutter.app_type == 'hybrid' %}
+  "--asyncio-mode=auto",
+{%- endif %}
 ]
-doctest_optionflags = [
-  "NUMBER",
-  "NORMALIZE_WHITESPACE",
-  "IGNORE_EXCEPTION_DETAIL",
-]
+
 markers = [
   "backend",
   "frontend",
@@ -416,28 +421,31 @@ markers = [
   "networking",
   "monitoring",
 ] # UPDATEME with your own custom markers
+
+# Directories that are not visited by pytest collector:
+norecursedirs = [
+  "hooks",
+  "*.egg",
+  ".eggs",
+  "dist",
+  "build",
+  "docs",
+  ".tox",
+  ".git",
+  "_darcs",
+  "node_modules",
+  "venv",
+  "__pycache__",
+]
+doctest_optionflags = [
+  "NUMBER",
+  "NORMALIZE_WHITESPACE",
+  "IGNORE_EXCEPTION_DETAIL",
+]
 timeout = 10
 {%- if cookiecutter.use_bdd %}
 bdd_features_base_dir = "tests/features/"
 {%- endif %}
-
-# Extra options:
-addopts = [
-  "--strict-markers",
-  "--tb=short",
-  "--doctest-modules",
-  "--doctest-continue-on-failure",
-  "--pikachu",
-  "--cov={{ cookiecutter.package_name }}",
-  "--cov-config=pyproject.toml",
-  "--junitxml=test_report.xml",
-{%- if cookiecutter.use_bdd %}
-  "--bdd-report=bdd/report.html",
-{%- endif %}
-{%- if cookiecutter.app_type == 'tui' or cookiecutter.app_type == 'hybrid' %}
-  "--asyncio-mode=auto",
-{%- endif %}
-]
 
 
 [tool.coverage.run]

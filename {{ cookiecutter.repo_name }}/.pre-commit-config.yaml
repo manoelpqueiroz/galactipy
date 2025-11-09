@@ -1,3 +1,5 @@
+# Pre-commit hooks
+# https://pre-commit.com/
 default_stages: [pre-commit, pre-push]
 
 repos:

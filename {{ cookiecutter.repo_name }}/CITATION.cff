@@ -1,6 +1,5 @@
 # CITATION.cff files can be generated and updated with cffinit:
 # https://citation-file-format.github.io/cff-initializer-javascript/#/
-
 cff-version: 1.2.0
 title: {{ cookiecutter.project_name }}
 message: >-
