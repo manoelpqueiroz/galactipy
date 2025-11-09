@@ -3,6 +3,8 @@
 # https://textual.textualize.io/tutorial/
 """Assemble a Textual application for a terminal user interface."""
 
+from typing import ClassVar
+
 from pathlib import Path
 
 from nebulog import logger
@@ -40,19 +42,19 @@ class TerminalApp(App):
     """Textual app to serve as the {{ cookiecutter.project_name }} interface."""
 {%- endif %}
 
-    CSS_PATH = [
+    CSS_PATH: ClassVar = [
         CSS_DIRECTORY / "demo.tcss",  # UPDATEME by removing when no longer needed
         CSS_DIRECTORY / "noctis.tcss",
     ]
 
-    def __init__(self, theme: str):
+    def __init__(self, theme: str) -> None:
         """Initialise the Terminal User Interface."""
         super().__init__()
 
         logger.info("Launching {{ cookiecutter.project_name }} TUI", theme=theme)
         self.default_theme = theme
 
-    def compose(self) -> ComposeResult:
+    def compose(self) -> ComposeResult:  # noqa: PLR6301
         """Create child widgets for the app."""
         # UPDATEME by replacing with your own widgets
         yield Label(text2art("{{ cookiecutter.project_name }}", "tarty1"), classes="title")

@@ -26,7 +26,7 @@
 [![BDD][bbbd1]][bbbd2]
 {%- endif %}
 [![Code style: Ruff][bfo1]][bfo2]
-{%- if cookiecutter.docstring_style in ['numpy', 'google', 'pep287'] %}
+{%- if cookiecutter.docstring_style in ['numpy', 'google', 'sphinx'] %}
 [![Docstrings][bli1]][bli2]
 {%- endif %}
 {%- if cookiecutter.commit_convention == 'gitmoji' %}
@@ -393,8 +393,8 @@ This project was generated with [Galactipy][bp7].
 [bli1]: https://img.shields.io/badge/docstrings-numpydoc-4dabcf?style=for-the-badge&labelColor=4d77cf
 {%- elif cookiecutter.docstring_style == 'google' %}
 [bli1]: https://img.shields.io/badge/docstrings-google-ffbb00?style=for-the-badge&labelColor=00ac47
-{%- elif cookiecutter.docstring_style == 'pep287' %}
-[bli1]: https://img.shields.io/badge/docstrings-pep287-FFD43B?style=for-the-badge&labelColor=3776ab
+{%- elif cookiecutter.docstring_style == 'sphinx' %}
+[bli1]: https://img.shields.io/badge/docstrings-sphinx%2Frest-ce3f31?style=for-the-badge&labelColor=0a507a
 {%- endif %}
 [bli2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#docstring-convention
 

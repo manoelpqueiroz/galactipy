@@ -6,7 +6,7 @@
 
 ### Project Mission
 
-<!-- UPDATEME with your project mission -->
+<!-- DEFINE your project mission -->
 
 ### How to Get Involved
 

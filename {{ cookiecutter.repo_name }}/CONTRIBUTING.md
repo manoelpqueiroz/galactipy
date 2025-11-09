@@ -16,7 +16,7 @@
 {%- set docstring_mapping = {
   'numpy': 'numpydoc',
   'google': 'Google Python Style',
-  'pep287': 'PEP 257',
+  'sphinx': 'Sphinx Style',
   'other': 'custom'
 } %}
 {%- set roadmap_item = roadmap_mapping[cookiecutter.scm_platform] %}
@@ -218,7 +218,7 @@ should help:
     for the application;
 {%- endif %}
 {%- else %}
-<!-- UPDATEME with the basic dependencies of your project contributors should be familiar with -->
+<!-- DEFINE the basic dependencies your project contributors should be familiar with -->
 {%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
   - Review the [`.gitlab-ci.yml`][topic1] file
@@ -1527,11 +1527,11 @@ might be selected
 for the next version:
 
 - Update **MICRO** versions when:
-<!-- UPDATEME with common developments related to micro versions -->
+<!-- DEFINE common developments related to micro versions -->
 - Update **MESO** versions when:
-<!-- UPDATEME with common developments related to meso versions -->
+<!-- DEFINE common developments related to meso versions -->
 - Update **MACRO** versions when:
-<!-- UPDATEME with common developments related to macro versions -->
+<!-- DEFINE common developments related to macro versions -->
 
 ### Branch Organization
 
@@ -2017,7 +2017,7 @@ for docstrings:
   are not obliged
   to define docstrings.
 {% else -%}
-<!-- UPDATEME with your docstring convention details and usage guidelines -->
+<!-- DEFINE your docstring convention details and usage guidelines -->
 We choose to write our docstrings
 using a custom standard.
 Please be aware
@@ -2709,7 +2709,7 @@ _The best good first issues are the ones you open yourself._
 ## :speaking_head: Proposing Changes as a Developer
 
 {% if cookiecutter.app_type in ['tui', 'hybrid'] -%}
-<!-- UPDATEME with context specific to your project -->
+<!-- DEFINE the context and purposes of your library -->
 {{ cookiecutter.project_name }} is a Terminal User Interface (TUI) application,
 paired with a Command-line Interface (CLI)
 for performing operations
@@ -2769,7 +2769,7 @@ Code maintenance within {{ cookiecutter.project_name }} itself encompasses:
   local development
   with [Invoke][changes6].
 {% elif cookiecutter.app_type == 'cli' -%}
-<!-- UPDATEME with context specific to your project -->
+<!-- DEFINE the context and purposes of your library -->
 {{ cookiecutter.project_name }} is a Command-line Interface (CLI) application
 for performing operations
 entirely from your terminal.
@@ -2815,7 +2815,7 @@ Code maintenance within {{ cookiecutter.project_name }} itself encompasses:
   local development
   with [Invoke][changes6].
 {%- else %}
-<!-- UPDATEME with context specific to your project, detailing the main modules for code maintenance and their purpose -->
+<!-- DEFINE the context surrounding your library, detailing the main modules for code maintenance and their purpose -->
 {%- endif %}
 
 Outside this set of code contributions,
@@ -3171,7 +3171,7 @@ A non-exhaustive list of steps to consider:
   the user interface?
 {%- endif %}
 {%- else %}
-<!-- UPDATEME with context specific to your project -->
+<!-- DEFINE common checks developers should make related specifically to your project's public API -->
 {%- endif %}
 
 #### Test Markers
@@ -3223,7 +3223,7 @@ do so through a [Project Policy Proposal][road1].
 
 #### Feature Flags
 
-<!-- UPDATEME with guidelines on how to implement and handle feature flags -->
+<!-- DEFINE the guidelines on how to implement and handle feature flags -->
 
 ### {{ cookiecutter.__mr_term }} Review Process
 
@@ -5439,8 +5439,8 @@ what we are doing matters!
 [style1a]: https://numpydoc.readthedocs.io/en/latest/format.html
 {%- elif cookiecutter.docstring_style == 'google' %}
 [style1a]: https://google.github.io/styleguide/pyguide.html#s3.8-comments-and-docstrings
-{%- elif cookiecutter.docstring_style == 'pep287' %}
-[style1a]: https://peps.python.org/pep-0257/
+{%- elif cookiecutter.docstring_style == 'sphinx' %}
+[style1a]: https://sphinx-rtd-tutorial.readthedocs.io/en/latest/docstrings.html
 {%- endif %}
 [style2]: https://sembr.org/
 [style3]: https://sive.rs/1s <!-- codespell:ignore -->

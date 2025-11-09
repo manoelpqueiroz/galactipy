@@ -9,7 +9,10 @@ from nebulog import logger
 import typer
 
 from {{ cookiecutter.package_name }}.cli.helpers import pretty_print_setting
-from {{ cookiecutter.package_name }}.config import resolve_app_manager
+from {{ cookiecutter.package_name }}.config import (
+    ConfigurationDomain,
+    resolve_app_manager,
+)
 from {{ cookiecutter.package_name }}.logging import setup_app_logging
 
 config_get_app = typer.Typer(no_args_is_help=True)
@@ -31,17 +34,18 @@ def get(
             help=":lock: Retrieve configuration from the secret manager instead.",
         ),
     ] = False,
-):
+) -> None:
     """:inbox_tray: Retrieve a key from the configuration file."""
     setup_app_logging(debug=False)
+    domain = ConfigurationDomain.from_flag(is_secret=secret)
 
     logger.info("Retrieving configuration key via CLI", key=key, is_secret=secret)
 
     if path is not None:  # pragma: no cover
         logger.info("Using custom configuration file", config=path)
 
-    config_type, APP_MANAGER = resolve_app_manager(secret, path)
+    app_manager = resolve_app_manager(domain, path)
 
-    pretty_print_setting(APP_MANAGER, key, config_type)
+    pretty_print_setting(app_manager, key, domain.value)
 
     logger.debug("{{ cookiecutter.project_name }} exited successfully")

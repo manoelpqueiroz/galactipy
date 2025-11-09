@@ -9,7 +9,10 @@ from nebulog import logger
 import typer
 
 from {{ cookiecutter.package_name }}.cli.helpers import BasicConverter as Text
-from {{ cookiecutter.package_name }}.config import resolve_app_manager
+from {{ cookiecutter.package_name }}.config import (
+    ConfigurationDomain,
+    resolve_app_manager,
+)
 from {{ cookiecutter.package_name }}.logging import setup_app_logging
 
 config_set_app = typer.Typer(no_args_is_help=True)
@@ -47,9 +50,10 @@ def set_command(
             help=":lock: Store configuration in the secret manager instead.",
         ),
     ] = False,
-):
+) -> None:
     """Store a key in the configuration file."""
     setup_app_logging(debug=False)
+    domain = ConfigurationDomain.from_flag(is_secret=secret)
 
     logger.info(
         "Storing configuration key via CLI",
@@ -61,14 +65,14 @@ def set_command(
     if path is not None:  # pragma: no cover
         logger.info("Using custom configuration file", config=path)
 
-    config_type, APP_MANAGER = resolve_app_manager(secret, path)
+    app_manager = resolve_app_manager(domain, path)
 
     if value.output is None:
         typer.echo(f'Could not parse the value "{value.input}"', err=True)
 
         raise typer.Exit(1)
 
-    APP_MANAGER[config_type, key] = value.output
-    APP_MANAGER.save(config_type)
+    app_manager[domain.value, key] = value.output
+    app_manager.save(domain.value)
 
     logger.debug("{{ cookiecutter.project_name }} exited successfully")

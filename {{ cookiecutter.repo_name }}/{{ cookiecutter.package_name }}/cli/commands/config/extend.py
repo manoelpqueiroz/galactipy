@@ -9,7 +9,10 @@ from nebulog import logger
 import typer
 
 from {{ cookiecutter.package_name }}.cli.helpers import BasicConverter as Text
-from {{ cookiecutter.package_name }}.config import resolve_app_manager
+from {{ cookiecutter.package_name }}.config import (
+    ConfigurationDomain,
+    resolve_app_manager,
+)
 from {{ cookiecutter.package_name }}.logging import setup_app_logging
 
 config_extend_app = typer.Typer(no_args_is_help=True)
@@ -61,9 +64,10 @@ def extend_command(
             ),
         ),
     ] = False,
-):
+) -> None:
     """Extend an array key in the configuration file."""
     setup_app_logging(debug=False)
+    domain = ConfigurationDomain.from_flag(is_secret=secret)
 
     logger.info(
         "Extending array key via CLI", key=key, value=value.output, is_secret=secret
@@ -72,19 +76,19 @@ def extend_command(
     if path is not None:  # pragma: no cover
         logger.info("Using custom configuration file", config=path)
 
-    config_type, APP_MANAGER = resolve_app_manager(secret, path)
+    app_manager = resolve_app_manager(domain, path)
 
     if value.output is None:
         typer.echo(f'Could not parse the value "{value.input}"', err=True)
 
         raise typer.Exit(1)
 
-    current_setting = APP_MANAGER.get(f"{config_type}.{key}")
+    current_setting = app_manager.get(f"{domain.value}.{key}")
 
     if current_setting is None and create:
-        APP_MANAGER[config_type, key] = [value.output]
+        app_manager[domain.value, key] = [value.output]
 
-        APP_MANAGER.save(config_type)
+        app_manager.save(domain.value)
         exit_code = 0
 
     elif current_setting is None:
@@ -97,9 +101,9 @@ def extend_command(
 
     elif isinstance(current_setting, list):
         current_setting.append(value.output)
-        APP_MANAGER[config_type, key] = current_setting
+        app_manager[domain.value, key] = current_setting
 
-        APP_MANAGER.save(config_type)
+        app_manager.save(domain.value)
         exit_code = 0
 
     else:

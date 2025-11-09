@@ -1,4 +1,6 @@
+{%- if cookiecutter.use_bdd %}
 from ast import literal_eval
+{%- endif %}
 
 from typer.testing import CliRunner
 
@@ -11,12 +13,10 @@ from pytest_bdd import given, parsers, scenario, then, when
 import pytest
 {%- endif %}
 
-from {{ cookiecutter.package_name }}.cli.commands.config import (
-    config_extend_app,
-    config_get_app,
-    config_set_app,
-    config_unset_app,
-)
+from {{ cookiecutter.package_name }}.cli.commands.config.extend import config_extend_app
+from {{ cookiecutter.package_name }}.cli.commands.config.get import config_get_app
+from {{ cookiecutter.package_name }}.cli.commands.config.set import config_set_app
+from {{ cookiecutter.package_name }}.cli.commands.config.unset import config_unset_app
 {% if cookiecutter.use_bdd -%}
 from tests.utils.parsers import boolean_parser
 
@@ -81,11 +81,7 @@ def test_get_individual_value():
     )
 )
 def set_individual_test_key(sandbox_manager, key, value, value_type):
-    if value_type == "string":
-        saved_value = value
-
-    else:
-        saved_value = literal_eval(value)
+    saved_value = value if value_type == "string" else literal_eval(value)
 
     sandbox_manager["settings", key] = saved_value
 
@@ -487,9 +483,9 @@ class TestGetCommand:
     @pytest.mark.parametrize(
         ("value", "output"),
         (
-            ("somevalue", "'somevalue'"),
-            ([1, 2, "a"], "[1, 2, 'a']"),
-            ({"a": 1, "b": 2}, "{'a': 1, 'b': 2}"),
+            ["somevalue", "'somevalue'"],
+            [[1, 2, "a"], "[1, 2, 'a']"],
+            [{"a": 1, "b": 2}, "{'a': 1, 'b': 2}"],
         ),
     )
     def test_get_individual_value(
@@ -512,7 +508,7 @@ class TestGetCommand:
 
     @pytest.mark.standard
     def test_get_invalid_value(self, setup_sample_manager):
-        manager, file = setup_sample_manager.values()
+        _, file = setup_sample_manager.values()
 
         results = runner.invoke(config_get_app, args=["notest", "--path", file])
 
@@ -762,7 +758,6 @@ class TestSetCommand:
             "{1, 2",
             "['a', 'b'",
             "('a', 'b'",
-            "{'a', 'b'",
             "{'a', 'b'",
             "{'a': 0",
         ),

@@ -33,7 +33,7 @@
   "docstring_style": [
     "numpy",
     "google",
-    "pep287",
+    "sphinx",
     "other"
   ],
   "docstring_length": "{{ cookiecutter.line_length }}",
@@ -82,7 +82,7 @@
       "__prompt__": "Which docstring style would you like to use?",
       "numpy": "Numpydoc",
       "google": "Google Python Style",
-      "pep287": "PEP 287 (reST Docstrings)",
+      "sphinx": "Sphinx (reST Docstrings)",
       "other": "Other"
     },
     "docstring_length": "Docstring maximum line length",
