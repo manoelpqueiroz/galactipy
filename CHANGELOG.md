@@ -1,3 +1,41 @@
+## 0.24.0 (2025-11-09)
+
+### :milky_way: Components (2 changes)
+
+- [:sparkles: Add automatic copyright inclusion as a pre-commit hook](galactipy/galactipy@caf7ad9bc6f75b315a146e38f35e30a74b5b6668) ([merge request](galactipy/galactipy!97))
+- [:sparkles: Add licence header file for the template](galactipy/galactipy@7c5b6828cab5da666a3748268d39d11c1f0a6113) ([merge request](galactipy/galactipy!97))
+
+### :wrench: Fixes & Refactoring (2 changes)
+
+- [:rotating_light: Fix Invoke Ruff formatting](galactipy/galactipy@b3f8bec079a2d63ed9d92a2e9318c5a08f3a0cfc) ([merge request](galactipy/galactipy!97))
+- [:rotating_light: Fix Ruff linter warnings for other application types](galactipy/galactipy@c8b2148cadac1983e6b19979a9c4c050ff6bfb87) ([merge request](galactipy/galactipy!97))
+
+### :package: Build System & CI/CD (1 change)
+
+- [:white_check_mark: Update file removal tests for licence headers](galactipy/galactipy@5e7b95691c7f42b29d9763445706a048dfc8a213) ([merge request](galactipy/galactipy!97))
+
+### :construction_site: Template Internals (11 changes)
+
+- [:wrench: Modify conditional sections for bare repo apps](galactipy/galactipy@176d6a30d6217c983009fb2942eb4333d8436f5c) ([merge request](galactipy/galactipy!97))
+- [:rotating_light: Fix template mypy warnings](galactipy/galactipy@de031be463d8f6a579ca7d9e62e99bab23173a9b) ([merge request](galactipy/galactipy!97))
+- [:wrench: Apply separate tag for Galactipy-induced hacks](galactipy/galactipy@ac3585742a4069c8322292d5130a28c06613a6f9) ([merge request](galactipy/galactipy!97))
+- [:rotating_light: Fix Ruff linter warnings for the template](galactipy/galactipy@f15117fe82034f1632cf25911f3604c0abac6865) ([merge request](galactipy/galactipy!97))
+- [:wrench: Perform final adjustments to template pre-commit hooks](galactipy/galactipy@cbeca7cf90c4c9bd8afc584c482ad8c9bb8b0189) ([merge request](galactipy/galactipy!97))
+- [:wrench: Review Ruff rules](galactipy/galactipy@1c51766c172f1ae55eca1468b65cac0dd77f5574) ([merge request](galactipy/galactipy!97))
+- [:wrench: Rename PEP 287 docstring option](galactipy/galactipy@87052fc4644b78f421cba7d95ae43d6baef9092a) ([merge request](galactipy/galactipy!97))
+- [:wrench: Review Pytest configuration for the template](galactipy/galactipy@8221322edfc08b5c7773fdd3db5e6545be5b8b5d) ([merge request](galactipy/galactipy!97))
+- [:safety_vest: Add Poetry and pre-commit update hooks](galactipy/galactipy@68c08b21dfb3e1b319c6c30c239aa2b3686c5054) ([merge request](galactipy/galactipy!97))
+- [:construction_worker: Rewrite GitLab CI for the template](galactipy/galactipy@0fd3722f4ba601578a209ba6313377ba456918e3) ([merge request](galactipy/galactipy!97))
+- [:wrench: Segregate UPDATEME tags](galactipy/galactipy@6e8e99daaf42039c8df9b96a5390f5e953c0e609) ([merge request](galactipy/galactipy!97))
+
+### :pencil: Documentation (1 change)
+
+- [:wrench: Point to poetry-dynamic-versioning documentation](galactipy/galactipy@9cd3b9994d7a794fafc7cce30ba9ce2065c933fb) ([merge request](galactipy/galactipy!97))
+
+### :arrow_up: Dependency Updates (1 change)
+
+- [:arrow_up: Update template dependencies to latest compatible versions](galactipy/galactipy@7061f613d6cbfdbaa61d30ae020863d17d3c6947) ([merge request](galactipy/galactipy!97))
+
 ## 0.23.0 (2025-11-07)
 
 ### :wrench: Fixes & Refactoring (4 changes)
