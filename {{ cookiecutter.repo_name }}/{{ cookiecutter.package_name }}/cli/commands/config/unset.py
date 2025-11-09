@@ -8,10 +8,7 @@ from nebulog import logger
 
 import typer
 
-from {{ cookiecutter.package_name }}.config import (
-    ConfigurationDomain,
-    resolve_app_manager,
-)
+from {{ cookiecutter.package_name }}.config import ConfigurationDomain, resolve_app_manager
 from {{ cookiecutter.package_name }}.logging import setup_app_logging
 
 config_unset_app = typer.Typer(no_args_is_help=True)

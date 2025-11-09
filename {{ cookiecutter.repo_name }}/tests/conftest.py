@@ -25,8 +25,7 @@ def mock_config_path(mocker, tmp_path):
     config_dir.mkdir(parents=True)
 
     mocker.patch(
-        "{{ cookiecutter.package_name }}.config.manager.get_default_config",
-        return_value=config_dir
+        "{{ cookiecutter.package_name }}.config.manager.get_default_config", return_value=config_dir
     )
 
     return config_dir
@@ -74,9 +73,7 @@ def event_loop():
     yield loop
 
     loop.close()
-
-
-{% else -%}
+{%- else -%}
 @pytest.fixture
 def setup_sample_manager(generate_test_config):
     manager = generate_test_config["instance"]
@@ -95,5 +92,5 @@ def sample_log():
     return (
         "2025-10-23 18:56:00.000 | 0:00:00.000000 | {} | test.py:{}    | This is a "
         "test message for the parser      {}"
-)
+    )
 {%- endif %}

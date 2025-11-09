@@ -5,8 +5,7 @@ from pytest_bdd import given, parsers, scenario, then, when
 
 from tests.helpers import AppInterface
 from tests.utils import async_step
-
-{% else -%}
+{%- else -%}
 import pytest
 
 from {{ cookiecutter.package_name }}.tui.main_window import TerminalApp

@@ -5,7 +5,8 @@
 """{{ cookiecutter.project_description }}."""
 
 from typing import Annotated
-{% if cookiecutter.app_type == 'tui' %}
+{%- if cookiecutter.app_type == 'tui' %}
+
 from pathlib import Path
 
 from nebulog import logger
@@ -16,8 +17,8 @@ from rich.console import Console
 
 from {{ cookiecutter.package_name }} import __version__
 from {{ cookiecutter.package_name }}.cli.commands.config import config_app
-from {{ cookiecutter.package_name }}.cli.styling import AppCustomThemes
 {%- if cookiecutter.app_type == 'tui' %}
+from {{ cookiecutter.package_name }}.cli.styling import AppCustomThemes
 from {{ cookiecutter.package_name }}.config import resolve_app_manager
 from {{ cookiecutter.package_name }}.logging import setup_app_logging
 from {{ cookiecutter.package_name }}.tui.main_window import TerminalApp
@@ -25,10 +26,12 @@ from {{ cookiecutter.package_name }}.tui.main_window import TerminalApp
 app = typer.Typer(rich_markup_mode="rich")
 {%- elif cookiecutter.app_type == 'hybrid' %}
 from {{ cookiecutter.package_name }}.cli.commands.launch import launch_app
+from {{ cookiecutter.package_name }}.cli.styling import AppCustomThemes
 
 app = typer.Typer(no_args_is_help=True, rich_markup_mode="rich")
 app.add_typer(launch_app)
 {%- elif cookiecutter.app_type == 'cli' %}
+from {{ cookiecutter.package_name }}.cli.styling import AppCustomThemes
 
 app = typer.Typer(no_args_is_help=True, rich_markup_mode="rich")
 {%- endif %}
@@ -39,8 +42,7 @@ def version_callback(print_version: bool) -> None:
     """Print the program version in a Rich console with the Noctis theme."""
     if print_version:
         Console(theme=AppCustomThemes.NOCTIS).print(
-            ":package:[declaration]{{ cookiecutter.project_name }}[/] "
-            f"[bold fstring]{__version__}[/]"
+            f":package:[declaration]{{ cookiecutter.project_name }}[/] [bold fstring]{__version__}[/]"
         )
 
         raise typer.Exit
@@ -61,7 +63,7 @@ def main(
             ),
         ),
     ] = None,
-{% elif cookiecutter.app_type == 'hybrid' or cookiecutter.app_type == 'cli' -%}
+{%- elif cookiecutter.app_type == 'hybrid' or cookiecutter.app_type == 'cli' -%}
 @app.callback()
 def main(
 {%- endif %}

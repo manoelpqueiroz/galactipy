@@ -1,6 +1,6 @@
 """Helper functions for streamlining {{ cookiecutter.project_name }} functionality."""
 
-from typing import Literal, TYPE_CHECKING
+from typing import TYPE_CHECKING, Literal
 
 from pathlib import Path
 

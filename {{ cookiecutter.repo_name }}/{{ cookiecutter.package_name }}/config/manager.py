@@ -11,10 +11,7 @@ from {{ cookiecutter.package_name }}.config.constants import (
     generate_default_config_schema,
     get_default_config,
 )
-from {{ cookiecutter.package_name }}.config.mappings import (
-    ConfigurationDomain,
-    EnvvarPrefix,
-)
+from {{ cookiecutter.package_name }}.config.mappings import ConfigurationDomain, EnvvarPrefix
 
 
 class AppManager(Nucleus):

@@ -27,16 +27,18 @@ BIN_DIR = "bin" if IS_UNIX_OS else "Scripts"
 
 PROJECT_NAME = "{{ cookiecutter.repo_name }}"
 PACKAGE_NAME = "{{ cookiecutter.package_name }}"
-{%+ if cookiecutter.create_docker %}
+{%- if cookiecutter.create_docker %}
+
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 DOCKER_REGISTRY = "registry.gitlab.com"
 DEFAULT_DOCKER_REPOSITORY = f"{DOCKER_REGISTRY}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}"
 {%- else %}
+
 DEFAULT_DOCKER_REPOSITORY = "{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}"
 {%- endif %}
 DEFAULT_DOCKER_TAG = "latest"
 DEFAULT_DOCKER_IMAGE = f"{DEFAULT_DOCKER_REPOSITORY}:{DEFAULT_DOCKER_TAG}"
-{% endif %}
+{%- endif %}
 
 # Reusable command templates
 if IS_UNIX_OS:

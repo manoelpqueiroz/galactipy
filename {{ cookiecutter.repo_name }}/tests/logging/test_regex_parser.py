@@ -1,6 +1,6 @@
-{%- if cookiecutter.use_bdd %}
+{%- if cookiecutter.use_bdd -%}
 from pytest_bdd import parsers, scenario, then, when
-{% else -%}
+{%- else -%}
 import pytest
 {%- endif %}
 
@@ -56,7 +56,7 @@ def check_fourth_group(regex_groups, line):
 @then(parsers.parse('the fifth group is equal to "{message}"'))
 def check_fifth_group(regex_groups, message):
     assert regex_groups[4] == message
-{%- else %}
+{%- else -%}
 @pytest.mark.backend
 @pytest.mark.config
 @pytest.mark.standard

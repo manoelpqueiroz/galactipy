@@ -2,7 +2,7 @@ from typer.testing import CliRunner
 
 {% if cookiecutter.use_bdd -%}
 from pytest_bdd import scenario, then, when
-{% else -%}
+{%- else -%}
 import pytest
 {%- endif %}
 
@@ -36,7 +36,7 @@ def ensure_launch_tui(results):
 @then("the program exits without errors")
 def successful_termination(results):
     assert results["cli_run"].exit_code == 0
-{% else -%}
+{%- else -%}
 @pytest.mark.cli
 @pytest.mark.frontend
 @pytest.mark.standard

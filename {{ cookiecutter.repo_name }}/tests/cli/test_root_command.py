@@ -4,7 +4,7 @@ from typer.testing import CliRunner
 
 {% if cookiecutter.use_bdd -%}
 from pytest_bdd import parsers, scenario, then, when
-{% else -%}
+{%- else -%}
 import pytest
 {%- endif %}
 
