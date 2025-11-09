@@ -16,7 +16,7 @@ maintainers = [
   {% raw %}{{% endraw %} name = "{{ cookiecutter.maintainer }}", email = "{{ cookiecutter.email }}" {% raw %}}{% endraw %},
 ]
 # Keywords description https://python-poetry.org/docs/pyproject/#keywords
-keywords = []  # UPDATEME with relevant keywords
+keywords = []  # DEFINE the keywords for your project
 dynamic = ["version", "classifiers"]
 {%- if cookiecutter.app_type != 'bare_repo' %}
 
@@ -62,42 +62,43 @@ version = "0.0.0"  # Keep this key as the last for `tool.poetry`, as it is used 
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.minimal_python_version }}"
 {%+ if cookiecutter.app_type == 'tui' or cookiecutter.app_type == 'hybrid' %}
-textual = "^6.1.0"
+textual = "^6.5.0"
 art = "^6.5.0"  # UPDATEME by removing when no longer needed
 {%- endif %}
 {%+ if cookiecutter.app_type != 'bare_repo' %}
-click = "~8.1.0" # HACK Click shouldn't require explicit declaration, but versions 8.2+ break Typer's behaviour
-typer = { extras = ["all"], version = "^0.18.0" }
-rich = "^14.1.0"
+click = "~8.1.0" # FYI Click shouldn't require explicit declaration, but versions 8.2+ break Typer's behaviour
+typer = { extras = ["all"], version = "^0.20.0" }
+rich = "^14.2.0"
 
 orbittings = "^0.2.0"
-platformdirs = "^4.4.0"
+platformdirs = "^4.5.0"
 
 nebulog = "^0.1.0"
 {%- endif %}
 
 [tool.poetry.group.dev.dependencies]
-invoke = "^2.2.0"
-mypy = { extras = ["reports"], version = "^1.14.1" }
-mypy-extensions = "^1.0.0"
-pre-commit = "^4.1.0"
-bandit = "^1.8.2"
-ruff = "^0.13.1"
-pytest = "^8.3.4"
+invoke = "^2.2.1"
+mypy = { extras = ["reports"], version = "^1.18.2" }
+mypy-extensions = "^1.1.0"
+pre-commit = "^4.3.0"
+bandit = "^1.8.6"
+ruff = "^0.14.4"
+pytest = "^8.4.2"
 {%- if cookiecutter.use_bdd %}
 pytest-bdd = "^8.1.0"
+pytest-bdd-report = "^1.1.0"
 {%- endif %}
 {%- if cookiecutter.app_type == 'tui' or cookiecutter.app_type == 'hybrid' %}
-pytest-asyncio = "^1.0.0"
+pytest-asyncio = "^1.2.0"
 {%- endif %}
 pytest-html = "^4.1.1"
 pytest-cov = "^7.0.0"
-pytest-mock = "^3.14.0"
-pytest-timeout = "^2.3.1"
-pytest-benchmark = "^5.1.0"
-pytest-sugar = "^1.0.0"
+pytest-mock = "^3.15.1"
+pytest-timeout = "^2.4.0"
+pytest-benchmark = "^5.2.2"
+pytest-sugar = "^1.1.1"
 pytest-pikachu = "^1.0.0"
-coverage = "^7.6.10"
+coverage = "^7.11.1"
 {%+ if cookiecutter.__debug %}
 
 [tool.poetry.group.docs.dependencies]
@@ -114,12 +115,12 @@ poetry-plugin-up = "^0.9.0"
 poetry-plugin-bundle = "^1.5.0"
 
 [tool.poetry-dynamic-versioning]
+# https://github.com/mtkennerly/poetry-dynamic-versioning#configuration
 enable = true
 vcs = "git"
 style = "semver"
 metadata = false
 bump = { enable = true, index = 1 }
-
 
 {% if cookiecutter.commit_convention == 'conventional' -%}
 [tool.commitizen.types]
@@ -150,7 +151,9 @@ docstring-code-line-length = {{ cookiecutter.docstring_length }}
 skip-magic-trailing-comma = true
 
 [tool.ruff.lint]
+preview = true
 select = [ # UPDATEME with additional rules from https://docs.astral.sh/ruff/rules/
+  "A",
   "F",
   "E",
   "W",
@@ -167,6 +170,7 @@ select = [ # UPDATEME with additional rules from https://docs.astral.sh/ruff/rul
   "C4",
   "PT",
   "TD",
+  "TC",
   "ANN",
   "ICN",
   "RET",
@@ -184,23 +188,36 @@ select = [ # UPDATEME with additional rules from https://docs.astral.sh/ruff/rul
   "TRY",
   "FLY",
   "YTT",
-  "CPY",
   "RUF",
+  "DOC",
+  "TRY",
+  "SLOT",
+  "PERF",
+  "FURB",
+{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+  "ASYNC",
+{%- endif %}
 ]
-ignore = ["D200"]
+ignore = ["D200", "TD004"]
 task-tags = [
   "BUG",
   "HACK",
+  "FYI",
   "FIXME",
   "FIXIT",
   "FIX",
   "NEEDSWORK",
   "UPDATEME",
+  "DEFINE",
   "TODO",
   "REFACTOR",
-] # UPDATEME by modifying or removing this setting after addressing all UPDATEMEs
+] # UPDATEME by modifying or removing this setting after addressing all UPDATEMEs and DEFINEs
 
 [tool.ruff.lint.per-file-ignores]
+{%- if cookiecutter.app_type != 'bare_repo' %}
+"{{ cookiecutter.package_name }}/cli/commands/**.py" = ["FBT", "ARG001", "RUF013"]
+"text_tools.py" = ["B019"]
+{%- endif %}
 "tests/**.py" = [
   "D100",
   "D101",
@@ -212,11 +229,14 @@ task-tags = [
   "ANN002",
   "ANN003",
   "ANN201",
+  "B010",
   "PLR2004",
-]
-{%- if cookiecutter.app_type != 'bare_repo' %}
-"__main__.py" = ["D100", "D101"]
+{%- if not cookiecutter.use_bdd %}
+  "PLR0913",
+  "PLR0917",
+  "PLR6301",
 {%- endif %}
+]
 "tasks.py" = ["FBT", "ANN002", "ANN003"]
 
 [tool.ruff.lint.flake8-annotations]
@@ -226,11 +246,17 @@ suppress-dummy-args = true
 [tool.ruff.lint.flake8-pytest-style]
 fixture-parentheses = false
 mark-parentheses = false
+{%- if not cookiecutter.use_bdd %}
 parametrize-values-type = "tuple"
 parametrize-values-row-type = "list"
+{%- endif %}
 
 [tool.ruff.lint.flake8-tidy-imports]
 ban-relative-imports = "all"
+
+[tool.ruff.lint.flake8-type-checking]
+exempt-modules = ["typing", "typing_extensions", "collections", "pathlib"]
+quote-annotations = true
 
 [tool.ruff.lint.pycodestyle]
 max-line-length = {{ cookiecutter.line_length }}
@@ -238,10 +264,10 @@ max-doc-length = {{ cookiecutter.docstring_length }}
 {%+ if cookiecutter.docstring_style != 'other' %}
 [tool.ruff.lint.pydocstyle]
 convention = "{{ cookiecutter.docstring_style }}"
-{%+ endif %}
-[tool.ruff.lint.flake8-copyright]
-author = "{{ cookiecutter.copyright }}"
 
+[tool.ruff.lint.pydoclint]
+ignore-one-line-docstrings = true
+{%+ endif %}
 [tool.ruff.lint.pylint]
 max-bool-expr = 3
 
@@ -329,6 +355,13 @@ check_untyped_defs = true
 warn_return_any = true
 strict_equality = true
 
+{% if cookiecutter.app_type != 'bare_repo' -%}
+[[tool.mypy.overrides]]
+module = "{{ cookiecutter.package_name }}.cli.*"
+
+implicit_optional = true
+
+{% endif -%}
 [[tool.mypy.overrides]]
 module = "tests"
 disable_error_code = ["import", "name-defined", "attr-defined"]
@@ -347,6 +380,9 @@ norecursedirs = [
   "docs",
   ".tox",
   ".git",
+  "_darcs",
+  "node_modules",
+  "venv",
   "__pycache__",
 ]
 doctest_optionflags = [
@@ -392,6 +428,9 @@ addopts = [
   "--cov={{ cookiecutter.package_name }}",
   "--cov-config=pyproject.toml",
   "--junitxml=test_report.xml",
+{%- if cookiecutter.use_bdd %}
+  "--bdd-report=bdd/report.html",
+{%- endif %}
 {%- if cookiecutter.app_type == 'tui' or cookiecutter.app_type == 'hybrid' %}
   "--asyncio-mode=auto",
 {%- endif %}

@@ -9,20 +9,22 @@ def licence_tree(tmp_path):
     licence_file = tmp_path / "LICENCE"
     licence_root = tmp_path / "_licences"
 
-    bulk_file_creation(
-        tmp_path,
-        _licences=[
-            "agpl3.txt",
-            "apache.txt",
-            "bsd3.txt",
-            "gpl3.txt",
-            "lgpl3.txt",
-            "mit.txt",
-            "mozilla.txt",
-        ],
-    )
+    header_file = tmp_path / ".licence_header.txt"
+    header_root = tmp_path / "_headers"
 
-    return tmp_path, licence_root, licence_file
+    licence_list = [
+        "agpl3.txt",
+        "apache.txt",
+        "bsd3.txt",
+        "gpl3.txt",
+        "lgpl3.txt",
+        "mit.txt",
+        "mozilla.txt",
+    ]
+
+    bulk_file_creation(tmp_path, _licences=licence_list, _headers=licence_list)
+
+    return tmp_path, licence_root, licence_file, header_root, header_file
 
 
 @pytest.fixture

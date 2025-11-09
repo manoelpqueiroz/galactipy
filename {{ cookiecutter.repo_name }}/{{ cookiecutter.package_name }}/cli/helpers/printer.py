@@ -1,3 +1,5 @@
+"""Helper functions designed to print unconventional types in Rich consoles."""
+
 from rich.pretty import pprint
 
 from dynaconf.utils.boxing import DynaBox

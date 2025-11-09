@@ -9,7 +9,7 @@ repos:
         exclude: ^{{ cookiecutter.repo_name }}/
       - id: end-of-file-fixer
         name: Fix End-of-files
-        exclude: (LICENCE|_licences|.svg)
+        exclude: (LICENCE|_licences|_headers|.svg)
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.14.3

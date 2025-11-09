@@ -13,11 +13,13 @@ There are alternatives to this implementation:
    Pydantic support for Typer.
 
 """
-from typing import Any
 
 from ast import literal_eval
 
 from nebulog import logger
+
+PrimitiveTypes = str | int | float | bool | list | tuple | dict
+NonBooleanPrimitives = str | int | float | list | tuple | dict
 
 
 class BasicConverter:
@@ -50,17 +52,10 @@ class BasicConverter:
 
     def __init__(self, value: str) -> None:
         """Initialise the converter, storing input value and converted output value."""
-        if not isinstance(value, str):  # pragma: no cover
-            msg = (
-                f"BasicConverter only accepts strings; got {type(value).__name__} "
-                "instead"
-            )
-            raise ValueError(msg)
-
         self.input = value
         self.output = self._convert_value(self.input)
 
-    def _convert_value(self, value: str) -> Any:
+    def _convert_value(self, value: str) -> PrimitiveTypes | None:
         """Parse a string into a boolean, numeric or container type."""
         if not value:  # Empty string
             return None
@@ -70,20 +65,21 @@ class BasicConverter:
 
         return self._parse_by_first_character(value)
 
-    def _parse_by_first_character(self, value: str) -> Any:
+    def _parse_by_first_character(self, value: str) -> NonBooleanPrimitives | None:
         """Parse a string by its first character, either a numeric or container type."""
         first_char = value[0]
 
         if first_char.isdigit() or first_char in self.NUMERIC_PREFIXES:
-            return self._parse_numeric_value(value)
+            return self.parse_numeric_value(value)
 
         if first_char in self.CONTAINER_PREFIXES:
-            return self._parse_container_value(value)
+            return self.parse_container_value(value)
 
         # Return as string if no other type matches
         return value
 
-    def _parse_numeric_value(self, value: str) -> int | float | None:
+    @staticmethod
+    def parse_numeric_value(value: str) -> str | int | float | None:
         """Parse a string into a numeric value, whether integer, float or scientific."""
         # Try integer first (more specific check)
         if "." not in value and "e" not in value.lower():
@@ -100,15 +96,20 @@ class BasicConverter:
         except ValueError:
             return value
 
-    def _parse_container_value(self, value: str) -> list | tuple | dict | None:
+    @staticmethod
+    def parse_container_value(value: str) -> list | tuple | dict | None:
         """Parse a string into a valid container value.
 
         Will parse strings into lists, tuples and dictionaries as-is, but will convert
         sets into tuples, as sets are not valid for TOML configuration files.
-        """
+        """  # noqa: DOC201
         try:
             result = literal_eval(value)
 
+        except (ValueError, SyntaxError):
+            return None
+
+        else:
             if isinstance(result, set):
                 logger.warning(
                     f"Parsed a {type(result).__name__} object, will convert to tuple"
@@ -116,9 +117,6 @@ class BasicConverter:
                 return tuple(result)
 
             return result
-
-        except (ValueError, SyntaxError):
-            return None
 
     def __str__(self) -> str:
         """Return the string representation of the parsed value for printing."""

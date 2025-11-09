@@ -71,6 +71,10 @@
             "icon": "pencil",
             "iconColour": "#e65339"
         },
+        "DEFINE": {
+            "icon": "comment-discussion",
+            "iconColour": "#4be6ad"
+        },
         "BUG": {
             "icon": "bug",
             "iconColour": "#e63946",
@@ -89,16 +93,22 @@
         "HACK": {
             "icon": "cpu",
             "iconColour": "#e6399e"
+        },
+        "FYI": {
+            "icon": "info",
+            "iconColour": "#545fff"
         }
     },
     "todo-tree.general.tags": [
         "BUG",
         "HACK",
+        "FYI",
         "FIXME",
         "FIXIT",
         "FIX",
         "NEEDSWORK",
         "UPDATEME",
+        "DEFINE",
         "TODO",
         "REFACTOR",
         "[ ]"

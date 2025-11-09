@@ -8,8 +8,8 @@ from typing import Annotated
 {% if cookiecutter.app_type == 'tui' %}
 from pathlib import Path
 
-{% endif -%}
 from nebulog import logger
+{%- endif %}
 
 import typer
 from rich.console import Console
@@ -25,21 +25,18 @@ from {{ cookiecutter.package_name }}.tui.main_window import TerminalApp
 app = typer.Typer(rich_markup_mode="rich")
 {%- elif cookiecutter.app_type == 'hybrid' %}
 from {{ cookiecutter.package_name }}.cli.commands.launch import launch_app
-from {{ cookiecutter.package_name }}.config.constants import get_default_log_path
-from {{ cookiecutter.package_name }}.logging import setup_app_logging
 
 app = typer.Typer(no_args_is_help=True, rich_markup_mode="rich")
 app.add_typer(launch_app)
 {%- elif cookiecutter.app_type == 'cli' %}
-from {{ cookiecutter.package_name }}.config.constants import get_default_log_path
-from {{ cookiecutter.package_name }}.logging import setup_app_logging
 
 app = typer.Typer(no_args_is_help=True, rich_markup_mode="rich")
 {%- endif %}
 app.add_typer(config_app, name="config")
 
 
-def version_callback(print_version: bool):
+def version_callback(print_version: bool) -> None:
+    """Print the program version in a Rich console with the Noctis theme."""
     if print_version:
         Console(theme=AppCustomThemes.NOCTIS).print(
             ":package:[declaration]{{ cookiecutter.project_name }}[/] "
@@ -91,7 +88,7 @@ def main(
         ),
     ] = False,
 {%- endif %}
-):
+) -> None:
     {%- if cookiecutter.app_type == 'tui' %}
     """:pager: Launch the {{ cookiecutter.project_name }} interface."""
     setup_app_logging(debug=debug)
@@ -102,9 +99,9 @@ def main(
         if config is not None:  # pragma: no cover
             logger.info("Using custom configuration file", config=config)
 
-        _, APP_MANAGER = resolve_app_manager(False, config)
+        app_manager = resolve_app_manager("settings", config)
 
-        interface = TerminalApp(APP_MANAGER.settings.theme)
+        interface = TerminalApp(app_manager.settings.theme)
         interface.run()
 
         logger.debug("{{ cookiecutter.project_name }} exited successfully")

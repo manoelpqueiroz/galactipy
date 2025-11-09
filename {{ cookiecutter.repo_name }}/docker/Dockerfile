@@ -14,7 +14,7 @@ RUN apk add --no-cache --virtual .build-deps \
     musl-dev=~1.2.5-r10 \
     python3-dev=~3.12.11-r0 \
     libffi-dev=~3.4.8-r0 \
-# HACK sqlite-libs has a vulnerability up to 3.49.2-r0, which is installed by default
+# FYI sqlite-libs has a vulnerability up to 3.49.2-r0, which is installed by default
     sqlite-libs=~3.49.2-r1
 
 # Install Poetry
@@ -50,7 +50,7 @@ ENV LANG=C.UTF-8 \
 RUN apk add --no-cache \
     ncurses-terminfo-base=~6.5_p20250503-r0 \
     ncurses-libs=~6.5_p20250503-r0 \
-# HACK sqlite-libs has a vulnerability up to 3.49.2-r0, which is installed by default
+# FYI sqlite-libs has a vulnerability up to 3.49.2-r0, which is installed by default
     sqlite-libs=~3.49.2-r1
 {%- elif cookiecutter.app_type == 'cli' %}
     COLORTERM=truecolor \

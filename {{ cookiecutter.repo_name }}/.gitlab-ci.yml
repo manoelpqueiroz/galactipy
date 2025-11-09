@@ -36,7 +36,7 @@ include:
   - component: $CI_SERVER_FQDN/to-be-continuous/docker/gitlab-ci-docker@6.0.0
     rules:
       - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-      - if: $CI_COMMIT_TAG # HACK Fine-tuning for running only on release tags not working at upstream (https://gitlab.com/to-be-continuous/docker/-/issues/107)
+      - if: $CI_COMMIT_TAG # FYI Fine-tuning for running only on release tags not working at upstream (https://gitlab.com/to-be-continuous/docker/-/issues/107)
     inputs:
       context-path: $CI_PROJECT_DIR
       file: $CI_PROJECT_DIR/docker/Dockerfile
@@ -57,7 +57,13 @@ default:
 
 workflow:
   rules:
-    - if: $CI_COMMIT_TITLE =~ /(\:construction|WIP)\:.*/i
+{%- if cookiecutter.commit_convention == 'gitmoji' %}
+    - if: $CI_COMMIT_TITLE =~ /^(\:construction|WIP)\:/i
+{%- elif cookiecutter.commit_convention == 'conventional' %}
+    - if: $CI_COMMIT_TITLE =~ /^WIP(\([^)]*\))?!?\:/i
+{%- else %}
+    - if: $CI_COMMIT_TITLE =~ /^🚧\sWIP(\([^)]*\))?!?\:/i
+{%- endif %}
       when: never
     - if: $CI_COMMIT_BRANCH =~ /^(test|WIP).*/i
       when: never
@@ -245,3 +251,7 @@ release-{{ cookiecutter.repo_name }}-stable:
   release:
     tag_name: $CI_COMMIT_TAG
     description: RELEASE_NOTES.md
+    assets:
+      links:
+        - name: Published package
+          url: https://pypi.org/project/{{ cookiecutter.repo_name }}/

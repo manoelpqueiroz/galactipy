@@ -37,7 +37,7 @@ def ensure_launch_tui(results):
 
 
 @then("the program exits successfully")
-def successful_termination(results):
+def successful_termination_results(results):
     assert results["cli_run"].exit_code == 0
 
 
@@ -58,7 +58,7 @@ def version_display(cli_run, version_string):
 
 
 @then("the program exits without errors")
-def successful_termination(cli_run):
+def successful_termination_run(cli_run):
     assert cli_run.exit_code == 0
 
 
@@ -95,7 +95,7 @@ def valid_command_menu(cli_run, command):
 @pytest.mark.frontend
 @pytest.mark.standard
 def test_launch_app(mocker, setup_sample_manager):
-    manager, file = setup_sample_manager.values()
+    _, file = setup_sample_manager.values()
 
     mock_interface = mocker.patch(
         "python_project.cli.commands.root_command.TerminalApp"
@@ -104,7 +104,7 @@ def test_launch_app(mocker, setup_sample_manager):
     results = runner.invoke(app, args=["--config", file])
 
     mock_interface.run.assert_called_once()
-    results.exit_code == 0
+    assert results.exit_code == 0
 
 
 {% endif -%}

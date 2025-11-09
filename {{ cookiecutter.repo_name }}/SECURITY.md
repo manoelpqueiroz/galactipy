@@ -347,7 +347,7 @@ are currently supported
 for security updates
 and vulnerability reporting:
 
-<!-- UPDATEME with your supported versions -->
+<!-- DEFINE your supported versions for security reporting -->
 
 | Version  |   Support Status   | Commentary |
 |:--------:|:------------------:|------------|
@@ -388,7 +388,7 @@ as a Python library.
 This allows developers
 to integrate the package's functionality
 into their own Python applications.
-<!-- UPDATEME with your project's use cases
+<!-- DEFINE your project's use cases
   The library exposes a clean API for...
 -->
 
@@ -469,7 +469,7 @@ to follow Python security advisories
 and keep their Python installations
 up to date.
 {% else -%}
-<!-- UPDATEME with your underlying primitives for building the threat model -->
+<!-- DEFINE your underlying primitives for building the threat model -->
 {%- endif %}
 
 #### Underlying Libraries
@@ -519,7 +519,7 @@ but users should monitor
 for security advisories
 and keep dependencies updated.
 {% else -%}
-<!-- UPDATEME with your underlying libraries considerations within the threat model -->
+<!-- DEFINE your underlying libraries considerations within the threat model -->
 {%- endif %}
 
 #### Build Pipelines
@@ -544,7 +544,7 @@ in user-controlled locations
 and does not modify system files
 or execute arbitrary code.
 {% else -%}
-<!-- UPDATEME with application potential harmful behaviour if used in CI build pipelines -->
+<!-- DEFINE which potential harmful behaviour can take place if {{ cookiecutter.project_name }} is used in CI build pipelines -->
 {%- endif %}
 
 #### File Access
@@ -746,7 +746,7 @@ in upstream dependencies
 and updates their versions promptly
 in the case of vulnerabilities.
 
-<!-- UPDATEME with additional understanding on what should not be considered security issues -->
+<!-- DEFINE additional concepts of non-security-issues -->
 
 ### :octagonal_sign: Security Measures
 

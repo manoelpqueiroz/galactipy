@@ -20,7 +20,7 @@ FILE_PARSER = re.compile(
 )
 
 
-def log_caster(groups: dict) -> dict:  # pragma: no cover
+def log_caster(groups: dict) -> None:  # pragma: no cover
 {%- if cookiecutter.docstring_style != 'other' %}
     """Convert the parts of a parsed log record line into convenient Python types.
 {%- if cookiecutter.docstring_style == 'numpy' %}
@@ -29,25 +29,16 @@ def log_caster(groups: dict) -> dict:  # pragma: no cover
     ----------
     groups : dict
         The Loguru record dictionary with the information about the logging context.
-
-    Returns
-    -------
-    dict
-        The parsed log with converted timestamp and file line.
 {%- elif cookiecutter.docstring_style == 'google' %}
 
     Args:
         groups: The Loguru record dictionary with the information about the logging
             context.
-
-    Returns: The parsed log with converted timestamp and file line.
 {%- else %}
 
     :param groups: The Loguru record dictionary with the information about the logging
         context.
     :type groups: dict
-    :return: The parsed log with converted timestamp and file line.
-    :rtype: dict
 {%- endif %}
     """
 {%- else %}

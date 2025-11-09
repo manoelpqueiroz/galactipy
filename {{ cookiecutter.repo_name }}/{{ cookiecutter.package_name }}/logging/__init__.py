@@ -1,14 +1,12 @@
 """Define logging capabilities for {{ cookiecutter.project_name }}."""
 
-import sys
-
 from nebulog import install, logger
 
 from {{ cookiecutter.package_name }}.config.constants import get_default_log_path
 from {{ cookiecutter.package_name }}.logging.formatters import file_formatter
 
 
-def setup_app_logging(*, debug: bool = False):
+def setup_app_logging(*, debug: bool = False) -> None:
 {%- if cookiecutter.docstring_style != 'other' %}
     """Configure the available loggers at {{ cookiecutter.project_name }} runtime.
 {%- if cookiecutter.docstring_style == 'numpy' %}

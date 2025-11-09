@@ -5,13 +5,26 @@ to the TUI app, see https://textual.textualize.io/guide/design/ for more informa
 
 """
 
+from typing import TypedDict
+
 from enum import Enum
 
 from textual.theme import Theme
 
+
+class NoctisAuxColours(TypedDict):
+    """Typed dictionary for shared Noctis colours across themes."""
+
+    secondary: str
+    warning: str
+    error: str
+    success: str
+    accent: str
+
+
 # Noctis VS Code theme colours, full colorscheme definition at:
 # https://github.com/liviuschera/noctis
-NOCTIS_AUX_COLOURS_DARK = {
+NOCTIS_AUX_COLOURS_DARK: NoctisAuxColours = {
     "secondary": "#e4b781",
     "warning": "#d5971a",
     "error": "#e66533",
@@ -19,7 +32,7 @@ NOCTIS_AUX_COLOURS_DARK = {
     "accent": "#7060eb",
 }
 
-NOCTIS_AUX_COLOURS_LIGHT = {
+NOCTIS_AUX_COLOURS_LIGHT: NoctisAuxColours = {
     "secondary": "#d67e5c",
     "warning": "#e4b781",
     "error": "#e66533",

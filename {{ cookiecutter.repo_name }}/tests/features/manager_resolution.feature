@@ -9,14 +9,13 @@ Feature: Resolve application manager definitions
 
   @standard
   Scenario Outline: Application resolution
-    When the resolver receives a request with <is_secret> and <uses_custom_path>
+    When the resolver receives a request with <domain> and <uses_custom_path>
     Then it returns a manager with <manager_length> domains
-    * a string with <configuration_type> value
-    * validating the <configuration_type> file inside the base directory is <file_in_base_dir>
+    And validating the <domain> file inside the base directory is <file_in_base_dir>
 
     Examples:
-      | is_secret | uses_custom_path | configuration_type | manager_length | file_in_base_dir |
-      | False     | False            | settings           | 2              | True             |
-      | True      | False            | secrets            | 2              | True             |
-      | False     | True             | settings           | 1              | False            |
-      | True      | True             | secrets            | 1              | False            |
+      | domain   | uses_custom_path | manager_length | file_in_base_dir |
+      | settings | False            | 2              | True             |
+      | secrets  | False            | 2              | True             |
+      | settings | True             | 1              | False            |
+      | secrets  | True             | 1              | False            |

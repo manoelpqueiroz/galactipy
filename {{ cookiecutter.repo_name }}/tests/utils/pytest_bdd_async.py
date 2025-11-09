@@ -5,7 +5,7 @@ from collections.abc import Callable
 from functools import wraps
 
 
-# HACK Workaround for the lack of native asynchronous support in pytest-bdd, see:
+# FYI pytest-bdd does not support async operations natively, this is a workaround
 # https://github.com/pytest-dev/pytest-bdd/issues/223
 # https://github.com/pytest-dev/pytest-asyncio/issues/195
 class AsyncStepConverter:
@@ -24,14 +24,14 @@ class AsyncStepConverter:
                 "event_loop", inspect.Parameter.POSITIONAL_OR_KEYWORD
             )
             parameters.append(event_loop_param)
-            step_func.__signature__ = signature.replace(parameters=parameters)
+            setattr(
+                step_func, "__signature__", signature.replace(parameters=parameters)
+            )
 
         @wraps(step_func)
         def sync_wrapper(*args, **kwargs):
-            if has_event_loop:
-                loop = kwargs["event_loop"]
-            else:
-                loop = kwargs.pop("event_loop")
+            loop = kwargs["event_loop"] if has_event_loop else kwargs.pop("event_loop")
+
             return loop.run_until_complete(step_func(*args, **kwargs))
 
         return sync_wrapper

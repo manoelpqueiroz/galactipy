@@ -38,7 +38,7 @@ def launch(
             ),
         )
     ] = False,
-):
+) -> None:
     """:pager: Launch the {{ cookiecutter.project_name }} interface."""
     setup_app_logging(debug=debug)
 
@@ -47,9 +47,9 @@ def launch(
     if config is not None:  # pragma: no cover
         logger.info("Using custom configuration file", config=config)
 
-    _, APP_MANAGER = resolve_app_manager(False, config)
+    app_manager = resolve_app_manager("settings", config)
 
-    interface = TerminalApp(APP_MANAGER.settings.theme)
+    interface = TerminalApp(app_manager.settings.theme)
 
     interface.run()
 
