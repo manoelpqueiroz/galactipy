@@ -9,10 +9,10 @@ This template should be used to propose and discuss improvements to backend elem
 
 {% if cookiecutter.app_type != 'bare_repo' -%}
 - Direct changes to the CLI behaviour and functionality;
-{%- endif %}
-{%- if cookiecutter.app_type != 'cli' %}
+{% endif -%}
+{% if cookiecutter.app_type in ['tui', 'hybrid'] -%}
 - Direct changes to the TUI behaviour and functionality;
-{%- endif %}
+{% endif -%}
 - Bug fixes;
 - {{ cookiecutter.project_name }} plugin/extension logic.
 >>>
@@ -29,7 +29,7 @@ This template should be used to propose and discuss improvements to backend elem
   Defend the reasons why this improvement is important moving forward
   What problem does it solve?
   What benefits does it bring to users?
-{% if cookiecutter.app_type != 'bare_repo' -%}
+{%- if cookiecutter.app_type != 'bare_repo' %}
   Does it make front-end interfaces clearer and more accessible for usage?
 {%- endif %}
   What would be considered a successful outcome for this development from your perspective?

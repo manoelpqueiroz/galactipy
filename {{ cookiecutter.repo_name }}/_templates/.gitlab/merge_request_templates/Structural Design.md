@@ -84,7 +84,7 @@ This template should be used to discuss and validate high-level design decisions
 ## Maintainer Checklist
 
 >>> [!warning] :passport_control: MANDATORY
-I attest that the proposed change meets the [Contribution Acceptance Criteria][10]:
+I attest that the proposed change meets the [Contribution Acceptance Criteria][12]:
 
 - [ ] The commit history is logical;
 {%- if cookiecutter.commit_convention == 'gitmoji' %}
@@ -103,8 +103,8 @@ I attest that during this development, the following interactions have taken pla
 
 - [ ] We have discussed our opinions on the proposed design;
 - [ ] We have explored possible alternative ideas;
-- [ ] We have found [opportunities][11] for future development and have created work items to take action on later.
+- [ ] We have found [opportunities][13] for future development and have created work items to take action on later.
 >>>
 
-[10]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
-[11]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
+[12]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
+[13]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress

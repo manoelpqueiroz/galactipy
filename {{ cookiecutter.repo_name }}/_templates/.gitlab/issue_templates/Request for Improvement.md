@@ -52,9 +52,9 @@ Please run through all items under the **`Applicant Checklist`** section and fol
 - [ ] I have followed the [_why, not just what_][1] directive to open this request;
 - [ ] I am confident this discussion does not fall in another category.
 
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
 [2]: {{ cookiecutter.__gitlab_org }}/epics
-{%- else %}
+{%- else -%}
 [2]: {{ cookiecutter.__scm_link_url }}/milestones
 {%- endif %}
 [3]: {{ cookiecutter.__scm_link_url }}/issues/?state=all&type%5B%5D=issue
@@ -115,8 +115,8 @@ How would you classify this request?
   Screenshots, links and any content that helps us better visualise your desired outcome are welcome!
 -->
 
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
 /label ~"request::improvement"
-{%- else %}
+{%- else -%}
 /label ~"rfi" ~"sts-needs-triage"
 {%- endif %}

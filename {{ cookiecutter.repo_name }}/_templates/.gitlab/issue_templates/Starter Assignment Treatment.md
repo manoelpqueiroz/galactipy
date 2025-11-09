@@ -93,8 +93,8 @@ Should you feel interested in delivering this item after reading this treatment,
 - Assign the work item to you by clicking on the _"assign yourself"_ link at the right panel;
 - Read the [`CONTRIBUTING`][4] guide to become familiar with our procedures before you start working on the solution.
 
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
-/status Needs Delivery Steps
-{%- else %}
+{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+/status "Needs Delivery Steps"
+{%- else -%}
 /label ~"starter-assignment" ~"sts-needs-delivery-steps"
 {%- endif %}
