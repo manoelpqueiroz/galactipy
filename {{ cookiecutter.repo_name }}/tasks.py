@@ -1,6 +1,10 @@
 """Collection of tasks for development streamlining in {{ cookiecutter.project_name }}."""
 
 import os
+{%- if cookiecutter.create_docker and cookiecutter.__scm_platform_lc == 'gitlab' %}
+import re
+import sys
+{%- endif %}
 from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
@@ -416,27 +420,44 @@ def sweep(c: Context) -> None:
 # Docker commands
 @task(aliases=["docker-login"])
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-def login(c: Context, username: str, password: str) -> None:
+def login(c: Context, username: str) -> None:
     """Log in to the GitLab Container Registry using a token.
+
+    Must be called after piping the Personal Access Token into Invoke.
 
     More information for authentication methods provided at
     https://docs.gitlab.com/ee/user/packages/container_registry/authenticate_with_container_registry.html
-    """
-{%- else %}
-def login(c: Context, username: str) -> None:
-    """Log in to Docker Hub using the one-time device confirmation code."""
-{%- endif %}
-    password_cmd = f"echo {password}" if IS_UNIX_OS else f"Write-Host {password}"
+    """{% if cookiecutter.docstring_style in ['numpy', 'google'] %}  # noqa: DOC501{% endif %}
+    password_cmd = "echo" if IS_UNIX_OS else "Write-Host"
+
+    if sys.stdin.isatty():
+        msg = (
+            "The login task was called naked. You must provide the GitLab Personal "
+            "Access Token through a pipe:\n\n"
+            f"$ {password_cmd} <password> | invoke login"
+        )
+        raise Exit(msg)
+
+    password = sys.stdin.read().strip()
+
+    r = re.compile(r"^glpat-[0-9a-zA-Z.\-_]{51}$")
+    if r.search(password) is None:
+        msg = (
+            "Invalid Personal Access Token. Must match the regex pattern: "
+            f'r"{r.pattern}".'
+        )
+        raise Exit(msg)
 
     c.run(
-        f"{password_cmd} | "
-{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-        f"docker login {DOCKER_REGISTRY} -u {username} --password-stdin"
-{%- else %}
-        f"docker login -u {username} --password-stdin"
-{%- endif %},
+        f"{password_cmd} {password} | "
+        f"docker login {DOCKER_REGISTRY} -u {username} --password-stdin",
         pty=IS_UNIX_OS,
     )
+{%- else %}
+def login(c: Context) -> None:
+    """Log in to Docker Hub using the one-time device confirmation code."""
+    c.run("docker login", pty=IS_UNIX_OS)
+{%- endif %}
 
 
 @task(iterable=["tags"], aliases=["docker-build"])
