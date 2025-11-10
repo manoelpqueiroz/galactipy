@@ -1,6 +1,6 @@
 # :closed_lock_with_key: Security
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 
-{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [[_TOC_]]
 {%- endif %}
 
@@ -442,11 +442,18 @@ and validation mechanisms
 as the CLI and library components.
 This ensures consistent security practices
 across all usage contexts.
-{%- endif %}
-{%- else %}
-as a pure **Python library**.
-{%- endif %}
 
+{% endif -%}
+{% else -%}
+as a pure **Python library**.
+This allows developers
+to integrate the package's functionality
+into their own Python applications.
+<!-- DEFINE your project's use cases
+  The library exposes a clean API for...
+-->
+
+{% endif -%}
 ### :man_supervillain: Threat Model
 
 #### Underlying Primitives
@@ -468,10 +475,11 @@ Users are encouraged
 to follow Python security advisories
 and keep their Python installations
 up to date.
+
 {% else -%}
 <!-- DEFINE your underlying primitives for building the threat model -->
-{%- endif %}
 
+{% endif -%}
 #### Underlying Libraries
 
 {% if cookiecutter.app_type != 'bare_repo' -%}
@@ -518,10 +526,11 @@ These libraries are popular and well-maintained,
 but users should monitor
 for security advisories
 and keep dependencies updated.
+
 {% else -%}
 <!-- DEFINE your underlying libraries considerations within the threat model -->
-{%- endif %}
 
+{% endif -%}
 #### Build Pipelines
 
 {% if cookiecutter.app_type != 'bare_repo' -%}
@@ -543,10 +552,11 @@ to configuration files
 in user-controlled locations
 and does not modify system files
 or execute arbitrary code.
+
 {% else -%}
 <!-- DEFINE which potential harmful behaviour can take place if {{ cookiecutter.project_name }} is used in CI build pipelines -->
-{%- endif %}
 
+{% endif -%}
 #### File Access
 
 {% if cookiecutter.app_type != 'bare_repo' -%}
@@ -609,10 +619,11 @@ to prevent unauthorized file access:
 - No external downloads
   or system command execution
   occur during normal operation.
+
 {% else -%}
 <!-- UPDATEME with how, where and when your application accesses files in the user's system -->
-{%- endif %}
 
+{% endif -%}
 ### :x: NOT Security Issues
 
 This is an incomplete list of issues
@@ -687,8 +698,8 @@ users are encouraged
 to avoid passing sensitive data
 via command-line arguments,
 as per standard security best practices.
-{%- endif %}
 
+{% endif -%}
 #### Busy Loops
 
 Busy-loops that consume 100% CPU time
@@ -726,8 +737,8 @@ Such an attacker can just as well
 have the user run a much worse command
 that can do something fatal
 (like `sudo rm -rf /`).
-{%- endif %}
 
+{% endif -%}
 #### Upstream Dependencies
 
 The project depends on libraries
@@ -814,10 +825,11 @@ by:
 - Handling settings file misconfigurations
   explicitly
   via the Orbittings API.
+
 {% else -%}
 <!-- UPDATEME with guarantees your project and upstream dependencies give in regards to security -->
-{%- endif %}
 
+{% endif -%}
 ### :speech_balloon: Comments on This Policy
 
 If you have any suggestions

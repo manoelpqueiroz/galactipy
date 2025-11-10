@@ -113,11 +113,11 @@ to bring updated status information.
 
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
 | Epic | Description | Theme | Timeline |
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+{% elif cookiecutter.scm_platform == 'GitLab Free' -%}
 | Milestone | Description | Theme | Timeline |
-{%- else %}
+{% else -%}
 | Project | Description | Theme | Timeline |
-{%- endif %}
+{% endif -%}
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------: | :----------------------------------------------------: |
 | Hyperlink to item | Short description of the development stream | A standardised category under which the development stream falls | Estimated delivery date or version through which the development stream has been delivered |
 -->

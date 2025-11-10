@@ -85,7 +85,7 @@ Then you can run it from the command line:
 
 ## Command-line Usage
 
-{% if cookiecutter.app_type == 'tui' %}
+{% if cookiecutter.app_type == 'tui' -%}
 You can simply
 launch the {{ cookiecutter.project_name }}
 by calling `{{ cookiecutter.repo_name }}`
@@ -112,7 +112,8 @@ control of the application:
 >>
 >> Specify a custom configuration file
 >> to launch the application.
-{% elif cookiecutter.app_type == 'hybrid' %}
+
+{% elif cookiecutter.app_type == 'hybrid' -%}
 The top-level command
 is the entry point
 for additional
@@ -139,7 +140,8 @@ with the `{{ cookiecutter.repo_name }} launch` command:
 >>
 >> Specify a custom configuration file
 >> to launch the application.
-{% elif cookiecutter.app_type == 'cli' %}
+
+{% elif cookiecutter.app_type == 'cli' -%}
 The top-level command
 is the entry point
 for additional
@@ -153,7 +155,8 @@ operations:
 >> Print
 >> the current version of the program
 >> and exit.
-{% endif %}
+
+{% endif -%}
 ### Manage the Configuration
 
 The `{{ cookiecutter.repo_name }} config` command provides
@@ -253,14 +256,15 @@ for your {{ cookiecutter.project_name }} installation:
 >>
 >> Retrieve configuration
 >> from the secret manager instead.
+
 {% else -%}
 Use [`pip`][fs1] to install {{ cookiecutter.project_name }}:
 
 ```bash
 pip install -U {{ cookiecutter.repo_name }}
 ```
-{%- endif %}
 
+{% endif -%}
 ## :reminder_ribbon: Contributing
 
 There are several ways
@@ -323,12 +327,13 @@ This project was generated with [Galactipy][bp7].
 [bp22]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
 [bp23]: https://img.shields.io/badge/effver-0097a7?style=for-the-badge&logo=semver
 [bp24]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#versioning-customs
-{%+ if cookiecutter.licence != 'nos' %}
-{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+
+{% if cookiecutter.licence != 'nos' -%}
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [blic1]: https://img.shields.io/gitlab/license/{{ cookiecutter.scm_namespace}}/{{ cookiecutter.repo_name }}?style=for-the-badge
-{%- elif cookiecutter.__scm_platform_lc == 'github' %}
+{% elif cookiecutter.__scm_platform_lc == 'github' -%}
 [blic1]: https://img.shields.io/github/license/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}?style=for-the-badge
-{%- endif %}
+{% endif -%}
 [blic2]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
 
 <!-- TODO Replace the `100` ID with your project's index at https://www.bestpractices.dev/en
@@ -337,17 +342,20 @@ This project was generated with [Galactipy][bp7].
 <!-- TODO Replace the `200` ID with your project's index at https://ossrank.com/
 [boss3]: https://shields.io/endpoint?url=https://ossrank.com/shield/200&style=for-the-badge
 [boss4]: https://ossrank.com/p/200 -->
-{% endif +%}
-{% if cookiecutter.__coverage_lc == 'coveralls' %}
+
+{% endif -%}
+{% if cookiecutter.__coverage_lc == 'coveralls' -%}
 [bcov1]: https://img.shields.io/coverallsCoverage/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=coveralls
 [bcov2]: https://coveralls.io/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}
-{% elif cookiecutter.__coverage_lc == 'codacy' %}
+
+{% elif cookiecutter.__coverage_lc == 'codacy' -%}
 <!-- TODO Replace the hash `d5402a91aa7b4234bd1c19b5e86a63be` with your project ID in the "Codacy Badge" section available at https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/settings
 [bcov1]: https://img.shields.io/codacy/grade/d5402a91aa7b4234bd1c19b5e86a63be?style=for-the-badge&logo=codacy
 [bcov2]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/dashboard
 [bcov3]: https://img.shields.io/codacy/coverage/d5402a91aa7b4234bd1c19b5e86a63be?style=for-the-badge&logo=codacy
 [bcov4]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/coverage -->
-{% endif +%}
+
+{% endif -%}
 {% if cookiecutter.app_type != 'bare_repo' -%}
 [fs1]: https://pipx.pypa.io/latest/installation/
 {% else -%}
@@ -390,25 +398,31 @@ This project was generated with [Galactipy][bp7].
 [bfo3]: https://img.shields.io/badge/imports-isort-1674b1?style=for-the-badge&labelColor=ef8336
 [bfo4]: https://pycqa.github.io/isort/
 {%- if cookiecutter.docstring_style == 'numpy' %}
+
 [bli1]: https://img.shields.io/badge/docstrings-numpydoc-4dabcf?style=for-the-badge&labelColor=4d77cf
 {%- elif cookiecutter.docstring_style == 'google' %}
+
 [bli1]: https://img.shields.io/badge/docstrings-google-ffbb00?style=for-the-badge&labelColor=00ac47
 {%- elif cookiecutter.docstring_style == 'sphinx' %}
+
 [bli1]: https://img.shields.io/badge/docstrings-sphinx%2Frest-ce3f31?style=for-the-badge&labelColor=0a507a
 {%- endif %}
+{%- if cookiecutter.docstring_style != 'other' %}
 [bli2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#docstring-convention
+{%- endif %}
 
-{%- if cookiecutter.use_bdd %}
+{% if cookiecutter.use_bdd -%}
 [bbbd1]: https://img.shields.io/badge/BDD-23D96C?style=for-the-badge&logo=cucumber&logoColor=white
 [bbbd2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#behaviour-driven-development
-{%- endif %}
-{%- if cookiecutter.commit_convention == 'gitmoji' %}
+
+{% endif -%}
+{% if cookiecutter.commit_convention == 'gitmoji' -%}
 [bcv1]: https://img.shields.io/badge/%F0%9F%98%9C_gitmoji-ffdd67?style=for-the-badge
-{%- elif cookiecutter.commit_convention == 'conventional' %}
+{% elif cookiecutter.commit_convention == 'conventional' -%}
 [bcv1]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white&style=for-the-badge
-{%- elif cookiecutter.commit_convention == 'conventional-gitmoji' %}
+{% elif cookiecutter.commit_convention == 'conventional-gitmoji' -%}
 [bcv1]: https://img.shields.io/badge/conventional-%F0%9F%98%9C%20gitmoji-ffdd67?style=for-the-badge&logo=conventionalcommits&logoColor=white&labelColor=fe5196
-{%- endif %}
+{% endif -%}
 [bcv2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#commit-customs
 
 [cite1]: {{ cookiecutter.__scm_link_url }}/blob/master/CITATION.cff

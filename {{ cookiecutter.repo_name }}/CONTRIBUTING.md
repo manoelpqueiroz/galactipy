@@ -1,9 +1,9 @@
-{%- set roadmap_mapping = {
+{% set roadmap_mapping = {
   'GitLab Premium/Ultimate': 'epic',
   'GitLab Free': 'milestone',
   'GitHub': 'project'
-} %}
-{%- set licence_mapping = {
+} -%}
+{% set licence_mapping = {
   'MIT': 'MIT Licence',
   'BSD-3-Clause': '3-Clause BSD',
   'GPL-3.0-or-later': 'GNU GPL v3.0',
@@ -12,18 +12,18 @@
   'MPL-2.0': 'Mozilla Public License 2.0',
   'Apache-2.0': 'Apache Software License 2.0',
   'nos': 'Non-OSS'
-} %}
-{%- set docstring_mapping = {
+} -%}
+{% set docstring_mapping = {
   'numpy': 'numpydoc',
   'google': 'Google Python Style',
   'sphinx': 'Sphinx Style',
   'other': 'custom'
-} %}
-{%- set roadmap_item = roadmap_mapping[cookiecutter.scm_platform] %}
-{%- set licence_name = licence_mapping[cookiecutter.licence] %}
-{%- set docstring_name = docstring_mapping[cookiecutter.docstring_style] %}
-{%- set roadmap_item_undefined = 'an' ~ roadmap_item if roadmap_item == 'epic' else 'a' ~ roadmap_item %}
-{%- set task_item = 'task' if cookiecutter.__scm_platform_lc == 'gitlab' else 'sub-issue' %}
+} -%}
+{% set roadmap_item = roadmap_mapping[cookiecutter.scm_platform] -%}
+{% set licence_name = licence_mapping[cookiecutter.licence] -%}
+{% set docstring_name = docstring_mapping[cookiecutter.docstring_style] -%}
+{% set roadmap_item_undefined = 'an' ~ roadmap_item if roadmap_item == 'epic' else 'a' ~ roadmap_item -%}
+{% set task_item = 'task' if cookiecutter.__scm_platform_lc == 'gitlab' else 'sub-issue' -%}
 # How to Contribute
 
 {{ cookiecutter.project_description }}.
@@ -57,7 +57,7 @@ managing the backlog of [issues][intro1],
 and [open discussions][intro3].
 {%- endif %}
 
-{%- if cookiecutter.licence != 'nos' %}
+{% if cookiecutter.licence != 'nos' -%}
 We welcome all contributors
 willing to work in good faith
 with other contributors
@@ -84,12 +84,12 @@ they should reciprocate
 that respect
 in addressing your issue
 or assessing patches and features.
-{%- endif %}
 
-{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+{% endif -%}
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [[_TOC_]]
-{%- endif %}
 
+{% endif -%}
 ## :runner: TL;DR
 
 Preconditions for
@@ -364,7 +364,7 @@ with your first steps here:
   or [find your own][gfi]
   that deserves your time and effort.
 
-{% if cookiecutter.__scm_platform_lc == 'gitlab' %}
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 >>> [!tip]
 Having all that said,
 aside from actions
@@ -425,7 +425,7 @@ an even more robust contributor:
    every interaction
    and every feedback.
 >>>
-{%- else %}
+{%- else -%}
 > [!TIP]
 > Having all that said,
 > aside from actions
@@ -583,8 +583,8 @@ which goes
 into the attitude
 for candidate contributors
 in more detail.
-{%- endif %}
 
+{% endif -%}
 #### Roadmap Management
 
 Medium and long-term vision for {{ cookiecutter.project_name }}
@@ -666,7 +666,7 @@ the `ROADMAP.md` table should be updated
 with the actual link to the {{ roadmap_item }}
 before merging to `master`.
 
-{% if cookiecutter.__scm_platform_lc == 'gitlab' %}
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 >>> [!tip]
 {{ roadmap_item.capitalize() }}s should be the entry door for new contributors
 to have a general glimpse on
@@ -679,7 +679,7 @@ should approach the task with the following goals in mind:
 - [_Comprehensive, yet succinct_][road5];
 - [_Standardised, yet conscious_][road6].
 >>>
-{%- else %}
+{%- else -%}
 > [!TIP]
 > {{ roadmap_item.capitalize() }}s should be the entry door for new contributors
 > to have a general glimpse on
@@ -838,6 +838,7 @@ with their usage:
 |         ~"ux::navigation"         | Improves user navigation in the user interface.                                                                   |
 {%- endif %}
 |          ~"ux::nudging"           | Helps users understand the application with more ease, like help panels, notifications etc.                       |
+
 {% elif cookiecutter.scm_platform == 'GitLab Free' -%}
 | Development Domain  |             Label             | Usage                                                                                                             |
 | :-----------------: | :---------------------------: | ----------------------------------------------------------------------------------------------------------------- |
@@ -913,6 +914,7 @@ with their usage:
 |   User Experience   |       ~"ux-navigation"        | Improves user navigation in the user interface.                                                                   |
 {%- endif %}
 |   User Experience   |         ~"ux-nudging"         | Helps users understand the application with more ease, like help panels, notifications etc.                       |
+
 {% else -%}
 | Development Domain  |            Label             | Usage                                                                                                             |
 | :-----------------: | :--------------------------: | ----------------------------------------------------------------------------------------------------------------- |
@@ -993,8 +995,8 @@ with their usage:
 > The project labels are also used
 > to define Changelog categories
 > in [Release Drafter][labels1].
-{%- endif %}
 
+{% endif -%}
 ##### Work Item Lifecycle
 
 To effectively manage
@@ -1073,6 +1075,7 @@ are not obligated
 to mark their tasks
 as "Ongoing"
 if development will be short lived.
+
 {% else -%}
 |          Status          |           Label           | Status Category | Description                                                                                                                                                                                                                                                                                                                                                               |
 | :----------------------: | :-----------------------: | :-------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1094,8 +1097,8 @@ if development will be short lived.
 
 {{ task_item.capitalize() }}s do not require
 a lifecycle label.
-{%- endif %}
 
+{% endif -%}
 #### General Practices
 
 ##### Issue Titles Should be Framed in Imperative Mood
@@ -1150,7 +1153,7 @@ we can equally understand
 _what_ needs to be addressed
 to close the issue.
 >>>
-{%- else %}
+{%- else -%}
 > [!CAUTION]
 > The only exception
 > to using imperative mood
@@ -1204,7 +1207,7 @@ Otherwise,
 there should be no labels
 associated with a {{ task_item }}.
 >>>
-{%- else %}
+{%- else -%}
 > [!CAUTION]
 > The only label allowed on {{ task_item }}s
 > is `manual-closure`.
@@ -1277,7 +1280,7 @@ answering questions,
 helping get it into a release
 etc.
 >>>
-{%- else %}
+{%- else -%}
 > [!IMPORTANT]
 > Contributors planning
 > on refining an issue
@@ -1348,8 +1351,8 @@ by [being queried][query1a]
 in the Issue Tracker
 and edited
 through the "Bulk edit" option.
-{% endif -%}
 
+{% endif -%}
 {% if cookiecutter.use_bdd -%}
 ### Behaviour-Driven Development
 
@@ -1460,8 +1463,8 @@ _and_ users
 —
 contributors are valued
 and everyone feels empowered to grow and succeed.
-{%- endif %}
 
+{% endif -%}
 #### References for BDD
 
 The structured approach BDD offers
@@ -1488,8 +1491,8 @@ we provide a suggested list of references below:
   with test scenarios;
 - Automation Panda's [BDD Guide][bdd7];
 - [_Behaviour-Driven Development: A Data Scientist Perspective_][bdd8].
-{%- endif %}
 
+{% endif -%}
 ### Versioning Customs
 
 {{ cookiecutter.project_name }}'s versioning
@@ -1612,7 +1615,7 @@ without the need
 for prior planning
 or detailed documentation.
 >>>
-{%- else %}
+{%- else -%}
 > [!NOTE]
 > Flash branches are not the same
 > as `quick-win` labelled issues:
@@ -1696,8 +1699,8 @@ be aware of which ones:
 |      :pencil:       |         `:memo:`          |      `:pencil:`       |
 | :face_with_monocle: |     `:monocle_face:`      | `:face_with_monocle:` |
 >>>
-{%- endif %}
 
+{% endif -%}
 If the changes
 still reflect a work in progress
 that will be rebased
@@ -1705,6 +1708,7 @@ at a later moment,
 we recommend committing
 with the `:construction:` Gitmoji
 so the CI will ignore it.
+
 {% elif cookiecutter.commit_convention == 'conventional' -%}
 #### Conventional Commits
 
@@ -1752,6 +1756,7 @@ at a later moment,
 we recommend committing
 with the `wip` type
 so the CI will ignore it.
+
 {% else -%}
 #### Conventional Gitmoji
 
@@ -1884,8 +1889,8 @@ at a later moment,
 we recommend committing
 with the `wip` type
 so the CI will ignore it.
-{%- endif %}
 
+{% endif -%}
 #### Commit Message Structure
 
 Commit messages should be clear
@@ -1906,8 +1911,8 @@ before contributing,
 as developers are expected
 to apply those principles
 when committing.
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 
-{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 #### Git Trailers
 
 Every commit should also
@@ -1925,8 +1930,7 @@ in the root directory.
 The available trailers
 are listed below
 and defined in the [`changelog-config.yml`][commit4] file:
-
-{% if cookiecutter.app_type != 'bare_repo' -%}
+{%- if cookiecutter.app_type != 'bare_repo' %}
 |           Category in CHANGELOG            |                                                                                                      Available Trailers                                                                                                      | Use Cases                                                                                                                                                              |
 | :----------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | :satellite_orbital: Command-line Interface |                                                                            `cli`<br>`command`<br>`commands`<br>`terminal`<br>`output`<br>`shell`                                                                             | Updates to the CLI API that bridges the interface to the actual program. This encompasses available commands and how things are printed to the user's shell.           |
@@ -1965,7 +1969,6 @@ and defined in the [`changelog-config.yml`][commit4] file:
 |           :toolbox: Fixes           | `bug`<br>`bugfix`<br>`fix`<br>`fixed`<br>`hotfix`<br>`security`<br>`sec`<br>`critical`<br>`leak`<br>`injection`<br>`typo`<br>`typos` |
 |      :up: Dependencies Updates      |                                                  `dependencies`<br>`dep`<br>`deps`                                                   |
 |  :black_circle: Other Developments  |                                                               `other`                                                                |
-
 {%- endif %}
 {%- endif %}
 
@@ -2016,6 +2019,7 @@ for docstrings:
 - Objects defined in the `tests` directory
   are not obliged
   to define docstrings.
+
 {% else -%}
 <!-- DEFINE your docstring convention details and usage guidelines -->
 We choose to write our docstrings
@@ -2023,8 +2027,8 @@ using a custom standard.
 Please be aware
 to adhere to it
 when making your contributions.
-{%- endif %}
 
+{% endif -%}
 #### Semantic Line Breaks
 
 When editing Markdown files,
@@ -2060,7 +2064,7 @@ and adding, deleting and rearranging sentences,
 these precautions simplify
 any editing you have to do later.
 >>>
-{%- else %}
+{%- else -%}
 > [!NOTE]
 > **Hints for Preparing Documents**
 > Most documents go
@@ -2163,13 +2167,14 @@ By contributing to {{ cookiecutter.project_name }},
 you agree that your contributions
 will be licensed under
 the [{{ licence_name }}][licence1].
+
 {% else -%}
 {{ cookiecutter.project_name }} is _**not**_ open source sotware.
 Please [contact][topic5] the maintainer
 for more information
 on licencing the project.
-{%- endif %}
 
+{% endif -%}
 ## :book: Our Philosophy
 
 This document is
@@ -2704,8 +2709,8 @@ _The best good first issues are the ones you open yourself._
 {%- endif %}
   so that a developer can mentor you
   on the solution.
-{%- endif %}
 
+{% endif -%}
 ## :speaking_head: Proposing Changes as a Developer
 
 {% if cookiecutter.app_type in ['tui', 'hybrid'] -%}
@@ -2768,6 +2773,7 @@ Code maintenance within {{ cookiecutter.project_name }} itself encompasses:
   and speeding up
   local development
   with [Invoke][changes6].
+
 {% elif cookiecutter.app_type == 'cli' -%}
 <!-- DEFINE the context and purposes of your library -->
 {{ cookiecutter.project_name }} is a Command-line Interface (CLI) application
@@ -2814,10 +2820,11 @@ Code maintenance within {{ cookiecutter.project_name }} itself encompasses:
   and speeding up
   local development
   with [Invoke][changes6].
-{%- else %}
-<!-- DEFINE the context surrounding your library, detailing the main modules for code maintenance and their purpose -->
-{%- endif %}
 
+{% else -%}
+<!-- DEFINE the context surrounding your library, detailing the main modules for code maintenance and their purpose -->
+
+{% endif -%}
 Outside this set of code contributions,
 the development team's time
 will involve:
@@ -2950,8 +2957,8 @@ to more scrutiny,
 and held to a higher standard of review
 than changes
 to less fundamental building blocks.
-{%- endif %}
 
+{% endif -%}
 #### Opening Admissible {{ cookiecutter.__mr_term }}s
 
 For developers and maintainers,
@@ -4452,6 +4459,7 @@ as specific and objective
 as possible,
 avoid generalisations.
 >>>
+
 {% else -%}
 > [!TIP]
 > **When Things are Difficult**
@@ -4506,8 +4514,8 @@ avoid generalisations.
 > as specific and objective
 > as possible,
 > avoid generalisations.
-{%- endif %}
 
+{% endif -%}
 #### Commitment to Help
 
 What consumes
@@ -4951,6 +4959,7 @@ contextualising your research and findings
 to avoid rework
 by the development team.
 >>>
+
 {% else -%}
 > [!WARNING]
 > **Avoid overloading with extraneous details.**
@@ -4968,8 +4977,8 @@ by the development team.
 > contextualising your research and findings
 > to avoid rework
 > by the development team.
-{%- endif %}
 
+{% endif -%}
 ### Contributing by Reviewing Changes
 
 Changes to {{ cookiecutter.project_name }} source code are
@@ -5176,8 +5185,8 @@ and contributions
 reassure us that
 what we are doing matters!
 :beers:
-{%- endif %}
 
+{% endif -%}
 <!-- Anchors -->
 
 [readme]: {{ cookiecutter.__scm_link_url }}/blob/master/README.md
@@ -5231,7 +5240,8 @@ what we are doing matters!
 [badge9]: https://img.shields.io/badge/requests_for_correction-dc143c?style=for-the-badge
 [badge10]: https://img.shields.io/badge/requests_for_improvement-0055ff?style=for-the-badge
 [badge11]: https://img.shields.io/badge/requests_for_support-ed9121?style=for-the-badge
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+
+{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
 [query1]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&parent_id=None
 [query2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Aopinion&type%5B%5D=issue
 [query3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment%3A%3A%2A&type%5B%5D=issue
@@ -5243,7 +5253,8 @@ what we are doing matters!
 [query9]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Acorrection&type%5B%5D=issue
 [query10]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Aimprovement&type%5B%5D=issue
 [query11]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Asupport&type%5B%5D=issue
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+
+{% elif cookiecutter.scm_platform == 'GitLab Free' -%}
 [query1]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&milestone_title=None
 [query1a]: {{ cookiecutter.__scm_link_url }}/issues?state=all&type%5B%5D=task&milestone_title=Any
 [query2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-input&type%5B%5D=issue
@@ -5256,7 +5267,8 @@ what we are doing matters!
 [query9]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfc&type%5B%5D=issue
 [query10]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfc&type%5B%5D=issue
 [query11]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfs&type%5B%5D=issue
-{%- else %}
+
+{% else -%}
 [query1]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20no%3Aproject
 [query2]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-input
 [query3]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astarter-assignment
@@ -5268,12 +5280,12 @@ what we are doing matters!
 [query9]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Arfc
 [query10]: {{ cookiecutter.__scm_link_url }}/discussions/categories/requests-for-improvement
 [query11]: {{ cookiecutter.__scm_link_url }}/discussions/categories/requests-for-support
-{%- endif %}
 
-{% if cookiecutter.licence != 'nos' or cookiecutter.use_bdd %}
+{% endif -%}
+{% if cookiecutter.licence != 'nos' or cookiecutter.use_bdd -%}
 [knowledge]: https://www.teachfloor.com/elearning-glossary/institutional-knowledge
-{%- endif %}
 
+{% endif -%}
 [intro1]: {{ cookiecutter.__scm_link_url }}/issues
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [intro2]: {{ cookiecutter.__scm_link_url }}/merge_requests
@@ -5282,18 +5294,18 @@ what we are doing matters!
 [intro3]: {{ cookiecutter.__scm_link_url }}/discussions
 {%- endif %}
 
-{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [setup1]: {{ cookiecutter.__scm_link_url }}/forks/new
 [setup2]: https://docs.gitlab.com/user/group/
 [setup3]: https://docs.gitlab.com/user/project/repository/forking_workflow/
-{%- else %}
+{% else -%}
 [setup1]: {{ cookiecutter.__scm_link_url }}/fork
 [setup2]: https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/about-organizations
 [setup3]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
-{%- endif %}
+{% endif -%}
 [setup4]: https://python-poetry.org/docs/#installation
+{%- if cookiecutter.app_type != 'bare_repo' %}
 
-{% if cookiecutter.app_type != 'bare_repo' -%}
 [apptopic1]: https://typer.tiangolo.com/tutorial/
 {%- if cookiecutter.app_type != 'cli' %}
 [apptopic1a]: https://textual.textualize.io/guide/
@@ -5307,10 +5319,11 @@ what we are doing matters!
 {%- endif %}
 [apptopic6]: {{ cookiecutter.__scm_link_url }}/tree/master/tests
 {%- endif %}
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 
-{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [topic1]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab-ci.yml
-{% else -%}
+{%- else %}
+
 [topic1]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/workflows
 {%- endif %}
 {%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
@@ -5348,7 +5361,7 @@ what we are doing matters!
 [road1]: {{ cookiecutter.__scm_link_url }}/merge_requests/new?issuable_template=Project%2520Policies
 {% else -%}
 [road1]: {{ cookiecutter.__scm_link_url }}/pulls/compare?template=project_policies.md
-{%- endif %}
+{% endif -%}
 [road2]: {{ cookiecutter.__scm_link_url }}/blob/master/ROADMAP.md#roadmap-history
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [road3]: https://docs.gitlab.com/user/emoji_reactions/
@@ -5358,14 +5371,10 @@ what we are doing matters!
 [road4]: https://blog.crisp.se/2014/09/25/david-evans/as-a-i-want-so-that-considered-harmful
 [road5]: https://www.reforge.com/blog/user-stories-misuse
 [road6]: https://www.mountaingoatsoftware.com/blog/critiquing-one-of-my-own-real-user-stories
-{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [road7]: https://docs.gitlab.com/user/project/releases/
 {%- else %}
 [road7]: https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases
-{%- endif %}
-
-{% if cookiecutter.__scm_platform_lc == 'github' -%}
-[labels1]: {{ cookiecutter.__scm_link_url }}/.github/release-drafter.yml
 {%- endif %}
 
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
@@ -5389,23 +5398,27 @@ what we are doing matters!
 [icon15]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/created.png
 [icon16]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/ongoing.png
 [icon17]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/aborted.png
-{%- endif %}
 
+{% elif cookiecutter.scm_platform == 'GitHub' -%}
+[labels1]: {{ cookiecutter.__scm_link_url }}/.github/release-drafter.yml
+
+{% endif -%}
 [practices1]: https://cbea.ms/git-commit/#imperative
-{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [practices2]: https://docs.gitlab.com/user/tasks/
-{%- else %}
+{% else -%}
 [practices2]: https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/adding-sub-issues
-{%- endif %}
-{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+{% endif -%}
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [practices3]: https://docs.gitlab.com/user/project/issues/related_issues/#blocking-issues
-{%- else %}
-[practices3]: https://github.blog/changelog/2025-08-21-dependencies-on-issues/
-{%- endif %}
-{% if cookiecutter.scm_platform == 'GitLab Free' -%}
+{%- if cookiecutter.scm_platform == 'GitLab Free' %}
 [practices4]: https://docs.gitlab.com/user/tasks/#add-a-task-to-a-milestone
 {%- endif %}
 
+{% else -%}
+[practices3]: https://github.blog/changelog/2025-08-21-dependencies-on-issues/
+
+{% endif -%}
 {% if cookiecutter.use_bdd -%}
 [bdd1]: https://cucumber.io/docs/
 [bdd2]: https://cucumber.io/docs/bdd/
@@ -5415,11 +5428,11 @@ what we are doing matters!
 [bdd6]: https://pytest-bdd.readthedocs.io/en/latest/
 [bdd7]: https://automationpanda.com/bdd/
 [bdd8]: https://data-ai.theodo.com/en/technical-blog/behavior-driven-development-data-scientist-perspective
-{%- endif %}
 
+{% endif -%}
 [version1]: https://jacobtomlinson.dev/effver/
 
-{% if cookiecutter.commit_convention == 'gitmoji' %}
+{% if cookiecutter.commit_convention == 'gitmoji' -%}
 [commit1]: https://gitmoji.dev/
 {% elif cookiecutter.commit_convention == 'conventional' -%}
 [commit1]: https://www.conventionalcommits.org/en/v1.0.0/
@@ -5427,7 +5440,7 @@ what we are doing matters!
 {% else -%}
 [commit1]: https://github.com/ljnsn/cz-conventional-gitmoji
 [commit1a]: https://www.conventionalcommits.org/en/v1.0.0/
-{%- endif %}
+{% endif -%}
 [commit2]: https://cbea.ms/git-commit/
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [commit3]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
@@ -5451,7 +5464,7 @@ what we are doing matters!
 
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [ci1]: https://docs.gitlab.com/topics/build_your_application/
-{% else -%}
+{%- else -%}
 [ci1]: https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/control-deployments
 {%- endif %}
 {%- if cookiecutter.__coverage_lc == 'codacy' %}
@@ -5464,10 +5477,10 @@ what we are doing matters!
 [ci2]: https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow
 {%- endif %}
 
-{%- if cookiecutter.licence != 'nos' %}
+{% if cookiecutter.licence != 'nos' -%}
 [licence1]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
-{%- endif %}
 
+{% endif -%}
 [values1]: https://handbook.gitlab.com/
 [values2]: https://handbook.gitlab.com/handbook/communication/#start-with-a-merge-request
 [values3]: https://handbook.gitlab.com/handbook/values/#say-why-not-just-what
@@ -5481,7 +5494,7 @@ what we are doing matters!
 {% if cookiecutter.app_type in ['tui', 'hybrid'] -%}
 [changes0a]: {{ cookiecutter.__scm_link_url }}/tree/master/{{ cookiecutter.package_name }}/tui
 [changes0b]: https://textual.textualize.io/
-{%- endif %}
+{% endif -%}
 {% if cookiecutter.app_type != 'bare_repo' -%}
 [changes1]: {{ cookiecutter.__scm_link_url }}/tree/master/{{ cookiecutter.package_name }}/cli
 [changes2]: https://typer.tiangolo.com/
@@ -5489,13 +5502,13 @@ what we are doing matters!
 [changes4]: {{ cookiecutter.__scm_link_url }}/tree/master/{{ cookiecutter.package_name }}/logging
 [changes5]: {{ cookiecutter.__scm_link_url }}/blob/master/tasks.py
 [changes6]: https://www.pyinvoke.org/
-{%- endif %}
 
+{% endif -%}
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [prepare1]: {{ cookiecutter.__scm_link_url }}/tree/master/.gitlab/merge_request_templates
 {% else -%}
 [prepare1]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/MERGE_REQUEST_TEMPLATE
-{%- endif %}
+{% endif -%}
 [prepare2]: https://github.com/kubernetes/kubernetes/blob/release-1.5/docs/devel/faster_reviews.md
 [prepare3]: https://google.github.io/eng-practices/review/
 
@@ -5503,15 +5516,15 @@ what we are doing matters!
 [workflow1]: https://pytest-bdd.readthedocs.io/en/latest/#organizing-your-scenarios
 {% else -%}
 [workflow1]: https://docs.pytest.org/en/stable/example/markers.html#mark-examples
-{%- endif %}
+{% endif -%}
 [workflow2]: {{ cookiecutter.__scm_link_url }}/blob/master/pyproject.toml
 
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
 [mr0]: https://docs.gitlab.com/user/project/merge_requests/dependencies/
-{%- endif %}
+{% endif -%}
 [mr1]: https://josipmisko.com/posts/code-review-nit
+{%- if cookiecutter.licence != 'nos' %}
 
-{% if cookiecutter.licence != 'nos' -%}
 [community1]: https://gregorybeamer.wordpress.com/2020/11/12/why-code-organization-is-so-important-in-software/
 [community2]: https://simonsinek.com/stories/the-right-way-to-stand-up-for-yourself-at-work/
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
@@ -5535,7 +5548,7 @@ what we are doing matters!
 [request4]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Support
 [request5]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Improvement
 [request6]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Correction
-{%- else %}
+{% else -%}
 [request1]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/ISSUE_TEMPLATE
 [request1a]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/DISCUSSION_TEMPLATE
 [request2]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue
@@ -5544,12 +5557,12 @@ what we are doing matters!
 [request4]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-support
 [request5]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-improvement
 [request6]: {{ cookiecutter.__scm_link_url }}/issues/new?template=request_for_correction.yml
-{%- endif %}
+{% endif -%}
 [request7]: https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists
 [request8]: https://docs.gitlab.com/user/snippets/
 [request9]: https://reprexpy.readthedocs.io/en/latest/
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 
-{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [promo0]: https://docs.gitlab.com/user/profile/notifications/#notification-levels
 [promo1]: https://{{ cookiecutter.__scm_platform_lc }}.com/{{ cookiecutter.scm_namespace }}
 {%- endif %}
