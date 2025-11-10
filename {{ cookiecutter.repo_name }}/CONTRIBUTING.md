@@ -1043,7 +1043,7 @@ when to move from one stage to another:
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
 | Status                                               | Status Category | Description                                                                                                                                                                                                                                                                                                                                                               |
 | :--------------------------------------------------- | :-------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| ![Triage icon][icon1] **Needs Triage**               |     Triage      | Initial stage for [User requests][status2], which require a first analysis by a {{ cookiecutter.project_name }} contributor before work on its scope is either accepted or declined. It is also the default open state for new items if not overriden.                                                                                                                    |
+| ![Triage icon][icon1] **Needs Triage**               |     Triage      | Initial stage for [User requests][status2], which require a first analysis by a {{ cookiecutter.project_name }} contributor before work on its scope is either accepted or declined. It is also the default open state for new items if not overridden.                                                                                                                   |
 | ![Refinement icon][icon2] **Needs Refinement**       |     Triage      | Describes more general ideas that might receive development at some point, but whose current state does not detail implementation or paths to delivery. Lacking scope, represents more of a desire than an actual proposal – which might actually prove infeasible later. Should be used to inform the need for further discussions before being cleared for development. |
 | ![Criteria icon][icon3] **Needs Criteria**           |     Triage      | This describes items whose scope is set, but acceptance criteria is still pending to be added before being cleared for development. In contrast with the **Needs Refinement** status, in this stage the deliverable is known and understood, but is waiting for a contributor to detail in smaller steps.                                                                 |
 | ![Steps icon][icon4] **Needs Delivery Steps**        |     Triage      | A specific type of triaging item, signaling pending work before the item can be cleared as a [starter assignment][starter] development. In contrast with the **Needs Criteria**, this stage indicates the work item will be processed with greater detail than usual so a new contributor can pick it up and develop it with little to no friction.                       |
@@ -2169,7 +2169,7 @@ will be licensed under
 the [{{ licence_name }}][licence1].
 
 {% else -%}
-{{ cookiecutter.project_name }} is _**not**_ open source sotware.
+{{ cookiecutter.project_name }} is _**not**_ open source software.
 Please [contact][topic5] the maintainer
 for more information
 on licencing the project.
