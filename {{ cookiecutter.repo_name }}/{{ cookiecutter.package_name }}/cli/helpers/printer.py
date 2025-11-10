@@ -36,7 +36,7 @@ def pretty_print_setting(manager, key, config_type):
 {%- endif %}
     """
 {%- else %}
-    """Converts string inputs to appropriate Python types."""
+    """Print a Orbittings setting as a literal value on a Rich console."""
 {%- endif %}
     if key is None:
         _print_entire_config(manager, config_type)

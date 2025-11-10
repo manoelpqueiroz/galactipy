@@ -76,6 +76,7 @@ class TaskRunner:
     """Helper class to track and report task execution results."""
 
     def __init__(self):
+        """Initialise the Invoke task runner."""
         self.results: list[TaskResult] = []
 
     def run_task(
@@ -113,7 +114,9 @@ class TaskRunner:
 
 
 def get_poetry_command() -> Path:
+{%- if cookiecutter.docstring_style != 'other' %}
     """Retrieve the executable path for Poetry.
+{%- if cookiecutter.docstring_style == 'numpy' %}
 
     Returns
     -------
@@ -125,7 +128,28 @@ def get_poetry_command() -> Path:
     ------
     invoke.exceptions.Exit
         If the Poetry executable is not found in the system.
+{%- elif cookiecutter.docstring_style == 'google' %}
+
+    Returns:
+        Path to the Poetry executable. If no path is found, will use the system's
+        default paths for a Poetry installation.
+
+    Raises:
+        invoke.exceptions.Exit: If the Poetry executable is not found in the system.
+{%- else %}
+
+    :param record: The Loguru record dictionary with the information about the logging
+        context.
+    :type record: dict
+    :raises invoke.exceptions.Exit: If the Poetry executable is not found in the system.
+    :return: A formatted string with standardised padding for the individual parts of
+        the log entry.
+    :rtype: str
+{%- endif %}
     """
+{%- else %}
+    """Retrieve the executable path for Poetry."""
+{%- endif %}
     poetry_command = which("poetry")
 
     if poetry_command is not None:
@@ -225,7 +249,7 @@ def config(
 
     If an alternate registry is provided to the `repo` argument, the `url` argument must
     also be provided, except for the "testpypi" repo.
-    """  # noqa: DOC501
+    """{% if cookiecutter.docstring_style in ['numpy', 'google'] %}  # noqa: DOC501{% endif %}
     poetry_path = get_poetry_command()
     package_registry_url_configurator = "{path} config repositories.{repo} {url}"
 

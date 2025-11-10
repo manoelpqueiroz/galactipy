@@ -200,7 +200,9 @@ select = [ # UPDATEME with additional rules from https://docs.astral.sh/ruff/rul
   "FLY",
   "YTT",
   "RUF",
+{%- if cookiecutter.docstring_style != 'other' %}
   "DOC",
+{%- endif %}
   "TRY",
   "SLOT",
   "PERF",
@@ -209,7 +211,18 @@ select = [ # UPDATEME with additional rules from https://docs.astral.sh/ruff/rul
   "ASYNC",
 {%- endif %}
 ]
-ignore = ["D200", "TD004"]
+ignore = [
+  "D200",
+  "TD004",
+{%- if cookiecutter.docstring_style == 'other' %}
+  "D203",
+  "D213",
+  "D413",
+{%- elif cookiecutter.docstring_style == 'sphinx' %}
+  "DOC201",  # FYI Pydoclint raises false warnings for missing returns in Sphinx style
+  "DOC501",  # FYI Pydoclint raises false warnings for missing exceptions in Sphinx style
+{%- endif %}
+]
 task-tags = [
   "BUG",
   "HACK",
