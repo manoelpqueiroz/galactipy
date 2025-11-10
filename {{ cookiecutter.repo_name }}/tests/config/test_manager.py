@@ -6,6 +6,7 @@ import pytest
 
 from {{ cookiecutter.package_name }}.config import AppManager, resolve_app_manager
 {%- if cookiecutter.use_bdd %}
+
 from tests.utils import boolean_parser
 
 

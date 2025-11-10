@@ -17,7 +17,8 @@ from {{ cookiecutter.package_name }}.cli.commands.config.extend import config_ex
 from {{ cookiecutter.package_name }}.cli.commands.config.get import config_get_app
 from {{ cookiecutter.package_name }}.cli.commands.config.set import config_set_app
 from {{ cookiecutter.package_name }}.cli.commands.config.unset import config_unset_app
-{% if cookiecutter.use_bdd -%}
+{%- if cookiecutter.use_bdd %}
+
 from tests.utils.parsers import boolean_parser
 
 ARRAY_LENGTH_STEP = parsers.parse(

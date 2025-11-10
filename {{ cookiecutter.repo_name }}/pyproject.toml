@@ -284,6 +284,7 @@ max-bool-expr = 3
 [tool.ruff.lint.isort]
 split-on-trailing-comma = false
 known-first-party = ["{{ cookiecutter.package_name }}"]
+known-local-folder = ["tests"]
 section-order = [
   "future",
   "typing",
