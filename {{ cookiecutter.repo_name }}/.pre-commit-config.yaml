@@ -104,7 +104,7 @@ repos:
 
   # Commit convention compliance
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v4.9.1
+    rev: v4.10.0
     hooks:
     - id: commitizen
       name: Commit convention compliance
