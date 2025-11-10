@@ -12,7 +12,7 @@ default_context:
   scm_namespace: "{{ cookiecutter.scm_namespace }}"
   email: "{{ cookiecutter.email }}"
   licence: "{{ cookiecutter.licence }}"
-  minimal_python_version: {{ cookiecutter.minimal_python_version }}
+  minimal_python_version: "{{ cookiecutter.minimal_python_version }}"
   line_length: {{ cookiecutter.line_length }}
   docstring_style: "{{ cookiecutter.docstring_style }}"
   docstring_length: {{ cookiecutter.docstring_length }}

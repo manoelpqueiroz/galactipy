@@ -152,8 +152,7 @@ test-py{{ version[0] }}{{ version[1] }}:
     - sh ./codacy.sh report -r coverage.xml
 {%- endif %}
 {%- endif %}
-
-{% endfor -%}
+{% endfor %}
 build-project:
   stage: build
   artifacts:
