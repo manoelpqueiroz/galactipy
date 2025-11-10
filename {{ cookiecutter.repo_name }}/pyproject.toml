@@ -1,3 +1,4 @@
+{% set docstring_convention = 'pep257' if cookiecutter.docstring_style == 'sphinx' else cookiecutter.docstring_style -%}
 # Pyproject configuration file
 [project]
 # General configuration
@@ -273,7 +274,7 @@ max-line-length = {{ cookiecutter.line_length }}
 max-doc-length = {{ cookiecutter.docstring_length }}
 {%+ if cookiecutter.docstring_style != 'other' %}
 [tool.ruff.lint.pydocstyle]
-convention = "{{ cookiecutter.docstring_style }}"
+convention = "{{ docstring_convention }}"
 
 [tool.ruff.lint.pydoclint]
 ignore-one-line-docstrings = true
