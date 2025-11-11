@@ -1,3 +1,35 @@
+## 1.0.0 (2025-11-11)
+
+### :milky_way: Components (1 change)
+
+- [:pencil: Update template `README.md` files content](galactipy/galactipy@06757f00011850e345bf0049086acfd9342379b3) ([merge request](galactipy/galactipy!100))
+
+### :wrench: Fixes & Refactoring (2 changes)
+
+- [:wrench: Fix duplicate value in Ruff rule selection](galactipy/galactipy@1586dfd3083c2111f093cce29900466fb91f6680) ([merge request](galactipy/galactipy!100))
+- [:adhesive_bandage: Fix issue badges URLs in template `CONTRIBUTING.md`](galactipy/galactipy@9d013e78fe6842cc6e9e6cdaa0486223f05b46bf) ([merge request](galactipy/galactipy!100))
+
+### :gear: Internals (1 change)
+
+- [:children_crossing: Adapt post-gen instructions commit prefix to chosen convention](galactipy/galactipy@851dfd4c790173e03032bcb7dfebfefc81bf1ba8) ([merge request](galactipy/galactipy!100))
+
+### :construction_site: Template Internals (4 changes)
+
+- [:pencil2: Use correct name for TestPyPI](galactipy/galactipy@25fe3ec1a0109ae049b760102172b2c28c782c4c) ([merge request](galactipy/galactipy!100))
+- [:wrench: Configure foreground colour for `DEFINE` and `FYI` tags](galactipy/galactipy@e4e556515b937ee3f36573da1c6024baa4c427a5) ([merge request](galactipy/galactipy!100))
+- [:pencil2: Change terminology in Policy Proposals template](galactipy/galactipy@c947219454509aff45cf7b07bbcb539b10212f33) ([merge request](galactipy/galactipy!100))
+- [:wrench: Update Merge Request templates checklist](galactipy/galactipy@bb1012dd8c785966cf7b3d11df241aef06b77a83) ([merge request](galactipy/galactipy!100))
+
+### :pencil: Documentation (3 changes)
+
+- [:pencil: Update project `README.md` with quality fixes](galactipy/galactipy@83cc107c22241a462e200221463194c1dc0ee0e2) ([merge request](galactipy/galactipy!100))
+- [:pencil: Structure dependencies badges](galactipy/galactipy@11885b7645859d1a3af6f36d44b0acd68678d958) ([merge request](galactipy/galactipy!100))
+- [:pencil: Add content for project stages](galactipy/galactipy@78437feb6123b6bb27b5a12af9bab8306a399adb) ([merge request](galactipy/galactipy!100))
+
+### :scroll: Project Policies (1 change)
+
+- [:pencil: Update term for development philosophy in project `CONTRIBUTING.md`](galactipy/galactipy@94e999cd82b7620daa81bdf85577dac8a3b49363) ([merge request](galactipy/galactipy!100))
+
 ## 0.24.1 (2025-11-11)
 
 ### :milky_way: Components (1 change)
