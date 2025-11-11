@@ -61,7 +61,7 @@ contributing as a developer:
 - Creating Merge Requests
   requires a GitLab account;
 - Merge Requests should
-  adhere to [GitLab Philosophy][tldr1];
+  adhere to the [Galactipy Philosophy][tldr1];
 - Commits should
   adhere to our [commit customs][tldr2];
 - The project's [codestyle][tldr3] should
@@ -885,7 +885,7 @@ with the following pattern:
 
 ### Branch Organization
 
-We apply the [GitLab Philosophy][tldr1]
+We apply the [Galactipy Philosophy][tldr1]
 for conducting new development,
 which means
 that all changes
