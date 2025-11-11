@@ -6,7 +6,7 @@
 
 ### Project Mission
 
-<!-- DEFINE your project mission -->
+<!-- DEFINE your project mission, in tandem with the "Purpose & Function" section on README.md -->
 
 ### How to Get Involved
 

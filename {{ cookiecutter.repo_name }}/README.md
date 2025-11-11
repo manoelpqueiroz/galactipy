@@ -80,7 +80,20 @@ _{{ cookiecutter.project_description }}_
 {% endif -%}
 </div>
 
-## Installation
+## :sunrise_over_mountains: Purpose & Function
+
+<!-- DEFINE your project's purpose
+
+  Don't forget to include what problem your project solves
+
+  Also update the ROADMAP.md "Mission" based on this section
+-->
+
+## :star_struck: Standout Features
+
+<!-- DEFINE which features your project provides that make it enticing to potential users -->
+
+## :inbox_tray: Installation
 
 {% if cookiecutter.app_type != 'bare_repo' -%}
 Use [`pipx`][install1] to install {{ cookiecutter.project_name }}
@@ -96,7 +109,7 @@ Then you can run it from the command line:
 {{ cookiecutter.repo_name }} --help
 ```
 
-## Command-line Usage
+## :black_joker: How to Use It
 
 {% if cookiecutter.app_type == 'tui' -%}
 You can simply
@@ -110,7 +123,7 @@ with other options
 for fine-grained
 control of the application:
 
-> _`{{ cookiecutter.repo_name }} [--version | -v] [--config | -c]`_
+> _`{{ cookiecutter.repo_name }} [--version | -v] [(--config | -c) <file>]`_
 >> **`--version`**
 >>
 >> **`-v`**
@@ -146,7 +159,7 @@ operations:
 Launch the terminal interface
 with the `{{ cookiecutter.repo_name }} launch` command:
 
-> _`{{ cookiecutter.repo_name }} launch [--config | -c]`_
+> _`{{ cookiecutter.repo_name }} launch [(--config | -c) <file>]`_
 >> **`--config`**
 >>
 >> **`-c`**
@@ -178,7 +191,7 @@ to manipulate
 the settings
 for your {{ cookiecutter.project_name }} installation:
 
-> _`{{ cookiecutter.repo_name }} config get [--path] [--secret | -s] KEY`_
+> _`{{ cookiecutter.repo_name }} config get [--path <file>] [--secret | -s] KEY`_
 >> **`KEY`**
 >>
 >> The configuration key
@@ -196,7 +209,7 @@ for your {{ cookiecutter.project_name }} installation:
 >> Retrieve configuration
 >> from the secret manager instead.
 
-> _`{{ cookiecutter.repo_name }} config set [--path] [--secret | -s] KEY VALUE`_
+> _`{{ cookiecutter.repo_name }} config set [--path <file>] [--secret | -s] KEY VALUE`_
 >> **`KEY`**
 >>
 >> The configuration key
@@ -219,7 +232,7 @@ for your {{ cookiecutter.project_name }} installation:
 >> Store configuration
 >> in the secret manager instead.
 
-> _`{{ cookiecutter.repo_name }} config extend [--path] [--secret | -s] [--create-on-missing | -c] KEY VALUE`_
+> _`{{ cookiecutter.repo_name }} config extend [--path <file>] [--secret | -s] [--create-on-missing | -c] KEY VALUE`_
 >> **`KEY`**
 >>
 >> The configuration key
@@ -252,7 +265,7 @@ for your {{ cookiecutter.project_name }} installation:
 >> Will raise an error
 >> otherwise.
 
-> _`{{ cookiecutter.repo_name }} config unset [--path] [--secret | -s] KEY`_
+> _`{{ cookiecutter.repo_name }} config unset [--path <file>] [--secret | -s] KEY`_
 >> **`KEY`**
 >>
 >> The configuration key
@@ -277,6 +290,10 @@ Use [`pip`][install1] to install {{ cookiecutter.project_name }}:
 pip install -U {{ cookiecutter.repo_name }}
 ```
 
+## :black_joker: How to Use It
+
+<!-- UPDATEME with basic usage instructions for your project -->
+
 {% endif -%}
 ## :reminder_ribbon: Contributing
 
@@ -284,6 +301,22 @@ There are several ways
 to contribute to {{ cookiecutter.project_name }}.
 Refer to our [`CONTRIBUTING` guide][burl7]
 for all relevant details.
+
+Currently,
+we are seeking help
+to tackle areas of focus
+that are more pressing
+to our project's progress
+and would make an immediate difference
+in helping us achieve our [mission][contributing1].
+
+Here are some key contributions
+your can help us with
+right now:
+
+- Provide input in [design discussions][contributing2]
+  to define the desired features of {{ cookiecutter.project_name }}.
+<!-- DEFINE additional areas of assistance as development progresses -->
 
 ## :ship: Releases
 
@@ -309,6 +342,18 @@ See [LICENCE][blic2] for more details.
 We provide a [`CITATION.cff`][cite1] file
 to make it easier to cite this project
 in your paper.
+
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
+## :women_with_bunny_ears: Similar Projects
+{%- else -%}
+## :dancing_women: Similar Projects
+{%- endif %}
+
+<!-- UPDATEME with projects that implement similar functionality as yours
+
+  Provide information on which cases those projects might be more suitable than yours for users
+  List similar projects that inspired yours
+-->
 
 ## Credits [![Expand your project structure from atoms of code to galactic dimensions.][badge4]][burl4]
 
@@ -434,6 +479,15 @@ This project was generated with [Galactipy][burl4].
 [install1]: https://pip.pypa.io/en/stable/installation/
 
 {% endif -%}
+[contributing1]: {{ cookiecutter.__scm_link_url }}/blob/master/ROADMAP.md#project-mission
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+[contributing2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=design%3A%3A%2A&type%5B%5D=issue
+{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+[contributing2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5D%5B%5D=design-discovery&or%5Blabel_name%5D%5B%5D=design-formulation&or%5Blabel_name%5D%5B%5D=design-reassessment&type%5B%5D=issue
+{%- else %}
+[contributing2]: {{ cookiecutter.__scm_link_url }}/issues?q=label%3Adesign-discovery%20OR%20label%3Adesign-formulation%20OR%20label%3Adesign-reassessment
+{%- endif %}
+
 [release1]: {{ cookiecutter.__scm_link_url }}/releases
 [release2]: https://jacobtomlinson.dev/effver/
 {%- if cookiecutter.create_docker %}
