@@ -59,7 +59,7 @@
 > - [ ] The proposal changes internal configuration files:
 >   - [ ] I have applied the correct syntax to keep the tool functional for developers;
 >   - Regarding documentation changes: <!-- Pick only one -->
->     - [ ] I have evaluated that this configuration change does not require updating a policy file or comment to substantiate it;
+>     - [ ] I have evaluated that this configuration change does not require updating a documentation file or comment to substantiate it;
 >     - [ ] I have updated the documentation highlighting this change and any relevant information.
 
 > [!TIP]
