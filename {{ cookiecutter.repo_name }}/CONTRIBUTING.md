@@ -508,7 +508,7 @@ will and will not be tolerated.
 ### {% if cookiecutter.licence != 'nos' %}Open {% endif %}Development
 
 All work on {{ cookiecutter.project_name }} happens
-directly on [{{ cookiecutter.__scm_platform_base }}][dev1],
+directly on [{{ cookiecutter.__scm_platform_base }}][development1],
 including roadmap
 and [{{ roadmap_item }}s][topic2].
 Therefore,
@@ -573,12 +573,12 @@ can be found below:
   displaying the aforementioned conduct,
   the contributor must express
   their actual interest
-  in attaining a [role][dev2]
+  in attaining a [role][development2]
   in the upstream repository.
 
 We also recommend interested individuals
 to follow
-the guide to the [_Pragmatic Open Source Contributor_][dev3],
+the guide to the [_Pragmatic Open Source Contributor_][development3],
 which goes
 into the attitude
 for candidate contributors
@@ -606,11 +606,11 @@ once a work item has been created.
 Any contributor can propose a new distinct deliverable
 to be added to the roadmap.
 A [{{ cookiecutter.__mr_term }}][swmr] containing the proposal
-must be opened with the [**Project Policies** template][road1],
+must be opened with the [**Project Policies** template][roadmap1],
 detailing nature, scope and purpose of the {{ roadmap_item }}.
 
 The {{ cookiecutter.__mr_acronym }} must detail the proposed {{ roadmap_item }}
-added to the [`ROADMAP.md` table][road2]
+added to the [`ROADMAP.md` table][roadmap2]
 for discussion,
 containing:
 
@@ -641,14 +641,14 @@ containing:
 
 Contributors and maintainers will participate in the discussion to
 [refine][swnjw] the scope of the {{ roadmap_item }} and
-either accept of reject the proposal via [thumbs-up/thumbs-down][road3] reactions
+either accept of reject the proposal via [thumbs-up/thumbs-down][roadmap3] reactions
 on the author's initial comment.
 
 Once {{ roadmap_item_undefined }} has been accepted for inclusion in the roadmap,
 it will be officially created in the [{{ roadmap_item.capitalize() }}s][topic2] page.
 The {{ roadmap_item }} itself should contain:
 
-- The [Motivational Narrative][road4] as a summary to the {{ roadmap_item }}'s goal;
+- The [Motivational Narrative][roadmap4] as a summary to the {{ roadmap_item }}'s goal;
   - We suggest using the following pattern if the actor of the deliverable is not clear:
     `**In order to** {GOAL},<br>**The project will** {ACTION}.`;
 - Detailed information collected from the discussion
@@ -676,8 +676,8 @@ helping newcomers get onboarded more quickly.
 Therefore, contributors writing official {{ roadmap_item }}s
 should approach the task with the following goals in mind:
 
-- [_Comprehensive, yet succinct_][road5];
-- [_Standardised, yet conscious_][road6].
+- [_Comprehensive, yet succinct_][roadmap5];
+- [_Standardised, yet conscious_][roadmap6].
 >>>
 {%- else -%}
 > [!TIP]
@@ -689,8 +689,8 @@ should approach the task with the following goals in mind:
 > Therefore, contributors writing official {{ roadmap_item }}s
 > should approach the task with the following goals in mind:
 >
-> - [_Comprehensive, yet succinct_][road5];
-> - [_Standardised, yet conscious_][road6].
+> - [_Comprehensive, yet succinct_][roadmap5];
+> - [_Standardised, yet conscious_][roadmap6].
 {%- endif %}
 
 After {{ roadmap_item_undefined }} has been completed,
@@ -703,7 +703,7 @@ with the following possible values:
 {% else -%}
 - `**Delivered with <version> :flight_departure:**`,
 {%- endif %}
-  if properly associated to a [{{ cookiecutter.__scm_platform_base }} Release][road7];
+  if properly associated to a [{{ cookiecutter.__scm_platform_base }} Release][roadmap7];
 - `**Delivered Internally :100:**`,
   if the {{ roadmap_item }} has no impact on project releases.
 
@@ -1501,7 +1501,7 @@ as reflecting
 the progression of our efforts
 over time.
 We choose to adhere
-to [Intended Effort Versioning][version1]
+to [Intended Effort Versioning][versioning1]
 for consistency
 and improved user communication.
 
@@ -1649,7 +1649,7 @@ or detailed documentation.
 {% if cookiecutter.commit_convention == 'gitmoji' -%}
 #### Gitmoji
 
-{{ cookiecutter.project_name }} uses [Gitmoji][commit1]
+{{ cookiecutter.project_name }} uses [Gitmoji][committing1]
 to characterise
 the nature of each commit,
 you should familiarise yourself
@@ -1712,12 +1712,12 @@ so the CI will ignore it.
 {% elif cookiecutter.commit_convention == 'conventional' -%}
 #### Conventional Commits
 
-{{ cookiecutter.project_name }} uses [Conventional Commits][commit1]
+{{ cookiecutter.project_name }} uses [Conventional Commits][committing1]
 to characterise
 the nature of each commit,
 you should familiarise yourself
 with this method.
-We follow the [Angular Convention][commit1a]
+We follow the [Angular Convention][committing1a]
 to specify
 the allowed commit types:
 
@@ -1760,12 +1760,12 @@ so the CI will ignore it.
 {% else -%}
 #### Conventional Gitmoji
 
-{{ cookiecutter.project_name }} uses [Conventional Gitmoji][commit1]
+{{ cookiecutter.project_name }} uses [Conventional Gitmoji][committing1]
 to characterise
 the nature of each commit,
 you should familiarise yourself
 with this method,
-based on [Conventional Commits][commit1a]
+based on [Conventional Commits][committing1a]
 with visual cues added
 via Emoji.
 
@@ -1903,7 +1903,7 @@ as it helps developers
 to later understand implementation
 and reasoning
 behind changes.
-The article [_How to Write a Git Commit Message_][commit2]
+The article [_How to Write a Git Commit Message_][committing2]
 is a valuable resource
 and reading through it
 is strongly recommended
@@ -1916,7 +1916,7 @@ when committing.
 #### Git Trailers
 
 Every commit should also
-be identified with the respective [Git trailer][commit3]
+be identified with the respective [Git trailer][committing3]
 to categorise the type of change being made.
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 When a new version of {{ cookiecutter.project_name }}
@@ -1929,7 +1929,7 @@ in the root directory.
 
 The available trailers
 are listed below
-and defined in the [`changelog-config.yml`][commit4] file:
+and defined in the [`changelog-config.yml`][committing4] file:
 {%- if cookiecutter.app_type != 'bare_repo' %}
 |           Category in CHANGELOG            |                                                                                                      Available Trailers                                                                                                      | Use Cases                                                                                                                                                              |
 | :----------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1987,7 +1987,7 @@ with `invoke codestyle` and `invoke lint` commands.
 To suggest changes and additions
 to Ruff rules and conventions
 for the project,
-use a [Project Policy Proposal {{ cookiecutter.__mr_acronym }}][road1].
+use a [Project Policy Proposal {{ cookiecutter.__mr_acronym }}][roadmap1].
 
 #### Docstring Convention
 
@@ -3226,7 +3226,7 @@ in [`pyproject.toml`][workflow2]:
 
 To propose changes
 to the marker options,
-do so through a [Project Policy Proposal][road1].
+do so through a [Project Policy Proposal][roadmap1].
 
 #### Feature Flags
 
@@ -3767,7 +3767,7 @@ Then:
   Clarify with the submitters if necessary.
   If blocked by one or more open {{ cookiecutter.__mr_acronym }}s,
 {%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
-  set an [{{ cookiecutter.__mr_acronym }} dependency][mr0];
+  set an [{{ cookiecutter.__mr_acronym }} dependency][reviewing0];
 {%- else %}
   mention the blocking {{ cookiecutter.__mr_acronym }}
   in the discussion;
@@ -3795,7 +3795,7 @@ and conventions
 change over time.
 **The first impression you give to a new contributor never does.**
 
-[Nits][mr1]
+[Nits][reviewing1]
 (requests for small changes
 that are not essential)
 are fine,
@@ -4242,7 +4242,7 @@ Leverage [replies][community5]
 {%- else %}
 Leverage replies
 {%- endif %}
-and [reactions][road3]
+and [reactions][roadmap3]
 to direct your questions
 and work together
 with your mentor
@@ -5155,11 +5155,11 @@ without your support!
 Here's how you can promote {{ cookiecutter.project_name }}:
 
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
-- Set the [Notification level][promo0] to **"Watch"**
-  on the [{{ cookiecutter.scm_namespace.capitalize() }} organisation][promo1]
+- Set the [Notification level][promote0] to **"Watch"**
+  on the [{{ cookiecutter.scm_namespace.capitalize() }} organisation][promote1]
 {% else -%}
 - Set the [Notification level][topic6] to **"Watch"**
-  on the [{{ cookiecutter.project_name }} repository][dev1]
+  on the [{{ cookiecutter.project_name }} repository][development1]
 {%- endif %}
   and receive updates
   on most of our activity;
@@ -5347,34 +5347,34 @@ what we are doing matters!
 [cc1]: https://www.contributor-covenant.org/
 [cc2]: {{ cookiecutter.__scm_link_url }}/blob/master/CODE_OF_CONDUCT.md
 
-[dev1]: {{ cookiecutter.__scm_base_url }}
+[development1]: {{ cookiecutter.__scm_base_url }}
 {%- if cookiecutter.licence != 'nos' %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[dev2]: https://docs.gitlab.com/user/permissions/
+[development2]: https://docs.gitlab.com/user/permissions/
 {%- else %}
-[dev2]: https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/roles-in-an-organization
+[development2]: https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/roles-in-an-organization
 {%- endif %}
-[dev3]: https://diurnal.st/2025/03/02/the-pragmatic-open-source-contributor.html
+[development3]: https://diurnal.st/2025/03/02/the-pragmatic-open-source-contributor.html
 {%- endif %}
 
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
-[road1]: {{ cookiecutter.__scm_link_url }}/merge_requests/new?issuable_template=Project%2520Policies
+[roadmap1]: {{ cookiecutter.__scm_link_url }}/merge_requests/new?issuable_template=Project%2520Policies
 {% else -%}
-[road1]: {{ cookiecutter.__scm_link_url }}/pulls/compare?template=project_policies.md
+[roadmap1]: {{ cookiecutter.__scm_link_url }}/pulls/compare?template=project_policies.md
 {% endif -%}
-[road2]: {{ cookiecutter.__scm_link_url }}/blob/master/ROADMAP.md#roadmap-history
+[roadmap2]: {{ cookiecutter.__scm_link_url }}/blob/master/ROADMAP.md#roadmap-history
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[road3]: https://docs.gitlab.com/user/emoji_reactions/
+[roadmap3]: https://docs.gitlab.com/user/emoji_reactions/
 {%- else %}
-[road3]: https://github.blog/news-insights/product-news/add-reactions-to-pull-requests-issues-and-comments/
+[roadmap3]: https://github.blog/news-insights/product-news/add-reactions-to-pull-requests-issues-and-comments/
 {%- endif %}
-[road4]: https://blog.crisp.se/2014/09/25/david-evans/as-a-i-want-so-that-considered-harmful
-[road5]: https://www.reforge.com/blog/user-stories-misuse
-[road6]: https://www.mountaingoatsoftware.com/blog/critiquing-one-of-my-own-real-user-stories
+[roadmap4]: https://blog.crisp.se/2014/09/25/david-evans/as-a-i-want-so-that-considered-harmful
+[roadmap5]: https://www.reforge.com/blog/user-stories-misuse
+[roadmap6]: https://www.mountaingoatsoftware.com/blog/critiquing-one-of-my-own-real-user-stories
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[road7]: https://docs.gitlab.com/user/project/releases/
+[roadmap7]: https://docs.gitlab.com/user/project/releases/
 {%- else %}
-[road7]: https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases
+[roadmap7]: https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases
 {%- endif %}
 
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
@@ -5430,21 +5430,21 @@ what we are doing matters!
 [bdd8]: https://data-ai.theodo.com/en/technical-blog/behavior-driven-development-data-scientist-perspective
 
 {% endif -%}
-[version1]: https://jacobtomlinson.dev/effver/
+[versioning1]: https://jacobtomlinson.dev/effver/
 
 {% if cookiecutter.commit_convention == 'gitmoji' -%}
-[commit1]: https://gitmoji.dev/
+[committing1]: https://gitmoji.dev/
 {% elif cookiecutter.commit_convention == 'conventional' -%}
-[commit1]: https://www.conventionalcommits.org/en/v1.0.0/
-[commit1a]: https://github.com/angular/angular/blob/main/contributing-docs/commit-message-guidelines.md
+[committing1]: https://www.conventionalcommits.org/en/v1.0.0/
+[committing1a]: https://github.com/angular/angular/blob/main/contributing-docs/commit-message-guidelines.md
 {% else -%}
-[commit1]: https://github.com/ljnsn/cz-conventional-gitmoji
-[commit1a]: https://www.conventionalcommits.org/en/v1.0.0/
+[committing1]: https://github.com/ljnsn/cz-conventional-gitmoji
+[committing1a]: https://www.conventionalcommits.org/en/v1.0.0/
 {% endif -%}
-[commit2]: https://cbea.ms/git-commit/
+[committing2]: https://cbea.ms/git-commit/
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[commit3]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
-[commit4]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/changelog_config.yml
+[committing3]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
+[committing4]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/changelog_config.yml
 {%- endif %}
 
 [style1]: https://docs.astral.sh/ruff/
@@ -5520,9 +5520,9 @@ what we are doing matters!
 [workflow2]: {{ cookiecutter.__scm_link_url }}/blob/master/pyproject.toml
 
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
-[mr0]: https://docs.gitlab.com/user/project/merge_requests/dependencies/
+[reviewing0]: https://docs.gitlab.com/user/project/merge_requests/dependencies/
 {% endif -%}
-[mr1]: https://josipmisko.com/posts/code-review-nit
+[reviewing1]: https://josipmisko.com/posts/code-review-nit
 {%- if cookiecutter.licence != 'nos' %}
 
 [community1]: https://gregorybeamer.wordpress.com/2020/11/12/why-code-organization-is-so-important-in-software/
@@ -5563,7 +5563,7 @@ what we are doing matters!
 [request9]: https://reprexpy.readthedocs.io/en/latest/
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 
-[promo0]: https://docs.gitlab.com/user/profile/notifications/#notification-levels
-[promo1]: https://{{ cookiecutter.__scm_platform_lc }}.com/{{ cookiecutter.scm_namespace }}
+[promote0]: https://docs.gitlab.com/user/profile/notifications/#notification-levels
+[promote1]: https://{{ cookiecutter.__scm_platform_lc }}.com/{{ cookiecutter.scm_namespace }}
 {%- endif %}
 {%- endif %}
