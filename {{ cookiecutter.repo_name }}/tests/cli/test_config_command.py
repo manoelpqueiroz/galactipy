@@ -1,7 +1,7 @@
-{%- if cookiecutter.use_bdd %}
+{%- if cookiecutter.use_bdd -%}
 from ast import literal_eval
-{%- endif %}
 
+{% endif -%}
 from typer.testing import CliRunner
 
 from dynaconf.base import BoxList
@@ -9,7 +9,7 @@ from orbittings.exceptions import SettingNotFoundError
 
 {% if cookiecutter.use_bdd -%}
 from pytest_bdd import given, parsers, scenario, then, when
-{% else -%}
+{%- else -%}
 import pytest
 {%- endif %}
 
@@ -17,18 +17,19 @@ from {{ cookiecutter.package_name }}.cli.commands.config.extend import config_ex
 from {{ cookiecutter.package_name }}.cli.commands.config.get import config_get_app
 from {{ cookiecutter.package_name }}.cli.commands.config.set import config_set_app
 from {{ cookiecutter.package_name }}.cli.commands.config.unset import config_unset_app
-{% if cookiecutter.use_bdd -%}
+{%- if cookiecutter.use_bdd %}
+
 from tests.utils.parsers import boolean_parser
 
 ARRAY_LENGTH_STEP = parsers.parse(
     'the value for "{key}" has {length:Int} elements', extra_types={"Int": int}
 )
-{% endif %}
+{%- endif %}
 
 runner = CliRunner()
+{%- if cookiecutter.use_bdd %}
 
 
-{% if cookiecutter.use_bdd -%}
 @scenario("config_command.feature", "Get the entire configuration")
 def test_get_entire_config():
     pass
@@ -465,6 +466,8 @@ def test_unset_non_existing_value():
 def ensure_setting_error(cli_run):
     assert cli_run.exc_info[0] is SettingNotFoundError
 {%- else %}
+
+
 @pytest.mark.cli
 @pytest.mark.config
 class TestGetCommand:
@@ -488,9 +491,7 @@ class TestGetCommand:
             [{"a": 1, "b": 2}, "{'a': 1, 'b': 2}"],
         ),
     )
-    def test_get_individual_value(
-        self, generate_test_config, value, output
-    ):
+    def test_get_individual_value(self, generate_test_config, value, output):
         manager, file = generate_test_config.values()
 
         manager["settings", "test"] = value
@@ -645,7 +646,7 @@ class TestSetCommand:
             "0.181809E12",
             "1.81889e-15",
             "0.181809E-12",
-        )
+        ),
     )
     def test_set_positive_float_values(self, generate_test_config, value):
         manager, file = generate_test_config.values()
@@ -673,7 +674,7 @@ class TestSetCommand:
             "-0.181809E12",
             "-1.81889e-15",
             "-0.181809E-12",
-        )
+        ),
     )
     def test_set_negative_float_values(self, generate_test_config, value):
         manager, file = generate_test_config.values()
@@ -752,15 +753,7 @@ class TestSetCommand:
     @pytest.mark.edge
     @pytest.mark.parametrize(
         "value",
-        (
-            "[1, 2",
-            "(1, 2",
-            "{1, 2",
-            "['a', 'b'",
-            "('a', 'b'",
-            "{'a', 'b'",
-            "{'a': 0",
-        ),
+        ("[1, 2", "(1, 2", "{1, 2", "['a', 'b'", "('a', 'b'", "{'a', 'b'", "{'a': 0"),
     )
     def test_malformed_collection(self, generate_test_config, value):
         manager, file = generate_test_config.values()

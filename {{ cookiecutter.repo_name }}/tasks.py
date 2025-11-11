@@ -1,6 +1,10 @@
 """Collection of tasks for development streamlining in {{ cookiecutter.project_name }}."""
 
 import os
+{%- if cookiecutter.create_docker and cookiecutter.__scm_platform_lc == 'gitlab' %}
+import re
+import sys
+{%- endif %}
 from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
@@ -27,16 +31,18 @@ BIN_DIR = "bin" if IS_UNIX_OS else "Scripts"
 
 PROJECT_NAME = "{{ cookiecutter.repo_name }}"
 PACKAGE_NAME = "{{ cookiecutter.package_name }}"
-{%+ if cookiecutter.create_docker %}
+{%- if cookiecutter.create_docker %}
+
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 DOCKER_REGISTRY = "registry.gitlab.com"
 DEFAULT_DOCKER_REPOSITORY = f"{DOCKER_REGISTRY}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}"
 {%- else %}
+
 DEFAULT_DOCKER_REPOSITORY = "{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}"
 {%- endif %}
 DEFAULT_DOCKER_TAG = "latest"
 DEFAULT_DOCKER_IMAGE = f"{DEFAULT_DOCKER_REPOSITORY}:{DEFAULT_DOCKER_TAG}"
-{% endif %}
+{%- endif %}
 
 # Reusable command templates
 if IS_UNIX_OS:
@@ -70,6 +76,7 @@ class TaskRunner:
     """Helper class to track and report task execution results."""
 
     def __init__(self):
+        """Initialise the Invoke task runner."""
         self.results: list[TaskResult] = []
 
     def run_task(
@@ -107,7 +114,9 @@ class TaskRunner:
 
 
 def get_poetry_command() -> Path:
+{%- if cookiecutter.docstring_style != 'other' %}
     """Retrieve the executable path for Poetry.
+{%- if cookiecutter.docstring_style == 'numpy' %}
 
     Returns
     -------
@@ -119,7 +128,28 @@ def get_poetry_command() -> Path:
     ------
     invoke.exceptions.Exit
         If the Poetry executable is not found in the system.
+{%- elif cookiecutter.docstring_style == 'google' %}
+
+    Returns:
+        Path to the Poetry executable. If no path is found, will use the system's
+        default paths for a Poetry installation.
+
+    Raises:
+        invoke.exceptions.Exit: If the Poetry executable is not found in the system.
+{%- else %}
+
+    :param record: The Loguru record dictionary with the information about the logging
+        context.
+    :type record: dict
+    :raises invoke.exceptions.Exit: If the Poetry executable is not found in the system.
+    :return: A formatted string with standardised padding for the individual parts of
+        the log entry.
+    :rtype: str
+{%- endif %}
     """
+{%- else %}
+    """Retrieve the executable path for Poetry."""
+{%- endif %}
     poetry_command = which("poetry")
 
     if poetry_command is not None:
@@ -219,7 +249,7 @@ def config(
 
     If an alternate registry is provided to the `repo` argument, the `url` argument must
     also be provided, except for the "testpypi" repo.
-    """  # noqa: DOC501
+    """{% if cookiecutter.docstring_style in ['numpy', 'google'] %}  # noqa: DOC501{% endif %}
     poetry_path = get_poetry_command()
     package_registry_url_configurator = "{path} config repositories.{repo} {url}"
 
@@ -414,27 +444,44 @@ def sweep(c: Context) -> None:
 # Docker commands
 @task(aliases=["docker-login"])
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-def login(c: Context, username: str, password: str) -> None:
+def login(c: Context, username: str) -> None:
     """Log in to the GitLab Container Registry using a token.
+
+    Must be called after piping the Personal Access Token into Invoke.
 
     More information for authentication methods provided at
     https://docs.gitlab.com/ee/user/packages/container_registry/authenticate_with_container_registry.html
-    """
-{%- else %}
-def login(c: Context, username: str) -> None:
-    """Log in to Docker Hub using the one-time device confirmation code."""
-{%- endif %}
-    password_cmd = f"echo {password}" if IS_UNIX_OS else f"Write-Host {password}"
+    """{% if cookiecutter.docstring_style in ['numpy', 'google'] %}  # noqa: DOC501{% endif %}
+    password_cmd = "echo" if IS_UNIX_OS else "Write-Host"
+
+    if sys.stdin.isatty():
+        msg = (
+            "The login task was called naked. You must provide the GitLab Personal "
+            "Access Token through a pipe:\n\n"
+            f"$ {password_cmd} <password> | invoke login"
+        )
+        raise Exit(msg)
+
+    password = sys.stdin.read().strip()
+
+    r = re.compile(r"^glpat-[0-9a-zA-Z.\-_]{51}$")
+    if r.search(password) is None:
+        msg = (
+            "Invalid Personal Access Token. Must match the regex pattern: "
+            f'r"{r.pattern}".'
+        )
+        raise Exit(msg)
 
     c.run(
-        f"{password_cmd} | "
-{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-        f"docker login {DOCKER_REGISTRY} -u {username} --password-stdin"
-{%- else %}
-        f"docker login -u {username} --password-stdin"
-{%- endif %},
+        f"{password_cmd} {password} | "
+        f"docker login {DOCKER_REGISTRY} -u {username} --password-stdin",
         pty=IS_UNIX_OS,
     )
+{%- else %}
+def login(c: Context) -> None:
+    """Log in to Docker Hub using the one-time device confirmation code."""
+    c.run("docker login", pty=IS_UNIX_OS)
+{%- endif %}
 
 
 @task(iterable=["tags"], aliases=["docker-build"])

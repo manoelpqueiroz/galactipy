@@ -58,7 +58,8 @@ class LoggerFormatter:
             A tuple of Path objects containing all modules of `project_root`.
 {%- elif cookiecutter.docstring_style == 'google' %}
 
-        Returns: A tuple of Path objects containing all modules of `project_root`.
+        Returns:
+            A tuple of Path objects containing all modules of `project_root`.
 {%- else %}
 
         :return: A tuple of Path objects containing all modules of `project_root`.
@@ -82,7 +83,8 @@ class LoggerFormatter:
             The length of the longest filename inside `project_root`.
 {%- elif cookiecutter.docstring_style == 'google' %}
 
-        Returns: The length of the longest filename inside `project_root`.
+        Returns:
+            The length of the longest filename inside `project_root`.
 {%- else %}
 
         :return: The length of the longest filename inside `project_root`.
@@ -119,7 +121,8 @@ class LoggerFormatter:
             Number of digits of the largest line count.
 {%- elif cookiecutter.docstring_style == 'google' %}
 
-        Returns: Number of digits of the largest line count.
+        Returns:
+            Number of digits of the largest line count.
 {%- else %}
 
         :return: Number of digits of the largest line count.
@@ -151,7 +154,8 @@ class LoggerFormatter:
             Total padding width needed for location alignment.
 {%- elif cookiecutter.docstring_style == 'google' %}
 
-        Returns: Total padding width needed for location alignment.
+        Returns:
+            Total padding width needed for location alignment.
 {%- else %}
 
         :return: Total padding width needed for location alignment.

@@ -1,3 +1,7 @@
+# GitLab Triage documentation at:
+# https://gitlab.com/explore/catalog/components/gitlab-triage
+
+# UPDATEME with your custom rules
 {% raw %}resource_rules:
   issues:
     rules:

@@ -7,6 +7,7 @@ class AppInterface:
     """Encapsulates the terminal interface test setup."""
 
     def __init__(self, theme):
+        """Start a Textual test terminal interface."""
         self.instance = TerminalApp(theme)
         self.pilot = self.instance.run_test()
 

@@ -102,7 +102,7 @@ class BasicConverter:
 
         Will parse strings into lists, tuples and dictionaries as-is, but will convert
         sets into tuples, as sets are not valid for TOML configuration files.
-        """  # noqa: DOC201
+        """{% if cookiecutter.docstring_style in ['numpy', 'google'] %}  # noqa: DOC201{% endif %}
         try:
             result = literal_eval(value)
 

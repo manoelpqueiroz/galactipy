@@ -62,11 +62,11 @@ COPY --from=builder /opt/{{ cookiecutter.repo_name }}-bundle /opt/{{ cookiecutte
 
 {% if cookiecutter.app_type == 'tui' -%}
 CMD ["{{ cookiecutter.repo_name }}"]
-{% elif cookiecutter.app_type == 'hybrid' -%}
+{%- elif cookiecutter.app_type == 'hybrid' -%}
 CMD ["{{ cookiecutter.repo_name }}", "launch"]
-{% elif cookiecutter.app_type == 'cli' -%}
+{%- elif cookiecutter.app_type == 'cli' -%}
 ENTRYPOINT ["{{ cookiecutter.repo_name }}"]
-{% else -%}
+{%- else -%}
 # UPDATEME with the definitive command once your app is functional
 CMD ["/bin/sh", "-c", "echo '{{ cookiecutter.project_name }} does not have a Docker image implemented yet. No application is available to run.' && exit 1"]
 {%- endif %}

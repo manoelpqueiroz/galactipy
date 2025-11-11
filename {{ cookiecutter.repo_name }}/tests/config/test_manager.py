@@ -1,11 +1,12 @@
-{% if cookiecutter.use_bdd -%}
+{%- if cookiecutter.use_bdd -%}
 from pytest_bdd import given, parsers, scenario, then, when
-{% else -%}
+{%- else -%}
 import pytest
 {%- endif %}
 
 from {{ cookiecutter.package_name }}.config import AppManager, resolve_app_manager
-{% if cookiecutter.use_bdd -%}
+{%- if cookiecutter.use_bdd %}
+
 from tests.utils import boolean_parser
 
 
@@ -97,8 +98,7 @@ def test_application_resolution():
 
 @when(
     parsers.parse(
-        "the resolver receives a request with {domain} and "
-        "{uses_custom_path:Boolean}",
+        "the resolver receives a request with {domain} and {uses_custom_path:Boolean}",
         extra_types={"Boolean": boolean_parser},
     ),
     target_fixture="resolved_manager",
@@ -138,13 +138,13 @@ def check_custom_manager_with_resolver(resolved_manager, manager_length):
         extra_types={"Boolean": boolean_parser},
     )
 )
-def check_base_directory_contents(
-    mock_config_path, file_in_base_dir, domain
-):
+def check_base_directory_contents(mock_config_path, file_in_base_dir, domain):
     base_file = mock_config_path / f"{domain}.toml"
 
     assert base_file.exists() == file_in_base_dir
 {%- else %}
+
+
 @pytest.mark.backend
 @pytest.mark.config
 @pytest.mark.standard
@@ -160,13 +160,12 @@ def test_runtime_manager(mock_config_path):
 @pytest.mark.standard
 @pytest.mark.parametrize(
     ("configuration_type", "expected_envvar"),
-    (
-        ["settings", "{{ cookiecutter.__envvar }}"],
-        ["secrets", "{{ cookiecutter.__envvar }}_SECRET"],
-    ),
+    (["settings", "{{ cookiecutter.__envvar }}"], ["secrets", "{{ cookiecutter.__envvar }}_SECRET"]),
 )
 def test_default_manager(
-    mock_config_path, configuration_type, expected_envvar  # noqa: ARG001
+    mock_config_path,  # noqa: ARG001
+    configuration_type,
+    expected_envvar,
 ):
     manager_instance = AppManager.default()
 
@@ -184,10 +183,7 @@ def test_default_manager(
 @pytest.mark.standard
 @pytest.mark.parametrize(
     ("configuration_type", "expected_envvar"),
-    (
-        ["settings", "{{ cookiecutter.__envvar }}"],
-        ["secrets", "{{ cookiecutter.__envvar }}_SECRET"],
-    ),
+    (["settings", "{{ cookiecutter.__envvar }}"], ["secrets", "{{ cookiecutter.__envvar }}_SECRET"]),
 )
 def test_custom_manager(tmp_path, configuration_type, expected_envvar):
     custom_file = tmp_path / "test.toml"
@@ -210,12 +206,7 @@ def test_custom_manager(tmp_path, configuration_type, expected_envvar):
 @pytest.mark.config
 @pytest.mark.standard
 @pytest.mark.parametrize(
-    (
-        "domain",
-        "uses_custom_path",
-        "manager_length",
-        "file_in_base_dir",
-    ),
+    ("domain", "uses_custom_path", "manager_length", "file_in_base_dir"),
     (
         ["settings", False, 2, True],
         ["secrets", False, 2, True],

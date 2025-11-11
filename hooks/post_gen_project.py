@@ -101,6 +101,10 @@ def generate_licence(directory: Path, licence: str | None) -> None:
         licence_header = directory / "_headers" / licence_filename
         licence_header.rename(directory / ".licence_header.txt")
 
+    else:
+        cc_file = directory / "CODE_OF_CONDUCT.md"
+        cc_file.unlink()
+
     rmdir(directory / "_licences")
     rmdir(directory / "_headers")
 

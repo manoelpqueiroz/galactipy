@@ -19,6 +19,7 @@ class TestLicenceGeneration:
         project_root, licence_root, licence_file, header_root, header_file = (
             licence_tree
         )
+        cc_file = project_root / "CODE_OF_CONDUCT.md"
 
         generate_licence(project_root, chosen_licence)
 
@@ -28,10 +29,13 @@ class TestLicenceGeneration:
         assert header_file.exists()
         assert not header_root.exists()
 
+        assert cc_file.exists()
+
     def test_non_oss_licence(self, licence_tree):
         project_root, licence_root, licence_file, header_root, header_file = (
             licence_tree
         )
+        cc_file = project_root / "CODE_OF_CONDUCT.md"
 
         generate_licence(project_root, None)
 
@@ -40,6 +44,8 @@ class TestLicenceGeneration:
 
         assert not header_file.exists()
         assert not header_root.exists()
+
+        assert not cc_file.exists()
 
 
 class TestTemplateGeneration:

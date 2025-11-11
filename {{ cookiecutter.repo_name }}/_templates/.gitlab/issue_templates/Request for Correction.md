@@ -64,8 +64,8 @@ Please run through all items under the **`Applicant Checklist`** section and be 
 <!--
   If applicable, list a step-by-step attempt at replicating the situation
 -->
+{%- if cookiecutter.app_type != 'bare_repo' %}
 
-{% if cookiecutter.app_type != 'bare_repo' %}
 ### Configuration
 
 <!--
@@ -84,9 +84,10 @@ Please run through all items under the **`Applicant Checklist`** section and be 
   %USERPROFILE%\AppData\Local\{{ cookiecutter.repo_name }}\Logs\report.log (Windows)
 -->
 {%- endif %}
-
 {%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+
 /label ~"request::correction"
 {%- else %}
+
 /label ~"rfc" ~"sts-needs-triage"
 {%- endif %}

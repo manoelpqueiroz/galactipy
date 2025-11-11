@@ -1,6 +1,5 @@
-# This file contains values from Cookiecutter
+# These are the variables used to generate this project with Cookiecutter
 # Made with https://gitlab.com/galactipy/galactipy
-
 default_context:
   project_name: "{{ cookiecutter.project_name }}"
   repo_name: "{{ cookiecutter.repo_name }}"
@@ -12,7 +11,7 @@ default_context:
   scm_namespace: "{{ cookiecutter.scm_namespace }}"
   email: "{{ cookiecutter.email }}"
   licence: "{{ cookiecutter.licence }}"
-  minimal_python_version: {{ cookiecutter.minimal_python_version }}
+  minimal_python_version: "{{ cookiecutter.minimal_python_version }}"
   line_length: {{ cookiecutter.line_length }}
   docstring_style: "{{ cookiecutter.docstring_style }}"
   docstring_length: {{ cookiecutter.docstring_length }}
