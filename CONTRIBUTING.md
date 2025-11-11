@@ -846,10 +846,6 @@ for consistency.
 We approach our versions
 with the following pattern:
 
-- Version `v1.0.0` can only be set
-  once all requirements specified
-  in the %7 milestone
-  are satisfied;
 - Versions can only be tagged
   if altering end-user generated projects;
   changes to project internals only
