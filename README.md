@@ -33,6 +33,7 @@
 [![GitLab Pipelines][b37]][b38]
 
 _Expand your project structure from atoms of code to **galactic** dimensions._ :milky_way:
+
 </div>
 
 ## TL;DR
@@ -695,7 +696,7 @@ We would be equally grateful if you could also do any of the following:
 [b21]: https://numpydoc.readthedocs.io/en/latest/format.html
 [b22]: https://img.shields.io/badge/%F0%9F%98%9C_gitmoji-ffdd67?style=for-the-badge
 [b23]: https://gitmoji.dev/
-[b24]: https://img.shields.io/badge/sembr-367DA9?style=for-the-badge&logo=read.cv&logoColor=white
+[b24]: https://img.shields.io/badge/sembr-FF6441?style=for-the-badge&logo=apmterminals&logoColor=white
 [b25]: https://sembr.org/
 [b26]: https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json&style=for-the-badge
 [b27]: https://python-poetry.org/

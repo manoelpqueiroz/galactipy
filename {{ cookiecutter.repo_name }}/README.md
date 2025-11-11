@@ -66,6 +66,18 @@
 
 _{{ cookiecutter.project_description }}_
 
+{% if cookiecutter.app_type != 'bare_repo' -%}
+---
+
+**POWERED BY**
+
+[![Powered by Typer][btyper]][ltyper]
+{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+[![Powered by Textual][btextual]][ltextual]
+{%- endif %}
+[![Powered by Orbittings][borbittings]][lorbittings]
+
+{% endif -%}
 </div>
 
 ## Installation
@@ -332,7 +344,7 @@ This project was generated with [Galactipy][burl4].
 {%- elif cookiecutter.commit_convention == 'conventional-gitmoji' %}
 [badge11]: https://img.shields.io/badge/conventional-%F0%9F%98%9C%20gitmoji-ffdd67?style=for-the-badge&logo=conventionalcommits&logoColor=white&labelColor=fe5196
 {%- endif %}
-[badge12]: https://img.shields.io/badge/sembr-367DA9?style=for-the-badge&logo=read.cv&logoColor=white
+[badge12]: https://img.shields.io/badge/sembr-FF6441?style=for-the-badge&logo=apmterminals&logoColor=white
 [badge13]: https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json&style=for-the-badge
 [badge14]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge
 [badge15]: https://img.shields.io/badge/security-bandit-yellow?style=for-the-badge
@@ -407,6 +419,15 @@ This project was generated with [Galactipy][burl4].
 
 {% endif -%}
 {% if cookiecutter.app_type != 'bare_repo' -%}
+[btyper]: https://img.shields.io/badge/Typer-black?style=for-the-badge&logo=typer
+[ltyper]: https://typer.tiangolo.com/
+{% if cookiecutter.app_type in ['tui', 'hybrid'] -%}
+[btextual]: https://img.shields.io/badge/Textual-272a35?style=for-the-badge&logo=textual
+[ltextual]: https://textual.textualize.io/
+{% endif -%}
+[borbittings]: https://img.shields.io/badge/orbittings-007A68?style=for-the-badge&logo=orbittings
+[lorbittings]: https://gitlab.com/galactipy/orbittings
+
 [install1]: https://pipx.pypa.io/latest/installation/
 
 {% else -%}
