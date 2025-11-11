@@ -61,13 +61,14 @@ This template should be used to propose and discuss any changes that affect know
 - [ ] The proposal changes internal configuration files:
   - [ ] I have applied the correct syntax to keep the tool functional for developers;
   - Regarding documentation changes: <!-- Pick only one -->
-    - [ ] I have evaluated that this configuration change does not require updating a policy file or comment to substantiate it;
+    - [ ] I have evaluated that this configuration change does not require updating a documentation file or comment to substantiate it;
     - [ ] I have updated the documentation highlighting this change and any relevant information.
 >>>
 
 >>> [!tip] :reminder_ribbon: Contribution control
 
 - [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][10] or the Related Issues section;
+- [ ] I have revised the [`ROADMAP.md`][11] and updated the information on development status;
 - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
 >>>
 
@@ -85,11 +86,12 @@ This template should be used to propose and discuss any changes that affect know
 [8]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#styling
 [9]: https://docs.gitlab.com/user/markdown/
 [10]: https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically
+[11]: {{ cookiecutter.__scm_link_url }}/blob/master/ROADMAP.md
 
 ## Maintainer Checklist
 
 >>> [!warning] :passport_control: MANDATORY
-I attest that the proposed change meets the [Contribution Acceptance Criteria][11]:
+I attest that the proposed change meets the [Contribution Acceptance Criteria][12]:
 
 - [ ] The proposal does not change non-policy files;
 - [ ] The commit history is logical;
@@ -109,8 +111,8 @@ I attest that during this development, the following interactions have taken pla
 
 - [ ] We have discussed our opinions on the proposed policy;
 - [ ] We have explored possible alternative ideas;
-- [ ] We have found [opportunities][12] for future development and have created work items to take action on later.
+- [ ] We have found [opportunities][13] for future development and have created work items to take action on later.
 >>>
 
-[11]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
-[12]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
+[12]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
+[13]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress

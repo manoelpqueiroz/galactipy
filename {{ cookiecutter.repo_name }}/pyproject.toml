@@ -203,7 +203,6 @@ select = [ # UPDATEME with additional rules from https://docs.astral.sh/ruff/rul
 {%- if cookiecutter.docstring_style != 'other' %}
   "DOC",
 {%- endif %}
-  "TRY",
   "SLOT",
   "PERF",
   "FURB",

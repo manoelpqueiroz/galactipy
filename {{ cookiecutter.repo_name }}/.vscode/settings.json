@@ -73,7 +73,8 @@
         },
         "DEFINE": {
             "icon": "comment-discussion",
-            "iconColour": "#4be6ad"
+            "iconColour": "#4be6ad",
+            "foreground": "#41b98d"
         },
         "BUG": {
             "icon": "bug",
@@ -96,7 +97,8 @@
         },
         "FYI": {
             "icon": "info",
-            "iconColour": "#545fff"
+            "iconColour": "#545fff",
+            "foreground": "#545fff"
         }
     },
     "todo-tree.general.tags": [
