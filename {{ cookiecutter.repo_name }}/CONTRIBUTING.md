@@ -249,15 +249,19 @@ should help:
 {%- if cookiecutter.__scm_platform_lc == 'github' %}
   and discussions
 {%- endif %}
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
   labelled with [`seeking-contributors`][query6]
-  or [`starter-assignment`][query3];
+{%- else %}
+  labelled with [`seeking-builders`][query6]
+{%- endif %}
+  or [`starter-assignment`][query5];
 - After familiarising yourself
   with the project's [labels][topic3] and [stages][tracking],
   you can contribute
   by participating in discussions on issues
   at any of the **Needs** statuses,
 {% if cookiecutter.licence != 'nos' -%}
-  especially those in the [**Needs Triage**][query4] stage;
+  especially those in the [**Needs Triage**][query3] stage;
   we are always looking for people
   who help refine issues,
   spot duplicates,
@@ -360,7 +364,7 @@ with your first steps here:
   as you work up
   to the more complex contributions
   that {{ cookiecutter.project_name }} needs.
-  Check [starter assignment][query3] issues,
+  Check [starter assignment][query5] issues,
   or [find your own][gfi]
   that deserves your time and effort.
 
@@ -487,7 +491,7 @@ an even more robust contributor:
 >    and every feedback.
 {%- endif %}
 {%- else %}
-  especially those in the [**Needs Triage**][query4] stage.
+  especially those in the [**Needs Triage**][query3] stage.
 {%- endif %}
 
 ## :classical_building: Fundamental Policies
@@ -2891,7 +2895,7 @@ a contributor will already have
 a particular new change or fix
 in mind.
 If seeking ideas,
-consult the list of [starter assignments][query3].
+consult the list of [starter assignments][query5].
 
 Before proceeding,
 contributors should evaluate
@@ -5245,9 +5249,9 @@ what we are doing matters!
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
 [query1]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&parent_id=None
 [query2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Aopinion&type%5B%5D=issue
-[query3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment%3A%3A%2A&type%5B%5D=issue
-[query4]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&status=Needs%20Triage&type%5B%5D=issue
-[query5]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=design%3A%3A%2A&type%5B%5D=issue
+[query3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&status=Needs%20Triage&type%5B%5D=issue
+[query4]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=design%3A%3A%2A&type%5B%5D=issue
+[query5]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment%3A%3A%2A&type%5B%5D=issue
 [query6]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Adelivery&type%5B%5D=issue
 [query7]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&or%5Blabel_name%5D%5B%5D=quick-win&or%5Blabel_name%5D%5B%5D=starter-assignment%3A%3Aquick-win
 [query8]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=stale&type%5B%5D=issue
@@ -5259,9 +5263,9 @@ what we are doing matters!
 [query1]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&milestone_title=None
 [query1a]: {{ cookiecutter.__scm_link_url }}/issues?state=all&type%5B%5D=task&milestone_title=Any
 [query2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-input&type%5B%5D=issue
-[query3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment&type%5B%5D=issue
-[query4]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=sts-needs-triage&type%5B%5D=issue
-[query5]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5D%5B%5D=design-discovery&or%5Blabel_name%5D%5B%5D=design-formulation&or%5Blabel_name%5D%5B%5D=design-reassessment&type%5B%5D=issue
+[query3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=sts-needs-triage&type%5B%5D=issue
+[query4]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5D%5B%5D=design-discovery&or%5Blabel_name%5D%5B%5D=design-formulation&or%5Blabel_name%5D%5B%5D=design-reassessment&type%5B%5D=issue
+[query5]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment&type%5B%5D=issue
 [query6]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-builders&type%5B%5D=issue
 [query7]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=quick-win&type%5B%5D=issue
 [query8]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=stale&type%5B%5D=issue
@@ -5272,9 +5276,9 @@ what we are doing matters!
 {% else -%}
 [query1]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20no%3Aproject
 [query2]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-input
-[query3]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astarter-assignment
-[query4]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Asts-needs-triage
-[query5]: {{ cookiecutter.__scm_link_url }}/issues?q=label%3Adesign-discovery%20OR%20label%3Adesign-formulation%20OR%20label%3Adesign-reassessment
+[query3]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Asts-needs-triage
+[query4]: {{ cookiecutter.__scm_link_url }}/issues?q=label%3Adesign-discovery%20OR%20label%3Adesign-formulation%20OR%20label%3Adesign-reassessment
+[query5]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astarter-assignment
 [query6]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-builders
 [query7]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aquick-win
 [query8]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astale
