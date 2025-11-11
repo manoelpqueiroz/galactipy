@@ -1,4 +1,4 @@
-# :map: {{ cookiecutter.project_name }} Roadmap
+# :{% if cookiecutter.__scm_platform_lc == 'github' %}world_{% endif %}map: {{ cookiecutter.project_name }} Roadmap
 
 ## About {{ cookiecutter.project_name }}
 
@@ -22,6 +22,10 @@ of helping the project.
 ## About this Document
 
 This document provides
+an overview on the project's major phases
+and features users should expect
+at each stage of development.
+It also presents
 {%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
 a summary of the {{ cookiecutter.project_name }} [GitLab Epics][2]
 {%- elif cookiecutter.scm_platform == 'GitLab Free' %}
@@ -29,7 +33,6 @@ a summary of the {{ cookiecutter.project_name }} [GitLab Milestones][2]
 {%- else %}
 a summary of the {{ cookiecutter.project_name }} [GitHub Projects][2]
 {%- endif %}
-that serve as the up-to-date description of items
 that are in the project's release pipeline.
 Most items are gathered
 from the community
@@ -64,6 +67,43 @@ in the roadmap.
 
 Please review the roadmap
 to avoid potential duplicated effort.
+
+## Development Stages
+
+[![Project stage][5]]
+
+{{ cookiecutter.project_name }} is currently in the
+**Planning** stage,
+seeking contributors
+to help refine
+its foundational features
+while laying out the thresholds
+for each stage of development.
+
+<!-- UPDATEME when you have relevant information to divulge to the community
+
+We envision that {{ cookiecutter.project_name }}
+will evolve through the following phases:
+
+### Pre-Alpha Stage
+
+<-- DEFINE the features and capabilities the library will offer at the pre-alpha stage
+
+### Alpha Stage
+
+<-- DEFINE the features and capabilities the library will offer at the alpha stage
+
+### Beta Stage
+
+<-- DEFINE the features and capabilities the library will offer at the beta stage
+
+### Stable Release
+
+<-- DEFINE the features and capabilities the library will offer for it to be considered stable
+
+### Project Maturation
+
+<-- DEFINE the features and capabilities that will lead the project's capabilities beyond what is currently expected for a stable release
 
 ## Roadmap History
 
@@ -109,8 +149,6 @@ through GitHub Discussions.
 We will try our best
 to bring updated status information.
 
-<!-- UPDATEME when you have relevant information to divulge to the community
-
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
 | Epic | Description | Theme | Timeline |
 {% elif cookiecutter.scm_platform == 'GitLab Free' -%}
@@ -132,16 +170,16 @@ technical,
 automation,
 and documentation debt.
 If you don't know where to start,
-read the [guidelines][6] for developers
+read the [guidelines][7] for developers
 to situate yourself first
 and get to know
 how we work as a team.
 If you still have any questions,
 open a Request for Support
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-via the [Issue Tracker][7]
+via the [Issue Tracker][8]
 {%- else %}
-via [GitHub Discussions][7]
+via [GitHub Discussions][8]
 {%- endif %}
 so the team can help
 with clarifications.
@@ -156,14 +194,15 @@ with clarifications.
 {%- endif %}
 [3]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#start-with-a-{{ cookiecutter.__mr_term_slug }}
 [4]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#roadmap-management
+[5]: https://img.shields.io/pypi/status/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=theplanetarysociety&label=stage
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[5]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Improvement
+[6]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Improvement
 {%- else %}
-[5]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-improvement
+[6]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-improvement
 {%- endif %}
-[6]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
+[7]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[7]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Support
+[8]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Support
 {%- else %}
-[7]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-support
+[8]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-support
 {%- endif %}

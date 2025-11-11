@@ -1509,6 +1509,7 @@ The following guidelines
 should be taken in consideration
 regarding versioning in general:
 
+<!-- DEFINE the acceptance criteria for releasing a v1.0 for your project -->
 - Version `v1.0.0` can only be set
   once all requirements specified
   in the `v1.0 Release` {{ roadmap_item }}
