@@ -738,6 +738,7 @@ class TestInstructions:
             "galactipy",
             "GitLab",
             "https://www.gitlab.com/galactipy/galactipy",
+            ":tada:",
         )
         captured = capsys.readouterr()
 
@@ -756,6 +757,7 @@ class TestInstructions:
             "galactipy",
             "GitLab",
             "https://www.gitlab.com/galactipy/galactipy",
+            ":tada:",
         )
         captured = capsys.readouterr()
 
@@ -785,6 +787,7 @@ class TestInstructions:
             "galactipy",
             "GitLab",
             "https://www.gitlab.com/galactipy/galactipy",
+            ":tada:",
         )
         captured = capsys.readouterr()
 

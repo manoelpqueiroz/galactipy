@@ -22,6 +22,8 @@ SCM_PLATFORM_LC = "{{ cookiecutter.__scm_platform_lc }}"
 SCM_NAMESPACE = "{{ cookiecutter.scm_namespace }}"
 SCM_BASE_URL = "{{ cookiecutter.__scm_base_url }}"
 
+COMMIT_CONVENTION = "{{ cookiecutter.commit_convention }}"
+
 APP_TYPE = "{{ cookiecutter.app_type }}"
 
 # Boolean variables for additional project structures
@@ -40,6 +42,11 @@ licences_dict = {
     "Mozilla Public License 2.0": "mozilla",
     "Apache Software License 2.0": "apache",
     "nos": None,
+}
+commit_prefix_dict = {
+    "gitmoji": ":tada:",
+    "conventional": "feat:",
+    "conventional-gitmoji": "init:",
 }
 
 
@@ -384,7 +391,11 @@ def _get_feature_files(directory: Path) -> list[Path]:
 
 
 def print_further_instructions(
-    project_name: str, project_repo: str, scm_platform: str, scm_base_url: str
+    project_name: str,
+    project_repo: str,
+    scm_platform: str,
+    scm_base_url: str,
+    commit_prefix: str,
 ) -> None:
     """Show user what to do next after project creation.
 
@@ -400,6 +411,8 @@ def print_further_instructions(
     scm_base_url : str
         URL for the project's repository in `scm_platform`, consisting of
         username and repository slug.
+    commit_prefix : str
+        Prefix for the commit message, based on the commit convention adopted.
     """
     poetry_executable = which("poetry")
     invoke_executable = which("invoke")
@@ -428,7 +441,7 @@ def print_further_instructions(
             4) Upload initial code to {scm_platform}:
 
                 [bold red]$[/] [green]git[/] [yellow]add[/] [blue].[/]
-                [bold red]$[/] [green]git[/] [yellow]commit[/] [blue]-m[/] [yellow]":tada: Initial commit"[/]
+                [bold red]$[/] [green]git[/] [yellow]commit[/] [blue]-m[/] [yellow]"{commit_prefix} Initial commit"[/]
                 [bold red]$[/] [green]git[/] [yellow]remote add[/] [red]origin[/] [blue]{scm_base_url}.git[/]
                 [bold red]$[/] [green]git[/] [yellow]push[/] [cyan]-u[/] [blue]origin master[/]
             """  # noqa: E501
@@ -476,7 +489,7 @@ def print_further_instructions(
             4) Upload initial code to {scm_platform}:
 
                 $ git add .
-                $ git commit -m ":tada: Initial commit"
+                $ git commit -m "{commit_prefix} Initial commit"
                 $ git remote add origin {scm_base_url}.git
                 $ git push -u origin master
             """
@@ -530,6 +543,7 @@ def main() -> None:  # noqa: D103
         project_repo=PROJECT_REPO,
         scm_platform=SCM_PLATFORM,
         scm_base_url=SCM_BASE_URL,
+        commit_prefix=commit_prefix_dict[COMMIT_CONVENTION],
     )
 
 
