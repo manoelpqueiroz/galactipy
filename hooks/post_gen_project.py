@@ -35,12 +35,12 @@ ENABLE_FLAGS = "{{ cookiecutter.__debug }}" == "True"  # type: ignore[comparison
 
 licences_dict = {
     "MIT": "mit",
-    "BSD-3": "bsd3",
-    "GNU GPL v3.0": "gpl3",
-    "GNU AGPL v3.0": "agpl3",
-    "GNU LGPL v3.0": "lgpl3",
-    "Mozilla Public License 2.0": "mozilla",
-    "Apache Software License 2.0": "apache",
+    "BSD-3-Clause": "bsd3",
+    "GPL-3.0-or-later": "gpl3",
+    "AGPL-3.0-or-later": "agpl3",
+    "LGPL-3.0-or-later": "lgpl3",
+    "MPL-2.0": "mozilla",
+    "Apache-2.0": "apache",
     "nos": None,
 }
 commit_prefix_dict = {
