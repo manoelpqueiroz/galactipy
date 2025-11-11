@@ -9,10 +9,10 @@ This template should be used to propose and discuss improvements to backend elem
 
 {% if cookiecutter.app_type != 'bare_repo' -%}
 - Direct changes to the CLI behaviour and functionality;
-{%- endif %}
-{%- if cookiecutter.app_type != 'cli' %}
+{% endif -%}
+{% if cookiecutter.app_type in ['tui', 'hybrid'] -%}
 - Direct changes to the TUI behaviour and functionality;
-{%- endif %}
+{% endif -%}
 - Bug fixes;
 - {{ cookiecutter.project_name }} plugin/extension logic.
 >>>
@@ -29,7 +29,7 @@ This template should be used to propose and discuss improvements to backend elem
   Defend the reasons why this improvement is important moving forward
   What problem does it solve?
   What benefits does it bring to users?
-{% if cookiecutter.app_type != 'bare_repo' -%}
+{%- if cookiecutter.app_type != 'bare_repo' %}
   Does it make front-end interfaces clearer and more accessible for usage?
 {%- endif %}
   What would be considered a successful outcome for this development from your perspective?
@@ -83,6 +83,7 @@ This template should be used to propose and discuss improvements to backend elem
 >>> [!tip] :reminder_ribbon: Contribution control
 
 - [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][9] or the Related Issues section;
+- [ ] I have revised the [`ROADMAP.md`][10] and updated the information on development status;
 - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
 >>>
 
@@ -99,17 +100,18 @@ This template should be used to propose and discuss improvements to backend elem
 [7]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#git-trailers
 [8]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#styling
 [9]: https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically
+[10]: {{ cookiecutter.__scm_link_url }}/blob/master/ROADMAP.md
 
 ## Reviewer Checklist
 
 >>> [!warning] :passport_control: MANDATORY
-I attest that the proposed change meets the [Contribution Acceptance Criteria][10]:
+I attest that the proposed change meets the [Contribution Acceptance Criteria][11]:
 
 - [ ] The change is as small as possible;
 - [ ] Only one specific feature is implemented and does not combine things;
 - The change: <!-- Pick only one -->
   - [ ] Does not require updating the documentation;
-  - [ ] Added the proper documentation on the component, promoting and preserving [institutional knowledge][11];
+  - [ ] Added the proper documentation on the component, promoting and preserving [institutional knowledge][12];
 - The change: <!-- Pick only one -->
   - [ ] Does not require any addition or modification to unit tests;
   - [ ] Modifies the public API, with proper tests being added;
@@ -123,7 +125,7 @@ I attest that the proposed change meets the [Contribution Acceptance Criteria][1
 - [ ] The commit descriptions sufficiently explain design choices;
 - [ ] Issues marked for automatic closing are accurate;
 - [ ] Issues requiring manual check have been addressed;
-- [ ] The proposed {{ cookiecutter.project_name }} version adheres to our view on [EffVer][12].
+- [ ] The proposed {{ cookiecutter.project_name }} version adheres to our view on [EffVer][13].
 >>>
 
 >>> [!tip] :pen_fountain: Discretionary
@@ -133,10 +135,10 @@ I attest that during this development, the following interactions have taken pla
 - [ ] We have explored possible alternative solutions;
 - [ ] We have worked to simplify the implementation;
 - [ ] We have covered all the edge cases we could come up with;
-- [ ] We have found [opportunities][13] for future development and have created work items to take action on later.
+- [ ] We have found [opportunities][14] for future development and have created work items to take action on later.
 >>>
 
-[10]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
-[11]: https://www.teachfloor.com/elearning-glossary/institutional-knowledge
-[12]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#versioning-customs
-[13]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
+[11]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
+[12]: https://www.teachfloor.com/elearning-glossary/institutional-knowledge
+[13]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#versioning-customs
+[14]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress

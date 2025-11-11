@@ -1,3 +1,70 @@
+## 1.0.0 (2025-11-11)
+
+### :milky_way: Components (1 change)
+
+- [:pencil: Update template `README.md` files content](galactipy/galactipy@06757f00011850e345bf0049086acfd9342379b3) ([merge request](galactipy/galactipy!100))
+
+### :wrench: Fixes & Refactoring (2 changes)
+
+- [:wrench: Fix duplicate value in Ruff rule selection](galactipy/galactipy@1586dfd3083c2111f093cce29900466fb91f6680) ([merge request](galactipy/galactipy!100))
+- [:adhesive_bandage: Fix issue badges URLs in template `CONTRIBUTING.md`](galactipy/galactipy@9d013e78fe6842cc6e9e6cdaa0486223f05b46bf) ([merge request](galactipy/galactipy!100))
+
+### :gear: Internals (1 change)
+
+- [:children_crossing: Adapt post-gen instructions commit prefix to chosen convention](galactipy/galactipy@851dfd4c790173e03032bcb7dfebfefc81bf1ba8) ([merge request](galactipy/galactipy!100))
+
+### :construction_site: Template Internals (4 changes)
+
+- [:pencil2: Use correct name for TestPyPI](galactipy/galactipy@25fe3ec1a0109ae049b760102172b2c28c782c4c) ([merge request](galactipy/galactipy!100))
+- [:wrench: Configure foreground colour for `DEFINE` and `FYI` tags](galactipy/galactipy@e4e556515b937ee3f36573da1c6024baa4c427a5) ([merge request](galactipy/galactipy!100))
+- [:pencil2: Change terminology in Policy Proposals template](galactipy/galactipy@c947219454509aff45cf7b07bbcb539b10212f33) ([merge request](galactipy/galactipy!100))
+- [:wrench: Update Merge Request templates checklist](galactipy/galactipy@bb1012dd8c785966cf7b3d11df241aef06b77a83) ([merge request](galactipy/galactipy!100))
+
+### :pencil: Documentation (3 changes)
+
+- [:pencil: Update project `README.md` with quality fixes](galactipy/galactipy@83cc107c22241a462e200221463194c1dc0ee0e2) ([merge request](galactipy/galactipy!100))
+- [:pencil: Structure dependencies badges](galactipy/galactipy@11885b7645859d1a3af6f36d44b0acd68678d958) ([merge request](galactipy/galactipy!100))
+- [:pencil: Add content for project stages](galactipy/galactipy@78437feb6123b6bb27b5a12af9bab8306a399adb) ([merge request](galactipy/galactipy!100))
+
+### :scroll: Project Policies (1 change)
+
+- [:pencil: Update term for development philosophy in project `CONTRIBUTING.md`](galactipy/galactipy@94e999cd82b7620daa81bdf85577dac8a3b49363) ([merge request](galactipy/galactipy!100))
+
+## 0.24.1 (2025-11-11)
+
+### :milky_way: Components (1 change)
+
+- [:rotating_light: Fix docstring linter warnings](galactipy/galactipy@48ffe8058321680ff1911864cbb708c0cb43d4de) ([merge request](galactipy/galactipy!99))
+
+### :wrench: Fixes & Refactoring (4 changes)
+
+- [:art: Improve Docker login task for GitLab](galactipy/galactipy@bc386bd9aebddc7ed141c8daac2e344216d74957) ([merge request](galactipy/galactipy!99))
+- [:wrench: Fix docstring style usage in template `pyproject.toml`](galactipy/galactipy@c580731a775792dccc48884db8509f74c1f0b717) ([merge request](galactipy/galactipy!99))
+- [:rotating_light: Fix typo warnings for alternate options](galactipy/galactipy@1583e7cabc3f4bfc43d64c641e7329aacb7d467e) ([merge request](galactipy/galactipy!99))
+- [:rotating_light: Fix Jinja rendering for code files](galactipy/galactipy@ac99a32541aa5f7166bcc7918184cf8c46ab4ab1) ([merge request](galactipy/galactipy!99))
+
+### :package: Build System & CI/CD (1 change)
+
+- [:white_check_mark: Update tests for `CODE_OF_CONDUCT.md` removal](galactipy/galactipy@1071fabe3b591f6a26d836523711504385ce6d15) ([merge request](galactipy/galactipy!99))
+
+### :construction_site: Template Internals (5 changes)
+
+- [:wrench: Update template pre-commit hooks for non-OSS licences](galactipy/galactipy@e0064c72d45fc3fef1de894f54f0840364aad1cf) ([merge request](galactipy/galactipy!99))
+- [:wrench: Remove `CODE_OF_CONDUCT.md` for non-OSS licences](galactipy/galactipy@e94afabaaa50f9b1df2c3772c4158b1042621eea) ([merge request](galactipy/galactipy!99))
+- [:rotating_light: Fix Jinja rendering and anchors for GitLab templates](galactipy/galactipy@b4f434f71c06a561e1b123921bfb591a374adcfc) ([merge request](galactipy/galactipy!99))
+- [:wrench: Adjust isort sections to consider tests as local folder](galactipy/galactipy@c8402befb1cfbef9339ae327d1858404f9a99ae3) ([merge request](galactipy/galactipy!99))
+- [:rotating_light: Fix Jinja rendering for configuration files](galactipy/galactipy@5a95b26d6c1955dc3bda1035a53c77135d991f8b) ([merge request](galactipy/galactipy!99))
+
+### :pencil: Documentation (3 changes)
+
+- [:truck: Restructure template Markdown anchors](galactipy/galactipy@1468e43cb6af47abaf5385c153e0785072fcdd10) ([merge request](galactipy/galactipy!99))
+- [:rotating_light: Fix large Markdown files Jinja rendering](galactipy/galactipy@6ee087acb342f3f1f50328b6cd7a3717e21f18ae) ([merge request](galactipy/galactipy!99))
+- [:speech_balloon: Improve template tool inline comments](galactipy/galactipy@425aaef1d1388e2adcbc484ad202f8899a12089c) ([merge request](galactipy/galactipy!99))
+
+### :arrow_up: Dependency Updates (1 change)
+
+- [:arrow_up: Update Commitizen version in pre-commit](galactipy/galactipy@3e75b17e5820c411342d0f200858dc66ca20df81) ([merge request](galactipy/galactipy!99))
+
 ## 0.24.0 (2025-11-09)
 
 ### :milky_way: Components (2 changes)

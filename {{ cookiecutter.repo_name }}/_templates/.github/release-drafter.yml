@@ -1,6 +1,5 @@
-# Release drafter configuration https://github.com/release-drafter/release-drafter#configuration
-# Emojis were chosen to match the https://gitmoji.dev/
-
+# Release drafter configuration
+# https://github.com/release-drafter/release-drafter#configuration
 name-template: "v$NEXT_PATCH_VERSION"
 tag-template: "v$NEXT_PATCH_VERSION"
 

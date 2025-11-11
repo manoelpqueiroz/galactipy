@@ -45,12 +45,12 @@ Please read the [`CONTRIBUTING`][1] guide for best practices when opening issues
 {%- endif %}
 
 [2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#start-with-a-merge-request
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
 [3]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#work-item-tracking
 [4]: https://docs.gitlab.com/user/project/issues/design_management/
 [5]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#tasks-are-used-as-acceptance-criteria-for-issues
 [6]: https://docs.gitlab.com/user/work_items/status/#status-categories
-{%- else %}
+{%- else -%}
 [3]: https://docs.gitlab.com/user/project/issues/design_management/
 [4]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#tasks-are-used-as-acceptance-criteria-for-issues
 {%- endif %}

@@ -1,3 +1,5 @@
+# Pre-commit hooks
+# https://pre-commit.com/
 default_stages: [pre-commit, pre-push]
 
 repos:
@@ -17,7 +19,9 @@ repos:
       exclude: '.vscode/settings.json'
     - id: end-of-file-fixer
       name: Fix end-of-files
+{%- if cookiecutter.licence != 'nos' %}
       exclude: (LICENCE|CODE_OF_CONDUCT.md|.licence_header.txt)
+{%- endif %}
     - id: check-merge-conflict
       name: Check unresolved merge conflicts
       args: [--assume-in-merge]
@@ -59,9 +63,12 @@ repos:
     hooks:
     - id: codespell
       name: Codespell checks
+{%- if cookiecutter.licence != 'nos' %}
       exclude: (LICENCE|CODE_OF_CONDUCT.md|.licence_header.txt)
+{%- endif %}
       additional_dependencies:
         - tomli
+{%- if cookiecutter.licence != 'nos' %}
 
   - repo: https://github.com/Argmaster/autocopyright
     rev: v1.1.0
@@ -74,6 +81,7 @@ repos:
         -g, '*.py',
         -l, .licence_header.txt,
       ]
+{%- endif %}
 
   # Check configuration file schemas
   - repo: https://github.com/python-jsonschema/check-jsonschema
@@ -96,7 +104,7 @@ repos:
 
   # Commit convention compliance
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v4.9.1
+    rev: v4.10.0
     hooks:
     - id: commitizen
       name: Commit convention compliance

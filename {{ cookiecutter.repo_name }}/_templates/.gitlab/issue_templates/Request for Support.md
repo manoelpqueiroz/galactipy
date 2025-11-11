@@ -38,20 +38,20 @@ Please run through all items under the **`Applicant Checklist`** section and pro
 After reading the [Commitment to Help][4] section of the `CONTRIBUTING` guide and submitting this request, I commit to one of:
 
 - [ ] Read [open discussions][5] until I find **2** where I can help someone and add a comment to help there;
-- [ ] Hit the ["Watch"][7] button in this repository to receive notifications about the project and help **2** people that ask questions in the future;
+- [ ] Hit the ["Watch"][6] button in this repository to receive notifications about the project and help **2** people that ask questions in the future;
 - [ ] Review **1** Merge Request by cloning the project and following the [review process][7].
 
 [4]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#commitment-to-help
 [5]: {{ cookiecutter.__scm_link_url }}/issues/?type%5B%5D=issue
-[7]: https://gitlab.com/gitlab-org/gitlab-foss/-/issues/234#note_17497758
+[6]: https://gitlab.com/gitlab-org/gitlab-foss/-/issues/234#note_17497758
 [7]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contributing-by-reviewing-changes
 
 ## :speech_balloon: Context
 
 <!-- Add the details for your request here -->
 
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
 /label ~"request::support"
-{%- else %}
+{%- else -%}
 /label ~"rfs" ~"sts-needs-triage"
 {%- endif %}

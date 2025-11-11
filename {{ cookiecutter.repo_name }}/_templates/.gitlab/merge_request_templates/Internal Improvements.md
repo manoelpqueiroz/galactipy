@@ -66,6 +66,7 @@ This template should be used to propose and discuss changes to tools used to man
 >>> [!tip] :reminder_ribbon: Contribution control
 
 - [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][9] or the Related Issues section;
+- [ ] I have revised the [`ROADMAP.md`][10] and updated the information on development status;
 - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
 >>>
 
@@ -82,17 +83,18 @@ This template should be used to propose and discuss changes to tools used to man
 [7]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#git-trailers
 [8]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#styling
 [9]: https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically
+[10]: {{ cookiecutter.__scm_link_url }}/blob/master/ROADMAP.md
 
 ## Reviewer Checklist
 
 >>> [!warning] :passport_control: MANDATORY
-I attest that the proposed change meets the [Contribution Acceptance Criteria][10]:
+I attest that the proposed change meets the [Contribution Acceptance Criteria][11]:
 
 - [ ] The change is as small as possible;
 - [ ] Only one specific feature is implemented and does not combine things;
 - The change: <!-- Pick only one -->
   - [ ] Does not require updating the documentation;
-  - [ ] Added the proper documentation on the topic, promoting and preserving [institutional knowledge][11];
+  - [ ] Added the proper documentation on the topic, promoting and preserving [institutional knowledge][12];
 - [ ] The commit history is logical;
 {%- if cookiecutter.commit_convention == 'gitmoji' %}
 - [ ] The commit history applies the proper Gitmoji;
@@ -112,9 +114,9 @@ I attest that during this development, the following interactions have taken pla
 - [ ] We have explored possible alternative solutions;
 - [ ] We have worked to simplify the implementation;
 - [ ] We have covered all the edge cases we could come up with;
-- [ ] We have found [opportunities][12] for future development and have created work items to take action on later.
+- [ ] We have found [opportunities][13] for future development and have created work items to take action on later.
 >>>
 
-[10]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
-[11]: https://www.teachfloor.com/elearning-glossary/institutional-knowledge
-[12]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
+[11]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
+[12]: https://www.teachfloor.com/elearning-glossary/institutional-knowledge
+[13]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress

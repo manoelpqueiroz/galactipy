@@ -11,10 +11,7 @@ from {{ cookiecutter.package_name }}.config.constants import (
     generate_default_config_schema,
     get_default_config,
 )
-from {{ cookiecutter.package_name }}.config.mappings import (
-    ConfigurationDomain,
-    EnvvarPrefix,
-)
+from {{ cookiecutter.package_name }}.config.mappings import ConfigurationDomain, EnvvarPrefix
 
 
 class AppManager(Nucleus):
@@ -65,7 +62,8 @@ class AppManager(Nucleus):
             path: Path to a valid custom TOML configuration file for {{ cookiecutter.project_name }}.
             domain: Flag to treat the given `path` as a settings or secrets file.
 
-        Returns: A manager instance with a single domain and custom definitions.
+        Returns:
+            A manager instance with a single domain and custom definitions.
 {%- else %}
 
         :param path: Path to a valid custom TOML configuration file for {{ cookiecutter.project_name }}.

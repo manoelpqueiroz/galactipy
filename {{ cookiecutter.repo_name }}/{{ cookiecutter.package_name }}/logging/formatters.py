@@ -46,8 +46,9 @@ def file_formatter(record: dict) -> str:
         record: The Loguru record dictionary with the information about the logging
             context.
 
-    Returns: A formatted string with standardised padding for the individual parts of
-        the log entry.
+    Returns:
+        A formatted string with standardised padding for the individual parts of the log
+        entry.
 {%- else %}
 
     :param record: The Loguru record dictionary with the information about the logging

@@ -55,6 +55,7 @@ This template should be used to propose and discuss changes that improve project
 >>> [!tip] :reminder_ribbon: Contribution control
 
 - [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][9] or the Related Issues section;
+- [ ] I have revised the [`ROADMAP.md`][10] and updated the information on development status;
 - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
 >>>
 
@@ -71,11 +72,12 @@ This template should be used to propose and discuss changes that improve project
 [7]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#git-trailers
 [8]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#styling
 [9]: https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically
+[10]: {{ cookiecutter.__scm_link_url }}/blob/master/ROADMAP.md
 
 ## Reviewer Checklist
 
 >>> [!warning] :passport_control: MANDATORY
-I attest that the proposed change meets the [Contribution Acceptance Criteria][10]:
+I attest that the proposed change meets the [Contribution Acceptance Criteria][11]:
 
 - [ ] The change is as small as possible;
 - [ ] Only one specific change and does not combine things;
@@ -92,15 +94,15 @@ I attest that the proposed change meets the [Contribution Acceptance Criteria][1
 - [ ] The commit descriptions sufficiently explain design choices;
 - [ ] Issues marked for automatic closing are accurate;
 - [ ] Issues requiring manual check have been addressed;
-- [ ] The proposed {{ cookiecutter.project_name }} version adheres to our view on [EffVer][11].
+- [ ] The proposed {{ cookiecutter.project_name }} version adheres to our view on [EffVer][12].
 >>>
 
 >>> [!tip] :pen_fountain: Discretionary
 I attest that during this development, the following interactions have taken place:
 
-- [ ] We have found [opportunities][12] for future development and have created work items to take action on later.
+- [ ] We have found [opportunities][13] for future development and have created work items to take action on later.
 >>>
 
-[10]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
-[11]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#versioning-customs
-[12]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
+[11]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
+[12]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#versioning-customs
+[13]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress

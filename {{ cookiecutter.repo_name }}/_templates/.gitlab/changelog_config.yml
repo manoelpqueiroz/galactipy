@@ -5,14 +5,13 @@
 categories:
 {%- endraw %}{% if cookiecutter.app_type != 'bare_repo' %}{% raw %}
   # 1. Changes that users directly face
-  # Command-line Interface, more specifically the CLI API that bridges the interface to the actual program
   cli: ":satellite_orbital: Command-line Interface"
   command: ":satellite_orbital: Command-line Interface"
   commands: ":satellite_orbital: Command-line Interface"
   terminal: ":satellite_orbital: Command-line Interface"
   output: ":satellite_orbital: Command-line Interface"
   shell: ":satellite_orbital: Command-line Interface"
-  # CLI Usage, developments that change how the user interacts with the CLI, like options and arguments
+
   flag: ":keyboard: CLI Usage"
   flags: ":keyboard: CLI Usage"
   option: ":keyboard: CLI Usage"
@@ -25,7 +24,7 @@ categories:
   args: ":keyboard: CLI Usage"
   usage: ":keyboard: CLI Usage"
 {%- endraw %}{% if cookiecutter.app_type != 'cli' %}{% raw %}
-  # User Interface Improvements, like widgets, screens, layout and readability
+
   tui: ":computer: User Interface Improvements"
   ui: ":computer: User Interface Improvements"
   layout: ":computer: User Interface Improvements"
@@ -37,7 +36,7 @@ categories:
   widget: ":computer: User Interface Improvements"
   widgets: ":computer: User Interface Improvements"
   accessibility: ":computer: User Interface Improvements"
-  # User Experience, which encompasses all interaction processes of the user with the TUI, the TUI's behaviour
+
   ux: ":video_game: User Experience"
   xp: ":video_game: User Experience"
   interaction: ":video_game: User Experience"
@@ -46,7 +45,7 @@ categories:
   shortcut: ":video_game: User Experience"
   shortcuts: ":video_game: User Experience"
 {%- endraw %}{% endif %}{% raw %}
-  # Customization
+
   customization: ":peacock: Customisation"
   customize: ":peacock: Customisation"
   theme: ":peacock: Customisation"
@@ -55,8 +54,7 @@ categories:
   style: ":peacock: Customisation"
   styles: ":peacock: Customisation"
   styling: ":peacock: Customisation"
-  # Nudging, developments that help users navigate and use the application with more ease,
-  # like tutorials, notifications, command helpers, argument/option groups, help panels etc.
+
   nudge: ":beginner: Nudging"
   nudges: ":beginner: Nudging"
   nudging: ":beginner: Nudging"
@@ -67,8 +65,7 @@ categories:
   help: ":beginner: Nudging"
   helper: ":beginner: Nudging"
   helpers: ":beginner: Nudging"
-  # Extensibility to the application,
-  # like entry points, plugin enablers, improvements to type hints
+
   plugin: ":electric_plug: Extensibility"
   plugins: ":electric_plug: Extensibility"
   hook: ":electric_plug: Extensibility"
@@ -86,7 +83,7 @@ categories:
   type: ":electric_plug: Extensibility"
   types: ":electric_plug: Extensibility"
   typing: ":electric_plug: Extensibility"
-  # Compatibility & Integrations with external services and tools
+
   api: ":link: Compatibility & Integrations"
   rest: ":link: Compatibility & Integrations"
   restful: ":link: Compatibility & Integrations"
@@ -100,7 +97,7 @@ categories:
   webservice: ":link: Compatibility & Integrations"
   webservices: ":link: Compatibility & Integrations"
   external: ":link: Compatibility & Integrations"
-  # Localisation
+
   localization: ":earth_americas: Localisation"
   localize: ":earth_americas: Localisation"
   translation: ":earth_americas: Localisation"
@@ -108,7 +105,6 @@ categories:
   translate: ":earth_americas: Localisation"
 
   # 2. Changes that impact users, but are not directly visible
-  # Components in the backend
   component: ":puzzle_piece: Application Components"
   components: ":puzzle_piece: Application Components"
   module: ":puzzle_piece: Application Components"
@@ -118,12 +114,12 @@ categories:
   improvement: ":puzzle_piece: Application Components"
   improvements: ":puzzle_piece: Application Components"
   improve: ":puzzle_piece: Application Components"
-  # Database Changes
+
   database: ":floppy_disk: Database Changes"
   db: ":floppy_disk: Database Changes"
   data: ":floppy_disk: Database Changes"
   schema: ":floppy_disk: Database Changes"
-  # Deprecations & Removals
+
   deprecation: ":city_dusk: Deprecations & Removals"
   deprecations: ":city_dusk: Deprecations & Removals"
   deprecate: ":city_dusk: Deprecations & Removals"
@@ -131,7 +127,7 @@ categories:
   removals: ":city_dusk: Deprecations & Removals"
   remove: ":city_dusk: Deprecations & Removals"
   sunset: ":city_dusk: Deprecations & Removals"
-  # Fixes for wrongful behaviour
+
   bug: ":toolbox: Fixes"
   bugfix: ":toolbox: Fixes"
   fix: ":toolbox: Fixes"
@@ -145,7 +141,6 @@ categories:
   typos: ":toolbox: Fixes"
 
   # 3. Changes that are irrelevant to users
-  # Codebase Renovation: architectural changes, refactoring and other improvements done under the hood
   architecture: ":factory_worker: Codebase Renovation"
   arch: ":factory_worker: Codebase Renovation"
   refactor: ":factory_worker: Codebase Renovation"
@@ -155,11 +150,11 @@ categories:
   reworks: ":factory_worker: Codebase Renovation"
   reworking: ":factory_worker: Codebase Renovation"
   plumbing: ":factory_worker: Codebase Renovation"
-  # Dependencies
+
   dependencies: ":up: Dependencies Updates"
   dep: ":up: Dependencies Updates"
   deps: ":up: Dependencies Updates"
-  # Build & Release Optimisations: how the project is set up for compilation
+
   build: ":comet: Build & Release Optimisation"
   building: ":comet: Build & Release Optimisation"
   packaging: ":comet: Build & Release Optimisation"
@@ -173,7 +168,7 @@ categories:
   infrastructure: ":comet: Build & Release Optimisation"
   infra: ":comet: Build & Release Optimisation"
   iac: ":comet: Build & Release Optimisation"
-  # Design & Validation: code integrity, tests and scenarios in BDD
+
   design: ":repeat: Design & Validation"
   ideation: ":repeat: Design & Validation"
   test: ":repeat: Design & Validation"
@@ -186,7 +181,7 @@ categories:
   story: ":repeat: Design & Validation"
   stories: ":repeat: Design & Validation"
 {%- endraw %}{% endif %}{% raw %}
-  # Developer Experience: changes to internal configuration to standardise and ease development workflow
+
   dev: ":suspension_railway: Developer Experience"
   devx: ":suspension_railway: Developer Experience"
   devdep: ":suspension_railway: Developer Experience"
@@ -200,11 +195,10 @@ categories:
   specs: ":suspension_railway: Developer Experience"
 
   # 4. Knowledge Management
-  # Formal Documentation
   documentation: ":books: Documentation"
   doc: ":books: Documentation"
   docs: ":books: Documentation"
-  # Project Policies
+
   policy: ":scroll: Project Policies"
   policies: ":scroll: Project Policies"
   rule: ":scroll: Project Policies"
@@ -217,7 +211,7 @@ categories:
   template: ":scroll: Project Policies"
   templates: ":scroll: Project Policies"
   templating: ":scroll: Project Policies"
-  # Internal improvements to detect and report issues, targeting CI/CD maturity
+
   monitor: ":gem: Continuous Improvement Feats"
   monitoring: ":gem: Continuous Improvement Feats"
   tracker: ":gem: Continuous Improvement Feats"

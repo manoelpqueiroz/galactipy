@@ -22,7 +22,9 @@ def licence_tree(tmp_path):
         "mozilla.txt",
     ]
 
-    bulk_file_creation(tmp_path, _licences=licence_list, _headers=licence_list)
+    bulk_file_creation(
+        tmp_path, "CODE_OF_CONDUCT.md", _licences=licence_list, _headers=licence_list
+    )
 
     return tmp_path, licence_root, licence_file, header_root, header_file
 

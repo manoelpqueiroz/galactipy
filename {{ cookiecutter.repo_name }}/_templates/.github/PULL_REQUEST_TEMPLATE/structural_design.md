@@ -56,6 +56,7 @@
 > :reminder_ribbon: **Contribution control**
 >
 > - [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][11] or the Related Issues section;
+> - [ ] I have revised the [`ROADMAP.md`][12] and updated the information on development status;
 > - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
 
 [1]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
@@ -73,13 +74,14 @@
 [10]: https://docs.pytest.org/en/stable/reference/reference.html#custom-marks
 {%- endif %}
 [11]: https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue
+[12]: {{ cookiecutter.__scm_link_url }}/blob/master/ROADMAP.md
 
 ## Maintainer Checklist
 
 > [!WARNING]
 > :passport_control: **MANDATORY**
 >
-> I attest that the proposed change meets the [Contribution Acceptance Criteria][10]:
+> I attest that the proposed change meets the [Contribution Acceptance Criteria][13]:
 >
 > - [ ] The commit history is logical;
 {%- if cookiecutter.commit_convention == 'gitmoji' %}
@@ -99,7 +101,7 @@
 >
 > - [ ] We have discussed our opinions on the proposed design;
 > - [ ] We have explored possible alternative ideas;
-> - [ ] We have found [opportunities][11] for future development and have created work items to take action on later.
+> - [ ] We have found [opportunities][14] for future development and have created work items to take action on later.
 
-[10]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
-[11]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
+[13]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
+[14]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress

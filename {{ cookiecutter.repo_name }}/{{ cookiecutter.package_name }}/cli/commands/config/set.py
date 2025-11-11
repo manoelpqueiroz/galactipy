@@ -9,10 +9,7 @@ from nebulog import logger
 import typer
 
 from {{ cookiecutter.package_name }}.cli.helpers import BasicConverter as Text
-from {{ cookiecutter.package_name }}.config import (
-    ConfigurationDomain,
-    resolve_app_manager,
-)
+from {{ cookiecutter.package_name }}.config import ConfigurationDomain, resolve_app_manager
 from {{ cookiecutter.package_name }}.logging import setup_app_logging
 
 config_set_app = typer.Typer(no_args_is_help=True)

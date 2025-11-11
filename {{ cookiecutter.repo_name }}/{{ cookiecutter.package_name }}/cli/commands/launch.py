@@ -8,11 +8,12 @@ from nebulog import logger
 
 import typer
 
-from {{ cookiecutter.package_name }}.tui.main_window import TerminalApp
 from {{ cookiecutter.package_name }}.config import resolve_app_manager
 from {{ cookiecutter.package_name }}.logging import setup_app_logging
+from {{ cookiecutter.package_name }}.tui.main_window import TerminalApp
 
 launch_app = typer.Typer(rich_markup_mode="rich")
+
 
 @launch_app.command()
 def launch(
@@ -36,7 +37,7 @@ def launch(
                 ":bug: Log operations to the terminal at the "
                 "[b][logging.level.debug]DEBUG[/logging.level.debug][/b] level."
             ),
-        )
+        ),
     ] = False,
 ) -> None:
     """:pager: Launch the {{ cookiecutter.project_name }} interface."""

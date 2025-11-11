@@ -46,6 +46,7 @@
 > :reminder_ribbon: **Contribution control**
 >
 > - [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][9] or the Related Issues section;
+> - [ ] I have revised the [`ROADMAP.md`][10] and updated the information on development status;
 > - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
 
 [1]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
@@ -57,13 +58,14 @@
 [7]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#git-trailers
 [8]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#styling
 [9]: https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue
+[10]: {{ cookiecutter.__scm_link_url }}/blob/master/ROADMAP.md
 
 ## Reviewer Checklist
 
 > [!WARNING]
 > :passport_control: **MANDATORY**
 >
-> I attest that the proposed change meets the [Contribution Acceptance Criteria][10]:
+> I attest that the proposed change meets the [Contribution Acceptance Criteria][11]:
 >
 > - [ ] The change is as small as possible;
 > - [ ] The commit history is logical;
@@ -76,7 +78,7 @@
 > - [ ] The commit descriptions sufficiently explain design choices;
 > - [ ] Issues marked for automatic closing are accurate;
 > - [ ] Issues requiring manual check have been addressed;
-> - [ ] The proposed {{ cookiecutter.project_name }} version adheres to our view on [EffVer][11].
+> - [ ] The proposed {{ cookiecutter.project_name }} version adheres to our view on [EffVer][12].
 
 > [!TIP]
 > :fountain_pen: **Discretionary**
@@ -84,8 +86,8 @@
 > I attest that during this development, the following interactions have taken place:
 >
 > - [ ] We have covered all the edge cases we could come up with;
-> - [ ] We have found [opportunities][12] for future development and have created work items to take action on later.
+> - [ ] We have found [opportunities][13] for future development and have created work items to take action on later.
 
-[10]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
-[11]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#versioning-customs
-[12]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
+[11]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
+[12]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#versioning-customs
+[13]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress

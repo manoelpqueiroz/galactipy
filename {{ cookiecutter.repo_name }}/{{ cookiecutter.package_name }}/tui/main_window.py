@@ -58,7 +58,10 @@ class TerminalApp(App):
         """Create child widgets for the app."""
         # UPDATEME by replacing with your own widgets
         yield Label(text2art("{{ cookiecutter.project_name }}", "tarty1"), classes="title")
-        yield Label("[i][b]{{ cookiecutter.project_description }}.[/]", classes="description")
+        yield Label(
+            "[i][b]{{ cookiecutter.project_description }}.[/]",
+            classes="description",
+        )
         yield Footer()
 
     def on_mount(self) -> None:
