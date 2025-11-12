@@ -1,3 +1,24 @@
+## 1.1.0 (2025-11-12)
+
+### :gear: Internals (2 changes)
+
+- [:art: Improve Python version support resolution](galactipy/galactipy@b77ef48440b82958bccdab276248ac485f0516df) ([merge request](galactipy/galactipy!103))
+- [:art: Refine terms used for licences](galactipy/galactipy@fbd89c6cea0cc36e4ea64a1e4cbc5955ee4d8f97) ([merge request](galactipy/galactipy!103))
+
+### :scroll: Project Policies (1 change)
+
+- [:pencil: Adopt Romantic Versioning for the project](galactipy/galactipy@9191aa83399b7b72d9a7da8cdf7af57e2f335f11)
+
+## 1.0.1 (2025-11-11)
+
+### :wrench: Fixes & Refactoring (1 change)
+
+- [:ambulance: Fix licences dict for post-gen hooks](galactipy/galactipy@20396e6f31f275ce6fee4c55437844072490de8b) ([merge request](galactipy/galactipy!102))
+
+### :scroll: Project Policies (1 change)
+
+- [:pencil: Update project `CONTRIBUTING.md` versioning customs](galactipy/galactipy@a45c45e4cbb6f3ded6fb76dbf24e74b7409274c7) ([merge request](galactipy/galactipy!102))
+
 ## 1.0.0 (2025-11-11)
 
 ### :milky_way: Components (1 change)

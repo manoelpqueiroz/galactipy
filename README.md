@@ -34,7 +34,7 @@
 [![Editorconfig][b30]][b31]
 
 <!-- Quality Assurance -->
-[![Intended Effort versioning][b32]][b5]
+[![Romantic Versioning][b32]][b5]
 [![Code Quality][b33]][b34]
 [![Coverage][b35]][b36]
 [![GitLab Pipelines][b37]][b38]
@@ -46,7 +46,7 @@ _Expand your project structure from atoms of code to **galactic** dimensions._ :
 ## TL;DR
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v1.0.0
+cookiecutter gl:galactipy/galactipy --checkout v1.1.0
 ```
 
 **All you need is the latest version of Cookiecutter!** :wink:
@@ -253,7 +253,7 @@ pipx upgrade cookiecutter
 then go to a directory where you want to create your project and run:
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v1.0.0
+cookiecutter gl:galactipy/galactipy --checkout v1.1.0
 ```
 
 ### Input variables
@@ -757,9 +757,9 @@ You can see
 the list of available releases
 on the [GitLab Releases][r1] page.
 
-We follow [Intended Effort Versioning][ft31] specification,
+We follow the [Romantic Versioning][r3] specification,
 details can be found
-in our [`CONTRIBUTING`][r2] guide.
+in our [`CONTRIBUTING`][r3] guide.
 
 ## :map: Roadmap
 
@@ -903,7 +903,7 @@ any of the following:
 [b29]: https://kutt.it/D4ayxs
 [b30]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
 [b31]: https://kutt.it/fy3pqF
-[b32]: https://img.shields.io/badge/effver-0097a7?style=for-the-badge&logo=semver
+[b32]: https://img.shields.io/badge/romver-DE4F4F?style=for-the-badge&logo=semver
 [b33]: https://img.shields.io/codacy/grade/9827f88089954a3680675d7c77e63fd5?style=for-the-badge&logo=codacy
 [b34]: https://kutt.it/ByTvpc
 [b35]: https://img.shields.io/codacy/coverage/9827f88089954a3680675d7c77e63fd5?style=for-the-badge&logo=codacy
@@ -950,7 +950,7 @@ any of the following:
 [ft35]: https://gitlab.com/galactipy/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/issue_templates
 [ft36]: https://gitlab.com/explore/catalog/components/gitlab-triage
 [ft37]: https://github.com/marketplace/actions/close-stale-issues
-[ft38]: https://www.conventionalcommits.org/en/v1.0.0/
+[ft38]: https://www.conventionalcommits.org/en/v1.1.0/
 [ft39]: https://shields.io/
 [ft40]: https://github.com/TezRomacH/python-package-template
 [ft41]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/using-query-parameters-to-create-a-pull-request
@@ -1016,7 +1016,8 @@ any of the following:
 [wn32]: https://towardsdatascience.com/the-importance-of-layered-thinking-in-data-engineering-a09f685edc71
 
 [r1]: https://gitlab.com/galactipy/galactipy/-/releases
-[r2]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#versioning-customs
+[r2]: https://romversioning.github.io/romver/
+[r3]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#versioning-customs
 
 [rd1]: https://gitlab.com/galactipy/galactipy/-/milestones
 [rd2]: https://gitlab.com/galactipy/galactipy/-/blob/master/ROADMAP.md

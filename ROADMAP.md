@@ -112,15 +112,15 @@ to bring updated status information.
 | %4        | Update Docker features to current standards, provide functional Dockerfile for generated projects.                                                |       :motorway: Improvements        |                          N/A                           |
 | %5        | Configure additional GitLab tools for generated projects, close gap between GitLab and GitHub features.                                           |  :triangular_ruler: Standardisation  |                          N/A                           |
 | %6        | Update GitHub configuration originally implemented in `python-package-template` with current day standards, include new GitHub Actions and tools. |       :motorway: Improvements        |                          N/A                           |
-| %7        | Organise features, documentation and options for releasing `v1.0`.                                                                                |         :gem: Stable Release         |                          N/A                           |
+| %7        | Organise features, documentation and options for releasing `v1.0`.                                                                                |         :gem: Stable Release         | **Delivered with [`v1.0`][v1.0] :airplane_departure:** |
 | %8        | Replace `Makefile` with Invoke as the subprocess manager.                                                                                         |       :motorway: Improvements        | **Delivered with [`v0.4`][v0.4] :airplane_departure:** |
 | %10       | Write clear-cut user tutorial for project management best practices via documentation.                                                            | :children_crossing: User Experience  |                          N/A                           |
 | %11       | Adapt and document relevant GitLab processes and modus operandi to establish standard development philosophy for project and template.            |          :scroll: Policies           |             **Delivered Internally :100:**             |
 | %12       | Include additional tools and services for building applications, checking code coverage and obtaining development metrics for releasing `v2.0`.   |       :sparkles: New Features        |                          N/A                           |
 | %13       | Structure additional tasks and steps for configuring external services, eliminate the need for additional setup outside the CLI.                  | :children_crossing: User Experience  |                          N/A                           |
-| %14       | Integrate Invoke tasks to call the SCM APIs for common project management tasks and housekeeping.                                                 | :bullettrain_side: Team Productivity |                          N/A                           |
+| %14       | Integrate Invoke tasks to call the SCM APIs for common project management tasks and housekeeping.                                                 | :bullettrain_side: Team Productivit  |                          N/A                           |
 | %15       | Expand the developer toolset for automating minor tasks related to style, formatting and policies.                                                | :bullettrain_side: Team Productivity |                          N/A                           |
-| %16       | Move Galactipy documentation to dedicated static site.                                                                                            |          :scroll: Policies           |                          N/A                           |
+| %17       | Provide a comprehensive set of rules for managing work items in the project beyond marking issues as stale.                                       | :bullettrain_side: Team Productivity |                          N/A                           |
 
 You can also help us
 deliver that feature
@@ -153,3 +153,4 @@ with clarifications.
 
 [v0.3]: https://gitlab.com/galactipy/galactipy/-/releases/v0.3.0
 [v0.4]: https://gitlab.com/galactipy/galactipy/-/releases/v0.4.0
+[v1.0]: https://gitlab.com/galactipy/galactipy/-/releases/v1.0.0

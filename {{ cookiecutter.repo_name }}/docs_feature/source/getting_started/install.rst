@@ -11,15 +11,9 @@ It's so easy to install {{ cookiecutter.project_name }}! You can get it via ``pi
 Python Version Support
 ======================
 
-{%- set list_python_version = cookiecutter.minimal_python_version.split('.') | map('int') | list %}
-Officially {{ cookiecutter.project_name }} supports Python {{
-    (
-        cookiecutter._all_python_version
-        | selectattr(0, '==', list_python_version.0)
-        | selectattr(1, '>=', list_python_version.1) | list
-        + cookiecutter._all_python_version | selectattr(0, '>', list_python_version.0) | list
-    ) | map('join', '.') | join(', ')
-}}.
+{% set list_python_version = cookiecutter._python_version_list_mapping[cookiecutter.minimal_python_version] -%}
+{% set supported_python_versions = cookiecutter._python_version_support_mapping[cookiecutter.minimal_python_version] -%}
+Officially {{ cookiecutter.project_name }} supports Python {{ supported_python_versions | map('join', '.') | join(', ') }}.
 
 Installing from PyPI
 ====================

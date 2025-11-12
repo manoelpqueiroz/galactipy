@@ -1,17 +1,8 @@
+{% set licence_list = cookiecutter._licence_mapping_simple[cookiecutter.licence] -%}
 {% set roadmap_mapping = {
   'GitLab Premium/Ultimate': 'epic',
   'GitLab Free': 'milestone',
   'GitHub': 'project'
-} -%}
-{% set licence_mapping = {
-  'MIT': 'MIT Licence',
-  'BSD-3-Clause': '3-Clause BSD',
-  'GPL-3.0-or-later': 'GNU GPL v3.0',
-  'AGPL-3.0-or-later': 'GNU AGPL v3.0',
-  'LGPL-3.0-or-later': 'GNU LGPL v3.0',
-  'MPL-2.0': 'Mozilla Public License 2.0',
-  'Apache-2.0': 'Apache Software License 2.0',
-  'nos': 'Non-OSS'
 } -%}
 {% set docstring_mapping = {
   'numpy': 'numpydoc',
@@ -20,7 +11,6 @@
   'other': 'custom'
 } -%}
 {% set roadmap_item = roadmap_mapping[cookiecutter.scm_platform] -%}
-{% set licence_name = licence_mapping[cookiecutter.licence] -%}
 {% set docstring_name = docstring_mapping[cookiecutter.docstring_style] -%}
 {% set roadmap_item_undefined = 'an' ~ roadmap_item if roadmap_item == 'epic' else 'a' ~ roadmap_item -%}
 {% set task_item = 'task' if cookiecutter.__scm_platform_lc == 'gitlab' else 'sub-issue' -%}
@@ -2171,11 +2161,11 @@ of the development cycle.
 By contributing to {{ cookiecutter.project_name }},
 you agree that your contributions
 will be licensed under
-the [{{ licence_name }}][licence1].
+{{ licence_list[0] }}[{{ licence_list[1] }}][licence1].
 
 {% else -%}
 {{ cookiecutter.project_name }} is _**not**_ open source software.
-Please [contact][topic5] the maintainer
+Please [contact][topic5] the maintainers
 for more information
 on licencing the project.
 

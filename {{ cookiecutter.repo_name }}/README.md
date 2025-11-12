@@ -333,8 +333,14 @@ details can be found in our [`CONTRIBUTING` guide][burl18].
 [![Licence][blic1]][blic2]
 
 This project is licenced
-under the terms of the **{{ cookiecutter.licence }}** licence.
+under the terms of the **{{ cookiecutter.__licence_extended }}**.
 See [LICENCE][blic2] for more details.
+
+{% else -%}
+{{ cookiecutter.project_name }} is _**not**_ open source software.
+Please contact the maintainers
+for more information
+on licencing the project.
 
 {% endif -%}
 ## :page_with_curl: Citation

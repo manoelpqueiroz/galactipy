@@ -819,42 +819,42 @@ in their project's entire lifecycle:
 at its creation.
 From the user's perspective,
 differences between Galactipy versions
-are only minor
-and the project itself
-is always in a stable configuration.
+are minimal
+and our template remains
+in a stable state throughout time.
+Most of Galactipy's development
+involves incremental improvements
+or new features related to file generation.
 
-From this view,
-Galactipy is not a dynamic library
-that demands continuous maintenance
-to prevent downstream application issues
-but rather a pre-configured package
-providing essential files
-and configurations
-for rapid project initiation.
+Given this context,
+versioning plays a greater role
+in communicating changes to users
+instead of focusing on abstract concepts
+such as orthogonality or breaking changes.
+Since Galactipy is not a traditional software library
+requiring strict adherence to semantic versioning
+for downstream compatibility,
+we have chosen [Romantic Versioning][version1]
+as our preferred scheme.
 
-Galactipy's versioning
-should be seen
-as reflecting
-the progression of our efforts
-over time.
-Given the absence
-of breaking changes,
-we choose to adhere
-to [Intended Effort Versioning][version1]
-for consistency.
+Romantic Versioning aligns well
+with Galactipy's purpose
+as a repository of pre-configured files and templates.
+This approach ensures
+that versioning serves
+its primary purpose:
+informing users
+about meaningful changes
+in an accessible manner.
 
 We approach our versions
 with the following pattern:
 
-- Version `v1.0.0` can only be set
-  once all requirements specified
-  in the %7 milestone
-  are satisfied;
 - Versions can only be tagged
   if altering end-user generated projects;
   changes to project internals only
   do not qualify for tagging;
-- Update **MICRO** versions when:
+- Update **MINOR** versions when:
   - Bugs that
     prevent the template
     from being properly generated
@@ -865,15 +865,16 @@ with the following pattern:
     without altering
     their behaviour;
   - Markdown files are modified;
-- Update **MESO** versions when:
+- Update **MAJOR** versions when:
   - Project generation behaviour is modified
     without modifications
-    to `cookiecutter.json` prompt;
+    to `cookiecutter.json` prompts
+    (i.e., the variables the user inputs);
   - Configuration files behaviour is modified;
   - Code files are added,
     removed
     or updated;
-- Update **MACRO** versions when:
+- Update **PROJECT** versions when:
   - Available options
     for a step in `cookiecutter.json`
     are altered;
@@ -4071,7 +4072,7 @@ what we are doing matters!
 [practices5]: https://docs.gitlab.com/user/tasks/#add-a-task-to-a-milestone
 [practices6]: https://gitlab.com/galactipy/galactipy/-/issues/?state=all&type%5B%5D=task&milestone_title=Any
 
-[version1]: https://jacobtomlinson.dev/effver/
+[version1]: https://romversioning.github.io/romver/
 
 [branch1]: #continuous-integration
 
