@@ -39,7 +39,7 @@ _Expand your project structure from atoms of code to **galactic** dimensions._ :
 ## TL;DR
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v1.1.0
+cookiecutter gl:galactipy/galactipy --checkout v1.1.1
 ```
 
 **All you need is the latest version of Cookiecutter!** :wink:
@@ -246,7 +246,7 @@ pipx upgrade cookiecutter
 then go to a directory where you want to create your project and run:
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v1.1.0
+cookiecutter gl:galactipy/galactipy --checkout v1.1.1
 ```
 
 ### Input variables
@@ -938,7 +938,7 @@ any of the following:
 [ft35]: https://gitlab.com/galactipy/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/issue_templates
 [ft36]: https://gitlab.com/explore/catalog/components/gitlab-triage
 [ft37]: https://github.com/marketplace/actions/close-stale-issues
-[ft38]: https://www.conventionalcommits.org/en/v1.1.0/
+[ft38]: https://www.conventionalcommits.org/en/v1.1.1/
 [ft39]: https://shields.io/
 [ft40]: https://github.com/TezRomacH/python-package-template
 [ft41]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/using-query-parameters-to-create-a-pull-request
