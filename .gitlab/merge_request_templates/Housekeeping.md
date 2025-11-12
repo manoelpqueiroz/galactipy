@@ -78,7 +78,7 @@ I attest that the proposed change meets the [Contribution Acceptance Criteria][1
 - [ ] The commit descriptions sufficiently explain design choices;
 - [ ] Issues marked for automatic closing are accurate;
 - [ ] Issues requiring manual check have been addressed;
-- [ ] The proposed Galactipy version adheres to our view on [EffVer][9].
+- [ ] The proposed Galactipy version adheres to our view on [RomVer][9].
 >>>
 
 >>> [!tip] :pen_fountain: Discretionary
