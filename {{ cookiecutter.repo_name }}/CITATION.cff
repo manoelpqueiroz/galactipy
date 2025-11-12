@@ -13,5 +13,9 @@ repository-code: '{{ cookiecutter.__scm_base_url }}'
 repository: '{{ cookiecutter.__scm_base_url }}'
 abstract: >-
   {{ cookiecutter.project_description }}
+{%- if cookiecutter.licence != 'nos' %}
 license: {{ cookiecutter.licence }}
+{%- else %}
+license-url: '{{ cookiecutter.__scm_base_url }}'  # UPDATEME with a link for your custom licence
+{%- endif %}
 version: '0.1.0'  # UPDATEME with your latest version

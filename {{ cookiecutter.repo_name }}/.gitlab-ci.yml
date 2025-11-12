@@ -109,8 +109,9 @@ workflow:
   - invoke sweep
 
 # Jobs
-{%- set list_python_version = cookiecutter.minimal_python_version.split('.') | map('int') | list %}
-{%- for version in cookiecutter._all_python_version if version[0] >= list_python_version[0] and version[1] >= list_python_version[1] %}
+{%- set list_python_version = cookiecutter._python_version_list_mapping[cookiecutter.minimal_python_version] %}
+{%- set supported_python_versions = cookiecutter._python_version_support_mapping[cookiecutter.minimal_python_version] %}
+{%- for version in supported_python_versions %}
 test-py{{ version[0] }}{{ version[1] }}:
   stage: test
   image: registry.gitlab.com/galactipy/docker:{{ version[0] }}.{{ version[1] }}
