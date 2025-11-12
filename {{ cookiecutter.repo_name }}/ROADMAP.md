@@ -70,7 +70,7 @@ to avoid potential duplicated effort.
 
 ## Development Stages
 
-[![Project stage][5]]
+![Project stage][5]
 
 {{ cookiecutter.project_name }} is currently in the
 **Planning** stage,
@@ -161,7 +161,7 @@ to bring updated status information.
 -->
 
 You can also help us
-deliver that feature
+deliver features
 by contributing directly to {{ cookiecutter.project_name }},
 we are always
 looking for contributors

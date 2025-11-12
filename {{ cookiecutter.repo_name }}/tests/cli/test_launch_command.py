@@ -20,7 +20,7 @@ def test_launch_app():
 @when("the launch program receives no arguments", target_fixture="results")
 def launch_application(mocker, sandbox_config_file):
     mock_interface = mocker.patch(
-        "python_project.cli.commands.launch.TerminalApp"
+        "{{ cookiecutter.package_name }}.cli.commands.launch.TerminalApp"
     ).return_value
 
     results = runner.invoke(launch_app, args=["--config", sandbox_config_file])
@@ -44,7 +44,7 @@ def test_launch_app(mocker, setup_sample_manager):
     _, file = setup_sample_manager.values()
 
     mock_interface = mocker.patch(
-        "python_project.cli.commands.launch.TerminalApp"
+        "{{ cookiecutter.package_name }}.cli.commands.launch.TerminalApp"
     ).return_value
 
     results = runner.invoke(launch_app, args=["--config", file])
