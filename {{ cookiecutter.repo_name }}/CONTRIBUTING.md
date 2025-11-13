@@ -4108,7 +4108,7 @@ to achieve this goal:
    - Keep the {{ cookiecutter.__scm_platform_base }} repository efficient
      by properly labelling work items
      and associating them
-     with the relevant project milestone;
+     with the relevant project {{ roadmap_item }};
 2. Become an advocate for new contributors:
    - Be overly conscious of [how to behave][behaviour]
      when interacting with a user
@@ -4758,7 +4758,7 @@ you have provided.
 {%- endif %}
 
 If you are still having difficulty
-generating your project as desired,
+running {{ cookiecutter.project_name }} as desired,
 open an [RFS][request4],
 {%- if cookiecutter.app_type != 'bare_repo' %}
 providing your `settings.toml`
