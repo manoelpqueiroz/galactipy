@@ -1,3 +1,17 @@
+## 1.1.1 (2025-11-13)
+
+### :wrench: Fixes & Refactoring (1 change)
+
+- [:ambulance: Replace hardcoded reference to `python_project` for test mocks](galactipy/galactipy@2e361fb6dc8afcb793f48ad213f6d47217059df3) ([merge request](galactipy/galactipy!105))
+
+### :construction_site: Template Internals (1 change)
+
+- [:pencil2: Fix minor typos in template `ROADMAP.md`](galactipy/galactipy@1d09f5230ac040148a1e0c9d0d997e62899ae72c) ([merge request](galactipy/galactipy!105))
+
+### :scroll: Project Policies (1 change)
+
+- [:wrench: Replace EffVer with RomVer in MR template files](galactipy/galactipy@23046972b6516e0563b4cc2df5baccf84912754a)
+
 ## 1.1.0 (2025-11-12)
 
 ### :gear: Internals (2 changes)
