@@ -12,7 +12,7 @@
 } -%}
 {% set roadmap_item = roadmap_mapping[cookiecutter.scm_platform] -%}
 {% set docstring_name = docstring_mapping[cookiecutter.docstring_style] -%}
-{% set roadmap_item_undefined = 'an' ~ roadmap_item if roadmap_item == 'epic' else 'a' ~ roadmap_item -%}
+{% set roadmap_item_undefined = 'an' ~ roadmap_item if roadmap_item == 'epic' else 'a ' ~ roadmap_item -%}
 {% set task_item = 'task' if cookiecutter.__scm_platform_lc == 'gitlab' else 'sub-issue' -%}
 # How to Contribute
 
@@ -250,7 +250,7 @@ should help:
   you can contribute
   by participating in discussions on issues
   at any of the **Needs** statuses,
-{% if cookiecutter.licence != 'nos' -%}
+{%- if cookiecutter.licence != 'nos' %}
   especially those in the [**Needs Triage**][query3] stage;
   we are always looking for people
   who help refine issues,
@@ -694,7 +694,7 @@ with the following possible values:
 
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 - `**Delivered with <version> :airplane_departure:**`,
-{% else -%}
+{%- else %}
 - `**Delivered with <version> :flight_departure:**`,
 {%- endif %}
   if properly associated to a [{{ cookiecutter.__scm_platform_base }} Release][roadmap7];
@@ -1421,7 +1421,7 @@ from the end-user's perspective
 through BDD,
 we ensure that everyone
 — developers, testers, and users —
-shares a clear  understanding
+shares a clear understanding
 of what we aim to achieve.
 This approach promotes upfront clarity,
 reducing misunderstandings and misalignments
@@ -1926,6 +1926,7 @@ The available trailers
 are listed below
 and defined in the [`changelog-config.yml`][committing4] file:
 {%- if cookiecutter.app_type != 'bare_repo' %}
+
 |           Category in CHANGELOG            |                                                                                                      Available Trailers                                                                                                      | Use Cases                                                                                                                                                              |
 | :----------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | :satellite_orbital: Command-line Interface |                                                                            `cli`<br>`command`<br>`commands`<br>`terminal`<br>`output`<br>`shell`                                                                             | Updates to the CLI API that bridges the interface to the actual program. This encompasses available commands and how things are printed to the user's shell.           |
@@ -1956,6 +1957,7 @@ and defined in the [`changelog-config.yml`][committing4] file:
 |         :scroll: Project Policies          |                                  `policy`<br>`policies`<br>`rule`<br>`rules`<br>`milestone`<br>`milestones`<br>`epic`<br>`epics`<br>`roadmap`<br>`template`<br>`templates`<br>`templating`                                   | Changes that altered project rules and/or project-specific documentation.                                                                                              |
 |     :gem: Continuous Improvement Feats     |                        `monitor`<br>`monitoring`<br>`tracker`<br>`trackers`<br>`tracking`<br>`log`<br>`logs`<br>`logging`<br>`alert`<br>`alerts`<br>`detection`<br>`detect`<br>`diligence`<br>`rskm`                         | Internal improvements to detect and report issues, targeting CI/CD maturity.                                                                                           |
 {%- else %}
+
 |        Category in CHANGELOG        |                                                          Available Trailers                                                          |
 | :---------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------: |
 |           :new: Additions           |                                                    `feature`<br>`add`<br>`added`                                                     |
@@ -5152,7 +5154,7 @@ Here's how you can promote {{ cookiecutter.project_name }}:
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 - Set the [Notification level][promote0] to **"Watch"**
   on the [{{ cookiecutter.scm_namespace.capitalize() }} organisation][promote1]
-{% else -%}
+{%- else %}
 - Set the [Notification level][topic6] to **"Watch"**
   on the [{{ cookiecutter.project_name }} repository][development1]
 {%- endif %}
