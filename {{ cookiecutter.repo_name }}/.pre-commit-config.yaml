@@ -27,13 +27,12 @@ repos:
       args: [--assume-in-merge]
 
   # Coding standards hooks
-  - repo: local
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.18.2
     hooks:
     - id: mypy
-      language: python
+      args: [--config-file, pyproject.toml]
       name: Mypy static type checking
-      entry: mypy --config-file pyproject.toml
-      pass_filenames: false
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.14.4
