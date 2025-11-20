@@ -28,7 +28,7 @@ This template should be used to propose and discuss changes that improve project
 - [ ] I provided a concise and clear title for this discussion;
 - [ ] I have presented my proposal following [Galactipy's philosophy][2] principles;
 - [ ] I have added the proper [labels][3] to start this discussion;
-- [ ] I have associated the proposal with the adequate [development milestone][4];
+- [ ] I have associated the proposal with the adequate [epic][4];
 - [ ] I have followed the [commit customs][5] for the project;
 - [ ] I have explained the [reasoning][6] behind my design choices through the commit descriptions;
 - [ ] I have added the proper [Git trailers][7] to my commits;
@@ -51,15 +51,15 @@ This template should be used to propose and discuss changes that improve project
 - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
 >>>
 
-[1]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
-[2]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#book-our-philosophy
+[1]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
+[2]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#book-our-philosophy
 [3]: https://gitlab.com/galactipy/galactipy/-/labels
-[4]: https://gitlab.com/galactipy/galactipy/-/milestones
-[5]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#commit-customs
-[6]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#say-why-not-just-what
-[7]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#git-trailers
-[8]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#styling
-[9]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#versioning-customs
+[4]: https://gitlab.com/groups/galactipy/-/epics
+[5]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#commit-customs
+[6]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#say-why-not-just-what
+[7]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#git-trailers
+[8]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#styling
+[9]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#versioning-customs
 [10]: https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically
 
 ## Reviewer Checklist
@@ -87,5 +87,5 @@ I attest that during the course of this development, the following interactions 
 - [ ] We have found [opportunities][12] for future development and have created work items to take action on later.
 >>>
 
-[11]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
-[12]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
+[11]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
+[12]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
