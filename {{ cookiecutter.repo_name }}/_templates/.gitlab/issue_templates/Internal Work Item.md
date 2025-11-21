@@ -36,11 +36,12 @@ Please read the [`CONTRIBUTING`][1] guide for best practices when opening issues
 {%- endif %}
 
 ## Reviewer Checklist
-
 {%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+
 - [ ] I attest that the **acceptance criteria** are well-defined and encompass all expected development for this issue;
 - [ ] I have flagged the work item with the appropriate [`To Do` status][6].
 {%- else %}
+
 - [ ] I attest that the **acceptance criteria** are well-defined and encompass all expected development for this issue.
 {%- endif %}
 
