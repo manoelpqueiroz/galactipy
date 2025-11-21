@@ -760,9 +760,10 @@ with their usage:
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
 |               Label               | Usage                                                                                                             |
 | :-------------------------------: | ----------------------------------------------------------------------------------------------------------------- |
-|       ~"backend::external"        | Changes to modules interacting directly with external APIs.                                                       |
-|      ~"backend::components"       | Changes to internal modules and utils.                                                                            |
-|       ~"backend::database"        | Changes to database schema and operations.                                                                        |
+|       ~"backend::external"        | Changes modules interacting directly with external APIs.                                                          |
+|      ~"backend::components"       | Changes internal modules and utils.                                                                               |
+|       ~"backend::database"        | Changes database schema and operations.                                                                           |
+|      ~"backend::performance"      | Improves the program's performance and reliability for users.                                                     |
 |     ~"blocked-by-dependency"      | Resolution requires development on upstream dependency.                                                           |
 |           ~"ci::build"            | Improves the project's deployment reliability through automated validation.                                       |
 {%- if cookiecutter.create_docker %}
@@ -770,10 +771,10 @@ with their usage:
 {%- endif %}
 |           ~"ci::tasks"            | Structures automated tasks of different functions to run on scheduled pipelines.                                  |
 {%- if cookiecutter.app_type != 'bare_repo' %}
-|           ~"cli::arch"            | Changes to logic in the layer directly below the CLI, including input validation and file parsing.                |
-|         ~"cli::commands"          | Changes to the CLI command structure and capabilities, including the addition of new commands.                    |
+|           ~"cli::arch"            | Changes logic in the layer directly below the CLI, including input validation and file parsing.                   |
+|         ~"cli::commands"          | Changes the CLI command structure and capabilities, including the addition of new commands.                       |
 |       ~"cli::deprecations"        | Marks deprecations for future removal to CLI features.                                                            |
-|          ~"cli::options"          | Changes to available options and option flag behaviour for CLI users.                                             |
+|          ~"cli::options"          | Changes available options and option flag behaviour for CLI users.                                                |
 |         ~"cli::removals"          | CLI feature sunsetting.                                                                                           |
 {%- else %}
 |          ~"deprecations"          | Marks deprecations for future removal.                                                                            |
@@ -787,6 +788,7 @@ with their usage:
 |    ~"internals::configuration"    | Regulates current development toolset behaviour.                                                                  |
 |  ~"internals::developer-output"   | Boosts team productivity with incremental automation and simplification.                                          |
 |       ~"internals::invoke"        | Streamlines local development operations.                                                                         |
+|       ~"internals::toolset"       | Adds, updates or removes tools available for developers.                                                          |
 |          ~"localization"          | Updates translation files for other languages.                                                                    |
 |   ~"maintenance::configuration"   | Updates current development toolset syntax and options.                                                           |
 |   ~"maintenance::dependencies"    | Upgrades project dependencies.                                                                                    |
@@ -796,12 +798,13 @@ with their usage:
 |      ~"maintenance::toolset"      | Updates or replaces current development tools functionality.                                                      |
 |          ~"manual-check"          | Requires manual validation to certain or all acceptance criteria.                                                 |
 |         ~"manual-closure"         | Items that should not be closed through commit closing patterns.                                                  |
-|            ~"plugins"             | Updates logic to enable third-party extensions based on the core {{ cookiecutter.project_name }} implementation.  |
-|          ~"policies::ci"          | Changes to rules triggering CI jobs.                                                                              |
-|      ~"policies::guidelines"      | Changes to project guidelines in `CONTRIBUTING.md` or the formal documentation.                                   |
+|          ~"plugins::api"          | Updates logic to enable third-party extensions based on the core {{ cookiecutter.project_name }} implementation.  |
+|         ~"plugins::arch"          | Implements undelying systems and structures for supporting plugins, including loading and discovery mechanisms.   |
+|          ~"policies::ci"          | Changes rules triggering CI jobs.                                                                                 |
+|      ~"policies::guidelines"      | Changes project guidelines in `CONTRIBUTING.md` or the formal documentation.                                      |
 |       ~"policies::roadmap"        | Work items related to debates and proposals relating to the project roadmap.                                      |
-|        ~"policies::rules"         | Changes to rules for development tools (e.g., Ruff/mypy rules, issue triaging etc.).                              |
-|      ~"policies::templates"       | Changes to issue and {{ cookiecutter.__mr_term }} templates.                                                      |
+|        ~"policies::rules"         | Changes rules for development tools (e.g., Ruff/mypy rules, issue triaging etc.).                                 |
+|      ~"policies::templates"       | Changes issue and {{ cookiecutter.__mr_term }} templates.                                                         |
 |           ~"quick-win"            | Development requires low effort.                                                                                  |
 |          ~"refactoring"           | Restructures existing source code without changing its functionality.                                             |
 {%- if cookiecutter.app_type == 'bare_repo' %}
@@ -817,7 +820,7 @@ with their usage:
 | ~"starter-assignment::supervised" | Proposal and delivery steps are clear and can be picked up by first-time contributors.                            |
 {%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
 |       ~"ui::accessibility"        | Promotes accessibility options for users in the interface.                                                        |
-|            ~"ui::arch"            | Changes to rendering logic in the layer directly below the user interface.                                        |
+|            ~"ui::arch"            | Changes rendering logic in the layer directly below the user interface.                                           |
 |        ~"ui::deprecations"        | Marks deprecations for future removal to UI features.                                                             |
 |          ~"ui::features"          | Introduces new functions and capabilities to the user interface.                                                  |
 |           ~"ui::layout"           | Changes the disposition of elements and text in the user interface.                                               |
@@ -836,9 +839,10 @@ with their usage:
 {% elif cookiecutter.scm_platform == 'GitLab Free' -%}
 | Development Domain  |             Label             | Usage                                                                                                             |
 | :-----------------: | :---------------------------: | ----------------------------------------------------------------------------------------------------------------- |
-|      Back-End       |      ~"backend-external"      | Changes to modules interacting directly with external APIs.                                                       |
-|      Back-End       |     ~"backend-components"     | Changes to internal modules and utils.                                                                            |
-|      Back-End       |      ~"backend-database"      | Changes to database schema and operations.                                                                        |
+|      Back-End       |      ~"backend-external"      | Changes modules interacting directly with external APIs.                                                          |
+|      Back-End       |     ~"backend-components"     | Changes internal modules and utils.                                                                               |
+|      Back-End       |      ~"backend-database"      | Changes database schema and operations.                                                                           |
+|      Back-End       |    ~"backend-performance"     | Improves the program's performance and reliability for users.                                                     |
 |         N/A         |   ~"blocked-by-dependency"    | Resolution requires development on upstream dependency.                                                           |
 |         CI          |          ~"ci-build"          | Improves the project's deployment reliability through automated validation.                                       |
 {%- if cookiecutter.create_docker %}
@@ -846,10 +850,10 @@ with their usage:
 {%- endif %}
 |         CI          |          ~"ci-tasks"          | Structures automated tasks of different functions to run on scheduled pipelines.                                  |
 {%- if cookiecutter.app_type != 'bare_repo' %}
-|         CLI         |          ~"cli-arch"          | Changes to logic in the layer directly below the CLI, including input validation and file parsing.                |
-|         CLI         |        ~"cli-commands"        | Changes to the CLI command structure and capabilities, including the addition of new commands.                    |
+|         CLI         |          ~"cli-arch"          | Changes logic in the layer directly below the CLI, including input validation and file parsing.                   |
+|         CLI         |        ~"cli-commands"        | Changes the CLI command structure and capabilities, including the addition of new commands.                       |
 |         CLI         |      ~"cli-deprecations"      | Marks deprecations for future removal to CLI features.                                                            |
-|         CLI         |        ~"cli-options"         | Changes to available options and option flag behaviour for CLI users.                                             |
+|         CLI         |        ~"cli-options"         | Changes available options and option flag behaviour for CLI users.                                                |
 |         CLI         |        ~"cli-removals"        | CLI feature sunsetting.                                                                                           |
 {%- else %}
 |         N/A         |        ~"deprecations"        | Marks deprecations for future removal. sunsetting.                                                                |
@@ -863,6 +867,7 @@ with their usage:
 | Internal Operations |  ~"internals-configuration"   | Regulates current development toolset behaviour.                                                                  |
 | Internal Operations | ~"internals-developer-output" | Boosts team productivity with incremental automation and simplification.                                          |
 | Internal Operations |      ~"internals-invoke"      | Streamlines local development operations.                                                                         |
+| Internal Operations |     ~"internals-toolset"      | Adds, updates or removes tools available for developers.                                                          |
 |         N/A         |        ~"localization"        | Updates translation files for other languages.                                                                    |
 |     Maintenance     | ~"maintenance-configuration"  | Updates current development toolset syntax and options.                                                           |
 |     Maintenance     |  ~"maintenance-dependencies"  | Upgrades project dependencies.                                                                                    |
@@ -872,12 +877,13 @@ with their usage:
 |     Maintenance     |    ~"maintenance-toolset"     | Updates or replaces current development tools functionality.                                                      |
 |         N/A         |        ~"manual-check"        | Requires manual validation to certain or all acceptance criteria.                                                 |
 |         N/A         |       ~"manual-closure"       | Items that should not be closed through commit closing patterns.                                                  |
-|         N/A         |          ~"plugins"           | Updates logic to enable third-party extensions based on the core {{ cookiecutter.project_name }} implementation.  |
-|      Policies       |        ~"policies-ci"         | Changes to rules triggering CI jobs.                                                                              |
-|      Policies       |    ~"policies-guidelines"     | Changes to project guidelines in `CONTRIBUTING.md` or the formal documentation.                                   |
+|       Plugins       |        ~"plugins-api"         | Updates logic to enable third-party extensions based on the core {{ cookiecutter.project_name }} implementation.  |
+|       Plugins       |        ~"plugins-arch"        | Implements undelying systems and structures for supporting plugins, including loading and discovery mechanisms.   |
+|      Policies       |        ~"policies-ci"         | Changes rules triggering CI jobs.                                                                                 |
+|      Policies       |    ~"policies-guidelines"     | Changes project guidelines in `CONTRIBUTING.md` or the formal documentation.                                      |
 |      Policies       |      ~"policies-roadmap"      | Work items related to debates and proposals relating to the project roadmap.                                      |
-|      Policies       |       ~"policies-rules"       | Changes to rules for development tools (e.g., Ruff/mypy rules, issue triaging etc.).                              |
-|      Policies       |     ~"policies-templates"     | Changes to issue and {{ cookiecutter.__mr_term }} templates.                                                      |
+|      Policies       |       ~"policies-rules"       | Changes rules for development tools (e.g., Ruff/mypy rules, issue triaging etc.).                                 |
+|      Policies       |     ~"policies-templates"     | Changes issue and {{ cookiecutter.__mr_term }} templates.                                                         |
 |         N/A         |         ~"quick-win"          | Development requires low effort.                                                                                  |
 |         N/A         |        ~"refactoring"         | Restructures existing source code without changing its functionality.                                             |
 {%- if cookiecutter.app_type == 'bare_repo' %}
@@ -912,9 +918,10 @@ with their usage:
 {% else -%}
 | Development Domain  |            Label             | Usage                                                                                                             |
 | :-----------------: | :--------------------------: | ----------------------------------------------------------------------------------------------------------------- |
-|      Back-End       |      `backend-external`      | Changes to modules interacting directly with external APIs.                                                       |
-|      Back-End       |     `backend-components`     | Changes to internal modules and utils.                                                                            |
-|      Back-End       |      `backend-database`      | Changes to database schema and operations.                                                                        |
+|      Back-End       |      `backend-external`      | Changes modules interacting directly with external APIs.                                                          |
+|      Back-End       |     `backend-components`     | Changes internal modules and utils.                                                                               |
+|      Back-End       |      `backend-database`      | Changes database schema and operations.                                                                           |
+|      Back-End       |    `backend-performance`     | Improves the program's performance and reliability for users.                                                     |
 |         N/A         |   `blocked-by-dependency`    | Resolution requires development on upstream dependency.                                                           |
 |         CI          |          `ci-build`          | Improves the project's deployment reliability through automated validation.                                       |
 {%- if cookiecutter.create_docker %}
@@ -922,10 +929,10 @@ with their usage:
 {%- endif %}
 |         CI          |          `ci-tasks`          | Structures automated tasks of different functions to run on scheduled pipelines.                                  |
 {%- if cookiecutter.app_type != 'bare_repo' %}
-|         CLI         |          `cli-arch`          | Changes to logic in the layer directly below the CLI, including input validation and file parsing.                |
-|         CLI         |        `cli-commands`        | Changes to the CLI command structure and capabilities, including the addition of new commands.                    |
+|         CLI         |          `cli-arch`          | Changes logic in the layer directly below the CLI, including input validation and file parsing.                   |
+|         CLI         |        `cli-commands`        | Changes the CLI command structure and capabilities, including the addition of new commands.                       |
 |         CLI         |      `cli-deprecations`      | Marks deprecations for future removal to CLI features.                                                            |
-|         CLI         |        `cli-options`         | Changes to available options and option flag behaviour for CLI users.                                             |
+|         CLI         |        `cli-options`         | Changes available options and option flag behaviour for CLI users.                                                |
 |         CLI         |        `cli-removals`        | CLI feature sunsetting.                                                                                           |
 {%- else %}
 |         N/A         |        `deprecations`        | Marks deprecations for future removal.                                                                            |
@@ -939,6 +946,7 @@ with their usage:
 | Internal Operations |  `internals-configuration`   | Regulates current development toolset behaviour.                                                                  |
 | Internal Operations | `internals-developer-output` | Boosts team productivity with incremental automation and simplification.                                          |
 | Internal Operations |      `internals-invoke`      | Streamlines local development operations.                                                                         |
+| Internal Operations |     `internals-toolset`      | Adds, updates or removes tools available for developers.                                                          |
 |         N/A         |        `localization`        | Updates translation files for other languages.                                                                    |
 |     Maintenance     | `maintenance-configuration`  | Updates current development toolset syntax and options.                                                           |
 |     Maintenance     |  `maintenance-dependencies`  | Upgrades project dependencies.                                                                                    |
@@ -948,12 +956,13 @@ with their usage:
 |     Maintenance     |    `maintenance-toolset`     | Updates or replaces current development tools functionality.                                                      |
 |         N/A         |        `manual-check`        | Requires manual validation to certain or all acceptance criteria.                                                 |
 |         N/A         |       `manual-closure`       | Items that should not be closed through commit closing patterns.                                                  |
-|         N/A         |          `plugins`           | Updates logic to enable third-party extensions based on the core {{ cookiecutter.project_name }} implementation.  |
-|      Policies       |        `policies-ci`         | Changes to rules triggering CI jobs.                                                                              |
-|      Policies       |    `policies-guidelines`     | Changes to project guidelines in `CONTRIBUTING.md` or the formal documentation.                                   |
+|       Plugins       |        `plugins-api`         | Updates logic to enable third-party extensions based on the core {{ cookiecutter.project_name }} implementation.  |
+|       Plugins       |        `plugins-arch`        | Implements undelying systems and structures for supporting plugins, including loading and discovery mechanisms.   |
+|      Policies       |        `policies-ci`         | Changes rules triggering CI jobs.                                                                                 |
+|      Policies       |    `policies-guidelines`     | Changes project guidelines in `CONTRIBUTING.md` or the formal documentation.                                      |
 |      Policies       |      `policies-roadmap`      | Work items related to debates and proposals relating to the project roadmap.                                      |
-|      Policies       |       `policies-rules`       | Changes to rules for development tools (e.g., Ruff/mypy rules, issue triaging etc.).                              |
-|      Policies       |     `policies-templates`     | Changes to issue and {{ cookiecutter.__mr_term }} templates.                                                      |
+|      Policies       |       `policies-rules`       | Changes rules for development tools (e.g., Ruff/mypy rules, issue triaging etc.).                                 |
+|      Policies       |     `policies-templates`     | Changes issue and {{ cookiecutter.__mr_term }} templates.                                                         |
 |         N/A         |         `quick-win`          | Development requires low effort.                                                                                  |
 |         N/A         |        `refactoring`         | Restructures existing source code without changing its functionality.                                             |
 {%- if cookiecutter.app_type == 'bare_repo' %}
@@ -969,7 +978,7 @@ with their usage:
 |         N/A         |     `starter-assignment`     | Proposal and delivery steps are clear and can be picked up by first-time contributors.                            |
 {%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
 |   User Interface    |      `ui-accessibility`      | Promotes accessibility options for users in the interface.                                                        |
-|   User Interface    |          `ui-arch`           | Changes to rendering logic in the layer directly below the user interface.                                        |
+|   User Interface    |          `ui-arch`           | Changes rendering logic in the layer directly below the user interface.                                           |
 |   User Interface    |      `ui-deprecations`       | Marks deprecations for future removal to UI features.                                                             |
 |   User Interface    |        `ui-features`         | Introduces new functions and capabilities to the user interface.                                                  |
 |   User Interface    |         `ui-layout`          | Changes the disposition of elements and text in the user interface.                                               |
