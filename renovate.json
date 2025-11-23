@@ -1,12 +1,149 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ],
-  "labels": [
-    "ci::project",
-    "internals::configuration",
-    "maintenance::renovate"
-  ],
-  "commitBody": "Changelog: ci"
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "branchPrefix": "bot-",
+    "commitMessageAction": "Renovate",
+    "commitMessageExtra": "to {{updateType}} {{#if isPinDigest}}{{{newDigestShort}}}{{else}}version {{#if isMajor}}{{prettyNewMajor}}.0{{else}}{{prettyNewVersion}}{{/if}}{{/if}}",
+    "constraints": {
+      "python": "^3.10"
+    },
+    "extends": [
+      "config:recommended",
+      ":semanticCommitsDisabled",
+      ":separateMajorReleases"
+    ],
+    "labels": [
+      "maintenance::renovate"
+    ],
+    "lockFileMaintenance": {
+      "branchTopic": "lock-update",
+      "commitMessageAction": "Update",
+      "commitMessageTopic": "`poetry.lock` contents",
+      "enabled": true,
+      "schedule": [
+        "* * * * 1"
+      ]
+    },
+    "packageRules": [
+      {
+        "enabled": true,
+        "matchCategories": [
+          "python"
+        ],
+        "commitBody": "Changelog: dependencies",
+        "commitMessagePrefix": ":arrow_up:",
+        "commitMessageTopic": "{{depName}}"
+      },
+      {
+        "enabled": true,
+        "matchCategories": ["ci"],
+        "commitBody": "Changelog: ci",
+        "commitMessagePrefix": ":construction_worker:"
+      },
+      {
+        "enabled": true,
+        "matchCategories": ["docker"],
+        "commitBody": "Changelog: build",
+        "commitMessagePrefix": ":hammer:"
+      },
+      {
+        "description": "Group Poetry plugins",
+        "groupName": "Poetry Plugins",
+        "matchPackageNames": [
+          "/^poetry-plugin-/",
+          "/^poetry-dynamic-/",
+          "poetry-bumpversion"
+        ]
+      },
+      {
+        "description": "Group linting and formatting tools",
+        "groupName": "Linting Tools",
+        "matchPackageNames": [
+          "ruff",
+          "mypy",
+          "mypy-extensions",
+          "bandit"
+        ]
+      },
+      {
+        "description": "Group testing tools",
+        "groupName": "Testing Tools",
+        "matchPackageNames": [
+          "/^pytest/",
+          "coverage"
+        ]
+      },
+      {
+        "description": "Group remaining dev tools",
+        "groupName": "General Development Tools",
+        "matchPackageNames": [
+          "bandit",
+          "pre-commit",
+          "invoke"
+        ]
+      },
+      {
+        "description": "Group foundational libraries for applications",
+        "groupName": "Foundational App Libraries",
+        "matchPackageNames": [
+          "typer",
+          "click",
+          "rich",
+          "textual",
+          "platformdirs",
+          "dynaconf",
+          "orbittings",
+          "loguru",
+          "nebulog"
+        ]
+      },
+      {
+        "description": "Group foundational libraries for templates",
+        "groupName": "Foundational Template Libraries",
+        "matchPackageNames": [
+          "cookiecutter",
+          "kedro"
+        ]
+      },
+      {
+        "addLabels": [
+          "manual-check"
+        ],
+        "automerge": false,
+        "description": "More cautious with production dependencies",
+        "matchDepTypes": [
+          "dependencies"
+        ]
+      },
+      {
+        "addLabels": [
+          "internals::toolset"
+        ],
+        "automerge": true,
+        "description": "Automerge minor and patch dev dependencies",
+        "matchDepTypes": [
+          "dev",
+          "docs"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch"
+        ]
+      },
+      {
+        "addLabels": [
+          "manual-check"
+        ],
+        "automerge": false,
+        "description": "Require approval for major updates",
+        "matchUpdateTypes": [
+          "major"
+        ]
+      }
+    ],
+    "poetry": {
+      "enabled": true,
+      "managerFilePatterns": [
+        "/^pyproject\\.toml$/"
+      ]
+    }
 }
