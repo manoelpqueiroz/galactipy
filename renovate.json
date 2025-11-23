@@ -78,15 +78,28 @@
         "github-actions"
       ],
       "matchPackageNames": [
+        "docker/metadata-action",
+        "docker/login-action",
+        "docker/setup-buildx-action",
+        "docker/build-push-action",
+        "actions/first-interaction",
+        "actions/checkout",
+        "actions/setup-python",
+        "snok/install-poetry",
+        "actions/upload-artifact",
         "actions/download-artifact",
-        "actions/upload-artifact"
+        "pypa/gh-action-pypi-publish",
+        "release-drafter/release-drafter",
+        "actions/cache",
+        "coverallsapp/github-action",
+        "codacy/codacy-coverage-reporter-action"
       ],
       "matchUpdateTypes": [
         "major"
       ],
       "commitBody": "Changelog: template-config",
       "commitMessagePrefix": ":construction_worker:",
-      "commitMessageTopic": "GitHub Artifact actions"
+      "groupName": "template GitHub actions"
     },
     {
       "enabled": true,
@@ -96,6 +109,16 @@
       ],
       "commitBody": "Changelog: build",
       "commitMessagePrefix": ":hammer:"
+    },
+    {
+      "description": "Ignore Python version-specific Docker images in CI",
+      "enabled": false,
+      "matchManagers": [
+        "gitlabci"
+      ],
+      "matchPackageNames": [
+        "registry.gitlab.com/galactipy/docker"
+      ]
     },
     {
       "description": "Group Poetry plugins",
@@ -187,6 +210,7 @@
       ],
       "automerge": false,
       "description": "Require approval for major updates",
+      "matchCategories": ["python"],
       "matchUpdateTypes": [
         "major"
       ]
