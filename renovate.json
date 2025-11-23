@@ -22,11 +22,31 @@
     "gitlabci-include",
     "github-actions"
   ],
+  "lockFileMaintenance": {
+    "automerge": false,
+    "branchTopic": "lock-update",
+    "commitMessagePrefix": ":pushpin:",
+    "commitMessageAction": "Update",
+    "commitMessageTopic": "`poetry.lock` contents",
+    "enabled": true,
+    "schedule": [
+      "* * * * 1"
+    ]
+  },
   "packageRules": [
     {
       "enabled": true,
       "matchCategories": [
         "python"
+      ],
+      "matchUpdateTypes": [
+        "major",
+        "minor",
+        "patch",
+        "pin",
+        "digest",
+        "rollback",
+        "bump"
       ],
       "commitBody": "Changelog: dependencies",
       "commitMessagePrefix": ":arrow_up:",
@@ -49,6 +69,24 @@
       ],
       "commitBody": "Changelog: template-config",
       "commitMessagePrefix": ":construction_worker:"
+    },
+    {
+      "description": "Customize GitHub Artifact Actions group message",
+      "enabled": true,
+      "automerge": true,
+      "matchManagers": [
+        "github-actions"
+      ],
+      "matchPackageNames": [
+        "actions/download-artifact",
+        "actions/upload-artifact"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "commitBody": "Changelog: template-config",
+      "commitMessagePrefix": ":construction_worker:",
+      "commitMessageTopic": "GitHub Artifact actions"
     },
     {
       "enabled": true,
@@ -154,17 +192,6 @@
       ]
     }
   ],
-  "lockFileMaintenance": {
-    "automerge": false,
-    "branchTopic": "lock-update",
-    "commitMessagePrefix": ":pushpin:",
-    "commitMessageAction": "Update",
-    "commitMessageTopic": "`poetry.lock` contents",
-    "enabled": true,
-    "schedule": [
-      "* * * * 1"
-    ]
-  },
   "poetry": {
     "managerFilePatterns": [
       "/pyproject\\.toml$/"
