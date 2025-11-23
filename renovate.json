@@ -14,15 +14,7 @@
   "labels": [
     "maintenance::renovate"
   ],
-  "lockFileMaintenance": {
-    "branchTopic": "lock-update",
-    "commitMessageAction": "Update",
-    "commitMessageTopic": "`poetry.lock` contents",
-    "enabled": true,
-    "schedule": [
-      "* * * * 1"
-    ]
-  },
+  "prHourlyLimit": 1,
   "enabledManagers": [
     "poetry",
     "dockerfile",
@@ -51,6 +43,7 @@
     },
     {
       "enabled": true,
+      "automerge": true,
       "matchManagers": [
         "github-actions"
       ],
@@ -59,6 +52,7 @@
     },
     {
       "enabled": true,
+      "automerge": true,
       "matchCategories": [
         "docker"
       ],
@@ -160,6 +154,17 @@
       ]
     }
   ],
+  "lockFileMaintenance": {
+    "automerge": false,
+    "branchTopic": "lock-update",
+    "commitMessagePrefix": ":pushpin:",
+    "commitMessageAction": "Update",
+    "commitMessageTopic": "`poetry.lock` contents",
+    "enabled": true,
+    "schedule": [
+      "* * * * 1"
+    ]
+  },
   "poetry": {
     "managerFilePatterns": [
       "/pyproject\\.toml$/"
