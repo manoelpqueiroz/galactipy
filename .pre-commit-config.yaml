@@ -11,6 +11,13 @@ repos:
         name: Fix End-of-files
         exclude: (LICENCE|_licences|_headers|.svg)
 
+  - repo: https://github.com/renovatebot/pre-commit-hooks
+    rev: '42.19.3'
+    hooks:
+      - id: renovate-config-validator
+        name: Renovate config validation
+        args: [--strict]
+
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.14.3
     hooks:
