@@ -65,7 +65,7 @@ bandit = "^1.8.6"
 
 ruff = "^0.14.0"
 
-pytest = "^8.4.2"
+pytest = "^9.0.0"
 pytest-cov = "^7.0.0"
 pytest-cookies = "^0.7.0"
 pytest-timeout = "^2.4.0"
