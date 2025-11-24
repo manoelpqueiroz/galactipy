@@ -16,10 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ inputs.publish }}
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     - name: 🐍 Set up Python {% endraw %}{{ cookiecutter.minimal_python_version }}{% raw %}
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6
       with:
         python-version: "{% endraw %}{{ cookiecutter.minimal_python_version }}{% raw %}"
 
@@ -30,7 +30,7 @@ jobs:
       run: invoke build
 
     - name: 🗃️ Upload Builds
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: prod-package-distribution
         path: dist/
@@ -52,7 +52,7 @@ jobs:
 
     steps:
     - name: 🗃️ Download artifacts
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v6
       with:
         name: prod-package-distribution
         path: dist/
