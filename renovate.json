@@ -40,6 +40,9 @@
     {
       "automerge": true,
       "enabled": true,
+      "addLabels": [
+        "ci::project"
+      ],
       "matchManagers": [
         "gitlabci",
         "gitlabci-include"
@@ -60,6 +63,11 @@
     },
     {
       "enabled": true,
+      "automerge": false,
+      "addLabels": [
+        "manual-check",
+        "template-internals::docker"
+      ],
       "separateMajorMinor": false,
       "matchCategories": [
         "docker"
@@ -70,6 +78,9 @@
     {
       "automerge": true,
       "description": "Group all GitHub actions in a single rule",
+      "addLabels": [
+        "template-internals::github"
+      ],
       "enabled": true,
       "separateMajorMinor": false,
       "matchManagers": [
@@ -127,6 +138,7 @@
     {
       "description": "Group remaining dev tools",
       "groupName": "developer productivity tools",
+      "branchTopic": "devx-tools",
       "matchPackageNames": [
         "bandit",
         "pre-commit",
@@ -174,6 +186,7 @@
       ]
     },
     {
+      "automerge": false,
       "addLabels": [
         "manual-check"
       ],
@@ -187,5 +200,8 @@
       "commitMessageAction": "Renew major version{{#if isGroup}}s{{/if}} for",
       "commitMessageExtra": "{{#if isGroup}}{{else}}({{prettyNewMajor}}.0){{/if}}"
     }
-  ]
+  ],
+  "registryAliases": {
+    "$CI_SERVER_FQDN": "gitlab.com"
+  }
 }
