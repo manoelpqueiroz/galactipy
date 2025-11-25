@@ -58,5 +58,5 @@ jobs:
         path: dist/
 
     - name: 📤 Deploy to PyPI
-      uses: pypa/gh-action-pypi-publish@v1.1.0
+      uses: pypa/gh-action-pypi-publish@v1.13.0
 {%- endraw %}
