@@ -16,26 +16,26 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ inputs.publish }}
     steps:
-    - uses: actions/checkout@v6
+      - uses: actions/checkout@v6
 
-    - name: 🐍 Set up Python {% endraw %}{{ cookiecutter.minimal_python_version }}{% raw %}
-      uses: actions/setup-python@v6
-      with:
-        python-version: "{% endraw %}{{ cookiecutter.minimal_python_version }}{% raw %}"
+      - name: 🐍 Set up Python {% endraw %}{{ cookiecutter.minimal_python_version }}{% raw %}
+        uses: actions/setup-python@v6
+        with:
+          python-version: "{% endraw %}{{ cookiecutter.minimal_python_version }}{% raw %}"
 
-    - name: 💽 Install poetry
-      uses: snok/install-poetry@v1
+      - name: 💽 Install poetry
+        uses: snok/install-poetry@v1
 
-    - name: 📦 Build
-      run: invoke build
+      - name: 📦 Build
+        run: invoke build
 
-    - name: 🗃️ Upload Builds
-      uses: actions/upload-artifact@v5
-      with:
-        name: prod-package-distribution
-        path: dist/
-        overwrite: true
-        retention-days: 30
+      - name: 🗃️ Upload Builds
+        uses: actions/upload-artifact@v5
+        with:
+          name: prod-package-distribution
+          path: dist/
+          overwrite: true
+          retention-days: 30
 
   deploy-prod:
     name: Upload Release to PyPI
@@ -51,12 +51,12 @@ jobs:
       id-token: write
 
     steps:
-    - name: 🗃️ Download artifacts
-      uses: actions/download-artifact@v6
-      with:
-        name: prod-package-distribution
-        path: dist/
+      - name: 🗃️ Download artifacts
+        uses: actions/download-artifact@v6
+        with:
+          name: prod-package-distribution
+          path: dist/
 
-    - name: 📤 Deploy to PyPI
-      uses: pypa/gh-action-pypi-publish@v1.13.0
+      - name: 📤 Deploy to PyPI
+        uses: pypa/gh-action-pypi-publish@v1.13.0
 {%- endraw %}

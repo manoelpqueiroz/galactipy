@@ -211,7 +211,7 @@ changelog-build:
       jq --raw-output .notes > RELEASE_NOTES.md
   artifacts:
     paths:
-    - RELEASE_NOTES.md
+      - RELEASE_NOTES.md
 
 changelog-commit:
   stage: release
