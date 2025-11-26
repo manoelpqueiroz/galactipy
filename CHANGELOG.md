@@ -16,6 +16,10 @@
 - [:pencil2: Fix minor Jinja rendering issues in `CONTRIBUTING.md`](galactipy/galactipy@754879f367e358013cb7943e1b2504e7862b2951) ([merge request](galactipy/galactipy!135))
 - [:pencil2: Fix wrongful `poetry-bumpversion` effect on Conventional Commits URL](galactipy/galactipy@0effb24c51c156c0407195e2c7b8515113771975)
 
+### :gear: Internals (1 change)
+
+- [:hammer: Update project `tasks.py` to install all pre-commit hook types](galactipy/galactipy@08b9154546ef0ae33ac3072abbe584a5c45b24f7) ([merge request](galactipy/galactipy!134))
+
 ### :construction_site: Template Internals (6 changes)
 
 - [:pencil: Improve generated projects' default labels](galactipy/galactipy@7c21f3a6d3b61735eddacd547a38148ee77b4acc) ([merge request](galactipy/galactipy!135))
@@ -40,10 +44,6 @@
 ### :arrow_up: Dependency Updates (1 change)
 
 - [:arrow_up: Renew major version for pytest (v9.0)](galactipy/galactipy@9c977d90e28c83de527b8212feca5590aaae7b12) ([merge request](galactipy/galactipy!121))
-
-### config (1 change)
-
-- [:hammer: Update project `tasks.py` to install all pre-commit hook types](galactipy/galactipy@08b9154546ef0ae33ac3072abbe584a5c45b24f7) ([merge request](galactipy/galactipy!134))
 
 ## 1.1.2 (2025-11-24)
 
