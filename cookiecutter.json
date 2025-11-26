@@ -1,6 +1,6 @@
 {
   "project_name": "Python Project",
-  "repo_name": "{{ cookiecutter.project_name.replace(' ', '-').lower().strip('-') }}",
+  "repo_name": "{{ cookiecutter.project_name.lower().split() | join('-') }}",
   "package_name": "{{ cookiecutter.repo_name.replace('-', '_') }}",
   "project_description": "{{ cookiecutter.project_name }} is a Python library created with https://gitlab.com/galactipy/galactipy",
   "copyright": "The Galactipy Contributors",
@@ -11,7 +11,7 @@
     "GitHub"
   ],
   "scm_namespace": "galactipy",
-  "email": "contact@{{ cookiecutter.scm_namespace.lower().replace(' ', '-') }}.com",
+  "email": "contact@{{ cookiecutter.scm_namespace.lower().split() | join('-') }}.com",
   "licence": [
     "MIT",
     "BSD-3-Clause",

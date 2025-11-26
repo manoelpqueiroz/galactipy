@@ -40,7 +40,7 @@ of helping the project.
 ## About this Document
 
 This document provides
-a summary of the Galactipy [GitLab Milestones][3]
+a summary of the Galactipy [GitLab Epics][3]
 that serve as the up-to-date description of items
 that are in the project's release pipeline.
 Most items are gathered
@@ -59,10 +59,10 @@ with a longer term plan.
 
 Discussion on the roadmap takes place
 via Merge Requests
-and discussions on the project's repository
+and discussions on the [Templates][4] repository
 over GitLab.
 Please check the sections
-on [Merge Requests][4] and [Roadmap Maintenance][5]
+on [Merge Requests][5] and [Roadmap Maintenance][6]
 of the `CONTRIBUTING` file
 for further clarification
 on how to proceed
@@ -83,11 +83,12 @@ The following table includes
 the current roadmap for Galactipy
 for summarisation
 and discussion purposes only.
-Dates provided here
-are gross estimations
-and might be outdated,
-please refer to each milestone
-for more accurate information.
+Please refer to each epic
+for additional information.
+Also look at the list of epics
+[encompassing multiple projects][7],
+as those might contain developments
+related to Galactipy.
 
 Priorities and requirements change based on
 community feedback,
@@ -97,30 +98,19 @@ etc.
 If you depend
 on a specific item,
 check if it is mapped for development
-through the most appropriate milestone.
+through the most appropriate epic.
 If not,
-open a [**Request for Improvement**][6]
+open a [**Request for Improvement**][8]
 through the Issue Tracker.
 We will try our best
 to bring updated status information.
 
-| Milestone | Description                                                                                                                                       |                Theme                 |                        Timeline                        |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------: | :----------------------------------------------------: |
-| %1        | Devise and implement automated testing for non-Python file generation, integration tests to validate generated projects serviceability.           | :bullettrain_side: Team Productivity |                          N/A                           |
-| %2        | Provide files and boilerplate configuration for managing generated projects documentation.                                                        |       :sparkles: New Features        |                          N/A                           |
-| %3        | Update linting tools for project and template to current standards, replacing Black with Ruff.                                                    |  :triangular_ruler: Standardisation  | **Delivered with [`v0.3`][v0.3] :airplane_departure:** |
-| %4        | Update Docker features to current standards, provide functional Dockerfile for generated projects.                                                |       :motorway: Improvements        |                          N/A                           |
-| %5        | Configure additional GitLab tools for generated projects, close gap between GitLab and GitHub features.                                           |  :triangular_ruler: Standardisation  |                          N/A                           |
-| %6        | Update GitHub configuration originally implemented in `python-package-template` with current day standards, include new GitHub Actions and tools. |       :motorway: Improvements        |                          N/A                           |
-| %7        | Organise features, documentation and options for releasing `v1.0`.                                                                                |         :gem: Stable Release         | **Delivered with [`v1.0`][v1.0] :airplane_departure:** |
-| %8        | Replace `Makefile` with Invoke as the subprocess manager.                                                                                         |       :motorway: Improvements        | **Delivered with [`v0.4`][v0.4] :airplane_departure:** |
-| %10       | Write clear-cut user tutorial for project management best practices via documentation.                                                            | :children_crossing: User Experience  |                          N/A                           |
-| %11       | Adapt and document relevant GitLab processes and modus operandi to establish standard development philosophy for project and template.            |          :scroll: Policies           |             **Delivered Internally :100:**             |
-| %12       | Include additional tools and services for building applications, checking code coverage and obtaining development metrics for releasing `v2.0`.   |       :sparkles: New Features        |                          N/A                           |
-| %13       | Structure additional tasks and steps for configuring external services, eliminate the need for additional setup outside the CLI.                  | :children_crossing: User Experience  |                          N/A                           |
-| %14       | Integrate Invoke tasks to call the SCM APIs for common project management tasks and housekeeping.                                                 | :bullettrain_side: Team Productivit  |                          N/A                           |
-| %15       | Expand the developer toolset for automating minor tasks related to style, formatting and policies.                                                | :bullettrain_side: Team Productivity |                          N/A                           |
-| %17       | Provide a comprehensive set of rules for managing work items in the project beyond marking issues as stale.                                       | :bullettrain_side: Team Productivity |                          N/A                           |
+```glql
+display: table
+fields: title, state, start, due, updated, labels, confidential
+query: group = "galactipy" AND type = epic AND label in (~"project::galactipy", ~"project::cookiecutter")
+sort: created
+```
 
 You can also help us
 deliver that feature
@@ -132,25 +122,23 @@ technical,
 automation,
 and documentation debt.
 If you don't know where to start,
-read the [guidelines][7] for developers
+read the [guidelines][9] for developers
 to situate yourself first
 and get to know
 how we work as a team.
 If you still have any questions,
 open a Request for Support
-via the [Issue Tracker][8]
+via the [Issue Tracker][10]
 so the team can help
 with clarifications.
 
 [1]: https://www.cookiecutter.io/
-[2]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md
-[3]: https://gitlab.com/galactipy/galactipy/-/milestones
-[4]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#start-with-a-merge-request
-[5]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#roadmap-management
-[6]: https://gitlab.com/galactipy/galactipy/-/issues/new?description_template=Request%20for%20Improvement
-[7]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
-[8]: https://gitlab.com/galactipy/galactipy/-/issues/new?description_template=Request%20for%20Support
-
-[v0.3]: https://gitlab.com/galactipy/galactipy/-/releases/v0.3.0
-[v0.4]: https://gitlab.com/galactipy/galactipy/-/releases/v0.4.0
-[v1.0]: https://gitlab.com/galactipy/galactipy/-/releases/v1.0.0
+[2]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md
+[3]: https://gitlab.com/groups/galactipy/-/epics
+[4]: https://gitlab.com/galactipy/templates/-/merge_requests/?state=all&label_name%5B%5D=internals%3A%3Apolicies
+[5]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#start-with-a-merge-request
+[6]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#roadmap-management
+[7]: https://gitlab.com/groups/galactipy/-/epics?state=opened&label_name%5B%5D=project%3A%3Amultiple
+[8]: https://gitlab.com/galactipy/galactipy/-/issues/new?description_template=Request%20for%20Improvement
+[9]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
+[10]: https://gitlab.com/galactipy/galactipy/-/issues/new?description_template=Request%20for%20Support
