@@ -4,17 +4,16 @@
 
 - [:bug: Fix non-standard commit messages for Renovate Bot](galactipy/galactipy@c5a64413e1766a900506b5b41ebea0a82ef94448)
 
-### :package: Build System & CI/CD (3 changes)
+### :package: Build System & CI/CD (1 change)
 
-- [Update dependency invoke to v2.2.1](galactipy/galactipy@4a66af69ab74de84f20afbed0c020cad431995a4) ([merge request](galactipy/galactipy!111))
-- [Update actions/cache action to v2.1.8](galactipy/galactipy@9172cae9962684b322038b1f8e26f67308ea7670) ([merge request](galactipy/galactipy!110))
 - [:construction_worker: Configure Renovate for the project](galactipy/galactipy@9c0e29bd496a059ad4e916bce8979d39ed2211f9) ([merge request](galactipy/galactipy!109))
 
-### :construction_site: Template Internals (3 changes)
+### :construction_site: Template Internals (4 changes)
 
 - [:construction_worker: Renovate template GitHub actions](galactipy/galactipy@8fc9bc751faad807bcc30c08bda00c5e24f32ac5) ([merge request](galactipy/galactipy!124))
 - [:construction_worker: Renovate release-drafter/release-drafter action to minor version v5.25.0](galactipy/galactipy@ca71dcaf75387041db1b560ab54a11918d551001) ([merge request](galactipy/galactipy!117))
 - [:construction_worker: Renovate actions/setup-python action to minor version v2.3.4](galactipy/galactipy@a95944b01da960ff1209b902f9851da0daef1883) ([merge request](galactipy/galactipy!115))
+- [:construction_worker: Update actions/cache action to v2.1.8](galactipy/galactipy@9172cae9962684b322038b1f8e26f67308ea7670) ([merge request](galactipy/galactipy!110))
 
 ### :scroll: Project Policies (6 changes)
 
@@ -25,12 +24,13 @@
 - [:wrench: Add Renovate pre-commit hook](galactipy/galactipy@98dcefbd4f4005f45306749e7a7ac23dc7727db8)
 - [:wrench: Update `renovate.json` with expanded rules](galactipy/galactipy@aca0f0ff935e9f1fc95c9802e68b1d3dd6a4d633)
 
-### :arrow_up: Dependency Updates (4 changes)
+### :arrow_up: Dependency Updates (5 changes)
 
 - [:arrow_up: Renovate bandit to patch version v1.9.2](galactipy/galactipy@c66e0d3bcc81f123cde8e4095da1789f2407634f) ([merge request](galactipy/galactipy!119))
 - [:arrow_up: Renovate general development tools](galactipy/galactipy@8c34634efe0ae27b6a5b13d7e63719f9514f3cf3) ([merge request](galactipy/galactipy!114))
 - [:arrow_up: Renovate coverage to minor version v7.12.0](galactipy/galactipy@a1bba6794e2248f00c422701a4afce909f2589d1) ([merge request](galactipy/galactipy!113))
 - [:arrow_up: Renovate Linting Tools](galactipy/galactipy@195699511584492ed323a0fa0af0f3745ec11726) ([merge request](galactipy/galactipy!112))
+- [:arrow_up: Update dependency invoke to v2.2.1](galactipy/galactipy@4a66af69ab74de84f20afbed0c020cad431995a4) ([merge request](galactipy/galactipy!111))
 
 ## 1.1.1 (2025-11-13)
 
