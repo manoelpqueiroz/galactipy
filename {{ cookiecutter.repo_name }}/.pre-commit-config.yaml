@@ -1,4 +1,4 @@
-# Pre-commit hooks
+# UPDATEME with additional hooks
 # https://pre-commit.com/
 default_stages: [pre-commit, pre-push]
 
@@ -6,80 +6,84 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
-    - id: check-toml
-      name: Check TOML syntax
-    - id: check-yaml
-      name: Check YAML syntax
-    - id: check-json
-      name: Check JSON syntax
-      exclude: '.vscode/settings.json'
-    - id: pretty-format-json
-      name: Format JSON files
-      args: [--autofix, --indent, '4']
-      exclude: '.vscode/settings.json'
-    - id: end-of-file-fixer
-      name: Fix end-of-files
+      - id: check-toml
+        name: Check TOML syntax
+      - id: check-yaml
+        name: Check YAML syntax
+      - id: check-json
+        name: Check JSON syntax
+        exclude: '.vscode/settings.json'
+      - id: pretty-format-json
+        name: Format JSON files
+        args: [--autofix, --indent, '2']
+        exclude: '.vscode/settings.json'
+      - id: end-of-file-fixer
+        name: Fix end-of-files
 {%- if cookiecutter.licence != 'nos' %}
-      exclude: (LICENCE|CODE_OF_CONDUCT.md|.licence_header.txt)
+        exclude: (LICENCE|CODE_OF_CONDUCT.md|.licence_header.txt)
 {%- endif %}
-    - id: check-merge-conflict
-      name: Check unresolved merge conflicts
-      args: [--assume-in-merge]
+      - id: check-merge-conflict
+        name: Check unresolved merge conflicts
+        args: [--assume-in-merge]
 
   # Coding standards hooks
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.18.2
     hooks:
-    - id: mypy
-      args: [--config-file, pyproject.toml]
-      name: Mypy static type checking
+      - id: mypy
+        args: [--config-file, pyproject.toml]
+        name: Mypy static type checking
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.14.4
     hooks:
-    - id: ruff-format
-      name: Ruff formatter
-    - id: ruff-check
-      name: Ruff linter
-      args: [--fix]
+      - id: ruff-format
+        name: Ruff formatter
+      - id: ruff-check
+        name: Ruff linter
+        args: [--fix]
 
   # Hooks to catch common mistakes
   - repo: https://github.com/albertas/deadcode
     rev: '2.4.1'
     hooks:
-    - id: deadcode
-      name: Dead code check
+      - id: deadcode
+        name: Dead code check
 
   - repo: https://github.com/crate-ci/typos
     rev: v1.39.0
     hooks:
-    - id: typos
-      name: Typo checks
-      exclude: (\.git|\.docker)ignore
+      - id: typos
+        name: Typo checks
+{%- if cookiecutter.create_docker %}
+        exclude: (\.git|\.docker)ignore
+{%- else %}
+        exclude: .gitignore
+{%- endif %}
 
   - repo: https://github.com/codespell-project/codespell
     rev: v2.4.1
     hooks:
-    - id: codespell
-      name: Codespell checks
+      - id: codespell
+        name: Codespell checks
 {%- if cookiecutter.licence != 'nos' %}
-      exclude: (LICENCE|CODE_OF_CONDUCT.md|.licence_header.txt)
+        exclude: (LICENCE|CODE_OF_CONDUCT.md|.licence_header.txt)
 {%- endif %}
-      additional_dependencies:
-        - tomli
+        additional_dependencies:
+          - tomli
 {%- if cookiecutter.licence != 'nos' %}
 
   - repo: https://github.com/Argmaster/autocopyright
     rev: v1.1.0
     hooks:
-    - id: autocopyright
-      name: Copyright marks
-      args: [
-        -s, '#',
-        -d, {{ cookiecutter.package_name }},
-        -g, '*.py',
-        -l, .licence_header.txt,
-      ]
+      - id: autocopyright
+        name: Copyright marks
+        args: [
+          -s, '#',
+          -d, {{ cookiecutter.package_name }},
+          -g, '*.py',
+          -l, .licence_header.txt,
+        ]
 {%- endif %}
 
   # Check configuration file schemas
@@ -87,17 +91,17 @@ repos:
     rev: '0.34.1'
     hooks:
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-    - id: check-gitlab-ci
-      name: Check GitLab CI file schema
+      - id: check-gitlab-ci
+        name: Check GitLab CI file schema
 {%- else %}
-    - id: check-github-issue-config
-      name: Check GitHub Issues configuration file
-    - id: check-github-issue-forms
-      name: Check GitHub Issue Forms schema
-    - id: check-github-workflows
-      name: Check GitHub workflows schema
-    - id: check-dependabot
-      name: Check Dependabot schema
+      - id: check-github-issue-config
+        name: Check GitHub Issues configuration file
+      - id: check-github-issue-forms
+        name: Check GitHub Issue Forms schema
+      - id: check-github-workflows
+        name: Check GitHub workflows schema
+      - id: check-dependabot
+        name: Check Dependabot schema
 {%- endif %}
 {%- if cookiecutter.commit_convention == 'conventional' %}
 
@@ -105,34 +109,32 @@ repos:
   - repo: https://github.com/commitizen-tools/commitizen
     rev: v4.10.0
     hooks:
-    - id: commitizen
-      name: Commit convention compliance
-    - id: commitizen-branch
-      name: Branch history commit convention compliance
-      stages: [pre-push]
+      - id: commitizen
+        name: Commit convention compliance
+      - id: commitizen-branch
+        name: Branch history commit convention compliance
+        stages: [pre-push]
 {%- elif cookiecutter.commit_convention == 'conventional-gitmoji' %}
 
   # Commit convention compliance
   - repo: https://github.com/ljnsn/cz-conventional-gitmoji
     rev: v0.7.0
     hooks:
-    - id: conventional-gitmoji
-      name: Commit convention compliance
+      - id: conventional-gitmoji
+        name: Commit convention compliance
 {%- endif %}
 
   # Repository maintenance
   - repo: https://github.com/python-poetry/poetry
     rev: '2.2.1'
     hooks:
-    - id: poetry-check
-      name: Check Poetry file consistency
-    - id: poetry-lock
-      name: Update lock file
+      - id: poetry-check
+        name: Check Poetry file consistency
+      - id: poetry-lock
+        name: Update lock file
 
   - repo: https://gitlab.com/vojko.pribudic.foss/pre-commit-update
     rev: v0.9.0
     hooks:
-    - id: pre-commit-update
-      name: Pre-commit autoupdate
-
-# UPDATEME with additional hooks
+      - id: pre-commit-update
+        name: Pre-commit autoupdate
