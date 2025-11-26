@@ -1,3 +1,50 @@
+## 1.1.3 (2025-11-26)
+
+### :milky_way: Components (2 changes)
+
+- [:wrench: Migrate mypy template pre-commit hook to online upstream](galactipy/galactipy@9f30a0328159faa7e427e4678e602c6115014f85) ([merge request](galactipy/galactipy!135))
+- [:wrench: Add section for typos in template `pyproject.toml`](galactipy/galactipy@b7a94751f1a453830fa76c906d38e0492ceb334d) ([merge request](galactipy/galactipy!135))
+
+### :wrench: Fixes & Refactoring (8 changes)
+
+- [:rotating_light: Format YAML files](galactipy/galactipy@0f55c02f7fa8c92149a1befd7b20eb72fcc27a68) ([merge request](galactipy/galactipy!135))
+- [:pencil2: Fix whitespace rendering for template Internal Work Item](galactipy/galactipy@51a38215ec45f5ff839e0693f395cbb5207ff1ce) ([merge request](galactipy/galactipy!135))
+- [:pencil2: Fix malformed Markdown comments in template `ROADMAP.md`](galactipy/galactipy@7e7fd843118a72f10a01b77bc1407195fa5557ad) ([merge request](galactipy/galactipy!135))
+- [:pencil2: Fix Orbittings typo in `SECURITY.md`](galactipy/galactipy@21db52487db8875f4a7fc59601ab3796aeb47737) ([merge request](galactipy/galactipy!135))
+- [:adhesive_bandage: Include BDD report files in Pytest removal task](galactipy/galactipy@eb91ba6325db94e3743bc420d2304b123467c1ea) ([merge request](galactipy/galactipy!135))
+- [:pencil2: Fix incorrect `CONTRIBUTING.md` content](galactipy/galactipy@9d71a9fee8c217483463360a6d6c426f6a09909c) ([merge request](galactipy/galactipy!135))
+- [:pencil2: Fix minor Jinja rendering issues in `CONTRIBUTING.md`](galactipy/galactipy@754879f367e358013cb7943e1b2504e7862b2951) ([merge request](galactipy/galactipy!135))
+- [:pencil2: Fix wrongful `poetry-bumpversion` effect on Conventional Commits URL](galactipy/galactipy@0effb24c51c156c0407195e2c7b8515113771975)
+
+### :construction_site: Template Internals (6 changes)
+
+- [:pencil: Improve generated projects' default labels](galactipy/galactipy@7c21f3a6d3b61735eddacd547a38148ee77b4acc) ([merge request](galactipy/galactipy!135))
+- [:art: Improve Cookiecutter variable construction](galactipy/galactipy@9d49db3a2bc6a940d258b039173694573c16e8ef) ([merge request](galactipy/galactipy!134))
+- [:pencil: Update GitLab badge colour](galactipy/galactipy@0c971cfed4fffe0e834c82e3859fb814b67eb607) ([merge request](galactipy/galactipy!135))
+- [:construction_worker: Renovate pypa/gh-action-pypi-publish action with minor version v1.13.0](galactipy/galactipy@a366c439c57305950bf1b8d50480504e33928bee) ([merge request](galactipy/galactipy!133))
+- [:wrench: Modify PyPI publish GitHub Actions reference](galactipy/galactipy@5eb964f833d4d4187901d7eb08ef04ca5df99cac)
+- [:construction_worker: Renovate actions/setup-python action with minor version v6.1.0](galactipy/galactipy@e629e37109ca4d59fda2aad2aface7f9cde953ec) ([merge request](galactipy/galactipy!132))
+
+### :pencil: Documentation (1 change)
+
+- [:pencil: Update project `README.md` with library recommendations](galactipy/galactipy@bf925f14b5fba87aea1202fe469d6c21c4702c66) ([merge request](galactipy/galactipy!134))
+
+### :scroll: Project Policies (5 changes)
+
+- [:pencil: Update project `ROADMAP.md` with GLQL table](galactipy/galactipy@cdc48774b0fbefdf266f3151691434afc842805e) ([merge request](galactipy/galactipy!134))
+- [:wrench: Update issue and MR templates for central management](galactipy/galactipy@cd610d487c4bbfc61613b38084054bf0793e5400) ([merge request](galactipy/galactipy!134))
+- [:pencil: Update project `CONTRIBUTING.md` guidelines](galactipy/galactipy@f5c69ec79c8e5fe727b875fe4c8e9bdb0be23f82) ([merge request](galactipy/galactipy!134))
+- [:wrench: Update project pre-commit hooks default stages](galactipy/galactipy@1a3a3adc5de64ced4a9144854ac6ba9221b059d2) ([merge request](galactipy/galactipy!134))
+- [:wrench: Improve Renovate rules identification](galactipy/galactipy@d34bb65cf213434fd876066a3f77e2c4c7a9fa71)
+
+### :arrow_up: Dependency Updates (1 change)
+
+- [:arrow_up: Renew major version for pytest (v9.0)](galactipy/galactipy@9c977d90e28c83de527b8212feca5590aaae7b12) ([merge request](galactipy/galactipy!121))
+
+### config (1 change)
+
+- [:hammer: Update project `tasks.py` to install all pre-commit hook types](galactipy/galactipy@08b9154546ef0ae33ac3072abbe584a5c45b24f7) ([merge request](galactipy/galactipy!134))
+
 ## 1.1.2 (2025-11-24)
 
 ### :wrench: Fixes & Refactoring (1 change)
