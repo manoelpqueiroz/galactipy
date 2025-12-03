@@ -25,6 +25,7 @@ as easy as possible.
 This guide is aimed at
 facilitating onboarding
 for new collaborators
+{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 and serving as the single source of truth
 for the project's rules
 and modus operandi.
@@ -76,6 +77,12 @@ in addressing your issue
 or assessing patches and features.
 
 {% endif -%}
+{% else -%}
+and as a complimentary source of information
+to our [main `CONTRIBUTING` guide][intro1],
+which you should read
+before diving into this specific guide.
+{% endif -%}
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [[_TOC_]]
 
@@ -106,11 +113,12 @@ To start contributing to {{ cookiecutter.project_name }},
 you should start
 by [forking][setup1] the upstream repository
 to your own {{ cookiecutter.__scm_platform_base }} [group][setup2].
+{%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
 We manage contributions
 {%- if cookiecutter.licence != 'nos' %}
 from the community
 {%- endif %}
-through the [fork][setup3] system,
+through the [fork][setup2a] system,
 which helps us
 monitor and appreciate continuous input
 from individuals and organisations.
@@ -121,6 +129,7 @@ in further developing {{ cookiecutter.project_name }}
 may be [promoted][promotion]
 to upstream Developers or Maintainers.
 {%- endif %}
+{%- endif %}
 
 After forking the upstream repository,
 cloning it to your local environment
@@ -128,7 +137,7 @@ and accessing the root dir
 via your IDE or the terminal:
 
 1. Make sure
-   you have Poetry [installed][setup4];
+   you have Poetry [installed][setup3];
 2. Create and activate
    your virtual environment:
 
@@ -258,6 +267,7 @@ should help:
   guide issue authors toward better clarification
   and promote project activity
   through constructive discussions.
+{%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
 
 If the steps above seem daunting,
 we can relate!
@@ -483,9 +493,11 @@ an even more robust contributor:
 {%- else %}
   especially those in the [**Needs Triage**][query3] stage.
 {%- endif %}
+{%- endif %}
 
 ## :classical_building: Fundamental Policies
 
+{% if cookiecutter.licence != 'nos' and cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 ### Code of Conduct
 
 {{ cookiecutter.project_name }} has adopted the [Contributor Covenant][cc1]
@@ -499,6 +511,7 @@ with others
 and know which actions
 will and will not be tolerated.
 
+{% endif -%}
 ### {% if cookiecutter.licence != 'nos' %}Open {% endif %}Development
 
 All work on {{ cookiecutter.project_name }} happens
@@ -509,7 +522,7 @@ Therefore,
 a {{ cookiecutter.__scm_platform_base }} account is needed
 to start contributing.
 
-{% if cookiecutter.licence != 'nos' -%}
+{% if cookiecutter.licence != 'nos' and cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 #### Contributor Promotion
 
 Access to the upstream repository is granted
@@ -578,7 +591,7 @@ into the attitude
 for candidate contributors
 in more detail.
 
-{% endif -%}
+{% elif cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 #### Roadmap Management
 
 Medium and long-term vision for {{ cookiecutter.project_name }}
@@ -610,7 +623,7 @@ containing:
 
 - **Title:**
   the proposed title for the {{ roadmap_item }};
-- **Description:**
+- **Proposal:**
   an overview of the development,
   in a short summary.
   Details regarding the {{ roadmap_item }}
@@ -625,13 +638,24 @@ containing:
   along with an Emoji to
   better convey its nature,
   in a `:emoji: Theme Title` pattern;
+- **Target Project(s):**
+  one or multiple projects
+  within the {{ cookiecutter.scm_namespace.title() }} ecosystem
+  whose requirements are addressed
+  by the proposed epic;
 - **Timeline:**
   a broad estimation of when this proposed {{ roadmap_item }}
-  can be delivered in full.
+  could be delivered in full.
   Should act as a starting point for
   the actual work tracking
   to be done via
-  the official {{ roadmap_item }}.
+  the official {{ roadmap_item }};
+- **Proposal Status:**
+  an emoji to represent
+  the status of the proposal:
+  - `:ballot_box:` for proposals under discussion;
+  - `:white_check_mark:` for accepted proposals;
+  - `:no_entry:` for rejected proposals.
 
 Contributors and maintainers will participate in the discussion to
 [refine][swnjw] the scope of the {{ roadmap_item }} and
@@ -645,6 +669,9 @@ The {{ roadmap_item }} itself should contain:
 - The [Motivational Narrative][roadmap4] as a summary to the {{ roadmap_item }}'s goal;
   - We suggest using the following pattern if the actor of the deliverable is not clear:
     `**In order to** {GOAL},<br>**The project will** {ACTION}.`;
+  - An accompanying executive summary
+    with a slightly more detailed
+    description of the deliverables;
 - Detailed information collected from the discussion
   regarding nature and scope,
   under the **Reasoning** section;
@@ -652,12 +679,19 @@ The {{ roadmap_item }} itself should contain:
   that have been discussed in the {{ cookiecutter.__mr_acronym }}
   in the **Anticipated Developments** section;
 - Details on potential bottleneck mappings
-  in the **Caveats** section.
+  in the **Caveats** section;
+- Details on future developments
+  enabled by the {{ roadmap_item }} delivery
+  in the **Building from Here** section.
 
 Once the official {{ roadmap_item }} is created,
 it should be attached to the proposal {{ cookiecutter.__mr_acronym }} and
 the `ROADMAP.md` table should be updated
 with the actual link to the {{ roadmap_item }}
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+(replacing the **Title**
+with the enhanced [GLFM reference][roadmap4a])
+{%- endif %}
 before merging to `master`.
 
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
@@ -705,6 +739,7 @@ Likewise,
 the {{ cookiecutter.__mr_acronym }}s should be associated with
 the completed {{ roadmap_item }}.
 
+{% endif -%}
 #### Work Item Tracking
 
 [![Issues][badge1]][query1]
@@ -726,6 +761,7 @@ the completed {{ roadmap_item }}.
 [![RFIs][badge10]][query10]
 [![RFSs][badge11]][query11]
 
+{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 {{ cookiecutter.project_name }} development is iterative
 and structured preferably around [{{ cookiecutter.__mr_term }}s][swmr].
 Whenever project advancements are not immediately deliverable,
@@ -742,8 +778,10 @@ Use cases for this type of work item include:
   which can't be prioritised
   due to scope or team capacity.
 
+{% endif -%}
 ##### Labels
 
+{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 {{ cookiecutter.project_name }} defines
 the following labels
 to mark
@@ -757,86 +795,7 @@ and {{ cookiecutter.__mr_term }}s,
 contributors should be familiar
 with their usage:
 
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
-|               Label               | Usage                                                                                                             |
-| :-------------------------------: | ----------------------------------------------------------------------------------------------------------------- |
-|       ~"backend::external"        | Changes modules interacting directly with external APIs.                                                          |
-|      ~"backend::components"       | Changes internal modules and utils.                                                                               |
-|       ~"backend::database"        | Changes database schema and operations.                                                                           |
-|      ~"backend::performance"      | Improves the program's performance and reliability for users.                                                     |
-|     ~"blocked-by-dependency"      | Resolution requires development on upstream dependency.                                                           |
-|           ~"ci::build"            | Improves the project's deployment reliability through automated validation.                                       |
-{%- if cookiecutter.create_docker %}
-|           ~"ci::docker"           | Changes how {{ cookiecutter.project_name }} containers are built and provided to users.                           |
-{%- endif %}
-|           ~"ci::tasks"            | Structures automated tasks of different functions to run on scheduled pipelines.                                  |
-{%- if cookiecutter.app_type != 'bare_repo' %}
-|           ~"cli::arch"            | Changes logic in the layer directly below the CLI, including input validation and file parsing.                   |
-|         ~"cli::commands"          | Changes the CLI command structure and capabilities, including the addition of new commands.                       |
-|       ~"cli::deprecations"        | Marks deprecations for future removal to CLI features.                                                            |
-|          ~"cli::options"          | Changes available options and option flag behaviour for CLI users.                                                |
-|         ~"cli::removals"          | CLI feature sunsetting.                                                                                           |
-{%- else %}
-|          ~"deprecations"          | Marks deprecations for future removal.                                                                            |
-{%- endif %}
-|       ~"design::discovery"        | Debates high-level concepts for new {{ cookiecutter.project_name }} features.                                     |
-|      ~"design::formulation"       | Specifies expected behaviour for {{ cookiecutter.project_name }} features under different possible circumstances. |
-|      ~"design::reassessment"      | Reevaluates a previous design that did not consider all possible cases.                                           |
-|         ~"docs::nudging"          | Updates formal documentation with tips and tricks for better {{ cookiecutter.project_name }} usage.               |
-|          ~"docs::guides"          | Updates formal documentation with structured user guides.                                                         |
-|        ~"docs::technical"         | Updates formal documentation with API reference or development guides.                                            |
-|    ~"internals::configuration"    | Regulates current development toolset behaviour.                                                                  |
-|  ~"internals::developer-output"   | Boosts team productivity with incremental automation and simplification.                                          |
-|       ~"internals::invoke"        | Streamlines local development operations.                                                                         |
-|       ~"internals::toolset"       | Adds, updates or removes tools available for developers.                                                          |
-|          ~"localization"          | Updates translation files for other languages.                                                                    |
-|   ~"maintenance::configuration"   | Updates current development toolset syntax and options.                                                           |
-|   ~"maintenance::dependencies"    | Upgrades project dependencies.                                                                                    |
-|        ~"maintenance::bot"        | Work items managed automatically by a project GitLab Bot.                                                         |
-|     ~"maintenance::knowledge"     | Updates already existing information for knowledge retention and sharing.                                         |
-|   ~"maintenance::test-coverage"   | Changes being enforced due to software regression.                                                                |
-|      ~"maintenance::toolset"      | Updates or replaces current development tools functionality.                                                      |
-|          ~"manual-check"          | Requires manual validation to certain or all acceptance criteria.                                                 |
-|         ~"manual-closure"         | Items that should not be closed through commit closing patterns.                                                  |
-|          ~"plugins::api"          | Updates logic to enable third-party extensions based on the core {{ cookiecutter.project_name }} implementation.  |
-|         ~"plugins::arch"          | Implements undelying systems and structures for supporting plugins, including loading and discovery mechanisms.   |
-|          ~"policies::ci"          | Changes rules triggering CI jobs.                                                                                 |
-|      ~"policies::guidelines"      | Changes project guidelines in `CONTRIBUTING.md` or the formal documentation.                                      |
-|       ~"policies::roadmap"        | Work items related to debates and proposals relating to the project roadmap.                                      |
-|        ~"policies::rules"         | Changes rules for development tools (e.g., Ruff/mypy rules, issue triaging etc.).                                 |
-|      ~"policies::templates"       | Changes issue and {{ cookiecutter.__mr_term }} templates.                                                         |
-|           ~"quick-win"            | Development requires low effort.                                                                                  |
-|          ~"refactoring"           | Restructures existing source code without changing its functionality.                                             |
-{%- if cookiecutter.app_type == 'bare_repo' %}
-|            ~"removals"            | Feature sunsetting.                                                                                               |
-{%- endif %}
-|      ~"request::correction"       | For work items for when something is not working properly.                                                        |
-|      ~"request::improvement"      | For work items containing suggestions for new features from the community.                                        |
-|        ~"request::support"        | For issues opened by users seeking advice regarding {{ cookiecutter.project_name }}.                              |
-| ~"seeking-contributors::delivery" | Proposal is polished and can be picked up if you feel inclined to.                                                |
-| ~"seeking-contributors::opinion"  | In need of help to further discuss and define scope.                                                              |
-|             ~"stale"              | Work items without activity that are marked for closing.                                                          |
-| ~"starter-assignment::quick-win"  | Development requires low effort and is ideal for first-time contributors.                                         |
-| ~"starter-assignment::supervised" | Proposal and delivery steps are clear and can be picked up by first-time contributors.                            |
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
-|       ~"ui::accessibility"        | Promotes accessibility options for users in the interface.                                                        |
-|            ~"ui::arch"            | Changes rendering logic in the layer directly below the user interface.                                           |
-|        ~"ui::deprecations"        | Marks deprecations for future removal to UI features.                                                             |
-|          ~"ui::features"          | Introduces new functions and capabilities to the user interface.                                                  |
-|           ~"ui::layout"           | Changes the disposition of elements and text in the user interface.                                               |
-|          ~"ui::removals"          | User interface feature sunsetting.                                                                                |
-{%- endif %}
-|        ~"up-for-a-change"         | Author-based label to express interest in delivering their own request.                                           |
-|          ~"ux::advanced"          | Updates features available to power users of {{ cookiecutter.project_name }}.                                     |
-|       ~"ux::customization"        | Improves options available for program customisation by users.                                                    |
-|           ~"ux::flags"            | Implements feature flags for {{ cookiecutter.project_name }}.                                                     |
-|         ~"ux::migration"          | Offers predefined migration options to users in the case of breaking changes.                                     |
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
-|         ~"ux::navigation"         | Improves user navigation in the user interface.                                                                   |
-{%- endif %}
-|          ~"ux::nudging"           | Helps users understand the application with more ease, like help panels, notifications etc.                       |
-
-{% elif cookiecutter.scm_platform == 'GitLab Free' -%}
+{% if cookiecutter.scm_platform == 'GitLab Free' -%}
 | Development Domain  |             Label             | Usage                                                                                                             |
 | :-----------------: | :---------------------------: | ----------------------------------------------------------------------------------------------------------------- |
 |      Back-End       |      ~"backend-external"      | Changes modules interacting directly with external APIs.                                                          |
@@ -1004,19 +963,14 @@ with their usage:
 
 To effectively manage
 issue and {{ task_item }} lifecycles,
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
-we use [GitLab Statuses][status1].
-Our approach to this feature
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
 we use specific labels
-to mark issues.
-Our approach
-{%- else %}
-we use specific labels
+{%- if cookiecutter.__scm_platform_lc == 'github' %}
 to mark issues
 and discussions.
-Our approach
+{%- else %}
+to mark issues.
 {%- endif %}
+Our approach
 relies on
 keeping few options for
 in-progress and completed items
@@ -1043,41 +997,24 @@ understand
 each use case and
 when to move from one stage to another:
 
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
-| Status                                               | Status Category | Description                                                                                                                                                                                                                                                                                                                                                               |
-| :--------------------------------------------------- | :-------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| ![Triage icon][icon1] **Needs Triage**               |     Triage      | Initial stage for [User requests][status2], which require a first analysis by a {{ cookiecutter.project_name }} contributor before work on its scope is either accepted or declined. It is also the default open state for new items if not overridden.                                                                                                                   |
-| ![Refinement icon][icon2] **Needs Refinement**       |     Triage      | Describes more general ideas that might receive development at some point, but whose current state does not detail implementation or paths to delivery. Lacking scope, represents more of a desire than an actual proposal – which might actually prove infeasible later. Should be used to inform the need for further discussions before being cleared for development. |
-| ![Criteria icon][icon3] **Needs Criteria**           |     Triage      | This describes items whose scope is set, but acceptance criteria is still pending to be added before being cleared for development. In contrast with the **Needs Refinement** status, in this stage the deliverable is known and understood, but is waiting for a contributor to detail in smaller steps.                                                                 |
-| ![Steps icon][icon4] **Needs Delivery Steps**        |     Triage      | A specific type of triaging item, signaling pending work before the item can be cleared as a [starter assignment][starter] development. In contrast with the **Needs Criteria**, this stage indicates the work item will be processed with greater detail than usual so a new contributor can pick it up and develop it with little to no friction.                       |
-| ![Decomposition icon][icon5] **Needs Decomposition** |     Triage      | Proposals or requests that have been deemed too large in scope to be considered a single work item and must be broken down in two or more items before proceeding.                                                                                                                                                                                                        |
-| ![Greenlit icon][icon6] **Greenlit**                 |      To Do      | Items that have been cleared for development after having their scope and acceptance criteria properly defined.                                                                                                                                                                                                                                                           |
-| ![Pipeline icon][icon7] **Pipeline**                 |      To Do      | Items that have scope and acceptance criteria, but that address a specific development stream which is not currently considered the most valuable for delivery. Can be picked for development, but should be left out in favour of **Greenlit** and **Priority** items.                                                                                                   |
-| ![Priority icon][icon8] **Priority**                 |      To Do      | Signals items which take priority over other cleared work items. Should be used with discretion and only in cases where lack of action can lead to significant issues to security or user experience.                                                                                                                                                                     |
-| ![Deferred icon][icon9] **Deferred**                 |      To Do      | Signals items that, despite having scope and acceptance criteria, are deliberately being deprioritised for development (e.g., due to an upstream block).                                                                                                                                                                                                                  |
-| ![Progress icon][icon10] **In Progress**             |   In Progress   | Items currently being actively worked on.                                                                                                                                                                                                                                                                                                                                 |
-| ![Done icon][icon11] **Done**                        |      Done       | Items delivered in full.                                                                                                                                                                                                                                                                                                                                                  |
-| ![Canceled icon][icon12] **Out of Scope**            |    Canceled     | Items deemed out of the scope of {{ cookiecutter.project_name }}.                                                                                                                                                                                                                                                                                                         |
-| ![Canceled icon][icon12] **Cannot Implement**        |    Canceled     | Items which are unable to be delivered by the development team in its original form, due to technical barriers or security risks.                                                                                                                                                                                                                                         |
-| ![Canceled icon][icon12] **Not Feasible**            |    Canceled     | Items which can technically be delivered, but that have been declined for development due to any other factor outside the other **Canceled** stage items.                                                                                                                                                                                                                 |
-| ![Redundant icon][icon13] **Redundant**              |    Canceled     | Items whose scope has become superfluous to the project due to design changes in other domains.                                                                                                                                                                                                                                                                           |
-| ![Duplicate icon][icon14] **Duplicate**              |    Canceled     | Items marked as duplicates of previous work items.                                                                                                                                                                                                                                                                                                                        |
-
-Task lifecycles are made simpler
-to reduce overhead
-on the development team,
-defining only the
-![Created icon][icon15] **Created**,
-![Ongoing icon][icon16] **Ongoing**,
-![Done icon][icon11] **Done**,
-![Aborted icon][icon17] **Aborted**
-and ![Duplicate icon][icon14] **Duplicate**
-stages.
-Developers, however,
-are not obligated
-to mark their tasks
-as "Ongoing"
-if development will be short lived.
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
+|          Status          |           Label            | Status Category | Description                                                                                                                                                                                                                                                                                                                                                               |
+| :----------------------: | :------------------------: | :-------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|     **Needs Triage**     |    ~"sts-needs-triage"     |     Triage      | Initial stage for User Requests, which require a first analysis by a {{ cookiecutter.project_name }} contributor before work on its scope is either accepted or declined.                                                                                                                                                                                                 |
+|   **Needs Refinement**   |  ~"sts-needs-refinement"   |     Triage      | Describes more general ideas that might receive development at some point, but whose current state does not detail implementation or paths to delivery. Lacking scope, represents more of a desire than an actual proposal – which might actually prove infeasible later. Should be used to inform the need for further discussions before being cleared for development. |
+|    **Needs Criteria**    |   ~"sts-needs-criteria"    |     Triage      | This describes items whose scope is set, but acceptance criteria is still pending to be added before being cleared for development. In contrast with the **Needs Refinement** status, in this stage the deliverable is known and understood, but is waiting for a contributor to detail in smaller steps.                                                                 |
+| **Needs Delivery Steps** |     ~"sts-needs-steps"     |     Triage      | A specific type of triaging item, signaling pending work before the item can be cleared as a [starter assignment][starter] development. In contrast with the **Needs Criteria**, this stage indicates the work item will be processed with greater detail than usual so a new contributor can pick it up and develop it with little to no friction.                       |
+| **Needs Decomposition**  | ~"sts-needs-decomposition" |     Triage      | Proposals or requests that have been deemed too large in scope to be considered a single work item and must be broken down in two or more items before proceeding.                                                                                                                                                                                                        |
+|       **Greenlit**       |      ~"sts-greenlit"       |      To Do      | Items that have been cleared for development after having their scope and acceptance criteria properly defined.                                                                                                                                                                                                                                                           |
+|       **Pipeline**       |      ~"sts-pipeline"       |      To Do      | Items that have scope and acceptance criteria, but that address a specific development stream which is not currently considered the most valuable for delivery. Can be picked for development, but should be left out in favour of **Greenlit** and **Priority** items.                                                                                                   |
+|       **Priority**       |      ~"sts-priority"       |      To Do      | Signals items which take priority over other cleared work items. Should be used with discretion and only in cases where lack of action can lead to significant issues to security or user experience.                                                                                                                                                                     |
+|       **Deferred**       |      ~"sts-deferred"       |      To Do      | Signals items that, despite having scope and acceptance criteria, are deliberately being deprioritised for development (e.g., due to an upstream block).                                                                                                                                                                                                                  |
+|     **In Progress**      |       ~"sts-ongoing"       |   In Progress   | Items currently being actively worked on.                                                                                                                                                                                                                                                                                                                                 |
+|     **Out of Scope**     |         ~"sts-oos"         |    Canceled     | Items deemed out of the scope of {{ cookiecutter.project_name }}.                                                                                                                                                                                                                                                                                                         |
+|   **Cannot Implement**   |        ~"sts-cant"         |    Canceled     | Items which are unable to be delivered by the development team in its original form, due to technical barriers or security risks.                                                                                                                                                                                                                                         |
+|     **Not Feasible**     |      ~"sts-declined"       |    Canceled     | Items which can technically be delivered, but that have been declined for development due to any other factor outside the other **Canceled** stage items.                                                                                                                                                                                                                 |
+|      **Redundant**       |      ~"sts-redundant"      |    Canceled     | Items whose scope has become superfluous to the project due to design changes in other domains.                                                                                                                                                                                                                                                                           |
+|      **Duplicate**       |      ~"sts-duplicate"      |    Canceled     | Items marked as duplicates of previous work items.                                                                                                                                                                                                                                                                                                                        |
 
 {% else -%}
 |          Status          |           Label           | Status Category | Description                                                                                                                                                                                                                                                                                                                                                               |
@@ -1098,10 +1035,26 @@ if development will be short lived.
 |      **Redundant**       |      `sts-redundant`      |    Canceled     | Items whose scope has become superfluous to the project due to design changes in other domains.                                                                                                                                                                                                                                                                           |
 |      **Duplicate**       |      `sts-duplicate`      |    Canceled     | Items marked as duplicates of previous work items.                                                                                                                                                                                                                                                                                                                        |
 
+{% endif -%}
 {{ task_item.capitalize() }}s do not require
 a lifecycle label.
 
+{% else -%}
+<!-- DEFINE the specific labels for this project
+Besides the labels
+defined for the [{{ cookiecutter.scm_namespace.title() }} group][labels1],
+the {{ cookiecutter.project_name }} project defines
+the following additional labels
+to mark
+issues and Merge Requests
+specific to this project:
+
+| Label | Usage |
+| :---: | :---: |
+-->
+
 {% endif -%}
+{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 #### General Practices
 
 ##### Issue Titles Should be Framed in Imperative Mood
@@ -1648,12 +1601,28 @@ or detailed documentation.
 > or detailed documentation.
 {%- endif %}
 
+{% endif -%}
 ### Commit Customs
 
+{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' and cookiecutter.commit_convention == 'gitmoji' -%}
+#### Gitmoji
+
+<!-- DEFINE the specific Gitmoji for this project
+Besides the Gitmoji
+defined for the [{{ cookiecutter.scm_namespace.title() }} group][comitting1],
+the {{ cookiecutter.project_name }} project defines
+the following additional Gitmoji
+to apply on commits:
+
+| Gitmoji | Shorthand | Usage |
+| :-----: | :-------: | :---: |
+-->
+
+{% elif cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 {% if cookiecutter.commit_convention == 'gitmoji' -%}
 #### Gitmoji
 
-{{ cookiecutter.project_name }} uses [Gitmoji][committing1]
+{{ cookiecutter.project_name }} uses [Gitmoji][committing0]
 to characterise
 the nature of each commit,
 you should familiarise yourself
@@ -1716,12 +1685,12 @@ so the CI will ignore it.
 {% elif cookiecutter.commit_convention == 'conventional' -%}
 #### Conventional Commits
 
-{{ cookiecutter.project_name }} uses [Conventional Commits][committing1]
+{{ cookiecutter.project_name }} uses [Conventional Commits][committing0]
 to characterise
 the nature of each commit,
 you should familiarise yourself
 with this method.
-We follow the [Angular Convention][committing1a]
+We follow the [Angular Convention][committing0a]
 to specify
 the allowed commit types:
 
@@ -1764,12 +1733,12 @@ so the CI will ignore it.
 {% else -%}
 #### Conventional Gitmoji
 
-{{ cookiecutter.project_name }} uses [Conventional Gitmoji][committing1]
+{{ cookiecutter.project_name }} uses [Conventional Gitmoji][committing0]
 to characterise
 the nature of each commit,
 you should familiarise yourself
 with this method,
-based on [Conventional Commits][committing1a]
+based on [Conventional Commits][committing0a]
 with visual cues added
 via Emoji.
 
@@ -1907,7 +1876,7 @@ as it helps developers
 to later understand implementation
 and reasoning
 behind changes.
-The article [_How to Write a Git Commit Message_][committing2]
+The article [_How to Write a Git Commit Message_][commiting0x]
 is a valuable resource
 and reading through it
 is strongly recommended
@@ -1915,25 +1884,24 @@ before contributing,
 as developers are expected
 to apply those principles
 when committing.
-{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 
+{% endif -%}
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 #### Git Trailers
 
-Every commit should also
-be identified with the respective [Git trailer][committing3]
+Every commit should
+be identified with the respective [Git trailer][committing1]
 to categorise the type of change being made.
-{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 When a new version of {{ cookiecutter.project_name }}
 is released through a tag,
 a CI pipeline compiles every trailer
 to automate the version's release
 and update the `CHANGELOG` file
 in the root directory.
-{%- endif %}
 
 The available trailers
 are listed below
-and defined in the [`changelog-config.yml`][committing4] file:
+and defined in the [`changelog-config.yml`][committing2] file:
 {%- if cookiecutter.app_type != 'bare_repo' %}
 
 |           Category in CHANGELOG            |                                                                                                      Available Trailers                                                                                                      | Use Cases                                                                                                                                                              |
@@ -1976,8 +1944,9 @@ and defined in the [`changelog-config.yml`][committing4] file:
 |      :up: Dependencies Updates      |                                                  `dependencies`<br>`dep`<br>`deps`                                                   |
 |  :black_circle: Other Developments  |                                                               `other`                                                                |
 {%- endif %}
-{%- endif %}
 
+{% endif -%}
+{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 ### Styling
 
 #### Codestyle
@@ -1999,7 +1968,7 @@ use a [Project Policy Proposal {{ cookiecutter.__mr_acronym }}][roadmap1].
 
 {% if cookiecutter.docstring_style != 'other' -%}
 We choose to write our docstrings
-using the [{{ docstring_name }}][style1a] standard.
+using {% if cookiecutter.docstring_style == 'other' %}a{% else %}the{% endif %} [{{ docstring_name }}][style1a] standard.
 Please be aware
 to adhere to it
 when making your contributions.
@@ -2106,6 +2075,7 @@ that should not follow this rule
 are issue and {{ cookiecutter.__mr_term }} templates
 inside [`.{{ cookiecutter.__scm_platform_lc }}`][style4] and [`CHANGELOG.md`][style5].
 
+{% endif -%}
 ### Checks & Hooks
 
 Developers are encouraged
@@ -2123,6 +2093,7 @@ to block updates not following the rules:
 Ensure both Invoke and Pre-Commit are [installed][setup]
 in your virtual environment.
 
+{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 ### Continuous Integration
 
 Besides being hosted in {{ cookiecutter.__scm_platform_base }},
@@ -2166,6 +2137,7 @@ to effectively contribute
 with further automation
 of the development cycle.
 
+{% endif -%}
 ### Licence
 
 {% if cookiecutter.licence != 'nos' -%}
@@ -2181,6 +2153,7 @@ for more information
 on licencing the project.
 
 {% endif -%}
+{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 ## :book: Our Philosophy
 
 This document is
@@ -2717,6 +2690,7 @@ _The best good first issues are the ones you open yourself._
   on the solution.
 
 {% endif -%}
+{% endif -%}
 ## :speaking_head: Proposing Changes as a Developer
 
 {% if cookiecutter.app_type in ['tui', 'hybrid'] -%}
@@ -2891,6 +2865,7 @@ clear,
 easy to evaluate,
 and already pass basic checks.
 
+{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 Sometimes,
 a contributor will already have
 a particular new change or fix
@@ -2898,12 +2873,14 @@ in mind.
 If seeking ideas,
 consult the list of [starter assignments][query5].
 
+{% endif -%}
 Before proceeding,
 contributors should evaluate
 if the proposed change
 is likely to be
 relevant,
 new
+{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 and actionable:
 
 - Is it clear
@@ -2948,6 +2925,10 @@ and actionable:
   of the underlying tool/code.
   Some changes require building up experience first.
 
+{% else -%}
+and actionable.
+
+{% endif -%}
 {% if cookiecutter.app_type != 'bare_repo' -%}
 It's worth emphasizing that
 changes to CLI commands
@@ -2965,6 +2946,7 @@ than changes
 to less fundamental building blocks.
 
 {% endif -%}
+{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 #### Opening Admissible {{ cookiecutter.__mr_term }}s
 
 For developers and maintainers,
@@ -3122,6 +3104,7 @@ its probability of being merged:
   - Makes lots of modifications
     in one "big bang" change.
 
+{% endif -%}
 ### Development Workflow
 
 After cloning {{ cookiecutter.project_name }}
@@ -3238,6 +3221,7 @@ do so through a [Project Policy Proposal][roadmap1].
 
 <!-- DEFINE the guidelines on how to implement and handle feature flags -->
 
+{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 ### {{ cookiecutter.__mr_term }} Review Process
 
 After [starting with a {{ cookiecutter.__mr_term }}][swmr],
@@ -3690,6 +3674,7 @@ Be open to having your mind changed.
 Be open to working with the contributor
 to make the {{ cookiecutter.__mr_term }} better.
 
+{% if cookiecutter.licence != 'nos' -%}
 Reviews that are
 dismissive
 or disrespectful
@@ -3698,6 +3683,7 @@ or any other reviewers
 are strictly counter
 to the [Code of Conduct][cc2].
 
+{% endif -%}
 When reviewing a {{ cookiecutter.__mr_term }},
 the primary goals are
 for the codebase to improve
@@ -3772,12 +3758,8 @@ Then:
   Check linked issues for blockers.
   Clarify with the submitters if necessary.
   If blocked by one or more open {{ cookiecutter.__mr_acronym }}s,
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
-  set an [{{ cookiecutter.__mr_acronym }} dependency][reviewing0];
-{%- else %}
   mention the blocking {{ cookiecutter.__mr_acronym }}
   in the discussion;
-{%- endif %}
 - After a round of line notes,
   it can be helpful
   to post a summary note
@@ -3996,7 +3978,8 @@ If still awaiting further approvals from others,
 `@` mention the submitter
 and explain why in a comment.
 
-{% if cookiecutter.licence != 'nos' -%}
+{% endif -%}
+{% if cookiecutter.licence != 'nos' and cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 ### How to Behave among Other Contributors
 
 {{ cookiecutter.__mr_term }}s,
@@ -4261,6 +4244,8 @@ in your starter assignment
 and someone from the team
 will reach out to you.
 
+{% endif -%}
+{% if cookiecutter.licence != 'nos' -%}
 ## :reminder_ribbon: Other Ways to Contribute
 
 You can contribute to {{ cookiecutter.project_name }}
@@ -4303,6 +4288,7 @@ faster communication and resolution.
 
 [![RFSs][badge11]][query11]
 
+{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 Inspired by [Typer's][help1] welcoming community
 and their positive outlook
 on the effect of [collective intelligence][help2],
@@ -4592,21 +4578,42 @@ for the project.
 We thank you in advance
 for your kindness and dedication!
 
+{% else -%}
+>>> [!tip] :pushpin: Further Guidance
+You can find more information
+about helping other people
+in our [main `CONTRIBUTING` guide][intro1],
+take a look at it
+whenever possible.
+>>>
+
+{% endif -%}
 ### Contributing through User Requests
 
+{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+>>> [!tip] :pushpin: Further Guidance
+You can find more information
+about user requests
+in our [main `CONTRIBUTING` guide][intro1],
+take a look at it
+whenever possible.
+>>>
+
+{% endif -%}
 If you are simply
 having trouble using {{ cookiecutter.project_name }},
 go through the [`README`][readme] file and links
 directing to support content first,
 rather than filing a request.
 
+{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 {{ cookiecutter.project_name }} implements
 three types of requests for users
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-through [Issue Templates][request1]:
+through [Issue Templates][request0a]:
 {%- else %}
-through [Issue][request1]
-and [Discussion][request1a] templates:
+through [Issue][request0a]
+and [Discussion][oldrequest1a] templates:
 {%- endif %}
 
 - **Requests for Correction**;
@@ -4690,12 +4697,12 @@ of a quick response:
   whether your request
   has not been already made by another user
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-  before using the [Search][request2] feature
+  before using the [Search][request0b] feature
   for all items in the Issue Tracker;
 {%- else %}
   before using the Search feature
-  for all items in the [Issue Tracker][request2]
-  and the [Discussions Page][request2a];
+  for all items in the [Issue Tracker][request0b]
+  and the [Discussions Page][request0x];
 {%- endif %}
 - It is also important
   to avoid requests
@@ -4739,7 +4746,7 @@ of a quick response:
 - Properly format your messages.
   Help the reader focus on what matters
   and understand the structure of your message.
-  [{{ cookiecutter.__scm_platform_base }} Flavoured Markdown][request3] has a simple
+  [{{ cookiecutter.__scm_platform_base }} Flavoured Markdown][request0c] has a simple
   but effective syntax,
   consider taking a look
   before writing your request;
@@ -4752,6 +4759,7 @@ of a quick response:
   further become a better developer
   down the line.
 
+{% endif -%}
 #### Specific Guidelines for Requests for Support
 
 If {{ cookiecutter.project_name }} is not working correctly for you,
@@ -4768,7 +4776,7 @@ you have provided.
 
 If you are still having difficulty
 running {{ cookiecutter.project_name }} as desired,
-open an [RFS][request4],
+open an [RFS][request1],
 {%- if cookiecutter.app_type != 'bare_repo' %}
 providing your `settings.toml`
 and `report.log` files
@@ -4794,6 +4802,7 @@ when users feel a need for development
 related to features provided by {{ cookiecutter.project_name }},
 either existent
 or yet-to-be-implemented.
+{%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
 They are much welcome,
 as they help us engage with the community
 on a more proactive level
@@ -4802,7 +4811,7 @@ of aggregated value
 to our users.
 
 Nevertheless,
-before opening an [RFI][request5],
+before opening an [RFI][request2],
 take a moment to find out
 whether your idea fits with the scope
 and [aims][topic2] of the project.
@@ -4813,6 +4822,13 @@ of the merits of this feature.
 Please provide
 as much detail and context
 as possible.
+{%- else %}
+
+Before opening an [RFI][request2],
+take a moment to find out
+whether your idea fits with the scope
+and [aims][topic2] of the project.
+{%- endif %}
 
 If you are requesting
 an entirely new feature
@@ -4852,6 +4868,7 @@ to make your case stronger:
   once this feature is integrated
   into {{ cookiecutter.project_name }}?
 
+{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 Also,
 why not take this opportunity
 to [become a contributor][bias]?
@@ -4860,6 +4877,7 @@ the most effective way
 to make a contribution
 is to make one [that comes from yourself][gfi].
 
+{% endif -%}
 #### Specific Guidelines for Requests for Correction
 
 [![RFCs][badge9]][query9]
@@ -4873,7 +4891,8 @@ A bug is a **demonstrable** problem
 that is caused by
 the code in the repository.
 
-Guidelines for [RFCs][request6]:
+{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+Guidelines for [RFCs][request2a]:
 
 - Use the [issue search][query9]
   to check if a request
@@ -4886,7 +4905,7 @@ Guidelines for [RFCs][request6]:
   to demonstrate your issue.
   Provide either
   a repository,
-  [gist][request7]/[snippet][request8]
+  [gist][request2b]/[snippet][request2c]
   or code sample
   to demonstrate you problem.
 
@@ -4898,6 +4917,7 @@ A good RFC should include
 sufficient information
 to help developers identify
 the issue's underlying cause.
+{% endif -%}
 While the nature of errors
 can be diverse
 and thus challenging for users to report
@@ -4929,9 +4949,9 @@ to accelerate the process:
   containing only the last executed run of the program
   to facilitate bug reporting;
   additionally,
-  tools like [`reprexpy`][request9]
+  tools like [`reprexpy`][request3]
 {%- else %}
-  Tools like [`reprexpy`][request9]
+  Tools like [`reprexpy`][request3]
 {%- endif %}
   can assist you
   in providing more technical detail
@@ -4943,11 +4963,12 @@ to accelerate the process:
 These details
 will help people
 to fix any potential issues.
+{%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
 It is important to note
 that **all** reports are valuable,
 even if they are not perfectly detailed.
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 
-{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 >>> [!warning]
 **Avoid overloading with extraneous details.**
 RFCs are the type of request
@@ -4965,8 +4986,8 @@ contextualising your research and findings
 to avoid rework
 by the development team.
 >>>
+{%- else %}
 
-{% else -%}
 > [!WARNING]
 > **Avoid overloading with extraneous details.**
 > RFCs are the type of request
@@ -4983,10 +5004,21 @@ by the development team.
 > contextualising your research and findings
 > to avoid rework
 > by the development team.
+{%- endif %}
+{%- endif %}
 
-{% endif -%}
 ### Contributing by Reviewing Changes
 
+{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+>>> [!tip] :pushpin: Further Guidance
+You can find more information
+about reviewing changes
+in our [main `CONTRIBUTING` guide][intro1],
+take a look at it
+whenever possible.
+>>>
+
+{% else -%}
 Changes to {{ cookiecutter.project_name }} source code are
 proposed,
 reviewed
@@ -5080,6 +5112,7 @@ the most out of your contributions
 as a reviewer.
 We appreciate your commitment beforehand!
 
+{% endif -%}
 ### Contributing with Documentation Changes
 
 Currently,
@@ -5104,6 +5137,16 @@ to integrate your changes to the project.
 [![Tasks][badge1a]][query1a]
 {%- endif %}
 
+{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+>>> [!tip] :pushpin: Further Guidance
+You can find more information
+about roadmap maintenance
+in our [main `CONTRIBUTING` guide][intro1],
+take a look at it
+whenever possible.
+>>>
+
+{% else -%}
 The project roadmap is maintained
 through [{{ cookiecutter.__scm_platform_base }} {{ roadmap_item.capitalize() }}s][topic2].
 It provides an overview
@@ -5126,7 +5169,7 @@ to the development team:
   with our milestones
   and associated items,
   and then
-  opening additional [**Requests for Improvement**][request5]
+  opening additional [**Requests for Improvement**][request2]
   that pertain to existing {{ roadmap_item }}s;
 - Commenting on [issues without associated {{ roadmap_item }}s][query1]
   and suggesting what relevant developments
@@ -5143,6 +5186,7 @@ to the development team:
   propose new developments not yet mapped
   or recommend [changes to the roadmap itself][roadmap].
 
+{% endif -%}
 ### Contributing by Promoting {{ cookiecutter.project_name }}
 
 Promoting {{ cookiecutter.project_name }}
@@ -5292,6 +5336,10 @@ what we are doing matters!
 [knowledge]: https://www.teachfloor.com/elearning-glossary/institutional-knowledge
 
 {% endif -%}
+{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+[intro1]: https://gitlab.com/{{ cookiecutter.scm_namespace }}/templates/blob/master/CONTRIBUTING.md
+
+{% else -%}
 [intro1]: {{ cookiecutter.__scm_link_url }}/issues
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [intro2]: {{ cookiecutter.__scm_link_url }}/merge_requests
@@ -5300,16 +5348,19 @@ what we are doing matters!
 [intro3]: {{ cookiecutter.__scm_link_url }}/discussions
 {%- endif %}
 
+{% endif -%}
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [setup1]: {{ cookiecutter.__scm_link_url }}/forks/new
 [setup2]: https://docs.gitlab.com/user/group/
-[setup3]: https://docs.gitlab.com/user/project/repository/forking_workflow/
+{% if cookiecutter.scm_platform == 'GitLab Free' -%}
+[setup2a]: https://docs.gitlab.com/user/project/repository/forking_workflow/
+{% endif -%}
 {% else -%}
 [setup1]: {{ cookiecutter.__scm_link_url }}/fork
 [setup2]: https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/about-organizations
-[setup3]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
+[setup2a]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
 {% endif -%}
-[setup4]: https://python-poetry.org/docs/#installation
+[setup3]: https://python-poetry.org/docs/#installation
 {%- if cookiecutter.app_type != 'bare_repo' %}
 
 [apptopic1]: https://typer.tiangolo.com/tutorial/
@@ -5340,7 +5391,7 @@ what we are doing matters!
 [topic2]: {{ cookiecutter.__scm_link_url }}/projects
 {%- endif %}
 [topic3]: {{ cookiecutter.__scm_link_url }}/labels
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
 [topic4]: https://goauthentik.io/blog/2024-03-07-why-contributing-to-open-source-is-scary/
 [topic5]: mailto:{{ cookiecutter.email }}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
@@ -5348,13 +5399,13 @@ what we are doing matters!
 {%- else %}
 [topic6]: https://docs.github.com/en/subscriptions-and-notifications/get-started/configuring-notifications#about-participating-and-watching-notifications
 {%- endif %}
-{%- endif %}
 
 [cc1]: https://www.contributor-covenant.org/
 [cc2]: {{ cookiecutter.__scm_link_url }}/blob/master/CODE_OF_CONDUCT.md
+{%- endif %}
 
 [development1]: {{ cookiecutter.__scm_base_url }}
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [development2]: https://docs.gitlab.com/user/permissions/
 {%- else %}
@@ -5362,12 +5413,14 @@ what we are doing matters!
 {%- endif %}
 [development3]: https://diurnal.st/2025/03/02/the-pragmatic-open-source-contributor.html
 {%- endif %}
+{%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 
-{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [roadmap1]: {{ cookiecutter.__scm_link_url }}/merge_requests/new?issuable_template=Project%2520Policies
-{% else -%}
+{%- else %}
+
 [roadmap1]: {{ cookiecutter.__scm_link_url }}/pulls/compare?template=project_policies.md
-{% endif -%}
+{%- endif %}
 [roadmap2]: {{ cookiecutter.__scm_link_url }}/blob/master/ROADMAP.md#roadmap-history
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [roadmap3]: https://docs.gitlab.com/user/emoji_reactions/
@@ -5375,6 +5428,9 @@ what we are doing matters!
 [roadmap3]: https://github.blog/news-insights/product-news/add-reactions-to-pull-requests-issues-and-comments/
 {%- endif %}
 [roadmap4]: https://blog.crisp.se/2014/09/25/david-evans/as-a-i-want-so-that-considered-harmful
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
+[roadmap4a]: https://docs.gitlab.com/user/markdown/#show-item-title
+{% endif -%}
 [roadmap5]: https://www.reforge.com/blog/user-stories-misuse
 [roadmap6]: https://www.mountaingoatsoftware.com/blog/critiquing-one-of-my-own-real-user-stories
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
@@ -5382,33 +5438,16 @@ what we are doing matters!
 {%- else %}
 [roadmap7]: https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases
 {%- endif %}
+{%- endif %}
 
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
-[status1]: https://docs.gitlab.com/user/work_items/status/
-[status2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&label_name%5B%5D=request%3A%3A%2A
-
-[icon1]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/triage.png
-[icon2]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/refinement.png
-[icon3]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/criteria.png
-[icon4]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/steps.png
-[icon5]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/decomposition.png
-[icon6]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/greenlit.png
-[icon7]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/pipeline.png
-[icon8]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/priority.png
-[icon9]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/deferred.png
-[icon10]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/progress.png
-[icon11]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/done.png
-[icon12]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/canceled.png
-[icon13]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/redundant.png
-[icon14]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/duplicate.png
-[icon15]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/created.png
-[icon16]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/ongoing.png
-[icon17]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/aborted.png
-
-{% elif cookiecutter.scm_platform == 'GitHub' -%}
+{% if cookiecutter.scm_platform == 'GitHub' -%}
 [labels1]: {{ cookiecutter.__scm_link_url }}/.github/release-drafter.yml
 
+{% else -%}
+[labels1]: https://gitlab.com/{{ cookiecutter.scm_namespace }}/templates/-/blob/master/CONTRIBUTING.md#labels
+
 {% endif -%}
+{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 [practices1]: https://cbea.ms/git-commit/#imperative
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [practices2]: https://docs.gitlab.com/user/tasks/
@@ -5439,20 +5478,22 @@ what we are doing matters!
 [versioning1]: https://jacobtomlinson.dev/effver/
 
 {% if cookiecutter.commit_convention == 'gitmoji' -%}
-[committing1]: https://gitmoji.dev/
+[committing0]: https://gitmoji.dev/
 {% elif cookiecutter.commit_convention == 'conventional' -%}
-[committing1]: https://www.conventionalcommits.org/en/v1.0.0/
-[committing1a]: https://github.com/angular/angular/blob/main/contributing-docs/commit-message-guidelines.md
+[committing0]: https://www.conventionalcommits.org/en/v1.0.0/
+[committing0a]: https://github.com/angular/angular/blob/main/contributing-docs/commit-message-guidelines.md
 {% else -%}
-[committing1]: https://github.com/ljnsn/cz-conventional-gitmoji
-[committing1a]: https://www.conventionalcommits.org/en/v1.0.0/
+[committing0]: https://github.com/ljnsn/cz-conventional-gitmoji
+[committing0a]: https://www.conventionalcommits.org/en/v1.0.0/
 {% endif -%}
-[committing2]: https://cbea.ms/git-commit/
-{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[committing3]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
-[committing4]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/changelog_config.yml
-{%- endif %}
+[commiting0x]: https://cbea.ms/git-commit/
+{% endif -%}
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
+[committing1]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
+[committing2]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/changelog_config.yml
 
+{% endif -%}
+{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 [style1]: https://docs.astral.sh/ruff/
 {%- if cookiecutter.docstring_style == 'numpy' %}
 [style1a]: https://numpydoc.readthedocs.io/en/latest/format.html
@@ -5466,8 +5507,10 @@ what we are doing matters!
 [style4]: {{ cookiecutter.__scm_link_url }}/tree/master/.{{ cookiecutter.__scm_platform_lc }}
 [style5]: {{ cookiecutter.__scm_link_url }}/blob/master/CHANGELOG.md
 
+{% endif -%}
 [hooks1]: https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap03.html#tag_03_206
 
+{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [ci1]: https://docs.gitlab.com/topics/build_your_application/
 {%- else -%}
@@ -5483,10 +5526,12 @@ what we are doing matters!
 [ci2]: https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow
 {%- endif %}
 
+{% endif -%}
 {% if cookiecutter.licence != 'nos' -%}
 [licence1]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
 
 {% endif -%}
+{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 [values1]: https://handbook.gitlab.com/
 [values2]: https://handbook.gitlab.com/handbook/communication/#start-with-a-merge-request
 [values3]: https://handbook.gitlab.com/handbook/values/#say-why-not-just-what
@@ -5497,6 +5542,7 @@ what we are doing matters!
 [values7]: https://kentcdodds.com/blog/first-timers-only
 {%- endif %}
 
+{% endif -%}
 {% if cookiecutter.app_type in ['tui', 'hybrid'] -%}
 [changes0a]: {{ cookiecutter.__scm_link_url }}/tree/master/{{ cookiecutter.package_name }}/tui
 [changes0b]: https://textual.textualize.io/
@@ -5510,6 +5556,7 @@ what we are doing matters!
 [changes6]: https://www.pyinvoke.org/
 
 {% endif -%}
+{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [prepare1]: {{ cookiecutter.__scm_link_url }}/tree/master/.gitlab/merge_request_templates
 {% else -%}
@@ -5518,16 +5565,15 @@ what we are doing matters!
 [prepare2]: https://github.com/kubernetes/kubernetes/blob/release-1.5/docs/devel/faster_reviews.md
 [prepare3]: https://google.github.io/eng-practices/review/
 
+{% endif -%}
 {% if cookiecutter.use_bdd -%}
 [workflow1]: https://pytest-bdd.readthedocs.io/en/latest/#organizing-your-scenarios
 {% else -%}
 [workflow1]: https://docs.pytest.org/en/stable/example/markers.html#mark-examples
 {% endif -%}
 [workflow2]: {{ cookiecutter.__scm_link_url }}/blob/master/pyproject.toml
+{%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
 
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
-[reviewing0]: https://docs.gitlab.com/user/project/merge_requests/dependencies/
-{% endif -%}
 [reviewing1]: https://josipmisko.com/posts/code-review-nit
 {%- if cookiecutter.licence != 'nos' %}
 
@@ -5546,27 +5592,37 @@ what we are doing matters!
 [help1]: https://typer.tiangolo.com/help-typer/#help-others-with-questions-in-github
 [help2]: https://www.blockchain-council.org/ai/collective-intelligence-framework/
 [help3]: https://stackoverflow.com/help/minimal-reproducible-example
+{%- endif %}
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
 
-{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
-[request1]: {{ cookiecutter.__scm_link_url }}/tree/master/.gitlab/issue_templates
-[request2]: {{ cookiecutter.__scm_link_url }}/issues?state=all&type%5B%5D=issue
-[request3]: https://docs.gitlab.com/user/markdown/
-[request4]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Support
-[request5]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Improvement
-[request6]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Correction
-{% else -%}
-[request1]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/ISSUE_TEMPLATE
-[request1a]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/DISCUSSION_TEMPLATE
-[request2]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue
-[request2a]: {{ cookiecutter.__scm_link_url }}/discussions?discussions_q=
-[request3]: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
-[request4]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-support
-[request5]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-improvement
-[request6]: {{ cookiecutter.__scm_link_url }}/issues/new?template=request_for_correction.yml
-{% endif -%}
-[request7]: https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists
-[request8]: https://docs.gitlab.com/user/snippets/
-[request9]: https://reprexpy.readthedocs.io/en/latest/
+[request1]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Support
+[request2]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Improvement
+[request3]: https://reprexpy.readthedocs.io/en/latest/
+{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+
+[request0a]: {{ cookiecutter.__scm_link_url }}/tree/master/.gitlab/issue_templates
+[request0b]: {{ cookiecutter.__scm_link_url }}/issues?state=all&type%5B%5D=issue
+[request0c]: https://docs.gitlab.com/user/markdown/
+[request1]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Support
+[request2]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Improvement
+[request2a]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Correction
+[request2b]: https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists
+[request2c]: https://docs.gitlab.com/user/snippets/
+[request3]: https://reprexpy.readthedocs.io/en/latest/
+{%- else %}
+
+[request0a]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/ISSUE_TEMPLATE
+[oldrequest1a]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/DISCUSSION_TEMPLATE
+[request0b]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue
+[request0x]: {{ cookiecutter.__scm_link_url }}/discussions?discussions_q=
+[request0c]: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
+[request1]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-support
+[request2]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-improvement
+[request2a]: {{ cookiecutter.__scm_link_url }}/issues/new?template=request_for_correction.yml
+[request2b]: https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists
+[request2c]: https://docs.gitlab.com/user/snippets/
+[request3]: https://reprexpy.readthedocs.io/en/latest/
+{%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 
 [promote0]: https://docs.gitlab.com/user/profile/notifications/#notification-levels
