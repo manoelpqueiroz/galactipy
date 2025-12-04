@@ -1609,7 +1609,7 @@ or detailed documentation.
 
 <!-- DEFINE the specific Gitmoji for this project
 Besides the Gitmoji
-defined for the [{{ cookiecutter.scm_namespace.title() }} group][comitting1],
+defined for the [{{ cookiecutter.scm_namespace.title() }} group][convention],
 the {{ cookiecutter.project_name }} project defines
 the following additional Gitmoji
 to apply on commits:
@@ -5265,12 +5265,6 @@ what we are doing matters!
 [behaviour]: #how-to-behave-among-other-contributors
 [contributions]: #reminder_ribbon-other-ways-to-contribute
 {%- endif %}
-[imperative]: #issue-titles-should-be-framed-in-imperative-mood
-{%- endif %}
-[committing]: #commit-customs
-[workflow]: #development-workflow
-[tracking]: #work-item-tracking
-[setup]: #development-setup
 {%- if cookiecutter.commit_convention == 'gitmoji' %}
 [convention]: #gitmoji
 {%- elif cookiecutter.commit_convention == 'conventional' %}
@@ -5278,6 +5272,14 @@ what we are doing matters!
 {%- else %}
 [convention]: #conventional-gitmoji
 {%- endif %}
+[imperative]: #issue-titles-should-be-framed-in-imperative-mood
+{%- elif cookiecutter.commit_convention == 'gitmoji' %}
+[convention]: {{ cookiecutter.__contributing_prefix }}#gitmoji
+{%- endif %}
+[committing]: #commit-customs
+[workflow]: #development-workflow
+[tracking]: #work-item-tracking
+[setup]: #development-setup
 
 [badge1]: https://img.shields.io/badge/issues_without_{{ roadmap_item }}-006272?style=for-the-badge
 {%- if cookiecutter.scm_platform == 'GitLab Free' %}
