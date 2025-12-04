@@ -1,4 +1,4 @@
-default_stages: [pre-commit, pre-push]
+default_stages: [pre-commit]
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -10,6 +10,13 @@ repos:
       - id: end-of-file-fixer
         name: Fix End-of-files
         exclude: (LICENCE|_licences|_headers|.svg)
+
+  - repo: https://github.com/renovatebot/pre-commit-hooks
+    rev: '42.19.3'
+    hooks:
+      - id: renovate-config-validator
+        name: Renovate config validation
+        args: [--strict]
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.14.3

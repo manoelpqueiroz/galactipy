@@ -70,7 +70,7 @@ to avoid potential duplicated effort.
 
 ## Development Stages
 
-[![Project stage][5]]
+![Project stage][5]
 
 {{ cookiecutter.project_name }} is currently in the
 **Planning** stage,
@@ -87,23 +87,23 @@ will evolve through the following phases:
 
 ### Pre-Alpha Stage
 
-<-- DEFINE the features and capabilities the library will offer at the pre-alpha stage
+<!-- DEFINE the features and capabilities the library will offer at the pre-alpha stage
 
 ### Alpha Stage
 
-<-- DEFINE the features and capabilities the library will offer at the alpha stage
+<!-- DEFINE the features and capabilities the library will offer at the alpha stage
 
 ### Beta Stage
 
-<-- DEFINE the features and capabilities the library will offer at the beta stage
+<!-- DEFINE the features and capabilities the library will offer at the beta stage
 
 ### Stable Release
 
-<-- DEFINE the features and capabilities the library will offer for it to be considered stable
+<!-- DEFINE the features and capabilities the library will offer for it to be considered stable
 
 ### Project Maturation
 
-<-- DEFINE the features and capabilities that will lead the project's capabilities beyond what is currently expected for a stable release
+<!-- DEFINE the features and capabilities that will lead the project's capabilities beyond what is currently expected for a stable release
 
 ## Roadmap History
 
@@ -161,7 +161,7 @@ to bring updated status information.
 -->
 
 You can also help us
-deliver that feature
+deliver features
 by contributing directly to {{ cookiecutter.project_name }},
 we are always
 looking for contributors

@@ -1,0 +1,207 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "timezone": "America/Sao_Paulo",
+  "branchPrefix": "bot-",
+  "commitMessageAction": "Renovate",
+  "commitMessageExtra": "with {{updateType}} {{#if isPinDigest}}{{{newDigestShort}}}{{else}}version {{#if isMajor}}{{prettyNewMajor}}.0{{else}}{{prettyNewVersion}}{{/if}}{{/if}}",
+  "constraints": {
+    "python": "^3.10"
+  },
+  "extends": [
+    "config:recommended",
+    ":semanticCommitsDisabled",
+    ":separateMajorReleases"
+  ],
+  "labels": [
+    "maintenance::renovate"
+  ],
+  "prHourlyLimit": 5,
+  "enabledManagers": [
+    "poetry",
+    "dockerfile",
+    "gitlabci",
+    "gitlabci-include",
+    "github-actions"
+  ],
+  "lockFileMaintenance": {
+    "addLabels": [
+      "manual-check"
+    ],
+    "branchTopic": "lock-update",
+    "commitMessagePrefix": ":pushpin:",
+    "commitMessageAction": "Update",
+    "commitMessageTopic": "`poetry.lock` contents",
+    "enabled": true,
+    "schedule": [
+      "* * * * 1"
+    ]
+  },
+  "packageRules": [
+    {
+      "automerge": true,
+      "enabled": true,
+      "addLabels": [
+        "ci::project"
+      ],
+      "matchManagers": [
+        "gitlabci",
+        "gitlabci-include"
+      ],
+      "commitBody": "Changelog: ci",
+      "commitMessagePrefix": ":construction_worker:",
+      "separateMajorMinor": false
+    },
+    {
+      "description": "Ignore Python version-specific Docker images in CI",
+      "enabled": false,
+      "matchManagers": [
+        "gitlabci"
+      ],
+      "matchPackageNames": [
+        "registry.gitlab.com/galactipy/docker"
+      ]
+    },
+    {
+      "enabled": true,
+      "automerge": false,
+      "addLabels": [
+        "manual-check",
+        "template-internals::docker"
+      ],
+      "separateMajorMinor": false,
+      "matchCategories": [
+        "docker"
+      ],
+      "commitBody": "Changelog: build",
+      "commitMessagePrefix": ":hammer:"
+    },
+    {
+      "automerge": true,
+      "description": "Group all GitHub actions in a single rule",
+      "addLabels": [
+        "template-internals::github"
+      ],
+      "enabled": true,
+      "separateMajorMinor": false,
+      "matchManagers": [
+        "github-actions"
+      ],
+      "commitBody": "Changelog: template-config",
+      "commitMessagePrefix": ":construction_worker:",
+      "groupName": "template GitHub actions"
+    },
+    {
+      "enabled": true,
+      "matchCategories": [
+        "python"
+      ],
+      "matchUpdateTypes": [
+        "major",
+        "minor",
+        "patch",
+        "pin",
+        "digest",
+        "rollback",
+        "bump"
+      ],
+      "commitBody": "Changelog: dependencies",
+      "commitMessagePrefix": ":arrow_up:",
+      "commitMessageTopic": "{{depName}}"
+    },
+    {
+      "automerge": true,
+      "description": "Group Poetry plugins",
+      "groupName": "Poetry plugins",
+      "matchPackageNames": [
+        "/^poetry-plugin-/",
+        "/^poetry-dynamic-/",
+        "poetry-bumpversion"
+      ]
+    },
+    {
+      "description": "Group linting and formatting tools",
+      "groupName": "linting tools",
+      "matchPackageNames": [
+        "ruff",
+        "mypy",
+        "mypy-extensions"
+      ]
+    },
+    {
+      "description": "Group testing tools",
+      "groupName": "testing tools",
+      "matchPackageNames": [
+        "/^pytest/",
+        "coverage"
+      ]
+    },
+    {
+      "description": "Group remaining dev tools",
+      "groupName": "developer productivity tools",
+      "branchTopic": "devx-tools",
+      "matchPackageNames": [
+        "bandit",
+        "pre-commit",
+        "invoke"
+      ]
+    },
+    {
+      "description": "Group template libraries",
+      "groupName": "template libraries",
+      "matchFileNames": ["*cookiecutter.repo_name*/pyproject.toml"],
+      "commitMessagePrefix": ":construction:",
+      "separateMajorMinor": false
+    },
+    {
+      "description": "Group foundational libraries for templates",
+      "groupName": "foundational template libraries",
+      "branchTopic": "templating-libraries",
+      "matchPackageNames": [
+        "cookiecutter"
+      ]
+    },
+    {
+      "automerge": false,
+      "addLabels": [
+        "manual-check"
+      ],
+      "description": "More cautious with production dependencies",
+      "matchDepTypes": [
+        "dependencies"
+      ]
+    },
+    {
+      "automerge": true,
+      "addLabels": [
+        "internals::toolset"
+      ],
+      "description": "Automerge minor and patch dev dependencies",
+      "matchDepTypes": [
+        "dev",
+        "docs"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ]
+    },
+    {
+      "automerge": false,
+      "addLabels": [
+        "manual-check"
+      ],
+      "description": "Require approval for major updates",
+      "matchCategories": [
+        "python"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "commitMessageAction": "Renew major version{{#if isGroup}}s{{/if}} for",
+      "commitMessageExtra": "{{#if isGroup}}{{else}}({{prettyNewMajor}}.0){{/if}}"
+    }
+  ],
+  "registryAliases": {
+    "$CI_SERVER_FQDN": "gitlab.com"
+  }
+}

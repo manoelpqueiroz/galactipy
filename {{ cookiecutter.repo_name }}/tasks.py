@@ -559,12 +559,24 @@ def remove_ipynb(c: Context) -> None:
 @task(aliases=["rm-pytest", "clean-pytest"])
 def remove_pytest(c: Context) -> None:
     """Remove Pytest cache files from project directory."""
+{%- if cookiecutter.use_bdd %}
+    file_list = [
+        ".pytest_cache",
+        ".coverage",
+        "test_report.xml",
+        "htmlcov",
+        "assets",
+        ".benchmarks",
+        "bdd",
+        ".cucumber-data.json",
+    ]
+
+    c.run(FILE_REMOVER.format(rf"({'|'.join(file_list)})"), pty=IS_UNIX_OS)
+{%- else %}
     c.run(
         FILE_REMOVER.format(
             r"(.pytest_cache|.coverage|test_report.xml|htmlcov|assets|.benchmarks)"
-        ),
-        pty=IS_UNIX_OS,
-    )
+{%- endif %}
 
 
 @task(aliases=["rm-ruff", "clean-ruff"])

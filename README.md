@@ -46,7 +46,7 @@ _Expand your project structure from atoms of code to **galactic** dimensions._ :
 ## TL;DR
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v1.1.0
+cookiecutter gl:galactipy/galactipy --checkout v1.2.0
 ```
 
 **All you need is the latest version of Cookiecutter!** :wink:
@@ -253,7 +253,7 @@ pipx upgrade cookiecutter
 then go to a directory where you want to create your project and run:
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v1.1.0
+cookiecutter gl:galactipy/galactipy --checkout v1.2.0
 ```
 
 ### Input variables
@@ -689,7 +689,13 @@ with your application:
   scalable load tests
   in plain Python;
 - [**orjson**][wn13] is
-  an ultra fast JSON parsing library.
+  an ultra fast JSON parsing library;
+- [**Lark**][wn14] is
+  a parsing toolkit for Python,
+  built with a focus on
+  ergonomics,
+  performance
+  and modularity.
 
 For taking development
 and exposition of your project
@@ -702,15 +708,15 @@ to the next level:
   helping visitors quickly grasp
   important details about your work:
   - You can look at dynamic badges
-    available at [Shields.io][wn14];
+    available at [Shields.io][wn15];
   - There is a myriad of static badges
     for brands and services in general
-    at [Simple Badges][wn15];
-  - [awesome-badges][wn16] provides
+    at [Simple Badges][wn16];
+  - [awesome-badges][wn17] provides
     a lot of useful resources
     on this topic;
 - Add your project
-  to the [OpenSSF Best Practices][wn17] and [OSSRank][wn18] indexes;
+  to the [OpenSSF Best Practices][wn18] and [OSSRank][wn19] indexes;
   if you have ambitious goals
   or expect significant growth,
   these indexes provide
@@ -725,31 +731,31 @@ to the next level:
   to help fund your project's
   growth and development;
   popular plaforms include:
-  - [Liberapay][wn19];
-  - [Open Collective][wn20];
-  - [Ko-fi][wn21];
+  - [Liberapay][wn20];
+  - [Open Collective][wn21];
+  - [Ko-fi][wn22];
   - If you host your project on GitHub,
-    you can set a [Sponsors account][wn22]
+    you can set a [Sponsors account][wn23]
     directly integrated into the platform;
 - If you are
   unsure about which versioning logic
   to use,
-  check [this list][wn23]
+  check [this list][wn24]
   with a plethora of options
   to choose from.
 
 And here are a few articles
 which may help you:
 
-- [Open Source Guides][wn24];
-- [A handy guide to financial support for open source][wn25];
-- [GitLab CI Documentation][wn26];
-- [GitHub Actions Documentation][wn27];
-- [A Comprehensive Look at Testing in Software Development][wn28];
-- [Robust Exception Handling][wn29];
-- [Why Your Mock Doesn't Work][wn30];
-- [Managing TODOs in a codebase][wn31];
-- [The importance of layered thinking in data engineering][wn32].
+- [Open Source Guides][wn25];
+- [A handy guide to financial support for open source][wn26];
+- [GitLab CI Documentation][wn27];
+- [GitHub Actions Documentation][wn28];
+- [A Comprehensive Look at Testing in Software Development][wn29];
+- [Robust Exception Handling][wn30];
+- [Why Your Mock Doesn't Work][wn31];
+- [Managing TODOs in a codebase][wn32];
+- [The importance of layered thinking in data engineering][wn33].
 
 ## :chart_with_upwards_trend: Galactipy Releases
 
@@ -950,7 +956,7 @@ any of the following:
 [ft35]: https://gitlab.com/galactipy/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/issue_templates
 [ft36]: https://gitlab.com/explore/catalog/components/gitlab-triage
 [ft37]: https://github.com/marketplace/actions/close-stale-issues
-[ft38]: https://www.conventionalcommits.org/en/v1.1.0/
+[ft38]: https://www.conventionalcommits.org/en/v1.0.0/
 [ft39]: https://shields.io/
 [ft40]: https://github.com/TezRomacH/python-package-template
 [ft41]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/using-query-parameters-to-create-a-pull-request
@@ -995,25 +1001,26 @@ any of the following:
 [wn11]: https://github.com/facebookresearch/hydra
 [wn12]: https://github.com/locustio/locust
 [wn13]: https://github.com/ijl/orjson
-[wn14]: https://shields.io/badges/static-badge
-[wn15]: https://badges.pages.dev/
-[wn16]: https://github.com/badges/awesome-badges
-[wn17]: https://www.bestpractices.dev/en
-[wn18]: https://ossrank.com/
-[wn19]: https://liberapay.com/
-[wn20]: https://opencollective.com/
-[wn21]: https://ko-fi.com/
-[wn22]: https://github.com/sponsors
-[wn23]: https://nesbitt.io/2024/06/24/from-zerover-to-semver-a-comprehensive-list-of-versioning-schemes-in-open-source.html
-[wn24]: https://opensource.guide/
-[wn25]: https://github.com/nayafia/lemonade-stand
-[wn26]: https://docs.gitlab.com/ee/ci/
-[wn27]: https://help.github.com/en/actions
-[wn28]: https://pytest-with-eric.com/introduction/types-of-software-testing/
-[wn29]: https://eli.thegreenplace.net/2008/08/21/robust-exception-handling/
-[wn30]: https://nedbatchelder.com/blog/201908/why_your_mock_doesnt_work.html
-[wn31]: https://medium.com/babylon-engineering/todo-find-a-title-for-the-article-fee79708ca15
-[wn32]: https://towardsdatascience.com/the-importance-of-layered-thinking-in-data-engineering-a09f685edc71
+[wn14]: https://github.com/lark-parser/lark
+[wn15]: https://shields.io/badges/static-badge
+[wn16]: https://badges.pages.dev/
+[wn17]: https://github.com/badges/awesome-badges
+[wn18]: https://www.bestpractices.dev/en
+[wn19]: https://ossrank.com/
+[wn20]: https://liberapay.com/
+[wn21]: https://opencollective.com/
+[wn22]: https://ko-fi.com/
+[wn23]: https://github.com/sponsors
+[wn24]: https://nesbitt.io/2024/06/24/from-zerover-to-semver-a-comprehensive-list-of-versioning-schemes-in-open-source.html
+[wn25]: https://opensource.guide/
+[wn26]: https://github.com/nayafia/lemonade-stand
+[wn27]: https://docs.gitlab.com/ee/ci/
+[wn28]: https://help.github.com/en/actions
+[wn29]: https://pytest-with-eric.com/introduction/types-of-software-testing/
+[wn30]: https://eli.thegreenplace.net/2008/08/21/robust-exception-handling/
+[wn31]: https://nedbatchelder.com/blog/201908/why_your_mock_doesnt_work.html
+[wn32]: https://medium.com/babylon-engineering/todo-find-a-title-for-the-article-fee79708ca15
+[wn33]: https://towardsdatascience.com/the-importance-of-layered-thinking-in-data-engineering-a09f685edc71
 
 [r1]: https://gitlab.com/galactipy/galactipy/-/releases
 [r2]: https://romversioning.github.io/romver/

@@ -498,3 +498,8 @@ source = ["{{ cookiecutter.package_name }}"]
 [tool.codespell]
 # UPDATEME with your desired Codespell configuration
 # https://github.com/codespell-project/codespell
+
+
+[tool.typos.default]
+# UPDATEME with your desired configuration for typos
+# https://github.com/crate-ci/typos#getting-started

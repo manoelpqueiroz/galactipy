@@ -566,7 +566,7 @@ turns into file system operations:
 
 - **Configuration file reading/writing:**
   {{ cookiecutter.project_name }} reads and writes TOML configuration files
-  using Orbitting,
+  using Orbittings,
   which in turn uses only Dynaconf and tomlkit
   to perform these operations;
   configuration files are stored

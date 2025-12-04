@@ -31,7 +31,7 @@ Please run through all items under the **`Applicant Checklist`** section and pro
 
 [1]: https://gitlab.com/galactipy/galactipy/-/issues/?state=all&type%5B%5D=issue
 [2]: https://gitlab.com/galactipy/galactipy/-/blob/master/README.md
-[3]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contributing-through-user-requests
+[3]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#contributing-through-user-requests
 
 ### Commitment to Project Support
 
@@ -41,10 +41,10 @@ After reading the [Commitment to Help][4] section of the `CONTRIBUTING` guide an
 - [ ] Hit the ["Watch"][6] button in this repository to receive notifications about the project and help **2** people that ask questions in the future;
 - [ ] Review **1** Merge Request by cloning the project and following the [review process][7].
 
-[4]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#commitment-to-help
+[4]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#commitment-to-help
 [5]: https://gitlab.com/galactipy/galactipy/-/issues/?type%5B%5D=issue
 [6]: https://gitlab.com/gitlab-org/gitlab-foss/-/issues/234#note_17497758
-[7]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contributing-by-reviewing-changes
+[7]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#contributing-by-reviewing-changes
 
 ## :speech_balloon: Context
 

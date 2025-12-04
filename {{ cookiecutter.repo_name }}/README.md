@@ -371,7 +371,7 @@ This project was generated with [Galactipy][burl4].
 [badge1a]: https://img.shields.io/pypi/v/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=pypi&color=3775a9
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [badge2]: https://img.shields.io/badge/GitLab-0B2640?style=for-the-badge&logo=gitlab&logoColor=white
-[badge3]: https://img.shields.io/gitlab/v/release/{{ cookiecutter.scm_namespace }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&logo=semantic-release&color=FFCA28
+[badge3]: https://img.shields.io/gitlab/v/release/{{ cookiecutter.scm_namespace }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&logo=semantic-release&color=253747
 {%- else %}
 [badge2]: https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
 [badge3]: https://img.shields.io/github/v/release/{{ cookiecutter.scm_namespace}}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=semantic-release&color=347d39

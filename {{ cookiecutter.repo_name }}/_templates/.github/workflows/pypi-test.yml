@@ -13,26 +13,26 @@ jobs:
     name: Build Package
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-    - name: 🐍 Set up Python {% endraw %}{{ cookiecutter.minimal_python_version }}{% raw %}
-      uses: actions/setup-python@v5
-      with:
-        python-version: "{% endraw %}{{ cookiecutter.minimal_python_version }}{% raw %}"
+      - name: 🐍 Set up Python {% endraw %}{{ cookiecutter.minimal_python_version }}{% raw %}
+        uses: actions/setup-python@v6
+        with:
+          python-version: "{% endraw %}{{ cookiecutter.minimal_python_version }}{% raw %}"
 
-    - name: 💽 Install poetry
-      uses: snok/install-poetry@v1
+      - name: 💽 Install poetry
+        uses: snok/install-poetry@v1
 
-    - name: 📦 Build
-      run: invoke build
+      - name: 📦 Build
+        run: invoke build
 
-    - name: 🗃️ Upload Builds
-      uses: actions/upload-artifact@v4
-      with:
-        name: test-package-distribution
-        path: dist/
-        overwrite: true
-        retention-days: 30
+      - name: 🗃️ Upload Builds
+        uses: actions/upload-artifact@v5
+        with:
+          name: test-package-distribution
+          path: dist/
+          overwrite: true
+          retention-days: 30
 
   deploy-test:
     name: Upload to TestPyPI
@@ -44,16 +44,16 @@ jobs:
       url: https://test.pypi.org/p/{% endraw %}{{ cookiecutter.repo_name }}{% raw %}
 
     steps:
-    - name: 🗃️ Download artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: test-package-distribution
-        path: dist/
+      - name: 🗃️ Download artifacts
+        uses: actions/download-artifact@v6
+        with:
+          name: test-package-distribution
+          path: dist/
 
-    - name: 📤 Deploy to TestPyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        # TODO Set the TESTPYPI_TOKEN variable for https://test.pypi.org in the development environment
-        password: ${{ secrets.TESTPYPI_TOKEN }}
-        repository-url: https://test.pypi.org/legacy/
-        attestations: false{% endraw %}
+      - name: 📤 Deploy to TestPyPI
+        uses: pypa/gh-action-pypi-publish@v1.13.0
+        with:
+          # TODO Set the TESTPYPI_TOKEN variable for https://test.pypi.org in the development environment
+          password: ${{ secrets.TESTPYPI_TOKEN }}
+          repository-url: https://test.pypi.org/legacy/
+          attestations: false{% endraw %}

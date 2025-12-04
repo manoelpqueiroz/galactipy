@@ -16,14 +16,14 @@ Please run through all items under the **`Applicant Checklist`** section and fol
 - You feel your request is not clear enough yet :right_arrow: a **`Request for Support`** is also recommended.
 >>>
 
-[1]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#say-why-not-just-what
+[1]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#say-why-not-just-what
 
 ## Applicant Checklist
 
 <!-- Please check all items with an `x` (like `[x]`) before proceeding -->
 
 - [ ] I am using the latest version for generating projects with Galactipy;
-- [ ] I have looked at issues and MRs associated with the current [milestones][2] to check if my request is not already anticipated by the development team;
+- [ ] I have looked at issues and MRs associated with the current [epics][2] to check if my request is not already anticipated by the development team;
 - [ ] I have explored the [Issue Tracker][3] looking for duplicates, attempting searches with the following terms:
   <!-- List all searches you have performed -->
   - `...`
@@ -34,9 +34,9 @@ Please run through all items under the **`Applicant Checklist`** section and fol
 - [ ] I have followed the [_why, not just what_][1] directive to open this request;
 - [ ] I am confident this discussion does not fall in another category.
 
-[2]: https://gitlab.com/galactipy/galactipy/-/milestones
+[2]: https://gitlab.com/groups/galactipy/-/epics
 [3]: https://gitlab.com/galactipy/galactipy/-/issues/?state=all&type%5B%5D=issue
-[4]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contributing-through-user-requests
+[4]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#contributing-through-user-requests
 
 ### Commitment to Project Support
 
@@ -46,10 +46,10 @@ After reading the [Commitment to Help][5] section of the `CONTRIBUTING` guide an
 - [ ] Hit the ["Watch"][7] button in this repository to receive notifications about the project and help **2** people that ask questions in the future;
 - [ ] Review **1** Merge Request by cloning the project and following the [review process][8].
 
-[5]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#commitment-to-help
+[5]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#commitment-to-help
 [6]: https://gitlab.com/galactipy/galactipy/-/issues/?type%5B%5D=issue
 [7]: https://gitlab.com/gitlab-org/gitlab-foss/-/issues/234#note_17497758
-[8]: https://gitlab.com/galactipy/galactipy/-/blob/master/CONTRIBUTING.md#contributing-by-reviewing-changes
+[8]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#contributing-by-reviewing-changes
 
 ## :thought_balloon: Request Details
 

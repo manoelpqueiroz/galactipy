@@ -1,7 +1,7 @@
 # Poetry pyproject.toml: https://python-poetry.org/docs/pyproject/
 [project]
 name = "galactipy"
-version = "1.1.0"
+version = "1.2.0"
 description = "Full-fledged template for Python projects."
 license = { text = "MIT" }
 readme = "README.md"
@@ -63,9 +63,9 @@ mypy-extensions = "^1.1.0"
 pre-commit = "^4.3.0"
 bandit = "^1.8.6"
 
-ruff = "^0.12.12"
+ruff = "^0.14.0"
 
-pytest = "^8.4.2"
+pytest = "^9.0.0"
 pytest-cov = "^7.0.0"
 pytest-cookies = "^0.7.0"
 pytest-timeout = "^2.4.0"
