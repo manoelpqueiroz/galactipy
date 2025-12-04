@@ -1,3 +1,15 @@
+## 1.2.0 (2025-12-04)
+
+### :construction_site: Template Internals (3 changes)
+
+- [:pencil: Rearrange fixed `CONTRIBUTING.md` sections for different SCM platforms](galactipy/galactipy@1f67f0391861c6d76c7e9477f1e6201b863df4e3) ([merge request](galactipy/galactipy!138))
+- [:wrench: Include additional hidden Cookiecutter variable for templates](galactipy/galactipy@8e3805e1f2adc6ccb5a40b0041815c5b4ab8cae7) ([merge request](galactipy/galactipy!138))
+- [:pencil: Adapt template `CONTRIBUTING.md` for GitLab Premium structure](galactipy/galactipy@fc1bf2ad3ba2a5fd569cbedf1de6740a8b883608) ([merge request](galactipy/galactipy!138))
+
+### :arrow_up: Dependency Updates (1 change)
+
+- [:arrow_up: Renovate linting tools](galactipy/galactipy@e24b98e2acad58c5e7c6a038a233b89c1b877876) ([merge request](galactipy/galactipy!136))
+
 ## 1.1.3 (2025-11-26)
 
 ### :milky_way: Components (2 changes)
