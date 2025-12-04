@@ -5240,40 +5240,43 @@ what we are doing matters!
 <!-- Anchors -->
 
 [readme]: {{ cookiecutter.__scm_link_url }}/blob/master/README.md
-[swmr]: #start-with-a-{{ cookiecutter.__mr_term_slug }}
+
+[swmr]: {{ cookiecutter.__contributing_prefix }}#start-with-a-{{ cookiecutter.__mr_term_slug }}
+[philosophy]: {{ cookiecutter.__contributing_prefix }}#book-our-philosophy
+[codestyle]: {{ cookiecutter.__contributing_prefix }}#codestyle
+[cicd]: {{ cookiecutter.__contributing_prefix }}#continuous-integration
+{%- if cookiecutter.use_bdd %}
+[bdd]: {{ cookiecutter.__contributing_prefix }}#behaviour-driven-development
+{%- endif %}
+[practices]: {{ cookiecutter.__contributing_prefix }}#general-practices
+{%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
 [swnjw]: #say-why-not-just-what
 [starter]: #about-starter-assignments
-[philosophy]: #book-our-philosophy
-[committing]: #commit-customs
-[codestyle]: #codestyle
-[practices]: #general-practices
-[workflow]: #development-workflow
-[cicd]: #continuous-integration
-[tracking]: #work-item-tracking
 [bias]: #operate-with-a-bias-for-action
-[imperative]: #issue-titles-should-be-framed-in-imperative-mood
-[setup]: #development-setup
 [admission]: #opening-admissible-merge-requests
-{%- if cookiecutter.use_bdd %}
-[bdd]: #behaviour-driven-development
+[review]: #merge-request-review-process
+[reviewer]: #the-responsibility-of-the-reviewer
+[roadmap]: #roadmap-management
+{%- if cookiecutter.licence != 'nos' %}
+[promotion]: #contributor-promotion
+[gfi]: #there-are-no-good-first-issues
+[proposals]: #speaking_head-proposing-changes-as-a-developer
+[community]: #fostering-an-inviting-community
+[behaviour]: #how-to-behave-among-other-contributors
+[contributions]: #reminder_ribbon-other-ways-to-contribute
 {%- endif %}
+[imperative]: #issue-titles-should-be-framed-in-imperative-mood
+{%- endif %}
+[committing]: #commit-customs
+[workflow]: #development-workflow
+[tracking]: #work-item-tracking
+[setup]: #development-setup
 {%- if cookiecutter.commit_convention == 'gitmoji' %}
 [convention]: #gitmoji
 {%- elif cookiecutter.commit_convention == 'conventional' %}
 [convention]: #conventional-commits
 {%- else %}
 [convention]: #conventional-gitmoji
-{%- endif %}
-[review]: #merge-request-review-process
-[reviewer]: #the-responsibility-of-the-reviewer
-[roadmap]: #roadmap-management
-{%- if cookiecutter.licence != 'nos' %}
-[proposals]: #speaking_head-proposing-changes-as-a-developer
-[contributions]: #reminder_ribbon-other-ways-to-contribute
-[promotion]: #contributor-promotion
-[gfi]: #there-are-no-good-first-issues
-[community]: #fostering-an-inviting-community
-[behaviour]: #how-to-behave-among-other-contributors
 {%- endif %}
 
 [badge1]: https://img.shields.io/badge/issues_without_{{ roadmap_item }}-006272?style=for-the-badge
@@ -5337,7 +5340,7 @@ what we are doing matters!
 
 {% endif -%}
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
-[intro1]: https://gitlab.com/{{ cookiecutter.scm_namespace }}/templates/blob/master/CONTRIBUTING.md
+[intro1]: {{ cookiecutter.__contributing_prefix }}
 
 {% else -%}
 [intro1]: {{ cookiecutter.__scm_link_url }}/issues
@@ -5444,7 +5447,7 @@ what we are doing matters!
 [labels1]: {{ cookiecutter.__scm_link_url }}/.github/release-drafter.yml
 
 {% else -%}
-[labels1]: https://gitlab.com/{{ cookiecutter.scm_namespace }}/templates/-/blob/master/CONTRIBUTING.md#labels
+[labels1]: {{ cookiecutter.__contributing_prefix }}#labels
 
 {% endif -%}
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
