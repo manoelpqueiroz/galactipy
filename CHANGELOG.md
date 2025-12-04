@@ -1,3 +1,9 @@
+## 1.2.1 (2025-12-04)
+
+### :wrench: Fixes & Refactoring (1 change)
+
+- [:pencil2: Alter template `CONTRIBUTING.md` anchor logic](galactipy/galactipy@f4f515f24dba4f69b11aed6ae687b631adcd93b4)
+
 ## 1.2.0 (2025-12-04)
 
 ### :construction_site: Template Internals (3 changes)
