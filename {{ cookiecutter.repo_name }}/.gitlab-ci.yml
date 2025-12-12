@@ -4,6 +4,7 @@
 # UPDATEME to suit your project's workflow
 # General pipeline configuration
 stages:
+  - security-checks
   - test
   - coverage
   - build
@@ -22,6 +23,20 @@ stages:
 # 3. Set the PROJECT_BOT_TOKEN variable in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
 # 4. Ensure variable has at least "Masked" option flagged and "Protect variable" unchecked
 include:
+  - component: $CI_SERVER_FQDN/components/sast/sast@3.2.0
+    inputs:
+      stage: security-checks
+      enable_mr_pipelines: true
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+      run_advanced_sast: true
+  - component: $CI_SERVER_FQDN/components/dependency-scanning/main@0.9.1
+    inputs:
+      stage: security-checks
+{%- endif %}
+  - component: $CI_SERVER_FQDN/components/secret-detection/secret-detection@2.2.0
+    inputs:
+      stage: security-checks
+      enable_mr_pipelines: true
   - component: $CI_SERVER_FQDN/components/gitlab-triage/gitlab-triage@0.1.2
     rules:
       - if: $CI_PIPELINE_SOURCE == 'schedule'
