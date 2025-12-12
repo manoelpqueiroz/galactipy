@@ -13,6 +13,7 @@ stages:
 variables:
   SEMVER_RELEASE_VERSION: /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
   SEMVER_MINOR_VERSION: /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.0$/i
+  SAST_EXCLUDED_PATHS: cookiecutter.repo_name
 
 # Anchors and script templates
 .filechecks: &filechecks
@@ -41,6 +42,9 @@ workflow:
     - if: $CI_COMMIT_BRANCH
 
 include:
+  - component: $CI_SERVER_FQDN/components/sast/sast@3.2.0
+    inputs:
+      enable_mr_pipelines: true
   - component: $CI_SERVER_FQDN/components/gitlab-triage/gitlab-triage@0.1.2
     rules:
       - if: $CI_PIPELINE_SOURCE == 'schedule'
