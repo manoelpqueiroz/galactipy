@@ -4,6 +4,7 @@
 # Official language image. Look for the different tagged releases at:
 # https://hub.docker.com/r/library/python/tags/
 stages:
+  - security-checks
   - test
   - coverage
   - release
@@ -44,10 +45,14 @@ workflow:
 include:
   - component: $CI_SERVER_FQDN/components/sast/sast@3.2.0
     inputs:
+      stage: security-checks
       enable_mr_pipelines: true
   - component: $CI_SERVER_FQDN/components/dependency-scanning/main@0.9.1
+    inputs:
+      stage: security-checks
   - component: $CI_SERVER_FQDN/components/secret-detection/secret-detection@2.2.0
     inputs:
+      stage: security-checks
       enable_mr_pipelines: true
   - component: $CI_SERVER_FQDN/components/gitlab-triage/gitlab-triage@0.1.2
     rules:
