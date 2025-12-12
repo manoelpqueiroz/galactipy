@@ -46,6 +46,9 @@ include:
     inputs:
       enable_mr_pipelines: true
   - component: $CI_SERVER_FQDN/components/dependency-scanning/main@0.9.1
+  - component: $CI_SERVER_FQDN/components/secret-detection/secret-detection@2.2.0
+    inputs:
+      enable_mr_pipelines: true
   - component: $CI_SERVER_FQDN/components/gitlab-triage/gitlab-triage@0.1.2
     rules:
       - if: $CI_PIPELINE_SOURCE == 'schedule'
