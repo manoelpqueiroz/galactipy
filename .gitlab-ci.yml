@@ -4,6 +4,7 @@
 # Official language image. Look for the different tagged releases at:
 # https://hub.docker.com/r/library/python/tags/
 stages:
+  - security-checks
   - test
   - coverage
   - release
@@ -13,6 +14,7 @@ stages:
 variables:
   SEMVER_RELEASE_VERSION: /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
   SEMVER_MINOR_VERSION: /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.0$/i
+  SAST_EXCLUDED_PATHS: cookiecutter.repo_name
 
 # Anchors and script templates
 .filechecks: &filechecks
@@ -41,6 +43,17 @@ workflow:
     - if: $CI_COMMIT_BRANCH
 
 include:
+  - component: $CI_SERVER_FQDN/components/sast/sast@3.2.0
+    inputs:
+      stage: security-checks
+      enable_mr_pipelines: true
+  - component: $CI_SERVER_FQDN/components/dependency-scanning/main@0.9.1
+    inputs:
+      stage: security-checks
+  - component: $CI_SERVER_FQDN/components/secret-detection/secret-detection@2.2.0
+    inputs:
+      stage: security-checks
+      enable_mr_pipelines: true
   - component: $CI_SERVER_FQDN/components/gitlab-triage/gitlab-triage@0.1.2
     rules:
       - if: $CI_PIPELINE_SOURCE == 'schedule'
