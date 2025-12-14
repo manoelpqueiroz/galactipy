@@ -4,14 +4,17 @@
 # UPDATEME to suit your project's workflow
 # General pipeline configuration
 stages:
+  # Initial stages
   - security-checks
   - test
   - coverage
   - build
 {%- if cookiecutter.create_docker %}
-  # Docker component exclusive stages
-  - package-build
-  - package-test
+  # Stages for Docker-related jobs
+  - container-build
+  - container-security
+  - container-test
+  # Later stages
 {%- endif %}
   - publish
   - release
@@ -44,6 +47,11 @@ include:
       api_token: $PROJECT_BOT_TOKEN
       stage: maintenance
 {%- if cookiecutter.create_docker %}
+  - component: $CI_SERVER_FQDN/components/container-scanning/container-scanning@5.1.0
+    inputs:
+      stage: container-security
+      job_name: container-scanning
+      enable_mr_pipelines: true
   # UPDATEME if you wish to use another registry besides GitLab, see documentation at:
   # https://gitlab.com/explore/catalog/to-be-continuous/docker
   - component: $CI_SERVER_FQDN/to-be-continuous/docker/gitlab-ci-docker@6.0.0
