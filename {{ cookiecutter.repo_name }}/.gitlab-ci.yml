@@ -9,6 +9,7 @@ stages:
   - test
   - coverage
   - build
+  - provenance
 {%- if cookiecutter.create_docker %}
   # Stages for Docker-related jobs
   - container-build
@@ -179,6 +180,8 @@ test-py{{ version[0] }}{{ version[1] }}:
 {% endfor %}
 build-project:
   stage: build
+  variables:
+    RUNNER_GENERATE_ARTIFACTS_METADATA: true
   artifacts:
     name: {{ cookiecutter.repo_name }}-build-$CI_COMMIT_SHORT_SHA-$CI_PIPELINE_SOURCE
     paths:
@@ -191,6 +194,19 @@ build-project:
   extends: .env_setup
   script:
     - invoke build
+
+generate-attestations:
+  stage: provenance
+  artifacts:
+    name: {{ cookiecutter.repo_name }}-provenance-$CI_COMMIT_SHORT_SHA-$CI_PIPELINE_SOURCE
+    paths:
+      - dist/
+  id_tokens:
+    SIGSTORE_ID_TOKEN:
+      aud: sigstore
+  script:
+    - pipx install pypi-attestations
+    - pypi-attestations sign dist/*
 
 publish-test:
   stage: publish
@@ -214,10 +230,14 @@ publish-prod:
     - job: publish-test
       artifacts: false
   extends: .env_setup
+  id_tokens:
+    PYPI_ID_TOKEN:
+      aud: pypi
   script:
-    # TODO Set the PYPI_TOKEN variable for https://pypi.org in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
-    - invoke config $PYPI_TOKEN
-    - invoke publish --no-build
+    # TODO Set up trusted publishing in PyPI, see documentation at:
+    # https://docs.pypi.org/trusted-publishers/creating-a-project-through-oidc/#gitlab-cicd
+    - pipx install twine
+    - twine upload dist/*
 
 changelog-build:
   stage: release

@@ -29,9 +29,7 @@ dynamic = ["version", "classifiers"]
 {%- endif %}
 
 [project.urls]
-repository = "{{ cookiecutter.__scm_base_url }}"
 homepage = "{{ cookiecutter.__scm_base_url }}"
-"Work Item Tracker" = "{{ cookiecutter.__scm_link_url }}/issues"
 "Contributing Guidelines" = "{{ cookiecutter.__scm_link_url }}/tree/master/CONTRIBUTING.md"
 
 
