@@ -53,6 +53,9 @@ include:
       stage: container-security
       job_name: container-scanning
       enable_mr_pipelines: true
+    rules:
+      - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+      - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
   # UPDATEME if you wish to use another registry besides GitLab, see documentation at:
   # https://gitlab.com/explore/catalog/to-be-continuous/docker
   - component: $CI_SERVER_FQDN/to-be-continuous/docker/gitlab-ci-docker@6.0.0
@@ -132,6 +135,15 @@ workflow:
 .test_scripts: &test_scripts
   - invoke sweep
 
+.build_template:
+  stage: build
+  artifacts:
+    paths:
+      - dist/
+  extends: .env_setup
+  script:
+    - invoke build
+
 # Jobs
 {%- set list_python_version = cookiecutter._python_version_list_mapping[cookiecutter.minimal_python_version] %}
 {%- set supported_python_versions = cookiecutter._python_version_support_mapping[cookiecutter.minimal_python_version] %}
@@ -144,7 +156,7 @@ test-py{{ version[0] }}{{ version[1] }}:
     - *test_scripts
 {%- if version[0] == list_python_version[0] and version[1] == list_python_version[1] %}
   artifacts:
-    name: coverage_$CI_COMMIT_REF_NAME_$CI_JOB_NAME_$CI_JOB_STARTED_AT
+    name: coverage-$CI_COMMIT_SHORT_SHA-$CI_PIPELINE_SOURCE
     paths:
       - coverage.xml
       - test_report.xml
@@ -178,27 +190,32 @@ test-py{{ version[0] }}{{ version[1] }}:
 {%- endif %}
 {%- endif %}
 {% endfor %}
-build-project:
-  stage: build
-  variables:
-    RUNNER_GENERATE_ARTIFACTS_METADATA: true
+build-project-test:
+  extends: .build_template
   artifacts:
     name: {{ cookiecutter.repo_name }}-build-$CI_COMMIT_SHORT_SHA-$CI_PIPELINE_SOURCE
-    paths:
-      - dist/
+    expose_as: build
   rules:
     - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft\:.*/i
       when: manual
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
+
+build-project-prod:
+  extends: .build_template
+  variables:
+    RUNNER_GENERATE_ARTIFACTS_METADATA: true
+  artifacts:
+    name: {{ cookiecutter.repo_name }}-build-$CI_COMMIT_TAG
+    expire_in: never
+  rules:
     - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
-  extends: .env_setup
-  script:
-    - invoke build
 
 generate-attestations:
   stage: provenance
+  rules:
+    - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
   artifacts:
-    name: {{ cookiecutter.repo_name }}-provenance-$CI_COMMIT_SHORT_SHA-$CI_PIPELINE_SOURCE
+    name: {{ cookiecutter.repo_name }}-provenance-$CI_COMMIT_TAG
     paths:
       - dist/
   id_tokens:
@@ -226,7 +243,7 @@ publish-prod:
   rules:
     - if: $CI_COMMIT_TAG =~ $SEMVER_RELEASE_VERSION
   needs:
-    - build-project
+    - build-project-prod
     - job: publish-test
       artifacts: false
   extends: .env_setup
