@@ -1,3 +1,36 @@
+## 1.2.2 (2025-12-16)
+
+### :wrench: Fixes & Refactoring (1 change)
+
+- [:bug: Fix malformed function call in template `tasks.py`](galactipy/galactipy@fd6b216fcd3489f40af45ad5780cc0a7fea4f7be)
+
+### :package: Build System & CI/CD (3 changes)
+
+- [:construction_worker: Enable secret detection for the project](galactipy/galactipy@2368de1a60d44e14186dd147b04268ab01aa2ad6) ([merge request](galactipy/galactipy!146))
+- [:construction_worker: Enable dependency scanning for the project](galactipy/galactipy@1f8be97408c9f832294c815a48d5b82a23aaf5fc) ([merge request](galactipy/galactipy!146))
+- [:construction_worker: Enable SAST for the project](galactipy/galactipy@68050fd346772594406f5af59cb8cfe28fd6296a) ([merge request](galactipy/galactipy!146))
+
+### :gear: Internals (1 change)
+
+- [:pencil2: Replace lingering milestone reference for the project](galactipy/galactipy@07d2769a3476cf092103862b30984ad5cd72ae26)
+
+### :construction_site: Template Internals (2 changes)
+
+- [:construction_worker: Renovate template GitHub actions](galactipy/galactipy@ed764fee6d72a25938cf7f618277f8e09db7d8a6) ([merge request](galactipy/galactipy!147))
+- [:construction_worker: Renovate actions/cache action with major version v5.0](galactipy/galactipy@51b07ec9f4bee2dcd3b29efeba2adb017e294895) ([merge request](galactipy/galactipy!145))
+
+### :scroll: Project Policies (1 change)
+
+- [:construction_worker: Define custom stage for GitLab security checks](galactipy/galactipy@9ed57d75e7073b99222c6a01f2df6b7b31846527) ([merge request](galactipy/galactipy!146))
+
+### :arrow_up: Dependency Updates (5 changes)
+
+- [:arrow_up: Renovate mypy with patch version v1.19.1](galactipy/galactipy@3bc74ae812fa1e2fefa4a48cd8ea8d9346499803) ([merge request](galactipy/galactipy!148))
+- [:arrow_up: Renovate ruff with patch version v0.14.9](galactipy/galactipy@8907e5c5e37a954a465e847bdf8559d0cbaca5c9) ([merge request](galactipy/galactipy!144))
+- [:arrow_up: Renovate coverage with minor version v7.13.0](galactipy/galactipy@6228c7cb1188010cda6ebb59dd76ab1b177676b8) ([merge request](galactipy/galactipy!143))
+- [:arrow_up: Renovate pytest with patch version v9.0.2](galactipy/galactipy@bd23057db3daa4c9fb0eac53452c883c8e610a9d) ([merge request](galactipy/galactipy!141))
+- [:arrow_up: Renovate ruff with patch version v0.14.8](galactipy/galactipy@79d4523dbf1f7afb94fcc36e68e8a06ab753146b) ([merge request](galactipy/galactipy!140))
+
 ## 1.2.1 (2025-12-04)
 
 ### :wrench: Fixes & Refactoring (1 change)
