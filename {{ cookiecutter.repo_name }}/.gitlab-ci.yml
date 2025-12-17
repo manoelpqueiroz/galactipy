@@ -1,3 +1,4 @@
+{% set bot_envvar = cookiecutter.scm_namespace.upper().split() | join('-') ~ '_BOT_API_TOKEN' if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' else 'PROJECT_BOT_TOKEN' -%}
 # GitLab CI documentation at:
 # https://docs.gitlab.com/ci/
 
@@ -24,7 +25,7 @@ stages:
 # TODO Set up a bot for automated repository actions and components
 # 1. Create a Project Access Token at {{ cookiecutter.__scm_link_url }}/settings/access_tokens
 # 2. Ensure token has "Maintainer" role and "api" scope
-# 3. Set the PROJECT_BOT_TOKEN variable in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
+# 3. Set the {{ bot_envvar }} variable in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
 # 4. Ensure variable has at least "Masked" option flagged and "Protect variable" unchecked
 include:
   - component: $CI_SERVER_FQDN/components/sast/sast@3.2.0
@@ -45,7 +46,7 @@ include:
     rules:
       - if: $CI_PIPELINE_SOURCE == 'schedule'
     inputs:
-      api_token: $PROJECT_BOT_TOKEN
+      api_token: ${{ bot_envvar }}
       stage: maintenance
 {%- if cookiecutter.create_docker %}
   - component: $CI_SERVER_FQDN/components/container-scanning/container-scanning@5.1.0
@@ -265,7 +266,7 @@ changelog-build:
     - apk add curl jq
     - >
       curl
-      --header "PRIVATE-TOKEN: $PROJECT_BOT_TOKEN"
+      --header "PRIVATE-TOKEN: ${{ bot_envvar }}"
       "$CI_API_V4_URL/projects/$CI_PROJECT_ID/repository/changelog?version=$CI_COMMIT_TAG"
       |
       jq --raw-output .notes > RELEASE_NOTES.md
@@ -285,7 +286,7 @@ changelog-commit:
     - apk add curl
     - >
       curl
-      --header "PRIVATE-TOKEN: $PROJECT_BOT_TOKEN"
+      --header "PRIVATE-TOKEN: ${{ bot_envvar }}"
       --request POST
       "$CI_API_V4_URL/projects/$CI_PROJECT_ID/repository/changelog?version=$CI_COMMIT_TAG&message=$CHANGELOG_COMMIT_MESSAGE"
 
