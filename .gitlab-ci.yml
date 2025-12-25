@@ -43,7 +43,7 @@ workflow:
     - if: $CI_COMMIT_BRANCH
 
 include:
-  - component: $CI_SERVER_FQDN/components/sast/sast@3.2.0
+  - component: $CI_SERVER_FQDN/components/sast/sast@3.3.0
     inputs:
       stage: security-checks
       enable_mr_pipelines: true
