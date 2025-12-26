@@ -10,6 +10,7 @@ stages:
   - test
   - coverage
   - build
+  - sign
   - entrust
 {%- if cookiecutter.create_docker %}
   # Stages for Docker-related jobs
@@ -42,6 +43,38 @@ include:
     inputs:
       stage: security-checks
       enable_mr_pipelines: true
+  - component: $CI_SERVER_FQDN/components/slsa/provenance-signer@0.1.1
+    rules:
+      - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
+      - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft\:.*/i
+        changes:
+          paths: *codechecks
+        when: manual
+      - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
+        changes:
+          paths: *codechecks
+    inputs:
+      stage: sign
+      job_name: slsa-signer-wheel
+      target_artifact: dist/$WHEEL_BINARY
+      bundle_file: slsa-signed/$WHEEL_BINARY.slsa-l3-provenance.json
+      provenance_metadata_file: $PROVENANCE_METADATA
+  - component: $CI_SERVER_FQDN/components/slsa/provenance-signer@0.1.1
+    rules:
+      - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
+      - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft\:.*/i
+        changes:
+          paths: *codechecks
+        when: manual
+      - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
+        changes:
+          paths: *codechecks
+    inputs:
+      stage: sign
+      job_name: slsa-signer-sdist
+      target_artifact: dist/$SDIST_BINARY
+      bundle_file: slsa-signed/$SDIST_BINARY.slsa-l3-provenance.json
+      provenance_metadata_file: $PROVENANCE_METADATA
   - component: $CI_SERVER_FQDN/components/gitlab-triage/gitlab-triage@0.1.2
     rules:
       - if: $CI_PIPELINE_SOURCE == 'schedule'
@@ -69,21 +102,30 @@ include:
       snapshot-image: "$CI_REGISTRY_IMAGE/snapshot:$CI_COMMIT_REF_SLUG-nightly"
       release-extra-tags: "latest \\g<major> \\g<major>.\\g<minor> \\g<major>.\\g<minor>.\\g<patch>"
 {%- endif %}
-  - component: $CI_SERVER_FQDN/galactipy/components/versioning/vars@0.4.0
-  - component: $CI_SERVER_FQDN/galactipy/components/versioning/release@0.4.0
+  - component: $CI_SERVER_FQDN/galactipy/components/versioning/vars@0.4.4
+  - component: $CI_SERVER_FQDN/galactipy/components/versioning/release@0.4.4
     inputs:
       pat-envvar: ${{ bot_envvar }}
+      pre-release-notes: |-
+        ## $QF_RELEASE_STAGE_TITLE $QF_SEMVER_VERSION
+
+        ${CI_COMMIT_TAG_MESSAGE:-This is a $QF_RELEASE_LABEL version of $PROJECT_NAME. \*\*Do not use it in production environments.\*\*}
       changelog-commit-message: ':bookmark: Update CHANGELOG.md'
       links:
-        - name: SLSA provenance (json)
-          url: $PROVENANCE_PACKAGE/$REPO_NAME-$QF_PYPI_VERSION.slsa-provenance.json
+        - name: Build metadata (json)
+          url: $PROVENANCE_PACKAGE/$REPO_NAME-$QF_PYPI_VERSION.slsa-l1-provenance.json
         - name: Wheel attestation (json)
-          url: $PROVENANCE_PACKAGE/$PACKAGE_NAME-$QF_PYPI_VERSION-py3-none-any.whl.publish.attestation
+          url: $PROVENANCE_PACKAGE/$WHEEL_BINARY.publish.attestation
+        - name: Wheel provenance (json)
+          url: $PROVENANCE_PACKAGE/$WHEEL_BINARY.slsa-l3-provenance.json
         - name: sdist attestation (json)
-          url: $PROVENANCE_PACKAGE/$PACKAGE_NAME-$QF_PYPI_VERSION.tar.gz.publish.attestation
+          url: $PROVENANCE_PACKAGE/$SDIST_BINARY.publish.attestation
+        - name: sdist provenance (json)
+          url: $PROVENANCE_PACKAGE/$SDIST_BINARY.slsa-l3-provenance.json
 
 variables:
   # Variables from the Cookiecutter template
+  PROJECT_NAME: {{ cookiecutter.project_name }}
   REPO_NAME: {{ cookiecutter.repo_name }}
   PACKAGE_NAME: {{ cookiecutter.package_name }}
 
@@ -95,6 +137,11 @@ variables:
   PACKAGE_BUILD_ARTIFACTS: ${REPO_NAME}_build_${CI_COMMIT_SHORT_SHA}_${CI_PIPELINE_SOURCE}
   STAGE_ARTIFACTS: ${REPO_NAME}_${CI_JOB_STAGE}_${CI_COMMIT_SHORT_SHA}_${CI_PIPELINE_SOURCE}
   PROVENANCE_PACKAGE: $CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/provenances/$QF_PYPI_VERSION
+
+  PROVENANCE_METADATA: $PROVENANCE_METADATA
+
+  WHEEL_BINARY: ${PACKAGE_NAME}-${QF_PYPI_VERSION}-py3-none-any.whl
+  SDIST_BINARY: ${PACKAGE_NAME}-${QF_PYPI_VERSION}.tar.gz
 
 default:
   image: registry.gitlab.com/galactipy/docker:{{ cookiecutter.minimal_python_version }}
@@ -272,6 +319,8 @@ build-package:
 
 compile-provenance:
   stage: entrust
+  variables:
+    PROVENANCE_METADATA_RENAME: ${REPO_NAME}-${QF_PYPI_VERSION}.slsa-l1-provenance.json
   image: registry.gitlab.com/galactipy/docker/pipx:alpine
   rules:
     - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
@@ -283,9 +332,8 @@ compile-provenance:
     - pypi-attestations sign dist/*
     - mkdir slsa/ pypi/
     - cp dist/*.publish.attestation pypi/
-    - |
-      cp "$PACKAGE_BUILD_ARTIFACTS-metadata.json" \
-      "slsa/python-project-sast-$QF_PYPI_VERSION.slsa-provenance.json"
+    - cp $PROVENANCE_METADATA "slsa/$PROVENANCE_METADATA_RENAME"
+    - cp slsa-signed/* slsa/
   artifacts:
     name: $STAGE_ARTIFACTS
     expire_in: never
