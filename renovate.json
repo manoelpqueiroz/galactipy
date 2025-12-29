@@ -24,9 +24,7 @@
     "github-actions"
   ],
   "lockFileMaintenance": {
-    "addLabels": [
-      "manual-check"
-    ],
+    "automerge": true,
     "branchTopic": "lock-update",
     "commitMessagePrefix": ":pushpin:",
     "commitMessageAction": "Update",
@@ -49,7 +47,9 @@
       ],
       "commitBody": "Changelog: ci",
       "commitMessagePrefix": ":construction_worker:",
-      "separateMajorMinor": false
+      "separateMajorMinor": false,
+      "branchTopic": "gitlab-ci-components",
+      "groupName": "GitLab CI components"
     },
     {
       "description": "Ignore Python version-specific Docker images in CI",
