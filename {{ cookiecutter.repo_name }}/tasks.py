@@ -285,9 +285,12 @@ def build(c: Context) -> None:
 
 
 @task(aliases=["pypi-publish"])
-def publish(c: Context, repo: str = "pypi", build: bool = True) -> None:
+def publish(
+    c: Context, repo: str = "pypi", build: bool = True, ignore_pty: bool = False
+) -> None:
     """Publish {{ cookiecutter.project_name }} to a package registry."""
     poetry_path = get_poetry_command()
+    local_pty = False if ignore_pty else IS_UNIX_OS
 
     # FYI If PyPI is specifically specified as a repo, Poetry fails to recognize it
     repo_flag = f"--repository {repo}" if repo != "pypi" else ""
@@ -297,7 +300,7 @@ def publish(c: Context, repo: str = "pypi", build: bool = True) -> None:
         f"{poetry_path} publish {repo_flag} {build_flag}",
         hide="err",
         warn=True,
-        pty=IS_UNIX_OS,
+        pty=local_pty,
     )
 
     if result.failed:
@@ -589,7 +592,7 @@ def remove_ruff(c: Context) -> None:
 def cleanup(c: Context) -> None:
     """Perform all cleaning-related tasks.
 
-    Does not remove the `build` directory. This should be removed using
+    Does not remove the `dist` directory. This should be removed using
     `invoke remove-build`.
     """
     remove_cache(c)
@@ -600,7 +603,7 @@ def cleanup(c: Context) -> None:
     remove_ruff(c)
 
 
-@task(aliases=["rm-build", "clean-build"])
+@task(aliases=["rm-build", "clean-build", "remove-dist", "rm-dist", "clean-dist"])
 def remove_build(c: Context) -> None:
-    """Remove the `build` directory."""
-    c.run("rm -rf build/", pty=IS_UNIX_OS)
+    """Remove the `dist` directory."""
+    c.run("rm -rf dist/", pty=IS_UNIX_OS)
