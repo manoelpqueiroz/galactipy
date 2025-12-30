@@ -4,7 +4,7 @@ from pathlib import Path
 
 from platformdirs import user_config_path, user_log_path
 
-from {{ cookiecutter.package_name }} import __version__
+from {{ cookiecutter.package_name }}._version import __version__
 
 
 def get_default_config() -> Path:

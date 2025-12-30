@@ -1,8 +1,6 @@
 """{{ cookiecutter.project_description }}."""
 
-# Placeholder for poetry-dynamic-versioning, DO NOT CHANGE
-# https://github.com/mtkennerly/poetry-dynamic-versioning#installation
-__version__ = "0.0.0"
+from {{ cookiecutter.package_name }}._version import __version__
 
-# TODO Update with imported objects  # noqa: TD002,TD003
-# __all__ = []  # noqa: ERA001
+# TODO Update with imported objects to define the public API  # noqa: TD002,TD003
+__all__ = ["__version__"]

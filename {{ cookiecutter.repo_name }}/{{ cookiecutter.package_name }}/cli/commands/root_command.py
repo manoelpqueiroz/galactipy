@@ -15,7 +15,7 @@ from nebulog import logger
 import typer
 from rich.console import Console
 
-from {{ cookiecutter.package_name }} import __version__
+from {{ cookiecutter.package_name }}._version import __version__
 from {{ cookiecutter.package_name }}.cli.commands.config import config_app
 {%- if cookiecutter.app_type == 'tui' %}
 from {{ cookiecutter.package_name }}.cli.styling import AppCustomThemes
