@@ -112,6 +112,17 @@ include:
         ${CI_COMMIT_TAG_MESSAGE:-This is a $QF_RELEASE_LABEL version of $PROJECT_NAME. \*\*Do not use it in production environments.\*\*}
       changelog-commit-message: ':bookmark: Update CHANGELOG.md'
       links:
+        - name: PyPI
+          url: https://pypi.org/project/$REPO_NAME/$QF_PYPI_VERSION/
+          link_type: package
+        - name: GitLab Registry
+          url: $REGISTRY_PACKAGE_PAGE
+          link_type: package
+{%- if cookiecutter.create_docker %}
+        - name: Docker
+          url: $CI_PROJECT_URL/-/blob/$CI_COMMIT_TAG/docker/Dockerfile
+          link_type: image
+{%- endif %}
         - name: Build metadata (json)
           url: $PROVENANCE_PACKAGE_API_URL/$REPO_NAME-$QF_PYPI_VERSION.slsa-l1-provenance.json
         - name: Wheel attestation (json)
