@@ -124,11 +124,32 @@ poetry-plugin-bundle = "^1.5.0"
 
 [tool.poetry-dynamic-versioning]
 # https://github.com/mtkennerly/poetry-dynamic-versioning#configuration
+# https://dunamai.readthedocs.io/en/latest/
 enable = true
 vcs = "git"
 style = "semver"
 metadata = false
-bump = { enable = true, index = 1 }
+{% raw %}format-jinja = """
+  {%- set revision_value = revision or 0 -%}
+  {%- if distance == 0 -%}
+    {%- if stage is none -%}
+      {{ serialize_pep440(base) }}
+    {%- elif stage in ['dev', 'post'] -%}
+      {{ serialize_pep440(base, **{stage: revision_value}) }}
+    {%- else -%}
+      {{ serialize_pep440(base, stage, revision) }}
+    {%- endif -%}
+  {%- else -%}
+    {%- set revised_distance = revision_value + distance -%}
+    {%- if stage is none -%}
+      {{ serialize_pep440(bump_version(base, index=-1), dev=distance) }}
+    {%- elif stage in ['dev', 'post'] -%}
+      {{ serialize_pep440(base, **{stage: revised_distance}) }}
+    {%- else -%}
+      {{ serialize_pep440(base, stage, revised_distance) }}
+    {%- endif -%}
+  {%- endif -%}
+"""{% endraw %}
 
 
 {% if cookiecutter.commit_convention == 'conventional' -%}
