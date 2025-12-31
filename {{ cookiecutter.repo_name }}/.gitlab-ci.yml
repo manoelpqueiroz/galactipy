@@ -102,14 +102,12 @@ include:
       snapshot-image: "$CI_REGISTRY_IMAGE/snapshot:$CI_COMMIT_REF_SLUG-nightly"
       release-extra-tags: "latest \\g<major> \\g<major>.\\g<minor> \\g<major>.\\g<minor>.\\g<patch>"
 {%- endif %}
-  - component: $CI_SERVER_FQDN/galactipy/components/versioning/vars@0.4.4
-  - component: $CI_SERVER_FQDN/galactipy/components/versioning/release@0.4.4
+  - component: $CI_SERVER_FQDN/galactipy/components/versioning/vars@0.5.0
+  - component: $CI_SERVER_FQDN/galactipy/components/versioning/release@0.5.0
     inputs:
       pat-envvar: ${{ bot_envvar }}
-      pre-release-notes: |-
-        ## $QF_RELEASE_STAGE_TITLE $QF_SEMVER_VERSION
-
-        ${CI_COMMIT_TAG_MESSAGE:-This is a $QF_RELEASE_LABEL version of $PROJECT_NAME. \*\*Do not use it in production environments.\*\*}
+      pre-release-title: $QF_RELEASE_STAGE_TITLE $QF_SEMVER_VERSION
+      pre-release-fallback: This is a $QF_RELEASE_LABEL version of $CI_PROJECT_NAME. **Do not use it in production environments.**
       changelog-commit-message: ':bookmark: Update CHANGELOG.md'
       links:
         - name: PyPI
@@ -133,6 +131,8 @@ include:
           url: $PROVENANCE_PACKAGE_API_URL/$SDIST_BINARY.publish.attestation
         - name: sdist provenance (json)
           url: $PROVENANCE_PACKAGE_API_URL/$SDIST_BINARY.slsa-l3-provenance.json
+      pre-release-exclude:
+        - PyPI
 
 variables:
   # Variables from the Cookiecutter template
