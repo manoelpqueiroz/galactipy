@@ -76,14 +76,14 @@ include:
       changelog-commit-message: ':bookmark: Update CHANGELOG.md'
       links:
         - name: SLSA provenance (json)
-          url: $CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/provenances/$QF_PYPI_VERSION/$REPO_NAME-$QF_PYPI_VERSION.slsa-provenance.json
+          url: $PROVENANCE_PACKAGE/$REPO_NAME-$QF_PYPI_VERSION.slsa-provenance.json
         - name: Wheel attestation (json)
-          url: $CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/provenances/$QF_PYPI_VERSION/$PACKAGE_NAME-$QF_PYPI_VERSION-py3-none-any.whl.publish.attestation
+          url: $PROVENANCE_PACKAGE/$PACKAGE_NAME-$QF_PYPI_VERSION-py3-none-any.whl.publish.attestation
         - name: sdist attestation (json)
-          url: $CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/provenances/$QF_PYPI_VERSION/$PACKAGE_NAME-$QF_PYPI_VERSION.tar.gz.publish.attestation
+          url: $PROVENANCE_PACKAGE/$PACKAGE_NAME-$QF_PYPI_VERSION.tar.gz.publish.attestation
 
 variables:
-  # Cookiecutter variables
+  # Variables from the Cookiecutter template
   REPO_NAME: {{ cookiecutter.repo_name }}
   PACKAGE_NAME: {{ cookiecutter.package_name }}
 
@@ -92,8 +92,9 @@ variables:
   SEMVER_ANY_VERSION: /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*))?(?:\+([0-9a-z-]+(?:\.[0-9a-z-]+)*))?$/i
 
   # Value substitution
-  PACKAGE_BUILD_ARTIFACTS: $REPO_NAME_build_$CI_COMMIT_SHORT_SHA_$CI_PIPELINE_SOURCE
-  STAGE_ARTIFACTS: $REPO_NAME_$CI_JOB_STAGE_$CI_COMMIT_SHORT_SHA_$CI_PIPELINE_SOURCE
+  PACKAGE_BUILD_ARTIFACTS: ${REPO_NAME}_build_${CI_COMMIT_SHORT_SHA}_${CI_PIPELINE_SOURCE}
+  STAGE_ARTIFACTS: ${REPO_NAME}_${CI_JOB_STAGE}_${CI_COMMIT_SHORT_SHA}_${CI_PIPELINE_SOURCE}
+  PROVENANCE_PACKAGE: $CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/provenances/$QF_PYPI_VERSION
 
 default:
   image: registry.gitlab.com/galactipy/docker:{{ cookiecutter.minimal_python_version }}
@@ -119,20 +120,39 @@ workflow:
     - if: $CI_COMMIT_TAG
     - if: $CI_COMMIT_BRANCH
 
-# Anchors for common commands
-.filechecks: &filechecks
+# Anchors for common commands and file groups
+.codechecks: &codechecks
   - {{ cookiecutter.package_name }}/**/*
+  - tests/**/*
 {%- if cookiecutter.create_docker %}
   - docker/**/*
   - .dockerignore
 {%- endif %}
+  - .gitignore
+
+.filechecks: &filechecks
+  - {{ cookiecutter.package_name }}/**/*
   - tests/**/*
+{%- if cookiecutter.create_docker %}
+  - docker/**/*
+  - .dockerignore
+{%- endif %}
+  - pyproject.toml
   - tasks.py
   - .gitlab-ci.yml
   - .triage-policies.yml
+  - .gitignore
 
-# Rules for jobs requiring package testing/building
-.env_setup:
+.test_scripts: &test_scripts
+  - invoke sweep
+
+# Reusable configuration jobs
+.install_project:
+  before_script:
+    - invoke install --ignore-pty
+
+.test_setup:
+  extends: .install_project
   rules:
     - if: $CI_COMMIT_TAG
       when: never
@@ -154,10 +174,19 @@ workflow:
   before_script:
     - invoke install --ignore-pty
 
-.test_scripts: &test_scripts
-  - invoke sweep
+.publish_rules:
+  extends: .install_project
+  rules:
+    - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
+    - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft\:.*/i
+      changes:
+        paths: *codechecks
+      when: manual
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
+      changes:
+        paths: *codechecks
 
-.generic_upload:
+.upload_to_generic_package:
   before_script:
     - |
       upload_from_dir() {
@@ -173,9 +202,9 @@ workflow:
               --upload-file "$file" \
               "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/$1/$QF_PYPI_VERSION/$filename")
             if [ "$RESPONSE" -ge 200 ] && [ "$RESPONSE" -lt 300 ]; then
-              echo "✓ Uploaded $filename"
+              echo -e "\e[32m✓\e[0m Uploaded $filename"
             else
-              echo "⚠ Failed to upload $filename"
+              echo -e "\e[93m⚠\e[0m Failed to upload $filename"
             fi
           fi
         done
@@ -188,12 +217,12 @@ workflow:
 test-py{{ version[0] }}{{ version[1] }}:
   stage: test
   image: registry.gitlab.com/galactipy/docker:{{ version[0] }}.{{ version[1] }}
-  extends: .env_setup
+  extends: .test_setup
   script:
     - *test_scripts
 {%- if version[0] == list_python_version[0] and version[1] == list_python_version[1] %}
   artifacts:
-    name: coverage-$CI_COMMIT_SHORT_SHA-$CI_PIPELINE_SOURCE
+    name: ${REPO_NAME}_coverage_${CI_COMMIT_SHORT_SHA}_${CI_PIPELINE_SOURCE}
     paths:
       - coverage.xml
       - test_report.xml
@@ -206,14 +235,13 @@ test-py{{ version[0] }}{{ version[1] }}:
 
 {{ cookiecutter.__coverage_lc }}-report:
   stage: coverage
-  image: alpine:latest
+  image: badouralix/curl-jq:latest
   rules:
     - if: $CI_COMMIT_TAG
       when: never
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE != 'schedule'
   script:
-    - apk add curl
 {%- if cookiecutter.__coverage_lc == 'coveralls' %}
     - curl -L https://coveralls.io/coveralls-linux.tar.gz | tar -xz -C /usr/local/bin
     # TODO Set the COVERALLS_REPO_TOKEN CI/CD variable in {{ cookiecutter.__scm_link_url }}/settings/ci_cd, see documentation at:
@@ -232,12 +260,7 @@ build-package:
   variables:
     GIT_DEPTH: 0
     RUNNER_GENERATE_ARTIFACTS_METADATA: true
-  rules:
-    - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft\:.*/i
-      when: manual
-    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
-    - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
-  extends: .env_setup
+  extends: .publish_rules
   script:
     - invoke build
   artifacts:
@@ -261,11 +284,12 @@ compile-provenance:
     - mkdir slsa/ pypi/
     - cp dist/*.publish.attestation pypi/
     - |
-      cp $PACKAGE_BUILD_ARTIFACTS-metadata.json \
-      slsa/python-project-sast-$QF_PYPI_VERSION.slsa-provenance.json
+      cp "$PACKAGE_BUILD_ARTIFACTS-metadata.json" \
+      "slsa/python-project-sast-$QF_PYPI_VERSION.slsa-provenance.json"
   artifacts:
     name: $STAGE_ARTIFACTS
     expire_in: never
+    when: always
     paths:
       - dist/
       - pypi/
@@ -276,25 +300,21 @@ register-provenance:
   image: badouralix/curl-jq:latest
   rules:
     - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
-  extends: .generic_upload
+  extends: .upload_to_generic_package
   script:
     - upload_from_dir provenances ./slsa json
     - upload_from_dir provenances ./pypi json
   after_script:
     - jq -s 'map(.)' upload-*.json > api-calls.json
   artifacts:
-    name: $REPO_NAME_registry-uploads_$CI_COMMIT_SHORT_SHA_$CI_PIPELINE_SOURCE
+    name: ${REPO_NAME}_registry-uploads_${CI_COMMIT_SHORT_SHA}_${CI_PIPELINE_SOURCE}
+    when: always
     paths:
       - api-calls.json
 
 publish-test:
   stage: publish
-  rules:
-    - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft\:.*/i
-      when: manual
-    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
-    - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
-  extends: .env_setup
+  extends: .publish_rules
   script:
     # TODO Set the TESTPYPI_TOKEN variable for https://test.pypi.org in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
     - invoke config $TESTPYPI_TOKEN --repo testpypi
@@ -309,7 +329,6 @@ publish-prod:
     - compile-provenance
     - job: publish-test
       artifacts: false
-  extends: .env_setup
   id_tokens:
     PYPI_ID_TOKEN:
       aud: pypi
