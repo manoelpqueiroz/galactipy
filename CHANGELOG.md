@@ -1,3 +1,59 @@
+## 1.3.0 (2026-01-01)
+
+### :milky_way: Components (7 changes)
+
+- [:construction_worker: Refine behaviour of the template CI](galactipy/galactipy@4bed584ddc2941862f2367c3108e95fcc3b4abd1) ([merge request](galactipy/galactipy!157))
+- [:sparkles: Implement uploads to the GitLab Package Registry](galactipy/galactipy@0104e4c4072c65a4db4f822d9306b432b468552d) ([merge request](galactipy/galactipy!157))
+- [:sparkles: Implement SLSA level 3](galactipy/galactipy@faba681e1b24a81ab55013b75fcc98d81d436e70) ([merge request](galactipy/galactipy!157))
+- [:sparkles: Implement dynamic versioning for the template](galactipy/galactipy@f2cb29e1953aa1480b8c4e2ff6e747140288e02e) ([merge request](galactipy/galactipy!157))
+- [:sparkles: Implement trusted publishing for PyPI](galactipy/galactipy@94c793f42027c7fa0db066c901c2646745cc7a64) ([merge request](galactipy/galactipy!157))
+- [:sparkles: Add container scanning for the template](galactipy/galactipy@10f94363939405517e34b00f161a4a6e10f7d696) ([merge request](galactipy/galactipy!157))
+- [:sparkles: Implement security checks for the template](galactipy/galactipy@a4dbb3d2c37f4a6cd09875ad218e7c1a1e1402ac) ([merge request](galactipy/galactipy!157))
+
+### :wrench: Fixes & Refactoring (3 changes)
+
+- [:adhesive_bandage: Include CHANGELOG commit pattern for alternate conventions](galactipy/galactipy@b96b8c14aff818b48ef5133166236830961212a5) ([merge request](galactipy/galactipy!157))
+- [:art: Update template `tasks.py` configuration](galactipy/galactipy@6cb65cb7b07ecdfcea8be37dce584ab14249cb6d) ([merge request](galactipy/galactipy!157))
+- [:bug: Fix circular import error with version string](galactipy/galactipy@8f1e8372f7eae064cd9d7e1279650590920cb56d) ([merge request](galactipy/galactipy!157))
+
+### :package: Build System & CI/CD (5 changes)
+
+- [:construction_worker: Use Galactic Releases for the project](galactipy/galactipy@78d8d417f55efe4dae21fd59e3be40af3a62a96e)
+- [:construction_worker: Renovate dependency components/sast with minor version v3.3.0](galactipy/galactipy@f5085f5c109009a54a97688c2d8270a92935b7a1) ([merge request](galactipy/galactipy!155))
+- [:construction_worker: Renovate dependency components/dependency-scanning with minor version v1.1.0](galactipy/galactipy@118cebf33e56d095a7aa0a1ea801496238bc7695) ([merge request](galactipy/galactipy!153))
+- [:construction_worker: Renovate dependency components/dependency-scanning with major version v1.0](galactipy/galactipy@6a4c12c70be234370a0118c98732536b2a2a2411) ([merge request](galactipy/galactipy!151))
+- [:construction_worker: Enable advanced SAST for the project](galactipy/galactipy@7c188ce1dae1b8747280a1dff34487a5f5d00a63) ([merge request](galactipy/galactipy!157))
+
+### :gear: Internals (1 change)
+
+- [:wrench: Update rules for Renovate Bot](galactipy/galactipy@6af7fa93b369835d2dd1acd9ae325f4818bc0a7a)
+
+### :construction_site: Template Internals (9 changes)
+
+- [:wrench: Remove double-quoted script](galactipy/galactipy@0c9cfcf9c20e4a0bcfdb5ac7b3fb657997fef94e) ([merge request](galactipy/galactipy!157))
+- [:truck: Treat licence header as a plain file](galactipy/galactipy@fb636b77a44e9489268312b381987ede92f96d7d) ([merge request](galactipy/galactipy!157))
+- [:construction_worker: Update Galactic Releases component](galactipy/galactipy@56be423dc203e5ba4c6c76416f005a1107f40d47) ([merge request](galactipy/galactipy!157))
+- [:construction_worker: Add links for packages and images in release jobs](galactipy/galactipy@efcf884d017f069ac9d1f918546da6ad2bc6305c) ([merge request](galactipy/galactipy!157))
+- [:wrench: Fine-tune rules for dynamic versions](galactipy/galactipy@f282ca11543778ca6a5c4216ef3127234546ec27) ([merge request](galactipy/galactipy!157))
+- [:construction_worker: Streamline template CI configuration](galactipy/galactipy@ae494293d743c66869fc04cef48b88aaa7f3335c) ([merge request](galactipy/galactipy!157))
+- [:construction_worker: Define custom GitLab bot envvar for the template](galactipy/galactipy@eeacd3df860d204b21ea7b98d81b553b0a0213ca) ([merge request](galactipy/galactipy!157))
+- [:wrench: Define `.pre-commit-config.yaml` indendation](galactipy/galactipy@eb08dc490417ad00220f005d897ca265806ffb42) ([merge request](galactipy/galactipy!157))
+- [:construction_worker: Improve template CI workflow](galactipy/galactipy@d3663f613730fc5c0df578df0ebba162ac9353f6) ([merge request](galactipy/galactipy!157))
+
+### :pencil: Documentation (2 changes)
+
+- [:pencil: Update `SECURITY.md` with software supply chain information](galactipy/galactipy@670cb335bba98d6172d48faaf72fc28d56b0b12b) ([merge request](galactipy/galactipy!157))
+- [:pencil: Update project `README.md` with security features for GitLab](galactipy/galactipy@25237628d98963fd86d83c8caf5c1082e9fa29f4) ([merge request](galactipy/galactipy!157))
+
+### :scroll: Project Policies (1 change)
+
+- [:page_facing_up: Update copyright information](galactipy/galactipy@8e25a4e6aa55be29de1f376653031b69e90d6521) ([merge request](galactipy/galactipy!157))
+
+### :arrow_up: Dependency Updates (2 changes)
+
+- [:arrow_up: Renovate ruff with patch version v0.14.10](galactipy/galactipy@9fb8e887086d3e5f034e4febfc59c36604c9567c) ([merge request](galactipy/galactipy!152))
+- [:arrow_up: Renovate pre-commit with patch version v4.5.1](galactipy/galactipy@460f6d3fb2a87e9e48f5097b2ad5178af28b0549) ([merge request](galactipy/galactipy!150))
+
 ## 1.2.2 (2025-12-16)
 
 ### :wrench: Fixes & Refactoring (1 change)
