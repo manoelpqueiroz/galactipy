@@ -108,7 +108,13 @@ include:
       pat-envvar: ${{ bot_envvar }}
       pre-release-title: $QF_RELEASE_STAGE_TITLE $QF_SEMVER_VERSION
       pre-release-fallback: This is a $QF_RELEASE_LABEL version of $CI_PROJECT_NAME. **Do not use it in production environments.**
+{%- if cookiecutter.commit_convention == 'gitmoji' %}
       changelog-commit-message: ':bookmark: Update CHANGELOG.md'
+{%- elif cookiecutter.commit_convention == 'conventional' %}
+      changelog-commit-message: 'docs: Update CHANGELOG.md'
+{%- else %}
+      changelog-commit-message: '🔖 bump: Update CHANGELOG.md'
+{%- endif %}
       links:
         - name: PyPI
           url: https://pypi.org/project/$REPO_NAME/$QF_PYPI_VERSION/
