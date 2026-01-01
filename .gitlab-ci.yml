@@ -136,7 +136,7 @@ test-py313:
 
 codacy-report:
   stage: coverage
-  image: alpine:latest
+  image: badouralix/curl-jq:latest
   rules:
     - if: $CI_COMMIT_TAG
       when: never
@@ -145,28 +145,22 @@ codacy-report:
         paths: *filechecks
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE != 'schedule'
   script:
-    - apk add curl
     - curl -Ls https://coverage.codacy.com/get.sh -o codacy.sh
     - sh ./codacy.sh report -r coverage.xml
 
 github-mirror-mr:
   stage: post-release
-  image: alpine:latest
+  image: badouralix/curl-jq:latest
   rules:
     - if: $CI_COMMIT_TAG =~ $SEMVER_MINOR_VERSION
   script:
-    - apk add curl
     - >
-      cat $GH_MIRROR_MR_PAYLOAD
-      |
-      curl
-      --header "PRIVATE-TOKEN: $GALACTIPY_BOT_API_TOKEN"
-      --header "Content-Type: application/json"
-      --data @-
-      --request POST
+      curl --request POST --fail-with-body \
+        --header "PRIVATE-TOKEN: $GALACTIPY_BOT_API_TOKEN" \
+        --header "Content-Type: application/json" \
+        --data "@${GH_MIRROR_MR_PAYLOAD}" \
+        --output mr_creation_response.json \
       "$CI_API_V4_URL/projects/$CI_PROJECT_ID/merge_requests"
-      >
-      mr_creation_response.json
   artifacts:
     paths:
       - mr_creation_response.json
@@ -174,21 +168,18 @@ github-mirror-mr:
 
 github-mirror-commit:
   stage: post-release
-  image: alpine:latest
+  image: badouralix/curl-jq:latest
   rules:
     - if: $CI_COMMIT_TAG =~ $SEMVER_MINOR_VERSION
   needs: [github-mirror-mr]
   script:
-    - apk add curl jq
-    - export MR_ID=$(cat mr_creation_response.json | jq --raw-output .iid)
+    - MR_ID=$(jq --raw-output .iid mr_creation_response.json)
     - >
-      curl
-      --header "PRIVATE-TOKEN: $GALACTIPY_BOT_API_TOKEN"
-      --request PUT
-      --data '{"merge_when_pipeline_succeeds": true}'
+      curl --request PUT --fail-with-body \
+        --header "PRIVATE-TOKEN: $GALACTIPY_BOT_API_TOKEN" \
+        --data '{"merge_when_pipeline_succeeds": true}' \
+        --output mr_merge_response.json \
       "$CI_API_V4_URL/projects/$CI_PROJECT_ID/merge_requests/$MR_ID/merge"
-      >
-      mr_merge_response.json
   artifacts:
     name: github_mirror_$CI_COMMIT_REF_NAME_$CI_JOB_NAME_$CI_JOB_STARTED_AT
     paths:
