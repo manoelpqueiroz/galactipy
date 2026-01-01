@@ -579,6 +579,9 @@ def remove_pytest(c: Context) -> None:
     c.run(
         FILE_REMOVER.format(
             r"(.pytest_cache|.coverage|test_report.xml|htmlcov|assets|.benchmarks)"
+        ),
+        pty=IS_UNIX_OS,
+    )
 {%- endif %}
 
 

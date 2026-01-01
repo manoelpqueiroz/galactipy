@@ -43,12 +43,12 @@ workflow:
     - if: $CI_COMMIT_BRANCH
 
 include:
-  - component: $CI_SERVER_FQDN/components/sast/sast@3.2.0
+  - component: $CI_SERVER_FQDN/components/sast/sast@3.3.0
     inputs:
       stage: security-checks
       enable_mr_pipelines: true
       run_advanced_sast: true
-  - component: $CI_SERVER_FQDN/components/dependency-scanning/main@0.9.1
+  - component: $CI_SERVER_FQDN/components/dependency-scanning/main@1.1.0
     inputs:
       stage: security-checks
   - component: $CI_SERVER_FQDN/components/secret-detection/secret-detection@2.2.0
