@@ -147,6 +147,15 @@
                 "tcss"
             ],
             "format": "svg"
+{%- if cookiecutter.licence != 'nos' %}
+        },
+        {
+            "icon": "api_extractor",
+            "extensions": [
+                ".licence_header"
+            ],
+            "format": "svg"
+{%- endif %}
         }
     ],
     "vsicons.associations.folders": [
