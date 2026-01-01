@@ -159,7 +159,7 @@ convention = "numpy"
 
 [tool.ruff.lint.flake8-copyright]
 author = "The Galactipy Contributors"
-notice-rgx = "Copyright (C) 2023-2025"
+notice-rgx = "Copyright (C) 2023-2026"
 
 [tool.ruff.lint.pylint]
 max-bool-expr = 3
