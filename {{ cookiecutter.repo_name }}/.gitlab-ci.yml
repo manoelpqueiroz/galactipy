@@ -36,6 +36,9 @@ include:
 {%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
       run_advanced_sast: true
   - component: $CI_SERVER_FQDN/components/dependency-scanning/main@0.9.1
+    rules:
+      - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+      - if: $CI_COMMIT_BRANCH
     inputs:
       stage: security-checks
 {%- endif %}
@@ -285,6 +288,7 @@ test-py{{ version[0] }}{{ version[1] }}:
   script:
     - *test_scripts
 {%- if version[0] == list_python_version[0] and version[1] == list_python_version[1] %}
+  coverage: /TOTAL.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/
   artifacts:
     name: ${REPO_NAME}_coverage_${CI_COMMIT_SHORT_SHA}_${CI_PIPELINE_SOURCE}
     paths:
@@ -383,7 +387,7 @@ publish-test:
   script:
     # TODO Set the TESTPYPI_TOKEN variable for https://test.pypi.org in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
     - invoke config $TESTPYPI_TOKEN --repo testpypi
-    - invoke publish --repo testpypi --no-build
+    - invoke publish --repo testpypi --no-build --ignore-pty
 
 publish-prod:
   stage: publish
