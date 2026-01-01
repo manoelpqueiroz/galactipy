@@ -194,11 +194,3 @@ github-mirror-commit:
     paths:
       - mr_merge_response.json
     expire_in: 1 week
-
-allow-github-merge:
-  stage: post-release
-  image: alpine:latest
-  rules:
-    - if: $GITLAB_USER_LOGIN =~ /^(project|group)_\d+_bot_\w+/i
-  script:
-    - echo "Token pipeline running after a commit was pushed by $GITLAB_USER_NAME."
