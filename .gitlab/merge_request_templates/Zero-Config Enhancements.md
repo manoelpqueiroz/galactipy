@@ -42,7 +42,7 @@ This template should be used to propose and discuss changes to the default confi
 - [ ] I provided a concise and clear title for this discussion;
 - [ ] I have presented my proposal following [Galactipy's philosophy][2] principles;
 - [ ] I have added the proper [labels][3] to start this discussion;
-- [ ] I have associated the proposal with the adequate [development milestone][4];
+- [ ] I have associated the proposal with the adequate [epic][4];
 - [ ] I have followed the [commit customs][5] for the project;
 - [ ] I have explained the [reasoning][6] behind my design choices through the commit descriptions;
 - [ ] I have added the proper [Git trailers][7] to my commits;

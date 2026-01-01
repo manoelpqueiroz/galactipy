@@ -4,8 +4,10 @@
 # Official language image. Look for the different tagged releases at:
 # https://hub.docker.com/r/library/python/tags/
 stages:
+  - security-checks
   - test
   - coverage
+  - build
   - release
   - post-release
   - maintenance
@@ -13,6 +15,7 @@ stages:
 variables:
   SEMVER_RELEASE_VERSION: /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
   SEMVER_MINOR_VERSION: /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.0$/i
+  SAST_EXCLUDED_PATHS: cookiecutter.repo_name
 
 # Anchors and script templates
 .filechecks: &filechecks
@@ -41,6 +44,23 @@ workflow:
     - if: $CI_COMMIT_BRANCH
 
 include:
+  - component: $CI_SERVER_FQDN/components/sast/sast@3.3.0
+    inputs:
+      stage: security-checks
+      enable_mr_pipelines: true
+      run_advanced_sast: true
+  - component: $CI_SERVER_FQDN/components/dependency-scanning/main@1.1.0
+    inputs:
+      stage: security-checks
+  - component: $CI_SERVER_FQDN/components/secret-detection/secret-detection@2.2.0
+    inputs:
+      stage: security-checks
+      enable_mr_pipelines: true
+  - component: $CI_SERVER_FQDN/galactipy/components/versioning/vars@0.5.0
+  - component: $CI_SERVER_FQDN/galactipy/components/versioning/release@0.5.0
+    inputs:
+      pat-envvar: $GALACTIPY_BOT_API_TOKEN
+      changelog-commit-message: ':bookmark: Update CHANGELOG.md'
   - component: $CI_SERVER_FQDN/components/gitlab-triage/gitlab-triage@0.1.2
     rules:
       - if: $CI_PIPELINE_SOURCE == 'schedule'
@@ -128,53 +148,6 @@ codacy-report:
     - apk add curl
     - curl -Ls https://coverage.codacy.com/get.sh -o codacy.sh
     - sh ./codacy.sh report -r coverage.xml
-
-changelog-build:
-  stage: release
-  image: alpine:latest
-  rules:
-    - if: $CI_COMMIT_TAG =~ $SEMVER_RELEASE_VERSION
-  script:
-    - apk add curl jq
-    - >
-      curl
-      --header "PRIVATE-TOKEN: $GALACTIPY_BOT_API_TOKEN"
-      "$CI_API_V4_URL/projects/$CI_PROJECT_ID/repository/changelog?version=$CI_COMMIT_TAG"
-      |
-      jq --raw-output .notes > RELEASE_NOTES.md
-  artifacts:
-    paths:
-      - RELEASE_NOTES.md
-
-changelog-commit:
-  stage: release
-  image: alpine:latest
-  rules:
-    - if: $CI_COMMIT_TAG =~ $SEMVER_RELEASE_VERSION
-  needs: [changelog-build]
-  script:
-    - apk add curl
-    - >
-      cat $CHANGELOG_COMMIT_PAYLOAD
-      |
-      curl
-      --header "PRIVATE-TOKEN: $GALACTIPY_BOT_API_TOKEN"
-      --header "Content-Type: application/json"
-      --data @-
-      --request POST
-      "$CI_API_V4_URL/projects/$CI_PROJECT_ID/repository/changelog"
-
-release-galactipy:
-  stage: release
-  image: registry.gitlab.com/gitlab-org/release-cli:latest
-  rules:
-    - if: $CI_COMMIT_TAG =~ $SEMVER_RELEASE_VERSION
-  needs: [changelog-build]
-  script:
-    - echo "Creating release $CI_COMMIT_TAG"
-  release:
-    tag_name: $CI_COMMIT_TAG
-    description: RELEASE_NOTES.md
 
 github-mirror-mr:
   stage: post-release

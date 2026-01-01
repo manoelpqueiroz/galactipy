@@ -152,7 +152,7 @@ your report:
      of the mailing list being notified,
      a copy of the advisory
      will be published
-     on the [{{ cookiecutter.__scm_platform_base }} Advisory Database][4].
+     on the [{{ cookiecutter.__scm_platform_base }} Advisory Database][3].
 
 > [!IMPORTANT]
 > Typically,
@@ -476,6 +476,34 @@ to follow Python security advisories
 and keep their Python installations
 up to date.
 
+The project is also committed to
+ensuring robust software supply chain security.
+We leverage our releases on PyPI
+via trusted publishing
+to attest package integrity.
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
+Additionally,
+with each release,
+we provide detailed provenance metadata
+and digital attestations
+that allow users
+to independently verify
+the integrity of our artifacts.
+You can access these assets
+on the [Releases][4] page
+and use [Cosign][5]
+to validate them
+against the corresponding binaries,
+ensuring that what you download
+matches exactly
+what was intended by the maintainers.
+
+This approach ensures transparency
+and builds trust in our software supply chain,
+giving users confidence
+in the security and integrity
+of every release.
+{% endif -%}
 {% else -%}
 <!-- DEFINE your underlying primitives for building the threat model -->
 
@@ -835,10 +863,11 @@ by:
 If you have any suggestions
 on how our security processes
 could be improved,
-please open a [Request for Improvement][4]
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+please open a [Request for Improvement][6]
 on our Issue Tracker.
 {%- else %}
+please open a [Request for Improvement][4]
 in our Discussions page.
 {%- endif %}
 We will reply to you
@@ -851,9 +880,11 @@ in due time.
 [1]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md
 [2]: https://pypi.org/project/{{ cookiecutter.repo_name }}/
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[4]: https://advisories.gitlab.com/
-[4]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Improvement
+[3]: https://advisories.gitlab.com/
+[4]: {{ cookiecutter.__scm_link_url }}/releases
+[5]: https://docs.sigstore.dev/cosign/verifying/verify/
+[6]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Improvement
 {%- else %}
-[4]: https://github.com/advisories
+[3]: https://github.com/advisories
 [4]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-improvement
 {%- endif %}

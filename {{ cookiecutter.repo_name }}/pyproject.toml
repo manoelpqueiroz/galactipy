@@ -25,13 +25,11 @@ dynamic = ["version", "classifiers"]
 
 [project.scripts]
 # Entry points for the package https://python-poetry.org/docs/pyproject/#scripts
-"{{ cookiecutter.repo_name }}" = "{{ cookiecutter.package_name }}.cli.commands.root_command:app"
+{{ cookiecutter.repo_name }} = "{{ cookiecutter.package_name }}.cli.commands.root_command:app"
 {%- endif %}
 
 [project.urls]
-repository = "{{ cookiecutter.__scm_base_url }}"
 homepage = "{{ cookiecutter.__scm_base_url }}"
-"Work Item Tracker" = "{{ cookiecutter.__scm_link_url }}/issues"
 "Contributing Guidelines" = "{{ cookiecutter.__scm_link_url }}/tree/master/CONTRIBUTING.md"
 
 
@@ -126,11 +124,32 @@ poetry-plugin-bundle = "^1.5.0"
 
 [tool.poetry-dynamic-versioning]
 # https://github.com/mtkennerly/poetry-dynamic-versioning#configuration
+# https://dunamai.readthedocs.io/en/latest/
 enable = true
 vcs = "git"
 style = "semver"
 metadata = false
-bump = { enable = true, index = 1 }
+{% raw %}format-jinja = """
+  {%- set revision_value = revision or 0 -%}
+  {%- if distance == 0 -%}
+    {%- if stage is none -%}
+      {{ serialize_pep440(base) }}
+    {%- elif stage in ['dev', 'post'] -%}
+      {{ serialize_pep440(base, **{stage: revision_value}) }}
+    {%- else -%}
+      {{ serialize_pep440(base, stage, revision) }}
+    {%- endif -%}
+  {%- else -%}
+    {%- set revised_distance = revision_value + distance -%}
+    {%- if stage is none -%}
+      {{ serialize_pep440(bump_version(base, index=-1), dev=distance) }}
+    {%- elif stage in ['dev', 'post'] -%}
+      {{ serialize_pep440(base, **{stage: revised_distance}) }}
+    {%- else -%}
+      {{ serialize_pep440(base, stage, revised_distance) }}
+    {%- endif -%}
+  {%- endif -%}
+"""{% endraw %}
 
 
 {% if cookiecutter.commit_convention == 'conventional' -%}
@@ -503,3 +522,9 @@ source = ["{{ cookiecutter.package_name }}"]
 [tool.typos.default]
 # UPDATEME with your desired configuration for typos
 # https://github.com/crate-ci/typos#getting-started
+
+
+[tool.pre-commit-update.yaml]
+mapping = 2
+sequence = 4
+offset = 2
