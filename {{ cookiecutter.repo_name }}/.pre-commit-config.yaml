@@ -20,7 +20,7 @@ repos:
       - id: end-of-file-fixer
         name: Fix end-of-files
 {%- if cookiecutter.licence != 'nos' %}
-        exclude: (LICENCE|CODE_OF_CONDUCT.md|.licence_header.txt)
+        exclude: (LICENCE|CODE_OF_CONDUCT.md|.licence_header)
 {%- endif %}
       - id: check-merge-conflict
         name: Check unresolved merge conflicts
@@ -67,7 +67,7 @@ repos:
       - id: codespell
         name: Codespell checks
 {%- if cookiecutter.licence != 'nos' %}
-        exclude: (LICENCE|CODE_OF_CONDUCT.md|.licence_header.txt)
+        exclude: (LICENCE|CODE_OF_CONDUCT.md|.licence_header)
 {%- endif %}
         additional_dependencies:
           - tomli
@@ -82,7 +82,7 @@ repos:
           -s, '#',
           -d, {{ cookiecutter.package_name }},
           -g, '*.py',
-          -l, .licence_header.txt,
+          -l, .licence_header,
         ]
 {%- endif %}
 

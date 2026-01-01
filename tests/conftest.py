@@ -9,7 +9,7 @@ def licence_tree(tmp_path):
     licence_file = tmp_path / "LICENCE"
     licence_root = tmp_path / "_licences"
 
-    header_file = tmp_path / ".licence_header.txt"
+    header_file = tmp_path / ".licence_header"
     header_root = tmp_path / "_headers"
 
     licence_list = [
