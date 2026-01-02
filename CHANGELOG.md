@@ -1,3 +1,15 @@
+## 1.3.1 (2026-01-02)
+
+### :package: Build System & CI/CD (3 changes)
+
+- [:construction_worker: Merge GitHub mirror jobs](galactipy/galactipy@13cbc9b046c830ab18402f22d9aeff178fddba86)
+- [:construction_worker: Improve project CI structure and image use](galactipy/galactipy@d8979650db35d2093c733038793f8b8604034cb2)
+- [:construction_worker: Remove `allow-github-merge` job](galactipy/galactipy@a3f089850d77aea13375cb5e2c2608797c90e876)
+
+### :construction_site: Template Internals (1 change)
+
+- [:construction_worker: Update rules for provenance signing](galactipy/galactipy@0d3aeefc8fbe13eaa2f5d8adaa0cbb2dee3d15e3)
+
 ## 1.3.0 (2026-01-01)
 
 ### :milky_way: Components (7 changes)
