@@ -14,9 +14,9 @@ stages:
   - entrust
 {%- if cookiecutter.create_docker %}
   # Stages for Docker-related jobs
-  - container-build
+  - package-build
+  - package-test
   - container-security
-  - container-test
   # Later stages
 {%- endif %}
   - publish
@@ -48,7 +48,7 @@ include:
       enable_mr_pipelines: true
   - component: $CI_SERVER_FQDN/components/slsa/provenance-signer@0.1.1
     rules:
-      - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
+      - if: $CI_COMMIT_TAG
     inputs:
       stage: sign
       job_name: slsa-signer-wheel
@@ -57,7 +57,7 @@ include:
       provenance_metadata_file: $PROVENANCE_METADATA
   - component: $CI_SERVER_FQDN/components/slsa/provenance-signer@0.1.1
     rules:
-      - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
+      - if: $CI_COMMIT_TAG
     inputs:
       stage: sign
       job_name: slsa-signer-sdist
@@ -243,7 +243,7 @@ workflow:
   before_script:
     - |
       upload_from_dir() {
-        for file in "$2/*"; do
+        for file in 2/*; do
           if [ -f "$file" ]; then
             filename=$(basename $file)
             RESPONSE=$(curl --location \

@@ -127,8 +127,6 @@ poetry-plugin-bundle = "^1.5.0"
 # https://dunamai.readthedocs.io/en/latest/
 enable = true
 vcs = "git"
-style = "semver"
-metadata = false
 {% raw %}format-jinja = """
   {%- set revision_value = revision or 0 -%}
   {%- if distance == 0 -%}
