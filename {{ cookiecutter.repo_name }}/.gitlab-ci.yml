@@ -81,7 +81,7 @@ include:
       - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
   # UPDATEME if you wish to use another registry besides GitLab, see documentation at:
   # https://gitlab.com/explore/catalog/to-be-continuous/docker
-  - component: $CI_SERVER_FQDN/to-be-continuous/docker/gitlab-ci-docker@6.0.0
+  - component: $CI_SERVER_FQDN/to-be-continuous/docker/gitlab-ci-docker@8.0.8
     rules:
       - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
       - if: $CI_COMMIT_TAG # FYI Fine-tuning for running only on release tags not working at upstream (https://gitlab.com/to-be-continuous/docker/-/issues/107)
@@ -143,7 +143,7 @@ variables:
   PACKAGE_BUILD_ARTIFACTS: ${REPO_NAME}_build_${CI_COMMIT_SHORT_SHA}_${CI_PIPELINE_SOURCE}
   STAGE_ARTIFACTS: ${REPO_NAME}_${CI_JOB_STAGE}_${CI_COMMIT_SHORT_SHA}_${CI_PIPELINE_SOURCE}
 
-  PROVENANCE_METADATA: $PROVENANCE_METADATA
+  PROVENANCE_METADATA: $PACKAGE_BUILD_ARTIFACTS-metadata.json
   PROVENANCE_PACKAGE_API_URL: $CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/provenances/$QF_PYPI_VERSION
 
   WHEEL_BINARY: ${PACKAGE_NAME}-${QF_PYPI_VERSION}-py3-none-any.whl
