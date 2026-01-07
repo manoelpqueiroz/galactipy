@@ -40,7 +40,7 @@ DEFAULT_DOCKER_REPOSITORY = f"{DOCKER_REGISTRY}/{{ cookiecutter.scm_namespace }}
 
 DEFAULT_DOCKER_REPOSITORY = "{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}"
 {%- endif %}
-DEFAULT_DOCKER_TAG = "latest"
+DEFAULT_DOCKER_TAG = "wip-local"
 DEFAULT_DOCKER_IMAGE = f"{DEFAULT_DOCKER_REPOSITORY}:{DEFAULT_DOCKER_TAG}"
 {%- endif %}
 
