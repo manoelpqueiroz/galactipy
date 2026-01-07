@@ -326,6 +326,52 @@ on the [{{ cookiecutter.__scm_platform_base }} Releases][release1] page.
 
 We follow [Intended Effort Versioning][release2] specification,
 details can be found in our [`CONTRIBUTING` guide][burl18].
+{%- if cookiecutter.create_docker %}
+
+### Run as a Docker Container
+
+{{ cookiecutter.project_name }} also provides
+official Docker images
+to run the application on a container.
+Published images are available
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+via [GitLab Container Registries][docker1].
+
+The following tags are available:
+
+<!-- UPDATEME by defining the macro tags once the project reaches v1.0.0 -->
+- **Micro tags** reflect the official releases
+  individually;
+- **Meso tags** always mirror
+  the latest available changes
+  for a meso release
+  (i.e., `MACRO.MESO`);
+- **Nightly tags** functionally work
+  as rolling releases,
+  but should not be used
+  in production environments:
+  - The `nightly` tag reflects
+    the most recent state
+    of the `master` branch;
+  - If a pre-release is published,
+    it can be run with Docker
+    with the `MACRO.MESO.MICRO-nightly` tag.
+{%- else %}
+via [Docker Hub][docker1].
+
+The following tags are available:
+
+- **Micro tags** reflect the official releases;
+- **Meso tags** always mirror
+  the latest available changes
+  for a meso release
+  (i.e., `MACRO.MESO`);
+- **Meso tags** always mirror
+  the latest available changes
+  for a macro release
+  (i.e., `MACRO`);
+{%- endif %}
+{%- endif %}
 
 {% if cookiecutter.licence != 'nos' -%}
 ## :shield: Licence
@@ -501,10 +547,14 @@ This project was generated with [Galactipy][burl4].
 
 [bdocker1]: https://img.shields.io/gitlab/v/release/{{ cookiecutter.scm_namespace }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&logo=linux-containers&logoColor=C5F4EC&label=image&color=C5F4EC
 [bdocker2]: {{ cookiecutter.__scm_base_url }}/container_registry
+
+[docker1]: https://docs.gitlab.com/user/packages/container_registry/
 {%- else %}
 
 [bdocker1]: https://img.shields.io/docker/v/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=docker&logoColor=lightblue&label=image&color=lightblue
 [bdocker2]: https://hub.docker.com/r/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}
+
+[docker1]: https://hub.docker.com/
 {%- endif %}
 {%- endif %}
 {%- if cookiecutter.docstring_style == 'numpy' %}
