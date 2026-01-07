@@ -372,6 +372,9 @@ def _get_docker_specific_files(directory: Path, is_github: bool) -> list[Path]:
     if is_github:
         removals.append(directory / ".github" / "workflows" / "docker.yml")
 
+    else:
+        removals.append(directory / ".gitlab" / "components")
+
     return removals
 
 
