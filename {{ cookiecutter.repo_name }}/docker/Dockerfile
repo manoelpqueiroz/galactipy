@@ -9,13 +9,11 @@ ENV LANG=C.UTF-8 \
     PATH="$PATH:/opt/.poetry/bin"
 
 RUN apk add --no-cache --virtual .build-deps \
-    curl=~8.14.1-r1 \
-    gcc=~14.2.0-r6 \
-    musl-dev=~1.2.5-r10 \
-    python3-dev=~3.12.11-r0 \
-    libffi-dev=~3.4.8-r0 \
-# FYI sqlite-libs has a vulnerability up to 3.49.2-r0, which is installed by default
-    sqlite-libs=~3.49.2-r1
+    curl=~8.17.0-r1 \
+    gcc=~15.2.0-r2 \
+    musl-dev=~1.2.5-r21 \
+    python3-dev=~3.12.12-r0 \
+    libffi-dev=~3.5.2-r0
 
 # Install Poetry
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
@@ -43,18 +41,13 @@ ENV LANG=C.UTF-8 \
 {%- else %}
     PATH="/opt/{{ cookiecutter.repo_name }}-bundle/bin:$PATH"
 {%- endif %}
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
     COLORTERM=truecolor \
     PYTHONUNBUFFERED=1
+{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
 
 RUN apk add --no-cache \
-    ncurses-terminfo-base=~6.5_p20250503-r0 \
-    ncurses-libs=~6.5_p20250503-r0 \
-# FYI sqlite-libs has a vulnerability up to 3.49.2-r0, which is installed by default
-    sqlite-libs=~3.49.2-r1
-{%- elif cookiecutter.app_type == 'cli' %}
-    COLORTERM=truecolor \
-    PYTHONUNBUFFERED=1
+    ncurses-terminfo-base=~6.5_p20251123-r0 \
+    ncurses-libs=~6.5_p20251123-r0
 {%- endif %}
 
 # Copy the bundled application

@@ -14,9 +14,8 @@ stages:
   - entrust
 {%- if cookiecutter.create_docker %}
   # Stages for Docker-related jobs
-  - container-build
-  - container-security
-  - container-test
+  - package-build
+  - package-test
   # Later stages
 {%- endif %}
   - publish
@@ -29,6 +28,8 @@ stages:
 # 3. Set the {{ bot_envvar }} variable in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
 # 4. Ensure variable has at least "Masked" option flagged and "Protect variable" unchecked
 include:
+  - local: /.gitlab/components/docker.yml
+
   - component: $CI_SERVER_FQDN/components/sast/sast@3.2.0
     inputs:
       stage: security-checks
@@ -48,7 +49,7 @@ include:
       enable_mr_pipelines: true
   - component: $CI_SERVER_FQDN/components/slsa/provenance-signer@0.1.1
     rules:
-      - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
+      - if: $CI_COMMIT_TAG
     inputs:
       stage: sign
       job_name: slsa-signer-wheel
@@ -57,7 +58,7 @@ include:
       provenance_metadata_file: $PROVENANCE_METADATA
   - component: $CI_SERVER_FQDN/components/slsa/provenance-signer@0.1.1
     rules:
-      - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
+      - if: $CI_COMMIT_TAG
     inputs:
       stage: sign
       job_name: slsa-signer-sdist
@@ -70,27 +71,7 @@ include:
     inputs:
       api_token: ${{ bot_envvar }}
       stage: maintenance
-{%- if cookiecutter.create_docker %}
-  - component: $CI_SERVER_FQDN/components/container-scanning/container-scanning@5.1.0
-    inputs:
-      stage: container-security
-      job_name: container-scanning
-      enable_mr_pipelines: true
-    rules:
-      - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-      - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
-  # UPDATEME if you wish to use another registry besides GitLab, see documentation at:
-  # https://gitlab.com/explore/catalog/to-be-continuous/docker
-  - component: $CI_SERVER_FQDN/to-be-continuous/docker/gitlab-ci-docker@6.0.0
-    rules:
-      - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-      - if: $CI_COMMIT_TAG # FYI Fine-tuning for running only on release tags not working at upstream (https://gitlab.com/to-be-continuous/docker/-/issues/107)
-    inputs:
-      context-path: $CI_PROJECT_DIR
-      file: $CI_PROJECT_DIR/docker/Dockerfile
-      snapshot-image: "$CI_REGISTRY_IMAGE/snapshot:$CI_COMMIT_REF_SLUG-nightly"
-      release-extra-tags: "latest \\g<major> \\g<major>.\\g<minor> \\g<major>.\\g<minor>.\\g<patch>"
-{%- endif %}
+
   - component: $CI_SERVER_FQDN/galactipy/components/versioning/vars@0.5.0
   - component: $CI_SERVER_FQDN/galactipy/components/versioning/release@0.5.0
     inputs:
@@ -136,14 +117,14 @@ variables:
   PACKAGE_NAME: {{ cookiecutter.package_name }}
 
   # Advanced regular expressions
-  SEMVER_RELEASE_VERSION: /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
-  SEMVER_ANY_VERSION: /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*))?(?:\+([0-9a-z-]+(?:\.[0-9a-z-]+)*))?$/i
+  EFFVER_RELEASE_VERSION: /^v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
+  EFFVER_ANY_VERSION: /^v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*))?(?:\+([0-9a-z-]+(?:\.[0-9a-z-]+)*))?$/i
 
   # Value substitution
   PACKAGE_BUILD_ARTIFACTS: ${REPO_NAME}_build_${CI_COMMIT_SHORT_SHA}_${CI_PIPELINE_SOURCE}
   STAGE_ARTIFACTS: ${REPO_NAME}_${CI_JOB_STAGE}_${CI_COMMIT_SHORT_SHA}_${CI_PIPELINE_SOURCE}
 
-  PROVENANCE_METADATA: $PROVENANCE_METADATA
+  PROVENANCE_METADATA: $PACKAGE_BUILD_ARTIFACTS-metadata.json
   PROVENANCE_PACKAGE_API_URL: $CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/provenances/$QF_PYPI_VERSION
 
   WHEEL_BINARY: ${PACKAGE_NAME}-${QF_PYPI_VERSION}-py3-none-any.whl
@@ -193,6 +174,7 @@ workflow:
   - pyproject.toml
   - tasks.py
   - .gitlab-ci.yml
+  - .gitlab/components/**/*
   - .triage-policies.yml
   - .gitignore
 
@@ -230,7 +212,7 @@ workflow:
 .publish_rules:
   extends: .install_project
   rules:
-    - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
+    - if: $CI_COMMIT_TAG =~ $EFFVER_ANY_VERSION
     - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft\:.*/i
       changes:
         paths: *codechecks
@@ -243,7 +225,7 @@ workflow:
   before_script:
     - |
       upload_from_dir() {
-        for file in "$2/*"; do
+        for file in $2/*; do
           if [ -f "$file" ]; then
             filename=$(basename $file)
             RESPONSE=$(curl --location \
@@ -330,7 +312,7 @@ compile-provenance:
     PROVENANCE_METADATA_RENAME: ${REPO_NAME}-${QF_PYPI_VERSION}.slsa-l1-provenance.json
   image: registry.gitlab.com/galactipy/docker/pipx:alpine
   rules:
-    - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
+    - if: $CI_COMMIT_TAG =~ $EFFVER_ANY_VERSION
   id_tokens:
     SIGSTORE_ID_TOKEN:
       aud: sigstore
@@ -354,7 +336,7 @@ register-provenance:
   stage: publish
   image: badouralix/curl-jq:latest
   rules:
-    - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
+    - if: $CI_COMMIT_TAG =~ $EFFVER_ANY_VERSION
   extends: .upload_to_generic_package
   script:
     - upload_from_dir provenances ./slsa json
@@ -379,7 +361,7 @@ publish-prod:
   stage: publish
   image: registry.gitlab.com/galactipy/docker/pipx:alpine
   rules:
-    - if: $CI_COMMIT_TAG =~ $SEMVER_RELEASE_VERSION
+    - if: $CI_COMMIT_TAG =~ $EFFVER_RELEASE_VERSION
   needs:
     - compile-provenance
     - job: publish-test
@@ -398,7 +380,7 @@ publish-registry:
   variables:
     REGISTRY: $CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/pypi
   rules:
-    - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
+    - if: $CI_COMMIT_TAG =~ $EFFVER_ANY_VERSION
   before_script:
     - !reference [.install_project, before_script]
     - apt-get update && apt-get install -y --no-install-recommends jq
