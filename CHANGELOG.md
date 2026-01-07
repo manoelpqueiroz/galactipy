@@ -1,3 +1,45 @@
+## 1.4.0 (2026-01-07)
+
+### :milky_way: Components (1 change)
+
+- [:children_crossing: Fine-tune Docker deployment for GitLab](galactipy/galactipy@a3c48f45b654a39d0176be18d4a1726d84c56334) ([merge request](galactipy/galactipy!161))
+
+### :wrench: Fixes & Refactoring (2 changes)
+
+- [:adhesive_bandage: Minor adjustments for template GitLab CI](galactipy/galactipy@2f4e34a6655f0cc0a331f242bad8aa1e066844f9) ([merge request](galactipy/galactipy!161))
+- [:rewind: Revert GitLab CI and poetry-dynamic-versioning misconfiguration](galactipy/galactipy@212f54148b8c2a295dd26eaf5749091a991667ad) ([merge request](galactipy/galactipy!161))
+
+### :package: Build System & CI/CD (2 changes)
+
+- [:white_check_mark: Update file removal tests](galactipy/galactipy@f36a14e97b93849422d511ac57d7220d78d99634) ([merge request](galactipy/galactipy!161))
+- [:construction_worker: Renovate dependency galactipy/components/versioning with patch version v0.5.1](galactipy/galactipy@be7cdfde7eaecf9f1f69e4398fab51479e506839) ([merge request](galactipy/galactipy!160))
+
+### :gear: Internals (1 change)
+
+- [:wrench: Add logic to remove local Docker component](galactipy/galactipy@e50d0225be840d23559ef3a96bce797044e35593) ([merge request](galactipy/galactipy!161))
+
+### :construction_site: Template Internals (3 changes)
+
+- [:hammer: Modify the default Docker tag for Invoke building](galactipy/galactipy@66c0b36bab2f666e35788703be64792eb568024a) ([merge request](galactipy/galactipy!161))
+- [:ambulance: Fix CI workflow for the template](galactipy/galactipy@48030993e88ee7dfc2863664a089dd0236fb3853) ([merge request](galactipy/galactipy!161))
+- [:hammer: Update Docker package versions](galactipy/galactipy@83bd7d92c7eb9eae4597612e102840e2c522b174) ([merge request](galactipy/galactipy!161))
+
+### :pencil: Documentation (1 change)
+
+- [:pencil: Add information on Docker tags for users and developers](galactipy/galactipy@e3e16bd157ef0ef4ba06b70aaab1e8f1d907bb60) ([merge request](galactipy/galactipy!161))
+
+## 1.3.1 (2026-01-02)
+
+### :package: Build System & CI/CD (3 changes)
+
+- [:construction_worker: Merge GitHub mirror jobs](galactipy/galactipy@13cbc9b046c830ab18402f22d9aeff178fddba86)
+- [:construction_worker: Improve project CI structure and image use](galactipy/galactipy@d8979650db35d2093c733038793f8b8604034cb2)
+- [:construction_worker: Remove `allow-github-merge` job](galactipy/galactipy@a3f089850d77aea13375cb5e2c2608797c90e876)
+
+### :construction_site: Template Internals (1 change)
+
+- [:construction_worker: Update rules for provenance signing](galactipy/galactipy@0d3aeefc8fbe13eaa2f5d8adaa0cbb2dee3d15e3)
+
 ## 1.3.0 (2026-01-01)
 
 ### :milky_way: Components (7 changes)

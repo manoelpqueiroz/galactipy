@@ -92,6 +92,7 @@ class TestServiceRemovals:
         docker_files = removal_tree["docker"]
         docker_directory = docker_files["root"]
         dockerignore = docker_files["dockerignore"]
+        components_directory = docker_files["gitlab_components"]
 
         config = ProjectFlags(False, True, False, False, "cli")
 
@@ -99,6 +100,7 @@ class TestServiceRemovals:
 
         assert not docker_directory.exists()
         assert not dockerignore.exists()
+        assert not components_directory.exists()
 
         assert removal_tree["pyproject"].exists()
         assert removal_tree["tests"]["root"].exists()
