@@ -1,0 +1,70 @@
+# DEFINE Your image cleanup policy at:
+# {{ cookiecutter.__scm_link_url }}/settings/packages_and_registries/cleanup_image_tags
+# Anchors for common commands and file groups
+.codechecks: &codechecks
+  - {{ cookiecutter.package_name }}/**/*
+  - tests/**/*
+  - docker/**/*
+  - .dockerignore
+  - .gitignore
+
+include:
+  # UPDATEME if you wish to use another registry besides GitLab, see documentation at:
+  # https://gitlab.com/explore/catalog/to-be-continuous/docker
+  - component: $CI_SERVER_FQDN/to-be-continuous/docker/gitlab-ci-docker@8.0.8
+    rules:
+      - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+        changes:
+          paths: *codechecks
+    inputs:
+      context-path: $CI_PROJECT_DIR
+      file: $CI_PROJECT_DIR/docker/Dockerfile
+      snapshot-image: "$CI_REGISTRY_IMAGE/snapshot:wip-$CI_COMMIT_REF_SLUG"
+
+  # A nightly image is built if code-related files are changed in the default branch
+  - component: $CI_SERVER_FQDN/to-be-continuous/docker/gitlab-ci-docker@8.0.8
+    rules:
+      - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+        changes:
+          paths: *codechecks
+    inputs:
+      context-path: $CI_PROJECT_DIR
+      file: $CI_PROJECT_DIR/docker/Dockerfile
+      release-image: "$CI_REGISTRY_IMAGE:latest-nightly"
+      snapshot-image: "$CI_REGISTRY_IMAGE/snapshot:latest-nightly"
+
+  # For unstable releases (0.X.X)
+  - component: $CI_SERVER_FQDN/to-be-continuous/docker/gitlab-ci-docker@8.0.8
+    rules:
+      - if: $CI_COMMIT_TAG =~ /^v?0\.(0|[1-9]\d*)\.(0|[1-9]\d*)/i
+    inputs:
+      context-path: $CI_PROJECT_DIR
+      file: $CI_PROJECT_DIR/docker/Dockerfile
+      release-image: "$CI_REGISTRY_IMAGE:$QF_SEMVER_VERSION"
+      snapshot-image: "$CI_REGISTRY_IMAGE/snapshot:$QF_SEMVER_VERSION"
+      release-extra-tags-pattern: ^(?:v|V)?(?P<macro>0|[1-9]\d*)\.(?P<meso>0|[1-9]\d*)\.(?P<micro>0|[1-9]\d*)$
+      release-extra-tags: "\\g<macro>.\\g<meso> latest"
+
+  # For stable releases (1.0.0 or later)
+  - component: $CI_SERVER_FQDN/to-be-continuous/docker/gitlab-ci-docker@8.0.8
+    rules:
+      - if: $CI_COMMIT_TAG =~ /^v?[1-9]\d*\.(0|[1-9]\d*)\.(0|[1-9]\d*)/i
+    inputs:
+      context-path: $CI_PROJECT_DIR
+      file: $CI_PROJECT_DIR/docker/Dockerfile
+      release-image: "$CI_REGISTRY_IMAGE:$QF_SEMVER_VERSION"
+      snapshot-image: "$CI_REGISTRY_IMAGE/snapshot:$QF_SEMVER_VERSION"
+      release-extra-tags-pattern: ^(?:v|V)?(?P<macro>0|[1-9]\d*)\.(?P<meso>0|[1-9]\d*)\.(?P<micro>0|[1-9]\d*)$
+      release-extra-tags: "\\g<macro>.\\g<meso> \\g<macro> latest"
+
+  # For any tag with a pre-release segment
+  - component: $CI_SERVER_FQDN/to-be-continuous/docker/gitlab-ci-docker@8.0.8
+    rules:
+      - if: $CI_COMMIT_TAG =~ /^v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*))?(?:\+([0-9a-z-]+(?:\.[0-9a-z-]+)*))?$/i && $CI_COMMIT_TAG !~ /^v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
+    inputs:
+      context-path: $CI_PROJECT_DIR
+      file: $CI_PROJECT_DIR/docker/Dockerfile
+      release-image: "$CI_REGISTRY_IMAGE:$QF_BASE_VERSION-nightly"
+      snapshot-image: "$CI_REGISTRY_IMAGE/snapshot:$QF_BASE_VERSION-nightly"
+      release-extra-tags-pattern: ^(?:v|V)?(?P<macro>0|[1-9]\d*)\.(?P<meso>0|[1-9]\d*)\.(?P<micro>0|[1-9]\d*)(?:-(?P<prerelease>(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*))?(?:\+(?P<build>[0-9a-z-]+(?:\.[0-9a-z-]+)*))?$
+      release-extra-tags: "\\g<macro>.\\g<meso>-nightly latest-nightly"
