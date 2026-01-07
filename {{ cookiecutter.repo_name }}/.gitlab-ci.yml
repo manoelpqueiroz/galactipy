@@ -117,8 +117,8 @@ variables:
   PACKAGE_NAME: {{ cookiecutter.package_name }}
 
   # Advanced regular expressions
-  SEMVER_RELEASE_VERSION: /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
-  SEMVER_ANY_VERSION: /^(v)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*))?(?:\+([0-9a-z-]+(?:\.[0-9a-z-]+)*))?$/i
+  EFFVER_RELEASE_VERSION: /^v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
+  EFFVER_ANY_VERSION: /^v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*))?(?:\+([0-9a-z-]+(?:\.[0-9a-z-]+)*))?$/i
 
   # Value substitution
   PACKAGE_BUILD_ARTIFACTS: ${REPO_NAME}_build_${CI_COMMIT_SHORT_SHA}_${CI_PIPELINE_SOURCE}
@@ -212,7 +212,7 @@ workflow:
 .publish_rules:
   extends: .install_project
   rules:
-    - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
+    - if: $CI_COMMIT_TAG =~ $EFFVER_ANY_VERSION
     - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft\:.*/i
       changes:
         paths: *codechecks
@@ -225,7 +225,7 @@ workflow:
   before_script:
     - |
       upload_from_dir() {
-        for file in 2/*; do
+        for file in $2/*; do
           if [ -f "$file" ]; then
             filename=$(basename $file)
             RESPONSE=$(curl --location \
@@ -312,7 +312,7 @@ compile-provenance:
     PROVENANCE_METADATA_RENAME: ${REPO_NAME}-${QF_PYPI_VERSION}.slsa-l1-provenance.json
   image: registry.gitlab.com/galactipy/docker/pipx:alpine
   rules:
-    - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
+    - if: $CI_COMMIT_TAG =~ $EFFVER_ANY_VERSION
   id_tokens:
     SIGSTORE_ID_TOKEN:
       aud: sigstore
@@ -336,7 +336,7 @@ register-provenance:
   stage: publish
   image: badouralix/curl-jq:latest
   rules:
-    - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
+    - if: $CI_COMMIT_TAG =~ $EFFVER_ANY_VERSION
   extends: .upload_to_generic_package
   script:
     - upload_from_dir provenances ./slsa json
@@ -361,7 +361,7 @@ publish-prod:
   stage: publish
   image: registry.gitlab.com/galactipy/docker/pipx:alpine
   rules:
-    - if: $CI_COMMIT_TAG =~ $SEMVER_RELEASE_VERSION
+    - if: $CI_COMMIT_TAG =~ $EFFVER_RELEASE_VERSION
   needs:
     - compile-provenance
     - job: publish-test
@@ -380,7 +380,7 @@ publish-registry:
   variables:
     REGISTRY: $CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/pypi
   rules:
-    - if: $CI_COMMIT_TAG =~ $SEMVER_ANY_VERSION
+    - if: $CI_COMMIT_TAG =~ $EFFVER_ANY_VERSION
   before_script:
     - !reference [.install_project, before_script]
     - apt-get update && apt-get install -y --no-install-recommends jq
