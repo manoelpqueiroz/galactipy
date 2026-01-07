@@ -24,7 +24,7 @@
 - [:ambulance: Fix CI workflow for the template](galactipy/galactipy@48030993e88ee7dfc2863664a089dd0236fb3853) ([merge request](galactipy/galactipy!161))
 - [:hammer: Update Docker package versions](galactipy/galactipy@83bd7d92c7eb9eae4597612e102840e2c522b174) ([merge request](galactipy/galactipy!161))
 
-### docs (1 change)
+### :pencil: Documentation (1 change)
 
 - [:pencil: Add information on Docker tags for users and developers](galactipy/galactipy@e3e16bd157ef0ef4ba06b70aaab1e8f1d907bb60) ([merge request](galactipy/galactipy!161))
 
