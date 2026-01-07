@@ -126,6 +126,7 @@ def removal_tree(tmp_path):
     bulk_file_creation(
         gitlab_directory,
         merge_request_templates=["Interface Architecture.md", "User Experience.md"],
+        components=["docker.yml"],
     )
 
     feature_directory = tmp_path / "directory_feature"
@@ -325,6 +326,7 @@ def removal_tree(tmp_path):
             "dockerfile": tmp_path / "docker" / "Dockerfile",
             "readme": tmp_path / "docker" / "README.md",
             "github_workflow": tmp_path / ".github" / "workflows" / "docker.yml",
+            "gitlab_components": tmp_path / ".gitlab" / "components",
             "dockerignore": tmp_path / ".dockerignore",
         },
     }
