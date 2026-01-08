@@ -60,7 +60,7 @@ include:
   - component: $CI_SERVER_FQDN/galactipy/components/versioning/release@0.5.2
     inputs:
       pat-envvar: $GALACTIPY_BOT_API_TOKEN
-      changelog-commit-message: ':bookmark: Update CHANGELOG.md'
+      changelog-commit-message: ':bookmark_tabs: Update CHANGELOG.md'
   - component: $CI_SERVER_FQDN/components/gitlab-triage/gitlab-triage@0.1.2
     rules:
       - if: $CI_PIPELINE_SOURCE == 'schedule'
