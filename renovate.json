@@ -72,7 +72,7 @@
       "matchCategories": [
         "docker"
       ],
-      "commitBody": "Changelog: build",
+      "commitBody": "Changelog: docker",
       "commitMessagePrefix": ":hammer:"
     },
     {
