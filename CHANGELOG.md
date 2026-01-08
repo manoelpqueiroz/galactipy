@@ -1,3 +1,19 @@
+## 1.4.1 (2026-01-08)
+
+### :airplane_departure: Release Cycle Optimisation (2 changes)
+
+- [:green_heart: Fix wrong filenames for GitHub mirror MR](galactipy/galactipy@f8f163f7f7d67086ab2b70d4df3c1f26cbf9acce)
+- [:construction_worker: Renovate dependency galactipy/components/versioning with patch version v0.5.2](galactipy/galactipy@606aa80d2454001adedcc928facb88fb96cec931) ([merge request](galactipy/galactipy!163))
+
+### :pouring_liquid: Nits (1 change)
+
+- [:pencil2: Fix wrong emoji shorthand for up arrow](galactipy/galactipy@262d92c7d59c50c1526b56ee805b6695fae55573)
+
+### :scroll: Project Policies (2 changes)
+
+- [:pencil: Update `CONTRIBUTING.md` guide on Git trailers](galactipy/galactipy@ab7065db72b6e09f23145d336d49030e92c1ef3e)
+- [:wrench: Update project commit trailers](galactipy/galactipy@63bd400615def16430349c6363988fd4d6bdf263)
+
 ## 1.4.0 (2026-01-07)
 
 ### :milky_way: Components (1 change)
