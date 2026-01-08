@@ -223,7 +223,7 @@ is supported
 for security updates.
 
 > [!NOTE]
-> Current Galactipy release: **`v1.4.0`**
+> Current Galactipy release: **`v1.4.1`**
 
 ## :octagonal_sign: Security Measures
 
