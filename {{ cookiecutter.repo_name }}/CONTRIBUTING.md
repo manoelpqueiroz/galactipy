@@ -1615,7 +1615,7 @@ the following additional Gitmoji
 to apply on commits:
 
 | Gitmoji | Shorthand | Usage |
-| :-----: | :-------: | :---: |
+| :-----: | :-------: | ----- |
 -->
 
 {% elif cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
@@ -1681,6 +1681,16 @@ at a later moment,
 we recommend committing
 with the `:construction:` Gitmoji
 so the CI will ignore it.
+
+Besides the official Gitmoji,
+{{ cookiecutter.project_name }} defines
+the following additional Gitmoji
+to apply on commits:
+
+<!-- DEFINE the specific Gitmoji for this project -->
+|     Gitmoji     |     Shorthand     | Usage                              |
+| :-------------: | :---------------: | ---------------------------------- |
+| :bookmark_tabs: | `:bookmark_tabs:` | Updates to `CHANGELOG.md` entries. |
 
 {% elif cookiecutter.commit_convention == 'conventional' -%}
 #### Conventional Commits
