@@ -24,13 +24,14 @@
 <!-- Development utilities -->
 [![Poetry][b26]][b27]
 [![Pre-commit][b28]][b29]
-[![Editorconfig][b30]][b31]
+[![Renovate Badge][b30]][b31]
+[![Editorconfig][b32]][b33]
 
 <!-- Quality Assurance -->
-[![Romantic Versioning][b32]][b5]
-[![Code Quality][b33]][b34]
-[![Coverage][b35]][b36]
-[![GitLab Pipelines][b37]][b38]
+[![Romantic Versioning][b34]][b5]
+[![Code Quality][b35]][b36]
+[![Coverage][b37]][b38]
+[![GitLab Pipelines][b39]][b40]
 
 _Expand your project structure from atoms of code to **galactic** dimensions._ :milky_way:
 
@@ -843,7 +844,7 @@ in your paper.
 
 ## :mega: Spread the Word
 
-Add the badge [![Expand your project structure from atoms of code to galactic dimensions.][b39]][b40]
+Add the badge [![Expand your project structure from atoms of code to galactic dimensions.][b41]][b42]
 to your project!
 It would be really appreciated
 to spread the word of this template.
@@ -902,17 +903,19 @@ any of the following:
 [b27]: https://python-poetry.org/
 [b28]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge
 [b29]: https://kutt.it/D4ayxs
-[b30]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
-[b31]: https://kutt.it/fy3pqF
-[b32]: https://img.shields.io/badge/romver-DE4F4F?style=for-the-badge&logo=semver
-[b33]: https://img.shields.io/codacy/grade/9827f88089954a3680675d7c77e63fd5?style=for-the-badge&logo=codacy
-[b34]: https://kutt.it/ByTvpc
-[b35]: https://img.shields.io/codacy/coverage/9827f88089954a3680675d7c77e63fd5?style=for-the-badge&logo=codacy
-[b36]: https://kutt.it/uxIDHs
-[b37]: https://img.shields.io/gitlab/pipeline-status/galactipy%2Fgalactipy?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
-[b38]: https://kutt.it/zG7nVG
-[b39]: https://img.shields.io/badge/made%20with-galactipy%20%F0%9F%8C%8C-179287?style=for-the-badge&labelColor=193A3E
-[b40]: https://kutt.it/7fYqQl
+[b30]: https://img.shields.io/badge/Renovate-308BE3?logo=renovate&logoColor=fff&style=for-the-badge
+[b31]: https://gitlab.com/galactipy/galactipy/-/blob/master/renovate.json
+[b32]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
+[b33]: https://kutt.it/fy3pqF
+[b34]: https://img.shields.io/badge/romver-DE4F4F?style=for-the-badge&logo=semver
+[b35]: https://img.shields.io/codacy/grade/9827f88089954a3680675d7c77e63fd5?style=for-the-badge&logo=codacy
+[b36]: https://kutt.it/ByTvpc
+[b37]: https://img.shields.io/codacy/coverage/9827f88089954a3680675d7c77e63fd5?style=for-the-badge&logo=codacy
+[b38]: https://kutt.it/uxIDHs
+[b39]: https://img.shields.io/gitlab/pipeline-status/galactipy%2Fgalactipy?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
+[b40]: https://kutt.it/zG7nVG
+[b41]: https://img.shields.io/badge/made%20with-galactipy%20%F0%9F%8C%8C-179287?style=for-the-badge&labelColor=193A3E
+[b42]: https://kutt.it/7fYqQl
 
 [ft1]: https://github.com/cookiecutter/cookiecutter
 [ft2]: https://typer.tiangolo.com/
