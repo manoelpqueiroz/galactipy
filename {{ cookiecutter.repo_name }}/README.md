@@ -42,9 +42,14 @@
 <!-- Development utilities -->
 [![Poetry][badge13]][burl13]
 [![Pre-commit][badge14]][burl14]
-[![Bandit][badge15]][burl15]
-[![isort][badge16]][burl16]
-[![Editorconfig][badge17]][burl17]
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+[![Renovate][badge15]][burl15]
+{%- else %}
+[![Dependabot][badge15]][burl15]
+{%- endif %}
+[![Bandit][badge16]][burl16]
+[![isort][badge17]][burl17]
+[![Editorconfig][badge18]][burl18]
 {%+ if cookiecutter.licence != 'nos' %}
 <!-- Open Source benchmarks -->
 <!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
@@ -53,16 +58,16 @@
 [![OSSRank][bossf3]][bossf4] -->
 {% endif +%}
 <!-- Quality assurance -->
-[![Intended Effort Versioning][badge18]][burl18]
+[![Intended Effort Versioning][badge19]][burl19]
 {%- if cookiecutter.__coverage_lc == 'coveralls' %}
-[![Coverage][badge19]][burl19]
+[![Coverage][badge20]][burl20]
 {%- elif cookiecutter.__coverage_lc == 'codacy' %}
 <!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
 [![Code Quality][bqa1]][bqa2] -->
 <!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
-[![Coverage][badge19]][burl19] -->
+[![Coverage][badge20]][burl20] -->
 {%- endif %}
-[![Pipelines][badge20]][burl20]
+[![Pipelines][badge21]][burl21]
 
 _{{ cookiecutter.project_description }}_
 
@@ -325,7 +330,7 @@ the list of available releases
 on the [{{ cookiecutter.__scm_platform_base }} Releases][release1] page.
 
 We follow [Intended Effort Versioning][release2] specification,
-details can be found in our [`CONTRIBUTING` guide][burl18].
+details can be found in our [`CONTRIBUTING` guide][burl19].
 {%- if cookiecutter.create_docker %}
 
 ### Run as a Docker Container
@@ -444,20 +449,25 @@ This project was generated with [Galactipy][burl4].
 [badge12]: https://img.shields.io/badge/sembr-FF6441?style=for-the-badge&logo=apmterminals&logoColor=white
 [badge13]: https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json&style=for-the-badge
 [badge14]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge
-[badge15]: https://img.shields.io/badge/security-bandit-yellow?style=for-the-badge
-[badge16]: https://img.shields.io/badge/imports-isort-1674b1?style=for-the-badge&labelColor=ef8336
-[badge17]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
-[badge18]: https://img.shields.io/badge/effver-0097a7?style=for-the-badge&logo=semver
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+[badge15]: https://img.shields.io/badge/Renovate-308BE3?logo=renovate&logoColor=fff&style=for-the-badge
+{%- else %}
+[badge15]: https://img.shields.io/badge/Dependabot-025E8C?logo=dependabot&logoColor=fff&style=for-the-badge
+{%- endif %}
+[badge16]: https://img.shields.io/badge/security-bandit-yellow?style=for-the-badge
+[badge17]: https://img.shields.io/badge/imports-isort-1674b1?style=for-the-badge&labelColor=ef8336
+[badge18]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
+[badge19]: https://img.shields.io/badge/effver-0097a7?style=for-the-badge&logo=semver
 {%- if cookiecutter.__coverage_lc == 'coveralls' %}
-[badge19]: https://img.shields.io/coverallsCoverage/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=coveralls
+[badge20]: https://img.shields.io/coverallsCoverage/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=coveralls
 {%- else %}
 <!-- TODO Replace the hash `d5402a91aa7b4234bd1c19b5e86a63be` with your project ID in the "Codacy Badge" section available at https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/settings
-[badge19]: https://img.shields.io/codacy/coverage/d5402a91aa7b4234bd1c19b5e86a63be?style=for-the-badge&logo=codacy -->
+[badge20]: https://img.shields.io/codacy/coverage/d5402a91aa7b4234bd1c19b5e86a63be?style=for-the-badge&logo=codacy -->
 {%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[badge20]: https://img.shields.io/gitlab/pipeline-status/{{ cookiecutter.scm_namespace }}%2F{{ cookiecutter.repo_name }}?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
+[badge21]: https://img.shields.io/gitlab/pipeline-status/{{ cookiecutter.scm_namespace }}%2F{{ cookiecutter.repo_name }}?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
 {%- else %}
-[badge20]: https://img.shields.io/github/actions/workflow/status/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/build.yml?style=for-the-badge&logo=github
+[badge21]: https://img.shields.io/github/actions/workflow/status/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/build.yml?style=for-the-badge&logo=github
 {%- endif %}
 
 [burl1]: https://pypi.org/project/{{ cookiecutter.repo_name }}/
@@ -478,19 +488,24 @@ This project was generated with [Galactipy][burl4].
 [burl12]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#semantic-line-breaks
 [burl13]: https://python-poetry.org/
 [burl14]: {{ cookiecutter.__scm_link_url }}/blob/master/.pre-commit-config.yaml
-[burl15]: https://bandit.readthedocs.io/en/latest/
-[burl16]: https://pycqa.github.io/isort/
-[burl17]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
-[burl18]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#versioning-customs
-{%- if cookiecutter.__coverage_lc == 'coveralls' %}
-[burl19]: https://coveralls.io/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+[burl15]: {{ cookiecutter.__scm_link_url }}/blob/master/renovate.json
 {%- else %}
-[burl19]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/coverage
+[burl15]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/dependabot.yml
+{%- endif %}
+[burl16]: https://bandit.readthedocs.io/en/latest/
+[burl17]: https://pycqa.github.io/isort/
+[burl18]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
+[burl19]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#versioning-customs
+{%- if cookiecutter.__coverage_lc == 'coveralls' %}
+[burl20]: https://coveralls.io/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}
+{%- else %}
+[burl20]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/coverage
 {%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[burl20]: {{ cookiecutter.__scm_link_url }}/pipelines
+[burl21]: {{ cookiecutter.__scm_link_url }}/pipelines
 {%- else %}
-[burl20]: {{ cookiecutter.__scm_link_url }}/actions/workflows/build.yml
+[burl21]: {{ cookiecutter.__scm_link_url }}/actions/workflows/build.yml
 {%- endif %}
 
 {% if cookiecutter.licence != 'nos' -%}
