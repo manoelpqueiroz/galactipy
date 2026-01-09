@@ -1,3 +1,38 @@
+## 1.4.2 (2026-01-09)
+
+### :milky_way: Components (1 change)
+
+- [:sparkles: Implement Renovate for the template](galactipy/galactipy@f14002a6ab47f7f53766fb7d3d4648c5967e9507) ([merge request](galactipy/galactipy!164))
+
+### :ballot_box: Settings & Options (2 changes)
+
+- [:pencil: Establish dependency bot labels in template `CONTRIBUTING.md`](galactipy/galactipy@8e5cc2d04ea8c8c143a4be3064569e3be147f66b) ([merge request](galactipy/galactipy!164))
+- [:pencil: Implement CHANGELOG Gitmoji for the template](galactipy/galactipy@68c8401f109b8cd616fa82a88989a35df14828a3)
+
+### :gear: Project Internals (1 change)
+
+- [:wrench: Update post-gen hooks to remove Renovate on GitHub](galactipy/galactipy@acafc6af655abcd495cad55c0b144061142072c9) ([merge request](galactipy/galactipy!164))
+
+### :airplane_departure: Release Cycle Optimisation (3 changes)
+
+- [:construction_worker: Renovate dependency components/dependency-scanning with patch version v1.1.1](galactipy/galactipy@2b55f30922caf0bda19d4e9e7cab9f2f27de02a5) ([merge request](galactipy/galactipy!165))
+- [:wrench: Exclude template files from Renovate pre-commit hook](galactipy/galactipy@66b8f06d72f40b2dff5b991cd2c04d845f60027f) ([merge request](galactipy/galactipy!164))
+- [:wrench: Update commit trailers for Renovate bot](galactipy/galactipy@c0fe215d1eaf5d68a4878c03cd02dd9c6dd56de8)
+
+### :repeat: Design & Validation (1 change)
+
+- [:white_check_mark: Update file removal tests for Renovate](galactipy/galactipy@8f3242ab226bfba443c235cfb6f56c8c4032b79a) ([merge request](galactipy/galactipy!164))
+
+### :pouring_liquid: Nits (3 changes)
+
+- [:pencil: Update badges in template `README.md`](galactipy/galactipy@9f47cf700455503903eab7315ec0af13f9e65a37) ([merge request](galactipy/galactipy!164))
+- [:pencil: Add Renovate badge to project `README.md`](galactipy/galactipy@206ee5b71f2002069848487529540b8ee38f7fa0) ([merge request](galactipy/galactipy!164))
+- [:speech_balloon: Use custom Gitmoji for CHANGELOG updates](galactipy/galactipy@853826aaebaaa4745c419a6e95c8aa142b08f4c4)
+
+### :books: Documentation (1 change)
+
+- [:pencil: Update `README.md` with information on dependency updates](galactipy/galactipy@c269facf8550104eb4ea9fe88ab1827bdc88ef4e) ([merge request](galactipy/galactipy!164))
+
 ## 1.4.1 (2026-01-08)
 
 ### :airplane_departure: Release Cycle Optimisation (2 changes)
