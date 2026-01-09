@@ -49,7 +49,7 @@ include:
       stage: security-checks
       enable_mr_pipelines: true
       run_advanced_sast: true
-  - component: $CI_SERVER_FQDN/components/dependency-scanning/main@1.1.0
+  - component: $CI_SERVER_FQDN/components/dependency-scanning/main@1.1.1
     inputs:
       stage: security-checks
   - component: $CI_SERVER_FQDN/components/secret-detection/secret-detection@2.2.0
