@@ -832,6 +832,7 @@ with their usage:
 |     Maintenance     |  ~"maintenance-dependencies"  | Upgrades project dependencies.                                                                                    |
 |     Maintenance     |      ~"maintenance-bot"       | Work items managed automatically by a project GitLab Bot.                                                         |
 |     Maintenance     |   ~"maintenance-knowledge"    | Updates already existing information for knowledge retention and sharing.                                         |
+|     Maintenance     |    ~"maintenance-renovate"    | Issues and Merge Requests to be automatically handled by the Renovate Bot.                                        |
 |     Maintenance     | ~"maintenance-test-coverage"  | Changes being enforced due to software regression.                                                                |
 |     Maintenance     |    ~"maintenance-toolset"     | Updates or replaces current development tools functionality.                                                      |
 |         N/A         |        ~"manual-check"        | Requires manual validation to certain or all acceptance criteria.                                                 |
@@ -909,8 +910,9 @@ with their usage:
 |         N/A         |        `localization`        | Updates translation files for other languages.                                                                    |
 |     Maintenance     | `maintenance-configuration`  | Updates current development toolset syntax and options.                                                           |
 |     Maintenance     |  `maintenance-dependencies`  | Upgrades project dependencies.                                                                                    |
-|     Maintenance     |      `maintenance-bot`       | Work items managed automatically by a project GitLab Bot.                                                         |
+|     Maintenance     |      `maintenance-bot`       | Work items managed automatically by a project Bot.                                                                |
 |     Maintenance     |   `maintenance-knowledge`    | Updates already existing information for knowledge retention and sharing.                                         |
+|     Maintenance     |   `maintenance-dependabot`   | Issues and Pull Requests to be automatically handled by Dependabot.                                               |
 |     Maintenance     | `maintenance-test-coverage`  | Changes being enforced due to software regression.                                                                |
 |     Maintenance     |    `maintenance-toolset`     | Updates or replaces current development tools functionality.                                                      |
 |         N/A         |        `manual-check`        | Requires manual validation to certain or all acceptance criteria.                                                 |
