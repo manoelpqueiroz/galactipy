@@ -15,6 +15,7 @@ default_context:
   line_length: {{ cookiecutter.line_length }}
   docstring_style: "{{ cookiecutter.docstring_style }}"
   docstring_length: {{ cookiecutter.docstring_length }}
+  version_schema: "{{ cookiecutter.version_schema }}"
   commit_convention: "{{ cookiecutter.commit_convention }}"
   use_bdd: {{ cookiecutter.use_bdd }}
   coverage_service: "{{ cookiecutter.coverage_service }}"
