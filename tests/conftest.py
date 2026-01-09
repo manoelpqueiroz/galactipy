@@ -108,6 +108,7 @@ def removal_tree(tmp_path):
         tmp_path,
         ".gitlab-ci.yml",
         ".triage-policies.yml",
+        "renovate.json",
         ".dockerignore",
         "pyproject.toml",
         "file1_feature.md",
@@ -312,6 +313,7 @@ def removal_tree(tmp_path):
         "gitlab": {
             "ci": tmp_path / ".gitlab-ci.yml",
             "triage": tmp_path / ".triage-policies.yml",
+            "renovate": tmp_path / "renovate.json",
             "ux": tmp_path
             / ".gitlab"
             / "merge_request_templates"

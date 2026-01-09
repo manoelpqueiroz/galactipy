@@ -1,0 +1,242 @@
+// Renovate configuration
+// https://docs.renovatebot.com/configuration-options/
+{% raw %}{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "timezone": "America/Sao_Paulo",
+  "branchPrefix": "bot-",
+  "commitMessageAction": "Renovate",
+  "commitMessageExtra": "with {{updateType}} {{#if isPinDigest}}{{{newDigestShort}}}{{else}}version {{#if isMajor}}{{prettyNewMajor}}.0{{else}}{{prettyNewVersion}}{{/if}}{{/if}}",
+  "constraints": {
+    "python": {% endraw %}"^{{ cookiecutter.minimal_python_version }}"
+  },
+  "extends": [
+    "config:recommended",
+    ":semanticCommitsDisabled",
+    ":separateMajorReleases"
+  ],
+  "labels": [
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+    "maintenance::renovate"
+{%- else %}
+    "maintenance-renovate"
+{%- endif %}
+  ],
+  "prHourlyLimit": 5,
+  "enabledManagers": [
+    "poetry",
+{%- if cookiecutter.create_docker %}
+    "dockerfile",
+{%- endif %}
+    "gitlabci",
+    "gitlabci-include"
+  ],
+  "lockFileMaintenance": {
+    "automerge": true,
+    "branchTopic": "lock-update",
+    "commitMessagePrefix": ":pushpin:",
+    "commitMessageAction": "Update",
+    "commitMessageTopic": "`poetry.lock` contents",
+    "enabled": true,
+    "schedule": [
+      "* * * * 1"
+    ]
+  },
+  // UPDATEME with your desired rules
+  "packageRules": [
+    {
+      "automerge": true,
+      "enabled": true,
+      "addLabels": [
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+        "ci::build"
+{%- else %}
+        "ci-build"
+{%- endif %}
+      ],
+      "matchManagers": [
+        "gitlabci",
+        "gitlabci-include"
+      ],
+      "commitBody": "Changelog: ci",
+      "commitMessagePrefix": ":construction_worker:",
+      "separateMajorMinor": false,
+      "branchTopic": "gitlab-ci-components",
+      "groupName": "GitLab CI components"
+    },
+{%- if cookiecutter.create_docker %}
+    {
+      "description": "Ignore Python version-specific Docker images in CI",
+      "enabled": false,
+      "matchManagers": [
+        "gitlabci"
+      ],
+      "matchPackageNames": [
+        "registry.gitlab.com/galactipy/docker"
+      ]
+    },
+    {
+      "enabled": true,
+      "automerge": false,
+      "addLabels": [
+        "manual-check",
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+        "ci::docker"
+{%- else %}
+        "ci-docker"
+{%- endif %}
+      ],
+      "separateMajorMinor": false,
+      "matchCategories": [
+        "docker"
+      ],
+      "commitBody": "Changelog: build",
+      "commitMessagePrefix": ":hammer:"
+    },
+{%- endif %}
+    {
+      "enabled": true,
+      "matchCategories": [
+        "python"
+      ],
+      "matchUpdateTypes": [
+        "major",
+        "minor",
+        "patch",
+        "pin",
+        "digest",
+        "rollback",
+        "bump"
+      ],
+      "commitMessagePrefix": ":arrow_up:",
+      "commitMessageTopic": {% raw %}"{{depName}}"
+    },
+    {
+      "automerge": true,
+      "description": "Group Poetry plugins",
+      "groupName": "Poetry plugins",
+      "commitBody": "Changelog: devdeps",
+      "matchPackageNames": [
+        "/^poetry-plugin-/",
+        "/^poetry-dynamic-/",
+        "poetry-bumpversion"
+      ]
+    },
+    {
+      "description": "Group linting and formatting tools",
+      "groupName": "linting tools",
+      "commitBody": "Changelog: devdeps",
+      "matchPackageNames": [
+        "ruff",
+        "mypy",
+        "mypy-extensions"
+      ]
+    },
+    {
+      "description": "Group testing tools",
+      "groupName": "testing tools",
+      "commitBody": "Changelog: devdeps",
+      "matchPackageNames": [
+        "/^pytest/",
+        "coverage"
+      ]
+    },
+    {
+      "description": "Group remaining dev tools",
+      "groupName": "developer productivity tools",
+      "commitBody": "Changelog: devdeps",
+      "branchTopic": "devx-tools",
+      "matchPackageNames": [
+        "bandit",
+        "pre-commit",
+        "invoke"
+      ]
+    },
+    {
+      "description": "Group core libraries",
+      "groupName": "core libraries",
+      "branchTopic": "core-libraries",
+      "commitBody": "Changelog: dependencies",
+      "matchPackageNames": [
+{%- endraw %}{% if cookiecutter.app_type != 'bare_repo' %}
+{%- if cookiecutter.app_type == 'tui' or cookiecutter.app_type == 'hybrid' %}
+        "textual",
+        "art",
+{%- endif %}
+        "typer",
+        "rich",
+        "orbittings",
+        "platformdirs",
+        "nebulog"
+      ]
+    },
+    // FYI Click should not be updated, as versions 8.2+ break Typer's behaviour
+    {
+      "description": "Ignore Click updates",
+      "enabled": false,
+      "matchPackageNames": [
+        "click"
+{%- else %}
+        // UPDATEME with your core dependencies once defined
+{%- endif %}
+      ]
+    },
+{%- if cookiecutter.__debug %}
+    {
+      "description": "Group docs dependencies",
+      "groupName": "documentation dependencies",
+      "branchTopic": "docs-deps",
+      "commitBody": "Changelog: devdeps",
+      "matchDepTypes": [
+        "docs"
+      ]
+    },
+{%- endif %}
+    {
+      "automerge": false,
+      "addLabels": [
+        "manual-check"
+      ],
+      "description": "More cautious with production dependencies",
+      "matchDepTypes": [
+        "dependencies"
+      ]
+    },
+    {
+      "automerge": true,
+      "addLabels": [
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+        "internals::toolset"
+{%- else %}
+        "internals-toolset"
+{%- endif %}
+      ],
+      "description": "Automerge minor and patch dev dependencies",
+      "matchDepTypes": [
+        "dev",
+        "docs"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ]
+    },
+    {
+      "automerge": false,
+      "addLabels": [
+        "manual-check"
+      ],
+      "description": "Require approval for major updates",
+      "matchCategories": [
+        "python"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "commitMessageAction": {% raw %}"Renew major version{{#if isGroup}}s{{/if}} for",
+      "commitMessageExtra": "{{#if isGroup}}{{else}}({{prettyNewMajor}}.0){{/if}}"
+    }
+  ],
+  "registryAliases": {
+    "$CI_SERVER_FQDN": "gitlab.com"
+  }
+}{% endraw %}

@@ -72,6 +72,7 @@ class TestServiceRemovals:
         gitlab_files = removal_tree["gitlab"]
         ci_file = gitlab_files["ci"]
         triage_file = gitlab_files["triage"]
+        renovate_file = gitlab_files["renovate"]
 
         config = ProjectFlags(True, False, False, False, "cli")
 
@@ -79,6 +80,7 @@ class TestServiceRemovals:
 
         assert not ci_file.exists()
         assert not triage_file.exists()
+        assert not renovate_file.exists()
 
         assert removal_tree["github"]["test_workflow"].exists()
         assert removal_tree["docker"]["github_workflow"].exists()
