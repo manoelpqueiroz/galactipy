@@ -194,6 +194,7 @@ def _get_files_to_delete(
     gitlab_specific_files = [
         directory / ".gitlab-ci.yml",
         directory / ".triage-policies.yml",
+        directory / "renovate.json",
     ]
 
     if not flags.remove_cli and not flags.remove_bdd:
