@@ -73,8 +73,16 @@ include:
       stage: maintenance
 
   - component: $CI_SERVER_FQDN/galactipy/components/versioning/vars@0.7.0
+{%- if cookiecutter.__schema_group != 'semver-like' %}
+    inputs:
+      schema: {{ cookiecutter.__schema_group }}
+{%- endif %}
   - component: $CI_SERVER_FQDN/galactipy/components/versioning/release@0.7.0
     inputs:
+{%- if cookiecutter.__schema_group != 'semver-like' %}
+    inputs:
+      schema: {{ cookiecutter.__schema_group }}
+{%- endif %}
       pat-envvar: ${{ bot_envvar }}
       pre-release-title: $GR_RELEASE_STAGE_TITLE $GR_NAKED_VERSION
       pre-release-fallback: This is a $GR_RELEASE_LABEL version of $CI_PROJECT_NAME. **Do not use it in production environments.**
@@ -116,10 +124,22 @@ variables:
   REPO_NAME: {{ cookiecutter.repo_name }}
   PACKAGE_NAME: {{ cookiecutter.package_name }}
 
-  # Advanced regular expressions
-  EFFVER_RELEASE_VERSION: /^v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
-  EFFVER_ANY_VERSION: /^v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*))?(?:\+([0-9a-z-]+(?:\.[0-9a-z-]+)*))?$/i
+{% if cookiecutter.__schema_group == 'semver-like' -%}
+  # Release regular expressions
+  RELEASE_REGEX: /^v?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)$/i
+  ANY_VERSION_REGEX: /^v?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(?:\+[0-9a-z-]+(?:\.[0-9a-z-]+)*)?$/i
 
+{%- elif cookiecutter.__schema_group == 'calver' -%}
+  # Release regular expressions
+  RELEASE_REGEX: /^v?(?:\d{2}|\d{4,5})\.\d{1,2}(?:\.\d{1,2})?$/i
+  ANY_VERSION_REGEX: /^v?(?:\d{2}|\d{4,5})\.\d{1,2}(?:\.\d{1,2})?(?:-(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(?:\+[0-9a-z-]+(?:\.[0-9a-z-]+)*)?$/i
+
+{% elif cookiecutter.__schema_group == 'solover' -%}
+  # Release regular expressions
+  RELEASE_REGEX: /^v?[1-9]\d*$/i
+  ANY_VERSION_REGEX: /^v?[1-9]\d*(?:-(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(?:\+[0-9a-z-]+(?:\.[0-9a-z-]+)*)?$/i
+
+{% endif -%}
   # Value substitution
   PACKAGE_BUILD_ARTIFACTS: ${REPO_NAME}_build_${CI_COMMIT_SHORT_SHA}_${CI_PIPELINE_SOURCE}
   STAGE_ARTIFACTS: ${REPO_NAME}_${CI_JOB_STAGE}_${CI_COMMIT_SHORT_SHA}_${CI_PIPELINE_SOURCE}
@@ -212,7 +232,7 @@ workflow:
 .publish_rules:
   extends: .install_project
   rules:
-    - if: $CI_COMMIT_TAG =~ $EFFVER_ANY_VERSION
+    - if: $CI_COMMIT_TAG =~ $ANY_VERSION_REGEX
     - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft\:.*/i
       changes:
         paths: *codechecks
@@ -312,7 +332,7 @@ compile-provenance:
     PROVENANCE_METADATA_RENAME: ${REPO_NAME}-${GR_PYPI_VERSION}.slsa-l1-provenance.json
   image: registry.gitlab.com/galactipy/docker/pipx:alpine
   rules:
-    - if: $CI_COMMIT_TAG =~ $EFFVER_ANY_VERSION
+    - if: $CI_COMMIT_TAG =~ $ANY_VERSION_REGEX
   id_tokens:
     SIGSTORE_ID_TOKEN:
       aud: sigstore
@@ -336,7 +356,7 @@ register-provenance:
   stage: publish
   image: badouralix/curl-jq:latest
   rules:
-    - if: $CI_COMMIT_TAG =~ $EFFVER_ANY_VERSION
+    - if: $CI_COMMIT_TAG =~ $ANY_VERSION_REGEX
   extends: .upload_to_generic_package
   script:
     - upload_from_dir provenances ./slsa json
@@ -361,7 +381,7 @@ publish-prod:
   stage: publish
   image: registry.gitlab.com/galactipy/docker/pipx:alpine
   rules:
-    - if: $CI_COMMIT_TAG =~ $EFFVER_RELEASE_VERSION
+    - if: $CI_COMMIT_TAG =~ $RELEASE_REGEX
   needs:
     - compile-provenance
     - job: publish-test
@@ -380,7 +400,7 @@ publish-registry:
   variables:
     REGISTRY: $CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/pypi
   rules:
-    - if: $CI_COMMIT_TAG =~ $EFFVER_ANY_VERSION
+    - if: $CI_COMMIT_TAG =~ $ANY_VERSION_REGEX
   before_script:
     - !reference [.install_project, before_script]
     - apt-get update && apt-get install -y --no-install-recommends jq
