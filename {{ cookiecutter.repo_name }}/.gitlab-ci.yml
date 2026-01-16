@@ -72,12 +72,12 @@ include:
       api_token: ${{ bot_envvar }}
       stage: maintenance
 
-  - component: $CI_SERVER_FQDN/galactipy/components/versioning/vars@0.5.0
-  - component: $CI_SERVER_FQDN/galactipy/components/versioning/release@0.5.0
+  - component: $CI_SERVER_FQDN/galactipy/components/versioning/vars@0.7.0
+  - component: $CI_SERVER_FQDN/galactipy/components/versioning/release@0.7.0
     inputs:
       pat-envvar: ${{ bot_envvar }}
-      pre-release-title: $QF_RELEASE_STAGE_TITLE $QF_SEMVER_VERSION
-      pre-release-fallback: This is a $QF_RELEASE_LABEL version of $CI_PROJECT_NAME. **Do not use it in production environments.**
+      pre-release-title: $GR_RELEASE_STAGE_TITLE $GR_NAKED_VERSION
+      pre-release-fallback: This is a $GR_RELEASE_LABEL version of $CI_PROJECT_NAME. **Do not use it in production environments.**
 {%- if cookiecutter.commit_convention == 'gitmoji' %}
       changelog-commit-message: ':bookmark_tabs: Update CHANGELOG.md'
 {%- elif cookiecutter.commit_convention == 'conventional' %}
@@ -87,7 +87,7 @@ include:
 {%- endif %}
       links:
         - name: PyPI
-          url: https://pypi.org/project/$REPO_NAME/$QF_PYPI_VERSION/
+          url: https://pypi.org/project/$REPO_NAME/$GR_PYPI_VERSION/
           link_type: package
         - name: GitLab Registry
           url: $REGISTRY_PACKAGE_PAGE
@@ -98,7 +98,7 @@ include:
           link_type: image
 {%- endif %}
         - name: Build metadata (json)
-          url: $PROVENANCE_PACKAGE_API_URL/$REPO_NAME-$QF_PYPI_VERSION.slsa-l1-provenance.json
+          url: $PROVENANCE_PACKAGE_API_URL/$REPO_NAME-$GR_PYPI_VERSION.slsa-l1-provenance.json
         - name: Wheel attestation (json)
           url: $PROVENANCE_PACKAGE_API_URL/$WHEEL_BINARY.publish.attestation
         - name: Wheel provenance (json)
@@ -125,10 +125,10 @@ variables:
   STAGE_ARTIFACTS: ${REPO_NAME}_${CI_JOB_STAGE}_${CI_COMMIT_SHORT_SHA}_${CI_PIPELINE_SOURCE}
 
   PROVENANCE_METADATA: $PACKAGE_BUILD_ARTIFACTS-metadata.json
-  PROVENANCE_PACKAGE_API_URL: $CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/provenances/$QF_PYPI_VERSION
+  PROVENANCE_PACKAGE_API_URL: $CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/provenances/$GR_PYPI_VERSION
 
-  WHEEL_BINARY: ${PACKAGE_NAME}-${QF_PYPI_VERSION}-py3-none-any.whl
-  SDIST_BINARY: ${PACKAGE_NAME}-${QF_PYPI_VERSION}.tar.gz
+  WHEEL_BINARY: ${PACKAGE_NAME}-${GR_PYPI_VERSION}-py3-none-any.whl
+  SDIST_BINARY: ${PACKAGE_NAME}-${GR_PYPI_VERSION}.tar.gz
 
 default:
   image: registry.gitlab.com/galactipy/docker:{{ cookiecutter.minimal_python_version }}
@@ -235,7 +235,7 @@ workflow:
               --silent \
               --write-out "%{http_code}" \
               --upload-file "$file" \
-              "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/$1/$QF_PYPI_VERSION/$filename")
+              "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/$1/$GR_PYPI_VERSION/$filename")
             if [ "$RESPONSE" -ge 200 ] && [ "$RESPONSE" -lt 300 ]; then
               echo -e "\e[32m✓\e[0m Uploaded $filename"
             else
@@ -309,7 +309,7 @@ build-package:
 compile-provenance:
   stage: entrust
   variables:
-    PROVENANCE_METADATA_RENAME: ${REPO_NAME}-${QF_PYPI_VERSION}.slsa-l1-provenance.json
+    PROVENANCE_METADATA_RENAME: ${REPO_NAME}-${GR_PYPI_VERSION}.slsa-l1-provenance.json
   image: registry.gitlab.com/galactipy/docker/pipx:alpine
   rules:
     - if: $CI_COMMIT_TAG =~ $EFFVER_ANY_VERSION
@@ -395,7 +395,7 @@ publish-registry:
         "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages?package_type=pypi&sort=desc"
     - |
       PACKAGE_URL=$(jq -r \
-        --arg version "$QF_PYPI_VERSION" \
+        --arg version "$GR_PYPI_VERSION" \
         'map(select(.version == $version))[0]._links.web_path' \
         package-list.json)
     - touch package.env
