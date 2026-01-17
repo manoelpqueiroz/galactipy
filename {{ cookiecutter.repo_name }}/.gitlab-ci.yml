@@ -152,10 +152,6 @@ variables:
 
 default:
   image: registry.gitlab.com/galactipy/docker:{{ cookiecutter.minimal_python_version }}
-  cache:
-    key: venv-$CI_COMMIT_SHORT_SHA
-    paths:
-      - $CI_PROJECT_DIR/.cache/pypoetry
 
 # General rules for triggering pipelines
 workflow:
@@ -205,6 +201,10 @@ workflow:
 .install_project:
   before_script:
     - invoke install --ignore-pty
+  cache:
+    key: venv-$CI_COMMIT_SHORT_SHA
+    paths:
+      - /root/.cache/pypoetry
 
 .test_setup:
   extends: .install_project
