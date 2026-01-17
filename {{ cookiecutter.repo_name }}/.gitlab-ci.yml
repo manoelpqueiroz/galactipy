@@ -424,3 +424,33 @@ publish-registry:
   artifacts:
     reports:
       dotenv: package.env
+{%- if cookiecutter.version_schema == 'calver-auto' %}
+
+# UPDATEME with your preferred release schedule, see available environment variables at:
+# https://gitlab.com/galactipy/components/versioning/-/blob/master/README.md#outputs
+# TODO Create a scheduled pipeline to enable this job:
+# {{ cookiecutter.__scm_link_url }}/pipeline_schedules/new
+push-weekly-release-tag:
+  stage: maintenance
+  variables:
+    TAG_MESSAGE: >-
+      This is the scheduled weekly release
+      for $PROJECT_NAME.
+      Please refer below to
+      the list of changes
+      since the last release.
+  image: badouralix/curl-jq:latest
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'schedule'
+  script:
+    - |
+      curl --request POST --fail-with-body \
+        --header "PRIVATE-TOKEN: ${{ bot_envvar }}" \
+        --output tag-api-output.json
+        "$CI_API_V4_URL/projects/$CI_PROJECT_ID/tags?ref=$CI_COMMIT_SHA&tag_name=v${GR_WEEK_CALVER}&message=$TAG_MESSAGE"
+  artifacts:
+    name: $STAGE_ARTIFACTS
+    when: always
+    paths:
+      - tag-api-output.json
+{%- endif %}
