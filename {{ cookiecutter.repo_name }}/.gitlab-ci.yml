@@ -76,6 +76,9 @@ include:
 {%- if cookiecutter.__schema_group != 'semver-like' %}
     inputs:
       schema: {{ cookiecutter.__schema_group }}
+{%- if cookiecutter.__schema_group in ['calver', 'trunkver'] %}
+      use-hec: true
+{%- endif %}
 {%- endif %}
   - component: $CI_SERVER_FQDN/galactipy/components/versioning/release@0.7.0
     inputs:
