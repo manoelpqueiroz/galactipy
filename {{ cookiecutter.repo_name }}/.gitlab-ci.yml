@@ -295,10 +295,10 @@ workflow:
       }
 
 # Jobs
-{%- if cookiecutter.version_schema != 'trunkver' %}
-{%- set list_python_version = cookiecutter._python_version_list_mapping[cookiecutter.minimal_python_version] %}
-{%- set supported_python_versions = cookiecutter._python_version_support_mapping[cookiecutter.minimal_python_version] %}
-{%- for version in supported_python_versions %}
+{% if cookiecutter.version_schema != 'trunkver' -%}
+{% set list_python_version = cookiecutter._python_version_list_mapping[cookiecutter.minimal_python_version] -%}
+{% set supported_python_versions = cookiecutter._python_version_support_mapping[cookiecutter.minimal_python_version] -%}
+{% for version in supported_python_versions -%}
 test-py{{ version[0] }}{{ version[1] }}:
   stage: test
   image: registry.gitlab.com/galactipy/docker:{{ version[0] }}.{{ version[1] }}
@@ -340,8 +340,9 @@ test-py{{ version[0] }}{{ version[1] }}:
     - sh ./codacy.sh report -r coverage.xml
 {%- endif %}
 {%- endif %}
-{% endfor %}
-{%- endif %}
+
+{% endfor -%}
+{% endif -%}
 build-package:
   stage: build
   variables:
