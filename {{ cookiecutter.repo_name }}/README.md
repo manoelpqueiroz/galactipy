@@ -69,7 +69,7 @@
 {%- endif %}
 [![Pipelines][badge21]][burl21]
 
-_{{ cookiecutter.project_description }}_
+_{{ cookiecutter.project_description }}._
 
 {% if cookiecutter.app_type != 'bare_repo' -%}
 ---
@@ -402,10 +402,11 @@ in your paper.
 
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 ## :women_with_bunny_ears: Similar Projects
-{%- else -%}
-## :dancing_women: Similar Projects
-{%- endif %}
 
+{% else -%}
+## :dancing_women: Similar Projects
+
+{% endif -%}
 <!-- UPDATEME with projects that implement similar functionality as yours
 
   Provide information on which cases those projects might be more suitable than yours for users
