@@ -27,12 +27,47 @@ repos:
         args: [--assume-in-merge]
 
   # Coding standards hooks
+{%- if cookiecutter.version_schema == 'trunkver' %}
+  - repo: local
+    hooks:
+      - id: pytest
+        name: 'Run Pytest suite [local]'
+        entry: pytest
+        args: [-c, pyproject.toml, tests]
+        language: unsupported
+        types: [python]
+        files: ^({{ cookiecutter.package_name }}|tests)/
+        pass_filenames: false
+
+  - repo: local
+    hooks:
+      - id: coverage
+        name: 'Generate coverage report [local]'
+        entry: coverage
+        args: [xml]
+        language: unsupported
+        types: [python]
+        files: ^({{ cookiecutter.package_name }}|tests)/
+        pass_filenames: false
+
+  - repo: local
+    hooks:
+      - id: bandit
+        name: 'Bandit security check [local]'
+        entry: bandit
+        args: [-ll, -c, pyproject.toml, --recursive, {{ cookiecutter.package_name }}]
+        language: unsupported
+        types: [python]
+        pass_filenames: false
+        always_run: true
+{% endif %}
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.18.2
     hooks:
       - id: mypy
         args: [--config-file, pyproject.toml]
         name: Mypy static type checking
+        additional_dependencies: [lxml]
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.14.4
