@@ -6,8 +6,16 @@ name: 👨‍🔬 TestPyPI Publishing
 on:
   push:
     tags:
+{%- endraw %}{% if cookiecutter.__schema_group == 'semver-like' %}
       - 'v?[0-9]+.[0-9]+.[0-9]+-*'
       - 'v?[0-9]+.[0-9]+.[0-9]+'
+{%- elif cookiecutter.__schema_group == 'calver' %}
+      - 'v?1?2?0?[0-9][0-9].[0-9]+.?0?[0-9]?[0-9]?-*'
+      - 'v?1?2?0?[0-9][0-9].[0-9]+.?0?[0-9]?[0-9]?'
+{%- elif cookiecutter.__schema_group == 'solover' %}
+      - 'v?[0-9]+-*'
+      - 'v?[0-9]+'
+{%- endif %}{% raw %}
 
 jobs:
   build:
