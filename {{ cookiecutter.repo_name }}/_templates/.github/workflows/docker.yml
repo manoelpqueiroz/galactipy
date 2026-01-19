@@ -1,6 +1,7 @@
 # Check GitHub Actions documentation at:
 # https://github.com/marketplace/actions/build-and-push-docker-images
-{% raw %}name: 🐳 Publish to Docker Hub
+{%- raw %}
+name: 🐳 Publish to Docker Hub
 
 on:
   workflow_dispatch:
@@ -19,8 +20,7 @@ jobs:
         uses: docker/metadata-action@v5
         id: meta
         with:
-          images: |
-            {% endraw %}{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}{% raw %}
+          images: {% endraw %}{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}{% raw %}
           tags: |
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
@@ -42,6 +42,7 @@ jobs:
       - name: 🛫 Build and Push Image
         uses: docker/build-push-action@v6
         with:
-          file: "docker/Dockerfile"
+          file: docker/Dockerfile
           push: true
-          tags: ${{ steps.meta.outputs.tags }}{% endraw %}
+          tags: ${{ steps.meta.outputs.tags }}
+{%- endraw %}

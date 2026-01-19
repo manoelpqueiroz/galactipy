@@ -1,7 +1,9 @@
-{%- set supported_python_versions = cookiecutter._python_version_support_mapping[cookiecutter.minimal_python_version] %}
+{% set supported_python_versions = cookiecutter._python_version_support_mapping[cookiecutter.minimal_python_version] -%}
 # Check GitHub Actions documentation at:
 # https://github.com/marketplace/actions/pypi-publish
-{% raw %}# UPDATEME to suit your project's workflow
+
+# UPDATEME to suit your project's workflow
+{%- raw %}
 name: 🧪 Test
 
 on: pull_request
@@ -22,10 +24,10 @@ jobs:
     uses: {% endraw %}{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}{% raw %}/.github/workflows/test_template.yml@master
     with:
       python-version: "{% endraw %}{{ cookiecutter.minimal_python_version }}{% raw %}"
-      upload-coverage: true{% endraw %}
-{%- if cookiecutter.__coverage_lc == 'codacy' %}{% raw %}
+      upload-coverage: true
+{%- endraw %}{% if cookiecutter.__coverage_lc == 'codacy' %}{% raw %}
     secrets:
       # TODO Set a token for your repository (https://docs.codacy.com/codacy-api/api-tokens/#repository-api-tokens)
       # TODO Store the token as the CODACY_PROJECT_TOKEN secret in the repository configuration
-      codacy-token: ${{ secrets.CODACY_PROJECT_TOKEN }}{% endraw %}
-{%- endif %}
+      codacy-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+{%- endraw %}{% endif %}

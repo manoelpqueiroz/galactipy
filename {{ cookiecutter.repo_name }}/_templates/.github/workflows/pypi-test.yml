@@ -1,6 +1,7 @@
 # Check GitHub Actions documentation at:
 # https://github.com/marketplace/actions/pypi-publish
-{% raw %}name: 👨‍🔬 TestPyPI Publishing
+{%- raw %}
+name: 👨‍🔬 TestPyPI Publishing
 
 on:
   push:
@@ -56,4 +57,5 @@ jobs:
           # TODO Set the TESTPYPI_TOKEN variable for https://test.pypi.org in the development environment
           password: ${{ secrets.TESTPYPI_TOKEN }}
           repository-url: https://test.pypi.org/legacy/
-          attestations: false{% endraw %}
+          attestations: false
+{%- endraw %}

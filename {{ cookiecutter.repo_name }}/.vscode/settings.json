@@ -1,14 +1,15 @@
-{% raw %}{
+{% raw -%}
+{
     "files.exclude": {
         "**/__pycache__": true,
         "**/.ipynb_checkpoints": true
     },
     "editor.lineNumbers": "relative",
-    {%- endraw %}{% if cookiecutter.docstring_length == cookiecutter.line_length %}
+{%- endraw %}{% if cookiecutter.docstring_length == cookiecutter.line_length %}
     "editor.rulers": [{{ cookiecutter.line_length }}],
-    {%- else %}
+{%- else %}
     "editor.rulers": [{{ cookiecutter.docstring_length }}, {{ cookiecutter.line_length }}],
-    {%- endif %}{% raw %}
+{%- endif %}{% raw %}
     "editor.scrollBeyondLastLine": false,
     "editor.cursorStyle": "underline",
     "terminal.integrated.persistentSessionReviveProcess": "never",
@@ -130,7 +131,7 @@
     "todo-tree.general.showIconsInsteadOfTagsInStatusBar": true,
     "todo-tree.filtering.excludeGlobs": [
         "**/node_modules/*/**", // Default for todo-tree
-{%- endraw %}{%- if cookiecutter.__scm_platform_lc == 'github' %}
+{%- endraw %}{% if cookiecutter.__scm_platform_lc == 'github' %}
         "**/.github/PULL_REQUEST_TEMPLATE.md"
 {%- else %}
         "**/.gitlab/merge_request_templates/*/**"

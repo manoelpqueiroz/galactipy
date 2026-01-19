@@ -127,7 +127,8 @@ poetry-plugin-bundle = "^1.5.0"
 # https://dunamai.readthedocs.io/en/latest/
 enable = true
 vcs = "git"
-{% raw %}format-jinja = """
+{%- raw %}
+format-jinja = """
   {%- set revision_value = revision or 0 -%}
   {%- if distance == 0 -%}
     {%- if stage is none -%}
@@ -147,7 +148,8 @@ vcs = "git"
       {{ serialize_pep440(base, stage, revised_distance) }}
     {%- endif -%}
   {%- endif -%}
-"""{% endraw %}
+"""
+{%- endraw %}
 
 
 {% if cookiecutter.commit_convention == 'conventional' -%}

@@ -1,6 +1,7 @@
 # Check GitHub Actions documentation at:
 # https://github.com/marketplace/actions/pypi-publish
-{% raw %}name: 🔖 Publish to PyPI
+{%- raw %}
+name: 🔖 Publish to PyPI
 
 on:
   workflow_dispatch:

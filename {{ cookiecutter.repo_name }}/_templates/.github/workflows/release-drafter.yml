@@ -1,6 +1,7 @@
 # Check GitHub Actions documentation at:
 # https://github.com/marketplace/actions/pypi-publish
-{% raw %}name: 📜 Release Drafter
+{%- raw %}
+name: 📜 Release Drafter
 
 on:
   push:
@@ -16,4 +17,5 @@ jobs:
       - uses: release-drafter/release-drafter@v6.2.0
         env:
           # TODO Set up token for Release Drafter
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}{% endraw %}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+{%- endraw %}

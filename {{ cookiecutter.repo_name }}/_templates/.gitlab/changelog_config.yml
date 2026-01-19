@@ -1,4 +1,5 @@
-{% raw %}---
+{% raw -%}
+---
 # Settings for generating changelogs using the GitLab API. See
 # https://docs.gitlab.com/ee/api/repositories.html#generate-changelog-data for
 # more information.
@@ -292,4 +293,5 @@ template: |
   {% end %}
   {% else %}
   No changes detailed for this release.
-  {% end %}{% endraw %}
+  {% end %}
+{%- endraw %}
