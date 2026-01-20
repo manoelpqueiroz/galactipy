@@ -6,7 +6,24 @@
 {%- raw %}
 name: 🧪 Test
 
-on: pull_request
+on:
+  - pull_request:
+      paths:
+{%- endraw %}
+        - {{ cookiecutter.package_name }}/**
+        - tests/**
+{% if cookiecutter.create_docker %}
+        - docker/**
+        - .dockerignore
+{%- endif %}
+{%- raw %}
+        - pyproject.toml
+        - tasks.py
+        - .github/workflows/**
+        - .github/*.yml
+        - .gitignore
+  - push:
+      branches: [master]
 
 jobs:
   test-only:

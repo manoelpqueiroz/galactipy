@@ -16,6 +16,14 @@ on:
     branches:
       - master
       - release-*
+    paths:
+      - {{ cookiecutter.package_name }}/**
+      - tests/**
+{% if cookiecutter.create_docker %}
+      - docker/**
+      - .dockerignore
+{%- endif %}
+      - .gitignore
 {%- endif %}{% raw %}
 
 jobs:
