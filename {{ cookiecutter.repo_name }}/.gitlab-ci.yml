@@ -28,14 +28,61 @@ stages:
 {%- endif %}
   - maintenance
 
+# General rules for triggering pipelines
+workflow:
+  rules:
+{%- if cookiecutter.commit_convention == 'gitmoji' %}
+    - if: $CI_COMMIT_TITLE =~ /^(\:construction|WIP)\:/i
+{%- elif cookiecutter.commit_convention == 'conventional' %}
+    - if: $CI_COMMIT_TITLE =~ /^WIP(\([^)]*\))?!?\:/i
+{%- else %}
+    - if: $CI_COMMIT_TITLE =~ /^🚧\sWIP(\([^)]*\))?!?\:/i
+{%- endif %}
+      when: never
+    - if: $CI_COMMIT_BRANCH =~ /^(test|WIP).*/i
+      when: never
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+{%- if cookiecutter.version_schema != 'trunkver' %}
+    - if: $CI_COMMIT_TAG
+{%- endif %}
+    - if: $CI_COMMIT_BRANCH
+
+# Anchors for common file groupings for rule refinement
+.codechecks: &codechecks
+  - {{ cookiecutter.package_name }}/**/*
+  - tests/**/*
+{%- if cookiecutter.create_docker %}
+  - docker/**/*
+  - .dockerignore
+{%- endif %}
+  - .gitignore
+
+.filechecks: &filechecks
+  - {{ cookiecutter.package_name }}/**/*
+  - tests/**/*
+{%- if cookiecutter.create_docker %}
+  - docker/**/*
+  - .dockerignore
+{%- endif %}
+  - pyproject.toml
+  - .gitlab-ci.yml
+  - .gitlab/components/**/*
+{%- if cookiecutter.version_schema != 'trunkver' %}
+  - .triage-policies.yml
+  - tasks.py
+{%- endif %}
+  - .gitignore
+
 # TODO Set up a bot for automated repository actions and components
 # 1. Create a Project Access Token at {{ cookiecutter.__scm_link_url }}/settings/access_tokens
 # 2. Ensure token has "Maintainer" role and "api" scope
 # 3. Set the {{ bot_envvar }} variable in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
 # 4. Ensure variable has at least "Masked" option flagged and "Protect variable" unchecked
 include:
+  # Local components
   - local: /.gitlab/components/docker.yml
 
+  # Official GitLab components
   - component: $CI_SERVER_FQDN/components/sast/sast@3.2.0
     inputs:
       stage: security-checks
@@ -78,6 +125,7 @@ include:
       api_token: ${{ bot_envvar }}
       stage: maintenance
 
+  # Galactipy components
   - component: $CI_SERVER_FQDN/galactipy/components/versioning/vars@0.7.0
 {%- if cookiecutter.__schema_group != 'semver-like' %}
     inputs:
@@ -134,81 +182,37 @@ variables:
   PROJECT_NAME: {{ cookiecutter.project_name }}
   REPO_NAME: {{ cookiecutter.repo_name }}
   PACKAGE_NAME: {{ cookiecutter.package_name }}
+{%- if cookiecutter.__schema_group == 'semver-like' %}
 
-{% if cookiecutter.__schema_group == 'semver-like' -%}
   # Release regular expressions
   RELEASE_REGEX: /^v?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)$/i
   ANY_VERSION_REGEX: /^v?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(?:\+[0-9a-z-]+(?:\.[0-9a-z-]+)*)?$/i
+{%- elif cookiecutter.__schema_group == 'calver' %}
 
-{%- elif cookiecutter.__schema_group == 'calver' -%}
   # Release regular expressions
   RELEASE_REGEX: /^v?(?:\d{2}|\d{4,5})\.\d{1,2}(?:\.\d{1,2})?$/i
   ANY_VERSION_REGEX: /^v?(?:\d{2}|\d{4,5})\.\d{1,2}(?:\.\d{1,2})?(?:-(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(?:\+[0-9a-z-]+(?:\.[0-9a-z-]+)*)?$/i
+{%- elif cookiecutter.__schema_group == 'solover' %}
 
-{% elif cookiecutter.__schema_group == 'solover' -%}
   # Release regular expressions
   RELEASE_REGEX: /^v?[1-9]\d*$/i
   ANY_VERSION_REGEX: /^v?[1-9]\d*(?:-(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(?:\+[0-9a-z-]+(?:\.[0-9a-z-]+)*)?$/i
+{%- endif %}
 
-{% endif -%}
   # Value substitution
-  PACKAGE_BUILD_ARTIFACTS: ${REPO_NAME}_build_${CI_COMMIT_SHORT_SHA}_${CI_PIPELINE_SOURCE}
-  STAGE_ARTIFACTS: ${REPO_NAME}_${CI_JOB_STAGE}_${CI_COMMIT_SHORT_SHA}_${CI_PIPELINE_SOURCE}
+  PACKAGE_BUILD_ARTIFACTS: $REPO_NAME-build-$CI_PIPELINE_ID
+  STAGE_ARTIFACTS: $REPO_NAME-$CI_JOB_STAGE-$CI_PIPELINE_ID
 
   PROVENANCE_METADATA: $PACKAGE_BUILD_ARTIFACTS-metadata.json
   PROVENANCE_PACKAGE_API_URL: $CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/provenances/$GR_PYPI_VERSION
 
-  WHEEL_BINARY: ${PACKAGE_NAME}-${GR_PYPI_VERSION}-py3-none-any.whl
-  SDIST_BINARY: ${PACKAGE_NAME}-${GR_PYPI_VERSION}.tar.gz
+  WHEEL_BINARY: $PACKAGE_NAME-$GR_PYPI_VERSION-py3-none-any.whl
+  SDIST_BINARY: $PACKAGE_NAME-$GR_PYPI_VERSION.tar.gz
 
 default:
   image: registry.gitlab.com/galactipy/docker:{{ cookiecutter.minimal_python_version }}
 
-# General rules for triggering pipelines
-workflow:
-  rules:
-{%- if cookiecutter.commit_convention == 'gitmoji' %}
-    - if: $CI_COMMIT_TITLE =~ /^(\:construction|WIP)\:/i
-{%- elif cookiecutter.commit_convention == 'conventional' %}
-    - if: $CI_COMMIT_TITLE =~ /^WIP(\([^)]*\))?!?\:/i
-{%- else %}
-    - if: $CI_COMMIT_TITLE =~ /^🚧\sWIP(\([^)]*\))?!?\:/i
-{%- endif %}
-      when: never
-    - if: $CI_COMMIT_BRANCH =~ /^(test|WIP).*/i
-      when: never
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-    - if: $CI_COMMIT_TAG
-    - if: $CI_COMMIT_BRANCH
-
-# Anchors for common commands and file groups
-.codechecks: &codechecks
-  - {{ cookiecutter.package_name }}/**/*
-  - tests/**/*
-{%- if cookiecutter.create_docker %}
-  - docker/**/*
-  - .dockerignore
-{%- endif %}
-  - .gitignore
-
-.filechecks: &filechecks
-  - {{ cookiecutter.package_name }}/**/*
-  - tests/**/*
-{%- if cookiecutter.create_docker %}
-  - docker/**/*
-  - .dockerignore
-{%- endif %}
-  - pyproject.toml
-  - tasks.py
-  - .gitlab-ci.yml
-  - .gitlab/components/**/*
-  - .triage-policies.yml
-  - .gitignore
-{%- if cookiecutter.version_schema != 'trunkver' %}
-
-.test_scripts: &test_scripts
-  - invoke sweep
-
+{% if cookiecutter.version_schema != 'trunkver' -%}
 # Reusable configuration jobs
 .install_project:
   before_script:
@@ -221,9 +225,9 @@ workflow:
 .test_setup:
   extends: .install_project
   rules:
-    - if: $CI_COMMIT_TAG
-      when: never
     - if: $CI_PIPELINE_SOURCE == 'schedule'
+      when: never
+    - if: $CI_COMMIT_TAG
       when: never
     - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE != 'merge_request_event'
       changes:
@@ -238,8 +242,6 @@ workflow:
       changes:
         paths: *filechecks
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-  before_script:
-    - invoke install --ignore-pty
 
 .publish_setup:
   extends: .install_project
@@ -252,13 +254,19 @@ workflow:
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
       changes:
         paths: *codechecks
-{%- else %}
 
+{% else -%}
 # Reusable configuration jobs
 .publish_rules:
   rules:
-    - changes:
+    - if: $CI_PIPELINE_SOURCE == 'schedule'
+      when: never
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      changes:
         paths: *codechecks
+    - if: $CI_COMMIT_BRANCH =~ /^release-/i
+      changes:
+        paths: *filechecks
 
 .publish_setup:
   extends: .publish_rules
@@ -268,8 +276,8 @@ workflow:
     key: venv-$CI_COMMIT_SHORT_SHA
     paths:
       - /root/.cache/pypoetry
-{%- endif %}
 
+{% endif -%}
 .upload_to_generic_package:
   before_script:
     - |
@@ -304,11 +312,11 @@ test-py{{ version[0] }}{{ version[1] }}:
   image: registry.gitlab.com/galactipy/docker:{{ version[0] }}.{{ version[1] }}
   extends: .test_setup
   script:
-    - *test_scripts
+    - invoke sweep
 {%- if version[0] == list_python_version[0] and version[1] == list_python_version[1] %}
   coverage: /TOTAL.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/
   artifacts:
-    name: ${REPO_NAME}_coverage_${CI_COMMIT_SHORT_SHA}_${CI_PIPELINE_SOURCE}
+    name: $REPO_NAME-coverage-$CI_PIPELINE_ID
     paths:
       - coverage.xml
       - test_report.xml
@@ -323,10 +331,12 @@ test-py{{ version[0] }}{{ version[1] }}:
   stage: coverage
   image: badouralix/curl-jq:latest
   rules:
+    - if: $CI_PIPELINE_SOURCE == 'schedule'
+      when: never
     - if: $CI_COMMIT_TAG
       when: never
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE != 'schedule'
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   script:
 {%- if cookiecutter.__coverage_lc == 'coveralls' %}
     - curl -L https://coveralls.io/coveralls-linux.tar.gz | tar -xz -C /usr/local/bin
@@ -363,7 +373,7 @@ build-package:
 compile-provenance:
   stage: entrust
   variables:
-    PROVENANCE_METADATA_RENAME: ${REPO_NAME}-${GR_PYPI_VERSION}.slsa-l1-provenance.json
+    PROVENANCE_METADATA_ASSET: $REPO_NAME-$GR_PYPI_VERSION.slsa-l1-provenance.json
   image: registry.gitlab.com/galactipy/docker/pipx:alpine
 {%- if cookiecutter.version_schema != 'trunkver' %}
   rules:
@@ -379,7 +389,7 @@ compile-provenance:
     - pypi-attestations sign dist/*
     - mkdir slsa/ pypi/
     - cp dist/*.publish.attestation pypi/
-    - cp $PROVENANCE_METADATA "slsa/$PROVENANCE_METADATA_RENAME"
+    - cp $PROVENANCE_METADATA "slsa/$PROVENANCE_METADATA_ASSET"
     - cp slsa-signed/* slsa/
   artifacts:
     name: $STAGE_ARTIFACTS
@@ -406,9 +416,9 @@ register-provenance:
     - upload_from_dir provenances ./slsa json
     - upload_from_dir provenances ./pypi json
   after_script:
-    - jq -s 'map(.)' upload-*.json > api-calls.json
+    - jq --slurp 'map(.)' upload-*.json > api-calls.json
   artifacts:
-    name: ${REPO_NAME}_registry-uploads_${CI_COMMIT_SHORT_SHA}_${CI_PIPELINE_SOURCE}
+    name: $STAGE_ARTIFACTS
     when: always
     paths:
       - api-calls.json
@@ -469,7 +479,7 @@ publish-registry:
         --output package-list.json \
         "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages?package_type=pypi&sort=desc"
     - |
-      PACKAGE_URL=$(jq -r \
+      PACKAGE_URL=$(jq --raw-output \
         --arg version "$GR_PYPI_VERSION" \
         'map(select(.version == $version))[0]._links.web_path' \
         package-list.json)
@@ -519,13 +529,14 @@ push-weekly-release-tag:
       since the last release.
   image: badouralix/curl-jq:latest
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'schedule'
+    # TODO Set a ENABLE_WEEKLY_RELEASE variable when creating the scheduled pipeline
+    - if: $CI_PIPELINE_SOURCE == 'schedule' && $ENABLE_WEEKLY_RELEASE == 'true'
   script:
     - |
       curl --request POST --fail-with-body \
         --header "PRIVATE-TOKEN: ${{ bot_envvar }}" \
         --output tag-api-output.json
-        "$CI_API_V4_URL/projects/$CI_PROJECT_ID/tags?ref=$CI_COMMIT_SHA&tag_name=v${GR_WEEK_CALVER}&message=$TAG_MESSAGE"
+        "$CI_API_V4_URL/projects/$CI_PROJECT_ID/tags?ref=${CI_COMMIT_SHA}&tag_name=${GR_WEEK_CALVER}&message=${TAG_MESSAGE}"
   artifacts:
     name: $STAGE_ARTIFACTS
     when: always
