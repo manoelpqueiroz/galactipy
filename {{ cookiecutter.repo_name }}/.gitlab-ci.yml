@@ -215,12 +215,15 @@ default:
 {% if cookiecutter.version_schema != 'trunkver' -%}
 # Reusable configuration jobs
 .install_project:
+  variables:
+    POETRY_CACHE_DIR: .poetry-cache
   before_script:
     - invoke install --ignore-pty
   cache:
     key: venv-$CI_COMMIT_SHORT_SHA
     paths:
-      - /root/.cache/pypoetry
+      - .poetry-cache
+      - .poetry
 
 .test_setup:
   extends: .install_project
@@ -258,6 +261,8 @@ default:
 {% else -%}
 # Reusable configuration jobs
 .publish_rules:
+  variables:
+    POETRY_CACHE_DIR: .poetry-cache
   rules:
     - if: $CI_PIPELINE_SOURCE == 'schedule'
       when: never
@@ -267,15 +272,16 @@ default:
     - if: $CI_COMMIT_BRANCH =~ /^release-/i
       changes:
         paths: *filechecks
+  cache:
+    key: venv-$CI_COMMIT_SHORT_SHA
+    paths:
+      - .poetry-cache
+      - .poetry
 
 .publish_setup:
   extends: .publish_rules
   before_script:
     - invoke install --ignore-pty
-  cache:
-    key: venv-$CI_COMMIT_SHORT_SHA
-    paths:
-      - /root/.cache/pypoetry
 
 {% endif -%}
 .upload_to_generic_package:
