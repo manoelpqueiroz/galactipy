@@ -292,6 +292,10 @@ template: |
 
   {% end %}
   {% else %}
+{%- endraw %}{% if cookiecutter.version_schema != 'trunkver' %}
   No changes detailed for this release.
+{%- else %}
+  No changes detailed in this update.
+{%- endif %}{% raw %}
   {% end %}
 {%- endraw %}
