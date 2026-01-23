@@ -11,6 +11,7 @@ stages:
   - test
   - coverage
 {%- endif %}
+  - retrieve
   - build
   - sign
   - entrust
@@ -25,6 +26,7 @@ stages:
   - coverage
 {%- else %}
   - release
+  - post-release
 {%- endif %}
   - maintenance
 
@@ -84,6 +86,13 @@ include:
 
   # Official GitLab components
   - component: $CI_SERVER_FQDN/components/sast/sast@3.2.0
+    rules:
+      - if: $CI_PIPELINE_SOURCE == 'schedule'
+        when: never
+{%- if cookiecutter.version_schema != 'trunkver' %}
+      - if: $CI_COMMIT_TAG
+        when: never
+{%- endif %}
     inputs:
       stage: security-checks
       enable_mr_pipelines: true
@@ -91,18 +100,44 @@ include:
       run_advanced_sast: true
   - component: $CI_SERVER_FQDN/components/dependency-scanning/main@0.9.1
     rules:
-      - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-      - if: $CI_COMMIT_BRANCH
+      - if: $CI_PIPELINE_SOURCE == 'schedule'
+        when: never
+{%- if cookiecutter.version_schema != 'trunkver' %}
+      - if: $CI_COMMIT_TAG
+        when: never
+{%- endif %}
     inputs:
       stage: security-checks
 {%- endif %}
   - component: $CI_SERVER_FQDN/components/secret-detection/secret-detection@2.2.0
+    rules:
+      - if: $CI_PIPELINE_SOURCE == 'schedule'
+        when: never
+{%- if cookiecutter.version_schema != 'trunkver' %}
+      - if: $CI_COMMIT_TAG
+        when: never
+{%- endif %}
     inputs:
       stage: security-checks
       enable_mr_pipelines: true
   - component: $CI_SERVER_FQDN/components/slsa/provenance-signer@0.1.1
     rules:
-      - if: $CI_COMMIT_TAG
+{%- if cookiecutter.__schema_group == 'semver-like' %}
+      - if: $CI_COMMIT_TAG =~ /^v?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(?:\+[0-9a-z-]+(?:\.[0-9a-z-]+)*)?$/i
+{%- elif cookiecutter.__schema_group == 'calver' %}
+      - if: $CI_COMMIT_TAG =~ /^v?(?:\d{2}|\d{4,5})\.\d{1,2}(?:\.\d{1,2})?(?:-(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(?:\+[0-9a-z-]+(?:\.[0-9a-z-]+)*)?$/i
+{%- elif cookiecutter.__schema_group == 'solover' %}
+      - if: $CI_COMMIT_TAG =~ /^v?[1-9]\d*(?:-(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(?:\+[0-9a-z-]+(?:\.[0-9a-z-]+)*)?$/i
+{%- else %}
+      - if: $CI_PIPELINE_SOURCE == 'schedule'
+        when: never
+      - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+        changes:
+          paths: *codechecks
+      - if: $CI_COMMIT_BRANCH =~ /^release-/i
+        changes:
+          paths: *filechecks
+{%- endif %}
     inputs:
       stage: sign
       job_name: slsa-signer-wheel
@@ -111,16 +146,33 @@ include:
       provenance_metadata_file: $PROVENANCE_METADATA
   - component: $CI_SERVER_FQDN/components/slsa/provenance-signer@0.1.1
     rules:
-      - if: $CI_COMMIT_TAG
+{%- if cookiecutter.__schema_group == 'semver-like' %}
+      - if: $CI_COMMIT_TAG =~ /^v?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(?:\+[0-9a-z-]+(?:\.[0-9a-z-]+)*)?$/i
+{%- elif cookiecutter.__schema_group == 'calver' %}
+      - if: $CI_COMMIT_TAG =~ /^v?(?:\d{2}|\d{4,5})\.\d{1,2}(?:\.\d{1,2})?(?:-(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(?:\+[0-9a-z-]+(?:\.[0-9a-z-]+)*)?$/i
+{%- elif cookiecutter.__schema_group == 'solover' %}
+      - if: $CI_COMMIT_TAG =~ /^v?[1-9]\d*(?:-(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(?:\+[0-9a-z-]+(?:\.[0-9a-z-]+)*)?$/i
+{%- else %}
+      - if: $CI_PIPELINE_SOURCE == 'schedule'
+        when: never
+      - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+        changes:
+          paths: *codechecks
+      - if: $CI_COMMIT_BRANCH =~ /^release-/i
+        changes:
+          paths: *filechecks
+{%- endif %}
     inputs:
       stage: sign
       job_name: slsa-signer-sdist
       target_artifact: dist/$SDIST_BINARY
       bundle_file: slsa-signed/$SDIST_BINARY.slsa-l3-provenance.json
       provenance_metadata_file: $PROVENANCE_METADATA
+  # TODO Create a scheduled pipeline to enable this job:
+  # {{ cookiecutter.__scm_link_url }}/pipeline_schedules/new
   - component: $CI_SERVER_FQDN/components/gitlab-triage/gitlab-triage@0.1.2
     rules:
-      - if: $CI_PIPELINE_SOURCE == 'schedule'
+      - if: $CI_PIPELINE_SOURCE == 'schedule'{% if cookiecutter.version_schema == 'trunkver' %} && $ENABLE_TRUNKVER_CHANGELOG != true{% endif %}
     inputs:
       api_token: ${{ bot_envvar }}
       stage: maintenance
@@ -134,16 +186,19 @@ include:
       use-hec: true
 {%- endif %}
 {%- endif %}
-{%- if cookiecutter.version_schema != 'trunkver' %}
+{%- if cookiecutter.version_schema == 'trunkver' %}
+  # TODO Create a scheduled pipeline to enable this job:
+  # {{ cookiecutter.__scm_link_url }}/pipeline_schedules/new
+  # TODO Set a ENABLE_TRUNKVER_CHANGELOG variable to "true" when creating the pipeline
+{%- endif %}
   - component: $CI_SERVER_FQDN/galactipy/components/versioning/release@0.7.0
     inputs:
 {%- if cookiecutter.__schema_group != 'semver-like' %}
-    inputs:
       schema: {{ cookiecutter.__schema_group }}
 {%- endif %}
       pat-envvar: ${{ bot_envvar }}
-      pre-release-title: $GR_RELEASE_STAGE_TITLE $GR_NAKED_VERSION
-      pre-release-fallback: This is a $GR_RELEASE_LABEL version of $CI_PROJECT_NAME. **Do not use it in production environments.**
+      # UPDATEME with "strict" once the first Changelog is successfully built
+      build-strategy: deep-search
 {%- if cookiecutter.commit_convention == 'gitmoji' %}
       changelog-commit-message: ':bookmark_tabs: Update CHANGELOG.md'
 {%- elif cookiecutter.commit_convention == 'conventional' %}
@@ -151,6 +206,9 @@ include:
 {%- else %}
       changelog-commit-message: '📑 docs: Update CHANGELOG.md'
 {%- endif %}
+{%- if cookiecutter.version_schema != 'trunkver' %}
+      pre-release-title: $GR_RELEASE_STAGE_TITLE $GR_NAKED_VERSION
+      pre-release-fallback: This is a $GR_RELEASE_LABEL version of $CI_PROJECT_NAME. **Do not use it in production environments.**
       links:
         - name: PyPI
           url: https://pypi.org/project/$REPO_NAME/$GR_PYPI_VERSION/
@@ -175,7 +233,10 @@ include:
           url: $PROVENANCE_PACKAGE_API_URL/$SDIST_BINARY.slsa-l3-provenance.json
       pre-release-exclude:
         - PyPI
+{%- else %}
+      bypass-empty: true
 {%- endif %}
+      use-hec: true
 
 variables:
   # Variables from the Cookiecutter template
