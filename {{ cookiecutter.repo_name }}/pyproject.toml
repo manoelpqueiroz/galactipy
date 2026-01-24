@@ -58,7 +58,9 @@ classifiers = [ # UPDATEME with additional classifiers
   "Private :: Do Not Upload", # TODO Remove classifier to allow publishing on PyPI
 ]
 
+{% if cookiecutter.version_schema != 'trunkver' -%}
 # Placeholder for poetry-dynamic-versioning, DO NOT CHANGE
+{% endif -%}
 version = "0.0.0"  # Keep this key as the last for `tool.poetry`
 
 
@@ -117,10 +119,15 @@ ipython = "^8.18.0"
 
 
 [tool.poetry.requires-plugins]
+{%- if cookiecutter.version_schema != 'trunkver' %}
 poetry-dynamic-versioning = { version = "^1.7.1", extras = ["plugin"] }
+{%- else %}
+poetry-bumpversion = "^0.3.3"
+{%- endif %}
 poetry-plugin-export = "^1.9.0"
 poetry-plugin-up = "^0.9.0"
 poetry-plugin-bundle = "^1.5.0"
+{%- if cookiecutter.version_schema != 'trunkver' %}
 
 [tool.poetry-dynamic-versioning]
 # https://github.com/mtkennerly/poetry-dynamic-versioning#configuration
@@ -150,6 +157,12 @@ format-jinja = """
   {%- endif -%}
 """
 {%- endraw %}
+{%- else %}
+
+[tool.poetry_bumpversion.file."{{ cookiecutter.package_name }}/_version.py"]
+search = '__version__ = "{current_version}"'
+replace = '__version__ = "{new_version}"'
+{%- endif %}
 
 
 {% if cookiecutter.commit_convention == 'conventional' -%}

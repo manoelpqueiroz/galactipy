@@ -338,6 +338,7 @@ default:
     paths:
       - .poetry-cache
       - .poetry
+      - pyproject.toml
 
 .publish_setup:
   extends: .publish_rules
@@ -429,7 +430,13 @@ build-package:
     RUNNER_GENERATE_ARTIFACTS_METADATA: true
   extends: .publish_setup
   script:
-    - invoke build{% if cookiecutter.version_schema == 'trunkver' %} -l $GR_PYPI_VERSION{% endif %}
+{%- if cookiecutter.version_schema == 'trunkver' %}
+    # FYI TrunkVer is not natively supported in Poetry, so a manual version must be set
+    # Check out our planned solution at:
+    # https://gitlab.com/galactipy/utilities/poetry-trunkver/-/blob/ROADMAP.md
+    - poetry version $GR_PYPI_VERSION
+{%- endif %}
+    - invoke build
   artifacts:
     name: $PACKAGE_BUILD_ARTIFACTS
     expire_in: never
