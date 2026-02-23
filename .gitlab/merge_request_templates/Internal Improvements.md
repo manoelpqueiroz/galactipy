@@ -43,11 +43,10 @@ This template should be used to propose and discuss changes to tools used to man
 - [ ] I provided a concise and clear title for this discussion;
 - [ ] I have presented my proposal following [Galactipy's philosophy][2] principles;
 - [ ] I have added the proper [labels][3] to start this discussion;
-- [ ] I have associated the proposal with the adequate [epic][4];
-- [ ] I have followed the [commit customs][5] for the project;
-- [ ] I have explained the [reasoning][6] behind my design choices through the commit descriptions;
-- [ ] I have added the proper [Git trailers][7] to my commits;
-- [ ] I have followed the [Styling Guide][8] for code and Markdown files.
+- [ ] I have followed the [commit customs][4] for the project;
+- [ ] I have explained the [reasoning][5] behind my design choices through the commit descriptions;
+- [ ] I have added the proper [Git trailers][6] to my commits;
+- [ ] I have followed the [Styling Guide][7] for code and Markdown files.
 >>>
 
 >>> [!important] :technologist: Development control
@@ -61,30 +60,29 @@ This template should be used to propose and discuss changes to tools used to man
 
 >>> [!tip] :reminder_ribbon: Contribution control
 
-- [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][9] or the Related Issues section;
+- [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][8] or the Related Issues section;
 - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
 >>>
 
 [1]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
 [2]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#book-our-philosophy
 [3]: https://gitlab.com/galactipy/galactipy/-/labels
-[4]: https://gitlab.com/groups/galactipy/-/epics
-[5]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#commit-customs
-[6]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#say-why-not-just-what
-[7]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#git-trailers
-[8]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#styling
-[9]: https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically
+[4]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#commit-customs
+[5]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#say-why-not-just-what
+[6]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#git-trailers
+[7]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#styling
+[8]: https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically
 
 ## Reviewer Checklist
 
 >>> [!warning] :passport_control: MANDATORY
-I attest that the proposed change meets the [Contribution Acceptance Criteria][10]:
+I attest that the proposed change meets the [Contribution Acceptance Criteria][9]:
 
 - [ ] The change is as small as possible;
 - [ ] Only one specific feature is implemented and does not combine things;
 - The change: <!-- Pick only one -->
   - [ ] Does not require updating the documentation;
-  - [ ] Added the proper documentation on the topic, promoting and preserving [institutional knowledge][11];
+  - [ ] Added the proper documentation on the topic, promoting and preserving [institutional knowledge][10];
 - [ ] The commit history is logical;
 - [ ] The commit history applies the proper Gitmoji;
 - [ ] The commit titles apply the imperative mood;
@@ -100,9 +98,9 @@ I attest that during the course of this development, the following interactions 
 - [ ] We have explored possible alternative solutions;
 - [ ] We have worked to simplify the implementation;
 - [ ] We have covered all the edge cases we could come up with;
-- [ ] We have found [opportunities][12] for future development and have created work items to take action on later.
+- [ ] We have found [opportunities][11] for future development and have created work items to take action on later.
 >>>
 
-[10]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
-[11]: https://www.teachfloor.com/elearning-glossary/institutional-knowledge
-[12]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
+[9]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
+[10]: https://www.teachfloor.com/elearning-glossary/institutional-knowledge
+[11]: https://gitlab.com/galactipy/templates/-/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
