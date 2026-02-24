@@ -57,7 +57,7 @@ In this [Cookiecutter :cookie:][ft1] template
 we combine state-of-the-art libraries
 and best development practices for Python.
 
-### :race_car: Start Developing Your App out of the Box
+### :racing_car: Start Developing Your App out of the Box
 
 - Supports Python **`3.10`** and higher;
 - Provides
@@ -154,7 +154,7 @@ and best development practices for Python.
   with [**GitLab Changelog**][ft32]
   or [**Release Drafter**][ft33].
 
-### :man_golfing: Manage Your Project like a Walk in the Park
+### :golfing_man: Manage Your Project like a Walk in the Park
 
 - Ready-to-use [Merge Request templates][ft34]
   and several [Issue templates][ft35]
@@ -771,7 +771,7 @@ We follow the [Romantic Versioning][r3] specification,
 details can be found
 in our [`CONTRIBUTING`][r3] guide.
 
-## :map: Roadmap
+## :world_map: Roadmap
 
 Galactipy's roadmap is managed
 through our [Milestones][rd1] page,
@@ -795,7 +795,7 @@ This project is licenced
 under the terms of the MIT licence.
 See [`LICENCE`][b7] for more details.
 
-## :sports_medal: Acknowledgements
+## :medal_sports: Acknowledgements
 
 Firstly,
 there is no way this template would exist
