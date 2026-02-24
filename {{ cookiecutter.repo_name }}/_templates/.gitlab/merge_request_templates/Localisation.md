@@ -8,8 +8,10 @@ This template should be used to validate localisation advancements.
 
 <!-- Provide a summary of the changes being made with this MR -->
 
-> **Proposed Version:** `MICRO` <!-- Provide next expected micro version -->
+{% if cookiecutter.__schema_type == 'segmented' -%}
+> **Proposed Version:** `{{ cookiecutter.__version_ts }}` <!-- Provide next expected {{ cookiecutter.__version_ts.lower() }} version -->
 
+{% endif -%}
 ## Submitter Checklist
 
 <!--

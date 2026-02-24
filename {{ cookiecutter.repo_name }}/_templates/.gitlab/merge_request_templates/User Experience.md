@@ -19,8 +19,10 @@ This template should be used to propose and discuss progressive revisions to use
 
 <!-- Describe WHAT your proposal refers to, with as much detail as possible -->
 
-> **Proposed Version:** <!-- What is your proposed version following the EffVer scheme? -->
+{% if cookiecutter.__schema_type == 'segmented' -%}
+> **Proposed Version:** <!-- What is your proposed version following the {{ cookiecutter.__schema_cipher }} scheme? -->
 
+{% endif -%}
 ## Why should we consider this change for the project?
 
 <!--

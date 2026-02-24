@@ -19,8 +19,10 @@ This template should be used to propose and discuss changes that improve project
 
 <!-- Describe WHAT your proposal refers to -->
 
-> **Proposed Version:** `MICRO` <!-- Provide next expected micro version -->
+{% if cookiecutter.__schema_type == 'segmented' -%}
+> **Proposed Version:** `{{ cookiecutter.__version_ts }}` <!-- Provide next expected {{ cookiecutter.__version_ts.lower() }} version -->
 
+{% endif -%}
 ## Submitter Checklist
 
 <!--

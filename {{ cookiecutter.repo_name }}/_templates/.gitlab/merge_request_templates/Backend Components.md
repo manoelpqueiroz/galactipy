@@ -21,8 +21,10 @@ This template should be used to propose and discuss improvements to backend elem
 
 <!-- Describe WHAT your proposal refers to, with as much detail as possible -->
 
-> **Proposed Version:** <!-- What is your proposed version following the EffVer scheme? -->
+{% if cookiecutter.__schema_type == 'segmented' -%}
+> **Proposed Version:** <!-- What is your proposed version following the {{ cookiecutter.__schema_cipher }} scheme? -->
 
+{% endif -%}
 ## Why this change should be considered for release?
 
 <!--
