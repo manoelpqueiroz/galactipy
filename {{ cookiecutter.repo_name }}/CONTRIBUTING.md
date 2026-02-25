@@ -153,6 +153,26 @@ poetry install # Or, preferably, `invoke install` if available
 invoke hooks
 ```
 
+{% if cookiecutter.version_schema == 'trunkver' and cookiecutter.__scm_platform_lc == 'gitlab' -%}
+>>> [!caution]
+Installing the pre-commit hooks is crucial,
+as the CI pipelines depend on tasks run
+before pushing to the upstream repository
+to publish test coverage.
+
+***Do not skip this step.***
+>>>
+
+{% elif cookiecutter.version_schema == 'trunkver' and cookiecutter.__scm_platform_lc == 'github' -%}
+> [!CAUTION]
+> Installing the pre-commit hooks is crucial,
+> as the CI pipelines depend on tasks run
+> before pushing to the upstream repository
+> to publish test coverage.
+>
+> ***Do not skip this step.***
+
+{% endif -%}
 4. Run the sweeping task
    with Invoke
    and check output:
