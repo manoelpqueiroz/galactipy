@@ -7,8 +7,8 @@
 
 <!-- Provide a summary of the changes being made with this PR -->
 
-{% if cookiecutter.__schema_type == 'segmented' -%}
-> **Proposed Version:** `{{ cookiecutter.__version_ts }}` <!-- Provide next expected {{ cookiecutter.__version_ts.lower() }} version -->
+{% if cookiecutter.__schema_type == 'segmented' and cookiecutter.version_schema != 'calver-auto' -%}
+> **Proposed Version:** `{{ cookiecutter.__version_s3 }}` <!-- Provide next expected {{ cookiecutter.__version_s3.lower() }} version -->
 
 {% endif -%}
 ## Submitter Checklist
