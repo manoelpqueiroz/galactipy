@@ -3,48 +3,69 @@
 # https://github.com/marketplace/actions/pypi-publish
 
 # UPDATEME to suit your project's workflow
-{%- raw %}
 name: 🧪 Test
 
 on:
+{%- if cookiecutter.version_schema != 'trunkver' %}
   - pull_request:
       paths:
-{%- endraw %}
         - {{ cookiecutter.package_name }}/**
         - tests/**
-{% if cookiecutter.create_docker %}
+{%- if cookiecutter.create_docker %}
         - docker/**
         - .dockerignore
 {%- endif %}
-{%- raw %}
         - pyproject.toml
         - tasks.py
         - .github/workflows/**
         - .github/*.yml
         - .gitignore
+{%- endif %}
   - push:
       branches: [master]
 
 jobs:
+{%- if cookiecutter.version_schema != 'trunkver' %}
   test-only:
     name: Tests
     strategy:
       matrix:
-        test-python-version: [{% endraw %}{% for version in supported_python_versions[1:] %}"{{ version[0] }}.{{ version[1] }}"{% if not loop.last %}, {% endif %}{% endfor %}{% raw %}]
-    uses: {% endraw %}{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}{% raw %}/.github/workflows/test_template.yml@master
+        test-python-version:
+{%- for version in supported_python_versions[1:] %}
+          - "{{ version[0] }}.{{ version[1] }}"
+{%- endfor %}
+    uses: {{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/.github/workflows/test_template.yml@master
+{%- raw %}
     with:
       python-version: ${{ matrix.test-python-version }}
       upload-coverage: false
 
   test-and-coverage:
     name: Tests & Coverage
-    uses: {% endraw %}{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}{% raw %}/.github/workflows/test_template.yml@master
+{%- endraw %}
+    uses: {{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/.github/workflows/test_template.yml@master
     with:
-      python-version: "{% endraw %}{{ cookiecutter.minimal_python_version }}{% raw %}"
+      python-version: "{{ cookiecutter.minimal_python_version }}"
       upload-coverage: true
-{%- endraw %}{% if cookiecutter.__coverage_lc == 'codacy' %}{% raw %}
+{%- if cookiecutter.__coverage_lc == 'codacy' %}
     secrets:
       # TODO Set a token for your repository (https://docs.codacy.com/codacy-api/api-tokens/#repository-api-tokens)
       # TODO Store the token as the CODACY_PROJECT_TOKEN secret in the repository configuration
-      codacy-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-{%- endraw %}{% endif %}
+      codacy-token: {% raw %}${{ secrets.CODACY_PROJECT_TOKEN }}{% endraw %}
+{%- endif %}
+{%- else %}
+  coverage:
+    name: Coverage Upload
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📤 Upload Coverage to {{ cookiecutter.coverage_service }}
+{% if cookiecutter.__coverage_lc == 'coveralls' %}
+        uses: coverallsapp/github-action@v2.3.6
+{%- elif cookiecutter.__coverage_lc == 'codacy' %}
+        uses: codacy/codacy-coverage-reporter-action@v1.3.0
+        with:
+          project-token: {% raw %}${{ secrets.CODACY_PROJECT_TOKEN }}{% endraw %}
+          coverage-reports: coverage.xml
+{%- endif %}
+{%- endif %}
