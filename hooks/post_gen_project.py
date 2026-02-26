@@ -24,6 +24,7 @@ SCM_BASE_URL = "{{ cookiecutter.__scm_base_url }}"
 
 COMMIT_CONVENTION = "{{ cookiecutter.commit_convention }}"
 
+VERSION_SCHEMA = "{{ cookiecutter.version_schema }}"
 APP_TYPE = "{{ cookiecutter.app_type }}"
 
 # Boolean variables for additional project structures
@@ -56,10 +57,12 @@ class ProjectFlags:  # noqa: D101
     remove_docker: bool
     remove_bdd: bool
     remove_features: bool
+    version_schema: str
     app_type: str
 
     def __post_init__(self):  # noqa: D105
         self.remove_cli = self.app_type == "bare_repo"
+        self.is_trunkver = self.version_schema == "trunkver"
 
 
 def rmdir(path: Path) -> None:
@@ -191,6 +194,10 @@ def _get_files_to_delete(
 
     docker_specific_files = _get_docker_specific_files(directory, flags.remove_gitlab)
 
+    trunkver_specific_files = _get_trunkver_specific_files(
+        directory, flags.is_trunkver, flags.remove_gitlab
+    )
+
     gitlab_specific_files = [
         directory / ".gitlab-ci.yml",
         directory / ".triage-policies.yml",
@@ -211,6 +218,9 @@ def _get_files_to_delete(
 
     if flags.remove_docker:
         files_to_delete.extend(docker_specific_files)
+
+    if trunkver_specific_files is not None:
+        files_to_delete.extend(trunkver_specific_files)
 
     files_to_delete.extend(bdd_specific_files)
     files_to_delete.extend(tui_specific_files)
@@ -379,6 +389,29 @@ def _get_docker_specific_files(directory: Path, is_github: bool) -> list[Path]:
     return removals
 
 
+def _get_trunkver_specific_files(
+    directory: Path, is_trunkver: bool, is_github: bool
+) -> list[Path] | None:
+    """Return select files to remove when the TrunkVer schema is chosen.
+
+    Parameters
+    ----------
+    directory : Path
+        Root directory of the project.
+    is_github : bool
+        Determine whether GitHub Docker workflow should be removed as well.
+    """
+    if is_trunkver & is_github:
+        return [
+            directory / ".github" / "release-drafter.yml",
+            directory / ".github" / "workflows" / "release-drafter.yml",
+            directory / ".github" / "workflows" / "test_template.yml",
+            directory / ".github" / "workflows" / "pypi-test.yml",
+        ]
+
+    return None
+
+
 def _get_feature_files(directory: Path) -> list[Path]:
     """Return all feature files for removal.
 
@@ -531,7 +564,12 @@ def main() -> None:  # noqa: D103
     remove_features = not ENABLE_FLAGS
 
     config = ProjectFlags(
-        remove_gitlab, remove_docker, remove_bdd, remove_features, APP_TYPE
+        remove_gitlab,
+        remove_docker,
+        remove_bdd,
+        remove_features,
+        APP_TYPE,
+        VERSION_SCHEMA,
     )
 
     generate_licence(directory=PROJECT_DIRECTORY, licence=licences_dict[LICENCE])

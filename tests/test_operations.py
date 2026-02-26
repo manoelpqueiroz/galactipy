@@ -74,7 +74,7 @@ class TestServiceRemovals:
         triage_file = gitlab_files["triage"]
         renovate_file = gitlab_files["renovate"]
 
-        config = ProjectFlags(True, False, False, False, "cli")
+        config = ProjectFlags(True, False, False, False, "semver", "cli")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -96,7 +96,7 @@ class TestServiceRemovals:
         dockerignore = docker_files["dockerignore"]
         components_directory = docker_files["gitlab_components"]
 
-        config = ProjectFlags(False, True, False, False, "cli")
+        config = ProjectFlags(False, True, False, False, "semver", "cli")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -115,7 +115,7 @@ class TestServiceRemovals:
         dockerignore = docker_files["dockerignore"]
         docker_workflow = docker_files["github_workflow"]
 
-        config = ProjectFlags(True, True, False, False, "cli")
+        config = ProjectFlags(True, True, False, False, "semver", "cli")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -144,7 +144,7 @@ class TestApplicationOptions:
         config_files = removal_tree["config"]
         logging_files = removal_tree["logging"]
 
-        config = ProjectFlags(False, False, False, False, "tui")
+        config = ProjectFlags(False, False, False, False, "semver", "tui")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -214,7 +214,7 @@ class TestApplicationOptions:
         config_files = removal_tree["config"]
         logging_files = removal_tree["logging"]
 
-        config = ProjectFlags(False, False, True, False, "tui")
+        config = ProjectFlags(False, False, True, False, "semver", "tui")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -275,7 +275,7 @@ class TestApplicationOptions:
         config_files = removal_tree["config"]
         logging_files = removal_tree["logging"]
 
-        config = ProjectFlags(False, False, False, False, "hybrid")
+        config = ProjectFlags(False, False, False, False, "semver", "hybrid")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -345,7 +345,7 @@ class TestApplicationOptions:
         config_files = removal_tree["config"]
         logging_files = removal_tree["logging"]
 
-        config = ProjectFlags(False, False, True, False, "hybrid")
+        config = ProjectFlags(False, False, True, False, "semver", "hybrid")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -406,7 +406,7 @@ class TestApplicationOptions:
         config_files = removal_tree["config"]
         logging_files = removal_tree["logging"]
 
-        config = ProjectFlags(False, False, False, False, "cli")
+        config = ProjectFlags(False, False, False, False, "semver", "cli")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -473,7 +473,7 @@ class TestApplicationOptions:
         config_files = removal_tree["config"]
         logging_files = removal_tree["logging"]
 
-        config = ProjectFlags(False, False, True, False, "cli")
+        config = ProjectFlags(False, False, True, False, "semver", "cli")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -530,7 +530,7 @@ class TestApplicationOptions:
         config_files = removal_tree["config"]
         logging_files = removal_tree["logging"]
 
-        config = ProjectFlags(False, False, False, False, "bare_repo")
+        config = ProjectFlags(False, False, False, False, "semver", "bare_repo")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -583,7 +583,7 @@ class TestApplicationOptions:
         config_files = removal_tree["config"]
         logging_files = removal_tree["logging"]
 
-        config = ProjectFlags(False, False, True, False, "bare_repo")
+        config = ProjectFlags(False, False, True, False, "semver", "bare_repo")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -645,7 +645,7 @@ class TestApplicationOptions:
         ux_template = removal_tree["github"]["ux"]
         arch_template = removal_tree["github"]["arch"]
 
-        config = ProjectFlags(True, True, True, True, "bare_repo")
+        config = ProjectFlags(True, True, True, True, "trunkver", "bare_repo")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -685,7 +685,7 @@ class TestFeatureFiles:
         file2 = feature_files["file2"]
         directory = feature_files["directory"]
 
-        config = ProjectFlags(False, False, False, True, "cli")
+        config = ProjectFlags(False, False, False, True, "semver", "cli")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -710,7 +710,7 @@ class TestFeatureFiles:
         sample2 = feature_files["sample2"]
         sample3 = feature_files["sample3"]
 
-        config = ProjectFlags(False, False, False, False, "cli")
+        config = ProjectFlags(False, False, False, False, "semver", "cli")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
