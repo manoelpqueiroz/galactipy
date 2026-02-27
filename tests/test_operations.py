@@ -677,6 +677,46 @@ class TestApplicationOptions:
         assert not arch_template.exists()
 
 
+class TestVersioningSchemas:
+    def test_trunkver(self, removal_tree):
+        github_files = removal_tree["github"]
+
+        release_drafter_config = github_files["release_drafter_config"]
+        release_drafter_workflow = github_files["release_drafter_workflow"]
+        test_template = github_files["test_template"]
+        test_workflow = github_files["test_workflow"]
+
+        config = ProjectFlags(True, False, False, False, "trunkver", "cli")
+
+        remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
+
+        assert not release_drafter_config.exists()
+        assert not release_drafter_workflow.exists()
+        assert not test_template.exists()
+
+        assert test_workflow.exists()
+
+    @pytest.mark.parametrize(
+        "schema", ["semver", "effver", "romver", "calver", "solover"]
+    )
+    def test_non_trunkver(self, removal_tree, schema):
+        github_files = removal_tree["github"]
+
+        release_drafter_config = github_files["release_drafter_config"]
+        release_drafter_workflow = github_files["release_drafter_workflow"]
+        test_template = github_files["test_template"]
+        test_workflow = github_files["test_workflow"]
+
+        config = ProjectFlags(True, False, False, False, schema, "cli")
+
+        remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
+
+        assert release_drafter_config.exists()
+        assert release_drafter_workflow.exists()
+        assert test_template.exists()
+        assert test_workflow.exists()
+
+
 class TestFeatureFiles:
     def test_remove_feature_files(self, removal_tree):
         feature_files = removal_tree["features"]
