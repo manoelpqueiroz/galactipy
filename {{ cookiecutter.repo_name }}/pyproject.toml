@@ -134,6 +134,39 @@ poetry-plugin-bundle = "^1.5.0"
 # https://dunamai.readthedocs.io/en/latest/
 enable = true
 vcs = "git"
+pattern = """(?x)
+  ^v?
+{%- if cookiecutter.__schema_group == 'semver-like' %}
+  (?P<base>
+    (?:0|[1-9]\\d*)
+    \\.
+    (?:0|[1-9]\\d*)
+    \\.
+    (?:0|[1-9]\\d*)
+  )
+{%- elif cookiecutter.__schema_group == 'calver' %}
+  (?P<base>
+    (?:\\d{2}|\\d{4,5})
+    \\.
+    \\d{1,2}
+    (?:
+      \\.
+      \\d{1,2}
+    )?
+  )
+{%- elif cookiecutter.__schema_group == 'solover' %}
+  (?P<base>
+    [1-9]\\d*
+  )
+{%- endif %}
+  (?:-
+    (?P<stage>0|[1-9]\\d*|\\d*[a-z-][0-9a-z-]*)
+    (?<!\\d)
+    \\.?
+    (?P<revision>0|[1-9]\\d*)?
+  )?
+  $
+"""
 {%- raw %}
 format-jinja = """
   {%- set revision_value = revision or 0 -%}
