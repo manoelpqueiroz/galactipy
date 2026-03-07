@@ -346,9 +346,7 @@ def remove_ipynb(c: Context) -> None:
 def remove_pytest(c: Context) -> None:
     """Remove Pytest cache files from project directory."""
     c.run(
-        FILE_REMOVER.format(
-            r"(.pytest_cache|.coverage|test_report.xml|htmlcov)"
-        ),
+        FILE_REMOVER.format(r"(.pytest_cache|.coverage|test_report.xml|htmlcov)"),
         pty=IS_UNIX_OS,
     )
 
