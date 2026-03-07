@@ -178,7 +178,7 @@ include:
       stage: maintenance
 
   # Galactipy components
-  - component: $CI_SERVER_FQDN/galactipy/components/versioning/vars@0.7.0
+  - component: $CI_SERVER_FQDN/galactipy/components/versioning/vars@0.8.1
 {%- if cookiecutter.__schema_group != 'semver-like' %}
     inputs:
       schema: {{ cookiecutter.__schema_group }}
@@ -191,7 +191,7 @@ include:
   # {{ cookiecutter.__scm_link_url }}/pipeline_schedules/new
   # TODO Set a ENABLE_TRUNKVER_CHANGELOG variable to "true" when creating the pipeline
 {%- endif %}
-  - component: $CI_SERVER_FQDN/galactipy/components/versioning/release@0.7.0
+  - component: $CI_SERVER_FQDN/galactipy/components/versioning/release@0.8.1
     inputs:
 {%- if cookiecutter.__schema_group != 'semver-like' %}
       schema: {{ cookiecutter.__schema_group }}
