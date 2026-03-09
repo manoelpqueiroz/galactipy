@@ -49,7 +49,7 @@ jobs:
 
       - name: Generate TrunkVer
         id: trunkver
-        run: echo "pypi_version=$(date --utc "+%Y%m%d%H%M%S").0.0rc${{ github.run_id }}" >> $GITHUB_OUTPUT
+        run: echo "pypi_version=$(date --utc '+%Y%m%d%H%M%S').0.0rc${{ github.run_id }}" >> $GITHUB_OUTPUT
 
         # FYI TrunkVer is not semantically compatible with PEP 440, this is a workaround
       - name: 📦 Build

@@ -604,13 +604,13 @@ push-weekly-release-tag:
   image: badouralix/curl-jq:latest
   rules:
     # TODO Set a ENABLE_WEEKLY_RELEASE variable when creating the scheduled pipeline
-    - if: $CI_PIPELINE_SOURCE == 'schedule' && $ENABLE_WEEKLY_RELEASE == 'true'
+    - if: $CI_PIPELINE_SOURCE == 'schedule' && $ENABLE_WEEKLY_RELEASE == true
   script:
     - |
       curl --request POST --fail-with-body \
         --header "PRIVATE-TOKEN: ${{ bot_envvar }}" \
         --output tag-api-output.json
-        "$CI_API_V4_URL/projects/$CI_PROJECT_ID/tags?ref=${CI_COMMIT_SHA}&tag_name=${GR_WEEK_CALVER}&message=${TAG_MESSAGE}"
+        "$CI_API_V4_URL/projects/$CI_PROJECT_ID/tags?ref=${CI_COMMIT_SHA}&tag_name=v${GR_WEEK_CALVER}&message=${TAG_MESSAGE}"
   artifacts:
     name: $STAGE_ARTIFACTS
     when: always
