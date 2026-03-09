@@ -11,6 +11,34 @@
 include:
   # UPDATEME if you wish to use another registry besides GitLab, see documentation at:
   # https://gitlab.com/explore/catalog/to-be-continuous/docker
+{%- if cookiecutter.version_schema == 'trunkver' %}
+  # For direct releases on the trunk
+  - component: $CI_SERVER_FQDN/to-be-continuous/docker/gitlab-ci-docker@8.0.8
+    rules:
+      - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+        changes:
+          paths: *codechecks
+    inputs:
+      context-path: $CI_PROJECT_DIR
+      file: $CI_PROJECT_DIR/docker/Dockerfile
+      prod-publish-strategy: auto
+      release-image: "$CI_REGISTRY_IMAGE:$GR_TRUNKVER"
+      snapshot-image: "$CI_REGISTRY_IMAGE/snapshot:latest"
+      release-extra-tags: latest
+
+  # For releases on topic branches
+  - component: $CI_SERVER_FQDN/to-be-continuous/docker/gitlab-ci-docker@8.0.8
+    rules:
+      - if: $CI_COMMIT_BRANCH =~ /^release-/i
+        changes:
+          paths: *codechecks
+    inputs:
+      context-path: $CI_PROJECT_DIR
+      file: $CI_PROJECT_DIR/docker/Dockerfile
+      release-image: "$CI_REGISTRY_IMAGE:$GR_TRUNKVER"
+      snapshot-image: "$CI_REGISTRY_IMAGE/snapshot:release"
+      release-extra-tags: "latest release"
+{%- else %}
   - component: $CI_SERVER_FQDN/to-be-continuous/docker/gitlab-ci-docker@8.0.8
     rules:
       - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
@@ -32,39 +60,90 @@ include:
       file: $CI_PROJECT_DIR/docker/Dockerfile
       release-image: "$CI_REGISTRY_IMAGE:latest-nightly"
       snapshot-image: "$CI_REGISTRY_IMAGE/snapshot:latest-nightly"
+{%- if cookiecutter.__schema_group == 'semver-like' %}
 
-  # For unstable releases (0.X.X)
+  # For unstable releases (0.X.X), only the complete and minor version images are built
   - component: $CI_SERVER_FQDN/to-be-continuous/docker/gitlab-ci-docker@8.0.8
     rules:
-      - if: $CI_COMMIT_TAG =~ /^v?0\.(0|[1-9]\d*)\.(0|[1-9]\d*)/i
+      - if: $CI_COMMIT_TAG =~ /^v?0\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
     inputs:
       context-path: $CI_PROJECT_DIR
       file: $CI_PROJECT_DIR/docker/Dockerfile
-      release-image: "$CI_REGISTRY_IMAGE:$QF_SEMVER_VERSION"
-      snapshot-image: "$CI_REGISTRY_IMAGE/snapshot:$QF_SEMVER_VERSION"
+      release-image: "$CI_REGISTRY_IMAGE:$GR_NAKED_VERSION"
+      snapshot-image: "$CI_REGISTRY_IMAGE/snapshot:$GR_NAKED_VERSION"
+{%- if cookiecutter.version_schema == 'effver' %}
       release-extra-tags-pattern: ^(?:v|V)?(?P<macro>0|[1-9]\d*)\.(?P<meso>0|[1-9]\d*)\.(?P<micro>0|[1-9]\d*)$
       release-extra-tags: "\\g<macro>.\\g<meso> latest"
+{%- elif cookiecutter.version_schema == 'semver' %}
+      release-extra-tags-pattern: ^(?:v|V)?(?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)\.(?P<patch>0|[1-9]\d*)$
+      release-extra-tags: "\\g<major>.\\g<minor> latest"
+{%- elif cookiecutter.version_schema == 'romver' %}
+      release-extra-tags-pattern: ^(?:v|V)?(?P<human>0|[1-9]\d*)\.(?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)$
+      release-extra-tags: "\\g<human>.\\g<major> latest"
+{%- endif %}
+{%- endif %}
 
-  # For stable releases (1.0.0 or later)
+  # For stable releases{% if cookiecutter.__schema_group == 'semver-like' %} (1.0.0 or later){% endif %}
   - component: $CI_SERVER_FQDN/to-be-continuous/docker/gitlab-ci-docker@8.0.8
     rules:
-      - if: $CI_COMMIT_TAG =~ /^v?[1-9]\d*\.(0|[1-9]\d*)\.(0|[1-9]\d*)/i
+{%- if cookiecutter.__version_schema_base == 'calver' %}
+      - if: $CI_COMMIT_TAG =~ /^v?(?:\d{2}|\d{4})\.\d{1,2}(?:\.\d{1,2})?$/i
+{%- elif cookiecutter.__version_schema_base == 'solover' %}
+      - if: $CI_COMMIT_TAG =~ /^v?[1-9]\d*$/i
+{%- else %}
+      - if: $CI_COMMIT_TAG =~ /^v?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)$/i
+{%- endif %}
     inputs:
       context-path: $CI_PROJECT_DIR
       file: $CI_PROJECT_DIR/docker/Dockerfile
-      release-image: "$CI_REGISTRY_IMAGE:$QF_SEMVER_VERSION"
-      snapshot-image: "$CI_REGISTRY_IMAGE/snapshot:$QF_SEMVER_VERSION"
+      release-image: "$CI_REGISTRY_IMAGE:$GR_NAKED_VERSION"
+      snapshot-image: "$CI_REGISTRY_IMAGE/snapshot:$GR_NAKED_VERSION"
+{%- if cookiecutter.__version_schema_base == 'effver' %}
       release-extra-tags-pattern: ^(?:v|V)?(?P<macro>0|[1-9]\d*)\.(?P<meso>0|[1-9]\d*)\.(?P<micro>0|[1-9]\d*)$
       release-extra-tags: "\\g<macro>.\\g<meso> \\g<macro> latest"
+{%- elif cookiecutter.__version_schema_base == 'semver' %}
+      release-extra-tags-pattern: ^(?:v|V)?(?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)\.(?P<patch>0|[1-9]\d*)$
+      release-extra-tags: "\\g<major>.\\g<minor> \\g<major> latest"
+{%- elif cookiecutter.__version_schema_base == 'romver' %}
+      release-extra-tags-pattern: ^(?:v|V)?(?P<human>0|[1-9]\d*)\.(?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)$
+      release-extra-tags: "\\g<human>.\\g<major> latest"
+{%- elif cookiecutter.__version_schema_base == 'calver' %}
+      release-extra-tags-pattern: ^(?:v|V)?(?P<year>\d{2}|\d{4})\.(?P<minor>\d{1,2})(?:\.(?P<micro>\d{1,2}))?$
+      release-extra-tags: "\\g<year>.\\g<minor> latest"
+{%- elif cookiecutter.__version_schema_base == 'solover' %}
+      release-extra-tags-pattern: ^(?:v|V)?[1-9]\d*$
+      release-extra-tags: latest
+{%- endif %}
 
   # For any tag with a pre-release segment
   - component: $CI_SERVER_FQDN/to-be-continuous/docker/gitlab-ci-docker@8.0.8
     rules:
+{%- if cookiecutter.__version_schema_base == 'calver' %}
+      - if: $CI_COMMIT_TAG =~ /^v?(?:\d{2}|\d{4})\.\d{1,2}(?:\.\d{1,2})?(?:-(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(?:\+[0-9a-z-]+(?:\.[0-9a-z-]+)*)?$/i && $CI_COMMIT_TAG !~ /^v?(?:\d{2}|\d{4})\.\d{1,2}(?:\.\d{1,2})?$/i
+{%- elif cookiecutter.__version_schema_base == 'solover' %}
+      - if: $CI_COMMIT_TAG =~ /^v?[1-9]\d*(?:-(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(?:\+[0-9a-z-]+(?:\.[0-9a-z-]+)*)?$/i && $CI_COMMIT_TAG !~ /^v?[1-9]\d*$/i
+{%- else %}
       - if: $CI_COMMIT_TAG =~ /^v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*))?(?:\+([0-9a-z-]+(?:\.[0-9a-z-]+)*))?$/i && $CI_COMMIT_TAG !~ /^v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
+{%- endif %}
     inputs:
       context-path: $CI_PROJECT_DIR
       file: $CI_PROJECT_DIR/docker/Dockerfile
-      release-image: "$CI_REGISTRY_IMAGE:$QF_BASE_VERSION-nightly"
-      snapshot-image: "$CI_REGISTRY_IMAGE/snapshot:$QF_BASE_VERSION-nightly"
+      release-image: "$CI_REGISTRY_IMAGE:$GR_BASE_VERSION-nightly"
+      snapshot-image: "$CI_REGISTRY_IMAGE/snapshot:$GR_BASE_VERSION-nightly"
+{%- if cookiecutter.__version_schema_base == 'effver' %}
       release-extra-tags-pattern: ^(?:v|V)?(?P<macro>0|[1-9]\d*)\.(?P<meso>0|[1-9]\d*)\.(?P<micro>0|[1-9]\d*)(?:-(?P<prerelease>(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*))?(?:\+(?P<build>[0-9a-z-]+(?:\.[0-9a-z-]+)*))?$
       release-extra-tags: "\\g<macro>.\\g<meso>-nightly latest-nightly"
+{%- elif cookiecutter.__version_schema_base == 'semver' %}
+      release-extra-tags-pattern: ^(?:v|V)?(?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)\.(?P<patch>0|[1-9]\d*)(?:-(?P<prerelease>(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*))?(?:\+(?P<build>[0-9a-z-]+(?:\.[0-9a-z-]+)*))?$
+      release-extra-tags: "\\g<major>.\\g<minor>-nightly latest-nightly"
+{%- elif cookiecutter.__version_schema_base == 'calver' %}
+      release-extra-tags-pattern: ^(?:v|V)?(?P<year>\d{2}|\d{4})\.(?P<minor>\d{1,2})(?:\.(?P<micro>\d{1,2}))?(?:-(?P<prerelease>(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*))?(?:\+(?P<build>[0-9a-z-]+(?:\.[0-9a-z-]+)*))?$
+      release-extra-tags: "\\g<year>.\\g<month_or_week>-nightly latest-nightly"
+{%- elif cookiecutter.__version_schema_base == 'romver' %}
+      release-extra-tags-pattern: ^(?:v|V)?(?P<human>0|[1-9]\d*)\.(?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)(?:-(?P<prerelease>(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*))?(?:\+(?P<build>[0-9a-z-]+(?:\.[0-9a-z-]+)*))?$
+      release-extra-tags: "\\g<human>.\\g<major>-nightly latest-nightly"
+{%- elif cookiecutter.__version_schema_base == 'solover' %}
+      release-extra-tags-pattern: ^(?:v|V)?[1-9]\d*(?:-(?P<prerelease>(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*))?(?:\+(?P<build>[0-9a-z-]+(?:\.[0-9a-z-]+)*))?$
+      release-extra-tags: latest-nightly
+{%- endif %}
+{%- endif %}

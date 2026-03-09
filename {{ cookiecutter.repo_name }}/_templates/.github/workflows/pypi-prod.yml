@@ -1,14 +1,30 @@
 # Check GitHub Actions documentation at:
 # https://github.com/marketplace/actions/pypi-publish
-{% raw %}name: 🔖 Publish to PyPI
+{%- raw %}
+name: 🔖 Publish to PyPI
 
 on:
+{%- endraw %}{% if cookiecutter.version_schema != 'trunkver' %}
   workflow_dispatch:
     inputs:
       publish:
         description: Allow publishing to PyPI in production
         required: true
         type: boolean
+{%- else %}
+  push:
+    branches:
+      - master
+      - release-*
+    paths:
+      - {{ cookiecutter.package_name }}/**
+      - tests/**
+{% if cookiecutter.create_docker %}
+      - docker/**
+      - .dockerignore
+{%- endif %}
+      - .gitignore
+{%- endif %}{% raw %}
 
 jobs:
   build:
@@ -25,12 +41,23 @@ jobs:
 
       - name: 💽 Install poetry
         uses: snok/install-poetry@v1
+{%- endraw %}{% if cookiecutter.version_schema != 'trunkver' %}
 
       - name: 📦 Build
         run: invoke build
+{%- else %}{% raw %}
+
+      - name: Generate TrunkVer
+        id: trunkver
+        run: echo "pypi_version=$(date --utc '+%Y%m%d%H%M%S').0.0rc${{ github.run_id }}" >> $GITHUB_OUTPUT
+
+        # FYI TrunkVer is not semantically compatible with PEP 440, this is a workaround
+      - name: 📦 Build
+        run: invoke build -l ${{ steps.trunkver.outputs.pypi_version }}
+{%- endraw %}{% endif %}{% raw %}
 
       - name: 🗃️ Upload Builds
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: prod-package-distribution
           path: dist/
@@ -41,7 +68,9 @@ jobs:
     name: Upload Release to PyPI
     runs-on: ubuntu-latest
     needs: build
+{%- endraw %}{% if cookiecutter.version_schema != 'trunkver' %}{% raw %}
     if: ${{ inputs.publish && github.ref_type == 'tag' }}
+{%- endraw %}{% endif %}{% raw %}
     environment:
       # TODO Create the "production" environment in {% endraw %}{{ cookiecutter.__scm_link_url }}{% raw %}/settings/environments/new
       name: production
@@ -52,7 +81,7 @@ jobs:
 
     steps:
       - name: 🗃️ Download artifacts
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: prod-package-distribution
           path: dist/

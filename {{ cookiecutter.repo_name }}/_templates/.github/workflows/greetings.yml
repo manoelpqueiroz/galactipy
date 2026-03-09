@@ -1,6 +1,7 @@
 # Check GitHub Actions documentation at:
 # https://github.com/marketplace/actions/pypi-publish
-{% raw %}name: 👋 Greetings
+{%- raw %}
+name: 👋 Greetings
 
 on: [pull_request, issues]
 
@@ -15,4 +16,5 @@ jobs:
           issue-message: |
             Hello @${{ github.actor }}, thank you for your interest in our work!
 
-            If this is a bug report, please provide screenshots and **minimum viable code to reproduce your issue**, otherwise we can not help you.{% endraw %}
+            If this is a bug report, please provide screenshots and **minimum viable code to reproduce your issue**, otherwise we can not help you.
+{%- endraw %}

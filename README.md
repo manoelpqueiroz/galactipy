@@ -31,13 +31,14 @@
 <!-- Development utilities -->
 [![Poetry][b26]][b27]
 [![Pre-commit][b28]][b29]
-[![Editorconfig][b30]][b31]
+[![Renovate Badge][b30]][b31]
+[![Editorconfig][b32]][b33]
 
 <!-- Quality Assurance -->
-[![Romantic Versioning][b32]][b5]
-[![Code Quality][b33]][b34]
-[![Coverage][b35]][b36]
-[![GitLab Pipelines][b37]][b38]
+[![Romantic Versioning][b34]][b5]
+[![Code Quality][b35]][b36]
+[![Coverage][b37]][b38]
+[![GitLab Pipelines][b39]][b40]
 
 _Expand your project structure from atoms of code to **galactic** dimensions._ :milky_way:
 
@@ -46,7 +47,7 @@ _Expand your project structure from atoms of code to **galactic** dimensions._ :
 ## TL;DR
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v1.4.0
+cookiecutter gl:galactipy/galactipy --checkout v2.0.0
 ```
 
 **All you need is the latest version of Cookiecutter!** :wink:
@@ -150,23 +151,33 @@ and best development practices for Python.
   with CI/CD workflows
   to publish your image
   to a container registry;
-- [Intended Effort Versioning][ft31]
-  with [**GitLab Changelog**][ft32]
-  or [**Release Drafter**][ft33].
+- Automatic release cycles
+  with [**GitLab Changelog**][ft31]
+  or [**Release Drafter**][ft32];
+- Automatic dependency updates
+  thanks to [**Renovate**][ft33]
+  and [**Dependabot**][ft34].
 
 ### :golfing_man: Manage Your Project like a Walk in the Park
 
-- Ready-to-use [Merge Request templates][ft34]
-  and several [Issue templates][ft35]
+- Ready-to-use [Merge Request templates][ft35]
+  and several [Issue templates][ft36]
   for easy integration
   with GitLab and GitHub;
 - Workflows to mark and close abandoned issues
   after a period of inactivity
-  for both GitLab with [**Triage Policies**][ft36]
-  and GitHub with [**Stale Bot**][ft37];
+  for both GitLab with [**Triage Policies**][ft37]
+  and GitHub with [**Stale Bot**][ft38];
+- Choose the versioning schema
+  that best suits your project type
+  and development style;
+  from **7 different options**
+  (yes,
+  you can _even_ choose SemVer,
+  if you wish :upside_down:);
 - Option to choose between
   [Gitmoji][b23],
-  [Conventional Commits][ft38]
+  [Conventional Commits][ft39]
   or a mix of both
   to standardise your commit titles.
 
@@ -191,7 +202,7 @@ and best development practices for Python.
   `ROADMAP.md`
   and `SECURITY.md`
   are generated automatically;
-- **Loads** of predefined [badges][ft39]
+- **Loads** of predefined [badges][ft40]
   to make your project stand out;
   you can either keep them,
   remove as you wish
@@ -202,7 +213,7 @@ and best development practices for Python.
 You are free to choose
 whichever platform works best
 for you and your project.
-The original template by [TezRomacH][ft40]
+The original template by [TezRomacH][ft41]
 was created with GitHub in mind,
 which prompted the creation
 of a similarly fully-featured template
@@ -223,26 +234,26 @@ you choose to host your project:
 |          **Feature**          |     **GitLab**     |     **GitHub**     | **Observations**                                                                                                                                                                                                                                            |
 | :---------------------------: | :----------------: | :----------------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |        Issue templates        | :white_check_mark: | :white_check_mark: | Both options feature automatic labels, but GitHub has an extra configuration to prevent the creation of empty issues.                                                                                                                                       |
-| Merge/pull requests templates | :white_check_mark: |     :warning:      | For GitHub, templates can only be accessed by applying custom [query parameters][ft41] during PR creation.                                                                                                                                                  |
+| Merge/pull requests templates | :white_check_mark: |     :warning:      | For GitHub, templates can only be accessed by applying custom [query parameters][ft42] during PR creation.                                                                                                                                                  |
 |   Project conditions checks   | :white_check_mark: | :white_check_mark: | A basic workflow to install the package and run tests, check codestyle and safety.                                                                                                                                                                          |
-|    Publication to TestPyPI    | :white_check_mark: | :white_check_mark: | For GitHub, the workflow uses the official [PyPI Publish action][ft42], while GitLab CI uses the [PyPI API][ft43].                                                                                                                                          |
-|      Publication to PyPI      | :white_check_mark: | :white_check_mark: | Both GitHub and GitLab projects use [trusted publishing][ft44] to upload packages to the canonical PyPI registry. Projects on both platforms will also publish the build files attestations.                                                             |
-|   SLSA Level 3 provenances    | :white_check_mark: |        :x:         | GitLab projects use the [SLSA][ft45] CI/CD component to sign the PyPI attestations and the metadata generated during package building to comply with level 3 standards.                                                                                  |
-|       Image publication       | :white_check_mark: | :white_check_mark: | For GitHub, images are pushed to [Docker Hub][ft46], while GitLab CI pushes images to the repository's [Container Registry][ft47] by default (and can be reconfigured).                                                                                     |
-|        Snapshot images        | :white_check_mark: |        :x:         | For GitLab, the [Docker][ft48] CI/CD component is used and allows for pushing snapshot images for testing when a Merge Request is open.                                                                                                                     |
-|      Dockerfile linting       | :white_check_mark: |        :x:         | The Docker GitLab CI/CD component includes a job for linting the Dockerfile with [Hadolint][ft49].                                                                                                                                                          |
-| Image vulnerability analysis  | :white_check_mark: |        :x:         | The Docker GitLab CI/CD component uses [Trivy][ft50] to scan the image for vulnerabilities.                                                                                                                                                                 |
-|       Docker SBOM files       | :white_check_mark: |        :x:         | The Docker GitLab CI/CD component generates a bill of materials with [CycloneDX][ft51].                                                                                                                                                                     |
-|      Dependency scanning      | :white_check_mark: |        :x:         | For GitLab, the [Dependency Scanning][ft52] CI/CD component generates a bill of materials with CycloneDX.                                                                                                                                                |
-|             SAST              | :white_check_mark: |        :x:         | For GitLab, the [SAST][ft53] CI/CD component performs a security analysis and provides a report with its results.                                                                                                                                        |
-|       Secret detection        | :white_check_mark: |        :x:         | For GitLab, the [Secret Detection][ft54] CI/CD component performs an analysis on potential leaked secrets in tracked files and provides a report with its results.                                                                                       |
+|    Publication to TestPyPI    | :white_check_mark: | :white_check_mark: | For GitHub, the workflow uses the official [PyPI Publish action][ft43], while GitLab CI uses the [PyPI API][ft44].                                                                                                                                          |
+|      Publication to PyPI      | :white_check_mark: | :white_check_mark: | Both GitHub and GitLab projects use [trusted publishing][ft45] to upload packages to the canonical PyPI registry. Projects on both platforms will also publish the build files attestations.                                                                |
+|   SLSA Level 3 provenances    | :white_check_mark: |        :x:         | GitLab projects use the [SLSA][ft46] CI/CD component to sign the PyPI attestations and the metadata generated during package building to comply with level 3 standards.                                                                                     |
+|       Image publication       | :white_check_mark: | :white_check_mark: | For GitHub, images are pushed to [Docker Hub][ft47], while GitLab CI pushes images to the repository's [Container Registry][ft48] by default (and can be reconfigured).                                                                                     |
+|        Snapshot images        | :white_check_mark: |        :x:         | For GitLab, the [Docker][ft49] CI/CD component is used and allows for pushing snapshot images for testing when a Merge Request is open.                                                                                                                     |
+|      Dockerfile linting       | :white_check_mark: |        :x:         | The Docker GitLab CI/CD component includes a job for linting the Dockerfile with [Hadolint][ft50].                                                                                                                                                          |
+| Image vulnerability analysis  | :white_check_mark: |        :x:         | The Docker GitLab CI/CD component uses [Trivy][ft51] to scan the image for vulnerabilities.                                                                                                                                                                 |
+|       Docker SBOM files       | :white_check_mark: |        :x:         | The Docker GitLab CI/CD component generates a bill of materials with [CycloneDX][ft52].                                                                                                                                                                     |
+|      Dependency scanning      | :white_check_mark: |        :x:         | For GitLab, the [Dependency Scanning][ft53] CI/CD component generates a bill of materials with CycloneDX.                                                                                                                                                   |
+|             SAST              | :white_check_mark: |        :x:         | For GitLab, the [SAST][ft54] CI/CD component performs a security analysis and provides a report with its results.                                                                                                                                           |
+|       Secret detection        | :white_check_mark: |        :x:         | For GitLab, the [Secret Detection][ft55] CI/CD component performs an analysis on potential leaked secrets in tracked files and provides a report with its results.                                                                                          |
 |         Stale issues          | :white_check_mark: | :white_check_mark: | GitLab rules are more flexible, marking stale issues only for those not opened by project members.                                                                                                                                                          |
-|      Greetings workflow       |        :x:         | :white_check_mark: | GitHub provides workflows to automatically reply to issues and merge requests with the [First Interaction][ft55] action.                                                                                                                                    |
-|          Dependabot           |        :x:         | :white_check_mark: | [Dependabot][ft56] is a feature now incorporated into GitHub Security. See [here][ft57] how to enable it.                                                                                                                                                   |
-|        Release drafter        |        :x:         | :white_check_mark: | [Release Drafter][ft33] is a custom workflow available on GitHub Marketplace. You may see the list of labels in [`release-drafter.yml`][ft58]. Works perfectly with [EffVer][ft31] or any SemVer-compatible specification.                                  |
-|    Changelog configuration    | :white_check_mark: |        :x:         | GitLab provides automatic changelog updates through their [API][ft32]. You may modify the template in [`changelog_config.yml`][ft59].                                                                                                                       |
-|         Test Reports          | :white_check_mark: |        :x:         | JUnit XML reports are supported by GitLab to allow [test reports][ft60] to be displayed in pipelines and merge requests.                                                                                                                                    |
-|  CI control over pushed tags  | :white_check_mark: |     :warning:      | GitLab provides full control for tags pushed to the repository using [regex][ft61], while GitHub Actions is more restricted in how it [filters][ft62] workflows to run, and can only apply these filters at the top level, limiting workflow customization. |
+|      Greetings workflow       |        :x:         | :white_check_mark: | GitHub provides workflows to automatically reply to issues and merge requests with the [First Interaction][ft56] action.                                                                                                                                    |
+|      Dependency updates       | :white_check_mark: | :white_check_mark: | To reduce development overhead, GitLab projects use a [Renovate][ft33] configuration which should be paired with a separate repository implementing the [Renovate CI/CD component][ft57], while GitHub projects use [Dependabot][ft34] out of the box.      |
+|        Release drafter        |        :x:         | :white_check_mark: | [Release Drafter][ft32] is a custom workflow available on GitHub Marketplace. You may see the list of labels in [`release-drafter.yml`][ft58]. Works perfectly with any SemVer-compatible schema.                                                           |
+|    Changelog configuration    | :white_check_mark: |        :x:         | GitLab provides automatic changelog updates through their [API][ft31]. You may modify the template in [`changelog_config.yml`][ft59]. GitLab projects also leverage use of [Galactic Releases][ft60] to manage release cycles and release notes.            |
+|         Test Reports          | :white_check_mark: |        :x:         | JUnit XML reports are supported by GitLab to allow [test reports][ft61] to be displayed in pipelines and merge requests.                                                                                                                                    |
+|  CI control over pushed tags  | :white_check_mark: |     :warning:      | GitLab provides full control for tags pushed to the repository using [regex][ft62], while GitHub Actions is more restricted in how it [filters][ft63] workflows to run, and can only apply these filters at the top level, limiting workflow customization. |
 
 ## :black_joker: How to Use It
 
@@ -257,7 +268,7 @@ pipx upgrade cookiecutter
 then go to a directory where you want to create your project and run:
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v1.4.0
+cookiecutter gl:galactipy/galactipy --checkout v2.0.0
 ```
 
 ### Input variables
@@ -280,9 +291,10 @@ The input variables, with their default values, are as follows:
 |        `licence`         |            `MIT`             | One of `MIT`, `BSD-3`, `GNU GPL v3.0`, `GNU AGLP v3.0`, `GNU LGPL v3.0`, `Mozilla Public License 2.0` and `Apache Software License 2.0`, or `Not open source`.                                                                                                                              |
 | `minimal_python_version` |            `3.10`            | Minimal Python version. All versions since `3.10` are available to choose. It is used for builds, pipelines and formatters.                                                                                                                                                                 |
 |      `line_length`       |              88              | The max length per line. NOTE: This value must be between 50 and 300.                                                                                                                                                                                                                       |
-|    `docstring_style`     |           `numpy`            | One of `numpy`, `google`, `sphinx` or `other`. This latter option will only render the docstring short summaries, while the former ones will detail arguments and returns for public methods and functions.                                                                                 |
+|    `docstring_style`     |          `Numpydoc`          | One of `Numpydoc`, `Google Python Style`, `Sphinx` or `Other`. This latter option will only render the docstring short summaries, while the former ones will detail arguments and returns for public methods and functions.                                                                 |
 |    `docstring_length`    |    based on `line_lenght`    | The max length for docstrings. NOTE: This value must be between 50 and 300 and lower of equal to `line_lenght`.                                                                                                                                                                             |
-|   `commit_convention`    |          `gitmoji`           | One of `Gitmoji`, `Conventional Commits` and `Conventional Commits with Gitmoji` for the commit standard to follow.                                                                                                                                                                         |
+|     `version_schema`     |           `EffVer`           | One of `EffVer`, `SemVer`, `CalVer (automanaged)`, `CalVer (explicit)`, `RomVer`, `SoloVer` and `TrunkVer`, each with adequate CI/CD configuration to manage releases.                                                                                                                      |
+|   `commit_convention`    |          `Gitmoji`           | One of `Gitmoji`, `Conventional Commits` and `Conventional Commits with Gitmoji` for the commit standard to follow.                                                                                                                                                                         |
 |        `use_bdd`         |            `True`            | :small_red_triangle: Option to use [behaviour-driven development][ft17] for managing tests.                                                                                                                                                                                                 |
 |    `coverage_service`    |         `Coveralls`          | One of `Coveralls` for code coverage and `Codacy` for code quality and static analysis.                                                                                                                                                                                                     |
 |     `create_docker`      |            `True`            | :small_red_triangle: Option to create a [Dockerfile][ft30] to build an image for your project.                                                                                                                                                                                              |
@@ -482,7 +494,7 @@ with a single command.
 
 |      Command       | Details                                                                                                                                                             |
 | :----------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|   `invoke login`   | Log in to a container registry. For GitHub users, points to [Docker Hub][ft46]. For GitLab users, points to the repository's [integrated container registry][ft47]. |
+|   `invoke login`   | Log in to a container registry. For GitHub users, points to [Docker Hub][ft47]. For GitLab users, points to the repository's [integrated container registry][ft48]. |
 | `invoke container` | Build local container images, with the option to set multiple tags and an alternate repository to point.                                                            |
 |   `invoke push`    | Push all project images to a container registry, with the option to set an alternate repository to push.                                                            |
 |   `invoke prune`   | Remove all local images built for the project, with the option to set an alternate repository to point.                                                             |
@@ -745,8 +757,10 @@ to the next level:
   unsure about which versioning logic
   to use,
   check [this list][wn24]
-  with a plethora of options
-  to choose from.
+  briefly explaining
+  all available options
+  with Galactipy
+  (and some others more).
 
 And here are a few articles
 which may help you:
@@ -800,7 +814,7 @@ See [`LICENCE`][b7] for more details.
 Firstly,
 there is no way this template would exist
 without the previous phenomenal work
-by [Roman Tezikov][ac1] and his rich [python-package-template][ft40].
+by [Roman Tezikov][ac1] and his rich [python-package-template][ft41].
 If there is anyone more deserving of a :star2:
 and acknowledgement,
 it's him!
@@ -847,7 +861,7 @@ in your paper.
 
 ## :mega: Spread the Word
 
-Add the badge [![Expand your project structure from atoms of code to galactic dimensions.][b39]][b40]
+Add the badge [![Expand your project structure from atoms of code to galactic dimensions.][b41]][b42]
 to your project!
 It would be really appreciated
 to spread the word of this template.
@@ -911,17 +925,19 @@ any of the following:
 [b27]: https://python-poetry.org/
 [b28]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge
 [b29]: https://kutt.it/D4ayxs
-[b30]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
-[b31]: https://kutt.it/fy3pqF
-[b32]: https://img.shields.io/badge/romver-DE4F4F?style=for-the-badge&logo=semver
-[b33]: https://img.shields.io/codacy/grade/9827f88089954a3680675d7c77e63fd5?style=for-the-badge&logo=codacy
-[b34]: https://kutt.it/ByTvpc
-[b35]: https://img.shields.io/codacy/coverage/9827f88089954a3680675d7c77e63fd5?style=for-the-badge&logo=codacy
-[b36]: https://kutt.it/uxIDHs
-[b37]: https://img.shields.io/gitlab/pipeline-status/galactipy%2Fgalactipy?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
-[b38]: https://kutt.it/zG7nVG
-[b39]: https://img.shields.io/badge/made%20with-galactipy%20%F0%9F%8C%8C-179287?style=for-the-badge&labelColor=193A3E
-[b40]: https://kutt.it/7fYqQl
+[b30]: https://img.shields.io/badge/Renovate-308BE3?logo=renovate&logoColor=fff&style=for-the-badge
+[b31]: https://gitlab.com/galactipy/galactipy/-/blob/master/renovate.json
+[b32]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
+[b33]: https://kutt.it/fy3pqF
+[b34]: https://img.shields.io/badge/romver-DE4F4F?style=for-the-badge&logo=semver
+[b35]: https://img.shields.io/codacy/grade/9827f88089954a3680675d7c77e63fd5?style=for-the-badge&logo=codacy
+[b36]: https://kutt.it/ByTvpc
+[b37]: https://img.shields.io/codacy/coverage/9827f88089954a3680675d7c77e63fd5?style=for-the-badge&logo=codacy
+[b38]: https://kutt.it/uxIDHs
+[b39]: https://img.shields.io/gitlab/pipeline-status/galactipy%2Fgalactipy?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
+[b40]: https://kutt.it/zG7nVG
+[b41]: https://img.shields.io/badge/made%20with-galactipy%20%F0%9F%8C%8C-179287?style=for-the-badge&labelColor=193A3E
+[b42]: https://kutt.it/7fYqQl
 
 [ft1]: https://github.com/cookiecutter/cookiecutter
 [ft2]: https://typer.tiangolo.com/
@@ -953,38 +969,39 @@ any of the following:
 [ft28]: https://docs.pyinvoke.org/en/stable/
 [ft29]: #invoke-usage
 [ft30]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker/Dockerfile
-[ft31]: https://jacobtomlinson.dev/effver/
-[ft32]: https://docs.gitlab.com/ee/user/project/changelogs.html
-[ft33]: https://github.com/marketplace/actions/release-drafter
-[ft34]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/merge_request_templates/default.md
-[ft35]: https://gitlab.com/galactipy/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/issue_templates
-[ft36]: https://gitlab.com/explore/catalog/components/gitlab-triage
-[ft37]: https://github.com/marketplace/actions/close-stale-issues
-[ft38]: https://www.conventionalcommits.org/en/v1.0.0/
-[ft39]: https://shields.io/
-[ft40]: https://github.com/TezRomacH/python-package-template
-[ft41]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/using-query-parameters-to-create-a-pull-request
-[ft42]: https://github.com/marketplace/actions/pypi-publish
-[ft43]: https://docs.pypi.org/api/upload/
-[ft44]: https://docs.pypi.org/trusted-publishers/
-[ft45]: https://gitlab.com/explore/catalog/components/slsa
-[ft46]: https://hub.docker.com/
-[ft47]: https://docs.gitlab.com/ee/user/packages/container_registry/
-[ft48]: https://gitlab.com/explore/catalog/to-be-continuous/docker
-[ft49]: https://github.com/hadolint/hadolint
-[ft50]: http://trivy.dev/latest/
-[ft51]: https://cyclonedx.org/
-[ft52]: https://gitlab.com/explore/catalog/components/dependency-scanning
-[ft53]: https://gitlab.com/explore/catalog/components/sast
-[ft54]: https://gitlab.com/explore/catalog/components/secret-detection
-[ft55]: https://github.com/marketplace/actions/first-interaction
-[ft56]: https://docs.github.com/en/code-security/dependabot
-[ft57]: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates#enabling-dependabot-version-updates
+[ft31]: https://docs.gitlab.com/ee/user/project/changelogs.html
+[ft32]: https://github.com/marketplace/actions/release-drafter
+[ft33]: https://docs.renovatebot.com/
+[ft34]: https://docs.github.com/en/code-security/dependabot
+[ft35]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/merge_request_templates/default.md
+[ft36]: https://gitlab.com/galactipy/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/issue_templates
+[ft37]: https://gitlab.com/explore/catalog/components/gitlab-triage
+[ft38]: https://github.com/marketplace/actions/close-stale-issues
+[ft39]: https://www.conventionalcommits.org/en/v1.0.0/
+[ft40]: https://shields.io/
+[ft41]: https://github.com/TezRomacH/python-package-template
+[ft42]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/using-query-parameters-to-create-a-pull-request
+[ft43]: https://github.com/marketplace/actions/pypi-publish
+[ft44]: https://docs.pypi.org/api/upload/
+[ft45]: https://docs.pypi.org/trusted-publishers/
+[ft46]: https://gitlab.com/explore/catalog/components/slsa
+[ft47]: https://hub.docker.com/
+[ft48]: https://docs.gitlab.com/ee/user/packages/container_registry/
+[ft49]: https://gitlab.com/explore/catalog/to-be-continuous/docker
+[ft50]: https://github.com/hadolint/hadolint
+[ft51]: http://trivy.dev/latest/
+[ft52]: https://cyclonedx.org/
+[ft53]: https://gitlab.com/explore/catalog/components/dependency-scanning
+[ft54]: https://gitlab.com/explore/catalog/components/sast
+[ft55]: https://gitlab.com/explore/catalog/components/secret-detection
+[ft56]: https://github.com/marketplace/actions/first-interaction
+[ft57]: https://gitlab.com/explore/catalog/to-be-continuous/renovate
 [ft58]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/release-drafter.yml
 [ft59]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/changelog_config.yml
-[ft60]: https://docs.gitlab.com/ee/ci/testing/unit_test_reports.html
-[ft61]: https://docs.gitlab.com/ee/ci/jobs/job_rules.html#compare-a-variable-to-a-regular-expression
-[ft62]: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+[ft60]: https://gitlab.com/explore/catalog/galactipy/components/versioning
+[ft61]: https://docs.gitlab.com/ee/ci/testing/unit_test_reports.html
+[ft62]: https://docs.gitlab.com/ee/ci/jobs/job_rules.html#compare-a-variable-to-a-regular-expression
+[ft63]: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
 
 [htu1]: http://ivantomic.com/projects/ospnc/
 [htu2]: #gitlab-vs-github-features

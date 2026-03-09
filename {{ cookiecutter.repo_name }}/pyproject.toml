@@ -58,7 +58,9 @@ classifiers = [ # UPDATEME with additional classifiers
   "Private :: Do Not Upload", # TODO Remove classifier to allow publishing on PyPI
 ]
 
+{% if cookiecutter.version_schema != 'trunkver' -%}
 # Placeholder for poetry-dynamic-versioning, DO NOT CHANGE
+{% endif -%}
 version = "0.0.0"  # Keep this key as the last for `tool.poetry`
 
 
@@ -117,17 +119,56 @@ ipython = "^8.18.0"
 
 
 [tool.poetry.requires-plugins]
+{%- if cookiecutter.version_schema != 'trunkver' %}
 poetry-dynamic-versioning = { version = "^1.7.1", extras = ["plugin"] }
+{%- else %}
+poetry-bumpversion = "^0.3.3"
+{%- endif %}
 poetry-plugin-export = "^1.9.0"
 poetry-plugin-up = "^0.9.0"
 poetry-plugin-bundle = "^1.5.0"
+{%- if cookiecutter.version_schema != 'trunkver' %}
 
 [tool.poetry-dynamic-versioning]
 # https://github.com/mtkennerly/poetry-dynamic-versioning#configuration
 # https://dunamai.readthedocs.io/en/latest/
 enable = true
 vcs = "git"
-{% raw %}format-jinja = """
+pattern = """(?x)
+  ^v?
+{%- if cookiecutter.__schema_group == 'semver-like' %}
+  (?P<base>
+    (?:0|[1-9]\\d*)
+    \\.
+    (?:0|[1-9]\\d*)
+    \\.
+    (?:0|[1-9]\\d*)
+  )
+{%- elif cookiecutter.__schema_group == 'calver' %}
+  (?P<base>
+    (?:\\d{2}|\\d{4,5})
+    \\.
+    \\d{1,2}
+    (?:
+      \\.
+      \\d{1,2}
+    )?
+  )
+{%- elif cookiecutter.__schema_group == 'solover' %}
+  (?P<base>
+    [1-9]\\d*
+  )
+{%- endif %}
+  (?:-
+    (?P<stage>0|[1-9]\\d*|\\d*[a-z-][0-9a-z-]*)
+    (?<!\\d)
+    \\.?
+    (?P<revision>0|[1-9]\\d*)?
+  )?
+  $
+"""
+{%- raw %}
+format-jinja = """
   {%- set revision_value = revision or 0 -%}
   {%- if distance == 0 -%}
     {%- if stage is none -%}
@@ -147,7 +188,14 @@ vcs = "git"
       {{ serialize_pep440(base, stage, revised_distance) }}
     {%- endif -%}
   {%- endif -%}
-"""{% endraw %}
+"""
+{%- endraw %}
+{%- else %}
+
+[tool.poetry_bumpversion.file."{{ cookiecutter.package_name }}/_version.py"]
+search = '__version__ = "{current_version}"'
+replace = '__version__ = "{new_version}"'
+{%- endif %}
 
 
 {% if cookiecutter.commit_convention == 'conventional' -%}
@@ -255,7 +303,7 @@ task-tags = [
 
 [tool.ruff.lint.per-file-ignores]
 {%- if cookiecutter.app_type != 'bare_repo' %}
-"{{ cookiecutter.package_name }}/cli/commands/**.py" = ["FBT", "ARG001", "RUF013"]
+"{{ cookiecutter.package_name }}/cli/commands/**.py" = ["FBT", "ARG001", "RUF013", "RUF067"]
 "text_tools.py" = ["B019"]
 {%- endif %}
 "tests/**.py" = [

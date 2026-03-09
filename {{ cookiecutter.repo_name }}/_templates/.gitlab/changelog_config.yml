@@ -1,4 +1,5 @@
-{% raw %}---
+{% raw -%}
+---
 # Settings for generating changelogs using the GitLab API. See
 # https://docs.gitlab.com/ee/api/repositories.html#generate-changelog-data for
 # more information.
@@ -151,9 +152,9 @@ categories:
   reworking: ":factory_worker: Codebase Renovation"
   plumbing: ":factory_worker: Codebase Renovation"
 
-  dependencies: ":up: Dependencies Updates"
-  dep: ":up: Dependencies Updates"
-  deps: ":up: Dependencies Updates"
+  dependencies: ":arrow_up: Dependencies Updates"
+  dep: ":arrow_up: Dependencies Updates"
+  deps: ":arrow_up: Dependencies Updates"
 
   build: ":comet: Build & Release Optimisation"
   building: ":comet: Build & Release Optimisation"
@@ -174,6 +175,8 @@ categories:
   test: ":repeat: Design & Validation"
   tests: ":repeat: Design & Validation"
   testing: ":repeat: Design & Validation"
+  cov: ":repeat: Design & Validation"
+  coverage: ":repeat: Design & Validation"
 {%- endraw %}{% if cookiecutter.use_bdd %}{% raw %}
   bdd: ":repeat: Design & Validation"
   scenario: ":repeat: Design & Validation"
@@ -261,9 +264,9 @@ categories:
   typo: ":toolbox: Fixes"
   typos: ":toolbox: Fixes"
 
-  dependencies: ":up: Dependencies Updates"
-  dep: ":up: Dependencies Updates"
-  deps: ":up: Dependencies Updates"
+  dependencies: ":arrow_up: Dependencies Updates"
+  dep: ":arrow_up: Dependencies Updates"
+  deps: ":arrow_up: Dependencies Updates"
 
   documentation: ":books: Documentation"
   doc: ":books: Documentation"
@@ -289,5 +292,10 @@ template: |
 
   {% end %}
   {% else %}
+{%- endraw %}{% if cookiecutter.version_schema != 'trunkver' %}
   No changes detailed for this release.
-  {% end %}{% endraw %}
+{%- else %}
+  No changes detailed in this update.
+{%- endif %}{% raw %}
+  {% end %}
+{%- endraw %}

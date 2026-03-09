@@ -6,7 +6,9 @@
 [![Python support][badge1]][burl1]
 [![PyPI Release][badge1a]][burl1]
 [![Repository][badge2]][burl2]
-[![Releases][badge3]][burl3]
+{%- if cookiecutter.version_schema != 'trunkver' %}
+[![Releases][brel1]][brel2]
+{%- endif %}
 {%- if cookiecutter.create_docker %}
 [![Docker][bdocker1]][bdocker2]
 {%- endif %}
@@ -42,9 +44,14 @@
 <!-- Development utilities -->
 [![Poetry][badge13]][burl13]
 [![Pre-commit][badge14]][burl14]
-[![Bandit][badge15]][burl15]
-[![isort][badge16]][burl16]
-[![Editorconfig][badge17]][burl17]
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+[![Renovate][badge15]][burl15]
+{%- else %}
+[![Dependabot][badge15]][burl15]
+{%- endif %}
+[![Bandit][badge16]][burl16]
+[![isort][badge17]][burl17]
+[![Editorconfig][badge18]][burl18]
 {%+ if cookiecutter.licence != 'nos' %}
 <!-- Open Source benchmarks -->
 <!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
@@ -53,18 +60,30 @@
 [![OSSRank][bossf3]][bossf4] -->
 {% endif +%}
 <!-- Quality assurance -->
-[![Intended Effort Versioning][badge18]][burl18]
+{%- if cookiecutter.__version_schema_base == 'effver' %}
+[![Intended Effort Versioning][badge19]][burl19]
+{%- elif cookiecutter.__version_schema_base == 'semver' %}
+[![Semantic Versioning][badge19]][burl19]
+{%- elif cookiecutter.__version_schema_base == 'calver' %}
+[![Calendar Versioning][badge19]][burl19]
+{%- elif cookiecutter.__version_schema_base == 'romver' %}
+[![Romantic Versioning][badge19]][burl19]
+{%- elif cookiecutter.__version_schema_base == 'solover' %}
+[![SoloVer][badge19]][burl19]
+{%- elif cookiecutter.__version_schema_base == 'trunkver' %}
+[![TrunkVer][badge19]][burl19]
+{%- endif %}
 {%- if cookiecutter.__coverage_lc == 'coveralls' %}
-[![Coverage][badge19]][burl19]
+[![Coverage][badge20]][burl20]
 {%- elif cookiecutter.__coverage_lc == 'codacy' %}
 <!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
 [![Code Quality][bqa1]][bqa2] -->
 <!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
-[![Coverage][badge19]][burl19] -->
+[![Coverage][badge20]][burl20] -->
 {%- endif %}
-[![Pipelines][badge20]][burl20]
+[![Pipelines][badge21]][burl21]
 
-_{{ cookiecutter.project_description }}_
+_{{ cookiecutter.project_description }}._
 
 {% if cookiecutter.app_type != 'bare_repo' -%}
 ---
@@ -320,12 +339,37 @@ right now:
 
 ## :ship: Releases
 
+{% if cookiecutter.version_schema != 'trunkver' -%}
 You can see
 the list of available releases
 on the [{{ cookiecutter.__scm_platform_base }} Releases][release1] page.
 
+{% if cookiecutter.__version_schema_base == 'effver' -%}
 We follow [Intended Effort Versioning][release2] specification,
-details can be found in our [`CONTRIBUTING` guide][burl18].
+{% elif cookiecutter.__version_schema_base == 'semver' -%}
+We follow [Semantic Versioning][release2] specification,
+{% elif cookiecutter.__version_schema_base == 'calver' -%}
+We follow [Calendar Versioning][release2] specification,
+{% elif cookiecutter.__version_schema_base == 'romver' -%}
+We follow [Romantic Versioning][release2] specification,
+{% elif cookiecutter.__version_schema_base == 'solover' -%}
+We follow the [SoloVer][release2] versioning schema,
+{% endif -%}
+{% else -%}
+We follow a trunk-based development cycle,
+which dismisses traditional releases and tags.
+Instead,
+the program is always available
+in a working state for users,
+with every incremental change to the codebase
+being published to PyPI.
+
+To better leverage
+our development,
+we apply the [TrunkVer][release1] versioning schema
+to distribute the package,
+{% endif -%}
+details can be found in our [`CONTRIBUTING` guide][burl19].
 {%- if cookiecutter.create_docker %}
 
 ### Run as a Docker Container
@@ -397,10 +441,11 @@ in your paper.
 
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 ## :women_with_bunny_ears: Similar Projects
-{%- else -%}
-## :dancing_women: Similar Projects
-{%- endif %}
 
+{% else -%}
+## :dancing_women: Similar Projects
+
+{% endif -%}
 <!-- UPDATEME with projects that implement similar functionality as yours
 
   Provide information on which cases those projects might be more suitable than yours for users
@@ -417,10 +462,8 @@ This project was generated with [Galactipy][burl4].
 [badge1a]: https://img.shields.io/pypi/v/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=pypi&color=3775a9
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [badge2]: https://img.shields.io/badge/GitLab-0B2640?style=for-the-badge&logo=gitlab&logoColor=white
-[badge3]: https://img.shields.io/gitlab/v/release/{{ cookiecutter.scm_namespace }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&logo=semantic-release&color=253747
 {%- else %}
 [badge2]: https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
-[badge3]: https://img.shields.io/github/v/release/{{ cookiecutter.scm_namespace}}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=semantic-release&color=347d39
 {%- endif %}
 [badge4]: https://img.shields.io/badge/made%20with-galactipy%20%F0%9F%8C%8C-179287?style=for-the-badge&labelColor=193A3E
 [badge5]: https://img.shields.io/badge/project%20type-toy-blue?style=for-the-badge
@@ -444,25 +487,43 @@ This project was generated with [Galactipy][burl4].
 [badge12]: https://img.shields.io/badge/sembr-FF6441?style=for-the-badge&logo=apmterminals&logoColor=white
 [badge13]: https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json&style=for-the-badge
 [badge14]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge
-[badge15]: https://img.shields.io/badge/security-bandit-yellow?style=for-the-badge
-[badge16]: https://img.shields.io/badge/imports-isort-1674b1?style=for-the-badge&labelColor=ef8336
-[badge17]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
-[badge18]: https://img.shields.io/badge/effver-0097a7?style=for-the-badge&logo=semver
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+[badge15]: https://img.shields.io/badge/Renovate-308BE3?logo=renovate&logoColor=fff&style=for-the-badge
+{%- else %}
+[badge15]: https://img.shields.io/badge/Dependabot-025E8C?logo=dependabot&logoColor=fff&style=for-the-badge
+{%- endif %}
+[badge16]: https://img.shields.io/badge/security-bandit-yellow?style=for-the-badge
+[badge17]: https://img.shields.io/badge/imports-isort-1674b1?style=for-the-badge&labelColor=ef8336
+[badge18]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
+{%- if cookiecutter.version_schema == 'effver' %}
+[badge19]: https://img.shields.io/badge/effver-0097a7?style=for-the-badge&logo=semver
+{%- elif cookiecutter.version_schema == 'semver' %}
+[badge19]: https://img.shields.io/badge/semver-3F4551?style=for-the-badge&logo=semver
+{%- elif cookiecutter.version_schema == 'calver-auto' %}
+[badge19]: https://img.shields.io/badge/calver-5Y.WW-006BFF?style=for-the-badge&logo=protoncalendar&logoColor=white
+{%- elif cookiecutter.version_schema == 'calver-explicit' %}
+[badge19]: https://img.shields.io/badge/calver-5Y.0M.MICRO-006BFF?style=for-the-badge&logo=protoncalendar&logoColor=white
+{%- elif cookiecutter.version_schema == 'romver' %}
+[badge19]: https://img.shields.io/badge/romver-DE4F4F?style=for-the-badge&logo=semver
+{%- elif cookiecutter.version_schema == 'solover' %}
+[badge19]: https://img.shields.io/badge/solover-056473?style=for-the-badge&logo=upptime&logoColor=white
+{%- elif cookiecutter.version_schema == 'trunkver' %}
+[badge19]: https://img.shields.io/badge/trunkver-3F54A3?style=for-the-badge&logo=roots&logoColor=white
+{%- endif %}
 {%- if cookiecutter.__coverage_lc == 'coveralls' %}
-[badge19]: https://img.shields.io/coverallsCoverage/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=coveralls
+[badge20]: https://img.shields.io/coverallsCoverage/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=coveralls
 {%- else %}
 <!-- TODO Replace the hash `d5402a91aa7b4234bd1c19b5e86a63be` with your project ID in the "Codacy Badge" section available at https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/settings
-[badge19]: https://img.shields.io/codacy/coverage/d5402a91aa7b4234bd1c19b5e86a63be?style=for-the-badge&logo=codacy -->
+[badge20]: https://img.shields.io/codacy/coverage/d5402a91aa7b4234bd1c19b5e86a63be?style=for-the-badge&logo=codacy -->
 {%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[badge20]: https://img.shields.io/gitlab/pipeline-status/{{ cookiecutter.scm_namespace }}%2F{{ cookiecutter.repo_name }}?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
+[badge21]: https://img.shields.io/gitlab/pipeline-status/{{ cookiecutter.scm_namespace }}%2F{{ cookiecutter.repo_name }}?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
 {%- else %}
-[badge20]: https://img.shields.io/github/actions/workflow/status/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/build.yml?style=for-the-badge&logo=github
+[badge21]: https://img.shields.io/github/actions/workflow/status/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/build.yml?style=for-the-badge&logo=github
 {%- endif %}
 
 [burl1]: https://pypi.org/project/{{ cookiecutter.repo_name }}/
 [burl2]: {{ cookiecutter.__scm_base_url }}
-[burl3]: {{ cookiecutter.__scm_link_url }}/releases
 [burl4]: https://kutt.it/7fYqQl
 [burl5]: https://project-types.github.io/#toy
 [burl6]: {{ cookiecutter.__scm_link_url }}/blob/master/ROADMAP.md#development-stages
@@ -478,21 +539,35 @@ This project was generated with [Galactipy][burl4].
 [burl12]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#semantic-line-breaks
 [burl13]: https://python-poetry.org/
 [burl14]: {{ cookiecutter.__scm_link_url }}/blob/master/.pre-commit-config.yaml
-[burl15]: https://bandit.readthedocs.io/en/latest/
-[burl16]: https://pycqa.github.io/isort/
-[burl17]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
-[burl18]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#versioning-customs
-{%- if cookiecutter.__coverage_lc == 'coveralls' %}
-[burl19]: https://coveralls.io/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+[burl15]: {{ cookiecutter.__scm_link_url }}/blob/master/renovate.json
 {%- else %}
-[burl19]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/coverage
+[burl15]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/dependabot.yml
+{%- endif %}
+[burl16]: https://bandit.readthedocs.io/en/latest/
+[burl17]: https://pycqa.github.io/isort/
+[burl18]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
+[burl19]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#versioning-customs
+{%- if cookiecutter.__coverage_lc == 'coveralls' %}
+[burl20]: https://coveralls.io/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}
+{%- else %}
+[burl20]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/coverage
 {%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[burl20]: {{ cookiecutter.__scm_link_url }}/pipelines
+[burl21]: {{ cookiecutter.__scm_link_url }}/pipelines
 {%- else %}
-[burl20]: {{ cookiecutter.__scm_link_url }}/actions/workflows/build.yml
+[burl21]: {{ cookiecutter.__scm_link_url }}/actions/workflows/build.yml
 {%- endif %}
 
+{% if cookiecutter.version_schema != 'trunkver' -%}
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
+[brel1]: https://img.shields.io/gitlab/v/release/{{ cookiecutter.scm_namespace }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&logo=semantic-release&color=253747
+{% else -%}
+[brel1]: https://img.shields.io/github/v/release/{{ cookiecutter.scm_namespace}}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=semantic-release&color=347d39
+{% endif -%}
+[brel2]: {{ cookiecutter.__scm_link_url }}/releases
+
+{% endif -%}
 {% if cookiecutter.licence != 'nos' -%}
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [blic1]: https://img.shields.io/gitlab/license/{{ cookiecutter.scm_namespace}}/{{ cookiecutter.repo_name }}?style=for-the-badge
@@ -539,9 +614,24 @@ This project was generated with [Galactipy][burl4].
 {%- else %}
 [contributing2]: {{ cookiecutter.__scm_link_url }}/issues?q=label%3Adesign-discovery%20OR%20label%3Adesign-formulation%20OR%20label%3Adesign-reassessment
 {%- endif %}
+{%- if cookiecutter.version_schema != 'trunkver' %}
 
 [release1]: {{ cookiecutter.__scm_link_url }}/releases
+{%- if cookiecutter.__version_schema_base == 'effver' %}
 [release2]: https://jacobtomlinson.dev/effver/
+{%- elif cookiecutter.__version_schema_base == 'semver' %}
+[release2]: https://semver.org/
+{%- elif cookiecutter.__version_schema_base == 'calver' %}
+[release2]: https://calver.org/
+{%- elif cookiecutter.__version_schema_base == 'romver' %}
+[release2]: https://github.com/romversioning/romver
+{%- elif cookiecutter.__version_schema_base == 'solover' %}
+[release2]: https://beza1e1.tuxen.de/SoloVer
+{%- endif %}
+{%- else %}
+
+[release1]: https://trunkver.org/
+{%- endif %}
 {%- if cookiecutter.create_docker %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 

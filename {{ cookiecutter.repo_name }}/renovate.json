@@ -1,3 +1,6 @@
+// Renovate configuration
+// https://docs.renovatebot.com/configuration-options/
+{%- raw %}
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "timezone": "America/Sao_Paulo",
@@ -5,7 +8,7 @@
   "commitMessageAction": "Renovate",
   "commitMessageExtra": "with {{updateType}} {{#if isPinDigest}}{{{newDigestShort}}}{{else}}version {{#if isMajor}}{{prettyNewMajor}}.0{{else}}{{prettyNewVersion}}{{/if}}{{/if}}",
   "constraints": {
-    "python": "^3.10"
+    "python": "{% endraw %}^{{ cookiecutter.minimal_python_version }}{% raw %}"
   },
   "extends": [
     "config:recommended",
@@ -13,15 +16,20 @@
     ":separateMajorReleases"
   ],
   "labels": [
+{%-endraw %}{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
     "maintenance::renovate"
+{%- else %}
+    "maintenance-renovate"
+{%- endif %}
   ],
   "prHourlyLimit": 5,
   "enabledManagers": [
     "poetry",
+{%- if cookiecutter.create_docker %}
     "dockerfile",
+{%- endif %}{% raw %}
     "gitlabci",
-    "gitlabci-include",
-    "github-actions"
+    "gitlabci-include"
   ],
   "lockFileMaintenance": {
     "automerge": true,
@@ -34,12 +42,17 @@
       "* * * * 1"
     ]
   },
+  // UPDATEME with your desired rules
   "packageRules": [
     {
       "automerge": true,
       "enabled": true,
       "addLabels": [
-        "ci::project"
+{%- endraw %}{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+        "ci::build"
+{%- else %}
+        "ci-build"
+{%- endif %}{% raw %}
       ],
       "matchManagers": [
         "gitlabci",
@@ -51,6 +64,7 @@
       "branchTopic": "gitlab-ci-components",
       "groupName": "GitLab CI components"
     },
+{%- endraw %}{%- if cookiecutter.create_docker %}
     {
       "description": "Ignore Python version-specific Docker images in CI",
       "enabled": false,
@@ -66,30 +80,20 @@
       "automerge": false,
       "addLabels": [
         "manual-check",
-        "template-internals::docker"
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+        "ci::docker"
+{%- else %}
+        "ci-docker"
+{%- endif %}
       ],
       "separateMajorMinor": false,
       "matchCategories": [
         "docker"
       ],
-      "commitBody": "Changelog: docker",
+      "commitBody": "Changelog: build",
       "commitMessagePrefix": ":hammer:"
     },
-    {
-      "automerge": true,
-      "description": "Group all GitHub actions in a single rule",
-      "addLabels": [
-        "template-internals::github"
-      ],
-      "enabled": true,
-      "separateMajorMinor": false,
-      "matchManagers": [
-        "github-actions"
-      ],
-      "commitBody": "Changelog: template-config",
-      "commitMessagePrefix": ":construction_worker:",
-      "groupName": "template GitHub actions"
-    },
+{%- endif %}{% raw %}
     {
       "enabled": true,
       "matchCategories": [
@@ -104,7 +108,6 @@
         "rollback",
         "bump"
       ],
-      "commitBody": "Changelog: dependencies",
       "commitMessagePrefix": ":arrow_up:",
       "commitMessageTopic": "{{depName}}"
     },
@@ -112,6 +115,7 @@
       "automerge": true,
       "description": "Group Poetry plugins",
       "groupName": "Poetry plugins",
+      "commitBody": "Changelog: devdeps",
       "matchPackageNames": [
         "/^poetry-plugin-/",
         "/^poetry-dynamic-/",
@@ -121,6 +125,7 @@
     {
       "description": "Group linting and formatting tools",
       "groupName": "linting tools",
+      "commitBody": "Changelog: devdeps",
       "matchPackageNames": [
         "ruff",
         "mypy",
@@ -130,6 +135,7 @@
     {
       "description": "Group testing tools",
       "groupName": "testing tools",
+      "commitBody": "Changelog: devdeps",
       "matchPackageNames": [
         "/^pytest/",
         "coverage"
@@ -138,6 +144,7 @@
     {
       "description": "Group remaining dev tools",
       "groupName": "developer productivity tools",
+      "commitBody": "Changelog: devdeps",
       "branchTopic": "devx-tools",
       "matchPackageNames": [
         "bandit",
@@ -146,20 +153,45 @@
       ]
     },
     {
-      "description": "Group template libraries",
-      "groupName": "template libraries",
-      "matchFileNames": ["*cookiecutter.repo_name*/pyproject.toml"],
-      "commitMessagePrefix": ":construction:",
-      "separateMajorMinor": false
-    },
-    {
-      "description": "Group foundational libraries for templates",
-      "groupName": "foundational template libraries",
-      "branchTopic": "templating-libraries",
+      "description": "Group core libraries",
+      "groupName": "core libraries",
+      "branchTopic": "core-libraries",
+      "commitBody": "Changelog: dependencies",
       "matchPackageNames": [
-        "cookiecutter"
+{%- endraw %}{% if cookiecutter.app_type != 'bare_repo' %}
+{%- if cookiecutter.app_type == 'tui' or cookiecutter.app_type == 'hybrid' %}
+        "textual",
+        "art",
+{%- endif %}
+        "typer",
+        "rich",
+        "orbittings",
+        "platformdirs",
+        "nebulog"
       ]
     },
+    // FYI Click should not be updated, as versions 8.2+ break Typer's behaviour
+    {
+      "description": "Ignore Click updates",
+      "enabled": false,
+      "matchPackageNames": [
+        "click"
+{%- else %}
+        // UPDATEME with your core dependencies once defined
+{%- endif %}{% raw %}
+      ]
+    },
+{%- endraw %}{% if cookiecutter.__debug %}
+    {
+      "description": "Group docs dependencies",
+      "groupName": "documentation dependencies",
+      "branchTopic": "docs-deps",
+      "commitBody": "Changelog: devdeps",
+      "matchDepTypes": [
+        "docs"
+      ]
+    },
+{%- endif %}{% raw %}
     {
       "automerge": false,
       "addLabels": [
@@ -173,7 +205,11 @@
     {
       "automerge": true,
       "addLabels": [
+{%- endraw %}{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
         "internals::toolset"
+{%- else %}
+        "internals-toolset"
+{%- endif %}{% raw %}
       ],
       "description": "Automerge minor and patch dev dependencies",
       "matchDepTypes": [
@@ -205,3 +241,4 @@
     "$CI_SERVER_FQDN": "gitlab.com"
   }
 }
+{%- endraw %}

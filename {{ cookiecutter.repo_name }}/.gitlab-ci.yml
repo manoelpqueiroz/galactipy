@@ -7,8 +7,11 @@
 stages:
   # Initial stages
   - security-checks
+{%- if cookiecutter.version_schema != 'trunkver' %}
   - test
   - coverage
+{%- endif %}
+  - retrieve
   - build
   - sign
   - entrust
@@ -19,123 +22,13 @@ stages:
   # Later stages
 {%- endif %}
   - publish
-  - release
-  - maintenance
-
-# TODO Set up a bot for automated repository actions and components
-# 1. Create a Project Access Token at {{ cookiecutter.__scm_link_url }}/settings/access_tokens
-# 2. Ensure token has "Maintainer" role and "api" scope
-# 3. Set the {{ bot_envvar }} variable in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
-# 4. Ensure variable has at least "Masked" option flagged and "Protect variable" unchecked
-include:
-  - local: /.gitlab/components/docker.yml
-
-  - component: $CI_SERVER_FQDN/components/sast/sast@3.2.0
-    inputs:
-      stage: security-checks
-      enable_mr_pipelines: true
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
-      run_advanced_sast: true
-  - component: $CI_SERVER_FQDN/components/dependency-scanning/main@0.9.1
-    rules:
-      - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-      - if: $CI_COMMIT_BRANCH
-    inputs:
-      stage: security-checks
-{%- endif %}
-  - component: $CI_SERVER_FQDN/components/secret-detection/secret-detection@2.2.0
-    inputs:
-      stage: security-checks
-      enable_mr_pipelines: true
-  - component: $CI_SERVER_FQDN/components/slsa/provenance-signer@0.1.1
-    rules:
-      - if: $CI_COMMIT_TAG
-    inputs:
-      stage: sign
-      job_name: slsa-signer-wheel
-      target_artifact: dist/$WHEEL_BINARY
-      bundle_file: slsa-signed/$WHEEL_BINARY.slsa-l3-provenance.json
-      provenance_metadata_file: $PROVENANCE_METADATA
-  - component: $CI_SERVER_FQDN/components/slsa/provenance-signer@0.1.1
-    rules:
-      - if: $CI_COMMIT_TAG
-    inputs:
-      stage: sign
-      job_name: slsa-signer-sdist
-      target_artifact: dist/$SDIST_BINARY
-      bundle_file: slsa-signed/$SDIST_BINARY.slsa-l3-provenance.json
-      provenance_metadata_file: $PROVENANCE_METADATA
-  - component: $CI_SERVER_FQDN/components/gitlab-triage/gitlab-triage@0.1.2
-    rules:
-      - if: $CI_PIPELINE_SOURCE == 'schedule'
-    inputs:
-      api_token: ${{ bot_envvar }}
-      stage: maintenance
-
-  - component: $CI_SERVER_FQDN/galactipy/components/versioning/vars@0.5.0
-  - component: $CI_SERVER_FQDN/galactipy/components/versioning/release@0.5.0
-    inputs:
-      pat-envvar: ${{ bot_envvar }}
-      pre-release-title: $QF_RELEASE_STAGE_TITLE $QF_SEMVER_VERSION
-      pre-release-fallback: This is a $QF_RELEASE_LABEL version of $CI_PROJECT_NAME. **Do not use it in production environments.**
-{%- if cookiecutter.commit_convention == 'gitmoji' %}
-      changelog-commit-message: ':bookmark: Update CHANGELOG.md'
-{%- elif cookiecutter.commit_convention == 'conventional' %}
-      changelog-commit-message: 'docs: Update CHANGELOG.md'
+{%- if cookiecutter.version_schema == 'trunkver' %}
+  - coverage
 {%- else %}
-      changelog-commit-message: '🔖 bump: Update CHANGELOG.md'
+  - release
+  - post-release
 {%- endif %}
-      links:
-        - name: PyPI
-          url: https://pypi.org/project/$REPO_NAME/$QF_PYPI_VERSION/
-          link_type: package
-        - name: GitLab Registry
-          url: $REGISTRY_PACKAGE_PAGE
-          link_type: package
-{%- if cookiecutter.create_docker %}
-        - name: Docker
-          url: $CI_PROJECT_URL/-/blob/$CI_COMMIT_TAG/docker/Dockerfile
-          link_type: image
-{%- endif %}
-        - name: Build metadata (json)
-          url: $PROVENANCE_PACKAGE_API_URL/$REPO_NAME-$QF_PYPI_VERSION.slsa-l1-provenance.json
-        - name: Wheel attestation (json)
-          url: $PROVENANCE_PACKAGE_API_URL/$WHEEL_BINARY.publish.attestation
-        - name: Wheel provenance (json)
-          url: $PROVENANCE_PACKAGE_API_URL/$WHEEL_BINARY.slsa-l3-provenance.json
-        - name: sdist attestation (json)
-          url: $PROVENANCE_PACKAGE_API_URL/$SDIST_BINARY.publish.attestation
-        - name: sdist provenance (json)
-          url: $PROVENANCE_PACKAGE_API_URL/$SDIST_BINARY.slsa-l3-provenance.json
-      pre-release-exclude:
-        - PyPI
-
-variables:
-  # Variables from the Cookiecutter template
-  PROJECT_NAME: {{ cookiecutter.project_name }}
-  REPO_NAME: {{ cookiecutter.repo_name }}
-  PACKAGE_NAME: {{ cookiecutter.package_name }}
-
-  # Advanced regular expressions
-  EFFVER_RELEASE_VERSION: /^v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/i
-  EFFVER_ANY_VERSION: /^v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*))?(?:\+([0-9a-z-]+(?:\.[0-9a-z-]+)*))?$/i
-
-  # Value substitution
-  PACKAGE_BUILD_ARTIFACTS: ${REPO_NAME}_build_${CI_COMMIT_SHORT_SHA}_${CI_PIPELINE_SOURCE}
-  STAGE_ARTIFACTS: ${REPO_NAME}_${CI_JOB_STAGE}_${CI_COMMIT_SHORT_SHA}_${CI_PIPELINE_SOURCE}
-
-  PROVENANCE_METADATA: $PACKAGE_BUILD_ARTIFACTS-metadata.json
-  PROVENANCE_PACKAGE_API_URL: $CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/provenances/$QF_PYPI_VERSION
-
-  WHEEL_BINARY: ${PACKAGE_NAME}-${QF_PYPI_VERSION}-py3-none-any.whl
-  SDIST_BINARY: ${PACKAGE_NAME}-${QF_PYPI_VERSION}.tar.gz
-
-default:
-  image: registry.gitlab.com/galactipy/docker:{{ cookiecutter.minimal_python_version }}
-  cache:
-    key: venv-$CI_COMMIT_SHORT_SHA
-    paths:
-      - $CI_PROJECT_DIR/.cache/pypoetry
+  - maintenance
 
 # General rules for triggering pipelines
 workflow:
@@ -151,10 +44,12 @@ workflow:
     - if: $CI_COMMIT_BRANCH =~ /^(test|WIP).*/i
       when: never
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+{%- if cookiecutter.version_schema != 'trunkver' %}
     - if: $CI_COMMIT_TAG
+{%- endif %}
     - if: $CI_COMMIT_BRANCH
 
-# Anchors for common commands and file groups
+# Anchors for common file groupings for rule refinement
 .codechecks: &codechecks
   - {{ cookiecutter.package_name }}/**/*
   - tests/**/*
@@ -172,26 +67,231 @@ workflow:
   - .dockerignore
 {%- endif %}
   - pyproject.toml
-  - tasks.py
   - .gitlab-ci.yml
   - .gitlab/components/**/*
+{%- if cookiecutter.version_schema != 'trunkver' %}
   - .triage-policies.yml
+  - tasks.py
+{%- endif %}
   - .gitignore
 
-.test_scripts: &test_scripts
-  - invoke sweep
+# TODO Set up a bot for automated repository actions and components
+# 1. Create a Project Access Token at {{ cookiecutter.__scm_link_url }}/settings/access_tokens
+# 2. Ensure token has "Maintainer" role and "api" scope
+# 3. Set the {{ bot_envvar }} variable in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
+# 4. Ensure variable has at least "Masked" option flagged and "Protect variable" unchecked
+include:
+  # Local components
+  - local: /.gitlab/components/docker.yml
 
+  # Official GitLab components
+  - component: $CI_SERVER_FQDN/components/sast/sast@3.2.0
+    rules:
+      - if: $CI_PIPELINE_SOURCE == 'schedule'
+        when: never
+{%- if cookiecutter.version_schema != 'trunkver' %}
+      - if: $CI_COMMIT_TAG
+        when: never
+{%- endif %}
+    inputs:
+      stage: security-checks
+      enable_mr_pipelines: true
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+      run_advanced_sast: true
+  - component: $CI_SERVER_FQDN/components/dependency-scanning/main@0.9.1
+    rules:
+      - if: $CI_PIPELINE_SOURCE == 'schedule'
+        when: never
+{%- if cookiecutter.version_schema != 'trunkver' %}
+      - if: $CI_COMMIT_TAG
+        when: never
+{%- endif %}
+    inputs:
+      stage: security-checks
+{%- endif %}
+  - component: $CI_SERVER_FQDN/components/secret-detection/secret-detection@2.2.0
+    rules:
+      - if: $CI_PIPELINE_SOURCE == 'schedule'
+        when: never
+{%- if cookiecutter.version_schema != 'trunkver' %}
+      - if: $CI_COMMIT_TAG
+        when: never
+{%- endif %}
+    inputs:
+      stage: security-checks
+      enable_mr_pipelines: true
+  - component: $CI_SERVER_FQDN/components/slsa/provenance-signer@0.1.1
+    rules:
+{%- if cookiecutter.__schema_group == 'semver-like' %}
+      - if: $CI_COMMIT_TAG =~ /^v?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(?:\+[0-9a-z-]+(?:\.[0-9a-z-]+)*)?$/i
+{%- elif cookiecutter.__schema_group == 'calver' %}
+      - if: $CI_COMMIT_TAG =~ /^v?(?:\d{2}|\d{4,5})\.\d{1,2}(?:\.\d{1,2})?(?:-(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(?:\+[0-9a-z-]+(?:\.[0-9a-z-]+)*)?$/i
+{%- elif cookiecutter.__schema_group == 'solover' %}
+      - if: $CI_COMMIT_TAG =~ /^v?[1-9]\d*(?:-(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(?:\+[0-9a-z-]+(?:\.[0-9a-z-]+)*)?$/i
+{%- else %}
+      - if: $CI_PIPELINE_SOURCE == 'schedule'
+        when: never
+      - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+        changes:
+          paths: *codechecks
+      - if: $CI_COMMIT_BRANCH =~ /^release-/i
+        changes:
+          paths: *filechecks
+{%- endif %}
+    inputs:
+      stage: sign
+      job_name: slsa-signer-wheel
+      target_artifact: dist/$WHEEL_BINARY
+      bundle_file: slsa-signed/$WHEEL_BINARY.slsa-l3-provenance.json
+      provenance_metadata_file: $PROVENANCE_METADATA
+  - component: $CI_SERVER_FQDN/components/slsa/provenance-signer@0.1.1
+    rules:
+{%- if cookiecutter.__schema_group == 'semver-like' %}
+      - if: $CI_COMMIT_TAG =~ /^v?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(?:\+[0-9a-z-]+(?:\.[0-9a-z-]+)*)?$/i
+{%- elif cookiecutter.__schema_group == 'calver' %}
+      - if: $CI_COMMIT_TAG =~ /^v?(?:\d{2}|\d{4,5})\.\d{1,2}(?:\.\d{1,2})?(?:-(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(?:\+[0-9a-z-]+(?:\.[0-9a-z-]+)*)?$/i
+{%- elif cookiecutter.__schema_group == 'solover' %}
+      - if: $CI_COMMIT_TAG =~ /^v?[1-9]\d*(?:-(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(?:\+[0-9a-z-]+(?:\.[0-9a-z-]+)*)?$/i
+{%- else %}
+      - if: $CI_PIPELINE_SOURCE == 'schedule'
+        when: never
+      - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+        changes:
+          paths: *codechecks
+      - if: $CI_COMMIT_BRANCH =~ /^release-/i
+        changes:
+          paths: *filechecks
+{%- endif %}
+    inputs:
+      stage: sign
+      job_name: slsa-signer-sdist
+      target_artifact: dist/$SDIST_BINARY
+      bundle_file: slsa-signed/$SDIST_BINARY.slsa-l3-provenance.json
+      provenance_metadata_file: $PROVENANCE_METADATA
+  # TODO Create a scheduled pipeline to enable this job:
+  # {{ cookiecutter.__scm_link_url }}/pipeline_schedules/new
+  - component: $CI_SERVER_FQDN/components/gitlab-triage/gitlab-triage@0.1.2
+    rules:
+      - if: $CI_PIPELINE_SOURCE == 'schedule'{% if cookiecutter.version_schema == 'trunkver' %} && $ENABLE_TRUNKVER_CHANGELOG != true{% endif %}
+    inputs:
+      api_token: ${{ bot_envvar }}
+      stage: maintenance
+
+  # Galactipy components
+  - component: $CI_SERVER_FQDN/galactipy/components/versioning/vars@0.8.1
+{%- if cookiecutter.__schema_group != 'semver-like' %}
+    inputs:
+      schema: {{ cookiecutter.__schema_group }}
+{%- if cookiecutter.__schema_group in ['calver', 'trunkver'] %}
+      use-hec: true
+{%- endif %}
+{%- endif %}
+{%- if cookiecutter.version_schema == 'trunkver' %}
+  # TODO Create a scheduled pipeline to enable this job:
+  # {{ cookiecutter.__scm_link_url }}/pipeline_schedules/new
+  # TODO Set a ENABLE_TRUNKVER_CHANGELOG variable to "true" when creating the pipeline
+{%- endif %}
+  - component: $CI_SERVER_FQDN/galactipy/components/versioning/release@0.8.1
+    inputs:
+{%- if cookiecutter.__schema_group != 'semver-like' %}
+      schema: {{ cookiecutter.__schema_group }}
+{%- endif %}
+      pat-envvar: ${{ bot_envvar }}
+      # UPDATEME with "strict" once the first Changelog is successfully built
+      build-strategy: deep-search
+{%- if cookiecutter.commit_convention == 'gitmoji' %}
+      changelog-commit-message: ':bookmark_tabs: Update CHANGELOG.md'
+{%- elif cookiecutter.commit_convention == 'conventional' %}
+      changelog-commit-message: 'docs: Update CHANGELOG.md'
+{%- else %}
+      changelog-commit-message: '📑 docs: Update CHANGELOG.md'
+{%- endif %}
+{%- if cookiecutter.version_schema != 'trunkver' %}
+      pre-release-title: $GR_RELEASE_STAGE_TITLE $GR_NAKED_VERSION
+      pre-release-fallback: This is a $GR_RELEASE_LABEL version of $CI_PROJECT_NAME. **Do not use it in production environments.**
+      links:
+        - name: PyPI
+          url: https://pypi.org/project/$REPO_NAME/$GR_PYPI_VERSION/
+          link_type: package
+        - name: GitLab Registry
+          url: $REGISTRY_PACKAGE_PAGE
+          link_type: package
+{%- if cookiecutter.create_docker %}
+        - name: Docker
+          url: $CI_PROJECT_URL/-/blob/$CI_COMMIT_TAG/docker/Dockerfile
+          link_type: image
+{%- endif %}
+        - name: Build metadata (json)
+          url: $PROVENANCE_PACKAGE_API_URL/$REPO_NAME-$GR_PYPI_VERSION.slsa-l1-provenance.json
+        - name: Wheel attestation (json)
+          url: $PROVENANCE_PACKAGE_API_URL/$WHEEL_BINARY.publish.attestation
+        - name: Wheel provenance (json)
+          url: $PROVENANCE_PACKAGE_API_URL/$WHEEL_BINARY.slsa-l3-provenance.json
+        - name: sdist attestation (json)
+          url: $PROVENANCE_PACKAGE_API_URL/$SDIST_BINARY.publish.attestation
+        - name: sdist provenance (json)
+          url: $PROVENANCE_PACKAGE_API_URL/$SDIST_BINARY.slsa-l3-provenance.json
+      pre-release-exclude:
+        - PyPI
+{%- else %}
+      bypass-empty: true
+{%- endif %}
+      use-hec: true
+
+variables:
+  # Variables from the Cookiecutter template
+  PROJECT_NAME: {{ cookiecutter.project_name }}
+  REPO_NAME: {{ cookiecutter.repo_name }}
+  PACKAGE_NAME: {{ cookiecutter.package_name }}
+{%- if cookiecutter.__schema_group == 'semver-like' %}
+
+  # Release regular expressions
+  RELEASE_REGEX: /^v?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)$/i
+  ANY_VERSION_REGEX: /^v?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(?:\+[0-9a-z-]+(?:\.[0-9a-z-]+)*)?$/i
+{%- elif cookiecutter.__schema_group == 'calver' %}
+
+  # Release regular expressions
+  RELEASE_REGEX: /^v?(?:\d{2}|\d{4,5})\.\d{1,2}(?:\.\d{1,2})?$/i
+  ANY_VERSION_REGEX: /^v?(?:\d{2}|\d{4,5})\.\d{1,2}(?:\.\d{1,2})?(?:-(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(?:\+[0-9a-z-]+(?:\.[0-9a-z-]+)*)?$/i
+{%- elif cookiecutter.__schema_group == 'solover' %}
+
+  # Release regular expressions
+  RELEASE_REGEX: /^v?[1-9]\d*$/i
+  ANY_VERSION_REGEX: /^v?[1-9]\d*(?:-(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(?:\+[0-9a-z-]+(?:\.[0-9a-z-]+)*)?$/i
+{%- endif %}
+
+  # Value substitution
+  PACKAGE_BUILD_ARTIFACTS: $REPO_NAME-build-$CI_PIPELINE_ID
+  STAGE_ARTIFACTS: $REPO_NAME-$CI_JOB_STAGE-$CI_PIPELINE_ID
+
+  PROVENANCE_METADATA: $PACKAGE_BUILD_ARTIFACTS-metadata.json
+  PROVENANCE_PACKAGE_API_URL: $CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/provenances/$GR_PYPI_VERSION
+
+  WHEEL_BINARY: $PACKAGE_NAME-$GR_PYPI_VERSION-py3-none-any.whl
+  SDIST_BINARY: $PACKAGE_NAME-$GR_PYPI_VERSION.tar.gz
+
+default:
+  image: registry.gitlab.com/galactipy/docker:{{ cookiecutter.minimal_python_version }}
+
+{% if cookiecutter.version_schema != 'trunkver' -%}
 # Reusable configuration jobs
 .install_project:
+  variables:
+    POETRY_CACHE_DIR: .poetry-cache
   before_script:
     - invoke install --ignore-pty
+  cache:
+    key: venv-$CI_COMMIT_SHORT_SHA
+    paths:
+      - .poetry-cache
+      - .poetry
 
 .test_setup:
   extends: .install_project
   rules:
-    - if: $CI_COMMIT_TAG
-      when: never
     - if: $CI_PIPELINE_SOURCE == 'schedule'
+      when: never
+    - if: $CI_COMMIT_TAG
       when: never
     - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE != 'merge_request_event'
       changes:
@@ -206,13 +306,11 @@ workflow:
       changes:
         paths: *filechecks
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-  before_script:
-    - invoke install --ignore-pty
 
-.publish_rules:
+.publish_setup:
   extends: .install_project
   rules:
-    - if: $CI_COMMIT_TAG =~ $EFFVER_ANY_VERSION
+    - if: $CI_COMMIT_TAG =~ $ANY_VERSION_REGEX
     - if: $CI_MERGE_REQUEST_TITLE =~ /^Draft\:.*/i
       changes:
         paths: *codechecks
@@ -221,6 +319,33 @@ workflow:
       changes:
         paths: *codechecks
 
+{% else -%}
+# Reusable configuration jobs
+.publish_rules:
+  variables:
+    POETRY_CACHE_DIR: .poetry-cache
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'schedule'
+      when: never
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      changes:
+        paths: *codechecks
+    - if: $CI_COMMIT_BRANCH =~ /^release-/i
+      changes:
+        paths: *filechecks
+  cache:
+    key: venv-$CI_COMMIT_SHORT_SHA
+    paths:
+      - .poetry-cache
+      - .poetry
+      - pyproject.toml
+
+.publish_setup:
+  extends: .publish_rules
+  before_script:
+    - invoke install --ignore-pty
+
+{% endif -%}
 .upload_to_generic_package:
   before_script:
     - |
@@ -235,7 +360,7 @@ workflow:
               --silent \
               --write-out "%{http_code}" \
               --upload-file "$file" \
-              "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/$1/$QF_PYPI_VERSION/$filename")
+              "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/$1/$GR_PYPI_VERSION/$filename")
             if [ "$RESPONSE" -ge 200 ] && [ "$RESPONSE" -lt 300 ]; then
               echo -e "\e[32m✓\e[0m Uploaded $filename"
             else
@@ -246,19 +371,20 @@ workflow:
       }
 
 # Jobs
-{%- set list_python_version = cookiecutter._python_version_list_mapping[cookiecutter.minimal_python_version] %}
-{%- set supported_python_versions = cookiecutter._python_version_support_mapping[cookiecutter.minimal_python_version] %}
-{%- for version in supported_python_versions %}
+{% if cookiecutter.version_schema != 'trunkver' -%}
+{% set list_python_version = cookiecutter._python_version_list_mapping[cookiecutter.minimal_python_version] -%}
+{% set supported_python_versions = cookiecutter._python_version_support_mapping[cookiecutter.minimal_python_version] -%}
+{% for version in supported_python_versions -%}
 test-py{{ version[0] }}{{ version[1] }}:
   stage: test
   image: registry.gitlab.com/galactipy/docker:{{ version[0] }}.{{ version[1] }}
   extends: .test_setup
   script:
-    - *test_scripts
+    - invoke sweep
 {%- if version[0] == list_python_version[0] and version[1] == list_python_version[1] %}
   coverage: /TOTAL.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/
   artifacts:
-    name: ${REPO_NAME}_coverage_${CI_COMMIT_SHORT_SHA}_${CI_PIPELINE_SOURCE}
+    name: $REPO_NAME-coverage-$CI_PIPELINE_ID
     paths:
       - coverage.xml
       - test_report.xml
@@ -273,10 +399,12 @@ test-py{{ version[0] }}{{ version[1] }}:
   stage: coverage
   image: badouralix/curl-jq:latest
   rules:
+    - if: $CI_PIPELINE_SOURCE == 'schedule'
+      when: never
     - if: $CI_COMMIT_TAG
       when: never
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE != 'schedule'
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   script:
 {%- if cookiecutter.__coverage_lc == 'coveralls' %}
     - curl -L https://coveralls.io/coveralls-linux.tar.gz | tar -xz -C /usr/local/bin
@@ -290,14 +418,24 @@ test-py{{ version[0] }}{{ version[1] }}:
     - sh ./codacy.sh report -r coverage.xml
 {%- endif %}
 {%- endif %}
-{% endfor %}
+
+{% endfor -%}
+{% endif -%}
 build-package:
   stage: build
   variables:
+{%- if cookiecutter.version_schema != 'trunkver' %}
     GIT_DEPTH: 0
+{%- endif %}
     RUNNER_GENERATE_ARTIFACTS_METADATA: true
-  extends: .publish_rules
+  extends: .publish_setup
   script:
+{%- if cookiecutter.version_schema == 'trunkver' %}
+    # FYI TrunkVer is not natively supported in Poetry, so a manual version must be set
+    # Check out our planned solution at:
+    # https://gitlab.com/galactipy/utilities/poetry-trunkver/-/blob/ROADMAP.md
+    - poetry version $GR_PYPI_VERSION
+{%- endif %}
     - invoke build
   artifacts:
     name: $PACKAGE_BUILD_ARTIFACTS
@@ -309,10 +447,14 @@ build-package:
 compile-provenance:
   stage: entrust
   variables:
-    PROVENANCE_METADATA_RENAME: ${REPO_NAME}-${QF_PYPI_VERSION}.slsa-l1-provenance.json
+    PROVENANCE_METADATA_ASSET: $REPO_NAME-$GR_PYPI_VERSION.slsa-l1-provenance.json
   image: registry.gitlab.com/galactipy/docker/pipx:alpine
+{%- if cookiecutter.version_schema != 'trunkver' %}
   rules:
-    - if: $CI_COMMIT_TAG =~ $EFFVER_ANY_VERSION
+    - if: $CI_COMMIT_TAG =~ $ANY_VERSION_REGEX
+{%- else %}
+  extends: .publish_rules
+{%- endif %}
   id_tokens:
     SIGSTORE_ID_TOKEN:
       aud: sigstore
@@ -321,7 +463,7 @@ compile-provenance:
     - pypi-attestations sign dist/*
     - mkdir slsa/ pypi/
     - cp dist/*.publish.attestation pypi/
-    - cp $PROVENANCE_METADATA "slsa/$PROVENANCE_METADATA_RENAME"
+    - cp $PROVENANCE_METADATA "slsa/$PROVENANCE_METADATA_ASSET"
     - cp slsa-signed/* slsa/
   artifacts:
     name: $STAGE_ARTIFACTS
@@ -335,37 +477,49 @@ compile-provenance:
 register-provenance:
   stage: publish
   image: badouralix/curl-jq:latest
+{%- if cookiecutter.version_schema != 'trunkver' %}
   rules:
-    - if: $CI_COMMIT_TAG =~ $EFFVER_ANY_VERSION
+    - if: $CI_COMMIT_TAG =~ $ANY_VERSION_REGEX
   extends: .upload_to_generic_package
+{%- else %}
+  extends:
+    - .publish_rules
+    - .upload_to_generic_package
+{%- endif %}
   script:
     - upload_from_dir provenances ./slsa json
     - upload_from_dir provenances ./pypi json
   after_script:
-    - jq -s 'map(.)' upload-*.json > api-calls.json
+    - jq --slurp 'map(.)' upload-*.json > api-calls.json
   artifacts:
-    name: ${REPO_NAME}_registry-uploads_${CI_COMMIT_SHORT_SHA}_${CI_PIPELINE_SOURCE}
+    name: $STAGE_ARTIFACTS
     when: always
     paths:
       - api-calls.json
+{%- if cookiecutter.version_schema != 'trunkver' %}
 
 publish-test:
   stage: publish
-  extends: .publish_rules
+  extends: .publish_setup
   script:
     # TODO Set the TESTPYPI_TOKEN variable for https://test.pypi.org in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
     - invoke config $TESTPYPI_TOKEN --repo testpypi
     - invoke publish --repo testpypi --no-build --ignore-pty
+{%- endif %}
 
 publish-prod:
   stage: publish
   image: registry.gitlab.com/galactipy/docker/pipx:alpine
+{%- if cookiecutter.version_schema != 'trunkver' %}
   rules:
-    - if: $CI_COMMIT_TAG =~ $EFFVER_RELEASE_VERSION
+    - if: $CI_COMMIT_TAG =~ $ANY_VERSION_REGEX
   needs:
     - compile-provenance
     - job: publish-test
       artifacts: false
+{%- else %}
+  extends: .publish_rules
+{%- endif %}
   id_tokens:
     PYPI_ID_TOKEN:
       aud: pypi
@@ -379,14 +533,19 @@ publish-registry:
   stage: publish
   variables:
     REGISTRY: $CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/pypi
+{%- if cookiecutter.version_schema != 'trunkver' %}
+  extends: .install_project
   rules:
-    - if: $CI_COMMIT_TAG =~ $EFFVER_ANY_VERSION
-  before_script:
-    - !reference [.install_project, before_script]
-    - apt-get update && apt-get install -y --no-install-recommends jq
+    - if: $CI_COMMIT_TAG =~ $ANY_VERSION_REGEX
+{%- else %}
+  extends: .publish_setup
+{%- endif %}
   script:
+    - apt-get update && apt-get install -y --no-install-recommends jq
     - invoke config ${{ bot_envvar }} --repo gitlab-registry --url $REGISTRY
     - invoke publish --repo gitlab-registry --no-build --ignore-pty
+{%- if cookiecutter.version_schema != 'trunkver' %}
+  # After-script used to obtain the package's ID and link it to the GitLab Release
   after_script:
     - |
       curl --request GET --fail-with-body \
@@ -394,8 +553,8 @@ publish-registry:
         --output package-list.json \
         "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages?package_type=pypi&sort=desc"
     - |
-      PACKAGE_URL=$(jq -r \
-        --arg version "$QF_PYPI_VERSION" \
+      PACKAGE_URL=$(jq --raw-output \
+        --arg version "$GR_PYPI_VERSION" \
         'map(select(.version == $version))[0]._links.web_path' \
         package-list.json)
     - touch package.env
@@ -404,3 +563,57 @@ publish-registry:
   artifacts:
     reports:
       dotenv: package.env
+{%- else %}
+
+{{ cookiecutter.__coverage_lc }}-report:
+  stage: coverage
+  image: badouralix/curl-jq:latest
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      changes:
+        paths: *codechecks
+      when: manual
+  script:
+{%- if cookiecutter.__coverage_lc == 'coveralls' %}
+    - curl -L https://coveralls.io/coveralls-linux.tar.gz | tar -xz -C /usr/local/bin
+    # TODO Set the COVERALLS_REPO_TOKEN CI/CD variable in {{ cookiecutter.__scm_link_url }}/settings/ci_cd, see documentation at:
+    # https://docs.coveralls.io/#integrate-coveralls-with-your-codebase
+    - coveralls report coverage.xml --repo-token $COVERALLS_REPO_TOKEN
+{%- elif cookiecutter.__coverage_lc == 'codacy' %}
+    - curl -Ls https://coverage.codacy.com/get.sh -o codacy.sh
+    # TODO Set the CODACY_PROJECT_TOKEN CI/CD variable in {{ cookiecutter.__scm_link_url }}/settings/ci_cd, see documentation at:
+    # https://docs.codacy.com/codacy-api/api-tokens/#repository-api-tokens
+    - sh ./codacy.sh report -r coverage.xml
+{%- endif %}
+{%- endif %}
+{%- if cookiecutter.version_schema == 'calver-auto' %}
+
+# UPDATEME with your preferred release schedule, see available environment variables at:
+# https://gitlab.com/galactipy/components/versioning/-/blob/master/README.md#outputs
+# TODO Create a scheduled pipeline to enable this job:
+# {{ cookiecutter.__scm_link_url }}/pipeline_schedules/new
+push-weekly-release-tag:
+  stage: maintenance
+  variables:
+    TAG_MESSAGE: >-
+      This is the scheduled weekly release
+      for $PROJECT_NAME.
+      Please refer below to
+      the list of changes
+      since the last release.
+  image: badouralix/curl-jq:latest
+  rules:
+    # TODO Set a ENABLE_WEEKLY_RELEASE variable when creating the scheduled pipeline
+    - if: $CI_PIPELINE_SOURCE == 'schedule' && $ENABLE_WEEKLY_RELEASE == true
+  script:
+    - |
+      curl --request POST --fail-with-body \
+        --header "PRIVATE-TOKEN: ${{ bot_envvar }}" \
+        --output tag-api-output.json
+        "$CI_API_V4_URL/projects/$CI_PROJECT_ID/tags?ref=${CI_COMMIT_SHA}&tag_name=v${GR_WEEK_CALVER}&message=${TAG_MESSAGE}"
+  artifacts:
+    name: $STAGE_ARTIFACTS
+    when: always
+    paths:
+      - tag-api-output.json
+{%- endif %}

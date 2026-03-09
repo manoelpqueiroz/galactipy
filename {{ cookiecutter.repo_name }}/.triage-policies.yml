@@ -2,7 +2,8 @@
 # https://gitlab.com/explore/catalog/components/gitlab-triage
 
 # UPDATEME with your custom rules
-{% raw %}resource_rules:
+{%- raw %}
+resource_rules:
   issues:
     rules:
       - name: Flag Stale Issues
@@ -62,4 +63,5 @@
             This issue has received no updates since being marked as `stale`. Based on
             our policy, it is now being closed.\n\n
             If you believe this issue requires further attention, please reopen it to
-            recommence discussions.{% endraw %}
+            recommence discussions.
+{%- endraw %}

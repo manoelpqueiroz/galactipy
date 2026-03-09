@@ -151,8 +151,10 @@ htmlcov/
 .coverage.*
 .cache
 nosetests.xml
+{%- if cookiecutter.version_schema != 'trunkver' %}
 coverage.xml
 test_report.xml
+{%- endif %}
 *.cover
 *.py,cover
 .hypothesis/

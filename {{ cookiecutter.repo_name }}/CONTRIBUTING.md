@@ -153,6 +153,26 @@ poetry install # Or, preferably, `invoke install` if available
 invoke hooks
 ```
 
+{% if cookiecutter.version_schema == 'trunkver' and cookiecutter.__scm_platform_lc == 'gitlab' -%}
+>>> [!caution]
+Installing the pre-commit hooks is crucial,
+as the CI pipelines depend on tasks run
+before pushing to the upstream repository
+to publish test coverage.
+
+***Do not skip this step.***
+>>>
+
+{% elif cookiecutter.version_schema == 'trunkver' and cookiecutter.__scm_platform_lc == 'github' -%}
+> [!CAUTION]
+> Installing the pre-commit hooks is crucial,
+> as the CI pipelines depend on tasks run
+> before pushing to the upstream repository
+> to publish test coverage.
+>
+> ***Do not skip this step.***
+
+{% endif -%}
 4. Run the sweeping task
    with Invoke
    and check output:
@@ -832,6 +852,7 @@ with their usage:
 |     Maintenance     |  ~"maintenance-dependencies"  | Upgrades project dependencies.                                                                                    |
 |     Maintenance     |      ~"maintenance-bot"       | Work items managed automatically by a project GitLab Bot.                                                         |
 |     Maintenance     |   ~"maintenance-knowledge"    | Updates already existing information for knowledge retention and sharing.                                         |
+|     Maintenance     |    ~"maintenance-renovate"    | Issues and Merge Requests to be automatically handled by the Renovate Bot.                                        |
 |     Maintenance     | ~"maintenance-test-coverage"  | Changes being enforced due to software regression.                                                                |
 |     Maintenance     |    ~"maintenance-toolset"     | Updates or replaces current development tools functionality.                                                      |
 |         N/A         |        ~"manual-check"        | Requires manual validation to certain or all acceptance criteria.                                                 |
@@ -909,8 +930,9 @@ with their usage:
 |         N/A         |        `localization`        | Updates translation files for other languages.                                                                    |
 |     Maintenance     | `maintenance-configuration`  | Updates current development toolset syntax and options.                                                           |
 |     Maintenance     |  `maintenance-dependencies`  | Upgrades project dependencies.                                                                                    |
-|     Maintenance     |      `maintenance-bot`       | Work items managed automatically by a project GitLab Bot.                                                         |
+|     Maintenance     |      `maintenance-bot`       | Work items managed automatically by a project Bot.                                                                |
 |     Maintenance     |   `maintenance-knowledge`    | Updates already existing information for knowledge retention and sharing.                                         |
+|     Maintenance     |   `maintenance-dependabot`   | Issues and Pull Requests to be automatically handled by Dependabot.                                               |
 |     Maintenance     | `maintenance-test-coverage`  | Changes being enforced due to software regression.                                                                |
 |     Maintenance     |    `maintenance-toolset`     | Updates or replaces current development tools functionality.                                                      |
 |         N/A         |        `manual-check`        | Requires manual validation to certain or all acceptance criteria.                                                 |
@@ -1241,11 +1263,7 @@ etc.
 > Contributors planning
 > on refining an issue
 > or {{ cookiecutter.__mr_term }}
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
-> to mark with the `seeking-contributors::delivery` label
-{%- else %}
 > to mark with the `seeking-builders` label
-{%- endif %}
 > should be aware
 > of the **Goldilocks Priority** principle:
 > the item's priority
@@ -1451,48 +1469,153 @@ we provide a suggested list of references below:
 {% endif -%}
 ### Versioning Customs
 
-{{ cookiecutter.project_name }}'s versioning
-should be seen
-as reflecting
-the progression of our efforts
-over time.
-We choose to adhere
-to [Intended Effort Versioning][versioning1]
+At {{ cookiecutter.project_name }},
+we chose to adhere
+to [{{ cookiecutter.__schema_name }}][versioning1]
 for consistency
-and improved user communication.
+and improved communication
+of our releases.
+
+We find that,
+by adopting {{ cookiecutter.__schema_cipher}},
+{%- if cookiecutter.__version_schema_base == 'effver' %}
+users and developers are better served
+with appropriate information to migrate
+to new versions.
+
+Our versions communicate _intentions_
+instead of technical scope of changes,
+making the process of updating
+more human-based.
+Thus, expect that
+**all releases** will impact users,
+and our version numbers should provide
+the necessary information for them
+to assess how grater or lesser work
+will be required to update.
+{%- elif cookiecutter.__version_schema_base == 'semver' %}
+we adhere to an ubiquous standard
+for software versioning
+that steers development and release
+towards best practices
+for downstream dependency management.
+
+Additionally,
+it can be easily recognised
+and followed by new contributors,
+making it ideal to be adopted
+by the project.
+{%- elif cookiecutter.__version_schema_base == 'romver' %}
+we can focus on better communicating
+major advancements
+and features
+more adequately.
+
+Instead of focusing solely
+on technical scope of changes,
+our **PROJECT** versions help users and developers
+pick up the importance of their changes.
+{%- elif cookiecutter.__version_schema_base == 'solover' %}
+we eliminate unnecessary discussions
+on software semantics,
+instead focusing our efforts to deliver
+frequent and incremental releases.
+{%- elif cookiecutter.__version_schema_base == 'calver' %}
+we help users and downstream developers
+be better secured against exploits,
+making it easy to identify
+usage of software kept stale
+for long periods of time.
+
+{%- if cookiecutter.version_schema == 'calver-auto' %}
+Our versions dismiss
+lengthy discussions
+on software semantics
+and focus on security safeguards.
+Thus,
+expect that
+**any release** may introduce breaking changes,
+{%- else %}
+Our versions follow
+the **5Y.0M.MICRO** scheme variation
+of CalVer.
+Thus,
+any **MAJOR**
+(i.e., yearly)
+or **MINOR**
+(i.e., monthly)
+releases
+may introduce breaking changes,
+{%- endif %}
+requiring potential user action to update
+to the latest version.
+{%- elif cookiecutter.__version_schema_base == 'trunkver' %}
+we can focus solely on
+delivering our software
+**on time in full**
+to our users,
+no matter which features
+are in mid-development.
+{%- endif %}
 
 The following guidelines
 should be taken in consideration
 regarding versioning in general:
 
+{% if cookiecutter.__schema_group == 'semver-like' -%}
 <!-- DEFINE the acceptance criteria for releasing a v1.0 for your project -->
 - Version `v1.0.0` can only be set
   once all requirements specified
   in the `v1.0 Release` {{ roadmap_item }}
   are satisfied;
-- Versions can only be tagged
+{% endif -%}
+- Versions can only be {% if cookiecutter.version_schema == 'trunkver' %}published{% else %}tagged{% endif %}
   if altering user-facing files;
   changes to project internals only
-  do not qualify for tagging;
+  do not qualify for {% if cookiecutter.version_schema == 'trunkver' %}publishing{% else %}tagging{% endif %}.
 
-While EffVer makes
-the choice of updating versions
-more human-natured
-and less mechanic,
-you can refer to
+{% if cookiecutter.__schema_type == 'segmented' and cookiecutter.version_schema != 'calver-auto' -%}
+#### Tips for Defining New Versions
+
+Contributors can refer to
 the following list
 for common circumstances
-under which a version schema
+under which a version segment
 might be selected
 for the next version:
 
-- Update **MICRO** versions when:
-<!-- DEFINE common developments related to micro versions -->
-- Update **MESO** versions when:
-<!-- DEFINE common developments related to meso versions -->
-- Update **MACRO** versions when:
-<!-- DEFINE common developments related to macro versions -->
+{% if cookiecutter.version_schema != 'calver-explicit' -%}
+- Update **{{ cookiecutter.__version_s1 }}** versions when:
+<!-- DEFINE common developments related to {{ cookiecutter.__version_s1.lower() }} versions -->
+- Update **{{ cookiecutter.__version_s2 }}** versions when:
+<!-- DEFINE common developments related to {{ cookiecutter.__version_s2.lower() }} versions -->
+{% endif -%}
+- Update **{{ cookiecutter.__version_s3 }}** versions when:
+<!-- DEFINE common developments related to {{ cookiecutter.__version_s3.lower() }} versions -->
 
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
+>>> [!important]
+This is **not** an exhaustive list,
+nor a rigid set of rules
+defining how to choose next versions.
+
+Each version update
+should be properly discussed
+through their related {{ cookiecutter.__mr_acronym }}.
+>>>
+
+{% else -%}
+> [!IMPORTANT]
+> This is **not** an exhaustive list,
+> nor a rigid set of rules
+> defining how to choose next versions.
+>
+> Each version update
+> should be properly discussed
+> through their related {{ cookiecutter.__mr_acronym }}.
+
+{% endif -%}
+{% endif -%}
 ### Branch Organization
 
 We apply the [{{ cookiecutter.project_name }} Philosophy][philosophy]
@@ -1615,7 +1738,7 @@ the following additional Gitmoji
 to apply on commits:
 
 | Gitmoji | Shorthand | Usage |
-| :-----: | :-------: | :---: |
+| :-----: | :-------: | ----- |
 -->
 
 {% elif cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
@@ -1681,6 +1804,16 @@ at a later moment,
 we recommend committing
 with the `:construction:` Gitmoji
 so the CI will ignore it.
+
+Besides the official Gitmoji,
+{{ cookiecutter.project_name }} defines
+the following additional Gitmoji
+to apply on commits:
+
+<!-- DEFINE the specific Gitmoji for this project -->
+|     Gitmoji     |     Shorthand     | Usage                              |
+| :-------------: | :---------------: | ---------------------------------- |
+| :bookmark_tabs: | `:bookmark_tabs:` | Updates to `CHANGELOG.md` entries. |
 
 {% elif cookiecutter.commit_convention == 'conventional' -%}
 #### Conventional Commits
@@ -1922,12 +2055,12 @@ and defined in the [`changelog-config.yml`][committing2] file:
 |    :city_dusk: Deprecations & Removals     |                                                              `deprecation`<br>`deprecations`<br>`deprecate`<br>`removal`<br>`removals`<br>`remove`<br>`sunset`                                                               | Changes that mark features and options as deprecated or remove them from the public API.                                                                               |
 |              :toolbox: Fixes               |                                                  `bug`<br>`bugfix`<br>`fix`<br>`hotfix`<br>`security`<br>`sec`<br>`critical`<br>`leak`<br>`injection`<br>`typo`<br>`typos`                                                   | Fixes for wrongful behaviour (i.e., bugs).                                                                                                                             |
 |    :factory_worker: Codebase Renovation    |                                                 `architecture`<br>`arch`<br>`refactor`<br>`refactors`<br>`refactoring`<br>`rework`<br>`reworks`<br>`reworking`<br>`plumbing`                                                 | Architectural changes, refactoring and other improvements done under the hood.                                                                                         |
-|         :up: Dependencies Updates          |                                                                                              `dependencies`<br>`dep`<br>`deps`                                                                                               |                                                                                                                                                                        |
+|      :arrow_up: Dependencies Updates       |                                                                                              `dependencies`<br>`dep`<br>`deps`                                                                                               |                                                                                                                                                                        |
 |    :comet: Build & Release Optimisation    |                             `build`<br>`building`<br>`packaging`<br>`script`<br>`scripts`<br>`ci`<br>`workflow`<br>`workflows`<br>`environment`<br>`env`<br>`infrastructure`<br>`infra`<br>`iac`                             | Improvements to how the project is set up for compilation and release.                                                                                                 |
 {%- if cookiecutter.use_bdd %}
-|        :repeat: Design & Validation        |                                                    `design`<br>`ideation`<br>`test`<br>`tests`<br>`testing`<br>`bdd`<br>`scenario`<br>`scenarios`<br>`story`<br>`stories`                                                    | Code integrity validations, tests and feature scenarios specification.                                                                                                 |
+|        :repeat: Design & Validation        |                                        `design`<br>`ideation`<br>`test`<br>`tests`<br>`testing`<br>`cov`<br>`coverage`<br>`bdd`<br>`scenario`<br>`scenarios`<br>`story`<br>`stories`                                         | Code integrity validations, tests and feature scenarios specification.                                                                                                 |
 {%- else %}
-|        :repeat: Design & Validation        |                                                                                   `design`<br>`ideation`<br>`test`<br>`tests`<br>`testing`                                                                                   | Code integrity validations and unit tests.                                                                                                                             |
+|        :repeat: Design & Validation        |                                                                       `design`<br>`ideation`<br>`test`<br>`tests`<br>`testing`<br>`cov`<br>`coverage`                                                                        | Code integrity validations and unit tests.                                                                                                                             |
 {%- endif %}
 | :suspension_railway: Developer Experience  |                                           `dev`<br>`devx`<br>`devdep`<br>`devdeps`<br>`pyproject`<br>`tool`<br>`tools`<br>`specification`<br>`specifications`<br>`spec`<br>`specs`                                           | Changes to internal configuration to standardise and ease development workflow.                                                                                        |
 |           :books: Documentation            |                                                                                              `documentation`<br>`doc`<br>`docs`                                                                                              | Formal documentation.                                                                                                                                                  |
@@ -1941,7 +2074,7 @@ and defined in the [`changelog-config.yml`][committing2] file:
 |        :arrow_right: Changes        |                               `change`<br>`changes`<br>`changed`<br>`update`<br>`updates`<br>`updated`                               |
 | :city_dusk: Deprecations & Removals |    `deprecation`<br>`deprecations`<br>`deprecate`<br>`deprecated`<br>`removal`<br>`removals`<br>`remove`<br>`removed`<br>`sunset`    |
 |           :toolbox: Fixes           | `bug`<br>`bugfix`<br>`fix`<br>`fixed`<br>`hotfix`<br>`security`<br>`sec`<br>`critical`<br>`leak`<br>`injection`<br>`typo`<br>`typos` |
-|      :up: Dependencies Updates      |                                                  `dependencies`<br>`dep`<br>`deps`                                                   |
+|   :arrow_up: Dependencies Updates   |                                                  `dependencies`<br>`dep`<br>`deps`                                                   |
 |  :black_circle: Other Developments  |                                                               `other`                                                                |
 {%- endif %}
 
@@ -5480,7 +5613,19 @@ what we are doing matters!
 [bdd8]: https://data-ai.theodo.com/en/technical-blog/behavior-driven-development-data-scientist-perspective
 
 {% endif -%}
+{%- if cookiecutter.__version_schema_base == 'effver' %}
 [versioning1]: https://jacobtomlinson.dev/effver/
+{%- elif cookiecutter.__version_schema_base == 'semver' %}
+[versioning1]: https://semver.org/
+{%- elif cookiecutter.__version_schema_base == 'calver' %}
+[versioning1]: https://calver.org/
+{%- elif cookiecutter.__version_schema_base == 'romver' %}
+[versioning1]: https://github.com/romversioning/romver
+{%- elif cookiecutter.__version_schema_base == 'solover' %}
+[versioning1]: https://beza1e1.tuxen.de/SoloVer
+{%- elif cookiecutter.__version_schema_base == 'trunkver' %}
+[versioning1]: https://trunkver.org/
+{%- endif %}
 
 {% if cookiecutter.commit_convention == 'gitmoji' -%}
 [committing0]: https://gitmoji.dev/
