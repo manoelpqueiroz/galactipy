@@ -126,6 +126,7 @@ def removal_tree(tmp_path):
             "test.yml",
             "test_template.yml",
             "pypi-test.yml",
+            "weekly-tag.yml",
         ],
         PULL_REQUEST_TEMPLATE=["interface_architecture.md", "user_experience.md"],
     )
@@ -317,6 +318,10 @@ def removal_tree(tmp_path):
             / "release-drafter.yml",
             "test_workflow": tmp_path / ".github" / "workflows" / "test.yml",
             "test_template": tmp_path / ".github" / "workflows" / "test_template.yml",
+            "weekly_tag_workflow": tmp_path
+            / ".github"
+            / "workflows"
+            / "weekly-tag.yml",
             "ux": tmp_path / ".github" / "PULL_REQUEST_TEMPLATE" / "user_experience.md",
             "arch": tmp_path
             / ".github"

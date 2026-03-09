@@ -678,6 +678,32 @@ class TestApplicationOptions:
 
 
 class TestVersioningSchemas:
+    def test_calver_auto(self, removal_tree):
+        github_files = removal_tree["github"]
+
+        tag_workflow = github_files["weekly_tag_workflow"]
+
+        config = ProjectFlags(True, False, False, False, "calver-auto", "cli")
+
+        remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
+
+        assert tag_workflow.exists()
+
+    @pytest.mark.parametrize(
+        "schema",
+        ["semver", "effver", "romver", "calver-explicit", "solover", "trunkver"],
+    )
+    def test_non_calver_auto(self, removal_tree, schema):
+        github_files = removal_tree["github"]
+
+        tag_workflow = github_files["weekly_tag_workflow"]
+
+        config = ProjectFlags(True, False, False, False, schema, "cli")
+
+        remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
+
+        assert not tag_workflow.exists()
+
     def test_trunkver(self, removal_tree):
         github_files = removal_tree["github"]
 
@@ -697,7 +723,8 @@ class TestVersioningSchemas:
         assert test_workflow.exists()
 
     @pytest.mark.parametrize(
-        "schema", ["semver", "effver", "romver", "calver", "solover"]
+        "schema",
+        ["semver", "effver", "romver", "calver-auto", "calver-explicit", "solover"],
     )
     def test_non_trunkver(self, removal_tree, schema):
         github_files = removal_tree["github"]
