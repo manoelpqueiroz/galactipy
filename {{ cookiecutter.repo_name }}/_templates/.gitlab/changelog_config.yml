@@ -1,4 +1,5 @@
-{% raw %}---
+{% raw -%}
+---
 # Settings for generating changelogs using the GitLab API. See
 # https://docs.gitlab.com/ee/api/repositories.html#generate-changelog-data for
 # more information.
@@ -291,5 +292,10 @@ template: |
 
   {% end %}
   {% else %}
+{%- endraw %}{% if cookiecutter.version_schema != 'trunkver' %}
   No changes detailed for this release.
-  {% end %}{% endraw %}
+{%- else %}
+  No changes detailed in this update.
+{%- endif %}{% raw %}
+  {% end %}
+{%- endraw %}

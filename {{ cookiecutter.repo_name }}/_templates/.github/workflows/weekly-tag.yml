@@ -1,0 +1,31 @@
+# Check GitHub Actions documentation at:
+# https://github.com/marketplace/actions/github-script
+{%- raw %}
+name: 🗓️ Weekly Release Tag
+
+# UPDATEME with your preferred release schedule
+on:
+  schedule:
+    - cron: '0 7 * * 1'
+
+jobs:
+  push_tag:
+    name: Push Weekly Tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate CalVer
+        id: calver
+        run: echo "weekly_version=v$(date --utc '+1%Y.%U')" >> $GITHUB_OUTPUT
+
+      - name: Push Tag
+        uses: actions/github-script@v8
+        with:
+          script: |
+            github.rest.git.createTag(
+              {
+                tag: {{ steps.calver.outputs.weekly_version }},
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+              }
+            )
+{%- endraw %}

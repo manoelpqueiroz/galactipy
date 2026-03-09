@@ -7,8 +7,10 @@
 
 <!-- Provide a summary of the changes being made with this PR -->
 
-> **Proposed Version:** `MICRO` <!-- Provide next expected micro version -->
+{% if cookiecutter.__schema_type == 'segmented' and cookiecutter.version_schema != 'calver-auto' -%}
+> **Proposed Version:** `{{ cookiecutter.__version_s3 }}` <!-- Provide next expected {{ cookiecutter.__version_s3.lower() }} version -->
 
+{% endif -%}
 ## Submitter Checklist
 
 <!--

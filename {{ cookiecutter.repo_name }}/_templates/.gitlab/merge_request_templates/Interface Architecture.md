@@ -20,8 +20,10 @@ This template should be used to propose modifications to elements that communica
 
 <!-- Describe WHAT your proposal refers to, with as much detail as possible -->
 
-> **Proposed Version:** <!-- What is your proposed version following the EffVer scheme? -->
+{% if cookiecutter.__schema_type == 'segmented' -%}
+> **Proposed Version:** <!-- What is your proposed version following the {{ cookiecutter.__schema_cipher }} scheme? -->
 
+{% endif -%}
 ## Why should we consider this change for the project?
 
 <!--
@@ -46,10 +48,8 @@ This template should be used to propose modifications to elements that communica
 - [ ] I provided a concise and clear title for this discussion;
 - [ ] I have presented my proposal following the [{{ cookiecutter.project_name }} philosophy][2];
 - [ ] I have added the proper [labels][3] to start this discussion;
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
-- [ ] I have associated the proposal with the adequate [epic][4];
-{%- else %}
-- [ ] I have associated the proposal with the adequate [development milestone][4];
+{%- if cookiecutter.scm_platform == 'GitLab Free' %}
+- [ ] I have associated the proposal with the adequate [development milestone][3a];
 {%- endif %}
 - [ ] I have followed the [commit customs][5] for the project;
 - [ ] I have explained the [reasoning][6] behind my design choices through the commit descriptions;
@@ -87,10 +87,8 @@ Regarding change validation:
 [1]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
 [2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#book-our-philosophy
 [3]: {{ cookiecutter.__scm_link_url }}/labels
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
-[4]: {{ cookiecutter.__gitlab_org }}/epics
-{%- else %}
-[4]: {{ cookiecutter.__scm_link_url }}/milestones
+{%- if cookiecutter.scm_platform == 'GitLab Free' %}
+[3a]: {{ cookiecutter.__scm_link_url }}/milestones
 {%- endif %}
 [5]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#commit-customs
 [6]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#say-why-not-just-what

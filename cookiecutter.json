@@ -37,6 +37,15 @@
     "other"
   ],
   "docstring_length": "{{ cookiecutter.line_length }}",
+  "version_schema": [
+    "effver",
+    "semver",
+    "calver-auto",
+    "calver-explicit",
+    "romver",
+    "solover",
+    "trunkver"
+  ],
   "commit_convention": [
     "gitmoji",
     "conventional",
@@ -87,6 +96,16 @@
     },
     "docstring_length": "Docstring maximum line length",
     "use_bdd": "Use behaviour-driven development for testing?",
+    "version_schema": {
+      "__prompt__": "Which versioning schema will you use for development cycles?",
+      "effver": "Intended Effort Versioning (EffVer)",
+      "semver": "Semantic Versioning (SemVer)",
+      "calver-auto": "Calendar Versioning (CalVer) – Automanaged by CI/CD",
+      "calver-explicit": "Calendar Versioning (CalVer) – Explicit tags",
+      "romver": "Romantic Versioning (RomVer)",
+      "solover": "SoloVer",
+      "trunkver": "TrunkVer"
+    },
     "commit_convention": {
       "__prompt__": "Which commit convention would you like to use?",
       "gitmoji": "Gitmoji",
@@ -145,6 +164,60 @@
     "3.14": [[3, 14]]
   },
   "__mpvr": "{{ cookiecutter.minimal_python_version.replace('.', '') }}",
+
+  "_version_schema_mapping": {
+    "effver": "EffVer",
+    "semver": "SemVer",
+    "calver-auto": "CalVer",
+    "calver-explicit": "CalVer",
+    "romver": "RomVer",
+    "solover": "SoloVer",
+    "trunkver": "TrunkVer"
+  },
+  "_version_schema_mapping_formal": {
+    "effver": "Intended Effort Versioning",
+    "semver": "Semantic Versioning",
+    "calver-auto": "Calendar Versioning",
+    "calver-explicit": "Calendar Versioning",
+    "romver": "Romantic Versioning",
+    "solover": "SoloVer",
+    "trunkver": "TrunkVer"
+  },
+  "_version_schemas_first_segment": {
+    "effver": "MACRO",
+    "semver": "MAJOR",
+    "calver-auto": "MAJOR",
+    "calver-explicit": "MAJOR",
+    "romver": "PROJECT",
+    "solover": null,
+    "trunkver": null
+  },
+  "_version_schemas_second_segment": {
+    "effver": "MESO",
+    "semver": "MINOR",
+    "calver-auto": "MINOR",
+    "calver-explicit": "MINOR",
+    "romver": "MAJOR",
+    "solover": null,
+    "trunkver": null
+  },
+  "_version_schemas_third_segment": {
+    "effver": "MICRO",
+    "semver": "PATCH",
+    "calver-auto": null,
+    "calver-explicit": "MICRO",
+    "romver": "MINOR",
+    "solover": null,
+    "trunkver": null
+  },
+  "__schema_cipher": "{{ cookiecutter._version_schema_mapping[cookiecutter.version_schema] }}",
+  "__schema_name": "{{ cookiecutter._version_schema_mapping_formal[cookiecutter.version_schema] }}",
+  "__version_s1": "{{ cookiecutter._version_schemas_first_segment[cookiecutter.version_schema] }}",
+  "__version_s2": "{{ cookiecutter._version_schemas_second_segment[cookiecutter.version_schema] }}",
+  "__version_s3": "{{ cookiecutter._version_schemas_third_segment[cookiecutter.version_schema] }}",
+  "__schema_type": "{{ 'simple' if cookiecutter.version_schema in ['solover', 'trunkver'] else 'segmented' }}",
+  "__version_schema_base": "{{ 'calver' if 'calver' in cookiecutter.version_schema else cookiecutter.version_schema }}",
+  "__schema_group": "{{ 'semver-like' if cookiecutter.__version_schema_base in ['effver', 'semver', 'romver'] else cookiecutter.__version_schema_base }}",
 
   "__envvar": "{{ cookiecutter.package_name.upper() }}",
   "__security_email": "{{ cookiecutter.email.replace('.', ' dot ').replace('@', ' at ').replace('_', ' underscore ').replace('-', ' dash ') }}",

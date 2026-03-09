@@ -37,10 +37,8 @@ This template should be used to discuss and validate high-level design decisions
 - [ ] I have presented my proposal following the [{{ cookiecutter.project_name }} philosophy][2];
   - [ ] I am confident this should be discussed in a larger forum [before being addressed][3]
 - [ ] I have added the proper [labels][4] to start this discussion;
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
-- [ ] I have associated the proposal with the adequate [epic][5];
-{%- else %}
-- [ ] I have associated the proposal with the adequate [development milestone][5];
+{%- if cookiecutter.scm_platform == 'GitLab Free' %}
+- [ ] I have associated the proposal with the adequate [development milestone][4a];
 {%- endif %}
 - [ ] I have followed the [commit customs][6] for the project;
 - [ ] I have explained the [reasoning][7] behind my design choices through the commit descriptions;
@@ -66,10 +64,8 @@ This template should be used to discuss and validate high-level design decisions
 [2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#book-our-philosophy
 [3]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#operate-with-a-bias-for-action
 [4]: {{ cookiecutter.__scm_link_url }}/labels
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
-[5]: {{ cookiecutter.__gitlab_org }}/epics
-{%- else %}
-[5]: {{ cookiecutter.__scm_link_url }}/milestones
+{%- if cookiecutter.scm_platform == 'GitLab Free' %}
+[4a]: {{ cookiecutter.__scm_link_url }}/milestones
 {%- endif %}
 [6]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#commit-customs
 [7]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#say-why-not-just-what

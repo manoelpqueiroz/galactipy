@@ -15,8 +15,10 @@ This template should be used to propose changes resolving a major issue with the
 
 <!-- Describe WHAT the request raises attention about, with as much detail as possible -->
 
-> **Proposed Version:** <!-- What is your proposed version following the EffVer scheme? -->
+{% if cookiecutter.__schema_type == 'segmented' -%}
+> **Proposed Version:** <!-- What is your proposed version following the {{ cookiecutter.__schema_cipher }} scheme? -->
 
+{% endif -%}
 ## Why is this issue critical?
 
 <!--

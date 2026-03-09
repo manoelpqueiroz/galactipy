@@ -277,11 +277,14 @@ def config(
 
 
 @task
-def build(c: Context) -> None:
+def build(c: Context, local_version: str | None = None) -> None:
     """Build {{ cookiecutter.project_name }} wheels."""
     poetry_path = get_poetry_command()
+    local_flag = (
+        f"--config-settings local-version={local_version}" if local_version else ""
+    )
 
-    c.run(f"{poetry_path} build", pty=IS_UNIX_OS)
+    c.run(f"{poetry_path} build {local_flag}", pty=IS_UNIX_OS)
 
 
 @task(aliases=["pypi-publish"])

@@ -1,13 +1,14 @@
 // Renovate configuration
 // https://docs.renovatebot.com/configuration-options/
-{% raw %}{
+{%- raw %}
+{
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "timezone": "America/Sao_Paulo",
   "branchPrefix": "bot-",
   "commitMessageAction": "Renovate",
   "commitMessageExtra": "with {{updateType}} {{#if isPinDigest}}{{{newDigestShort}}}{{else}}version {{#if isMajor}}{{prettyNewMajor}}.0{{else}}{{prettyNewVersion}}{{/if}}{{/if}}",
   "constraints": {
-    "python": {% endraw %}"^{{ cookiecutter.minimal_python_version }}"
+    "python": "{% endraw %}^{{ cookiecutter.minimal_python_version }}{% raw %}"
   },
   "extends": [
     "config:recommended",
@@ -15,7 +16,7 @@
     ":separateMajorReleases"
   ],
   "labels": [
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%-endraw %}{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
     "maintenance::renovate"
 {%- else %}
     "maintenance-renovate"
@@ -26,7 +27,7 @@
     "poetry",
 {%- if cookiecutter.create_docker %}
     "dockerfile",
-{%- endif %}
+{%- endif %}{% raw %}
     "gitlabci",
     "gitlabci-include"
   ],
@@ -47,11 +48,11 @@
       "automerge": true,
       "enabled": true,
       "addLabels": [
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- endraw %}{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
         "ci::build"
 {%- else %}
         "ci-build"
-{%- endif %}
+{%- endif %}{% raw %}
       ],
       "matchManagers": [
         "gitlabci",
@@ -63,7 +64,7 @@
       "branchTopic": "gitlab-ci-components",
       "groupName": "GitLab CI components"
     },
-{%- if cookiecutter.create_docker %}
+{%- endraw %}{%- if cookiecutter.create_docker %}
     {
       "description": "Ignore Python version-specific Docker images in CI",
       "enabled": false,
@@ -92,7 +93,7 @@
       "commitBody": "Changelog: build",
       "commitMessagePrefix": ":hammer:"
     },
-{%- endif %}
+{%- endif %}{% raw %}
     {
       "enabled": true,
       "matchCategories": [
@@ -108,7 +109,7 @@
         "bump"
       ],
       "commitMessagePrefix": ":arrow_up:",
-      "commitMessageTopic": {% raw %}"{{depName}}"
+      "commitMessageTopic": "{{depName}}"
     },
     {
       "automerge": true,
@@ -177,10 +178,10 @@
         "click"
 {%- else %}
         // UPDATEME with your core dependencies once defined
-{%- endif %}
+{%- endif %}{% raw %}
       ]
     },
-{%- if cookiecutter.__debug %}
+{%- endraw %}{% if cookiecutter.__debug %}
     {
       "description": "Group docs dependencies",
       "groupName": "documentation dependencies",
@@ -190,7 +191,7 @@
         "docs"
       ]
     },
-{%- endif %}
+{%- endif %}{% raw %}
     {
       "automerge": false,
       "addLabels": [
@@ -204,11 +205,11 @@
     {
       "automerge": true,
       "addLabels": [
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- endraw %}{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
         "internals::toolset"
 {%- else %}
         "internals-toolset"
-{%- endif %}
+{%- endif %}{% raw %}
       ],
       "description": "Automerge minor and patch dev dependencies",
       "matchDepTypes": [
@@ -232,11 +233,12 @@
       "matchUpdateTypes": [
         "major"
       ],
-      "commitMessageAction": {% raw %}"Renew major version{{#if isGroup}}s{{/if}} for",
+      "commitMessageAction": "Renew major version{{#if isGroup}}s{{/if}} for",
       "commitMessageExtra": "{{#if isGroup}}{{else}}({{prettyNewMajor}}.0){{/if}}"
     }
   ],
   "registryAliases": {
     "$CI_SERVER_FQDN": "gitlab.com"
   }
-}{% endraw %}
+}
+{%- endraw %}

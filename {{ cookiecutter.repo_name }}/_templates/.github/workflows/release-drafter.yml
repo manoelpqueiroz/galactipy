@@ -1,11 +1,18 @@
 # Check GitHub Actions documentation at:
 # https://github.com/marketplace/actions/pypi-publish
-{% raw %}name: 📜 Release Drafter
+{%- raw %}
+name: 📜 Release Drafter
 
 on:
   push:
     tags:
+{%- endraw %}{% if cookiecutter.__schema_group == 'semver-like' %}
       - 'v?[0-9]+.[0-9]+.[0-9]+'
+{%- elif cookiecutter.__schema_group == 'calver' %}
+      - 'v?1?2?0?[0-9][0-9].0?[0-9]+.?0?[0-9]?[0-9]?'
+{%- elif cookiecutter.__schema_group == 'solover' %}
+      - 'v?[0-9]+'
+{%- endif %}{% raw %}
 
 jobs:
   update_release_draft:
@@ -16,4 +23,5 @@ jobs:
       - uses: release-drafter/release-drafter@v6.2.0
         env:
           # TODO Set up token for Release Drafter
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}{% endraw %}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+{%- endraw %}

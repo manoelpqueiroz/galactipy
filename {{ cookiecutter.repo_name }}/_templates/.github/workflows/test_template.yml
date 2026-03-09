@@ -1,6 +1,8 @@
 # Check GitHub Actions documentation at:
 # https://github.com/marketplace/actions/pypi-publish
-{% raw %}# UPDATEME to suit your project's workflow
+
+# UPDATEME to suit your project's workflow
+{%- raw %}
 on:
   workflow_call:
     inputs:
@@ -9,12 +11,12 @@ on:
         type: string
       upload-coverage:
         required: true
-        type: boolean{% endraw %}
-{%- if cookiecutter.__coverage_lc == 'codacy' %}{% raw %}
+        type: boolean
+{%- endraw %}{% if cookiecutter.__coverage_lc == 'codacy' %}{% raw %}
     secrets:
       codacy-token:
-        required: false{% endraw %}
-{%- endif %}{% raw %}
+        required: false
+{%- endraw %}{% endif %}{% raw %}
 
 jobs:
   test:
@@ -55,12 +57,12 @@ jobs:
         run: invoke security
 
       - name: 📤 Upload Coverage to {% endraw %}{{ cookiecutter.coverage_service }}{% raw %}
-        if: ${{ inputs.upload-coverage }}{% endraw %}
-{%- if cookiecutter.__coverage_lc == 'coveralls' %}
+        if: ${{ inputs.upload-coverage }}
+{%- endraw %}{% if cookiecutter.__coverage_lc == 'coveralls' %}
         uses: coverallsapp/github-action@v2.3.6
-{%- elif cookiecutter.__coverage_lc == 'codacy' %}{% raw %}
+{%- elif cookiecutter.__coverage_lc == 'codacy' %}
         uses: codacy/codacy-coverage-reporter-action@v1.3.0
         with:
-          project-token: ${{ secrets.codacy-token }}
-          coverage-reports: coverage.xml{% endraw %}
+          project-token: {% raw %}${{ secrets.codacy-token }}{% endraw %}
+          coverage-reports: coverage.xml
 {%- endif %}
