@@ -61,6 +61,7 @@
     "tui",
     "hybrid",
     "cli",
+    "bare_cli",
     "bare_repo"
   ],
 
@@ -123,6 +124,7 @@
       "tui": "Integrated CLI+TUI",
       "hybrid": "Hybrid CLI/TUI",
       "cli": "CLI-only application",
+      "bare_cli": "Minimal CLI structure",
       "bare_repo": "Bare repository"
     }
   },
@@ -218,6 +220,15 @@
   "__schema_type": "{{ 'simple' if cookiecutter.version_schema in ['solover', 'trunkver'] else 'segmented' }}",
   "__version_schema_base": "{{ 'calver' if 'calver' in cookiecutter.version_schema else cookiecutter.version_schema }}",
   "__schema_group": "{{ 'semver-like' if cookiecutter.__version_schema_base in ['effver', 'semver', 'romver'] else cookiecutter.__version_schema_base }}",
+
+  "_app_type_mapping": {
+    "tui": "tui",
+    "hybrid": "tui",
+    "cli": "cli",
+    "bare_cli": "cli",
+    "bare_repo": "bare_repo"
+  },
+  "__app_group": "{{ cookiecutter._app_type_mapping[cookiecutter.app_type] }}",
 
   "__envvar": "{{ cookiecutter.package_name.upper() }}",
   "__security_email": "{{ cookiecutter.email.replace('.', ' dot ').replace('@', ' at ').replace('_', ' underscore ').replace('-', ' dash ') }}",
