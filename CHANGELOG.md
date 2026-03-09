@@ -1,3 +1,102 @@
+## 2.0.0 (2026-03-09)
+
+### :milky_way: Components (3 changes)
+
+- [:sparkles: Enable Changelog updates for TrunkVer in GitLab CI](galactipy/galactipy@5cc273ad512ae66194330c453fa650225ad83e35) ([merge request](galactipy/galactipy!166))
+- [:sparkles: Adapt GitLab CI configuration for multiple versioning schemas](galactipy/galactipy@452b636d28394f7cff5cd4347b655112b58ebd01) ([merge request](galactipy/galactipy!166))
+- [:sparkles: Adapt GitLab CI Docker building for multiple versioning schemas](galactipy/galactipy@a70ebc1c343b67f44ed0ff7ca69b7364a07b6206) ([merge request](galactipy/galactipy!166))
+
+### :metro: Template Internals (23 changes)
+
+- [:construction_worker: Renovate template GitHub actions](galactipy/galactipy@7101140566a3baf1f03ddd14dffa9cb3e4252f98) ([merge request](galactipy/galactipy!197))
+- [:construction_worker: Add GitHub Actions workflow for automanaged CalVer](galactipy/galactipy@ba52864fbb862511faa7eac97e1de7c56333c35c) ([merge request](galactipy/galactipy!166))
+- [:construction_worker: Renovate template GitHub actions with major version v4.0](galactipy/galactipy@d01015a3300d6bb4e4f67e5abfff982f55036699) ([merge request](galactipy/galactipy!195))
+- [:wrench: Specify regex for poetry-dynamic-versioning resolution](galactipy/galactipy@96d52fdeadb59978d5d16f58791962af32232dfe) ([merge request](galactipy/galactipy!166))
+- [:sparkles: Enable test coverage on GitHub for TrunkVer](galactipy/galactipy@be7371da3ef0a0f9321d51212aaddd75f5d4c8a9) ([merge request](galactipy/galactipy!166))
+- [:wrench: Modify MR templates to allow multiple versioning schemas](galactipy/galactipy@c96574e83284200027088e49147710780b3bc0bd) ([merge request](galactipy/galactipy!166))
+- [:green_heart: Properly build TrunkVer package in GitLab](galactipy/galactipy@5c18c217c59513a1d5d97396d5155c1fca1b3509) ([merge request](galactipy/galactipy!166))
+- [:construction_worker: Enable proper cache usage in GitLab CI](galactipy/galactipy@1c3436cecd524f43bc3570932207bdcede4d3767) ([merge request](galactipy/galactipy!166))
+- [:wrench: Alter `changelog_config.yml` phrasing for TrunkVer](galactipy/galactipy@f307e329649431c42b0e95fa3b3526147bae4a7b) ([merge request](galactipy/galactipy!166))
+- [:construction_worker: Refine trigger rules for GitHub Actions workflows](galactipy/galactipy@22cf6b69f35ac98bfecb92bfb0effaacc6aee675) ([merge request](galactipy/galactipy!166))
+- [:construction_worker: Adapt GitHub Actions for multiple versioning schemas](galactipy/galactipy@ef6a4b7bd2cc8d1f65f5480f655330379a34ea05) ([merge request](galactipy/galactipy!166))
+- [:wrench: Add pre-commit hooks for TrunkVer projects](galactipy/galactipy@c70f41480efb809d949501aabf5481049b18cc99) ([merge request](galactipy/galactipy!166))
+- [:sparkles: Structure separate CI workflow for TrunkVer-based projects](galactipy/galactipy@df93f341a23e6099b30f125702a3e47e42dae7a9) ([merge request](galactipy/galactipy!166))
+- [:adhesive_bandage: Alter rule for publishing to production environment](galactipy/galactipy@8c1a50b1ac2a3ea1e256920a11b9c720ffe7c923) ([merge request](galactipy/galactipy!166))
+- [:sparkles: Enable tag creation for automanaged CalVer](galactipy/galactipy@c8c0b8091e1f1611cd55da080d926834a9f2263f) ([merge request](galactipy/galactipy!166))
+- [:construction_worker: Improve cache usage for the template CI](galactipy/galactipy@fd3407691c32584a46d7cf67b0fe495c0ab2024d) ([merge request](galactipy/galactipy!166))
+- [:construction_worker: Update Galactic Releases component to v0.7.0](galactipy/galactipy@2f6981380efca7bb6714d854863e9aecf2d03079) ([merge request](galactipy/galactipy!166))
+- [:construction_worker: Renovate actions/upload-artifact action with major version v7.0](galactipy/galactipy@15673a8bd5a1377423b9b7e90a730b8d40bfba4d) ([merge request](galactipy/galactipy!191))
+- [:construction_worker: Renovate actions/download-artifact action with major version v8.0](galactipy/galactipy@2821463e0105845360ccd9ff7d34230ceccc7708) ([merge request](galactipy/galactipy!189))
+- [:construction_worker: Renovate actions/cache action with patch version v5.0.3](galactipy/galactipy@ececa40a24890bfb1e494805edcb618d77a38afd) ([merge request](galactipy/galactipy!179))
+- [:construction_worker: Renovate template GitHub actions with minor version v6.2.0](galactipy/galactipy@93165859bada412a8e70582c57faf6922ba15740) ([merge request](galactipy/galactipy!175))
+- [:construction_worker: Renovate release-drafter/release-drafter action with patch version v6.1.1](galactipy/galactipy@8f403afe707cb5fa08d35152b97dbd88e93d2570) ([merge request](galactipy/galactipy!174))
+- [:construction_worker: Renovate actions/cache action with patch version v5.0.2](galactipy/galactipy@3908c9f6027f489a57b7e7180b930b7a58d30baf) ([merge request](galactipy/galactipy!172))
+
+### :ballot_box: Settings & Options (5 changes)
+
+- [:arrow_up: Update Galactic Versions to v0.8.1](galactipy/galactipy@7eca2fa3571e6adb483b5308a2344909b8d497e8) ([merge request](galactipy/galactipy!166))
+- [:wrench: Provide additional version segment variables](galactipy/galactipy@62e02c8ea3d15357ed838f556fd3d33b2539843a) ([merge request](galactipy/galactipy!166))
+- [:rotating_light: Place logging setup in separate module](galactipy/galactipy@a990cfb19f6ab9e5562c24170a8a5038783e15d0) ([merge request](galactipy/galactipy!166))
+- [:hammer: Add option for local building with Poetry](galactipy/galactipy@e0ce303ac1e9810eacd4ba7d0bf16220ec362d40) ([merge request](galactipy/galactipy!166))
+- [:sparkles: Add option to choose versioning schema for projects](galactipy/galactipy@2bd9631879dbb8c72974d742633be621be60ef3d) ([merge request](galactipy/galactipy!166))
+
+### :factory_worker: Template Maintenance (1 change)
+
+- [:wrench: Remove MR template items to check for associated epics](galactipy/galactipy@826b1106dc3920aeb8eacc0bb8b4b99e55cf61dc) ([merge request](galactipy/galactipy!166))
+
+### :gear: Project Internals (4 changes)
+
+- [:hammer: Update post-gen hooks with CalVer tag workflow removal](galactipy/galactipy@2602480697c328e3355793517e883ef54d502ae2) ([merge request](galactipy/galactipy!166))
+- [:hammer: Update file removals for TrunkVer](galactipy/galactipy@e23aa400866078273f297e2bf95770de61e05c84) ([merge request](galactipy/galactipy!166))
+- [:hammer: Prevent Invoke from removing asset files](galactipy/galactipy@5fb2c944e6674cd5fd59bc5db4d388ed64e587bd) ([merge request](galactipy/galactipy!166))
+- [:pencil2: Remove list items referencing epics in project MR templates](galactipy/galactipy@0b61522940b7569c8199097f773615464973eefd) ([merge request](galactipy/galactipy!166))
+
+### :airplane_departure: Release Cycle Optimisation (7 changes)
+
+- [:construction_worker: Renovate dependency galactipy/components/versioning with patch version v0.8.1](galactipy/galactipy@8d0c04057c21002db70592a6b3d4a0a10a66da12)
+- [:green_heart: Fix required CI stages for Galactic Releases](galactipy/galactipy@1f300377af49f0f984849b7e1dbcb8e6232d2b92)
+- [:construction_worker: Renovate dependency galactipy/components/versioning with minor version v0.8.0](galactipy/galactipy@b2e2dc3f8cf33a83ea1b6507ad1b86a3d7071b95) ([merge request](galactipy/galactipy!184))
+- [:construction_worker: Renovate dependency galactipy/components/versioning with patch version v0.7.1](galactipy/galactipy@8fef38e6b1271413b128fcc25df66dccc2b29b50) ([merge request](galactipy/galactipy!177))
+- [:construction_worker: Renovate dependency galactipy/components/versioning with minor version v0.7.0](galactipy/galactipy@882c6667fd9654607c5a39d0f0c32e48515dff2d) ([merge request](galactipy/galactipy!173))
+- [:construction_worker: Renovate dependency components/sast with minor version v3.4.0](galactipy/galactipy@7431aa8cf6bc7c2cec53a57c892147fc5235bdf9) ([merge request](galactipy/galactipy!169))
+- [:green_heart: Update Galactic Releases version manually](galactipy/galactipy@0079ea7f3363035a9a2d1af056dd94b57a0591e3)
+
+### :repeat: Design & Validation (2 changes)
+
+- [:white_check_mark: Update file removal tests for automanaged CalVer](galactipy/galactipy@a98d883d5655e811d4b3fcf54a41b99cd625cf26) ([merge request](galactipy/galactipy!166))
+- [:white_check_mark: Update file removal tests](galactipy/galactipy@74334f2d1ce0c251474ee64778e928c0723953c1) ([merge request](galactipy/galactipy!166))
+
+### :arrow_up: Dependencies Updates (11 changes)
+
+- [:arrow_up: Renovate ruff with patch version v0.15.5](galactipy/galactipy@dac35736be71fa4bda1fe23cd3ab6d7c20b3e5ae) ([merge request](galactipy/galactipy!196))
+- [:arrow_up: Renovate cookiecutter with patch version v2.7.1](galactipy/galactipy@7bf64cba594da635db5030c67b2d3fafb02af824) ([merge request](galactipy/galactipy!194))
+- [:arrow_up: Renovate ruff with patch version v0.15.4](galactipy/galactipy@e6c7d4fe9c948abdbd528eb6e066bd6a441f2247) ([merge request](galactipy/galactipy!192))
+- [:arrow_up: Renovate bandit with patch version v1.9.4](galactipy/galactipy@8465813f7d01b4ffcfe329259c37872c46026ded) ([merge request](galactipy/galactipy!190))
+- [:arrow_up: Renovate ruff with patch version v0.15.2](galactipy/galactipy@402776a8d27db179dfe2ce4a686276f682ccf890) ([merge request](galactipy/galactipy!187))
+- [:arrow_up: Renovate ruff with patch version v0.15.1](galactipy/galactipy@95d4bdadaad86219e85c2bfee1c366027372b6ca) ([merge request](galactipy/galactipy!185))
+- [:arrow_up: Renovate ruff with minor version v0.15.0](galactipy/galactipy@86dcccbee56bf94cc0163145ab8eeb8176a72cb4) ([merge request](galactipy/galactipy!182))
+- [:arrow_up: Renovate coverage with patch version v7.13.3](galactipy/galactipy@45c2618c9775746da1739b30d5f0a18dbcb27a64) ([merge request](galactipy/galactipy!181))
+- [:arrow_up: Renovate ruff with patch version v0.14.14](galactipy/galactipy@3cdfeed171d1623d48dee98bd32c20dfdc813596) ([merge request](galactipy/galactipy!176))
+- [:arrow_up: Renovate ruff with patch version v0.14.13](galactipy/galactipy@9736eeb89d11f906fbfad501bb3ae10336dd13b9) ([merge request](galactipy/galactipy!170))
+- [:arrow_up: Renovate ruff with patch version v0.14.11](galactipy/galactipy@9c773ff6f408e684e4cddb3369504aa8c4003c23) ([merge request](galactipy/galactipy!167))
+
+### :pouring_liquid: Nits (8 changes)
+
+- [:adhesive_bandage: Ensure prefixed versions for automanaged CalVer](galactipy/galactipy@148f50ffbaee808223db8c6638d14e4a5fe190e0) ([merge request](galactipy/galactipy!166))
+- [:rotating_light: Fix Ruff formatting for project `tasks.py`](galactipy/galactipy@bf95e23935400bb8baa3caad068d3a79f0d65263) ([merge request](galactipy/galactipy!166))
+- [:construction_worker: Improve GitLab CI sections and rules](galactipy/galactipy@5a6e6cd1ce00a3aa4f781361086e9953611d936e) ([merge request](galactipy/galactipy!166))
+- [:adhesive_bandage: Standardise usage of Jinja raw directives](galactipy/galactipy@b6e9c2454fd53bd14d25c571802eac0f53c21940) ([merge request](galactipy/galactipy!166))
+- [:pencil: Structure badges for versioning schema](galactipy/galactipy@f08ef6ee65f3a1c16e09f69620b70fd3356a73dd) ([merge request](galactipy/galactipy!166))
+- [:pencil2: Modify Jinja conditionals on template `README.md`](galactipy/galactipy@329f9be3f15c4f4c28e6d363f675640182a3e286) ([merge request](galactipy/galactipy!166))
+- [:pencil2: Improve Jinja whitespace control for GitLab CI file](galactipy/galactipy@928f47e2937e8609573659a6eebb24a403df1bf8) ([merge request](galactipy/galactipy!166))
+- [:egg: Enable Human Era calendar for CalVer and TrunkVer](galactipy/galactipy@6f5abbf2b9bf8409cd05a7768fc17905ebcc48db) ([merge request](galactipy/galactipy!166))
+
+### :books: Documentation (3 changes)
+
+- [:pencil: Update project `README.md` detailing versioning schemas](galactipy/galactipy@6b028a3c106ea9c9ca9c3d17345db83461f49e8b) ([merge request](galactipy/galactipy!166))
+- [:pencil: Outline pre-commit hooks installation relevance for TrunkVer](galactipy/galactipy@82f1ba139a193992c7564953b74969717ecf569f) ([merge request](galactipy/galactipy!166))
+- [:pencil: Rework versioning customs sections for template `CONTRIBUTING.md`](galactipy/galactipy@8dd7c8ba3d195adc15e18e71f68cfd4f9033c72b) ([merge request](galactipy/galactipy!166))
+
 ## 1.4.2 (2026-01-09)
 
 ### :milky_way: Components (1 change)
