@@ -62,7 +62,6 @@ class ProjectFlags:  # noqa: D101
 
     def __post_init__(self):  # noqa: D105
         self.remove_cli = self.app_type == "bare_repo"
-        self.is_trunkver = self.version_schema == "trunkver"
 
 
 def rmdir(path: Path) -> None:
@@ -194,8 +193,8 @@ def _get_files_to_delete(
 
     docker_specific_files = _get_docker_specific_files(directory, flags.remove_gitlab)
 
-    trunkver_specific_files = _get_trunkver_specific_files(
-        directory, flags.is_trunkver, flags.remove_gitlab
+    schema_specific_files = _get_schema_specific_files(
+        directory, flags.version_schema, flags.remove_gitlab
     )
 
     gitlab_specific_files = [
@@ -219,8 +218,8 @@ def _get_files_to_delete(
     if flags.remove_docker:
         files_to_delete.extend(docker_specific_files)
 
-    if trunkver_specific_files is not None:
-        files_to_delete.extend(trunkver_specific_files)
+    if schema_specific_files is not None:
+        files_to_delete.extend(schema_specific_files)
 
     files_to_delete.extend(bdd_specific_files)
     files_to_delete.extend(tui_specific_files)
@@ -389,25 +388,37 @@ def _get_docker_specific_files(directory: Path, is_github: bool) -> list[Path]:
     return removals
 
 
-def _get_trunkver_specific_files(
-    directory: Path, is_trunkver: bool, is_github: bool
+def _get_schema_specific_files(
+    directory: Path, version_schema: str, is_github: bool
 ) -> list[Path] | None:
-    """Return select files to remove when the TrunkVer schema is chosen.
+    """Return select files to remove when a version schema is chosen.
 
     Parameters
     ----------
     directory : Path
         Root directory of the project.
+    version_schema : str
+        The versioning schema of the project.
     is_github : bool
-        Determine whether GitHub Docker workflow should be removed as well.
+        Fine-tune file removal for GitHub Actions.
     """
-    if is_trunkver & is_github:
-        return [
-            directory / ".github" / "release-drafter.yml",
-            directory / ".github" / "workflows" / "release-drafter.yml",
-            directory / ".github" / "workflows" / "test_template.yml",
-            directory / ".github" / "workflows" / "pypi-test.yml",
-        ]
+    if is_github:
+        removals = [directory / ".github" / "workflows" / "weekly-tag.yml"]
+
+        if version_schema == "calver-auto":
+            return None
+
+        if version_schema == "trunkver":
+            removals.extend(
+                [
+                    directory / ".github" / "release-drafter.yml",
+                    directory / ".github" / "workflows" / "release-drafter.yml",
+                    directory / ".github" / "workflows" / "test_template.yml",
+                    directory / ".github" / "workflows" / "pypi-test.yml",
+                ]
+            )
+
+        return removals
 
     return None
 
@@ -568,8 +579,8 @@ def main() -> None:  # noqa: D103
         remove_docker,
         remove_bdd,
         remove_features,
-        APP_TYPE,
         VERSION_SCHEMA,
+        APP_TYPE,
     )
 
     generate_licence(directory=PROJECT_DIRECTORY, licence=licences_dict[LICENCE])
