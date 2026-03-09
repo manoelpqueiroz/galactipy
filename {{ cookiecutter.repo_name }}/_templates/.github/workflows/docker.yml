@@ -26,7 +26,7 @@ jobs:
 {%- endraw %}{% endif %}{% raw %}
     steps:
       - name: 🔰 Configure Tags to Push
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         id: meta
         with:
           images: {% endraw %}{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}{% raw %}
@@ -53,7 +53,7 @@ jobs:
         uses: docker/setup-buildx-action@v4
 
       - name: 🛫 Build and Push Image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           file: docker/Dockerfile
           push: true
