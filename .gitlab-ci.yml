@@ -57,8 +57,8 @@ include:
     inputs:
       stage: security-checks
       enable_mr_pipelines: true
-  - component: $CI_SERVER_FQDN/galactipy/components/versioning/vars@0.8.0
-  - component: $CI_SERVER_FQDN/galactipy/components/versioning/release@0.8.0
+  - component: $CI_SERVER_FQDN/galactipy/components/versioning/vars@0.8.1
+  - component: $CI_SERVER_FQDN/galactipy/components/versioning/release@0.8.1
     inputs:
       pat-envvar: $GALACTIPY_BOT_API_TOKEN
       changelog-commit-message: ':bookmark_tabs: Update CHANGELOG.md'
