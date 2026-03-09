@@ -91,7 +91,7 @@ _{{ cookiecutter.project_description }}._
 **POWERED BY**
 
 [![Powered by Typer][btyper]][ltyper]
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+{%- if cookiecutter.__app_group == 'tui' %}
 [![Powered by Textual][btextual]][ltextual]
 {%- endif %}
 [![Powered by Orbittings][borbittings]][lorbittings]
@@ -186,7 +186,7 @@ with the `{{ cookiecutter.repo_name }} launch` command:
 >> Specify a custom configuration file
 >> to launch the application.
 
-{% elif cookiecutter.app_type == 'cli' -%}
+{% else -%}
 The top-level command
 is the entry point
 for additional
@@ -593,7 +593,7 @@ This project was generated with [Galactipy][burl4].
 {% if cookiecutter.app_type != 'bare_repo' -%}
 [btyper]: https://img.shields.io/badge/Typer-black?style=for-the-badge&logo=typer
 [ltyper]: https://typer.tiangolo.com/
-{% if cookiecutter.app_type in ['tui', 'hybrid'] -%}
+{% if cookiecutter.__app_group == 'tui' -%}
 [btextual]: https://img.shields.io/badge/Textual-272a35?style=for-the-badge&logo=textual
 [ltextual]: https://textual.textualize.io/
 {% endif -%}

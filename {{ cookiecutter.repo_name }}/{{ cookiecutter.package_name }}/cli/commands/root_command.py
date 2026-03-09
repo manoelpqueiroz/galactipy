@@ -30,7 +30,7 @@ from {{ cookiecutter.package_name }}.cli.styling import AppCustomThemes
 
 app = typer.Typer(no_args_is_help=True, rich_markup_mode="rich")
 app.add_typer(launch_app)
-{%- elif cookiecutter.app_type == 'cli' %}
+{%- else %}
 from {{ cookiecutter.package_name }}.cli.styling import AppCustomThemes
 
 app = typer.Typer(no_args_is_help=True, rich_markup_mode="rich")
@@ -63,7 +63,7 @@ def main(
             ),
         ),
     ] = None,
-{%- elif cookiecutter.app_type == 'hybrid' or cookiecutter.app_type == 'cli' -%}
+{%- elif cookiecutter.app_type == 'hybrid' or cookiecutter.__app_group == 'cli' -%}
 @app.callback()
 def main(
 {%- endif %}
@@ -107,7 +107,7 @@ def main(
         interface.run()
 
         logger.debug("{{ cookiecutter.project_name }} exited successfully")
-    {%- elif cookiecutter.app_type == 'hybrid' or cookiecutter.app_type == 'cli' %}
+    {%- elif cookiecutter.app_type == 'hybrid' or cookiecutter.__app_group == 'cli' %}
     """{{ cookiecutter.project_description }}.
 
     See below for commands and options.

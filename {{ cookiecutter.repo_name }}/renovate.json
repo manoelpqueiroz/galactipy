@@ -159,7 +159,7 @@
       "commitBody": "Changelog: dependencies",
       "matchPackageNames": [
 {%- endraw %}{% if cookiecutter.app_type != 'bare_repo' %}
-{%- if cookiecutter.app_type == 'tui' or cookiecutter.app_type == 'hybrid' %}
+{%- if cookiecutter.__app_group == 'tui' %}
         "textual",
         "art",
 {%- endif %}

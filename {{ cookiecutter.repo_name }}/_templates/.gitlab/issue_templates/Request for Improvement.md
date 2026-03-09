@@ -12,7 +12,7 @@ Please run through all items under the **`Applicant Checklist`** section and fol
 - Configuration options improvements;
 - Upgrades to output formatting, including logs;
 - Input validation enhancements;
-{%- if cookiecutter.app_type != 'cli' %}
+{%- if cookiecutter.__app_group == 'tui' %}
 - Shortcuts and navigation;
 - Screen layout and widgets;
 - Search and filtering functionality;
@@ -81,7 +81,7 @@ How would you classify this request?
 
 {%- if cookiecutter.app_type != 'bare_repo' %}
 - [ ] :keyboard: Changes to CLI behaviour;
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+{%- if cookiecutter.__app_group == 'tui' %}
 - [ ] :iphone: Changes in the user interface and user experience;
 {%- endif %}
 - [ ] :peacock: Customisation options;

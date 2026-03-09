@@ -358,7 +358,7 @@ and vulnerability reporting:
 {{ cookiecutter.project_name }} can be used
 {%- if cookiecutter.app_type != 'bare_repo' %}
 as a **Python CLI program**,
-{%- if cookiecutter.app_type != 'cli' %}
+{%- if cookiecutter.__app_group == 'tui' %}
 a **terminal application**
 via a Terminal User Interface (TUI)
 {%- endif %}
@@ -406,7 +406,7 @@ safe evaluations
 of configuration files and variables
 to avoid arbitrary code execution.
 
-{% if cookiecutter.app_type != 'cli' -%}
+{% if cookiecutter.__app_group == 'tui' -%}
 #### TUI Application
 
 {{ cookiecutter.project_name }} also ships as a TUI application

@@ -43,7 +43,7 @@ ENV LANG=C.UTF-8 \
 {%- endif %}
     COLORTERM=truecolor \
     PYTHONUNBUFFERED=1
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+{%- if cookiecutter.__app_group == 'tui' %}
 
 RUN apk add --no-cache \
     ncurses-terminfo-base=~6.5_p20251123-r0 \

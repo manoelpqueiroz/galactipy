@@ -98,7 +98,7 @@ def generate_default_config_schema():
 {%- else %}
     """Create the default configuration schema for {{ cookiecutter.project_name }}."""
 {%- endif %}
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+{%- if cookiecutter.__app_group == 'tui' %}
     return {
         "VERSION": __version__,
         "THEME": "noctis",

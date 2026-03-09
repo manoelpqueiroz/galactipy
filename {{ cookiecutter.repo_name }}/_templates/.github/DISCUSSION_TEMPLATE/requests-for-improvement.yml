@@ -14,7 +14,7 @@ body:
         > - Configuration options improvements;
         > - Upgrades to output formatting, including logs;
         > - Input validation enhancements;
-{%- if cookiecutter.app_type != 'cli' %}
+{%- if cookiecutter.__app_group == 'tui' %}
         > - Shortcuts and navigation;
         > - Screen layout and widgets;
         > - Search and filtering functionality;
@@ -70,12 +70,12 @@ body:
       options:
 {%- if cookiecutter.app_type != 'bare_repo' %}
         - ⌨️ Changes to CLI behaviour
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+{%- if cookiecutter.__app_group == 'tui' %}
         - 📱 Changes in the user interface and user experience
 {%- endif %}
         - 🦚 Customisation options
 {%- else %}
-        - ✨ New features;
+        - ✨ New features
 {%- endif %}
         - ℹ️ Improvements to documentation and help menus
         - 🔌 Proposal for package extension

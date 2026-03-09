@@ -66,7 +66,7 @@ version = "0.0.0"  # Keep this key as the last for `tool.poetry`
 
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.minimal_python_version }}"
-{%- if cookiecutter.app_type == 'tui' or cookiecutter.app_type == 'hybrid' %}
+{%- if cookiecutter.__app_group == 'tui' %}
 
 textual = "^6.5.0"
 art = "^6.5.0"  # UPDATEME by removing when no longer needed
@@ -98,7 +98,7 @@ pytest = "^8.4.2"
 pytest-bdd = "^8.1.0"
 pytest-bdd-report = "^1.1.0"
 {%- endif %}
-{%- if cookiecutter.app_type == 'tui' or cookiecutter.app_type == 'hybrid' %}
+{%- if cookiecutter.__app_group == 'tui' %}
 pytest-asyncio = "^1.2.0"
 {%- endif %}
 pytest-html = "^4.1.1"
@@ -271,7 +271,7 @@ select = [ # UPDATEME with additional rules from https://docs.astral.sh/ruff/rul
   "SLOT",
   "PERF",
   "FURB",
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+{%- if cookiecutter.__app_group == 'tui' %}
   "ASYNC",
 {%- endif %}
 ]
@@ -379,9 +379,9 @@ section-order = [
 ]
 
 [tool.ruff.lint.isort.sections]
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+{%- if cookiecutter.__app_group == 'tui' %}
 app-builders = ["rich", "typer", "textual"]
-{%- elif cookiecutter.app_type == 'cli' %}
+{%- elif cookiecutter.__app_group == 'cli' %}
 app-builders = ["rich", "typer"]
 {%- endif %}
 {%- if cookiecutter.app_type != 'bare_repo' %}
@@ -401,7 +401,7 @@ testing = [
 {%- if cookiecutter.use_bdd %}
   "pytest_bdd",
 {%- endif %}
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+{%- if cookiecutter.__app_group == 'tui' %}
   "pytest_asyncio",
 {%- endif %}
   "pytest_mock",
@@ -472,7 +472,7 @@ addopts = [
 {%- if cookiecutter.use_bdd %}
   "--bdd-report=bdd/report.html",
 {%- endif %}
-{%- if cookiecutter.app_type == 'tui' or cookiecutter.app_type == 'hybrid' %}
+{%- if cookiecutter.__app_group == 'tui' %}
   "--asyncio-mode=auto",
 {%- endif %}
 ]

@@ -203,7 +203,7 @@ should help:
   you should probably get knowledgeable
   about a few topics:
 {%- if cookiecutter.app_type != 'bare_repo' %}
-{%- if cookiecutter.app_type != 'cli' %}
+{%- if cookiecutter.__app_group == 'tui' %}
   - Understand how [Typer][apptopic1] and [Textual][apptopic1a] work
     under the hood
     and how they interact
@@ -877,7 +877,7 @@ with their usage:
 |         N/A         |       ~"seeking-input"        | In need of help to further discuss and define scope.                                                              |
 |         N/A         |           ~"stale"            | Work items without activity that are marked for closing.                                                          |
 |         N/A         |     ~"starter-assignment"     | Proposal and delivery steps are clear and can be picked up by first-time contributors.                            |
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+{%- if cookiecutter.__app_group == 'tui' %}
 |   User Interface    |      ~"ui-accessibility"      | Promotes accessibility options for users in the interface.                                                        |
 |   User Interface    |          ~"ui-arch"           | Changes to rendering logic in the layer directly below the user interface.                                        |
 |   User Interface    |      ~"ui-deprecations"       | Marks deprecations for future removal to UI features.                                                             |
@@ -890,7 +890,7 @@ with their usage:
 |   User Experience   |      ~"ux-customization"      | Improves options available for program customisation by users.                                                    |
 |   User Experience   |          ~"ux-flags"          | Implements feature flags for {{ cookiecutter.project_name }}.                                                     |
 |   User Experience   |        ~"ux-migration"        | Offers predefined migration options to users in the case of breaking changes.                                     |
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+{%- if cookiecutter.__app_group == 'tui' %}
 |   User Experience   |       ~"ux-navigation"        | Improves user navigation in the user interface.                                                                   |
 {%- endif %}
 |   User Experience   |         ~"ux-nudging"         | Helps users understand the application with more ease, like help panels, notifications etc.                       |
@@ -957,7 +957,7 @@ with their usage:
 |         N/A         |       `seeking-input`        | In need of help to further discuss and define scope.                                                              |
 |         N/A         |           `stale`            | Work items without activity that are marked for closing.                                                          |
 |         N/A         |     `starter-assignment`     | Proposal and delivery steps are clear and can be picked up by first-time contributors.                            |
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+{%- if cookiecutter.__app_group == 'tui' %}
 |   User Interface    |      `ui-accessibility`      | Promotes accessibility options for users in the interface.                                                        |
 |   User Interface    |          `ui-arch`           | Changes rendering logic in the layer directly below the user interface.                                           |
 |   User Interface    |      `ui-deprecations`       | Marks deprecations for future removal to UI features.                                                             |
@@ -970,7 +970,7 @@ with their usage:
 |   User Experience   |      `ux-customization`      | Improves options available for program customisation by users.                                                    |
 |   User Experience   |          `ux-flags`          | Implements feature flags for {{ cookiecutter.project_name }}.                                                     |
 |   User Experience   |        `ux-migration`        | Offers predefined migration options to users in the case of breaking changes.                                     |
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+{%- if cookiecutter.__app_group == 'tui' %}
 |   User Experience   |       `ux-navigation`        | Improves user navigation in the user interface.                                                                   |
 {%- endif %}
 |   User Experience   |         `ux-nudging`         | Helps users understand the application with more ease, like help panels, notifications etc.                       |
@@ -2041,7 +2041,7 @@ and defined in the [`changelog-config.yml`][committing2] file:
 | :----------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | :satellite_orbital: Command-line Interface |                                                                            `cli`<br>`command`<br>`commands`<br>`terminal`<br>`output`<br>`shell`                                                                             | Updates to the CLI API that bridges the interface to the actual program. This encompasses available commands and how things are printed to the user's shell.           |
 |            :keyboard: CLI Usage            |                                                   `flag`<br>`flags`<br>`option`<br>`options`<br>`opt`<br>`opts`<br>`argument`<br>`arguments`<br>`arg`<br>`args`<br>`usage`                                                   | Developments that change how the user interacts with the CLI, like options and arguments available for fine-tuning command control.                                    |
-{%- if cookiecutter.app_type != 'cli' %}
+{%- if cookiecutter.__app_group == 'tui' %}
 |   :computer: User Interface Improvements   |                                             `tui`<br>`ui`<br>`layout`<br>`screen`<br>`element`<br>`elements`<br>`panel`<br>`panels`<br>`widget`<br>`widgets`<br>`accessibility`                                              | Improvements to the terminal user interface (TUI), which can be related to widgets, screens, layout, readability etc.                                                  |
 |        :video_game: User Experience        |                                                                     `ux`<br>`xp`<br>`interaction`<br>`navigation`<br>`nav`<br>`shortcut`<br>`shortcuts`                                                                      | All development focused on interaction processes between the user and the terminal user interface, controlling its behaviour.                                          |
 {%- endif %}
@@ -2826,7 +2826,7 @@ _The best good first issues are the ones you open yourself._
 {% endif -%}
 ## :speaking_head: Proposing Changes as a Developer
 
-{% if cookiecutter.app_type in ['tui', 'hybrid'] -%}
+{% if cookiecutter.__app_group == 'tui' -%}
 <!-- DEFINE the context and purposes of your library -->
 {{ cookiecutter.project_name }} is a Terminal User Interface (TUI) application,
 paired with a Command-line Interface (CLI)
@@ -2887,7 +2887,7 @@ Code maintenance within {{ cookiecutter.project_name }} itself encompasses:
   local development
   with [Invoke][changes6].
 
-{% elif cookiecutter.app_type == 'cli' -%}
+{% elif cookiecutter.__app_group == 'cli' -%}
 <!-- DEFINE the context and purposes of your library -->
 {{ cookiecutter.project_name }} is a Command-line Interface (CLI) application
 for performing operations
@@ -3065,7 +3065,7 @@ and actionable.
 {% if cookiecutter.app_type != 'bare_repo' -%}
 It's worth emphasizing that
 changes to CLI commands
-{%- if cookiecutter.app_type != 'cli' %}
+{%- if cookiecutter.__app_group == 'tui' %}
 and interface elements
 {%- endif %}
 available for users in {{ cookiecutter.project_name }}
@@ -3289,7 +3289,7 @@ A non-exhaustive list of steps to consider:
 - Do changes secure
   user data integrity,
   without any data losses?
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+{%- if cookiecutter.__app_group == 'tui' %}
 - Have changes been made
   to the frontend components?
   Did you check
@@ -5502,7 +5502,7 @@ what we are doing matters!
 {%- if cookiecutter.app_type != 'bare_repo' %}
 
 [apptopic1]: https://typer.tiangolo.com/tutorial/
-{%- if cookiecutter.app_type != 'cli' %}
+{%- if cookiecutter.__app_group == 'tui' %}
 [apptopic1a]: https://textual.textualize.io/guide/
 {%- endif %}
 [apptopic2]: https://gitlab.com/galactipy/orbittings
@@ -5693,7 +5693,7 @@ what we are doing matters!
 {%- endif %}
 
 {% endif -%}
-{% if cookiecutter.app_type in ['tui', 'hybrid'] -%}
+{% if cookiecutter.__app_group == 'tui' -%}
 [changes0a]: {{ cookiecutter.__scm_link_url }}/tree/master/{{ cookiecutter.package_name }}/tui
 [changes0b]: https://textual.textualize.io/
 {% endif -%}

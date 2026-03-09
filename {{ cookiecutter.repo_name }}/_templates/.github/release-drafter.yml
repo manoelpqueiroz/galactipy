@@ -13,7 +13,7 @@ categories:
   - title: ":keyboard: CLI Usage" # developments that change how the user interacts with the CLI, like options and arguments
     labels:
       - cli-options
-{%- if cookiecutter.app_type != 'cli' %}
+{%- if cookiecutter.__app_group == 'tui' %}
   - title: ":computer: User Interface Improvements" # widgets, screens, layout, readability etc.
     labels:
       - ui-accessibility
@@ -53,7 +53,7 @@ categories:
     labels:
       - backend-database
   - title: ":city_sunset: Deprecations & Removals"
-{%- if cookiecutter.app_type != 'cli' %}
+{%- if cookiecutter.__app_group == 'tui' %}
     labels:
       - cli-deprecations
       - cli-removals
