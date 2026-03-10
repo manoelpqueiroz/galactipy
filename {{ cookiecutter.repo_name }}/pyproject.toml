@@ -77,7 +77,9 @@ typer = { extras = ["all"], version = "^0.20.0" }
 click = "~8.1.0" # FYI Click shouldn't require explicit declaration, but versions 8.2+ break Typer's behaviour
 rich = "^14.2.0"
 
+{% if cookiecutter.app_type != 'bare_cli' -%}
 orbittings = "^0.2.0"
+{% endif -%}
 platformdirs = "^4.5.0"
 
 nebulog = "^0.1.0"
@@ -386,7 +388,9 @@ app-builders = ["rich", "typer"]
 {%- endif %}
 {%- if cookiecutter.app_type != 'bare_repo' %}
 logging = ["logging", "loguru", "nebulog"]
+{%-if cookiecutter.app_type != 'bare_cli' %}
 config = ["dynaconf", "orbittings"]
+{%- endif %}
 {%- endif %}
 typing = [
   "typing",

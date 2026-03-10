@@ -165,8 +165,10 @@
 {%- endif %}
         "typer",
         "rich",
+{%- if cookiecutter.app_type != 'bare_cli' %}
         "orbittings",
         "platformdirs",
+{%- endif %}
         "nebulog"
       ]
     },
