@@ -228,7 +228,15 @@
     "bare_cli": "cli",
     "bare_repo": "bare_repo"
   },
+  "_app_class_mapping": {
+    "tui": "tui",
+    "hybrid": "tui",
+    "cli": "cli",
+    "bare_cli": "bare",
+    "bare_repo": "bare"
+  },
   "__app_group": "{{ cookiecutter._app_type_mapping[cookiecutter.app_type] }}",
+  "__app_class": "{{ cookiecutter._app_class_mapping[cookiecutter.app_type] }}",
 
   "__envvar": "{{ cookiecutter.package_name.upper() }}",
   "__security_email": "{{ cookiecutter.email.replace('.', ' dot ').replace('@', ' at ').replace('_', ' underscore ').replace('-', ' dash ') }}",
