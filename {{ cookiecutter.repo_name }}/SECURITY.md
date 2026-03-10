@@ -356,7 +356,16 @@ and vulnerability reporting:
 ### :thinking: Use Contexts
 
 {{ cookiecutter.project_name }} can be used
-{%- if cookiecutter.app_type != 'bare_repo' %}
+{%- if cookiecutter.app_type == 'bare_repo' %}
+as a pure **Python library**.
+This allows developers
+to integrate the package's functionality
+into their own Python applications.
+<!-- DEFINE your project's use cases
+  The library exposes a clean API for...
+-->
+
+{% else -%}
 as a **Python CLI program**,
 {%- if cookiecutter.__app_group == 'tui' %}
 a **terminal application**
@@ -444,21 +453,15 @@ This ensures consistent security practices
 across all usage contexts.
 
 {% endif -%}
-{% else -%}
-as a pure **Python library**.
-This allows developers
-to integrate the package's functionality
-into their own Python applications.
-<!-- DEFINE your project's use cases
-  The library exposes a clean API for...
--->
-
 {% endif -%}
 ### :man_supervillain: Threat Model
 
 #### Underlying Primitives
 
-{% if cookiecutter.app_type != 'bare_repo' -%}
+{% if cookiecutter.app_type == 'bare_repo' -%}
+<!-- DEFINE your underlying primitives for building the threat model -->
+
+{% else -%}
 {{ cookiecutter.project_name }} uses Python Standard Library modules,
 including `pathlib` and `logging` (via Nebulog).
 These primitives could have bugs or vulnerabilities
@@ -503,14 +506,15 @@ and builds trust in our software supply chain,
 giving users confidence
 in the security and integrity
 of every release.
-{% endif -%}
-{% else -%}
-<!-- DEFINE your underlying primitives for building the threat model -->
 
+{% endif -%}
 {% endif -%}
 #### Underlying Libraries
 
-{% if cookiecutter.app_type != 'bare_repo' -%}
+{% if cookiecutter.__app_class == 'bare' -%}
+<!-- DEFINE your underlying libraries considerations within the threat model -->
+
+{% else -%}
 {{ cookiecutter.project_name }} uses
 several key dependencies
 that are critical
@@ -555,13 +559,13 @@ but users should monitor
 for security advisories
 and keep dependencies updated.
 
-{% else -%}
-<!-- DEFINE your underlying libraries considerations within the threat model -->
-
 {% endif -%}
 #### Build Pipelines
 
-{% if cookiecutter.app_type != 'bare_repo' -%}
+{% if cookiecutter.__app_class == 'bare' -%}
+<!-- DEFINE which potential harmful behaviour can take place if {{ cookiecutter.project_name }} is used in CI build pipelines -->
+
+{% else -%}
 {{ cookiecutter.project_name }} does not perform downloads
 or invoke external programs.
 The logic behind {{ cookiecutter.project_name }}
@@ -581,13 +585,13 @@ in user-controlled locations
 and does not modify system files
 or execute arbitrary code.
 
-{% else -%}
-<!-- DEFINE which potential harmful behaviour can take place if {{ cookiecutter.project_name }} is used in CI build pipelines -->
-
 {% endif -%}
 #### File Access
 
-{% if cookiecutter.app_type != 'bare_repo' -%}
+{% if cookiecutter.__app_class == 'bare' -%}
+<!-- UPDATEME with how, where and when your application accesses files in the user's system -->
+
+{% else -%}
 There are several places
 where dynamic input
 turns into file system operations:
@@ -647,9 +651,6 @@ to prevent unauthorized file access:
 - No external downloads
   or system command execution
   occur during normal operation.
-
-{% else -%}
-<!-- UPDATEME with how, where and when your application accesses files in the user's system -->
 
 {% endif -%}
 ### :x: NOT Security Issues
@@ -796,7 +797,7 @@ to enhance code security:
 - Type hints
   and static analysis
   to prevent common errors;
-{%- if cookiecutter.app_type != 'bare_repo' %}
+{%- if cookiecutter.__app_class != 'bare' %}
 - User input validation
   during configuration operations
   to prevent injection attacks;
@@ -821,7 +822,10 @@ to enhance code security:
 Security guarantees provided
 by the project:
 
-{% if cookiecutter.app_type != 'bare_repo' -%}
+{% if cookiecutter.__app_class == 'bare' -%}
+<!-- UPDATEME with guarantees your project and upstream dependencies give in regards to security -->
+
+{% else -%}
 - {{ cookiecutter.project_name }} does not
   spawn external programs;
 - {{ cookiecutter.project_name }} does not allow
@@ -853,9 +857,6 @@ by:
 - Handling settings file misconfigurations
   explicitly
   via the Orbittings API.
-
-{% else -%}
-<!-- UPDATEME with guarantees your project and upstream dependencies give in regards to security -->
 
 {% endif -%}
 ### :speech_balloon: Comments on This Policy
