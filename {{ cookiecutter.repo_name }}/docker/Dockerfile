@@ -57,7 +57,7 @@ COPY --from=builder /opt/{{ cookiecutter.repo_name }}-bundle /opt/{{ cookiecutte
 CMD ["{{ cookiecutter.repo_name }}"]
 {%- elif cookiecutter.app_type == 'hybrid' -%}
 CMD ["{{ cookiecutter.repo_name }}", "launch"]
-{%- elif cookiecutter.app_type == 'cli' -%}
+{%- elif cookiecutter.__app_group == 'cli' -%}
 ENTRYPOINT ["{{ cookiecutter.repo_name }}"]
 {%- else -%}
 # UPDATEME with the definitive command once your app is functional
