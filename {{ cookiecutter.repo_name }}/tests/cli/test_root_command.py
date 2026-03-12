@@ -2,12 +2,12 @@
 # https://typer.tiangolo.com/tutorial/testing/
 from typer.testing import CliRunner
 
+{% if not cookiecutter.use_bdd or cookiecutter.app_type == 'bare_cli' -%}
+import pytest
+{% endif -%}
 {% if cookiecutter.use_bdd -%}
 from pytest_bdd import parsers, scenario, then, when
-{%- else -%}
-import pytest
-{%- endif %}
-
+{% endif +%}
 from {{ cookiecutter.package_name }}.cli.commands.root_command import app
 
 runner = CliRunner()
@@ -80,6 +80,9 @@ def return_status_2(cli_run):
     assert cli_run.exit_code == 2
 
 
+{% if cookiecutter.app_type == 'bare_cli' -%}
+@pytest.mark.skip
+{% endif -%}
 @scenario("root_command.feature", "Call valid command group")
 def test_cli_with_valid_command():
     pass
@@ -127,9 +130,16 @@ def test_cli_with_invalid_command(invalid):
 
 
 # UPDATEME when new command groups are added to the CLI
+{% if cookiecutter.app_type == 'bare_cli' -%}
+@pytest.mark.skip
+{% endif -%}
 @pytest.mark.cli
 @pytest.mark.standard
+{% if cookiecutter.app_type == 'bare_cli' -%}
+@pytest.mark.parametrize("valid", (None,))
+{% else -%}
 @pytest.mark.parametrize("valid", ("config",))
+{% endif -%}
 def test_cli_with_valid_command(valid):
     result = runner.invoke(app, args=[valid])
 

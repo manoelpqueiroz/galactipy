@@ -1,11 +1,14 @@
 """Retrieve foundational values for enabling standard behaviour for {{ cookiecutter.project_name }}."""
 
 from pathlib import Path
+{%- if cookiecutter.app_type == 'bare_cli' %}
 
-from platformdirs import {% if cookiecutter.app_type != 'bare_cli' %}user_config_path, {% endif %}user_log_path
+from platformdirs import user_log_path
+{%- else %}
+
+from platformdirs import user_config_path, user_log_path
 
 from {{ cookiecutter.package_name }}._version import __version__
-{%- if cookiecutter.app_type != 'bare_cli' %}
 
 
 def get_default_config() -> Path:

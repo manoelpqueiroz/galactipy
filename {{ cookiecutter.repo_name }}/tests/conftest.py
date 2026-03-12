@@ -1,21 +1,24 @@
-{% if cookiecutter.use_bdd -%}
+{% if cookiecutter.use_bdd and cookiecutter.__app_group == 'tui' -%}
 import asyncio
 
 {% endif -%}
 from rich.text import Text
 
 import pytest
+{%- if cookiecutter.__app_class != 'bare' %}
 {%- if cookiecutter.use_bdd %}
 from pytest_bdd import given
 {%- endif %}
 
 from {{ cookiecutter.package_name }}.config.manager import AppManager
+{%- endif %}
 
 
 @pytest.fixture
 def version_string():
     """Define the expected version string to be printed to STDOUT."""
     return Text.from_markup(":package:{{ cookiecutter.project_name}} 0.0.0\n").plain
+{%- if cookiecutter.__app_class != 'bare' %}
 
 
 @pytest.fixture
@@ -62,9 +65,10 @@ def sandbox_manager(valid_config_manager):
 def sandbox_config_file(valid_config_manager):
     return valid_config_manager["file"]
 {%- endif %}
+{%- endif %}
+{%- if cookiecutter.use_bdd and cookiecutter.__app_group == 'tui' %}
 
 
-{% if cookiecutter.use_bdd -%}
 @pytest.fixture
 def event_loop():
     """Create an instance of the default event loop for the test session."""
@@ -73,7 +77,10 @@ def event_loop():
     yield loop
 
     loop.close()
-{%- else -%}
+{%- elif not cookiecutter.use_bdd %}
+{%- if cookiecutter.__app_class != 'bare' %}
+
+
 @pytest.fixture
 def setup_sample_manager(generate_test_config):
     manager = generate_test_config["instance"]
@@ -85,6 +92,7 @@ def setup_sample_manager(generate_test_config):
     assert manager["settings", "test"] == "somevalue"
 
     return {"instance": manager, "file": generate_test_config["file"]}
+{%- endif %}
 
 
 @pytest.fixture
