@@ -62,7 +62,7 @@ repos:
         always_run: true
 {% endif %}
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.18.2
+    rev: v1.19.1
     hooks:
       - id: mypy
         args: [--config-file, pyproject.toml]
@@ -70,7 +70,7 @@ repos:
         additional_dependencies: [lxml]
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.14.4
+    rev: v0.15.5
     hooks:
       - id: ruff-format
         name: Ruff formatter
@@ -86,7 +86,7 @@ repos:
         name: Dead code check
 
   - repo: https://github.com/crate-ci/typos
-    rev: v1.39.0
+    rev: v1.44.0
     hooks:
       - id: typos
         name: Typo checks
@@ -97,7 +97,7 @@ repos:
 {%- endif %}
 
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.4.1
+    rev: v2.4.2
     hooks:
       - id: codespell
         name: Codespell checks
@@ -123,7 +123,7 @@ repos:
 
   # Check configuration file schemas
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: '0.34.1'
+    rev: '0.37.0'
     hooks:
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
       - id: check-gitlab-ci
@@ -161,7 +161,7 @@ repos:
 
   # Repository maintenance
   - repo: https://github.com/python-poetry/poetry
-    rev: '2.2.1'
+    rev: '2.3.2'
     hooks:
       - id: poetry-check
         name: Check Poetry file consistency
