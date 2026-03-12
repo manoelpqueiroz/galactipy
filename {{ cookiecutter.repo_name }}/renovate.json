@@ -40,7 +40,6 @@
       "* * * * 1"
     ]
   },
-  // UPDATEME with your desired rules
   "packageRules": [
     {
       "automerge": true,
@@ -168,14 +167,13 @@
         "nebulog"
       ]
     },
-    // FYI Click should not be updated, as versions 8.2+ break Typer's behaviour
     {
       "description": "Ignore Click updates",
       "enabled": false,
       "matchPackageNames": [
         "click"
 {%- else %}
-        // UPDATEME with your core dependencies once defined
+        // TODO Specify your core dependencies here
 {%- endif %}{% raw %}
       ]
     },
