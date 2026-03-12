@@ -372,7 +372,9 @@ section-order = [
 {%- if cookiecutter.app_type != 'bare_repo' %}
   "logging",
   "app-builders",
+{%- if cookiecutter.app_type != 'bare_cli' %}
   "config",
+{%- endif %}
 {%- endif %}
   "third-party",
   "testing",
@@ -534,10 +536,17 @@ bdd_features_base_dir = "tests/features/"
 [tool.coverage.run]
 # https://github.com/nedbat/coveragepy
 # https://coverage.readthedocs.io/en/latest/config.html
-source = ["."]
+source = ["{{ cookiecutter.package_name }}"]
 branch = true
 {%- if cookiecutter.app_type != 'bare_repo' %}
-omit = ["__main__.py", "*/config/constants.py"]
+omit = [
+  "__main__.py",
+  "*/config/constants.py",
+{%- if cookiecutter.app_type == 'bare_cli' %}
+  # UPDATEME and allow `logging` after incorporating `setup_app_logging` into your code
+  "*/logging/*",
+{%- endif %}
+]
 {%- endif %}
 
 [tool.coverage.report]
