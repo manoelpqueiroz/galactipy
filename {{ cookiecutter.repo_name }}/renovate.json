@@ -1,5 +1,3 @@
-// Renovate configuration
-// https://docs.renovatebot.com/configuration-options/
 {%- raw %}
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
