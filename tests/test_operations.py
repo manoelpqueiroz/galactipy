@@ -517,6 +517,122 @@ class TestApplicationOptions:
         assert removal_tree["gitlab"]["ux"].exists()
         assert removal_tree["gitlab"]["arch"].exists()
 
+    def test_bare_cli_with_bdd(self, removal_tree):
+        cli_files = removal_tree["cli"]
+
+        command_files = cli_files["commands"]
+        helper_files = cli_files["helpers"]
+        styling_files = cli_files["styling"]
+
+        tui_files = removal_tree["tui"]
+        bdd_files = removal_tree["bdd"]
+        test_files = removal_tree["tests"]
+        config_files = removal_tree["config"]
+        logging_files = removal_tree["logging"]
+
+        config = ProjectFlags(False, False, False, False, "semver", "bare_cli")
+
+        remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
+
+        assert not tui_files["root"].exists()
+
+        assert cli_files["main"].exists()
+        assert command_files["root_command"].exists()
+        assert not command_files["launch"].exists()
+        assert not command_files["config"]["root"].exists()
+
+        assert config_files["constants"].exists()
+        assert not config_files["helpers"].exists()
+        assert not config_files["manager"].exists()
+
+        assert logging_files["formatters"].exists()
+        assert logging_files["parsers"].exists()
+        assert logging_files["tools"].exists()
+
+        assert helper_files["converter"].exists()
+        assert not helper_files["printer"].exists()
+
+        assert styling_files["themes"].exists()
+
+        assert not test_files["tui"]["root"].exists()
+        assert test_files["cli"]["test"].exists()
+        assert not test_files["cli"]["launch"].exists()
+        assert not test_files["cli"]["config"].exists()
+        assert not test_files["manager"]["test"].exists()
+        assert test_files["logging"]["test"].exists()
+        assert test_files["conftest"].exists()
+        assert not test_files["gitkeep"].exists()
+
+        assert not bdd_files["tui"].exists()
+        assert bdd_files["cli"].exists()
+        assert not bdd_files["launch"].exists()
+        assert not bdd_files["config"].exists()
+        assert not bdd_files["manager"].exists()
+        assert not bdd_files["resolution"].exists()
+        assert bdd_files["regex"].exists()
+        assert not bdd_files["gitkeep"].exists()
+        assert not bdd_files["helpers"]["root"].exists()
+
+        assert bdd_files["utils"]["root"].exists()
+        assert bdd_files["utils"]["parsers"].exists()
+        assert not bdd_files["utils"]["async"].exists()
+
+        assert removal_tree["gitlab"]["ux"].exists()
+        assert removal_tree["gitlab"]["arch"].exists()
+
+    def test_bare_cli_no_bdd(self, removal_tree):
+        cli_files = removal_tree["cli"]
+
+        command_files = cli_files["commands"]
+        helper_files = cli_files["helpers"]
+        styling_files = cli_files["styling"]
+
+        tui_files = removal_tree["tui"]
+        bdd_files = removal_tree["bdd"]
+        test_files = removal_tree["tests"]
+        config_files = removal_tree["config"]
+        logging_files = removal_tree["logging"]
+
+        config = ProjectFlags(False, False, True, False, "semver", "bare_cli")
+
+        remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
+
+        assert not tui_files["root"].exists()
+
+        assert cli_files["main"].exists()
+        assert command_files["root_command"].exists()
+        assert not command_files["launch"].exists()
+        assert not command_files["config"]["root"].exists()
+
+        assert config_files["constants"].exists()
+        assert not config_files["helpers"].exists()
+        assert not config_files["manager"].exists()
+
+        assert logging_files["formatters"].exists()
+        assert logging_files["parsers"].exists()
+        assert logging_files["tools"].exists()
+
+        assert helper_files["converter"].exists()
+        assert not helper_files["printer"].exists()
+
+        assert styling_files["themes"].exists()
+
+        assert not test_files["tui"]["root"].exists()
+        assert test_files["cli"]["test"].exists()
+        assert not test_files["cli"]["launch"].exists()
+        assert not test_files["cli"]["config"].exists()
+        assert not test_files["manager"]["test"].exists()
+        assert test_files["logging"]["test"].exists()
+        assert test_files["conftest"].exists()
+        assert not test_files["gitkeep"].exists()
+
+        assert not bdd_files["root"].exists()
+        assert not bdd_files["helpers"]["root"].exists()
+        assert not bdd_files["utils"]["root"].exists()
+
+        assert removal_tree["gitlab"]["ux"].exists()
+        assert removal_tree["gitlab"]["arch"].exists()
+
     def test_bare_with_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
 

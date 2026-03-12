@@ -195,7 +195,9 @@ def removal_tree(tmp_path):
     )
 
     config_directory = tmp_path / package_name / "config"
-    bulk_file_creation(config_directory, "constants.py", "helpers.py", "manager.py")
+    bulk_file_creation(
+        config_directory, "constants.py", "helpers.py", "manager.py", "mappings.py"
+    )
 
     logging_directory = tmp_path / package_name / "logging"
     bulk_file_creation(
