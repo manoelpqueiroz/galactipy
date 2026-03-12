@@ -1,3 +1,9 @@
+## 2.0.2 (2026-03-12)
+
+### :toolbox: Fixes (1 change)
+
+- [:pencil2: Remove additional comments in template `renovate.json`](galactipy/galactipy@56fad8971a6c750405d74c4246319a76c60bb316)
+
 ## 2.0.1 (2026-03-12)
 
 ### :metro: Template Internals (1 change)
