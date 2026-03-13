@@ -47,7 +47,7 @@ _Expand your project structure from atoms of code to **galactic** dimensions._ :
 ## TL;DR
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v2.0.0
+cookiecutter gl:galactipy/galactipy --checkout v2.1.0
 ```
 
 **All you need is the latest version of Cookiecutter!** :wink:
@@ -231,7 +231,7 @@ between the features available in this package
 depending on which platform
 you choose to host your project:
 
-|          **Feature**          |     **GitLab**     |     **GitHub**     | **Observations**                                                                                                                                                                                                                                            |
+|            Feature            |       GitLab       |       GitHub       | Observations                                                                                                                                                                                                                                                |
 | :---------------------------: | :----------------: | :----------------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |        Issue templates        | :white_check_mark: | :white_check_mark: | Both options feature automatic labels, but GitHub has an extra configuration to prevent the creation of empty issues.                                                                                                                                       |
 | Merge/pull requests templates | :white_check_mark: |     :warning:      | For GitHub, templates can only be accessed by applying custom [query parameters][ft42] during PR creation.                                                                                                                                                  |
@@ -268,7 +268,7 @@ pipx upgrade cookiecutter
 then go to a directory where you want to create your project and run:
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v2.0.0
+cookiecutter gl:galactipy/galactipy --checkout v2.1.0
 ```
 
 ### Input variables
@@ -277,33 +277,50 @@ Cookiecutter will ask you to fill some variables in order to generate the files 
 
 The input variables, with their default values, are as follows:
 
-|      **Parameter**       |      **Default value**       | **Description**                                                                                                                                                                                                                                                                             |
-| :----------------------: | :--------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|      `project_name`      |       `Python Project`       | A suitable name by which people will refer to, you are free to name it however you wish to.                                                                                                                                                                                                 |
-|       `repo_name`        |   based on `project_name`    | Name of the repository to develop the project on. [Check the availability of possible names][htu1] before creating the project.                                                                                                                                                             |
-|      `package_name`      |   based on `project_name`    | PyPI-compliant Python package name. [Check the availability of possible names][htu1] before creating the project.                                                                                                                                                                           |
-|  `project_description`   |   based on `project_name`    | A brief one-line description of your project.                                                                                                                                                                                                                                               |
-|       `copyright`        | `The Galactipy Contributors` | Name of the author or organisation which will hold the project's copyright. Used to specify code ownership in `LICENCE`.                                                                                                                                                                    |
-|       `maintainer`       | `Manoel Pereira de Queiroz`  | Name of the primary maintainer of the project. Used to specify author data in `pyproject.toml` and `CITATION.cff`.                                                                                                                                                                          |
-|      `scm_platform`      |        `GitLab Free`         | One of `GitLab Free`, `GitLab Premium/Ultimate` and `GitHub`. Depending on the choice you will have [different features][htu2] to work with.                                                                                                                                                |
-|     `scm_namespace`      |         `galactipy`          | GitHub or GitLab namespace for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for either platform.                                                                                                                                                           |
-|         `email`          |   based on `scm_namespace`   | Email for `CODE_OF_CONDUCT.md`, `SECURITY.md` files and to specify author data in `pyproject.toml` and `CITATION.cff`.                                                                                                                                                                      |
-|        `licence`         |            `MIT`             | One of `MIT`, `BSD-3`, `GNU GPL v3.0`, `GNU AGLP v3.0`, `GNU LGPL v3.0`, `Mozilla Public License 2.0` and `Apache Software License 2.0`, or `Not open source`.                                                                                                                              |
-| `minimal_python_version` |            `3.10`            | Minimal Python version. All versions since `3.10` are available to choose. It is used for builds, pipelines and formatters.                                                                                                                                                                 |
-|      `line_length`       |              88              | The max length per line. NOTE: This value must be between 50 and 300.                                                                                                                                                                                                                       |
-|    `docstring_style`     |          `Numpydoc`          | One of `Numpydoc`, `Google Python Style`, `Sphinx` or `Other`. This latter option will only render the docstring short summaries, while the former ones will detail arguments and returns for public methods and functions.                                                                 |
-|    `docstring_length`    |    based on `line_lenght`    | The max length for docstrings. NOTE: This value must be between 50 and 300 and lower of equal to `line_lenght`.                                                                                                                                                                             |
-|     `version_schema`     |           `EffVer`           | One of `EffVer`, `SemVer`, `CalVer (automanaged)`, `CalVer (explicit)`, `RomVer`, `SoloVer` and `TrunkVer`, each with adequate CI/CD configuration to manage releases.                                                                                                                      |
-|   `commit_convention`    |          `Gitmoji`           | One of `Gitmoji`, `Conventional Commits` and `Conventional Commits with Gitmoji` for the commit standard to follow.                                                                                                                                                                         |
-|        `use_bdd`         |            `True`            | :small_red_triangle: Option to use [behaviour-driven development][ft17] for managing tests.                                                                                                                                                                                                 |
-|    `coverage_service`    |         `Coveralls`          | One of `Coveralls` for code coverage and `Codacy` for code quality and static analysis.                                                                                                                                                                                                     |
-|     `create_docker`      |            `True`            | :small_red_triangle: Option to create a [Dockerfile][ft30] to build an image for your project.                                                                                                                                                                                              |
-|        `app_type`        |     `Integrated CLI+TUI`     | One of `Integrated CLI+TUI` for a straight TUI application, `Hybrid CLI/TUI` for a CLI application with a preset TUI command, `CLI-only application` with minimal app configuration and `Bare repository` for no sample files at all. Employs [Typer][ft2] and [Textual][ft3] as libraries. |
+|        Parameter         |        Default value         | Description                                                                                                                                                                                                                 |
+| :----------------------: | :--------------------------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|      `project_name`      |       `Python Project`       | A suitable name by which people will refer to, you are free to name it however you wish to.                                                                                                                                 |
+|       `repo_name`        |   based on `project_name`    | Name of the repository to develop the project on. [Check the availability of possible names][htu1] before creating the project.                                                                                             |
+|      `package_name`      |   based on `project_name`    | PyPI-compliant Python package name. [Check the availability of possible names][htu1] before creating the project.                                                                                                           |
+|  `project_description`   |   based on `project_name`    | A brief one-line description of your project.                                                                                                                                                                               |
+|       `copyright`        | `The Galactipy Contributors` | Name of the author or organisation which will hold the project's copyright. Used to specify code ownership in `LICENCE`.                                                                                                    |
+|       `maintainer`       | `Manoel Pereira de Queiroz`  | Name of the primary maintainer of the project. Used to specify author data in `pyproject.toml` and `CITATION.cff`.                                                                                                          |
+|      `scm_platform`      |        `GitLab Free`         | One of `GitLab Free`, `GitLab Premium/Ultimate` and `GitHub`. Depending on the choice you will have [different features][htu2] to work with.                                                                                |
+|     `scm_namespace`      |         `galactipy`          | GitHub or GitLab namespace for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for either platform.                                                                                           |
+|         `email`          |   based on `scm_namespace`   | Email for `CODE_OF_CONDUCT.md`, `SECURITY.md` files and to specify author data in `pyproject.toml` and `CITATION.cff`.                                                                                                      |
+|        `licence`         |            `MIT`             | One of `MIT`, `BSD-3`, `GNU GPL v3.0`, `GNU AGLP v3.0`, `GNU LGPL v3.0`, `Mozilla Public License 2.0` and `Apache Software License 2.0`, or `Not open source`.                                                              |
+| `minimal_python_version` |            `3.10`            | Minimal Python version. All versions since `3.10` are available to choose. It is used for builds, pipelines and formatters.                                                                                                 |
+|      `line_length`       |              88              | The max length per line. NOTE: This value must be between 50 and 300.                                                                                                                                                       |
+|    `docstring_style`     |          `Numpydoc`          | One of `Numpydoc`, `Google Python Style`, `Sphinx` or `Other`. This latter option will only render the docstring short summaries, while the former ones will detail arguments and returns for public methods and functions. |
+|    `docstring_length`    |    based on `line_lenght`    | The max length for docstrings. NOTE: This value must be between 50 and 300 and lower of equal to `line_lenght`.                                                                                                             |
+|     `version_schema`     |           `EffVer`           | One of `EffVer`, `SemVer`, `CalVer (automanaged)`, `CalVer (explicit)`, `RomVer`, `SoloVer` and `TrunkVer`, each with adequate CI/CD configuration to manage releases.                                                      |
+|   `commit_convention`    |          `Gitmoji`           | One of `Gitmoji`, `Conventional Commits` and `Conventional Commits with Gitmoji` for the commit standard to follow.                                                                                                         |
+|        `use_bdd`         |            `True`            | :small_red_triangle: Option to use [behaviour-driven development][ft17] for managing tests.                                                                                                                                 |
+|    `coverage_service`    |         `Coveralls`          | One of `Coveralls` for code coverage and `Codacy` for code quality and static analysis.                                                                                                                                     |
+|     `create_docker`      |            `True`            | :small_red_triangle: Option to create a [Dockerfile][ft30] to build an image for your project.                                                                                                                              |
+|        `app_type`        |     `Integrated CLI+TUI`     | One of `Integrated CLI+TUI`, `Hybrid CLI/TUI`, `CLI-only application`, `Minimal CLI structure` and `Bare repository`. Employs [Typer][ft2] and [Textual][ft3] as libraries.                                                 |
 
 > [!NOTE]
 > Input variables marked with :small_red_triangle: are boolean variables, you can dismiss those by typing either `0`, `false`, `f`, `no`, `n` or `off`.
 
 All input values will be saved in the `cookiecutter-config-file.yml` file so that you won't lose them. :wink:
+
+#### About Application Types
+
+The `app_type` Cookiecutter variable
+is used to define the level
+of sample files
+provided by Galactipy
+and how the project tree
+is structured:
+
+| Application Type          | What's Included                                                                                                                                                                   | Recommended Usage                                                                                                                                                                       |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Integrated CLI+TUI**    | A TUI-first application, where the top-level command launches the interface. It also includes configuration commands via CLI and allow for additional commands built by the user. | Projects designed to be interacted with mainly through a visual interface.                                                                                                              |
+| **Hybrid CLI/TUI**        | Same as Integrated CLI+TUI, with the difference that the interface is launched via its own command.                                                                               | Projects with many-yet-simple operations which can be mastered solely at the command-line, but also targeted at non-power-users who prefer a visual interface to interact with the API. |
+| **CLI-only application**  | Removes TUI-related features to solely rely on CLI commands. Still includes the configuration commands and config file management available in TUI options.                       | Projects with simpler interactions that do not require much cognitive load or a visual helper to navigate through operations.                                                           |
+| **Minimal CLI structure** | Same as CLI-only application, but removes the API related to configuration management.                                                                                            | Projects that do not required stateful/persisted values to perform operations.                                                                                                          |
+| **Bare repository**       | Removes all sample files altogether while keeping all other features such as CI/CD configuration and pre-commit hooks.                                                            |                                                                                                                                                                                         |
 
 ### Initial set up
 

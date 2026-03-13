@@ -35,7 +35,7 @@
 > :technologist: **Development control**
 >
 > - Regarding the user interface:
-{%- if cookiecutter.app_type != 'cli' %}
+{%- if cookiecutter.__app_group == 'tui' %}
 >   - [ ] Localised text fits and is readable, do not overlap with other elements;
 {%- endif %}
 >   - [ ] Symbol encoding and accented characters render correctly;

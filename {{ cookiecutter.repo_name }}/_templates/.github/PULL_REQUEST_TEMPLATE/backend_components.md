@@ -12,7 +12,7 @@
 {% if cookiecutter.app_type != 'bare_repo' -%}
 > - Direct changes to the CLI behaviour and functionality;
 {%- endif %}
-{%- if cookiecutter.app_type != 'cli' %}
+{%- if cookiecutter.__app_group == 'tui' %}
 > - Direct changes to the TUI behaviour and functionality;
 {%- endif %}
 > - Bug fixes;

@@ -1,3 +1,59 @@
+## 2.1.0 (2026-03-13)
+
+### :metro: Template Internals (1 change)
+
+- [:wrench: Remove Orbittings as a dependency for bare CLI projects](galactipy/galactipy@52cb375d205c6b2e060d59462d44c0aabe06b5e7) ([merge request](galactipy/galactipy!200))
+
+### :ballot_box: Settings & Options (6 changes)
+
+- [:shinto_shrine: Add conditional to omit logging from coverage in bare CLI option](galactipy/galactipy@fb17765adbb29a976e6fe35a79ac1e78fca09fbb) ([merge request](galactipy/galactipy!200))
+- [:shinto_shrine: Update infile logic for bare CLI option](galactipy/galactipy@bffa2d5d0e2282acb8a48832541919a9ea1f1609) ([merge request](galactipy/galactipy!200))
+- [:art: Include conditionals in existing files for bare CLI option](galactipy/galactipy@9954be4daabb557504a9a0ac87d1aa8230caed1c) ([merge request](galactipy/galactipy!200))
+- [:wrench: Adapt Jinja conditionals for bare CLI option](galactipy/galactipy@0bd47e773343faa3bea6467245db0db67849e9ce) ([merge request](galactipy/galactipy!200))
+- [:wrench: Add application class Cookiecutter variable](galactipy/galactipy@cca34f869f62ecb3b0dbe5243db525bc054dc660) ([merge request](galactipy/galactipy!200))
+- [:sparkles: Add option for a bare CLI application](galactipy/galactipy@714a780dca9f0388a82998d2960a149d650affea) ([merge request](galactipy/galactipy!200))
+
+### :gear: Project Internals (1 change)
+
+- [:wrench: Update post-gen hooks for bare CLI removals](galactipy/galactipy@12e388c31915cbf033f3f9e9a36be0762b5dc118) ([merge request](galactipy/galactipy!200))
+
+### :repeat: Design & Validation (1 change)
+
+- [:white_check_mark: Add file removal tests for bare CLI](galactipy/galactipy@25ebff7fcb52233109c65ef4ef1ad02aeafc543e) ([merge request](galactipy/galactipy!200))
+
+### :pouring_liquid: Nits (2 changes)
+
+- [:shinto_shrine: Fix missing logic for template `Dockerfile`](galactipy/galactipy@5a4b1266569e6b0825c3f077b2e8cc18b8b2436d) ([merge request](galactipy/galactipy!200))
+- [:recycle: Adapt Jinja conditionals to leverage the app group variable](galactipy/galactipy@60ca2c575556d473877bc6d6fc995bfad3bfdc3a) ([merge request](galactipy/galactipy!200))
+
+### :books: Documentation (1 change)
+
+- [:pencil: Update project `README.md` with expanded section on application types](galactipy/galactipy@f6719eb60f340aaff213039e1a44f2816dbcc1dd) ([merge request](galactipy/galactipy!200))
+
+### :scroll: Project Policies (1 change)
+
+- [:pencil: Update versioning customs for the project](galactipy/galactipy@b453cf70cc5eaa061ae203579d46be90a25b8622)
+
+## 2.0.2 (2026-03-12)
+
+### :toolbox: Fixes (1 change)
+
+- [:pencil2: Remove additional comments in template `renovate.json`](galactipy/galactipy@56fad8971a6c750405d74c4246319a76c60bb316)
+
+## 2.0.1 (2026-03-12)
+
+### :metro: Template Internals (1 change)
+
+- [:construction_worker: Renovate release-drafter/release-drafter action with minor version v6.4.0](galactipy/galactipy@9c30eb77f9fa19a900e6edb758233888241b8461) ([merge request](galactipy/galactipy!201))
+
+### :ballot_box: Settings & Options (1 change)
+
+- [:arrow_up: Update template pre-commit hooks](galactipy/galactipy@9623c76b823bb29eeb42a2781efe67d8392259ae)
+
+### :toolbox: Fixes (1 change)
+
+- [:pencil2: Remove comment in template `renovate.json`](galactipy/galactipy@4883786bc89ea557067911a689cd2ddb3918e640)
+
 ## 2.0.0 (2026-03-09)
 
 ### :milky_way: Components (3 changes)

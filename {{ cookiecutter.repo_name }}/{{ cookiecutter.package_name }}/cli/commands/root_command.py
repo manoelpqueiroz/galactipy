@@ -16,7 +16,9 @@ import typer
 from rich.console import Console
 
 from {{ cookiecutter.package_name }}._version import __version__
+{%- if cookiecutter.app_type != 'bare_cli' %}
 from {{ cookiecutter.package_name }}.cli.commands.config import config_app
+{%- endif %}
 {%- if cookiecutter.app_type == 'tui' %}
 from {{ cookiecutter.package_name }}.cli.styling import AppCustomThemes
 from {{ cookiecutter.package_name }}.config import resolve_app_manager
@@ -30,12 +32,14 @@ from {{ cookiecutter.package_name }}.cli.styling import AppCustomThemes
 
 app = typer.Typer(no_args_is_help=True, rich_markup_mode="rich")
 app.add_typer(launch_app)
-{%- elif cookiecutter.app_type == 'cli' %}
+{%- else %}
 from {{ cookiecutter.package_name }}.cli.styling import AppCustomThemes
 
 app = typer.Typer(no_args_is_help=True, rich_markup_mode="rich")
 {%- endif %}
+{%- if cookiecutter.app_type != 'bare_cli' %}
 app.add_typer(config_app, name="config")
+{%- endif %}
 
 
 def version_callback(print_version: bool) -> None:
@@ -63,7 +67,7 @@ def main(
             ),
         ),
     ] = None,
-{%- elif cookiecutter.app_type == 'hybrid' or cookiecutter.app_type == 'cli' -%}
+{%- elif cookiecutter.app_type == 'hybrid' or cookiecutter.__app_group == 'cli' -%}
 @app.callback()
 def main(
 {%- endif %}
@@ -91,7 +95,7 @@ def main(
     ] = False,
 {%- endif %}
 ) -> None:
-    {%- if cookiecutter.app_type == 'tui' %}
+{%- if cookiecutter.app_type == 'tui' %}
     """:pager: Launch the {{ cookiecutter.project_name }} interface."""
     setup_app_logging(debug=debug)
 
@@ -107,10 +111,10 @@ def main(
         interface.run()
 
         logger.debug("{{ cookiecutter.project_name }} exited successfully")
-    {%- elif cookiecutter.app_type == 'hybrid' or cookiecutter.app_type == 'cli' %}
+{%- elif cookiecutter.app_type == 'hybrid' or cookiecutter.__app_group == 'cli' %}
     """{{ cookiecutter.project_description }}.
 
     See below for commands and options.
     """
     pass
-    {%- endif %}
+{%- endif %}
