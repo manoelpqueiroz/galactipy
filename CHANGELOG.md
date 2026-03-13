@@ -1,3 +1,23 @@
+## 2.0.2 (2026-03-12)
+
+### :toolbox: Fixes (1 change)
+
+- [:pencil2: Remove additional comments in template `renovate.json`](galactipy/galactipy@56fad8971a6c750405d74c4246319a76c60bb316)
+
+## 2.0.1 (2026-03-12)
+
+### :metro: Template Internals (1 change)
+
+- [:construction_worker: Renovate release-drafter/release-drafter action with minor version v6.4.0](galactipy/galactipy@9c30eb77f9fa19a900e6edb758233888241b8461) ([merge request](galactipy/galactipy!201))
+
+### :ballot_box: Settings & Options (1 change)
+
+- [:arrow_up: Update template pre-commit hooks](galactipy/galactipy@9623c76b823bb29eeb42a2781efe67d8392259ae)
+
+### :toolbox: Fixes (1 change)
+
+- [:pencil2: Remove comment in template `renovate.json`](galactipy/galactipy@4883786bc89ea557067911a689cd2ddb3918e640)
+
 ## 2.0.0 (2026-03-09)
 
 ### :milky_way: Components (3 changes)

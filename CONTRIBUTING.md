@@ -177,6 +177,11 @@ with the following pattern:
     without modifications
     to `cookiecutter.json` prompts
     (i.e., the variables the user inputs);
+  - New options
+    for a step in `cookiecutter.json`
+    are made available
+    without modifying the output
+    of already existing options;
   - Configuration files behaviour is modified;
   - Code files are added,
     removed
@@ -184,7 +189,8 @@ with the following pattern:
 - Update **PROJECT** versions when:
   - Available options
     for a step in `cookiecutter.json`
-    are altered;
+    are altered
+    or removed;
   - Steps are
     either added or removed
     from `cookiecutter.json`;
