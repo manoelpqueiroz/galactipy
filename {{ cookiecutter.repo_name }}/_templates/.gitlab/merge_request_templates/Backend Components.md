@@ -10,7 +10,7 @@ This template should be used to propose and discuss improvements to backend elem
 {% if cookiecutter.app_type != 'bare_repo' -%}
 - Direct changes to the CLI behaviour and functionality;
 {% endif -%}
-{% if cookiecutter.app_type in ['tui', 'hybrid'] -%}
+{% if cookiecutter.__app_group == 'tui' -%}
 - Direct changes to the TUI behaviour and functionality;
 {% endif -%}
 - Bug fixes;

@@ -24,7 +24,7 @@ categories:
   arg: ":keyboard: CLI Usage"
   args: ":keyboard: CLI Usage"
   usage: ":keyboard: CLI Usage"
-{%- endraw %}{% if cookiecutter.app_type != 'cli' %}{% raw %}
+{%- endraw %}{% if cookiecutter.__app_group == 'tui' %}{% raw %}
 
   tui: ":computer: User Interface Improvements"
   ui: ":computer: User Interface Improvements"

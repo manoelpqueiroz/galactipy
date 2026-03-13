@@ -43,7 +43,7 @@ ENV LANG=C.UTF-8 \
 {%- endif %}
     COLORTERM=truecolor \
     PYTHONUNBUFFERED=1
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+{%- if cookiecutter.__app_group == 'tui' %}
 
 RUN apk add --no-cache \
     ncurses-terminfo-base=~6.5_p20251123-r0 \
@@ -57,7 +57,7 @@ COPY --from=builder /opt/{{ cookiecutter.repo_name }}-bundle /opt/{{ cookiecutte
 CMD ["{{ cookiecutter.repo_name }}"]
 {%- elif cookiecutter.app_type == 'hybrid' -%}
 CMD ["{{ cookiecutter.repo_name }}", "launch"]
-{%- elif cookiecutter.app_type == 'cli' -%}
+{%- elif cookiecutter.__app_group == 'cli' -%}
 ENTRYPOINT ["{{ cookiecutter.repo_name }}"]
 {%- else -%}
 # UPDATEME with the definitive command once your app is functional

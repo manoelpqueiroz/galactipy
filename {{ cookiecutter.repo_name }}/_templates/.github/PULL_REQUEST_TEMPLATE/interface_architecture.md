@@ -5,12 +5,12 @@
 >
 > This template should be used to propose modifications to elements that communicate with the backend and function directly beneath the front-end implementation layer.
 >
-> :ok: **Types of changes to be proposed with this template:** command parsing and logic, configuration file parsing, user input validation,{% if cookiecutter.app_type != 'cli' %} layers/patterns/workflows for rendering, UI overhauls,{% endif %} extensibility logic impacts
+> :ok: **Types of changes to be proposed with this template:** command parsing and logic, configuration file parsing, user input validation,{% if cookiecutter.__app_group == 'tui' %} layers/patterns/workflows for rendering, UI overhauls,{% endif %} extensibility logic impacts
 >
 > :no_good: **What this type of proposal does not stand for:**
 >
 > - Direct changes to the CLI behaviour and functionality;
-{%- if cookiecutter.app_type != 'cli' %}
+{%- if cookiecutter.__app_group == 'tui' %}
 > - Direct changes to the TUI behaviour and functionality;
 {%- endif %}
 > - {{ cookiecutter.project_name }} plugin/extension accruals;

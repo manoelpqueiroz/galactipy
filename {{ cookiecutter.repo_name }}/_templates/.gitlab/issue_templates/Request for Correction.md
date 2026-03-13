@@ -10,12 +10,12 @@ Please run through all items under the **`Applicant Checklist`** section and be 
 :ok: **Use this template for:**
 
 - Bugs and crashes;
-{%- if cookiecutter.app_type == 'cli' %}
-- Application freezes/hangs;
-{%- else %}
+{%- if cookiecutter.__app_group == 'tui' %}
 - Application freezes/lagging;
 - Faulty widgets and screen elements;
 - Unresponsive shortcuts;
+{%- else %}
+- Application freezes/hangs;
 {%- endif %}
 - Silent failures;
 - Command interpretation flaws;

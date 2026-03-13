@@ -1,6 +1,10 @@
 """Retrieve foundational values for enabling standard behaviour for {{ cookiecutter.project_name }}."""
 
 from pathlib import Path
+{%- if cookiecutter.app_type == 'bare_cli' %}
+
+from platformdirs import user_log_path
+{%- else %}
 
 from platformdirs import user_config_path, user_log_path
 
@@ -33,6 +37,7 @@ def get_default_config() -> Path:
     """Retrieve the default configuration path for {{ cookiecutter.project_name }}."""
 {%- endif %}
     return user_config_path("{{ cookiecutter.repo_name }}")
+{%- endif %}
 
 
 def get_default_log_path(filename: str | Path) -> Path:
@@ -71,6 +76,7 @@ def get_default_log_path(filename: str | Path) -> Path:
     """Retrieve the default path to store {{ cookiecutter.project_name }} logs."""
 {%- endif %}
     return user_log_path("{{ cookiecutter.repo_name }}") / filename
+{%- if cookiecutter.app_type != 'bare_cli' %}
 
 
 def generate_default_config_schema():
@@ -98,7 +104,7 @@ def generate_default_config_schema():
 {%- else %}
     """Create the default configuration schema for {{ cookiecutter.project_name }}."""
 {%- endif %}
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+{%- if cookiecutter.__app_group == 'tui' %}
     return {
         "VERSION": __version__,
         "THEME": "noctis",
@@ -107,4 +113,5 @@ def generate_default_config_schema():
 {%- else %}
     # UPDATEME with future default sections to be included
     return {"VERSION": __version__}
+{%- endif %}
 {%- endif %}

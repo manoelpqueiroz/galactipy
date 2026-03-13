@@ -11,7 +11,7 @@
 >
 > - Backend developments with no direct significance to the user;
 > - Changes to the current user experience without additive functionality;
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+{%- if cookiecutter.__app_group == 'tui' %}
 > - Changes to interface architecture layers for rendering purposes;
 {%- endif %}
 > - Data and input validation;
@@ -62,7 +62,7 @@
 > :technologist: **Development control**
 >
 > - [ ] I have verified the feature does not conflict with other existing features;
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+{%- if cookiecutter.__app_group == 'tui' %}
 > Regarding technical delivery:
 >   - [ ] I have verified the feature does not break UI elements;
 >   - [ ] I have verified the added/updated UI elements do not clash with pre-existing ones;

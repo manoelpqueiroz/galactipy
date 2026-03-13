@@ -91,10 +91,12 @@ _{{ cookiecutter.project_description }}._
 **POWERED BY**
 
 [![Powered by Typer][btyper]][ltyper]
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+{%- if cookiecutter.__app_group == 'tui' %}
 [![Powered by Textual][btextual]][ltextual]
 {%- endif %}
+{%- if cookiecutter.app_type != 'bare_cli' %}
 [![Powered by Orbittings][borbittings]][lorbittings]
+{%- endif %}
 
 {% endif -%}
 </div>
@@ -114,7 +116,18 @@ _{{ cookiecutter.project_description }}._
 
 ## :inbox_tray: Installation
 
-{% if cookiecutter.app_type != 'bare_repo' -%}
+{% if cookiecutter.app_type == 'bare_repo' -%}
+Use [`pip`][install1] to install {{ cookiecutter.project_name }}:
+
+```bash
+pip install -U {{ cookiecutter.repo_name }}
+```
+
+## :black_joker: How to Use It
+
+<!-- UPDATEME with basic usage instructions for your project -->
+
+{% else -%}
 Use [`pipx`][install1] to install {{ cookiecutter.project_name }}
 in an isolated environment:
 
@@ -186,7 +199,7 @@ with the `{{ cookiecutter.repo_name }} launch` command:
 >> Specify a custom configuration file
 >> to launch the application.
 
-{% elif cookiecutter.app_type == 'cli' -%}
+{% else -%}
 The top-level command
 is the entry point
 for additional
@@ -202,6 +215,7 @@ operations:
 >> and exit.
 
 {% endif -%}
+{% if cookiecutter.app_type != 'bare_cli' -%}
 ### Manage the Configuration
 
 The `{{ cookiecutter.repo_name }} config` command provides
@@ -303,16 +317,11 @@ for your {{ cookiecutter.project_name }} installation:
 >> from the secret manager instead.
 
 {% else -%}
-Use [`pip`][install1] to install {{ cookiecutter.project_name }}:
+### Subcommands
 
-```bash
-pip install -U {{ cookiecutter.repo_name }}
-```
+<-- UPDATEME with your application's custom commands -->
 
-## :black_joker: How to Use It
-
-<!-- UPDATEME with basic usage instructions for your project -->
-
+{% endif -%}
 {% endif -%}
 ## :reminder_ribbon: Contributing
 
@@ -417,8 +426,8 @@ The following tags are available:
 {%- endif %}
 {%- endif %}
 
-{% if cookiecutter.licence != 'nos' -%}
 ## :shield: Licence
+{%- if cookiecutter.licence != 'nos' %}
 
 [![Licence][blic1]][blic2]
 
@@ -426,26 +435,27 @@ This project is licenced
 under the terms of the **{{ cookiecutter.__licence_extended }}**.
 See [LICENCE][blic2] for more details.
 
-{% else -%}
+{%- else %}
+
 {{ cookiecutter.project_name }} is _**not**_ open source software.
 Please contact the maintainers
 for more information
 on licencing the project.
+{%- endif %}
 
-{% endif -%}
 ## :page_with_curl: Citation
 
 We provide a [`CITATION.cff`][cite1] file
 to make it easier to cite this project
 in your paper.
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 
-{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 ## :women_with_bunny_ears: Similar Projects
+{%- else %}
 
-{% else -%}
 ## :dancing_women: Similar Projects
+{%- endif %}
 
-{% endif -%}
 <!-- UPDATEME with projects that implement similar functionality as yours
 
   Provide information on which cases those projects might be more suitable than yours for users
@@ -593,13 +603,17 @@ This project was generated with [Galactipy][burl4].
 {% if cookiecutter.app_type != 'bare_repo' -%}
 [btyper]: https://img.shields.io/badge/Typer-black?style=for-the-badge&logo=typer
 [ltyper]: https://typer.tiangolo.com/
-{% if cookiecutter.app_type in ['tui', 'hybrid'] -%}
+
+{% if cookiecutter.__app_group == 'tui' -%}
 [btextual]: https://img.shields.io/badge/Textual-272a35?style=for-the-badge&logo=textual
 [ltextual]: https://textual.textualize.io/
+
 {% endif -%}
+{% if cookiecutter.app_type != 'bare_cli' -%}
 [borbittings]: https://img.shields.io/badge/orbittings-007A68?style=for-the-badge&logo=orbittings
 [lorbittings]: https://gitlab.com/galactipy/orbittings
 
+{% endif -%}
 [install1]: https://pipx.pypa.io/latest/installation/
 
 {% else -%}

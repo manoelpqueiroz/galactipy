@@ -61,7 +61,7 @@ class ProjectFlags:  # noqa: D101
     app_type: str
 
     def __post_init__(self):  # noqa: D105
-        self.remove_cli = self.app_type == "bare_repo"
+        self.is_bare = self.app_type == "bare_repo"
 
 
 def rmdir(path: Path) -> None:
@@ -182,10 +182,10 @@ def _get_files_to_delete(
     """
     files_to_delete: list[Path] = []
 
-    cli_specific_files = _get_cli_specific_files(
-        directory, package_name, flags.remove_gitlab
+    cli_related_files = _get_cli_related_files(
+        directory, package_name, flags.app_type, flags.remove_gitlab
     )
-    tui_specific_files = _get_tui_related_files(directory, package_name, flags.app_type)
+    tui_related_files = _get_tui_related_files(directory, package_name, flags.app_type)
 
     bdd_specific_files = _get_bdd_specific_files(
         directory, flags.app_type, flags.remove_bdd
@@ -203,11 +203,15 @@ def _get_files_to_delete(
         directory / "renovate.json",
     ]
 
-    if not flags.remove_cli and not flags.remove_bdd:
+    if not flags.is_bare and not flags.remove_bdd:
         files_to_delete.append(directory / "tests" / "features" / ".gitkeep")
 
-    if flags.remove_cli:
-        files_to_delete.extend(cli_specific_files)
+    if flags.is_bare:
+        files_to_delete.extend(cli_related_files)
+
+    elif flags.app_type == "bare_cli":
+        files_to_delete.extend(cli_related_files)
+        files_to_delete.append(directory / "tests" / ".gitkeep")
 
     else:
         files_to_delete.append(directory / "tests" / ".gitkeep")
@@ -222,13 +226,13 @@ def _get_files_to_delete(
         files_to_delete.extend(schema_specific_files)
 
     files_to_delete.extend(bdd_specific_files)
-    files_to_delete.extend(tui_specific_files)
+    files_to_delete.extend(tui_related_files)
 
     return files_to_delete
 
 
-def _get_cli_specific_files(
-    directory: Path, package_name: str, is_github: bool
+def _get_cli_related_files(
+    directory: Path, package_name: str, app_type: str, is_github: bool
 ) -> list[Path]:
     """Return select files to remove when CLI option is disabled.
 
@@ -238,45 +242,66 @@ def _get_cli_specific_files(
         Root directory of the project.
     package_name : str
         Name of the package under the root directory of the project.
+    app_type : str
+        Type of application defined by the `app_type` Cookiecutter variable.
     is_github : bool
         Flag to determine whether to remove templates files for GitLab or
         GitHub.
     """
-    removals = [
-        directory / package_name / "cli",
-        directory / package_name / "__main__.py",
-        directory / package_name / "config",
-        directory / package_name / "logging",
-        directory / "tests" / "cli",
-        directory / "tests" / "conftest.py",
-        directory / "tests" / "config",
-        directory / "tests" / "logging",
-    ]
+    removals = [directory / "tests" / "config"]
 
-    if is_github:
+    if app_type == "bare_cli":
         removals.extend(
             [
-                directory
-                / ".github"
-                / "PULL_REQUEST_TEMPLATE"
-                / "interface_architecture.md",
-                directory / ".github" / "PULL_REQUEST_TEMPLATE" / "user_experience.md",
+                directory / package_name / "cli" / "commands" / "config",
+                directory / package_name / "cli" / "helpers" / "printer.py",
+                directory / package_name / "config" / "helpers.py",
+                directory / package_name / "config" / "manager.py",
+                directory / package_name / "config" / "mappings.py",
+                directory / "tests" / "cli" / "test_config_command.py",
             ]
         )
 
     else:
         removals.extend(
             [
-                directory
-                / ".gitlab"
-                / "merge_request_templates"
-                / "Interface Architecture.md",
-                directory
-                / ".gitlab"
-                / "merge_request_templates"
-                / "User Experience.md",
+                directory / package_name / "config",
+                directory / package_name / "cli",
+                directory / package_name / "__main__.py",
+                directory / package_name / "logging",
+                directory / "tests" / "cli",
+                directory / "tests" / "conftest.py",
+                directory / "tests" / "logging",
             ]
         )
+
+        if is_github:
+            removals.extend(
+                [
+                    directory
+                    / ".github"
+                    / "PULL_REQUEST_TEMPLATE"
+                    / "interface_architecture.md",
+                    directory
+                    / ".github"
+                    / "PULL_REQUEST_TEMPLATE"
+                    / "user_experience.md",
+                ]
+            )
+
+        else:
+            removals.extend(
+                [
+                    directory
+                    / ".gitlab"
+                    / "merge_request_templates"
+                    / "Interface Architecture.md",
+                    directory
+                    / ".gitlab"
+                    / "merge_request_templates"
+                    / "User Experience.md",
+                ]
+            )
 
     return removals
 
@@ -297,7 +322,7 @@ def _get_tui_related_files(
     """
     removals = []
 
-    if app_type in ["tui", "cli"]:
+    if app_type in ["tui", "cli", "bare_cli"]:
         removals.extend(
             [
                 directory / package_name / "cli" / "commands" / "launch.py",
@@ -305,7 +330,7 @@ def _get_tui_related_files(
             ]
         )
 
-    if app_type in ["cli", "bare_repo"]:
+    if app_type in ["cli", "bare_cli", "bare_repo"]:
         removals.extend([directory / package_name / "tui", directory / "tests" / "tui"])
 
     return removals
@@ -348,6 +373,19 @@ def _get_bdd_specific_files(
                 directory / "tests" / "features" / "app_manager.feature",
                 directory / "tests" / "features" / "manager_resolution.feature",
                 directory / "tests" / "features" / "log_parser.feature",
+            ]
+        )
+
+    elif app_type == "bare_cli":
+        removals.extend(
+            [
+                directory / "tests" / "helpers",
+                directory / "tests" / "utils" / "pytest_bdd_async.py",
+                directory / "tests" / "features" / "main_window.feature",
+                directory / "tests" / "features" / "launch_command.feature",
+                directory / "tests" / "features" / "config_command.feature",
+                directory / "tests" / "features" / "app_manager.feature",
+                directory / "tests" / "features" / "manager_resolution.feature",
             ]
         )
 

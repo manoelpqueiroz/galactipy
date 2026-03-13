@@ -136,7 +136,7 @@
 {%- else %}
         "**/.gitlab/merge_request_templates/*/**"
 {%- endif %}
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+{%- if cookiecutter.__app_group == 'tui' %}
     ],
     "files.associations": {
         "*.tcss": "css"
@@ -190,7 +190,7 @@
             "format": "svg"
 {%- endif %}
         }
-{%- elif cookiecutter.app_type == 'cli' %}
+{%- elif cookiecutter.__app_group == 'cli' %}
     ],
     "vsicons.associations.folders": [
         {

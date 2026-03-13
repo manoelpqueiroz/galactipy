@@ -59,10 +59,10 @@ and all contributions are valued.
 Whether you intend
 to become a [developer][proposals]
 for {{ cookiecutter.project_name }}
-{%- if cookiecutter.app_type != 'bare_repo' %}
-or you are a [user][contributions] of the application,
-{%- else %}
+{%- if cookiecutter.app_type == 'bare_repo' %}
 or you are a [user][contributions] of the library,
+{%- else %}
+or you are a [user][contributions] of the application,
 {%- endif %}
 following these guidelines
 helps to communicate
@@ -202,8 +202,10 @@ should help:
 - To effectively contribute to {{ cookiecutter.project_name }},
   you should probably get knowledgeable
   about a few topics:
-{%- if cookiecutter.app_type != 'bare_repo' %}
-{%- if cookiecutter.app_type != 'cli' %}
+{%- if cookiecutter.app_type == 'bare_repo' %}
+<!-- DEFINE the basic dependencies your project contributors should be familiar with -->
+{%- else %}
+{%- if cookiecutter.__app_group == 'tui' %}
   - Understand how [Typer][apptopic1] and [Textual][apptopic1a] work
     under the hood
     and how they interact
@@ -215,29 +217,32 @@ should help:
     under the hood
     to create CLI applications;
 {%- endif %}
-  - Study [Orbittings][apptopic2] and
-    its upstream library, [Dynaconf][apptopic3],
+{%- if cookiecutter.app_type == 'bare_cli' %}
+  - Study [Nebulog][apptopic2] and
+    its upstream library, [Loguru][apptopic3],
+{%- else %}
+  - Study [Orbittings][apptopic1b] and
+    its upstream library, [Dynaconf][apptopic1c],
     which manage the configuration files
     for {{ cookiecutter.project_name }};
-  - Do the same with [Nebulog][apptopic4] and [Loguru][apptopic5],
+  - Do the same with [Nebulog][apptopic2] and [Loguru][apptopic3],
+{%- endif %}
     which empower the logging functionality
     of the application;
 {%- if cookiecutter.use_bdd %}
-  - Check the [`features/`][apptopic5a] directory,
+  - Check the [`features/`][apptopic3a] directory,
     containing the files
     describing the functional behaviour of {{ cookiecutter.project_name }}
     with the BDD paradigm;
-  - The [`tests/`][apptopic6] directory
+  - The [`tests/`][apptopic4] directory
     contains all unit tests
     validating the scenarios
     described in `features/`;
 {%- else %}
-  - Check the [`tests/`][apptopic6] directory,
+  - Check the [`tests/`][apptopic4] directory,
     which validate all code
     for the application;
 {%- endif %}
-{%- else %}
-<!-- DEFINE the basic dependencies your project contributors should be familiar with -->
 {%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
   - Review the [`.gitlab-ci.yml`][topic1] file
@@ -828,14 +833,14 @@ with their usage:
 |         CI          |         ~"ci-docker"          | Changes how {{ cookiecutter.project_name }} containers are built and provided to users.                           |
 {%- endif %}
 |         CI          |          ~"ci-tasks"          | Structures automated tasks of different functions to run on scheduled pipelines.                                  |
-{%- if cookiecutter.app_type != 'bare_repo' %}
+{%- if cookiecutter.app_type == 'bare_repo' %}
+|         N/A         |        ~"deprecations"        | Marks deprecations for future removal. sunsetting.                                                                |
+{%- else %}
 |         CLI         |          ~"cli-arch"          | Changes logic in the layer directly below the CLI, including input validation and file parsing.                   |
 |         CLI         |        ~"cli-commands"        | Changes the CLI command structure and capabilities, including the addition of new commands.                       |
 |         CLI         |      ~"cli-deprecations"      | Marks deprecations for future removal to CLI features.                                                            |
 |         CLI         |        ~"cli-options"         | Changes available options and option flag behaviour for CLI users.                                                |
 |         CLI         |        ~"cli-removals"        | CLI feature sunsetting.                                                                                           |
-{%- else %}
-|         N/A         |        ~"deprecations"        | Marks deprecations for future removal. sunsetting.                                                                |
 {%- endif %}
 |       Design        |      ~"design-discovery"      | Debates high-level concepts for new {{ cookiecutter.project_name }} features.                                     |
 |       Design        |     ~"design-formulation"     | Specifies expected behaviour for {{ cookiecutter.project_name }} features under different possible circumstances. |
@@ -877,7 +882,7 @@ with their usage:
 |         N/A         |       ~"seeking-input"        | In need of help to further discuss and define scope.                                                              |
 |         N/A         |           ~"stale"            | Work items without activity that are marked for closing.                                                          |
 |         N/A         |     ~"starter-assignment"     | Proposal and delivery steps are clear and can be picked up by first-time contributors.                            |
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+{%- if cookiecutter.__app_group == 'tui' %}
 |   User Interface    |      ~"ui-accessibility"      | Promotes accessibility options for users in the interface.                                                        |
 |   User Interface    |          ~"ui-arch"           | Changes to rendering logic in the layer directly below the user interface.                                        |
 |   User Interface    |      ~"ui-deprecations"       | Marks deprecations for future removal to UI features.                                                             |
@@ -890,7 +895,7 @@ with their usage:
 |   User Experience   |      ~"ux-customization"      | Improves options available for program customisation by users.                                                    |
 |   User Experience   |          ~"ux-flags"          | Implements feature flags for {{ cookiecutter.project_name }}.                                                     |
 |   User Experience   |        ~"ux-migration"        | Offers predefined migration options to users in the case of breaking changes.                                     |
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+{%- if cookiecutter.__app_group == 'tui' %}
 |   User Experience   |       ~"ux-navigation"        | Improves user navigation in the user interface.                                                                   |
 {%- endif %}
 |   User Experience   |         ~"ux-nudging"         | Helps users understand the application with more ease, like help panels, notifications etc.                       |
@@ -908,14 +913,14 @@ with their usage:
 |         CI          |         `ci-docker`          | Changes how {{ cookiecutter.project_name }} containers are built and provided to users.                           |
 {%- endif %}
 |         CI          |          `ci-tasks`          | Structures automated tasks of different functions to run on scheduled pipelines.                                  |
-{%- if cookiecutter.app_type != 'bare_repo' %}
+{%- if cookiecutter.app_type == 'bare_repo' %}
+|         N/A         |        `deprecations`        | Marks deprecations for future removal.                                                                            |
+{%- else %}
 |         CLI         |          `cli-arch`          | Changes logic in the layer directly below the CLI, including input validation and file parsing.                   |
 |         CLI         |        `cli-commands`        | Changes the CLI command structure and capabilities, including the addition of new commands.                       |
 |         CLI         |      `cli-deprecations`      | Marks deprecations for future removal to CLI features.                                                            |
 |         CLI         |        `cli-options`         | Changes available options and option flag behaviour for CLI users.                                                |
 |         CLI         |        `cli-removals`        | CLI feature sunsetting.                                                                                           |
-{%- else %}
-|         N/A         |        `deprecations`        | Marks deprecations for future removal.                                                                            |
 {%- endif %}
 |       Design        |      `design-discovery`      | Debates high-level concepts for new {{ cookiecutter.project_name }} features.                                     |
 |       Design        |     `design-formulation`     | Specifies expected behaviour for {{ cookiecutter.project_name }} features under different possible circumstances. |
@@ -957,7 +962,7 @@ with their usage:
 |         N/A         |       `seeking-input`        | In need of help to further discuss and define scope.                                                              |
 |         N/A         |           `stale`            | Work items without activity that are marked for closing.                                                          |
 |         N/A         |     `starter-assignment`     | Proposal and delivery steps are clear and can be picked up by first-time contributors.                            |
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+{%- if cookiecutter.__app_group == 'tui' %}
 |   User Interface    |      `ui-accessibility`      | Promotes accessibility options for users in the interface.                                                        |
 |   User Interface    |          `ui-arch`           | Changes rendering logic in the layer directly below the user interface.                                           |
 |   User Interface    |      `ui-deprecations`       | Marks deprecations for future removal to UI features.                                                             |
@@ -970,7 +975,7 @@ with their usage:
 |   User Experience   |      `ux-customization`      | Improves options available for program customisation by users.                                                    |
 |   User Experience   |          `ux-flags`          | Implements feature flags for {{ cookiecutter.project_name }}.                                                     |
 |   User Experience   |        `ux-migration`        | Offers predefined migration options to users in the case of breaking changes.                                     |
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+{%- if cookiecutter.__app_group == 'tui' %}
 |   User Experience   |       `ux-navigation`        | Improves user navigation in the user interface.                                                                   |
 {%- endif %}
 |   User Experience   |         `ux-nudging`         | Helps users understand the application with more ease, like help panels, notifications etc.                       |
@@ -1392,10 +1397,10 @@ transparency
 and continuous improvement.
 
 By focusing on
-{%- if cookiecutter.app_type != 'bare_repo' %}
-the behaviour of our application
-{%- else %}
+{%- if cookiecutter.app_type == 'bare_repo' %}
 the behaviour of our library
+{%- else %}
+the behaviour of our application
 {%- endif %}
 from the end-user's perspective
 through BDD,
@@ -2035,13 +2040,23 @@ in the root directory.
 The available trailers
 are listed below
 and defined in the [`changelog-config.yml`][committing2] file:
-{%- if cookiecutter.app_type != 'bare_repo' %}
+{%- if cookiecutter.app_type == 'bare_repo' %}
+
+|        Category in CHANGELOG        |                                                          Available Trailers                                                          |
+| :---------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------: |
+|           :new: Additions           |                                                    `feature`<br>`add`<br>`added`                                                     |
+|        :arrow_right: Changes        |                               `change`<br>`changes`<br>`changed`<br>`update`<br>`updates`<br>`updated`                               |
+| :city_dusk: Deprecations & Removals |    `deprecation`<br>`deprecations`<br>`deprecate`<br>`deprecated`<br>`removal`<br>`removals`<br>`remove`<br>`removed`<br>`sunset`    |
+|           :toolbox: Fixes           | `bug`<br>`bugfix`<br>`fix`<br>`fixed`<br>`hotfix`<br>`security`<br>`sec`<br>`critical`<br>`leak`<br>`injection`<br>`typo`<br>`typos` |
+|   :arrow_up: Dependencies Updates   |                                                  `dependencies`<br>`dep`<br>`deps`                                                   |
+|  :black_circle: Other Developments  |                                                               `other`                                                                |
+{%- else %}
 
 |           Category in CHANGELOG            |                                                                                                      Available Trailers                                                                                                      | Use Cases                                                                                                                                                              |
 | :----------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | :satellite_orbital: Command-line Interface |                                                                            `cli`<br>`command`<br>`commands`<br>`terminal`<br>`output`<br>`shell`                                                                             | Updates to the CLI API that bridges the interface to the actual program. This encompasses available commands and how things are printed to the user's shell.           |
 |            :keyboard: CLI Usage            |                                                   `flag`<br>`flags`<br>`option`<br>`options`<br>`opt`<br>`opts`<br>`argument`<br>`arguments`<br>`arg`<br>`args`<br>`usage`                                                   | Developments that change how the user interacts with the CLI, like options and arguments available for fine-tuning command control.                                    |
-{%- if cookiecutter.app_type != 'cli' %}
+{%- if cookiecutter.__app_group == 'tui' %}
 |   :computer: User Interface Improvements   |                                             `tui`<br>`ui`<br>`layout`<br>`screen`<br>`element`<br>`elements`<br>`panel`<br>`panels`<br>`widget`<br>`widgets`<br>`accessibility`                                              | Improvements to the terminal user interface (TUI), which can be related to widgets, screens, layout, readability etc.                                                  |
 |        :video_game: User Experience        |                                                                     `ux`<br>`xp`<br>`interaction`<br>`navigation`<br>`nav`<br>`shortcut`<br>`shortcuts`                                                                      | All development focused on interaction processes between the user and the terminal user interface, controlling its behaviour.                                          |
 {%- endif %}
@@ -2066,16 +2081,6 @@ and defined in the [`changelog-config.yml`][committing2] file:
 |           :books: Documentation            |                                                                                              `documentation`<br>`doc`<br>`docs`                                                                                              | Formal documentation.                                                                                                                                                  |
 |         :scroll: Project Policies          |                                  `policy`<br>`policies`<br>`rule`<br>`rules`<br>`milestone`<br>`milestones`<br>`epic`<br>`epics`<br>`roadmap`<br>`template`<br>`templates`<br>`templating`                                   | Changes that altered project rules and/or project-specific documentation.                                                                                              |
 |     :gem: Continuous Improvement Feats     |                        `monitor`<br>`monitoring`<br>`tracker`<br>`trackers`<br>`tracking`<br>`log`<br>`logs`<br>`logging`<br>`alert`<br>`alerts`<br>`detection`<br>`detect`<br>`diligence`<br>`rskm`                         | Internal improvements to detect and report issues, targeting CI/CD maturity.                                                                                           |
-{%- else %}
-
-|        Category in CHANGELOG        |                                                          Available Trailers                                                          |
-| :---------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------: |
-|           :new: Additions           |                                                    `feature`<br>`add`<br>`added`                                                     |
-|        :arrow_right: Changes        |                               `change`<br>`changes`<br>`changed`<br>`update`<br>`updates`<br>`updated`                               |
-| :city_dusk: Deprecations & Removals |    `deprecation`<br>`deprecations`<br>`deprecate`<br>`deprecated`<br>`removal`<br>`removals`<br>`remove`<br>`removed`<br>`sunset`    |
-|           :toolbox: Fixes           | `bug`<br>`bugfix`<br>`fix`<br>`fixed`<br>`hotfix`<br>`security`<br>`sec`<br>`critical`<br>`leak`<br>`injection`<br>`typo`<br>`typos` |
-|   :arrow_up: Dependencies Updates   |                                                  `dependencies`<br>`dep`<br>`deps`                                                   |
-|  :black_circle: Other Developments  |                                                               `other`                                                                |
 {%- endif %}
 
 {% endif -%}
@@ -2826,7 +2831,7 @@ _The best good first issues are the ones you open yourself._
 {% endif -%}
 ## :speaking_head: Proposing Changes as a Developer
 
-{% if cookiecutter.app_type in ['tui', 'hybrid'] -%}
+{% if cookiecutter.__app_group == 'tui' -%}
 <!-- DEFINE the context and purposes of your library -->
 {{ cookiecutter.project_name }} is a Terminal User Interface (TUI) application,
 paired with a Command-line Interface (CLI)
@@ -2878,7 +2883,7 @@ Code maintenance within {{ cookiecutter.project_name }} itself encompasses:
     as the program output
     or as structured files
     for debugging purposes;
-- [Tests][apptopic6]
+- [Tests][apptopic4]
   for validating program behaviour
   as expected;
 - [Tasks][changes5] aimed at
@@ -2887,7 +2892,7 @@ Code maintenance within {{ cookiecutter.project_name }} itself encompasses:
   local development
   with [Invoke][changes6].
 
-{% elif cookiecutter.app_type == 'cli' -%}
+{% elif cookiecutter.__app_group == 'cli' -%}
 <!-- DEFINE the context and purposes of your library -->
 {{ cookiecutter.project_name }} is a Command-line Interface (CLI) application
 for performing operations
@@ -2925,7 +2930,7 @@ Code maintenance within {{ cookiecutter.project_name }} itself encompasses:
     as the program output
     or as structured files
     for debugging purposes;
-- [Tests][apptopic6]
+- [Tests][apptopic4]
   for validating program behaviour
   as expected;
 - [Tasks][changes5] aimed at
@@ -3065,7 +3070,7 @@ and actionable.
 {% if cookiecutter.app_type != 'bare_repo' -%}
 It's worth emphasizing that
 changes to CLI commands
-{%- if cookiecutter.app_type != 'cli' %}
+{%- if cookiecutter.__app_group == 'tui' %}
 and interface elements
 {%- endif %}
 available for users in {{ cookiecutter.project_name }}
@@ -3278,7 +3283,9 @@ A non-exhaustive list of steps to consider:
   all issues raised by Codacy
   for the {{ cookiecutter.__mr_term }} branch in question?
 {%- endif %}
-{%- if cookiecutter.app_type != 'bare_repo' %}
+{%- if cookiecutter.app_type == 'bare_repo' %}
+<!-- DEFINE common checks developers should make related specifically to your project's public API -->
+{%- else %}
 - Have any changes been made
   to how the default configuration
   file is structured?
@@ -3289,7 +3296,7 @@ A non-exhaustive list of steps to consider:
 - Do changes secure
   user data integrity,
   without any data losses?
-{%- if cookiecutter.app_type in ['tui', 'hybrid'] %}
+{%- if cookiecutter.__app_group == 'tui' %}
 - Have changes been made
   to the frontend components?
   Did you check
@@ -3299,8 +3306,6 @@ A non-exhaustive list of steps to consider:
   or crash
   the user interface?
 {%- endif %}
-{%- else %}
-<!-- DEFINE common checks developers should make related specifically to your project's public API -->
 {%- endif %}
 
 #### Test Markers
@@ -4899,23 +4904,23 @@ If {{ cookiecutter.project_name }} is not working correctly for you,
 most likely it is a simple configuration issue.
 Try running {{ cookiecutter.project_name }} again
 paying attention to the parameters
-{%- if cookiecutter.app_type != 'bare_repo' %}
+{%- if cookiecutter.__app_class == 'bare' %}
+you have provided.
+{%- else %}
 you have provided,
 or use a vanilla configuration
 alternatively.
-{%- else %}
-you have provided.
 {%- endif %}
 
 If you are still having difficulty
 running {{ cookiecutter.project_name }} as desired,
 open an [RFS][request1],
-{%- if cookiecutter.app_type != 'bare_repo' %}
-providing your `settings.toml`
-and `report.log` files
-{%- else %}
+{%- if cookiecutter.__app_class == 'bare' %}
 and provide your
 configuration and log files
+{%- else %}
+providing your `settings.toml`
+and `report.log` files
 {%- endif %}
 if applicable.
 
@@ -5066,7 +5071,7 @@ to accelerate the process:
   - What are the parameters used
     during application runtime
     that reproduce the bug?
-{%- if cookiecutter.app_type != 'bare_repo' %}
+{%- if cookiecutter.__app_class != 'bare' %}
     You can provide those
     through the `settings.toml` file;
 {%- endif %}
@@ -5076,15 +5081,15 @@ to accelerate the process:
 - Can you provide
   error logs or tracebacks
   to further detail the issue?
-{%- if cookiecutter.app_type != 'bare_repo' %}
+{%- if cookiecutter.app_type == 'bare_repo' %}
+  Tools like [`reprexpy`][request3]
+{%- else %}
   {{ cookiecutter.project_name }} provides
   a `report.log` file
   containing only the last executed run of the program
   to facilitate bug reporting;
   additionally,
   tools like [`reprexpy`][request3]
-{%- else %}
-  Tools like [`reprexpy`][request3]
 {%- endif %}
   can assist you
   in providing more technical detail
@@ -5502,17 +5507,19 @@ what we are doing matters!
 {%- if cookiecutter.app_type != 'bare_repo' %}
 
 [apptopic1]: https://typer.tiangolo.com/tutorial/
-{%- if cookiecutter.app_type != 'cli' %}
+{%- if cookiecutter.__app_group == 'tui' %}
 [apptopic1a]: https://textual.textualize.io/guide/
 {%- endif %}
-[apptopic2]: https://gitlab.com/galactipy/orbittings
-[apptopic3]: https://www.dynaconf.com/
-[apptopic4]: https://gitlab.com/galactipy/nebulog
-[apptopic5]: https://loguru.readthedocs.io/en/stable/
-{%- if cookiecutter.use_bdd %}
-[apptopic5a]: {{ cookiecutter.__scm_link_url }}/tree/master/tests/features
+{%- if cookiecutter.app_type != 'bare_cli' %}
+[apptopic1b]: https://gitlab.com/galactipy/orbittings
+[apptopic1c]: https://www.dynaconf.com/
 {%- endif %}
-[apptopic6]: {{ cookiecutter.__scm_link_url }}/tree/master/tests
+[apptopic2]: https://gitlab.com/galactipy/nebulog
+[apptopic3]: https://loguru.readthedocs.io/en/stable/
+{%- if cookiecutter.use_bdd %}
+[apptopic3a]: {{ cookiecutter.__scm_link_url }}/tree/master/tests/features
+{%- endif %}
+[apptopic4]: {{ cookiecutter.__scm_link_url }}/tree/master/tests
 {%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 
@@ -5693,7 +5700,7 @@ what we are doing matters!
 {%- endif %}
 
 {% endif -%}
-{% if cookiecutter.app_type in ['tui', 'hybrid'] -%}
+{% if cookiecutter.__app_group == 'tui' -%}
 [changes0a]: {{ cookiecutter.__scm_link_url }}/tree/master/{{ cookiecutter.package_name }}/tui
 [changes0b]: https://textual.textualize.io/
 {% endif -%}
