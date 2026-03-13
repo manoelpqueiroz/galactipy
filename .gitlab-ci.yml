@@ -53,7 +53,7 @@ include:
   - component: $CI_SERVER_FQDN/components/dependency-scanning/main@1.1.1
     inputs:
       stage: security-checks
-  - component: $CI_SERVER_FQDN/components/secret-detection/secret-detection@2.2.0
+  - component: $CI_SERVER_FQDN/components/secret-detection/secret-detection@2.3.0
     inputs:
       stage: security-checks
       enable_mr_pipelines: true
