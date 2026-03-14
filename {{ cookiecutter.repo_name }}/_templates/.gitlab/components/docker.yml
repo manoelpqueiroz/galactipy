@@ -138,7 +138,7 @@ include:
       release-extra-tags: "\\g<major>.\\g<minor>-nightly latest-nightly"
 {%- elif cookiecutter.__version_schema_base == 'calver' %}
       release-extra-tags-pattern: ^(?:v|V)?(?P<year>\d{2}|\d{4})\.(?P<minor>\d{1,2})(?:\.(?P<micro>\d{1,2}))?(?:-(?P<prerelease>(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*))?(?:\+(?P<build>[0-9a-z-]+(?:\.[0-9a-z-]+)*))?$
-      release-extra-tags: "\\g<year>.\\g<month_or_week>-nightly latest-nightly"
+      release-extra-tags: "\\g<year>.\\g<minor>-nightly latest-nightly"
 {%- elif cookiecutter.__version_schema_base == 'romver' %}
       release-extra-tags-pattern: ^(?:v|V)?(?P<human>0|[1-9]\d*)\.(?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)(?:-(?P<prerelease>(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*))?(?:\+(?P<build>[0-9a-z-]+(?:\.[0-9a-z-]+)*))?$
       release-extra-tags: "\\g<human>.\\g<major>-nightly latest-nightly"
