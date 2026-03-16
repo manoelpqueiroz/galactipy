@@ -188,8 +188,8 @@
   "_version_schemas_first_segment": {
     "effver": "MACRO",
     "semver": "MAJOR",
-    "calver-auto": "MAJOR",
-    "calver-explicit": "MAJOR",
+    "calver-auto": "YEAR",
+    "calver-explicit": "YEAR",
     "romver": "PROJECT",
     "solover": null,
     "trunkver": null
@@ -197,7 +197,7 @@
   "_version_schemas_second_segment": {
     "effver": "MESO",
     "semver": "MINOR",
-    "calver-auto": "MINOR",
+    "calver-auto": "WEEK",
     "calver-explicit": "MINOR",
     "romver": "MAJOR",
     "solover": null,
