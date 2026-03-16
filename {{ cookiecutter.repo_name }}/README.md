@@ -319,7 +319,7 @@ for your {{ cookiecutter.project_name }} installation:
 {% else -%}
 ### Subcommands
 
-<-- UPDATEME with your application's custom commands -->
+<!-- UPDATEME with your application's custom commands -->
 
 {% endif -%}
 {% endif -%}
@@ -389,16 +389,26 @@ to run the application on a container.
 Published images are available
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 via [GitLab Container Registries][docker1].
+{%- if cookiecutter.__schema_type == 'segmented' %}
 
 The following tags are available:
 
-<!-- UPDATEME by defining the macro tags once the project reaches v1.0.0 -->
-- **Micro tags** reflect the official releases
+{% if cookiecutter.__schema_group == 'semver-like' -%}
+<!-- UPDATEME by defining the {{ cookiecutter.__version_s1.lower() }} tag specification once the project reaches v1.0.0 -->
+{% endif -%}
+{% if cookiecutter.version_schema != 'calver-auto' -%}
+- **{{ cookiecutter.__version_s3.title() }} tags** reflect the official releases
   individually;
-- **Meso tags** always mirror
+{% endif -%}
+- **{{ cookiecutter.__version_s2.title() }} tags** always mirror
   the latest available changes
-  for a meso release
-  (i.e., `MACRO.MESO`);
+  for a {{ cookiecutter.__version_s2.lower() }} release
+  (i.e., `{{ cookiecutter.__version_s1 }}.{{ cookiecutter.__version_s2 }}`);
+{% if cookiecutter.__schema_group == 'calver' -%}
+- **{{ cookiecutter.__version_s1.title() }} tags** always mirror
+  the latest available changes
+  for a yearly release;
+{% endif -%}
 - **Nightly tags** functionally work
   as rolling releases,
   but should not be used
@@ -408,21 +418,34 @@ The following tags are available:
     of the `master` branch;
   - If a pre-release is published,
     it can be run with Docker
-    with the `MACRO.MESO.MICRO-nightly` tag.
+{%- if cookiecutter.version_schema == 'calver-auto' %}
+    with the `{{ cookiecutter.__version_s1 }}.{{ cookiecutter.__version_s2 }}-nightly` tag.
+{%- else %}
+    with the `{{ cookiecutter.__version_s1 }}.{{ cookiecutter.__version_s2 }}.{{ cookiecutter.__version_s3 }}-nightly` tag.
+{%- endif %}
+{%- endif %}
 {%- else %}
 via [Docker Hub][docker1].
+{%- if cookiecutter.__schema_type == 'segmented' %}
 
 The following tags are available:
 
-- **Micro tags** reflect the official releases;
-- **Meso tags** always mirror
+{% if cookiecutter.version_schema != 'calver-auto' -%}
+- **{{ cookiecutter.__version_s3.title() }} tags** reflect the official releases;
+{% endif -%}
+- **{{ cookiecutter.__version_s2.title() }} tags** always mirror
   the latest available changes
-  for a meso release
-  (i.e., `MACRO.MESO`);
-- **Meso tags** always mirror
+  for a {{ cookiecutter.__version_s2.lower() }} release
+  (i.e., `{{ cookiecutter.__version_s1 }}.{{ cookiecutter.__version_s2 }}`);
+- **{{ cookiecutter.__version_s1.title() }} tags** always mirror
   the latest available changes
-  for a macro release
-  (i.e., `MACRO`);
+{%- if cookiecutter.__schema_group == 'calver' %}
+  for a yearly release
+{%- else %}
+  for a {{ cookiecutter.__version_s1.lower() }} release
+{%- endif %}
+  (i.e., `{{ cookiecutter.__version_s1 }}`).
+{%- endif %}
 {%- endif %}
 {%- endif %}
 
