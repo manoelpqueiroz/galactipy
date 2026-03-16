@@ -1,3 +1,22 @@
+## 2.1.1 (2026-03-16)
+
+### :ballot_box: Settings & Options (2 changes)
+
+- [:shinto_shrine: Apply schema-specific terminology for template Docker tags](galactipy/galactipy@e56fea9d383278707b409b153fbb170a98658323)
+- [:wrench: Modify CalVer segment descriptions in `cookiecutter.json`](galactipy/galactipy@8c76ffa69f6f729da2cb09ec1a668ccd752605ce)
+
+### :airplane_departure: Release Cycle Optimisation (1 change)
+
+- [:construction_worker: Renovate dependency components/secret-detection with minor version v2.3.0](galactipy/galactipy@5929dbdaeabd6ab29964820ac5734864f58d5975) ([merge request](galactipy/galactipy!202))
+
+### :arrow_up: Dependencies Updates (1 change)
+
+- [:arrow_up: Renovate ruff with patch version v0.15.6](galactipy/galactipy@5e68a7140aff51ebfbb1bbacc8ab4ca0851b8341) ([merge request](galactipy/galactipy!204))
+
+### :pouring_liquid: Nits (1 change)
+
+- [:pencil2: Fix wrong usage of CalVer segment in GitLab Docker component](galactipy/galactipy@a22152519b8d0a44f64fc8dfbe2a94ad50c044a9)
+
 ## 2.1.0 (2026-03-13)
 
 ### :metro: Template Internals (1 change)
