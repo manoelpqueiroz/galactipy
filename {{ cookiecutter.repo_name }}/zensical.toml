@@ -34,6 +34,10 @@ features = [
   "navigation.indexes",
   "navigation.tabs",
   "navigation.tabs.sticky",
+  "navigation.path",
+  "navigation.expand",
+  "navigation.top",
+  "navigation.footer",
 ]
 
 [project.theme.palette]
