@@ -51,3 +51,22 @@ accent = "teal"
 [project.markdown_extensions.admonition]
 [project.markdown_extensions.pymdownx.details]
 [project.markdown_extensions.pymdownx.superfences]
+
+[[project.extra.social]]
+icon = "fontawesome/brands/{{ cookiecutter.__scm_platform_lc }}"
+link = {{ cookiecutter.__scm_base_url }}
+
+[[project.extra.social]]
+icon = "fontawesome/brands/python"
+link = "https://pypi.org/project/{{ cookiecutter.repo_name }}/"
+{%- if cookiecutter.create_docker %}
+
+[[project.extra.social]]
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+icon = "fontawesome/solid/box-open"
+link = {{ cookiecutter.__scm_link_url }}/container_registry
+{%- else %}
+icon = "fontawesome/brands/docker"
+link = https://hub.docker.com/r/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}
+{%- endif %}
+{%- endif %}
