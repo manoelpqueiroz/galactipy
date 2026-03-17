@@ -40,6 +40,9 @@ features = [
   "navigation.footer",
 ]
 
+[project.theme.font]
+code = "Cascadia Code"
+
 [project.theme.palette]
 scheme = "slate"
 primary = "orange"
