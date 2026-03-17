@@ -1,0 +1,46 @@
+[project]
+site_name = "{{ cookiecutter.project_name }} Documentation"
+
+nav = [
+  { "Home" = "index.md" },
+  { "Getting Started" = [
+    "getting_started/index.md",
+    "getting_started/install.md",
+    "getting_started/overview.md",
+    { "1-Minute Tutorials" = [
+      "getting_started/intro_tutorials/index.md",
+    ] },
+    { "Comparison with other Tools" = [
+      "getting_started/comparison/index.md",
+    ] },
+    "getting_started/tutorials.md",
+  ] },
+  { "User Guide" = [
+    "user_guide/index.md",
+    "user_guide/10min.md",
+    "user_guide/basics.md",
+    "user_guide/advanced.md",
+    "user_guide/gotchas.md",
+    "user_guide/faq.md",
+    "user_guide/options.md",
+  ] },
+  { "API Reference" = "reference/index.md" },
+  { "Development" = "development/index.md" },
+  { "What's New" = "whatsnew/index.md" },
+]
+
+[project.theme]
+features = [
+  "navigation.indexes",
+  "navigation.tabs",
+  "navigation.tabs.sticky",
+]
+
+[project.theme.palette]
+scheme = "slate"
+primary = "orange"
+accent = "teal"
+
+[project.markdown_extensions.admonition]
+[project.markdown_extensions.pymdownx.details]
+[project.markdown_extensions.pymdownx.superfences]
