@@ -114,6 +114,8 @@ coverage = "^7.11.1"
 
 [tool.poetry.group.docs.dependencies]
 zensical = "^0.0.27"
+mkdocstrings = "^1.0.3"
+mkdocstrings-python = "^2.0.3"
 
 
 [tool.poetry.requires-plugins]
