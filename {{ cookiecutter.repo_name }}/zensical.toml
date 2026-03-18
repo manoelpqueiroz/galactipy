@@ -48,6 +48,36 @@ scheme = "slate"
 primary = "orange"
 accent = "teal"
 
+[project.plugins.mkdocstrings.handlers.python]
+paths = ["{{ cookiecutter.package_name }}"]
+
+[project.plugins.mkdocstrings.handlers.python.options]
+{%- if cookiecutter.docstring_style != 'other' %}
+docstring_style = "{{ cookiecutter.docstring_style }}"
+{%- else %}
+# UPDATEME by setting the value for `docstring_style`, see documentation at:
+# https://mkdocstrings.github.io/python/usage/
+{%- endif %}
+show_source = false
+show_bases = false
+inherited_members = false
+
+# Headings configuration
+heading_level = 1
+show_root_full_path = false
+show_root_heading = true
+show_symbol_type_heading = true
+show_symbol_type_toc = true
+
+# Docstring configuration
+merge_init_into_class = true
+docstring_options = { ignore_init_summary = true }
+summary = true
+
+# Signature configuration
+line_length = {{ cookiecutter.docstring_length }}
+separate_signature = true
+
 [project.markdown_extensions.admonition]
 [project.markdown_extensions.pymdownx.details]
 [project.markdown_extensions.pymdownx.superfences]
