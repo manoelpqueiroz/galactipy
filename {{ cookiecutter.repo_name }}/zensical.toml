@@ -1,5 +1,6 @@
 [project]
 site_name = "{{ cookiecutter.project_name }} Documentation"
+copyright = "Copyright &copy; {% now 'local', '%Y' %} {{ cookiecutter.copyright }}"
 
 nav = [
   { "Home" = "index.md" },
@@ -58,6 +59,8 @@ features = [
   "navigation.expand",
   "navigation.top",
   "navigation.footer",
+  "search.highlight",
+  "toc.follow",
 ]
 
 [project.theme.font]
@@ -101,22 +104,29 @@ separate_signature = true
 [project.markdown_extensions.admonition]
 [project.markdown_extensions.pymdownx.details]
 [project.markdown_extensions.pymdownx.superfences]
+[project.markdown_extensions.tables]
+[project.markdown_extensions.toc]
+permalink = true
 
 [[project.extra.social]]
 icon = "fontawesome/brands/{{ cookiecutter.__scm_platform_lc }}"
 link = {{ cookiecutter.__scm_base_url }}
+name = "{{ cookiecutter.project_name }} development repository"
 
 [[project.extra.social]]
 icon = "fontawesome/brands/python"
 link = "https://pypi.org/project/{{ cookiecutter.repo_name }}/"
+name = "PyPI package page"
 {%- if cookiecutter.create_docker %}
 
 [[project.extra.social]]
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 icon = "fontawesome/solid/box-open"
 link = {{ cookiecutter.__scm_link_url }}/container_registry
+name = "{{ cookiecutter.project_name }} Container Registry"
 {%- else %}
 icon = "fontawesome/brands/docker"
 link = https://hub.docker.com/r/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}
+name = "{{ cookiecutter.project_name }} is on Docker Hub!"
 {%- endif %}
 {%- endif %}
