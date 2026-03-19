@@ -39,6 +39,7 @@ features = [
   "navigation.expand",
   "navigation.top",
   "navigation.footer",
+  "search.highlight",
   "toc.follow",
 ]
 
@@ -53,6 +54,7 @@ accent = "teal"
 [project.markdown_extensions.admonition]
 [project.markdown_extensions.pymdownx.details]
 [project.markdown_extensions.pymdownx.superfences]
+[project.markdown_extensions.tables]
 [project.markdown_extensions.toc]
 permalink = true
 
