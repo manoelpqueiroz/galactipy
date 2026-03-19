@@ -50,6 +50,7 @@ nav = [
   { "What's New" = "whatsnew/index.md" },
 ]
 
+
 [project.theme]
 features = [
   "navigation.indexes",
@@ -63,16 +64,20 @@ features = [
   "toc.follow",
 ]
 
+
 [project.theme.font]
 code = "Cascadia Code"
+
 
 [project.theme.palette]
 scheme = "slate"
 primary = "orange"
 accent = "teal"
 
+
 [project.plugins.mkdocstrings.handlers.python]
 paths = ["{{ cookiecutter.package_name }}"]
+
 
 [project.plugins.mkdocstrings.handlers.python.options]
 {%- if cookiecutter.docstring_style != 'other' %}
@@ -100,6 +105,7 @@ summary = true
 # Signature configuration
 line_length = {{ cookiecutter.docstring_length }}
 separate_signature = true
+
 
 [project.markdown_extensions.admonition]
 [project.markdown_extensions.pymdownx.details]
