@@ -110,7 +110,7 @@ permalink = true
 
 [[project.extra.social]]
 icon = "fontawesome/brands/{{ cookiecutter.__scm_platform_lc }}"
-link = {{ cookiecutter.__scm_base_url }}
+link = "{{ cookiecutter.__scm_base_url }}"
 name = "{{ cookiecutter.project_name }} development repository"
 
 [[project.extra.social]]
@@ -122,11 +122,11 @@ name = "PyPI package page"
 [[project.extra.social]]
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 icon = "fontawesome/solid/box-open"
-link = {{ cookiecutter.__scm_link_url }}/container_registry
+link = "{{ cookiecutter.__scm_link_url }}/container_registry"
 name = "{{ cookiecutter.project_name }} Container Registry"
 {%- else %}
 icon = "fontawesome/brands/docker"
-link = https://hub.docker.com/r/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}
+link = "https://hub.docker.com/r/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}"
 name = "{{ cookiecutter.project_name }} is on Docker Hub!"
 {%- endif %}
 {%- endif %}
