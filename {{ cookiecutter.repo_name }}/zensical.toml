@@ -63,6 +63,7 @@ features = [
   "search.highlight",
   "toc.follow",
   "content.code.copy",
+  "content.footnote.tooltips",
 ]
 
 
@@ -114,6 +115,7 @@ separate_signature = true
 [project.markdown_extensions.tables]
 [project.markdown_extensions.attr_list]
 [project.markdown_extensions.md_in_html]
+[project.markdown_extensions.footnotes]
 [project.markdown_extensions.pymdownx.snippets]
 [project.markdown_extensions.pymdownx.inlinehilite]
 [project.markdown_extensions.pymdownx.highlight]
