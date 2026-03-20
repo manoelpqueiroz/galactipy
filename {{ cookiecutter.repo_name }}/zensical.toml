@@ -34,13 +34,13 @@ nav = [
         "reference/config/app_manager/init.md",
         "reference/config/app_manager/default.md",
         "reference/config/app_manager/custom.md",
-      ]},
+      ] },
       { "ConfigurationDomain" = [
         "reference/config/configuration_domain/index.md",
         "reference/config/configuration_domain/from_flag.md",
-      ]},
+      ] },
       "reference/config/resolve_app_manager.md",
-    ]},
+    ] },
     { "Utilities" = [
       "reference/utilities/index.md",
       "reference/utilities/setup_app_logging.md",
