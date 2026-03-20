@@ -673,13 +673,13 @@ This project was generated with [Galactipy][burl4].
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 
 [bdocker1]: https://img.shields.io/gitlab/v/release/{{ cookiecutter.scm_namespace }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&logo=linux-containers&logoColor=C5F4EC&label=image&color=C5F4EC
-[bdocker2]: {{ cookiecutter.__scm_base_url }}/container_registry
+[bdocker2]: {{ cookiecutter.__docker_repo }}
 
 [docker1]: https://docs.gitlab.com/user/packages/container_registry/
 {%- else %}
 
 [bdocker1]: https://img.shields.io/docker/v/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=docker&logoColor=lightblue&label=image&color=lightblue
-[bdocker2]: https://hub.docker.com/r/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}
+[bdocker2]: {{ cookiecutter.__docker_repo }}
 
 [docker1]: https://hub.docker.com/
 {%- endif %}

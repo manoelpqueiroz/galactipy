@@ -250,6 +250,9 @@
   "__gitlab_premium_templates": "https://gitlab.com/{{ cookiecutter.scm_namespace }}/templates/-/blob/master",
   "__contributing_prefix": "{{ cookiecutter.__gitlab_premium_templates ~ '/CONTRIBUTING.md' if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' }}",
 
+  "__docker_registry": "{{ 'registry.gitlab.com/' ~ cookiecutter.scm_namespace ~ '/' ~ cookiecutter.repo_name if cookiecutter.__scm_platform_lc == 'gitlab' else cookiecutter.scm_namespace ~ '/' ~ cookiecutter.repo_name }}",
+  "__docker_repo": "{{ cookiecutter.__scm_base_url ~ '/container_registry' if cookiecutter.__scm_platform_lc == 'gitlab' else 'https://hub.docker.com/r/' ~ cookiecutter.scm_namespace ~ '/' ~ cookiecutter.repo_name }}",
+
   "__mr_term": "{{ 'Merge Request' if cookiecutter.__scm_platform_redux == 'gl' else 'Pull Request' }}",
   "__mr_acronym": "{{ 'MR' if cookiecutter.__scm_platform_redux == 'gl' else 'PR' }}",
   "__mr_term_slug": "{{ 'merge-request' if cookiecutter.__scm_platform_redux == 'gl' else 'pull-request' }}",
