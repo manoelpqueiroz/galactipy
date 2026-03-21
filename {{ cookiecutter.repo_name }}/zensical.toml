@@ -118,6 +118,7 @@ separate_signature = true
 [project.markdown_extensions.footnotes]
 [project.markdown_extensions.pymdownx.snippets]
 [project.markdown_extensions.pymdownx.inlinehilite]
+[project.markdown_extensions.pymdownx.keys]
 [project.markdown_extensions.pymdownx.highlight]
 anchor_linenums = true
 line_spans = "__span"
