@@ -224,11 +224,11 @@ to manipulate
 the settings
 for your {{ cookiecutter.project_name }} installation:
 
-> _`{{ cookiecutter.repo_name }} config get [--path <file>] [--secret | -s] KEY`_
+> _`{{ cookiecutter.repo_name }} config get [--path <file>] [--secret | -s] [KEY]`_
 >> **`KEY`**
 >>
 >> The configuration key
->> to be retrieved. **[required]**
+>> to be retrieved.
 >
 >> **`--path`**
 >>
