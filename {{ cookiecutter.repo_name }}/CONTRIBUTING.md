@@ -1,19 +1,3 @@
-{% set licence_list = cookiecutter._licence_mapping_simple[cookiecutter.licence] -%}
-{% set roadmap_mapping = {
-  'GitLab Premium/Ultimate': 'epic',
-  'GitLab Free': 'milestone',
-  'GitHub': 'project'
-} -%}
-{% set docstring_mapping = {
-  'numpy': 'numpydoc',
-  'google': 'Google Python Style',
-  'sphinx': 'Sphinx Style',
-  'other': 'custom'
-} -%}
-{% set roadmap_item = roadmap_mapping[cookiecutter.scm_platform] -%}
-{% set docstring_name = docstring_mapping[cookiecutter.docstring_style] -%}
-{% set roadmap_item_undefined = 'an' ~ roadmap_item if roadmap_item == 'epic' else 'a ' ~ roadmap_item -%}
-{% set task_item = 'task' if cookiecutter.__scm_platform_lc == 'gitlab' else 'sub-issue' -%}
 # How to Contribute
 
 {{ cookiecutter.project_description }}.
@@ -82,6 +66,7 @@ and as a complimentary source of information
 to our [main `CONTRIBUTING` guide][intro1],
 which you should read
 before diving into this specific guide.
+
 {% endif -%}
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [[_TOC_]]
@@ -257,11 +242,11 @@ should help:
 {%- endif %}
 - Take a look at
 {%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
-  the organisation's [{{ roadmap_item.capitalize() }}s][topic2] page
+  the organisation's [{{ cookiecutter.__roadmap_item.capitalize() }}s][topic2] page
 {%- elif cookiecutter.scm_platform == 'GitLab Free' %}
-  the project's [{{ roadmap_item.capitalize() }}s][topic2] page
+  the project's [{{ cookiecutter.__roadmap_item.capitalize() }}s][topic2] page
 {%- else %}
-  our [{{ roadmap_item.capitalize() }}s][topic2] page
+  our [{{ cookiecutter.__roadmap_item.capitalize() }}s][topic2] page
 {%- endif %}
   to get familiar
   with the team's plans
@@ -542,7 +527,7 @@ will and will not be tolerated.
 All work on {{ cookiecutter.project_name }} happens
 directly on [{{ cookiecutter.__scm_platform_base }}][development1],
 including roadmap
-and [{{ roadmap_item }}s][topic2].
+and [{{ cookiecutter.__roadmap_item }}s][topic2].
 Therefore,
 a {{ cookiecutter.__scm_platform_base }} account is needed
 to start contributing.
@@ -632,32 +617,32 @@ discussions
 and {{ cookiecutter.__mr_term }}s
 should ideally
 {%- endif %}
-be related to {{ roadmap_item_undefined }}
+be related to {{ cookiecutter.__roadmap_item_indefinite }}
 once a work item has been created.
 
 Any contributor can propose a new distinct deliverable
 to be added to the roadmap.
 A [{{ cookiecutter.__mr_term }}][swmr] containing the proposal
 must be opened with the [**Project Policies** template][roadmap1],
-detailing nature, scope and purpose of the {{ roadmap_item }}.
+detailing nature, scope and purpose of the {{ cookiecutter.__roadmap_item }}.
 
-The {{ cookiecutter.__mr_acronym }} must detail the proposed {{ roadmap_item }}
+The {{ cookiecutter.__mr_acronym }} must detail the proposed {{ cookiecutter.__roadmap_item }}
 added to the [`ROADMAP.md` table][roadmap2]
 for discussion,
 containing:
 
 - **Title:**
-  the proposed title for the {{ roadmap_item }};
+  the proposed title for the {{ cookiecutter.__roadmap_item }};
 - **Proposal:**
   an overview of the development,
   in a short summary.
-  Details regarding the {{ roadmap_item }}
+  Details regarding the {{ cookiecutter.__roadmap_item }}
   will be discussed in the {{ cookiecutter.__mr_acronym }} and
-  later be included in the official project {{ roadmap_item }}
+  later be included in the official project {{ cookiecutter.__roadmap_item }}
   if accepted;
 - **Theme:**
   the theme to which
-  the proposed {{ roadmap_item }} is best related to.
+  the proposed {{ cookiecutter.__roadmap_item }} is best related to.
   The naming is open to discussion and
   the author is free to suggest it,
   along with an Emoji to
@@ -669,12 +654,12 @@ containing:
   whose requirements are addressed
   by the proposed epic;
 - **Timeline:**
-  a broad estimation of when this proposed {{ roadmap_item }}
+  a broad estimation of when this proposed {{ cookiecutter.__roadmap_item }}
   could be delivered in full.
   Should act as a starting point for
   the actual work tracking
   to be done via
-  the official {{ roadmap_item }};
+  the official {{ cookiecutter.__roadmap_item }};
 - **Proposal Status:**
   an emoji to represent
   the status of the proposal:
@@ -683,15 +668,15 @@ containing:
   - `:no_entry:` for rejected proposals.
 
 Contributors and maintainers will participate in the discussion to
-[refine][swnjw] the scope of the {{ roadmap_item }} and
+[refine][swnjw] the scope of the {{ cookiecutter.__roadmap_item }} and
 either accept of reject the proposal via [thumbs-up/thumbs-down][roadmap3] reactions
 on the author's initial comment.
 
-Once {{ roadmap_item_undefined }} has been accepted for inclusion in the roadmap,
-it will be officially created in the [{{ roadmap_item.capitalize() }}s][topic2] page.
-The {{ roadmap_item }} itself should contain:
+Once {{ cookiecutter.__roadmap_item_indefinite }} has been accepted for inclusion in the roadmap,
+it will be officially created in the [{{ cookiecutter.__roadmap_item.capitalize() }}s][topic2] page.
+The {{ cookiecutter.__roadmap_item }} itself should contain:
 
-- The [Motivational Narrative][roadmap4] as a summary to the {{ roadmap_item }}'s goal;
+- The [Motivational Narrative][roadmap4] as a summary to the {{ cookiecutter.__roadmap_item }}'s goal;
   - We suggest using the following pattern if the actor of the deliverable is not clear:
     `**In order to** {GOAL},<br>**The project will** {ACTION}.`;
   - An accompanying executive summary
@@ -706,13 +691,13 @@ The {{ roadmap_item }} itself should contain:
 - Details on potential bottleneck mappings
   in the **Caveats** section;
 - Details on future developments
-  enabled by the {{ roadmap_item }} delivery
+  enabled by the {{ cookiecutter.__roadmap_item }} delivery
   in the **Building from Here** section.
 
-Once the official {{ roadmap_item }} is created,
+Once the official {{ cookiecutter.__roadmap_item }} is created,
 it should be attached to the proposal {{ cookiecutter.__mr_acronym }} and
 the `ROADMAP.md` table should be updated
-with the actual link to the {{ roadmap_item }}
+with the actual link to the {{ cookiecutter.__roadmap_item }}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 (replacing the **Title**
 with the enhanced [GLFM reference][roadmap4a])
@@ -721,12 +706,12 @@ before merging to `master`.
 
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 >>> [!tip]
-{{ roadmap_item.capitalize() }}s should be the entry door for new contributors
+{{ cookiecutter.__roadmap_item.capitalize() }}s should be the entry door for new contributors
 to have a general glimpse on
 what the project has been prioritising and
 where it wants to go,
 helping newcomers get onboarded more quickly.
-Therefore, contributors writing official {{ roadmap_item }}s
+Therefore, contributors writing official {{ cookiecutter.__roadmap_item }}s
 should approach the task with the following goals in mind:
 
 - [_Comprehensive, yet succinct_][roadmap5];
@@ -734,19 +719,19 @@ should approach the task with the following goals in mind:
 >>>
 {%- else -%}
 > [!TIP]
-> {{ roadmap_item.capitalize() }}s should be the entry door for new contributors
+> {{ cookiecutter.__roadmap_item.capitalize() }}s should be the entry door for new contributors
 > to have a general glimpse on
 > what the project has been prioritising and
 > where it wants to go,
 > helping newcomers get onboarded more quickly.
-> Therefore, contributors writing official {{ roadmap_item }}s
+> Therefore, contributors writing official {{ cookiecutter.__roadmap_item }}s
 > should approach the task with the following goals in mind:
 >
 > - [_Comprehensive, yet succinct_][roadmap5];
 > - [_Standardised, yet conscious_][roadmap6].
 {%- endif %}
 
-After {{ roadmap_item_undefined }} has been completed,
+After {{ cookiecutter.__roadmap_item_indefinite }} has been completed,
 a new {{ cookiecutter.__mr_term }} should be opened to
 update the `ROADMAP.md` table in the **Timeline** field
 with the following possible values:
@@ -758,11 +743,11 @@ with the following possible values:
 {%- endif %}
   if properly associated to a [{{ cookiecutter.__scm_platform_base }} Release][roadmap7];
 - `**Delivered Internally :100:**`,
-  if the {{ roadmap_item }} has no impact on project releases.
+  if the {{ cookiecutter.__roadmap_item }} has no impact on project releases.
 
 Likewise,
 the {{ cookiecutter.__mr_acronym }}s should be associated with
-the completed {{ roadmap_item }}.
+the completed {{ cookiecutter.__roadmap_item }}.
 
 {% endif -%}
 #### Work Item Tracking
@@ -791,7 +776,7 @@ the completed {{ roadmap_item }}.
 and structured preferably around [{{ cookiecutter.__mr_term }}s][swmr].
 Whenever project advancements are not immediately deliverable,
 progress is tracked through {{ cookiecutter.__scm_platform_base }} Issues
-and {{ task_item.capitalize() }}s.
+and {{ cookiecutter.__task_item.capitalize() }}s.
 Use cases for this type of work item include:
 
 - User requests
@@ -989,7 +974,7 @@ with their usage:
 ##### Work Item Lifecycle
 
 To effectively manage
-issue and {{ task_item }} lifecycles,
+issue and {{ cookiecutter.__task_item }} lifecycles,
 we use specific labels
 {%- if cookiecutter.__scm_platform_lc == 'github' %}
 to mark issues
@@ -1063,7 +1048,7 @@ when to move from one stage to another:
 |      **Duplicate**       |      `sts-duplicate`      |    Canceled     | Items marked as duplicates of previous work items.                                                                                                                                                                                                                                                                                                                        |
 
 {% endif -%}
-{{ task_item.capitalize() }}s do not require
+{{ cookiecutter.__task_item.capitalize() }}s do not require
 a lifecycle label.
 
 {% else -%}
@@ -1157,9 +1142,9 @@ to close the issue.
 > to close the issue.
 {%- endif %}
 
-##### {{ task_item.capitalize() }}s Are Used as Acceptance Criteria for Issues
+##### {{ cookiecutter.__task_item.capitalize() }}s Are Used as Acceptance Criteria for Issues
 
-[{{ task_item.capitalize() }}s][practices2] are a specific type of work item
+[{{ cookiecutter.__task_item.capitalize() }}s][practices2] are a specific type of work item
 in {{ cookiecutter.__scm_platform_base }}
 which can be associated
 with issues as their child items.
@@ -1173,7 +1158,7 @@ that can not be directly delivered
 through an open {{ cookiecutter.__mr_term }}.
 
 In either case,
-{{ task_item }}s must be used
+{{ cookiecutter.__task_item }}s must be used
 to complement the open issue
 with their acceptance criteria
 to be closed.
@@ -1184,19 +1169,19 @@ if relevant to understand implementation.
 
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 >>> [!caution]
-The only label allowed on {{ task_item }}s
+The only label allowed on {{ cookiecutter.__task_item }}s
 is `manual-closure`.
 Otherwise,
 there should be no labels
-associated with a {{ task_item }}.
+associated with a {{ cookiecutter.__task_item }}.
 >>>
 {%- else -%}
 > [!CAUTION]
-> The only label allowed on {{ task_item }}s
+> The only label allowed on {{ cookiecutter.__task_item }}s
 > is `manual-closure`.
 > Otherwise,
 > there should be no labels
-> associated with a {{ task_item }}.
+> associated with a {{ cookiecutter.__task_item }}.
 {%- endif %}
 
 ##### Usage of the `seeking-contributors` Labels
@@ -1305,7 +1290,7 @@ must only be placed
 between working items
 of the same type:
 issues can only block **issues**,
-{{ task_item }}s can only block **{{ task_item}}s**.
+{{ cookiecutter.__task_item }}s can only block **{{ cookiecutter.__task_item}}s**.
 
 {% if cookiecutter.scm_platform == 'GitLab Free' -%}
 ##### Tasks Should Have no Milestones
@@ -1571,7 +1556,7 @@ regarding versioning in general:
 <!-- DEFINE the acceptance criteria for releasing a v1.0 for your project -->
 - Version `v1.0.0` can only be set
   once all requirements specified
-  in the `v1.0 Release` {{ roadmap_item }}
+  in the `v1.0 Release` {{ cookiecutter.__roadmap_item }}
   are satisfied;
 {% endif -%}
 - Versions can only be {% if cookiecutter.version_schema == 'trunkver' %}published{% else %}tagged{% endif %}
@@ -2106,7 +2091,7 @@ use a [Project Policy Proposal {{ cookiecutter.__mr_acronym }}][roadmap1].
 
 {% if cookiecutter.docstring_style != 'other' -%}
 We choose to write our docstrings
-using {% if cookiecutter.docstring_style == 'other' %}a{% else %}the{% endif %} [{{ docstring_name }}][style1a] standard.
+using {% if cookiecutter.docstring_style == 'other' %}a{% else %}the{% endif %} [{{ cookiecutter.__docstring_name }}][style1a] standard.
 Please be aware
 to adhere to it
 when making your contributions.
@@ -2282,7 +2267,7 @@ of the development cycle.
 By contributing to {{ cookiecutter.project_name }},
 you agree that your contributions
 will be licensed under
-{{ licence_list[0] }}[{{ licence_list[1] }}][licence1].
+{{ cookiecutter.__licence_article }}[{{ cookiecutter.__licence_simple }}][licence1].
 
 {% else -%}
 {{ cookiecutter.project_name }} is _**not**_ open source software.
@@ -2568,7 +2553,7 @@ to articulate their reasoning
 for the change.
 
 When a contributor comes across
-{{ roadmap_item_undefined }},
+{{ cookiecutter.__roadmap_item_indefinite }},
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 {{ cookiecutter.__mr_term }}
 {%- else %}
@@ -4238,7 +4223,7 @@ to achieve this goal:
    - Keep the {{ cookiecutter.__scm_platform_base }} repository efficient
      by properly labelling work items
      and associating them
-     with the relevant project {{ roadmap_item }};
+     with the relevant project {{ cookiecutter.__roadmap_item }};
 2. Become an advocate for new contributors:
    - Be overly conscious of [how to behave][behaviour]
      when interacting with a user
@@ -5286,7 +5271,7 @@ whenever possible.
 
 {% else -%}
 The project roadmap is maintained
-through [{{ cookiecutter.__scm_platform_base }} {{ roadmap_item.capitalize() }}s][topic2].
+through [{{ cookiecutter.__scm_platform_base }} {{ cookiecutter.__roadmap_item.capitalize() }}s][topic2].
 It provides an overview
 of the medium and long-term priorities of {{ cookiecutter.project_name }}
 as a project,
@@ -5308,8 +5293,8 @@ to the development team:
   and associated items,
   and then
   opening additional [**Requests for Improvement**][request2]
-  that pertain to existing {{ roadmap_item }}s;
-- Commenting on [issues without associated {{ roadmap_item }}s][query1]
+  that pertain to existing {{ cookiecutter.__roadmap_item }}s;
+- Commenting on [issues without associated {{ cookiecutter.__roadmap_item }}s][query1]
   and suggesting what relevant developments
   could they be associated with
   for the development team to evaluate;
@@ -5320,7 +5305,7 @@ to the development team:
   can be delivered with the same solution,
   we can generate increased aggregated value;
 - Becoming a [contributor][proposals]
-  to act on existing {{ roadmap_item }}s,
+  to act on existing {{ cookiecutter.__roadmap_item }}s,
   propose new developments not yet mapped
   or recommend [changes to the roadmap itself][roadmap].
 
@@ -5419,9 +5404,9 @@ what we are doing matters!
 [tracking]: #work-item-tracking
 [setup]: #development-setup
 
-[badge1]: https://img.shields.io/badge/issues_without_{{ roadmap_item }}-006272?style=for-the-badge
+[badge1]: https://img.shields.io/badge/issues_without_{{ cookiecutter.__roadmap_item }}-006272?style=for-the-badge
 {%- if cookiecutter.scm_platform == 'GitLab Free' %}
-[badge1a]: https://img.shields.io/badge/{{ task_item }}s_with_{{ roadmap_item }}-08b1ab?style=for-the-badge
+[badge1a]: https://img.shields.io/badge/{{ cookiecutter.__task_item }}s_with_{{ cookiecutter.__roadmap_item }}-08b1ab?style=for-the-badge
 {%- endif %}
 [badge2]: https://img.shields.io/badge/seeking_input-69ad6b?style=for-the-badge
 [badge3]: https://img.shields.io/badge/needs_triage-4285f4?style=for-the-badge
