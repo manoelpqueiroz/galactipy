@@ -572,8 +572,8 @@ source = ["{{ cookiecutter.package_name }}"]
 
 
 [tool.codespell]
-# UPDATEME with your desired Codespell configuration
 # https://github.com/codespell-project/codespell
+ignore-words-list = "sive"
 
 
 [tool.typos.default]

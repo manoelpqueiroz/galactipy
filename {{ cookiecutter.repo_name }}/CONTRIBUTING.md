@@ -5645,7 +5645,7 @@ what we are doing matters!
 [style1a]: https://sphinx-rtd-tutorial.readthedocs.io/en/latest/docstrings.html
 {%- endif %}
 [style2]: https://sembr.org/
-[style3]: https://sive.rs/1s <!-- codespell:ignore -->
+[style3]: https://sive.rs/1s
 [style4]: {{ cookiecutter.__scm_link_url }}/tree/master/.{{ cookiecutter.__scm_platform_lc }}
 [style5]: {{ cookiecutter.__scm_link_url }}/blob/master/CHANGELOG.md
 
