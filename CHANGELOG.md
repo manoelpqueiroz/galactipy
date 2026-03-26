@@ -1,3 +1,36 @@
+## 2.2.0 (2026-03-26)
+
+### :metro: Template Internals (1 change)
+
+- [:wrench: Ignore coverage for CLI helpers in bare CLI option](galactipy/galactipy@e5df445ece45180f85a8f66f24f8f3c6cf66c0a6)
+
+### :ballot_box: Settings & Options (1 change)
+
+- [:heavy_minus_sign: Remove restriction for Click in template dependencies](galactipy/galactipy@f3f9d7f5c0e7375ad181549972060d1fa6febd55)
+
+### :toolbox: Fixes (1 change)
+
+- [:bug: Fix non-zero exit code on Click 8.2+](galactipy/galactipy@f7245eaa6fb6fe7d70eff7242c0743dd3347ec6f)
+
+## 2.1.1 (2026-03-16)
+
+### :ballot_box: Settings & Options (2 changes)
+
+- [:shinto_shrine: Apply schema-specific terminology for template Docker tags](galactipy/galactipy@e56fea9d383278707b409b153fbb170a98658323)
+- [:wrench: Modify CalVer segment descriptions in `cookiecutter.json`](galactipy/galactipy@8c76ffa69f6f729da2cb09ec1a668ccd752605ce)
+
+### :airplane_departure: Release Cycle Optimisation (1 change)
+
+- [:construction_worker: Renovate dependency components/secret-detection with minor version v2.3.0](galactipy/galactipy@5929dbdaeabd6ab29964820ac5734864f58d5975) ([merge request](galactipy/galactipy!202))
+
+### :arrow_up: Dependencies Updates (1 change)
+
+- [:arrow_up: Renovate ruff with patch version v0.15.6](galactipy/galactipy@5e68a7140aff51ebfbb1bbacc8ab4ca0851b8341) ([merge request](galactipy/galactipy!204))
+
+### :pouring_liquid: Nits (1 change)
+
+- [:pencil2: Fix wrong usage of CalVer segment in GitLab Docker component](galactipy/galactipy@a22152519b8d0a44f64fc8dfbe2a94ad50c044a9)
+
 ## 2.1.0 (2026-03-13)
 
 ### :metro: Template Internals (1 change)

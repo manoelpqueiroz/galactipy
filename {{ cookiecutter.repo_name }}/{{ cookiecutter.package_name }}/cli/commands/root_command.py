@@ -28,14 +28,16 @@ from {{ cookiecutter.package_name }}.tui.main_window import TerminalApp
 app = typer.Typer(rich_markup_mode="rich")
 {%- elif cookiecutter.app_type == 'hybrid' %}
 from {{ cookiecutter.package_name }}.cli.commands.launch import launch_app
+from {{ cookiecutter.package_name }}.cli.helpers import naked_command
 from {{ cookiecutter.package_name }}.cli.styling import AppCustomThemes
 
-app = typer.Typer(no_args_is_help=True, rich_markup_mode="rich")
+app = typer.Typer(rich_markup_mode="rich")
 app.add_typer(launch_app)
 {%- else %}
+from {{ cookiecutter.package_name }}.cli.helpers import naked_command
 from {{ cookiecutter.package_name }}.cli.styling import AppCustomThemes
 
-app = typer.Typer(no_args_is_help=True, rich_markup_mode="rich")
+app = typer.Typer(rich_markup_mode="rich")
 {%- endif %}
 {%- if cookiecutter.app_type != 'bare_cli' %}
 app.add_typer(config_app, name="config")
@@ -68,8 +70,9 @@ def main(
         ),
     ] = None,
 {%- elif cookiecutter.app_type == 'hybrid' or cookiecutter.__app_group == 'cli' -%}
-@app.callback()
+@naked_command(app)
 def main(
+    ctx: typer.Context,
 {%- endif %}
     version: Annotated[
         bool,

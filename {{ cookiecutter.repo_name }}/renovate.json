@@ -167,13 +167,6 @@
         "platformdirs",
 {%- endif %}
         "nebulog"
-      ]
-    },
-    {
-      "description": "Ignore Click updates",
-      "enabled": false,
-      "matchPackageNames": [
-        "click"
 {%- else %}
         // TODO Specify your core dependencies here
 {%- endif %}{% raw %}
