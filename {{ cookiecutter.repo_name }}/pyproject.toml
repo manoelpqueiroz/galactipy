@@ -544,6 +544,10 @@ omit = [
 {%- if cookiecutter.app_type == 'bare_cli' %}
   # UPDATEME and allow `logging` after incorporating `setup_app_logging` into your code
   "*/logging/*",
+  # UPDATEME and allow `converter.py` after implementing input validation in your code
+  "*/helpers/converter.py",
+  # UPDATEME and allow `wrappers.py` after creating at least one CLI command group
+  "*/helpers/wrappers.py",
 {%- endif %}
 ]
 {%- endif %}
