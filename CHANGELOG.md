@@ -1,3 +1,17 @@
+## 2.2.0 (2026-03-26)
+
+### :metro: Template Internals (1 change)
+
+- [:wrench: Ignore coverage for CLI helpers in bare CLI option](galactipy/galactipy@e5df445ece45180f85a8f66f24f8f3c6cf66c0a6)
+
+### :ballot_box: Settings & Options (1 change)
+
+- [:heavy_minus_sign: Remove restriction for Click in template dependencies](galactipy/galactipy@f3f9d7f5c0e7375ad181549972060d1fa6febd55)
+
+### :toolbox: Fixes (1 change)
+
+- [:bug: Fix non-zero exit code on Click 8.2+](galactipy/galactipy@f7245eaa6fb6fe7d70eff7242c0743dd3347ec6f)
+
 ## 2.1.1 (2026-03-16)
 
 ### :ballot_box: Settings & Options (2 changes)
