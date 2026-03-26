@@ -74,7 +74,6 @@ art = "^6.5.0"  # UPDATEME by removing when no longer needed
 {%- if cookiecutter.app_type != 'bare_repo' %}
 
 typer = { extras = ["all"], version = "^0.20.0" }
-click = "~8.1.0" # FYI Click shouldn't require explicit declaration, but versions 8.2+ break Typer's behaviour
 rich = "^14.2.0"
 
 {% if cookiecutter.app_type != 'bare_cli' -%}
