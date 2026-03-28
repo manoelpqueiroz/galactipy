@@ -601,7 +601,8 @@ into the attitude
 for candidate contributors
 in more detail.
 
-{% elif cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% endif -%}
+{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 #### Roadmap Management
 
 Medium and long-term vision for {{ cookiecutter.project_name }}
@@ -5376,8 +5377,8 @@ what we are doing matters!
 [swnjw]: #say-why-not-just-what
 [starter]: #about-starter-assignments
 [bias]: #operate-with-a-bias-for-action
-[admission]: #opening-admissible-merge-requests
-[review]: #merge-request-review-process
+[admission]: #opening-admissible-{{ cookiecutter.__mr_term_slug }}s
+[review]: #{{ cookiecutter.__mr_term_slug }}-review-process
 [reviewer]: #the-responsibility-of-the-reviewer
 [roadmap]: #roadmap-management
 {%- if cookiecutter.licence != 'nos' %}
