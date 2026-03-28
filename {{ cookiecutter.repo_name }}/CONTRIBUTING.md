@@ -4737,7 +4737,7 @@ three types of requests for users
 through [Issue Templates][request0a]:
 {%- else %}
 through [Issue][request0a]
-and [Discussion][oldrequest1a] templates:
+and [Discussion][request0z] templates:
 {%- endif %}
 
 - **Requests for Correction**;
@@ -5755,7 +5755,7 @@ what we are doing matters!
 {%- else %}
 
 [request0a]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/ISSUE_TEMPLATE
-[oldrequest1a]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/DISCUSSION_TEMPLATE
+[request0z]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/DISCUSSION_TEMPLATE
 [request0b]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue
 [request0x]: {{ cookiecutter.__scm_link_url }}/discussions?discussions_q=
 [request0c]: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
