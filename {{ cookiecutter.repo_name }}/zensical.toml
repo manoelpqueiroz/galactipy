@@ -46,7 +46,46 @@ nav = [
       "reference/utilities/setup_app_logging.md",
   ] },
   ] },
-  { "Development" = "development/index.md" },
+  { "Development" = [
+    "development/index.md",
+    "development/development_setup.md",
+    "development/philosophy.md",
+    { "Policies" = [
+      "development/policies/index.md",
+      "development/policies/developing.md",
+{%- if cookiecutter.use_bdd %}
+      "development/policies/bdd.md",
+{%- endif %}
+      "development/policies/versioning.md",
+      "development/policies/branches.md",
+      "development/policies/committing.md",
+      "development/policies/styling.md",
+      "development/policies/checks.md",
+      "development/policies/ci.md",
+    ] },
+    { "Proposing Changes" = [
+      "development/for_developers/index.md",
+      "development/for_developers/prepare.md",
+      "development/for_developers/workflow.md",
+      "development/for_developers/review.md",
+      "development/for_developers/roles.md",
+{%- if cookiecutter.licence != 'nos' %}
+      "development/for_developers/behave.md",
+      "development/for_developers/foster.md",
+    ] },
+    { "Other Ways to Contribute" = [
+      "development/for_others/index.md",
+      "development/for_others/help_others.md",
+      "development/for_others/user_requests.md",
+      "development/for_others/review_changes.md",
+      "development/for_others/roadmap_maintenance.md",
+    ] },
+    "development/meet.md",
+{%- else %}
+    ] },
+{%- endif %}
+    "development/roadmap.md",
+  ] },
   { "What's New" = "whatsnew/index.md" },
 ]
 
