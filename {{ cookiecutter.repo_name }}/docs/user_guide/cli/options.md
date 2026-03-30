@@ -11,22 +11,7 @@ looks and feels to them.
 
 Operations related to the config
 are handled by the `{{ cookiecutter.repo_name }} config` CLI command
-and its subcommands[^1]:
-
-[^1]: **Legend:**
-<br><br>
-:fontawesome-solid-font: String input;
-<br>
-:fontawesome-solid-hashtag: Number input;
-<br>
-:fontawesome-solid-sitemap: Array input (dict, list, dict of lists etc.);
-<br>
-:fontawesome-solid-folder-tree: Valid filepath;
-<br>
-:fontawesome-solid-toggle-off: Binary flag.
-<br><br>
-:fontawesome-solid-border-none: denotes
-an optional argument.
+and its subcommands:
 
 ??? abstract "Get"
 
