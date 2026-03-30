@@ -3294,14 +3294,161 @@ A non-exhaustive list of steps to consider:
 {%- endif %}
 {%- endif %}
 
+#### Invoke Usage
+
+{% if cookiecutter.app_type == 'bare_repo' -%}
+[`invoke`][workflow0a] is a library that
+{% else -%}
+[`invoke`][changes6] is a library that
+{% endif -%}
+enables easy configuration of
+shell-oriented subprocesses
+as Python functions.
+At {{ cookiecutter.project_name }},
+it is our tool of choice
+to streamline common operations
+developers might perform
+during their work,
+without requiring them
+to memorise complex commands.
+
+Available tasks can be viewed
+at anytime
+with the `invoke --list` command
+{% if cookiecutter.app_type == 'bare_repo' -%}
+and are defined in the [`tasks.py`][workflow0b] file.
+{% else -%}
+and are defined in the [`tasks.py`][changes5] file.
+{% endif -%}
+
+Changes to the set of tasks
+and their behaviour
+should be proposed
+through a [**Internal Improvement**][workflow1] {{ cookiecutter.__mr_term }}.
+
+##### Environment Setup
+
+|      Command       | Details                                                                                                                        |
+| :----------------: | ------------------------------------------------------------------------------------------------------------------------------ |
+|  `invoke install`  | Sets up the Poetry virtual environment, installs the dependencies, pre-commit hooks and runs a mypy check.                     |
+| `invoke pyproject` | Checks `pyproject.toml` integrity.                                                                                             |
+|  `invoke update`   | Updates dependencies to their latest compatible release requirements, with an option to update to the latest versions overall. |
+
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
+>>> [!warning]
+For `invoke install` to run,
+Invoke must be installed and callable
+from your system.
+Otherwise, it is recommended to run `poetry install`
+to set up the repository.
+>>>
+
+{% else -%}
+> [!WARNING]
+> For `invoke install` to run,
+> Invoke must be installed and callable
+> from your system.
+> Otherwise, it is recommended to run `poetry install`
+> to set up the repository.
+
+{% endif -%}
+##### Quality Assurance Tasks
+
+|      Command       | Details                                                                                          |
+| :----------------: | ------------------------------------------------------------------------------------------------ |
+| `invoke codestyle` | Format files with Ruff, with an option to check files only.                                      |
+|   `invoke lint`    | Check compliance with linting rules, with an option to correct those considered fixable by Ruff. |
+|   `invoke mypy`    | Run mypy to check for static typing.                                                             |
+|   `invoke test`    | Run the test suite with Pytest.                                                                  |
+|  `invoke report`   | Run the `test` and `mypy` tasks and open their HTML coverage reports.                            |
+| `invoke security`  | Run security checks with Bandit and check `pyproject.toml` integrity.                            |
+
+The **`invoke sweep`** task groups all tasks
+except for `report`
+into a single command.
+**`invoke ruff`** can be used
+to run the Ruff formatter and linter
+with a single command.
+
+##### Project Building & Publishing
+
+|     Command      | Details                                                                                                                     |
+| :--------------: | --------------------------------------------------------------------------------------------------------------------------- |
+|  `invoke build`  | Build the project wheels.                                                                                                   |
+| `invoke config`  | Configure PyPI repositories, requiring at least an API token, with optional repository name and URL arguments.              |
+| `invoke publish` | Publish the project to a registry, defaulting to the canonical PyPI repository, with an option to build the project wheels. |
+
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
+>>> [!note]
+When `invoke config` is provided
+with no `--repo` option,
+Invoke will configure the connection
+to the [canonical PyPI repository][workflow2],
+with only the API token being required.
+When provided with the `--repo testpypi` option instead,
+it will configure the connection
+to [TestPyPI][workflow3]
+and no URL is needed.
+Other `--repo` values must also
+receive a `--url` argument
+pointing to the desired custom registry.
+>>>
+
+{% else -%}
+> [!NOTE]
+> When `invoke config` is provided
+> with no `--repo` option,
+> Invoke will configure the connection
+> to the [canonical PyPI repository][workflow2],
+> with only the API token being required.
+> When provided with the `--repo testpypi` option instead,
+> it will configure the connection
+> to [TestPyPI][workflow3]
+> and no URL is needed.
+> Other `--repo` values must also
+> receive a `--url` argument
+> pointing to the desired custom registry.
+
+{% endif -%}
+{% if cookiecutter.create_docker -%}
+##### Docker Operations
+
+|      Command       | Details                                                                                                  |
+| :----------------: | -------------------------------------------------------------------------------------------------------- |
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+|   `invoke login`   | Log in to the [GitLab Container Registry][workflow4] for the repository.                              |
+{%- else %}
+|   `invoke login`   | Log in to [Docker Hub][workflow4].                                                                    |
+{%- endif %}
+| `invoke container` | Build local container images, with the option to set multiple tags and an alternate repository to point. |
+|   `invoke push`    | Push all project images to a container registry, with the option to set an alternate repository to push. |
+|   `invoke prune`   | Remove all local images built for the project, with the option to set an alternate repository to point.  |
+
+{% endif -%}
+##### Cleanup Tasks
+
+|         Command         | Details                                                                                                         |
+| :---------------------: | --------------------------------------------------------------------------------------------------------------- |
+|  `invoke remove-cache`  | Remove `__pycache__` files from the local repository.                                                           |
+| `invoke remove-dsstore` | Remove the `.DS_Store` directory from the local repository.                                                     |
+|  `invoke remove-mypy`   | Remove the `.mypy_cache` directory from the local repository.                                                   |
+|  `invoke remove-ipynb`  | Remove the `.ipynb_checkpoints` directory from the local repository.                                            |
+| `invoke remove-pytest`  | Remove the `.pytest_cache` directory and the `.coverage` and `test_report.xml` files from the local repository. |
+|  `invoke remove-ruff`   | Remove the `.ruff_cache` directory from the local repository.                                                   |
+|  `invoke remove-build`  | Remove wheels built locally.                                                                                    |
+
+The **`invoke cleanup`** task groups all tasks
+except for `remove-build`
+into a single command.
+
 #### Test Markers
 
 When writing tests,
 we strongly encourage developers
 {%- if cookiecutter.use_bdd %}
-to leverage [feature file tags][workflow1]
+to leverage [feature file tags][workflow5]
 {%- else %}
-to leverage [custom Pytest markers][workflow1]
+to leverage [custom Pytest markers][workflow5]
 {%- endif %}
 to improve test collection
 and organisation.
@@ -3311,7 +3458,7 @@ if tests start to fail
 after introducing a change.
 
 The following markers are specified
-in [`pyproject.toml`][workflow2]:
+in [`pyproject.toml`][workflow6]:
 
 |     Marker      | Specification                                                                                                                   |
 | :-------------: | ------------------------------------------------------------------------------------------------------------------------------- |
@@ -3339,7 +3486,7 @@ in [`pyproject.toml`][workflow2]:
 
 To propose changes
 to the marker options,
-do so through a [Project Policy Proposal][roadmap1].
+do so through a [**Project Policy Proposal**][roadmap1].
 
 #### Feature Flags
 
@@ -4220,7 +4367,7 @@ to achieve this goal:
      and either propose [actions][bias]
      for eliminating them
      or seek discussion and feedback
-     via an [**Internal Improvement**][community3] {{ cookiecutter.__mr_acronym }};
+     via an [**Internal Improvement**][workflow1] {{ cookiecutter.__mr_acronym }};
    - Keep the {{ cookiecutter.__scm_platform_base }} repository efficient
      by properly labelling work items
      and associating them
@@ -4245,7 +4392,7 @@ to achieve this goal:
      to guide them
      on our ways and standards,
      empower them to understand how the project operates.
-     You have [started small][community4],
+     You have [started small][community3],
      so why not help someone else
      take this small first step?
    - Likewise,
@@ -4351,7 +4498,7 @@ However, if you ever feel stuck
 or confused,
 don't hesitate to seek help.
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-Leverage [replies][community5]
+Leverage [replies][community4]
 {%- else %}
 Leverage replies
 {%- endif %}
@@ -5709,12 +5856,28 @@ what we are doing matters!
 [prepare3]: https://google.github.io/eng-practices/review/
 
 {% endif -%}
-{% if cookiecutter.use_bdd -%}
-[workflow1]: https://pytest-bdd.readthedocs.io/en/latest/#organizing-your-scenarios
-{% else -%}
-[workflow1]: https://docs.pytest.org/en/stable/example/markers.html#mark-examples
+{% if cookiecutter.app_type == 'bare_repo' -%}
+[workflow0a]: https://www.pyinvoke.org/
+[workflow0b]: {{ cookiecutter.__scm_link_url }}/blob/master/tasks.py
 {% endif -%}
-[workflow2]: {{ cookiecutter.__scm_link_url }}/blob/master/pyproject.toml
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
+[workflow1]: {{ cookiecutter.__scm_link_url }}/merge_requests/new?issuable_template=Internal%2520Improvements
+{% else -%}
+[workflow1]: {{ cookiecutter.__scm_link_url }}/pulls/compare?template=internal_improvements.md
+{% endif -%}
+[workflow2]: https://pypi.org/
+[workflow3]: https://test.pypi.org/
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
+[workflow4]: https://docs.gitlab.com/ee/user/packages/container_registry/
+{% else -%}
+[workflow4]: https://hub.docker.com/
+{% endif -%}
+{% if cookiecutter.use_bdd -%}
+[workflow5]: https://pytest-bdd.readthedocs.io/en/latest/#organizing-your-scenarios
+{% else -%}
+[workflow5]: https://docs.pytest.org/en/stable/example/markers.html#mark-examples
+{% endif -%}
+[workflow6]: {{ cookiecutter.__scm_link_url }}/blob/master/pyproject.toml
 {%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
 
 [reviewing1]: https://josipmisko.com/posts/code-review-nit
@@ -5722,14 +5885,9 @@ what we are doing matters!
 
 [community1]: https://gregorybeamer.wordpress.com/2020/11/12/why-code-organization-is-so-important-in-software/
 [community2]: https://simonsinek.com/stories/the-right-way-to-stand-up-for-yourself-at-work/
+[community3]: https://firstpr.me/
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[community3]: {{ cookiecutter.__scm_link_url }}/merge_requests/new?issuable_template=Internal%2520Improvements
-{%- else %}
-[community3]: {{ cookiecutter.__scm_link_url }}/pulls/compare?template=internal_improvements.md
-{%- endif %}
-[community4]: https://firstpr.me/
-{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[community5]: https://docs.gitlab.com/user/discussions/
+[community4]: https://docs.gitlab.com/user/discussions/
 {%- endif %}
 
 [help1]: https://typer.tiangolo.com/help-typer/#help-others-with-questions-in-github
