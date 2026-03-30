@@ -20,10 +20,16 @@ nav = [
     "user_guide/index.md",
     "user_guide/10min.md",
     "user_guide/basics.md",
-    "user_guide/advanced.md",
+{%- if cookiecutter.app_type != 'bare_repo' %}
+    { "CLI Guide" = [
+      "user_guide/cli/index.md",
+{%- if cookiecutter.app_type != 'bare_cli' %}
+      "user_guide/cli/options.md",
+{%- endif %}
+    ] },
+{%- endif %}
     "user_guide/gotchas.md",
     "user_guide/faq.md",
-    "user_guide/options.md",
   ] },
   { "API Reference" = [
     "reference/index.md",
