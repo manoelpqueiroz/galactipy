@@ -173,7 +173,7 @@ with their usage:
 |         N/A         |                  `manual-check`                  | Requires manual validation to certain or all acceptance criteria.                                                 |
 |         N/A         |                 `manual-closure`                 | Items that should not be closed through commit closing patterns.                                                  |
 |       Plugins       |        `plugins{{ scope_separator }}api`         | Updates logic to enable third-party extensions based on the core {{ cookiecutter.project_name }} implementation.  |
-|       Plugins       |        `plugins{{ scope_separator }}arch`        | Implements undelying systems and structures for supporting plugins, including loading and discovery mechanisms.   |
+|       Plugins       |        `plugins{{ scope_separator }}arch`        | Implements underlying systems and structures for supporting plugins, including loading and discovery mechanisms.  |
 |      Policies       |        `policies{{ scope_separator }}ci`         | Changes rules triggering CI jobs.                                                                                 |
 |      Policies       |    `policies{{ scope_separator }}guidelines`     | Changes project guidelines in `CONTRIBUTING.md` or the formal documentation.                                      |
 |      Policies       |      `policies{{ scope_separator }}roadmap`      | Work items related to debates and proposals relating to the project roadmap.                                      |

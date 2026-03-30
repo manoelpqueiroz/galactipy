@@ -123,7 +123,7 @@ Installing the development version
 is a good way to:
 
 - Try a new feature
-  before it is oficially released;
+  before it is officially released;
 - Check whether
   a bug you encountered
   has been fixed

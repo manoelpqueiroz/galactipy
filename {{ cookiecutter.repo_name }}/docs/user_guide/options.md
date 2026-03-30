@@ -177,7 +177,7 @@ either temporarily at runtime
 or permanently through the config.
 
 At runtime,
-users should launch the command pallete
+users should launch the command palette
 with ++ctrl+p++
 and select the **Theme** command
 to pick one of the available options.
