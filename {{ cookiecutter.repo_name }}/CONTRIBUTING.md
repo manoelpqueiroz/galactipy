@@ -5386,20 +5386,54 @@ We appreciate your commitment beforehand!
 {% endif -%}
 ### Contributing with Documentation Changes
 
-Currently,
-the documentation surrounding {{ cookiecutter.project_name }}, including
-features,
-how to use,
-options
-and reference material
-are found directly
-in the project [`README`][readme] file.
+Contributing to the documentation benefits
+everyone who uses {{ cookiecutter.project_name }}.
+We encourage you
+to help us improve the documentation,
+and you don't have to be an expert on {{ cookiecutter.project_name }}
+to do so!
+In fact,
+there are sections of the docs
+that are worse off
+after being written by experts.
 
-You can propose changes and additions
-to the documentation
-by editing the `README` file
-and [opening a {{ cookiecutter.__mr_term }}][swmr]
-to integrate your changes to the project.
+The main goal of any documentation
+is to make usage of the library
+easy for any user,
+regardless of their level of experience
+with it.
+If something in the docs
+doesn't make sense to you,
+that means there is room for improvement
+and disclosing it to the community at large
+allows everyone to discuss
+and figure out
+what can be done.
+This is a great way to ensure
+changes will be made
+so they help the next person.
+
+If you have found an inconsistency
+or have a suggestion
+on how the {{ cookiecutter.project_name }} can improve,
+don't hesitate in letting us know!
+Open an [Request for Improvement][request2]
+and tell us what you would like
+to see changed
+in the docs.
+
+You are also much welcome
+to make modifications to the documentation
+yourself
+to help us
+get ever closer
+to providing
+an outstanding reference
+in the open source space!
+See the Documentation Guide
+for instructions
+on how to make changes
+to our docs.
 
 ### Contributing to Roadmap Maintenance
 
