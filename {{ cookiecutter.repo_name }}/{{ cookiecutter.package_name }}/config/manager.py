@@ -7,7 +7,7 @@ from pathlib import Path
 
 from orbittings import Nucleus
 
-from {{ cookiecutter.package_name }}.config.constants import (
+from {{ cookiecutter.package_name }}.config._internal import (
     generate_default_config_schema,
     get_default_config,
 )

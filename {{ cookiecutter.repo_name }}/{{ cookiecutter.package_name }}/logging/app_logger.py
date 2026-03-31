@@ -2,8 +2,8 @@
 
 from nebulog import install, logger
 
-from {{ cookiecutter.package_name }}.config.constants import get_default_log_path
-from {{ cookiecutter.package_name }}.logging.formatters import file_formatter
+from {{ cookiecutter.package_name }}.config._internal import get_default_log_path
+from {{ cookiecutter.package_name }}.logging._internal import file_formatter
 
 
 def setup_app_logging(*, debug: bool = False) -> None:
