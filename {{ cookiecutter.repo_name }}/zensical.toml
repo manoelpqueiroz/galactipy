@@ -91,6 +91,33 @@ nav = [
     ] },
 {%- endif %}
     "development/roadmap.md",
+    { "Development Packages Reference" = [
+      "development/dev_packages/index.md",
+{%- if cookiecutter.app_type != 'bare_repo' %}
+      { "CLI" = [
+        "development/dev_packages/cli/index.md",
+        "development/dev_packages/cli/basic_converter.md",
+        "development/dev_packages/cli/pretty_print.md",
+        "development/dev_packages/cli/themes.md",
+      ] },
+{%- endif %}
+{%- if cookiecutter.__app_group == 'tui' %}
+      { "TUI" = [
+        "development/dev_packages/tui/index.md",
+        "development/dev_packages/tui/terminal_app.md",
+      ] },
+{%- endif %}
+      { "Internal Objects" = [
+        "development/dev_packages/internal/index.md",
+        "development/dev_packages/internal/config.md",
+        "development/dev_packages/internal/logging.md",
+      ] },
+      { "Test Objects" = [
+        "development/dev_packages/tests/index.md",
+        "development/dev_packages/tests/helpers.md",
+        "development/dev_packages/tests/utils.md",
+      ] },
+    ] },
   ] },
   { "What's New" = "whatsnew/index.md" },
 ]
@@ -136,6 +163,7 @@ docstring_style = "{{ cookiecutter.docstring_style }}"
 show_source = false
 show_bases = false
 inherited_members = false
+filters = ["!^_"]
 
 # Headings configuration
 heading_level = 1
