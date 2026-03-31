@@ -22,12 +22,3 @@ The following packages are public:
 
 APIs not present in these packages
 are not guaranteed to be stable.
-
-## Development Packages
-
-The following packages are used
-for development of front-end features
-and interface elements:
-
-- **`{{ cookiecutter.package_name }}.cli`**;
-- **`{{ cookiecutter.package_name }}.tui`**.
