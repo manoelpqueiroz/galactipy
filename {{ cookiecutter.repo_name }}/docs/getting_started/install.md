@@ -168,16 +168,9 @@ to run effectively:
 | ------------------ | ------------------------- |
 | [`Textual`][9]    | 6.5.0                     |
 | [`Typer`][10]      | 0.20.0                    |
-| [`Click`][11]      | 8.1.0[^1]                 |
-| [`Rich`][12]       | 14.2.0                    |
-| [`Orbittings`][13] | 0.2.0                     |
-| [`Nebulog`][14]    | 0.1.0                     |
-
-[^1]: Click 8.2 introduced a bug
-that prevents correct exit codes
-from being raised,
-which forces {{ cookiecutter.project_name }}
-to pin it to this version.
+| [`Rich`][11]       | 14.2.0                    |
+| [`Orbittings`][12] | 0.2.0                     |
+| [`Nebulog`][13]    | 0.1.0                     |
 
 <!-- RECORD this section if your package has optional dependencies
 ### Optional dependencies
@@ -223,7 +216,6 @@ Installable with `pipx install "{{ cookiecutter.repo_name }}[<extra_group>]"`:
 {%- endif %}
 [9]: https://textual.textualize.io/
 [10]: https://typer.tiangolo.com/
-[11]: https://click.palletsprojects.com/en/stable/
-[12]: https://rich.readthedocs.io/en/stable/introduction.html
-[13]: https://gitlab.com/galactipy/libraries/orbittings
-[14]: https://gitlab.com/galactipy/libraries/nebulog
+[11]: https://rich.readthedocs.io/en/stable/introduction.html
+[12]: https://gitlab.com/galactipy/libraries/orbittings
+[13]: https://gitlab.com/galactipy/libraries/nebulog
