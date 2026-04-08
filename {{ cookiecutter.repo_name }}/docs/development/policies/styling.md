@@ -19,7 +19,7 @@ use a [Project Policy Proposal {{ cookiecutter.__mr_acronym }}][2].
 
 {% if cookiecutter.docstring_style != 'other' -%}
 We choose to write our docstrings
-using {% if cookiecutter.docstring_style == 'other' %}a{% else %}the{% endif %} [{{ cookiecutter.__docstring_name }}][1a] standard.
+using the [{{ cookiecutter.__docstring_name }}][1a] standard.
 Please be aware
 to adhere to it
 when making your contributions.
@@ -42,9 +42,25 @@ for docstrings:
   must define only the short summary;
   other sections
   are left to the contributor's discretion;
-- Objects defined in the `tests` directory
-  are not obliged
-  to define docstrings.
+- For classes:
+    - If a class does not define attributes
+      – or only does so using properties –,
+      the class docstring does not need
+      to describe the "Attributes" section;
+      otherwise,
+      all attributes and properties
+      must be listed
+      in this section;
+    - The parameters for the `__init__` method
+      should be declared in the class docstring,
+      with the method's docstring itself containing
+      only the short summary
+      for the purpose to pass codestyle rules;
+- If a module expose public constants
+  to users,
+  its docstring must contain
+  the "Attributes" section
+  listing all constants.
 
 {% else -%}
 <!-- RECORD your docstring convention details and usage guidelines -->
