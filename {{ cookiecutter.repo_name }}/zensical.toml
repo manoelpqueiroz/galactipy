@@ -50,6 +50,8 @@ nav = [
     { "Utilities" = [
       "reference/utilities/index.md",
       "reference/utilities/setup_app_logging.md",
+      "reference/utilities/log_caster.md",
+      "reference/utilities/file_parser.md",
   ] },
   ] },
   { "Development" = [
@@ -72,7 +74,16 @@ nav = [
     { "Proposing Changes" = [
       "development/for_developers/index.md",
       "development/for_developers/prepare.md",
-      "development/for_developers/workflow.md",
+      { "Development Workflow" = [
+        "development/for_developers/workflow/index.md",
+        "development/for_developers/workflow/invoke.md",
+      ] },
+      { "Documentation Guide" = [
+        "development/for_developers/documentation/index.md",
+        "development/for_developers/documentation/anatomy.md",
+        "development/for_developers/documentation/philosophy.md",
+        "development/for_developers/documentation/making_changes.md",
+      ] },
       "development/for_developers/review.md",
       "development/for_developers/roles.md",
 {%- if cookiecutter.licence != 'nos' %}
@@ -129,7 +140,6 @@ features = [
   "navigation.tabs",
   "navigation.tabs.sticky",
   "navigation.path",
-  "navigation.expand",
   "navigation.top",
   "navigation.footer",
   "search.highlight",
