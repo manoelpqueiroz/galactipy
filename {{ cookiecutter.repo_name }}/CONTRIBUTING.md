@@ -2092,7 +2092,7 @@ use a [Project Policy Proposal {{ cookiecutter.__mr_acronym }}][roadmap1].
 
 {% if cookiecutter.docstring_style != 'other' -%}
 We choose to write our docstrings
-using {% if cookiecutter.docstring_style == 'other' %}a{% else %}the{% endif %} [{{ cookiecutter.__docstring_name }}][style1a] standard.
+using the [{{ cookiecutter.__docstring_name }}][style1a] standard.
 Please be aware
 to adhere to it
 when making your contributions.
@@ -2115,9 +2115,25 @@ for docstrings:
   must define only the short summary;
   other sections
   are left to the contributor's discretion;
-- Objects defined in the `tests` directory
-  are not obliged
-  to define docstrings.
+- For classes:
+  - If a class does not define attributes
+    – or only does so using properties –,
+    the class docstring does not need
+    to describe the "Attributes" section;
+    otherwise,
+    all attributes and properties
+    must be listed
+    in this section;
+  - The parameters for the `__init__` method
+    should be declared in the class docstring,
+    with the method's docstring itself containing
+    only the short summary
+    for the purpose to pass codestyle rules;
+- If a module exposes public constants
+  to users,
+  the module docstring must contain
+  the "Attributes" section
+  listing all constants.
 
 {% else -%}
 <!-- DEFINE your docstring convention details and usage guidelines -->
@@ -3493,6 +3509,895 @@ do so through a [**Project Policy Proposal**][roadmap1].
 <!-- DEFINE the guidelines on how to implement and handle feature flags -->
 
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+
+### Documentation Guide
+
+Documentation is a crucial part
+of the work at {{ cookiecutter.project_name }},
+and developers are expected
+to give as much attention to docs
+as they give to the code.
+
+Our documentation should also be viewed
+as one of the selling points of {{ cookiecutter.project_name }}.
+The more understandable our docs become:
+
+1. The more **developers**
+   shall feel inclined to contribute
+   to {{ cookiecutter.project_name }}'s further growth;
+2. The more empowered
+   will the **absolute beginners**
+   (e.g.,
+   people who have no prior contact
+   with our solution
+   )
+   feel to use our software;
+3. **The more credible our project will get**.
+
+On the other hand,
+not taking care of our documentation
+entails the following mindset
+from people:
+
+- If people don't know
+  why our project exists,
+  they won't use it;
+- If people can't figure out
+  how to install our solution,
+  _they won't use it_;
+- If people can't understand
+  how to use our software,
+  _**they won't use it**_.
+
+Thus,
+aiming for a polished state for our docs
+helps our users succeed with {{ cookiecutter.project_name }},
+empowers them to be self-sufficient
+and enables them to give us further feedback.
+It's a virtuous cycle
+that can only play to everyone's advantage,
+and we encourage developers
+to familiarise themselves
+with specific guidelines
+on this domain.
+
+#### Anatomy
+
+As a contributor,
+be aware that
+whenever the term "documentation" is mentioned,
+it can refer to any one
+of the following distinct domains
+where knowledge is collected
+and presented to different audiences.
+
+##### The `README` File
+
+The [`README`][readme] file
+is the one that users will first interact with
+when they decide to check {{ cookiecutter.project_name }}
+– be it in the project repository
+or the PyPI package listing.
+Its main purpose is
+to provide the essential information
+to get people started with
+the project.
+
+Thus,
+the content should be targeted
+towards people who are not familiar with the project,
+strictly aiming for brevity and clarity
+in its contents.
+
+It should aptly fulfill
+the following functions:
+
+1. Present the purpose of the project;
+2. Show how {{ cookiecutter.project_name }}
+   can help people solve
+   their problem at hand;
+3. Provide information
+   on common use cases
+   for {{ cookiecutter.project_name }};
+4. Swiftly detail the installation process;
+5. Tell how anyone
+   could contribute to {{ cookiecutter.project_name }}.
+
+Should any of these topics
+not be made explicit
+from the perspective of a new user,
+then changes in these files are warranted.
+
+##### Hard Policy Files
+
+These are files
+that delineate the core principles
+guiding the work at {{ cookiecutter.project_name }}.
+Collectively,
+they form what we could call
+the "statute" of the project,
+and are geared towards
+contributors of all levels
+of familiriaty
+and activity
+in the project.
+
+Their main purpose
+is to place all contributors
+under a single understanding
+of how the work should be done in {{ cookiecutter.project_name }},
+and act as a paramount resource
+to address contesting visions
+for implementing something
+when discussions arise.
+
+The hard policy files are:
+
+- The `CONTRIBUTING` guide
+  (i.e., this very file):
+  - Shows how people can get started
+    setting up a development environment
+    for {{ cookiecutter.project_name }};
+  - Lists the main tools
+    used for managing development of the project
+    and how contributors
+    should approach them;
+  - Contains all sets of rules regulating
+    what contributors are expected to do,
+    how they should behave
+    – individually and on interactions –
+    and how flexibly or not
+    these rules should be followed;
+- The [`ROADMAP`][roadmap] file:
+  - Delves relatively deeper than the `README`
+    on the purpose of the project;
+  - States the mission of the project,
+    a visionary declaration
+    of what the contributors see
+    as the endgame of development;
+  - Lays out the different stages of development
+    and what is expected to be achieved
+    at each one of them;
+  - Provides anyone
+    with a quick reference table
+    of the history of major milestones
+    that have been either
+    discussed,
+    already delivered,
+    currently developed
+    or planned for the future,
+    aiming to more easily situate newcomers
+    and people interest in contributing;
+- The [`SECURITY`][docs1] file:
+  - Presents the threat model for the project;
+  - Provides guidance to people
+    on how to report a security vulnerability
+    (and what is **not** considered one);
+  - Clarifies how we respond to
+    and disclose a security report
+    once it is send;
+  - Informs of any current vulnerabilities and advisories;
+- The [Code of Conduct][cc2],
+  for which more specific information
+  can be found in [its respective section][covenant].
+
+These files are not immutable,
+and can be submitted for changes and updates
+by any contributor
+via a [**Project Policy Proposal** {{ cookiecutter.__mr_acronym }}][roadmap1].
+
+##### Issue and {{ cookiecutter.__mr_term }} Templates
+
+Templates used for
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+issues
+{%- else %}
+issues,
+discussions
+{%- endif %}
+and {{ cookiecutter.__mr_term }}s
+are also part of {{ cookiecutter.project_name }} policies,
+as they regulate,
+for specific themes:
+
+- When to use a template;
+- What information to provide
+  to start discussions;
+- How to frame
+  the work item's structure
+  for submission.
+
+But since they are more flexible
+in their presentation,
+they are considered "soft" policy files instead.
+
+To effectively provide value to the project,
+these files must be arranged
+as high-level instructions
+to facilitate their filling out
+in an orderly and complete manner,
+and should be updated
+whenever they are increasingly misused
+by submitters,
+be they contributors
+or community members.
+This includes
+creating new types of templates
+when the project's circumstances
+call for.
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+
+>>> [!tip]
+Checklists can be leveraged
+for submitters and reviewers
+to follow more easily
+in regards to relevant actions
+related to the item.
+
+For the sake of clarity,
+whenever an action
+might take the form
+of binary choices,
+prefer splitting them
+in separate nested items
+and orient users
+to leverage
+[complete/inapplicable tasks][docs2].
+>>>
+{%- endif %}
+
+Moreover,
+our view is that
+**work items are also part of documentation**.
+Contributors,
+especially those
+who have an active role
+in {{ cookiecutter.project_name }},
+should always be aware
+to treat posts and interactions
+in work item discussions
+anticipating how their input
+can be useful in the future,
+following our [guiding principles][swnjw].
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+
+>>> [!important]
+Special attention should be given
+when participating in a **Structural Design** discussion.
+Those {{ cookiecutter.__mr_acronym }}s are more delicate
+as their purpose is
+to signal other project members
+the formation of a validation board
+which will ratify future feature implementation
+or reevaluate previous implementation flaws
+that went undetected.
+
+Those {{ cookiecutter.__mr_acronym }}s
+are functionally the same
+as [enhancement proposals][docs3],
+collecting feedback
+on a design
+and producing a historical record
+on the rationale
+behind our design decisions.
+Every contributor is welcome to participate
+and provide input to the discussions,
+but we kindly ask you
+to refrain from adding trivial comments
+in these occasions
+and actively focus
+on discussion points.
+>>>
+{%- else %}
+
+> [!IMPORTANT]
+> Special attention should be given
+> when participating in a **Structural Design** discussion.
+> Those {{ cookiecutter.__mr_acronym }}s are more delicate
+> as their purpose is
+> to signal other project members
+> the formation of a validation board
+> which will ratify future feature implementation
+> or reevaluate previous implementation flaws
+> that went undetected.
+>
+> Those {{ cookiecutter.__mr_acronym }}s
+> are functionally the same
+> as [enhancement proposals][docs3],
+> collecting feedback
+> on a design
+> and producing a historical record
+> on the rationale
+> behind our design decisions.
+> Every contributor is welcome to participate
+> and provide input to the discussions,
+> but we kindly ask you
+> to refrain from adding trivial comments
+> in these occasions
+> and actively focus
+> on discussion points.
+{%- endif %}
+
+Improvements to the structure of these files,
+as well as proposing new template types,
+should be done via a [**Project Policy Proposal** {{ cookiecutter.__mr_acronym }}][roadmap1].
+
+##### The Formal Documentation
+
+Apart from individual files
+spread across the repository,
+the [`docs/`][docs4] directory stores
+what we call the "formal" documentation
+for {{ cookiecutter.project_name }}.
+These are the docs
+that are exposed to the public
+via a static website.
+
+We use Zensical
+as the backbone of our documentation,
+which is configured
+in the [`zensical.toml`][docs5] file.
+Contributors are instructed
+to read [Zensical's][docs6] documentation
+before proposing changes to ours.
+
+The formal docs
+have their own structure,
+split across four major branches of knowledge:
+
+- The **Reference Guide**,
+  a technical document
+  which collects the public API
+  for technical reference;
+  it presents:
+  - All the functions and methods
+    publicly available in the software;
+  - How they work;
+  - What inputs and outputs
+    users should expect,
+    along with side effects;
+  - Examples of implementation
+    and use contexts;
+- Instruction guides,
+  with varying levels of detail;
+  those are tutorial-like documents
+  that take the user "by the hand"
+  and loop through the features
+  of {{ cookiecutter.project_name }},
+  which include:
+  - The installation guide,
+    with full instructions
+    on all different methods
+    of installation;
+  - An overview of the package,
+    illustrating purpose,
+    main features
+    and core aspects;
+  - Manuals on
+    how to use {{ cookiecutter.project_name }}
+{%- if cookiecutter.app_type != 'bare_repo' %}
+    on an elementary level,
+    guidance on caveats
+    users should be aware of
+    and the complete catalog
+    of CLI commands and options;
+{%- else %}
+    on an elementary level
+    and guidance on caveats
+    users should be aware of;
+{%- endif %}
+- Cookbook-style content,
+  containing recipes
+  for how to use the library
+  to accomplish specific tasks:
+  - 1-minute tutorials
+    to quickly showcase
+    practical usage of {{ cookiecutter.project_name }},
+    one feature at a time;
+  - Dedicated guides
+    comparing {{ cookiecutter.project_name }} to alternatives,
+    providing their users
+    with relevant content
+    to easily translate concepts
+    from those alternatives
+    into {{ cookiecutter.project_name }}
+    and more easily migrate from them;
+  - Sections dedicated to power users
+    who aim to take the most
+    out of the library's functionalities;
+  - A collection of community-generated guides
+    and FAQs to address the most common issues
+    faced by {{ cookiecutter.project_name }} users;
+- The **Development Guide**,
+  aimed at existing and potential contributors
+  to serve as the reference
+  for how development of {{ cookiecutter.project_name }} takes place,
+  which encompasses:
+  - The transcription
+    of all hard policy files
+    defining the rules
+    for development;
+  - The reference
+    for non-public API objects
+    present in the {{ cookiecutter.project_name }} codebase
+    (i.e., those that are not exposed to users);
+  - Information on how to contact the team
+    for different purposes;
+  - The collection of all previous releases
+    and their release notes
+    for reference.
+
+Changes to any part of the formal documentation
+are also done via [**Project Policy Proposal** {{ cookiecutter.__mr_acronym }}s][roadmap1],
+with more detailed guidelines
+presented in its [specific section][docchanges].
+
+#### Documentation Philosophy
+
+> Adapted from the [Google Style Guides][docs7].
+
+When dealing with any
+of the content and files
+which can be declared documentation,
+contributors should follow these principles
+on top of our [core values][philosophy]
+to achieve the best results possible.
+
+##### Minimum Viable Documentation
+
+A small set of fresh and accurate docs
+is better than
+a large assembly of "documentation"
+in various states of disrepair.
+
+- Write short and useful documents;
+- Cut out everything unnecessary,
+  including out-of-date,
+  incorrect,
+  or redundant information;
+- Make a habit
+  of continually massaging
+  and improving every doc
+  to suit the changing needs
+  of their audience.
+
+<div align="center">
+
+_Docs work best when they are alive but frequently trimmed, like a bonsai tree._
+
+</div>
+
+##### Update Docs with Code
+
+Update your documentation
+in the same [{{ cookiecutter.__mr_term }}][swmr]
+as the code change.
+This keeps your docs fresh,
+and is also a good place
+to explain to your reviewer
+what you're doing.
+
+A good reviewer can at least insist
+that docstrings,
+header files,
+the `README` file
+and any other docs get updated
+alongside the proposed change.
+
+##### Delete Dead Documentation
+
+Dead docs are bad.
+They misinform,
+they slow down,
+they incite despair in users
+and laziness in team members.
+They set a precedent
+for leaving behind messes
+in the codebase.
+If your home is clean,
+most guests will be clean
+without being asked.
+
+Just like any big cleaning project,
+it's easy to be overwhelmed.
+If the docs are in bad shape:
+
+- Take it slow,
+  doc health is a gradual accumulation;
+- First delete
+  what you're certain is wrong,
+  ignore what's unclear.
+- Get other team members involved;
+  devote time
+  to quickly scan every doc
+  and make a simple decision:
+  should we keep it
+  or delete it?
+- Default to delete
+  or leave behind if migrating;
+  stragglers can always be recovered.
+- Iterate.
+
+##### Prefer Good over the Perfect
+
+Documentation is an art.
+There is no perfect document,
+there are only proven methods
+and prudent guidelines.
+
+The standards
+for an internal documentation review
+are different
+from the standards
+for code reviews.
+Reviewers should ask for improvements,
+but in general,
+the author should always be able
+to invoke the _Better/Best Rule_.
+
+Fast iteration is your friend.
+To get long-term improvement,
+authors must stay productive
+when making short-term improvements.
+Set lower standards for each {{ cookiecutter.__mr_term }},
+so that more such {{ cookiecutter.__mr_acronym }}s can happen.
+
+As a reviewer of a documentation {{ cookiecutter.__mr_acronym }}:
+
+- When reasonable,
+  clear the {{ cookiecutter.__mr_acronym }} immediately
+  and trust that
+  comments will be fixed appropriately;
+- Prefer to suggest an alternative
+  rather than leaving a vague comment;
+- For substantial changes,
+  start your own follow-up {{ cookiecutter.__mr_acronym }} instead;
+  try especially to avoid comments
+  of the form "You should also...";
+- On rare occasions,
+  hold up submission if the {{ cookiecutter.__mr_acronym }}
+  actually makes the docs worse;
+  it's okay to ask the author
+  to revert.
+
+As an author:
+
+- Avoid wasting cycles
+  with trivial argument;
+  capitulate early and move on;
+- Cite the _Better/Best Rule_
+  as often as needed.
+
+##### Documentation is the Story of Our Code
+
+Writing excellent code
+doesn't end when your code compiles
+or even if your test coverage reaches 100%.
+It's easy to write something
+a computer understands,
+it's much harder to write something
+both a human and a computer understand.
+Your mission as a Code Health-conscious contributor
+is to **write for humans first, computers second**.
+Documentation is an important part
+of this skill.
+
+##### Duplication is Evil
+
+Do not write your own guide
+to a common technology or process
+– link to it instead.
+If the guide doesn't exist
+or it's badly out of date,
+submit your own updates
+directly to the upstream libraries.
+Take ownership and don't be shy:
+other teams will usually
+welcome your contributions.
+
+#### Making Changes to the Documentation
+
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
+>>> [!important]
+This section refers to guidelines
+for changing the **Formal Documentation**.
+
+If you wish to make changes
+to another type of file,
+refer to its respective commentary
+in the [Anatomy section][anatomy].
+>>>
+
+{% else -%}
+> [!IMPORTANT]
+> This section refers to guidelines
+> for changing the **Formal Documentation**.
+>
+> If you wish to make changes
+> to another type of file,
+> refer to its respective commentary
+> in the [Anatomy section][anatomy].
+
+{% endif -%}
+Anyone is welcome
+to make improvements to the documentation,
+validated through a [**Project Policy Proposal** {{ cookiecutter.__mr_term }}][roadmap1].
+Even if the updates are marginal,
+we encourage contributors
+to submit their changes
+and help us get closer
+to delivering flawless docs
+to our community.
+
+Be aware to observe
+the following protocols
+to orient your approach
+at all times
+during content edition:
+
+- The target reader varies
+  depending on the page;
+  strive to change/add content
+  so it suits its respective audience;
+  do not attempt to
+  accommodate multiple reader types
+  to a single page;
+- Leverage [Zensical's features][docs8] where appropriate
+  to elevate knowledge transmission;
+  use them strategically,
+  however,
+  and avoid overrelying on them
+  to build a page's content;
+- Keep pages
+  with a maximum heading depth of **3**
+  to reduce cognitive load on readers,
+  and split into multiple pages
+  to focus on a single unit of knowledge
+  at a time.
+
+Additionally,
+some parts of the documentation
+should adhere to specific conventions
+to standardise content and formatting,
+helping users more easily navigate
+through the pages.
+
+##### API Collection
+
+The project uses [`mkdocstrings`][docs9]
+(and, more specifically, [`mkdocstrings-python`][docs10])
+to collect the API from {{ cookiecutter.project_name }}.
+This makes the process
+of providing API details to users
+much more efficient,
+but mkdocstrings does not make
+the process completely automatic.
+Thus,
+contributors are required to understand
+specific conventions defined here
+to ensure their changes
+follow a logical standard.
+
+For the public API,
+we enforce the rule of
+**one page per method/attribute**.
+Instead of collecting the entire class
+or module
+in a single page,
+by having each method,
+attribute
+or function
+be placed in its own page
+we reduce clutter
+and readers can focus on
+those objects' implementation
+without distraction.
+
+For classes,
+this encompasses
+a specific structure
+with distinct `mkdocstrings` options:
+
+1. A [navigation section][docs11] page
+   to present the class' docstring
+   and objects:
+
+```
+::: <object_path>
+    options:
+      members: false
+      show_root_full_path: true
+      show_symbol_type_heading: false
+      show_signature: false
+      separate_signature: false
+      show_docstring_parameters: false
+      show_docstring_returns: false
+      show_docstring_examples: false
+      show_docstring_raises: false
+      show_docstring_warns: false
+      show_docstring_yields: false
+```
+
+2. A page to provide the class' constructor
+   and `__init__` method details,
+   named `init.md`:
+
+```
+::: <object_path>
+    options:
+      show_docstring_attributes: false
+      show_docstring_functions: false
+      show_docstring_description: false
+      members:
+      - __init__
+```
+
+3. Additional subpages
+   to document each method
+   or property for the class
+   (does not require
+   `mkdocstrings` handler option overriding).
+
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
+>>> [!note]
+For simpler classes
+that do not require a constructor,
+such as Enums or dataclasses,
+the `init.md` file can be skipped altogether,
+using the navigation section page
+to perform its purpose:
+
+```
+::: <object_path>
+    options:
+      members: false
+      show_root_full_path: true
+```
+>>>
+
+{% else -%}
+> [!note]
+> For simpler classes
+> that do not require a constructor,
+> such as Enums or dataclasses,
+> the `init.md` file can be skipped altogether,
+> using the navigation section page
+> to perform its purpose:
+>
+> ```
+> ::: <object_path>
+>     options:
+>       members: false
+>       show_root_full_path: true
+> ```
+
+{% endif -%}
+For any public functions,
+only the object path
+should be overridden
+from `mkdocstrings` handlers:
+
+```
+::: <object_path>
+    options:
+      show_root_full_path: true
+```
+
+If a constant is exposed to users
+in the public API,
+their collection into the docs
+must also include content
+manually added
+to explain its purpose and usage,
+as constants are object instances
+and thus lack docstrings on their own.
+The `mkdocstrings` configuration
+for this object is the following:
+
+```
+::: <object_path>
+    options:
+      show_root_full_path: true
+      separate_signature: false
+      show_attribute_values: false
+```
+
+Some of the objects
+are not exposed to users
+in the public API.
+They should be collected instead
+in the **Development Guide**
+as a reference for developers
+working in {{ cookiecutter.project_name }}.
+{%- if cookiecutter.app_type != 'bare_cli' %}
+Their configuration is simpler:
+
+- For objects defined
+{%- if cookiecutter.__app_group == 'tui' %}
+  either in the `tui` or `cli` packages,
+{%- else %}
+  in the `cli` package,
+{%- endif %}
+  they should be individually collected,
+  but classes do not require multiple pages
+  and can be displayed
+  with all attributes and methods
+  listed in a single page;
+- For everything else,
+  objects should be collected
+  for each module
+  that is not exposed publicly,
+  including any auxiliary packages
+  defined in `tests`.
+
+For both cases,
+the API can be collected
+{%- else %}
+
+<!-- DEFINE your rules for non-exposed API collection -->
+
+For auxiliary packages
+in the `tests` directory,
+objects should be collected
+at the module level
+{%- endif %}
+using the following `mkdocstrings` configuration:
+
+```
+::: <object_path>
+    options:
+      show_root_full_path: true
+```
+
+The rules for API collection
+described here
+should be applied
+in conjunction with [docstring rules][docstrings]
+for full compliance
+with documentation rules.
+
+##### Policy Mirroring
+
+The contents of
+`CONTRIBUTING.md`,
+`ROADMAP.md`
+and `SECURITY.md`
+should always be reflected
+in the formal documentation.
+Whenever you make changes
+to files in the `docs/` directory
+or these policy files,
+always make sure to check
+for changes required
+in the other.
+
+Content must not be blindly copied
+from one to the other:
+since features and Markdown syntax
+differ between [{{ cookiecutter.__scm_platform_base }} Flavoured Markdown][request0c]
+and [Zensical][docs8],
+contributors should aim
+to leverage each one's
+leading components,
+which may lead to
+different layouts altogether
+(cf. the Invoke command list
+in [`CONTRIBUTING.md`][invoke]
+and [the formal documentation][docs12]).
+
+Whenever mirroring content,
+make sure to leave comments
+at Markdown headings on each file
+pointing to where contributors
+can find their counterpart.
+While this makes
+the process of updating documentation
+unable to be fully automated,
+this ensures team members focus
+on tailoring knowledge sharing
+to suit the environment
+where it is presented.
+
 ### {{ cookiecutter.__mr_term }} Review Process
 
 After [starting with a {{ cookiecutter.__mr_term }}][swmr],
@@ -5430,7 +6335,7 @@ get ever closer
 to providing
 an outstanding reference
 in the open source space!
-See the Documentation Guide
+See the [Documentation Guide][docs]
 for instructions
 on how to make changes
 to our docs.
@@ -5585,6 +6490,13 @@ what we are doing matters!
 [workflow]: #development-workflow
 [tracking]: #work-item-tracking
 [setup]: #development-setup
+[docs]: #documentation-guide
+[covenant]: #code-of-conduct
+[requests]: #contributing-through-user-requests
+[docchanges]: #making-changes-to-the-documentation
+[anatomy]: #anatomy
+[docstrings]: #docstring-convention
+[invoke]: #invoke-usage
 
 [badge1]: https://img.shields.io/badge/issues_without_{{ cookiecutter.__roadmap_item }}-006272?style=for-the-badge
 {%- if cookiecutter.scm_platform == 'GitLab Free' %}
@@ -5912,6 +6824,19 @@ what we are doing matters!
 [workflow5]: https://docs.pytest.org/en/stable/example/markers.html#mark-examples
 {% endif -%}
 [workflow6]: {{ cookiecutter.__scm_link_url }}/blob/master/pyproject.toml
+
+[docs1]: {{ cookiecutter.__scm_link_url }}/blob/master/SECURITY.md
+[docs2]: https://docs.gitlab.com/user/markdown/#task-lists
+[docs3]: https://pydevtools.com/handbook/explanation/pep/
+[docs4]: {{ cookiecutter.__scm_link_url }}/tree/master/docs
+[docs5]: {{ cookiecutter.__scm_link_url }}/blob/master/zensical.toml
+[docs6]: https://zensical.org/
+[docs7]: https://google.github.io/styleguide/docguide/best_practices.html
+[docs8]: https://zensical.org/docs/authoring/markdown/
+[docs9]: https://mkdocstrings.github.io/
+[docs10]: https://mkdocstrings.github.io/python/
+[docs11]: https://zensical.org/docs/setup/navigation/#navigation-sections
+[docs12]: {{ cookiecutter.__scm_link_url }}/blob/master/docs/development/for_developers/workflow/invoke.md
 {%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
 
 [reviewing1]: https://josipmisko.com/posts/code-review-nit
