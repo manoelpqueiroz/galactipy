@@ -14,7 +14,7 @@ in the {{ cookiecutter.project_name }} codebase.
 
 ### Current Security Advisories
 
-We publish security advisories
+We [publish][1] security advisories
 for any vulnerabilities
 we address.
 
@@ -147,7 +147,7 @@ your report:
       of the mailing list being notified,
       a copy of the advisory
       will be published
-      on the [{{ cookiecutter.__scm_platform_base }} Advisory Database][3].
+      on the [{{ cookiecutter.__scm_platform_base }} Advisory Database][4].
 
 !!! warning
 
@@ -180,7 +180,7 @@ to the following guidelines:
 
 1. **Code of Conduct Compliance:**
    all security reports must comply
-   with our [Code of Conduct][1];
+   with our [Code of Conduct][2];
    reports that violate our code of conduct
    will not be considered
    and may result
@@ -408,7 +408,7 @@ and security posture notes.
 #### Python CLI Program
 
 {{ cookiecutter.project_name }} ships as a Python module
-distributed via [PyPI][2].
+distributed via [PyPI][3].
 The CLI program is built using Typer
 and can be installed and executed
 directly from the command-line.
@@ -522,8 +522,8 @@ that allow users
 to independently verify
 the integrity of our artifacts.
 You can access these assets
-on the [Releases][4] page
-and use [Cosign][5]
+on the [Releases][5] page
+and use [Cosign][6]
 to validate them
 against the corresponding binaries,
 ensuring that what you download
@@ -894,10 +894,10 @@ If you have any suggestions
 on how our security processes
 could be improved,
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-please open a [Request for Improvement][6]
+please open a [Request for Improvement][7]
 on our Issue Tracker.
 {%- else %}
-please open a [Request for Improvement][4]
+please open a [Request for Improvement][5]
 in our Discussions page.
 {%- endif %}
 We will reply to you
@@ -907,14 +907,17 @@ in due time.
 
 <!-- RECORD with security policies of third-party libraries relevant to {{ cookiecutter.project_name }} -->
 
-[1]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md
-[2]: https://pypi.org/project/{{ cookiecutter.repo_name }}/
+<!-- Anchors -->
+
+[1]: ../noticeboard/advisories/index.md
+[2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md
+[3]: https://pypi.org/project/{{ cookiecutter.repo_name }}/
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[3]: https://advisories.gitlab.com/
-[4]: {{ cookiecutter.__scm_link_url }}/releases
-[5]: https://docs.sigstore.dev/cosign/verifying/verify/
-[6]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Improvement
+[4]: https://advisories.gitlab.com/
+[5]: {{ cookiecutter.__scm_link_url }}/releases
+[6]: https://docs.sigstore.dev/cosign/verifying/verify/
+[7]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Improvement
 {%- else %}
-[3]: https://github.com/advisories
-[4]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-improvement
+[4]: https://github.com/advisories
+[5]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-improvement
 {%- endif %}
