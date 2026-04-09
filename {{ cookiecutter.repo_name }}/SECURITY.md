@@ -342,17 +342,49 @@ using most {{ cookiecutter.project_name }} configurations.
 
 ### :accept: Supported Versions
 
+{% if cookiecutter.version_schema == 'trunkver' -%}
+{{ cookiecutter.project_name }} follows the TrunkVer versioning schema,
+which brings on a rapid development cycle.
+No single version is considered
+for long-term support
+and users are expected
+to always use {{ cookiecutter.project_name }}
+with the latest available version.
+
+If a vulnerability is reported,
+the advisory will mention
+the release in which
+said vulnerability
+has been addressed.
+
+{% else -%}
 The following library versions
 are currently supported
 for security updates
 and vulnerability reporting:
 
 <!-- DEFINE your supported versions for security reporting -->
+{%- if cookiecutter.__schema_group == 'calver' %}
+
+|   Version   |   Support Status   | Commentary |
+|:-----------:|:------------------:|------------|
+{%- if cookiecutter.version_schema == 'calver-auto' %}
+| `v1{% now 'local', '%Y.%U' %}` | :white_check_mark: |            |
+{%- else %}
+| `v1{% now 'local', '%Y.%m' %}` | :white_check_mark: |            |
+{%- endif %}
+{%- else %}
 
 | Version  |   Support Status   | Commentary |
 |:--------:|:------------------:|------------|
+{%- if cookiecutter.__schema_group == 'semver-like' %}
 | `v0.1.0` | :white_check_mark: |            |
+{%- else %}
+|   `v1`   | :white_check_mark: |            |
+{%- endif %}
+{%- endif %}
 
+{% endif -%}
 ### :thinking: Use Contexts
 
 {{ cookiecutter.project_name }} can be used
