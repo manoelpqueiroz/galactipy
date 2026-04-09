@@ -160,7 +160,7 @@ just a part of the refactor?
 
 <div align="center">
 
-_Live by smaller iterations._
+<i>Live by smaller iterations.</i>
 
 </div>
 

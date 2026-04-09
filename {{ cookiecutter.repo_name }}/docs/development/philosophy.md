@@ -472,7 +472,7 @@ This is represented by our philosophy:
 
 <div align="center">
 
-_The best good first issues are the ones you open yourself._
+<i>The best good first issues are the ones you open yourself.</i>
 
 </div>
 

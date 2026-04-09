@@ -29,7 +29,7 @@ in various states of disrepair.
 
 <div align="center">
 
-_Docs work best when they are alive but frequently trimmed, like a bonsai tree._
+<i>Docs work best when they are alive but frequently trimmed, like a bonsai tree.</i>
 
 </div>
 
