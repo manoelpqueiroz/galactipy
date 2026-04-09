@@ -102,6 +102,7 @@ nav = [
     ] },
 {%- endif %}
     "development/roadmap.md",
+    "development/security.md",
     { "Development Packages Reference" = [
       "development/dev_packages/index.md",
 {%- if cookiecutter.app_type != 'bare_repo' %}
@@ -130,7 +131,18 @@ nav = [
       ] },
     ] },
   ] },
-  { "What's New" = "whatsnew/index.md" },
+  { "Noticeboard" = [
+    "noticeboard/index.md",
+    { "Release History" = [
+      "noticeboard/release_notes/index.md",
+    ] },
+    { "Security Advisories" = [
+      "noticeboard/advisories/index.md",
+    ] },
+    { "Migration Guides" = [
+      "noticeboard/migration/index.md",
+    ] },
+  ] },
 ]
 
 
