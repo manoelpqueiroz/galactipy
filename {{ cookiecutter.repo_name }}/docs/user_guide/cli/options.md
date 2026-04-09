@@ -152,6 +152,7 @@ and its subcommands:
     > Retrieve configuration
     > from the secret manager instead.
 
+{% if cookiecutter.__app_group == 'tui' -%}
 ## Themes
 
 > Configuration key: **`theme`**
@@ -234,7 +235,16 @@ with one of the following options:
 
 <!-- RECORD additional options as new configuration keys are structured for {{ cookiecutter.project_name }} -->
 
+{% else -%}
+<!-- RECORD any default settings you define for your project
+## <setting>
+
+> Configuration key: **`<key>`**
+-->
+
+{% endif -%}
 <!-- Anchors -->
+{%- if cookiecutter.__app_group == 'tui' %}
 
 [latte]: ../../img/catppuccin-latte.png
 [mocha]: ../../img/catppuccin-mocha.png
@@ -260,3 +270,4 @@ with one of the following options:
 [textuald]: ../../img/textual-dark.png
 [textuall]: ../../img/textual-light.png
 [tokyo]: ../../img/tokyo-night.png
+{%- endif %}

@@ -5,12 +5,20 @@ via the following methods:
 
 - Packaged wheels
   via [PyPI][1],
+{%- if cookiecutter.app_type != 'bare_repo' %}
   for use with pipx
   (or pip);
+{%- else %}
+  for use with pip;
+{%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 - Packaged wheels
   via the [GitLab Package Registry][1a]
+{%- if cookiecutter.app_type != 'bare_repo' %}
   for use with pipx/pip
+{%- else %}
+  for use with pip
+{%- endif %}
   (including development builds);
 {%- endif %}
 - Codebase hosted at [{{ cookiecutter.__scm_platform_base }}][2]
@@ -50,6 +58,7 @@ once it reaches [end-of-life][3].
 
 ## Installing {{ cookiecutter.project_name }}
 
+{% if cookiecutter.app_type != 'bare_repo' -%}
 ### Installing with pipx or pip
 
 Users can install {{ cookiecutter.project_name }}
@@ -76,6 +85,26 @@ using tools like
 [PDM][7]
 or [uv][8].
 
+{% else -%}
+### Installing with pip
+
+Users can install {{ cookiecutter.project_name }}
+with [pip][4]:
+
+```sh
+pip install {{ cookiecutter.repo_name }}
+```
+
+Make sure to install
+the library
+from a virtual environment,
+using tools like
+[pipenv][5],
+[Poetry][6],
+[PDM][7]
+or [uv][8].
+
+{% endif -%}
 <!-- RECORD this section if your package has optional dependencies
 {{ cookiecutter.project_name }} can also be installed
 with sets of optional dependencies
@@ -86,7 +115,11 @@ to install with the dependencies
 that enable <!-- RECORD an optional functionality of your library
 
 ```sh
+{%- if cookiecutter.app_type != 'bare_repo' %}
 pipx install "{{ cookiecutter.repo_name }}[<extra_group>]"
+{%- else %}
+pip install "{{ cookiecutter.repo_name }}[<extra_group>]"
+{%- endif %}
 ```
 
 The full list of extras
@@ -135,7 +168,11 @@ from the [GitLab Package Registry][1a]
 and can be installed with:
 
 ```sh
+{%- if cookiecutter.app_type != 'bare_repo' %}
 pipx install --pre --index-url https://gitlab.com/api/v4/projects/{{ cookiecutter.repo_name }}/packages/pypi/simple {{ cookiecutter.repo_name }}
+{%- else %}
+pip install --pre --index-url https://gitlab.com/api/v4/projects/{{ cookiecutter.repo_name }}/packages/pypi/simple {{ cookiecutter.repo_name }}
+{%- endif %}
 ```
 
 {% if cookiecutter.create_docker -%}
@@ -163,14 +200,26 @@ pipx install --pre --index-url https://test.pypi.org/simple {{ cookiecutter.repo
 {{ cookiecutter.project_name }} requires
 the following dependencies
 to run effectively:
+{%- if cookiecutter.app_type != 'bare_repo' %}
 
 | Package            | Minimum supported version |
 | ------------------ | ------------------------- |
-| [`Textual`][9]    | 6.5.0                     |
+{%- if cookiecutter.__app_group == 'tui' %}
+| [`Textual`][9]     | 6.5.0                     |
+{%- endif %}
 | [`Typer`][10]      | 0.20.0                    |
 | [`Rich`][11]       | 14.2.0                    |
+{%- if cookiecutter.__app_class != 'bare' %}
 | [`Orbittings`][12] | 0.2.0                     |
+{%- endif %}
 | [`Nebulog`][13]    | 0.1.0                     |
+{%- else %}
+
+<!-- RECORD the required dependencies to install your package
+| Package | Minimum supported version |
+| ------- | ------------------------- |
+-->
+{%- endif %}
 
 <!-- RECORD this section if your package has optional dependencies
 ### Optional dependencies
@@ -206,7 +255,11 @@ Installable with `pipx install "{{ cookiecutter.repo_name }}[<extra_group>]"`:
 [2a]: {{ cookiecutter.__docker_repo }}
 {%- endif %}
 [3]: https://devguide.python.org/versions/
+{%- if cookiecutter.app_type != 'bare_repo' %}
+[4]: https://pip.pypa.io/
+{%- else %}
 [4]: https://pipx.pypa.io/
+{%- endif %}
 [5]: https://pipenv.pypa.io
 [6]: https://python-poetry.org/
 [7]: https://pdm-project.org/en/latest/

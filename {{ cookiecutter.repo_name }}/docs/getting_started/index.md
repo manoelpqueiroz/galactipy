@@ -1,12 +1,19 @@
 # Getting Started
 
+{% if cookiecutter.__app_group == 'tui' -%}
 {{ cookiecutter.project_name }} is a terminal application
+{% elif cookiecutter.__app_group == 'cli' -%}
+{{ cookiecutter.project_name }} is a command-line application
+{% else -%}
+{{ cookiecutter.project_name }} is a Python library
+{% endif -%}
 aimed at <!-- RECORD the purpose of your project and what it provides to users out of the box -->.
 
 ## Installation
 
 <div class="grid cards" markdown>
 
+{% if cookiecutter.app_type != 'bare_repo' -%}
 -   :simple-pipx:{ .lg .middle } **Do you have pipx?**
 
     {{ cookiecutter.project_name }} can be installed
@@ -35,6 +42,20 @@ aimed at <!-- RECORD the purpose of your project and what it provides to users o
 
 <div class="grid cards" markdown>
 
+{% else -%}
+-   :simple-pypi:{ .lg .middle } **Install it with pip**
+
+    {{ cookiecutter.project_name }} can be installed
+    directly via `pip`
+    from [PyPI][2].
+
+    ---
+
+    ```sh
+    pip install {{ cookiecutter.repo_name }}
+    ```
+
+{% endif -%}
 -   :fontawesome-solid-bore-hole:{ .lg .middle } **In-depth instructions**
 
     Installing through another method

@@ -33,6 +33,8 @@ nav = [
   ] },
   { "API Reference" = [
     "reference/index.md",
+{%- if cookiecutter.app_type != 'bare_repo' %}
+{%- if cookiecutter.app_type != 'bare_cli' %}
     { "Configuration" = [
       "reference/config/index.md",
       { "AppManager" = [
@@ -47,12 +49,14 @@ nav = [
       ] },
       "reference/config/resolve_app_manager.md",
     ] },
+{%- endif %}
     { "Utilities" = [
       "reference/utilities/index.md",
       "reference/utilities/setup_app_logging.md",
       "reference/utilities/log_caster.md",
       "reference/utilities/file_parser.md",
   ] },
+{%- endif %}
   ] },
   { "Development" = [
     "development/index.md",
@@ -110,7 +114,9 @@ nav = [
       { "CLI" = [
         "development/dev_packages/cli/index.md",
         "development/dev_packages/cli/basic_converter.md",
+{%- if cookiecutter.app_type != 'bare_cli' %}
         "development/dev_packages/cli/pretty_print.md",
+{%- endif %}
         "development/dev_packages/cli/themes.md",
       ] },
 {%- endif %}
@@ -120,16 +126,22 @@ nav = [
         "development/dev_packages/tui/terminal_app.md",
       ] },
 {%- endif %}
+{%- if cookiecutter.app_type != 'bare_repo' %}
       { "Internal Objects" = [
         "development/dev_packages/internal/index.md",
+{%- if cookiecutter.app_type != 'bare_cli' %}
         "development/dev_packages/internal/config.md",
+{%- endif %}
         "development/dev_packages/internal/logging.md",
       ] },
       { "Test Objects" = [
         "development/dev_packages/tests/index.md",
+{%- if cookiecutter.__app_group == 'tui' %}
         "development/dev_packages/tests/helpers.md",
+{%- endif %}
         "development/dev_packages/tests/utils.md",
       ] },
+{%- endif %}
     ] },
   ] },
   { "Noticeboard" = [
