@@ -845,6 +845,7 @@ managing projects:
 Additionally,
 we would like to thank the teams
 of the following projects
+and individuals
 for either aiding us directly
 during our research of best practices
 and tools for Python development
@@ -855,12 +856,14 @@ have inspired parts of the project:
 - [Spark][ac8];
 - [React][ac9];
 - [Chai][ac10];
-- [Harbor][ac11].
+- [Harbor][ac11];
+- [pandas][ac12];
+- [Adrian Ababei][ac13].
 
 Give them your :star:,
 these resources are amazing! :wink:
 
-<small>Galactipy Bot avatar created by [Smashicons][ac12].</small>
+<small>Galactipy Bot avatar created by [Smashicons][ac14].</small>
 
 ## :page_with_curl: Citation
 
@@ -1071,6 +1074,8 @@ any of the following:
 [ac9]: https://github.com/facebook/react/
 [ac10]: https://github.com/chaijs/chai
 [ac11]: https://github.com/goharbor/harbor
-[ac12]: https://www.flaticon.com/free-icons/robot
+[ac12]: https://github.com/pandas-dev/pandas
+[ac13]: https://github.com/web247
+[ac14]: https://www.flaticon.com/free-icons/robot
 
 [cite1]: https://gitlab.com/galactipy/galactipy/-/blob/master/CITATION.cff
