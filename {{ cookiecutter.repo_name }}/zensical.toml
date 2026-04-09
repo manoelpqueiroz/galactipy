@@ -95,6 +95,7 @@ nav = [
       "development/for_others/help_others.md",
       "development/for_others/user_requests.md",
       "development/for_others/review_changes.md",
+      "development/for_others/documentation_changes.md",
       "development/for_others/roadmap_maintenance.md",
     ] },
     "development/meet.md",
