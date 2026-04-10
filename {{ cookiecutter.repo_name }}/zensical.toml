@@ -14,7 +14,9 @@ nav = [
     { "Comparison with other Tools" = [
       "getting_started/comparison/index.md",
     ] },
+{%- if cookiecutter.licence != 'nos' %}
     "getting_started/tutorials.md",
+{%- endif %}
   ] },
   { "User Guide" = [
     "user_guide/index.md",
@@ -29,7 +31,9 @@ nav = [
     ] },
 {%- endif %}
     "user_guide/gotchas.md",
+{%- if cookiecutter.licence != 'nos' %}
     "user_guide/faq.md",
+{%- endif %}
   ] },
   { "API Reference" = [
     "reference/index.md",
@@ -58,6 +62,7 @@ nav = [
   ] },
 {%- endif %}
   ] },
+{%- if cookiecutter.licence != 'nos' %}
   { "Development" = [
     "development/index.md",
     "development/development_setup.md",
@@ -90,7 +95,6 @@ nav = [
       ] },
       "development/for_developers/review.md",
       "development/for_developers/roles.md",
-{%- if cookiecutter.licence != 'nos' %}
       "development/for_developers/behave.md",
       "development/for_developers/foster.md",
     ] },
@@ -103,9 +107,7 @@ nav = [
       "development/for_others/roadmap_maintenance.md",
     ] },
     "development/meet.md",
-{%- else %}
     ] },
-{%- endif %}
     "development/roadmap.md",
     "development/security.md",
     { "Development Packages Reference" = [
@@ -144,13 +146,24 @@ nav = [
 {%- endif %}
     ] },
   ] },
+{%- endif %}
   { "Noticeboard" = [
     "noticeboard/index.md",
+{%- if cookiecutter.licence == 'nos' %}
+    "noticeboard/roadmap.md",
+{%- endif %}
     { "Release History" = [
       "noticeboard/release_notes/index.md",
     ] },
+{%- if cookiecutter.licence != 'nos' %}
     { "Security Advisories" = [
+{%- else %}
+    { "Security" = [
+{%- endif %}
       "noticeboard/advisories/index.md",
+{%- if cookiecutter.licence == 'nos' %}
+      "noticeboard/advisories/guide.md",
+{%- endif %}
     ] },
     { "Migration Guides" = [
       "noticeboard/migration/index.md",
