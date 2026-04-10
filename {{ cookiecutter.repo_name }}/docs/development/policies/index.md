@@ -19,25 +19,13 @@ will and will not be tolerated.
 
 ## Licence
 
-{% if cookiecutter.licence != 'nos' -%}
 By contributing to {{ cookiecutter.project_name }},
 you agree that your contributions
 will be licensed under
 {{ cookiecutter.__licence_article }}[{{ cookiecutter.__licence_simple }}][3].
 
-{% else -%}
-{{ cookiecutter.project_name }} is _**not**_ open source software.
-Please [contact][3] the maintainers
-for more information
-on licencing the project.
-
-{% endif -%}
 <!-- Anchors -->
 
 [1]: https://www.contributor-covenant.org/
 [2]: {{ cookiecutter.__scm_link_url }}/blob/master/CODE_OF_CONDUCT.md
-{%- if cookiecutter.licence != 'nos' %}
 [3]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
-{%- else %}
-[3]: mailto:{{ cookiecutter.email }}
-{%- endif %}

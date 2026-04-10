@@ -313,7 +313,6 @@ Be open to having your mind changed.
 Be open to working with the contributor
 to make the {{ cookiecutter.__mr_term }} better.
 
-{% if cookiecutter.licence != 'nos' -%}
 Reviews that are
 dismissive
 or disrespectful
@@ -322,7 +321,6 @@ or any other reviewers
 are strictly counter
 to the [Code of Conduct][4].
 
-{% endif -%}
 When reviewing a {{ cookiecutter.__mr_term }},
 the primary goals are
 for the codebase to improve

@@ -440,7 +440,6 @@ can significantly impact
 the value of the project
 to someone else.
 
-{% if cookiecutter.licence != 'nos' -%}
 ## There Are no Good First Issues
 
 The concept of
@@ -530,7 +529,6 @@ This is represented by our philosophy:
   so that a developer can mentor you
   on the solution.
 
-{% endif -%}
 <!-- Anchors -->
 
 [1]: https://handbook.gitlab.com/
@@ -539,9 +537,7 @@ This is represented by our philosophy:
 [4]: https://handbook.gitlab.com/handbook/values/#say-why-not-just-what
 [5]: https://theknowledge.io/chestertons-fence-explained/
 [6]: https://handbook.gitlab.com/handbook/values/#operate-with-a-bias-for-action
-{%- if cookiecutter.licence != 'nos' %}
 [7]: https://conversational-leadership.net/we-human-beings-are-complex/
 [8]: https://kentcdodds.com/blog/first-timers-only
 [9]: #fostering-an-inviting-community
 [10]: #how-to-behave-among-other-contributors
-{%- endif %}

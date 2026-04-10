@@ -1,5 +1,5 @@
 {% set scope_separator = '::' if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' else '-' -%}
-# {% if cookiecutter.licence != 'nos' %}Open {% endif %}Development
+# Open Development
 
 All work on {{ cookiecutter.project_name }} happens
 directly on [{{ cookiecutter.__scm_platform_base }}][1],
@@ -9,7 +9,6 @@ Therefore,
 a {{ cookiecutter.__scm_platform_base }} account is needed
 to start contributing.
 
-{% if cookiecutter.licence != 'nos' -%}
 ## Contributor Promotion
 
 Access to the upstream repository is granted
@@ -36,7 +35,7 @@ can be found below:
   is valuable,
   whether in issue and {{ cookiecutter.__mr_acronym }} discussions
   or directly
-  through [e-mail][2a] contact;
+  through [e-mail][3] contact;
 - Follow the formal proposal process
   and be an advocate of our guidelines,
   not only safeguarding
@@ -52,33 +51,32 @@ can be found below:
   before merging
   to the `master` branch;
 - Do the **other** work, by:
-    - [Showing responsibility][2b] to document
+    - [Showing responsibility][4] to document
       all relevant information
       promptly,
       whether for
       internal or external use,
       to ensure maintenance
-      of our [institutional knowledge][2c];
+      of our [institutional knowledge][5];
     - Upkeeping repository order
-      through our [practices][2d];
+      through our [practices][6];
     - Being an exemplar advocate
-      for a [welcoming community][2e];
+      for a [welcoming community][7];
 - Aside from
   displaying the aforementioned conduct,
   the contributor must express
   their actual interest
-  in attaining a [role][2f]
+  in attaining a [role][8]
   in the upstream repository.
 
 We also recommend interested individuals
 to follow
-the guide to the [_Pragmatic Open Source Contributor_][2g],
+the guide to the [_Pragmatic Open Source Contributor_][9],
 which goes
 into the attitude
 for candidate contributors
 in more detail.
 
-{% endif -%}
 ## Work Item Tracking
 
 [![Issues][badge1]][query1]
@@ -101,7 +99,7 @@ in more detail.
 [![RFSs][badge11]][query11]
 
 {{ cookiecutter.project_name }} development is iterative
-and structured preferably around [{{ cookiecutter.__mr_term }}s][3].
+and structured preferably around [{{ cookiecutter.__mr_term }}s][10].
 Whenever project advancements are not immediately deliverable,
 progress is tracked through {{ cookiecutter.__scm_platform_base }} Issues
 and {{ cookiecutter.__task_item.capitalize() }}s.
@@ -233,7 +231,7 @@ with their usage:
 To effectively manage
 issue and {{ cookiecutter.__task_item }} lifecycles,
 {%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
-we use [GitLab Statuses][4].
+we use [GitLab Statuses][11].
 {%- else %}
 we use specific labels
 {%- if cookiecutter.__scm_platform_lc == 'github' %}
@@ -250,7 +248,7 @@ in-progress and completed items
 and providing different options
 for other stages of the lifecycle.
 This allows project members to
-better relay [context][5]
+better relay [context][12]
 surrounding those items,
 instead of only stating
 their condition.
@@ -276,7 +274,7 @@ when to move from one stage to another:
 | ![Triage icon][icon1] **Needs Triage**               |     Triage      | Initial stage for User requests, which require a first analysis by a Galactipy contributor before work on its scope is either accepted or declined. It is also the default open state for new items if not overriden.                                                                                                                                                     |
 | ![Refinement icon][icon2] **Needs Refinement**       |     Triage      | Describes more general ideas that might receive development at some point, but whose current state does not detail implementation or paths to delivery. Lacking scope, represents more of a desire than an actual proposal – which might actually prove unfeasible later. Should be used to inform the need for further discussions before being cleared for development. |
 | ![Criteria icon][icon3] **Needs Criteria**           |     Triage      | This describes items whose scope is set, but acceptance criteria is still pending to be added before being cleared for development. In contrast with the **Needs Refinement** status, in this stage the deliverable is known and understood, but is waiting for a contributor to detail in smaller steps.                                                                 |
-| ![Steps icon][icon4] **Needs Delivery Steps**        |     Triage      | A specific type of triaging item, signaling pending work before the item can be cleared as a [starter assignment][6] development. In contrast with the **Needs Criteria**, this stage indicates the work item will be processed with greater detail than usual so a new contributor can pick it up and develop it with little to no friction.                             |
+| ![Steps icon][icon4] **Needs Delivery Steps**        |     Triage      | A specific type of triaging item, signaling pending work before the item can be cleared as a [starter assignment][13] development. In contrast with the **Needs Criteria**, this stage indicates the work item will be processed with greater detail than usual so a new contributor can pick it up and develop it with little to no friction.                             |
 | ![Decomposition icon][icon5] **Needs Decomposition** |     Triage      | Proposals or requests that have been deemed too large in scope to be considered a single work item and must be broken down in two or more items before proceeding.                                                                                                                                                                                                        |
 | ![Greenlit icon][icon6] **Greenlit**                 |      To Do      | Items that have been cleared for development after having their scope and acceptance criteria properly defined.                                                                                                                                                                                                                                                           |
 | ![Pipeline icon][icon7] **Pipeline**                 |      To Do      | Items that have scope and acceptance criteria, but that address a specific development stream which is not currently considered the most valuable for delivery. Can be picked for development, but should be left out in favour of **Greenlit** and **Priority** items.                                                                                                   |
@@ -312,7 +310,7 @@ if development will be short lived.
 |     **Needs Triage**     |    `sts-needs-triage`     |     Triage      | Initial stage for User Requests, which require a first analysis by a {{ cookiecutter.project_name }} contributor before work on its scope is either accepted or declined.                                                                                                                                                                                                 |
 |   **Needs Refinement**   |  `sts-needs-refinement`   |     Triage      | Describes more general ideas that might receive development at some point, but whose current state does not detail implementation or paths to delivery. Lacking scope, represents more of a desire than an actual proposal – which might actually prove infeasible later. Should be used to inform the need for further discussions before being cleared for development. |
 |    **Needs Criteria**    |   `sts-needs-criteria`    |     Triage      | This describes items whose scope is set, but acceptance criteria is still pending to be added before being cleared for development. In contrast with the **Needs Refinement** status, in this stage the deliverable is known and understood, but is waiting for a contributor to detail in smaller steps.                                                                 |
-| **Needs Delivery Steps** |     `sts-needs-steps`     |     Triage      | A specific type of triaging item, signaling pending work before the item can be cleared as a [starter assignment][6] development. In contrast with the **Needs Criteria**, this stage indicates the work item will be processed with greater detail than usual so a new contributor can pick it up and develop it with little to no friction.                             |
+| **Needs Delivery Steps** |     `sts-needs-steps`     |     Triage      | A specific type of triaging item, signaling pending work before the item can be cleared as a [starter assignment][13] development. In contrast with the **Needs Criteria**, this stage indicates the work item will be processed with greater detail than usual so a new contributor can pick it up and develop it with little to no friction.                             |
 | **Needs Decomposition**  | `sts-needs-decomposition` |     Triage      | Proposals or requests that have been deemed too large in scope to be considered a single work item and must be broken down in two or more items before proceeding.                                                                                                                                                                                                        |
 |       **Greenlit**       |      `sts-greenlit`       |      To Do      | Items that have been cleared for development after having their scope and acceptance criteria properly defined.                                                                                                                                                                                                                                                           |
 |       **Pipeline**       |      `sts-pipeline`       |      To Do      | Items that have scope and acceptance criteria, but that address a specific development stream which is not currently considered the most valuable for delivery. Can be picked for development, but should be left out in favour of **Greenlit** and **Priority** items.                                                                                                   |
@@ -343,7 +341,7 @@ by opening the issue page
 if one picks their interest.
 Thus, issue titles
 should use imperative,
-just like [commits][7].
+just like [commits][14].
 
 Using the imperative mood for issue titles
 is recommended because
@@ -385,13 +383,13 @@ is trying to address.
 
 ### {{ cookiecutter.__task_item.capitalize() }}s Are Used as Acceptance Criteria for Issues
 
-[{{ cookiecutter.__task_item.capitalize() }}s][8] are a specific type of work item
+[{{ cookiecutter.__task_item.capitalize() }}s][15] are a specific type of work item
 in {{ cookiecutter.__scm_platform_base }}
 which can be associated
 with issues as their child items.
 In {{ cookiecutter.project_name }} development,
 {{ cookiecutter.__mr_term }}s are
-the [default][3] form of actionable development,
+the [default][10] form of actionable development,
 while issues are used
 for compiling user requests
 and development intentions
@@ -404,7 +402,7 @@ to complement the open issue
 with their acceptance criteria
 to be closed.
 Their titles should follow
-the same [rules][9] as issue titles,
+the same [rules][16] as issue titles,
 while descriptions are optional
 if relevant to understand implementation.
 
@@ -428,7 +426,7 @@ The `opinion` value label marks work items which
 {% else -%}
 The `seeking-input` label marks work items which
 {%- endif %}
-are at a [**Triage**][10] stage
+are at a [**Triage**][17] stage
 and whose discussion has stalled.
 It signals other contributors and the community
 that more people are requested
@@ -482,7 +480,7 @@ with intermediate experience in the project.
 
 ### Blocks Must be Set at the Same Issue Level
 
-[Issue blocks][11] are not mandatory
+[Issue blocks][18] are not mandatory
 for development,
 but marking block relations
 between work items
@@ -517,7 +515,7 @@ This reduces clutter
 in the milestone board.
 
 However,
-given the [default behaviour][12] of GitLab,
+given the [default behaviour][19] of GitLab,
 tasks associated with milestones
 can accumulate over time.
 The association
@@ -537,38 +535,36 @@ through the "Bulk edit" option.
 {%- else %}
 [2]: {{ cookiecutter.__scm_link_url }}/projects
 {%- endif %}
-{%- if cookiecutter.licence != 'nos' %}
-[2a]: mailto:{{ cookiecutter.email }}
-[2b]: ../philosophy.md#operate-with-a-bias-for-action
-[2c]: https://www.teachfloor.com/elearning-glossary/institutional-knowledge
-[2d]: #general-practices
-[2e]: ../for_developers/foster.md
+[3]: mailto:{{ cookiecutter.email }}
+[4]: ../philosophy.md#operate-with-a-bias-for-action
+[5]: https://www.teachfloor.com/elearning-glossary/institutional-knowledge
+[6]: #general-practices
+[7]: ../for_developers/foster.md
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[2f]: https://docs.gitlab.com/user/permissions/
+[8]: https://docs.gitlab.com/user/permissions/
 {%- else %}
-[2f]: https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/roles-in-an-organization
+[8]: https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/roles-in-an-organization
 {%- endif %}
-[2g]: https://diurnal.st/2025/03/02/the-pragmatic-open-source-contributor.html
-{%- endif %}
-[3]: ../philosophy.md#start-with-a-{{ cookiecutter.__mr_term_slug }}
-[4]: https://docs.gitlab.com/user/work_items/status/
-[5]: ../philosophy.md#say-why-not-just-what
-[6]: ../for_developers/foster.md#about-starter-assignments
-[7]: https://cbea.ms/git-commit/#imperative
+[9]: https://diurnal.st/2025/03/02/the-pragmatic-open-source-contributor.html
+[10]: ../philosophy.md#start-with-a-{{ cookiecutter.__mr_term_slug }}
+[11]: https://docs.gitlab.com/user/work_items/status/
+[12]: ../philosophy.md#say-why-not-just-what
+[13]: ../for_developers/foster.md#about-starter-assignments
+[14]: https://cbea.ms/git-commit/#imperative
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[8]: https://docs.gitlab.com/user/tasks/
+[15]: https://docs.gitlab.com/user/tasks/
 {%- else %}
-[8]: https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/adding-sub-issues
+[15]: https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/adding-sub-issues
 {%- endif %}
-[9]: #issue-titles-should-be-framed-in-imperative-mood
-[10]: #work-item-tracking
+[16]: #issue-titles-should-be-framed-in-imperative-mood
+[17]: #work-item-tracking
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[11]: https://docs.gitlab.com/user/project/issues/related_issues/#blocking-issues
+[18]: https://docs.gitlab.com/user/project/issues/related_issues/#blocking-issues
 {%- if cookiecutter.scm_platform == 'GitLab Free' %}
-[12]: https://docs.gitlab.com/user/tasks/#add-a-task-to-a-milestone
+[19]: https://docs.gitlab.com/user/tasks/#add-a-task-to-a-milestone
 {%- endif %}
 {%- else %}
-[11]: https://github.blog/changelog/2025-08-21-dependencies-on-issues/
+[18]: https://github.blog/changelog/2025-08-21-dependencies-on-issues/
 {%- endif %}
 
 [badge1]: https://img.shields.io/badge/issues_without_{{ cookiecutter.__roadmap_item }}-006272?style=for-the-badge

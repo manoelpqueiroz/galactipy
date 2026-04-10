@@ -36,7 +36,6 @@ managing the backlog of [issues][1],
 and [open discussions][2x].
 {%- endif %}
 
-{% if cookiecutter.licence != 'nos' -%}
 We welcome all contributors
 willing to work in good faith
 with other contributors
@@ -64,7 +63,6 @@ that respect
 in addressing your issue
 or assessing patches and features.
 
-{% endif -%}
 ## Not Sure Where to Start?
 
 If you don't feel
@@ -161,7 +159,6 @@ should help:
   you can contribute
   by participating in discussions on issues
   at any of the **Needs** statuses,
-{%- if cookiecutter.licence != 'nos' %}
   especially those in the [**Needs Triage**][15] stage;
   we are always looking for people
   who help refine issues,
@@ -329,9 +326,6 @@ with your first steps here:
        with every issue,
        every interaction
        and every feedback.
-{%- else %}
-  especially those in the [**Needs Triage**][15] stage.
-{%- endif %}
 
 <!-- Anchors -->
 
@@ -396,7 +390,6 @@ with your first steps here:
 {%- else %}
 [15]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Asts-needs-triage
 {%- endif %}
-{%- if cookiecutter.licence != 'nos' %}
 [16]: https://goauthentik.io/blog/2024-03-07-why-contributing-to-open-source-is-scary/
 [17]: ./philosophy.md#start-with-a-{{ cookiecutter.__mr_term_slug }}
 [18]: mailto:{{ cookiecutter.email }}
@@ -406,4 +399,3 @@ with your first steps here:
 [19]: https://docs.github.com/en/subscriptions-and-notifications/get-started/configuring-notifications#about-participating-and-watching-notifications
 {%- endif %}
 [20]: ./philosophy.md#there-are-no-good-first-issues
-{%- endif %}

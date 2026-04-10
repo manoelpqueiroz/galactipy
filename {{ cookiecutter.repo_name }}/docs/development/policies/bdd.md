@@ -1,6 +1,5 @@
 # Behaviour-Driven Development
 
-{% if cookiecutter.licence != 'nos' -%}
 At {{ cookiecutter.project_name }},
 we believe building software
 goes beyond just coding
@@ -38,7 +37,6 @@ is to leverage
 [Behaviour-Driven Development][1]
 for our development cycle.
 
-{% endif -%}
 We expect all contributors
 to understand
 and adopt BDD best practices
@@ -91,7 +89,6 @@ It results in
 more sustainable and maintainable code,
 ultimately accelerating our development cycle
 and ensuring we deliver value consistently.
-{%- if cookiecutter.licence != 'nos' %}
 It also reinforces
 our commitment
 to creating an environment
@@ -135,7 +132,6 @@ we provide a suggested list of references below:
 - Automation Panda's [BDD Guide][9];
 - [_Behaviour-Driven Development: A Data Scientist Perspective_][10].
 
-{% endif -%}
 <!-- Anchors -->
 
 [1]: https://cucumber.io/docs/

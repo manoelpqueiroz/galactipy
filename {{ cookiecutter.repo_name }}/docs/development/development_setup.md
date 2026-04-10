@@ -5,20 +5,16 @@ you should start
 by [forking][1] the upstream repository
 to your own {{ cookiecutter.__scm_platform_base }} [group][2].
 We manage contributions
-{%- if cookiecutter.licence != 'nos' %}
 from the community
-{%- endif %}
 through the [fork][3] system,
 which helps us
 monitor and appreciate continuous input
 from individuals and organisations.
-{%- if cookiecutter.licence != 'nos' %}
 Contributors who can
 demonstrate their competence
 in further developing {{ cookiecutter.project_name }}
-may be [promoted][3a]
+may be [promoted][4]
 to upstream Developers or Maintainers.
-{%- endif %}
 
 After forking the upstream repository,
 cloning it to your local environment
@@ -26,7 +22,7 @@ and accessing the root dir
 via your IDE or the terminal:
 
 1. Make sure
-   you have Poetry [installed][4];
+   you have Poetry [installed][5];
 2. Create and activate
    your virtual environment:
 
@@ -66,7 +62,7 @@ you're good to go!
 Otherwise,
 something is not right
 and there might be an opportunity
-for a [first contribution][5].
+for a [first contribution][6].
 
 <!-- Anchors -->
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
@@ -80,8 +76,6 @@ for a [first contribution][5].
 [2]: https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/about-organizations
 [3]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
 {%- endif %}
-{%- if cookiecutter.licence != 'nos' %}
-[3a]: #contributor-promotion
-{%- endif %}
-[4]: https://python-poetry.org/docs/#installation
-[5]: #development-workflow
+[4]: ./policies/developing.md#contributor-promotion
+[5]: https://python-poetry.org/docs/#installation
+[6]: ./for_developers/workflow/index.md

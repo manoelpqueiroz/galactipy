@@ -386,9 +386,7 @@ even if they are not perfectly detailed.
 [7]: {{ cookiecutter.__scm_link_url }}/projects
 {%- endif %}
 [8]: ../philosophy.md#operate-with-a-bias-for-action
-{%- if cookiecutter.licence != 'nos' %}
 [9]: ../philosophy.md#there-are-no-good-first-issues
-{%- endif %}
 [10]: https://img.shields.io/badge/requests_for_correction-dc143c?style=for-the-badge
 {%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
 [11]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Acorrection&type%5B%5D=issue
