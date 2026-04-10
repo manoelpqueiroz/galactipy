@@ -259,11 +259,11 @@ should help:
   and discussions
 {%- endif %}
 {%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
-  labelled with [`seeking-contributors`][query6]
+  labelled with [`seeking-contributors`][query5]
 {%- else %}
-  labelled with [`seeking-builders`][query6]
+  labelled with [`seeking-builders`][query5]
 {%- endif %}
-  or [`starter-assignment`][query5];
+  or [`starter-assignment`][query4a];
 - After familiarising yourself
   with the project's [labels][topic3] and [stages][tracking],
   you can contribute
@@ -374,7 +374,7 @@ with your first steps here:
   as you work up
   to the more complex contributions
   that {{ cookiecutter.project_name }} needs.
-  Check [starter assignment][query5] issues,
+  Check [starter assignment][query4a] issues,
   or [find your own][gfi]
   that deserves your time and effort.
 
@@ -762,15 +762,17 @@ the completed {{ cookiecutter.__roadmap_item }}.
 [![Needs Triage][badge3]][query3]
 [![Designs][badge4]][query4]
 
-[![Starter Assignments][badge5]][query5]
-[![Needs Delivery][badge6]][query6]
-[![Quick Wins][badge7]][query7]
+{% if cookiecutter.licence != 'nos' -%}
+[![Starter Assignments][badge4a]][query4a]
+{% endif -%}
+[![Needs Delivery][badge5]][query5]
+[![Quick Wins][badge6]][query6]
 
-[![Stale Issues][badge8]][query8]
+[![Stale Issues][badge7]][query7]
 
-[![RFCs][badge9]][query9]
-[![RFIs][badge10]][query10]
-[![RFSs][badge11]][query11]
+[![RFCs][badge8]][query8]
+[![RFIs][badge9]][query9]
+[![RFSs][badge10]][query10]
 
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 {{ cookiecutter.project_name }} development is iterative
@@ -867,7 +869,9 @@ with their usage:
 |         N/A         |      ~"seeking-builders"      | Proposal is polished and can be picked up if you feel inclined to.                                                |
 |         N/A         |       ~"seeking-input"        | In need of help to further discuss and define scope.                                                              |
 |         N/A         |           ~"stale"            | Work items without activity that are marked for closing.                                                          |
+{%- if cookiecutter.licence != 'nos' %}
 |         N/A         |     ~"starter-assignment"     | Proposal and delivery steps are clear and can be picked up by first-time contributors.                            |
+{%- endif %}
 {%- if cookiecutter.__app_group == 'tui' %}
 |   User Interface    |      ~"ui-accessibility"      | Promotes accessibility options for users in the interface.                                                        |
 |   User Interface    |          ~"ui-arch"           | Changes to rendering logic in the layer directly below the user interface.                                        |
@@ -947,7 +951,9 @@ with their usage:
 |         N/A         |      `seeking-builders`      | Proposal is polished and can be picked up if you feel inclined to.                                                |
 |         N/A         |       `seeking-input`        | In need of help to further discuss and define scope.                                                              |
 |         N/A         |           `stale`            | Work items without activity that are marked for closing.                                                          |
+{%- if cookiecutter.licence != 'nos' %}
 |         N/A         |     `starter-assignment`     | Proposal and delivery steps are clear and can be picked up by first-time contributors.                            |
+{%- endif %}
 {%- if cookiecutter.__app_group == 'tui' %}
 |   User Interface    |      `ui-accessibility`      | Promotes accessibility options for users in the interface.                                                        |
 |   User Interface    |          `ui-arch`           | Changes rendering logic in the layer directly below the user interface.                                           |
@@ -1184,6 +1190,7 @@ associated with a {{ cookiecutter.__task_item }}.
 > there should be no labels
 > associated with a {{ cookiecutter.__task_item }}.
 {%- endif %}
+{%- if cookiecutter.licence != 'nos' %}
 
 ##### Usage of the `seeking-contributors` Labels
 
@@ -1267,6 +1274,7 @@ etc.
 > answering questions,
 > helping get it into a release
 > etc.
+{%- endif %}
 {%- endif %}
 
 ##### Blocks Must be Set at the Same Issue Level
@@ -3011,7 +3019,7 @@ a contributor will already have
 a particular new change or fix
 in mind.
 If seeking ideas,
-consult the list of [starter assignments][query5].
+consult the list of [starter assignments][query4a].
 
 {% endif -%}
 Before proceeding,
@@ -5462,7 +5470,7 @@ faster communication and resolution.
 
 ### Contributing by Helping Other People
 
-[![RFSs][badge11]][query11]
+[![RFSs][badge10]][query10]
 
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 Inspired by [Typer's][help1] welcoming community
@@ -5482,7 +5490,7 @@ or the development team itself.
 
 The most direct way
 you can provide your help to others
-is to look for open [Requests for Support][query11]
+is to look for open [Requests for Support][query10]
 and try to answer other users' questions.
 In many cases
 you might already know the answer to them!
@@ -6056,7 +6064,7 @@ is to make one [that comes from yourself][gfi].
 {% endif -%}
 #### Specific Guidelines for Requests for Correction
 
-[![RFCs][badge9]][query9]
+[![RFCs][badge8]][query8]
 
 Requests for Correction are used
 to track unexpected behaviour
@@ -6070,7 +6078,7 @@ the code in the repository.
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 Guidelines for [RFCs][request2a]:
 
-- Use the [issue search][query9]
+- Use the [issue search][query8]
   to check if a request
   has already been reported;
 - Check if the issue has been fixed
@@ -6461,13 +6469,13 @@ what we are doing matters!
 [practices]: {{ cookiecutter.__contributing_prefix }}#general-practices
 {%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
 [swnjw]: #say-why-not-just-what
-[starter]: #about-starter-assignments
 [bias]: #operate-with-a-bias-for-action
 [admission]: #opening-admissible-{{ cookiecutter.__mr_term_slug }}s
 [review]: #{{ cookiecutter.__mr_term_slug }}-review-process
 [reviewer]: #the-responsibility-of-the-reviewer
 [roadmap]: #roadmap-management
 {%- if cookiecutter.licence != 'nos' %}
+[starter]: #about-starter-assignments
 [promotion]: #contributor-promotion
 [gfi]: #there-are-no-good-first-issues
 [proposals]: #speaking_head-proposing-changes-as-a-developer
@@ -6505,26 +6513,30 @@ what we are doing matters!
 [badge2]: https://img.shields.io/badge/seeking_input-69ad6b?style=for-the-badge
 [badge3]: https://img.shields.io/badge/needs_triage-4285f4?style=for-the-badge
 [badge4]: https://img.shields.io/badge/designs_under_discussion-ff2f82?style=for-the-badge
-[badge5]: https://img.shields.io/badge/starter_assignments-66aa9c?style=for-the-badge
-[badge6]: https://img.shields.io/badge/seeking_contributors-9ccfcd?style=for-the-badge
-[badge7]: https://img.shields.io/badge/quick_wins-5ebc8b?style=for-the-badge
-[badge8]: https://img.shields.io/badge/stale_issues-9400d3?style=for-the-badge
-[badge9]: https://img.shields.io/badge/requests_for_correction-dc143c?style=for-the-badge
-[badge10]: https://img.shields.io/badge/requests_for_improvement-0055ff?style=for-the-badge
-[badge11]: https://img.shields.io/badge/requests_for_support-ed9121?style=for-the-badge
+{%- if cookiecutter.licence != 'nos' %}
+[badge4a]: https://img.shields.io/badge/starter_assignments-66aa9c?style=for-the-badge
+{%- endif %}
+[badge5]: https://img.shields.io/badge/seeking_contributors-9ccfcd?style=for-the-badge
+[badge6]: https://img.shields.io/badge/quick_wins-5ebc8b?style=for-the-badge
+[badge7]: https://img.shields.io/badge/stale_issues-9400d3?style=for-the-badge
+[badge8]: https://img.shields.io/badge/requests_for_correction-dc143c?style=for-the-badge
+[badge9]: https://img.shields.io/badge/requests_for_improvement-0055ff?style=for-the-badge
+[badge10]: https://img.shields.io/badge/requests_for_support-ed9121?style=for-the-badge
 
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
 [query1]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&parent_id=None
 [query2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Aopinion&type%5B%5D=issue
 [query3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&status=Needs%20Triage&type%5B%5D=issue
 [query4]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=design%3A%3A%2A&type%5B%5D=issue
-[query5]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment%3A%3A%2A&type%5B%5D=issue
-[query6]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Adelivery&type%5B%5D=issue
-[query7]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&or%5Blabel_name%5D%5B%5D=quick-win&or%5Blabel_name%5D%5B%5D=starter-assignment%3A%3Aquick-win
-[query8]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=stale&type%5B%5D=issue
-[query9]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Acorrection&type%5B%5D=issue
-[query10]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Aimprovement&type%5B%5D=issue
-[query11]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Asupport&type%5B%5D=issue
+{%- if cookiecutter.licence != 'nos' %}
+[query4a]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment%3A%3A%2A&type%5B%5D=issue
+{%- endif %}
+[query5]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Adelivery&type%5B%5D=issue
+[query6]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&or%5Blabel_name%5D%5B%5D=quick-win&or%5Blabel_name%5D%5B%5D=starter-assignment%3A%3Aquick-win
+[query7]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=stale&type%5B%5D=issue
+[query8]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Acorrection&type%5B%5D=issue
+[query9]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Aimprovement&type%5B%5D=issue
+[query10]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Asupport&type%5B%5D=issue
 
 {% elif cookiecutter.scm_platform == 'GitLab Free' -%}
 [query1]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&milestone_title=None
@@ -6532,26 +6544,30 @@ what we are doing matters!
 [query2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-input&type%5B%5D=issue
 [query3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=sts-needs-triage&type%5B%5D=issue
 [query4]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5D%5B%5D=design-discovery&or%5Blabel_name%5D%5B%5D=design-formulation&or%5Blabel_name%5D%5B%5D=design-reassessment&type%5B%5D=issue
-[query5]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment&type%5B%5D=issue
-[query6]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-builders&type%5B%5D=issue
-[query7]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=quick-win&type%5B%5D=issue
-[query8]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=stale&type%5B%5D=issue
+{%- if cookiecutter.licence != 'nos' %}
+[query4a]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment&type%5B%5D=issue
+{%- endif %}
+[query5]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-builders&type%5B%5D=issue
+[query6]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=quick-win&type%5B%5D=issue
+[query7]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=stale&type%5B%5D=issue
+[query8]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfc&type%5B%5D=issue
 [query9]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfc&type%5B%5D=issue
-[query10]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfc&type%5B%5D=issue
-[query11]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfs&type%5B%5D=issue
+[query10]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfs&type%5B%5D=issue
 
 {% else -%}
 [query1]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20no%3Aproject
 [query2]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-input
 [query3]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Asts-needs-triage
 [query4]: {{ cookiecutter.__scm_link_url }}/issues?q=label%3Adesign-discovery%20OR%20label%3Adesign-formulation%20OR%20label%3Adesign-reassessment
-[query5]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astarter-assignment
-[query6]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-builders
-[query7]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aquick-win
-[query8]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astale
-[query9]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Arfc
-[query10]: {{ cookiecutter.__scm_link_url }}/discussions/categories/requests-for-improvement
-[query11]: {{ cookiecutter.__scm_link_url }}/discussions/categories/requests-for-support
+{%- if cookiecutter.licence != 'nos' %}
+[query4a]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astarter-assignment
+{%- endif %}
+[query5]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-builders
+[query6]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aquick-win
+[query7]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astale
+[query8]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Arfc
+[query9]: {{ cookiecutter.__scm_link_url }}/discussions/categories/requests-for-improvement
+[query10]: {{ cookiecutter.__scm_link_url }}/discussions/categories/requests-for-support
 
 {% endif -%}
 {% if cookiecutter.licence != 'nos' or cookiecutter.use_bdd -%}
