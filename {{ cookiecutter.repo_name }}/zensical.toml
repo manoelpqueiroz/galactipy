@@ -253,6 +253,38 @@ emoji_index = "zensical.extensions.emoji.twemoji"
 emoji_generator = "zensical.extensions.emoji.to_svg"
 
 
+[project.extra.tags]
+Setup = "setup"
+"For Your Information" = "default"
+"Section Intros" = "default"
+"User Guides" = "guide"
+"Community Content" = "community"
+Configuration = "config"
+CLI = "cli"
+TUI = "tui"
+"Supporting Objects" = "aux"
+Backend = "backend"
+"Development Guides" = "dev"
+"Design Definitions" = "design"
+"Policies & Rules" = "policy"
+Workflows = "workflow"
+"Living Docs" = "default"
+
+[project.theme.icon.tag]
+setup = "lucide/tent-tree"
+guide = "lucide/footprints"
+community = "lucide/users"
+config = "lucide/cog"
+cli = "lucide/terminal"
+tui = "lucide/scan-text"
+aux = "lucide/life-buoy"
+backend = "lucide/file-code-corner"
+dev = "lucide/tool-case"
+design = "lucide/layout-dashboard"
+policy = "lucide/scroll-text"
+workflow = "lucide/workflow"
+
+
 [[project.extra.social]]
 icon = "fontawesome/brands/{{ cookiecutter.__scm_platform_lc }}"
 link = "{{ cookiecutter.__scm_base_url }}"
