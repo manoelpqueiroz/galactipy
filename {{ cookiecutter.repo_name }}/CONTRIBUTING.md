@@ -4406,6 +4406,54 @@ on tailoring knowledge sharing
 to suit the environment
 where it is presented.
 
+##### Page Tags
+
+To facilitate navigation
+for users,
+we leverage [Zensical tags][docs13]
+on our documentation pages.
+Broadly speaking,
+they are grouped
+to more properly
+categorise each page
+across two purposes:
+
+- The intended **target audience**
+  for the file:
+  either _general users_
+  or _developers/contributors_;
+- A specific **field**
+  the page's contents delves into.
+
+| Tag                      | Target Audience | Description                                                                                                                        |
+| ------------------------ | :-------------: | ---------------------------------------------------------------------------------------------------------------------------------- |
+| **For Your Information** |  General Users  | Descriptive content detailing a topic or concept.                                                                                  |
+| **User Guides**          |  General Users  | Tutorials and step-by-step guides to enable {{ cookiecutter.project_name }} usage.                                                 |
+| **Community Content**    |  General Users  | Content provided by the community at large.                                                                                        |
+| **Design Definitions**   |  Contributors   | Descriptive content providing context behind the design and architecture of {{ cookiecutter.project_name }} elements.              |
+| **Policies & Rules**     |  Contributors   | Descriptive content detailing rules for project development and expected behaviour from contributors.                              |
+| **Development Guides**   |  Contributors   | Tutorials and guides to enable contributions from new developers.                                                                  |
+| **Workflows**            |     Either      | Guides explaining how to perform operations to achieve specific outcomes.                                                          |
+| **Setup**                |     Either      | Pages containing instructions to set up environments under specific configuration and enable further actions.                      |
+| **Configuration**        |  General Users  | Pages related to concepts, objects and features which customise the user's installation of {{ cookiecutter.project_name }}.        |
+| **CLI**                  |     Either      | Pages related to concepts, objects and features directly associated with {{ cookiecutter.project_name }}'s command-line interface. |
+| **TUI**                  |     Either      | Pages related to concepts, objects and features directly associated with {{ cookiecutter.project_name }}'s user interface.         |
+| **Supporting Objects**   |  General Users  | Pages related to publicly exposed API that is not directly associated with either the CLI or TUI.                                  |
+| **Backend**              |  Contributors   | Pages related to non-public API objects.                                                                                           |
+
+Besides the tags listed above,
+the following tags
+serve as navigation facilitator tags:
+
+- **Navigation Sections** simply
+  mark `index.md` pages
+  to provide a quick reference
+  in the search bar;
+- **Living Docs** determine pages
+  which can be updated at any time,
+  making it easier for readers
+  to check them periodically.
+
 ### {{ cookiecutter.__mr_term }} Review Process
 
 After [starting with a {{ cookiecutter.__mr_term }}][swmr],
@@ -6853,6 +6901,7 @@ what we are doing matters!
 [docs10]: https://mkdocstrings.github.io/python/
 [docs11]: https://zensical.org/docs/setup/navigation/#navigation-sections
 [docs12]: {{ cookiecutter.__scm_link_url }}/blob/master/docs/development/for_developers/workflow/invoke.md
+[docs13]: https://zensical.org/docs/setup/tags/
 {%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
 
 [reviewing1]: https://josipmisko.com/posts/code-review-nit
