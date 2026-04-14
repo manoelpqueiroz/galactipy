@@ -1,3 +1,10 @@
+{% raw -%}
+---
+tags:
+  - For Your Information
+---
+
+{% endraw -%}
 # Package Overview
 
 <!-- RECORD a paragraph detailing what your application provides and what it aims to be -->

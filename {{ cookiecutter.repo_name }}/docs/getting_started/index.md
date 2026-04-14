@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Section Intros
+  - Setup
+---
+
+{% endraw -%}
 # Getting Started
 
 {% if cookiecutter.__app_group == 'tui' -%}

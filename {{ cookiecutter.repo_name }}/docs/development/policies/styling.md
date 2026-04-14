@@ -1,3 +1,12 @@
+{% raw -%}
+---
+tags:
+  - Development Guides
+  - Policies & Rules
+  - Workflows
+---
+
+{% endraw -%}
 # Styling
 
 ## Codestyle

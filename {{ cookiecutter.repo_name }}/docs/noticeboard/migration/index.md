@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Section Intros
+  - User Guides
+---
+
+{% endraw -%}
 # Migration Guides
 
 This section provides users

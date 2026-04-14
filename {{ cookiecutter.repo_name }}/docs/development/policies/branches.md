@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Development Guides
+  - Policies & Rules
+---
+
+{% endraw -%}
 # Branch Organization
 
 We apply the [{{ cookiecutter.project_name }} Philosophy][1]

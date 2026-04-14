@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Section Intros
+  - Design Definitions
+---
+
+{% endraw -%}
 # Internal Packages
 
 {{ cookiecutter.project_name }} implements objects

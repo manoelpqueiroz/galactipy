@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - For Your Information
+  - Workflows
+---
+
+{% endraw -%}
 # Contributing by Helping Other People
 
 [![RFSs][1]][2]

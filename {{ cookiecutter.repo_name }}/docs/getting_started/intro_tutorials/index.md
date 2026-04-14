@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Section Intros
+  - User Guides
+---
+
+{% endraw -%}
 # 1-Minute Tutorials
 
 These tutorials are practical showcases

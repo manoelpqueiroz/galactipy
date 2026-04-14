@@ -1,3 +1,10 @@
+{% raw -%}
+---
+tags:
+  - For Your Information
+---
+
+{% endraw -%}
 # Meet the Community
 
 {{ cookiecutter.project_name }} is

@@ -1,3 +1,10 @@
+{% raw -%}
+---
+tags:
+  - For Your Information
+---
+
+{% endraw -%}
 # Contributing to Roadmap Maintenance
 
 [![Issues][1]][2]

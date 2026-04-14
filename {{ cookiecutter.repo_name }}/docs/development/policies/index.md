@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Section Intros
+  - Development Guides
+---
+
+{% endraw -%}
 # Policies
 
 This section covers the fundamental policies

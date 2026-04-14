@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Development Guides
+  - Workflows
+---
+
+{% endraw -%}
 # Continuous Integration
 
 Besides being hosted in {{ cookiecutter.__scm_platform_base }},

@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Development Guides
+  - Workflows
+---
+
+{% endraw -%}
 # Preparing to Contribute
 
 ## Choosing What to Contribute

@@ -1,3 +1,13 @@
+{% raw -%}
+---
+tags:
+  - Development Guides
+  - Design Definitions
+  - Workflows
+  - Policies & Rules
+---
+
+{% endraw -%}
 # Behaviour-Driven Development
 
 At {{ cookiecutter.project_name }},

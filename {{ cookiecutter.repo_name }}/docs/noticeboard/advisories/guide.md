@@ -1,3 +1,12 @@
+{% raw -%}
+---
+tags:
+  - For Your Information
+  - Policies & Rules
+  - Living Docs
+---
+
+{% endraw -%}
 # Guide
 
 ## Announcements

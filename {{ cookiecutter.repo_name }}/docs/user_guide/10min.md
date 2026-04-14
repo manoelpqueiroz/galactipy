@@ -1,3 +1,10 @@
+{% raw -%}
+---
+tags:
+  - User Guides
+---
+
+{% endraw -%}
 # 10 Minutes to {{ cookiecutter.project_name }}
 
 This is a short introduction to {{ cookiecutter.project_name }},

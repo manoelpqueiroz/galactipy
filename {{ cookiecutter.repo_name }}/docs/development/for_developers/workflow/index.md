@@ -1,3 +1,12 @@
+{% raw -%}
+---
+tags:
+  - Section Intros
+  - Development Guides
+  - Workflows
+---
+
+{% endraw -%}
 # Development Workflow
 
 After cloning {{ cookiecutter.project_name }}

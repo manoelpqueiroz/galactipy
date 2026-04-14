@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Development Guides
+  - Policies & Rules
+---
+
+{% endraw -%}
 # Documentation Philosophy
 
 > Adapted from the [Google Style Guides][1].

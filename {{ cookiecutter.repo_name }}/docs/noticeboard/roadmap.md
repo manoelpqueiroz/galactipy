@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - For Your Information
+  - Living Docs
+---
+
+{% endraw -%}
 # Project Roadmap
 
 <!-- RECORD your project mission, in tandem with the "Purpose & Function" section on README.md -->

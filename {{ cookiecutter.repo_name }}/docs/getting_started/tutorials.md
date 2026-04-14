@@ -1,3 +1,10 @@
+{% raw -%}
+---
+tags:
+  - Community Content
+---
+
+{% endraw -%}
 # Community Tutorials
 
 This is a curated list of guides for {{ cookiecutter.project_name }}

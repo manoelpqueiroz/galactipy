@@ -1,3 +1,12 @@
+{% raw -%}
+---
+tags:
+  - Section Intros
+  - Design Definitions
+  - CLI
+---
+
+{% endraw -%}
 # CLI Helpers
 
 To make usage of {{ cookiecutter.project_name }}

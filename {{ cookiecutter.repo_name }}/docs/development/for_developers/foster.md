@@ -1,3 +1,12 @@
+{% raw -%}
+---
+tags:
+  - Development Guides
+  - Policies & Rules
+  - Workflows
+---
+
+{% endraw -%}
 # Fostering an Inviting Community
 
 As a {{ cookiecutter.project_name }} contributor, your responsibilities

@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Setup
+  - Development Guides
+---
+
+{% endraw -%}
 # Development Setup
 
 To start contributing to {{ cookiecutter.project_name }},

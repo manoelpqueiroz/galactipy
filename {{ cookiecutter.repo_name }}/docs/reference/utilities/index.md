@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Section Intros
+  - User Guides
+---
+
+{% endraw -%}
 # Utility Functions
 
 {{ cookiecutter.project_name }} provides utilities

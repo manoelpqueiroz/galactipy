@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Development Guides
+  - Policies & Rules
+---
+
+{% endraw -%}
 # How to Behave among Other Contributors
 
 {{ cookiecutter.__mr_term }}s,

@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Development Guides
+  - Policies & Rules
+---
+
+{% endraw -%}
 # Roles and Attributions
 
 ## The Responsibility of the {{ cookiecutter.__mr_term }} Author

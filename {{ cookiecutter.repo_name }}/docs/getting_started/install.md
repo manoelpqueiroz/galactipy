@@ -1,3 +1,10 @@
+{% raw -%}
+---
+tags:
+  - Setup
+---
+
+{% endraw -%}
 # Installation
 
 {{ cookiecutter.copyright }} officially distributes {{ cookiecutter.project_name }}

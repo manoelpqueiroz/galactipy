@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Section Intros
+  - Design Definitions
+---
+
+{% endraw -%}
 # Custom Test Objects
 
 In order to run the test suite

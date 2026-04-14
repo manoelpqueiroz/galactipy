@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Section Intros
+  - User Guides
+---
+
+{% endraw -%}
 # User Guide
 
 The User Guide covers all of {{ cookiecutter.project_name }}

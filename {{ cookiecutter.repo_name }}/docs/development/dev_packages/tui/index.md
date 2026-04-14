@@ -1,3 +1,12 @@
+{% raw -%}
+---
+tags:
+  - Section Intros
+  - Design Definitions
+  - TUI
+---
+
+{% endraw -%}
 # TUI Reference
 
 {{ cookiecutter.project_name }} uses [Textual][1]

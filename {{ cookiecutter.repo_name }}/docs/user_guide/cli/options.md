@@ -1,3 +1,12 @@
+{% raw -%}
+---
+tags:
+  - For Your Information
+  - CLI
+  - Configuration
+---
+
+{% endraw -%}
 # Options & Settings
 
 {{ cookiecutter.project_name }} provides configuration files,

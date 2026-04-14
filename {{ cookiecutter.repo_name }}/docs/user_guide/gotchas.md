@@ -1,3 +1,10 @@
+{% raw -%}
+---
+tags:
+  - For Your Information
+---
+
+{% endraw -%}
 # Gotchas & Caveats
 
 This page focuses

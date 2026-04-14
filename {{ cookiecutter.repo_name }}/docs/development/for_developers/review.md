@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Development Guides
+  - Workflows
+---
+
+{% endraw -%}
 # {{ cookiecutter.__mr_term }} Review Process
 
 After [starting with a {{ cookiecutter.__mr_term }}][1],

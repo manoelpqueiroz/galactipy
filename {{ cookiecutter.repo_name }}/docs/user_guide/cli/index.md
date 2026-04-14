@@ -1,3 +1,12 @@
+{% raw -%}
+---
+tags:
+  - Section Intros
+  - User Guides
+  - CLI
+---
+
+{% endraw -%}
 # CLI Guide
 
 {{ cookiecutter.project_name }} provides a command-line interface

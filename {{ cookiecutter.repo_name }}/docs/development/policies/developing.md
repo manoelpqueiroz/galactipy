@@ -1,4 +1,13 @@
 {% set scope_separator = '::' if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' else '-' -%}
+{% raw -%}
+---
+tags:
+  - Development Guides
+  - Policies & Rules
+  - Workflows
+---
+
+{% endraw -%}
 # Open Development
 
 All work on {{ cookiecutter.project_name }} happens

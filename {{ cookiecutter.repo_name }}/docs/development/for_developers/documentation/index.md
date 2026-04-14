@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Section Intros
+  - Development Guides
+---
+
+{% endraw -%}
 # Documentation Guide
 
 Documentation is a crucial part

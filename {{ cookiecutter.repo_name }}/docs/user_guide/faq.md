@@ -1,3 +1,10 @@
+{% raw -%}
+---
+tags:
+  - Community Content
+---
+
+{% endraw -%}
 # Community FAQ
 
 This is a curated list of common questions

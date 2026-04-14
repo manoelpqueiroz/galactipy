@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Section Intros
+  - Design Definitions
+---
+
+{% endraw -%}
 # Development Packages Reference
 {%- if cookiecutter.app_type != 'bare_repo' %}
 

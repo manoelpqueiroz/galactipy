@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Section Intros
+  - User Guides
+---
+
+{% endraw -%}
 # API Reference
 
 This section provides detailed information

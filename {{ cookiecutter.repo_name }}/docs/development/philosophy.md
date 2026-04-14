@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Development Guides
+  - Policies & Rules
+---
+
+{% endraw -%}
 # Our Philosophy
 
 This document defines

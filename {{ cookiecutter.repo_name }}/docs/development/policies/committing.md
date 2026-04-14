@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Development Guides
+  - Policies & Rules
+---
+
+{% endraw -%}
 # Commit Customs
 
 {% if cookiecutter.commit_convention == 'gitmoji' -%}

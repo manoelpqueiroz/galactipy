@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Section Intros
+  - For Your Information
+---
+
+{% endraw -%}
 # Other Ways to Contribute
 
 You can contribute to {{ cookiecutter.project_name }}

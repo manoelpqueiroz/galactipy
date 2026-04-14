@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Section Intros
+  - Development Guides
+---
+
+{% endraw -%}
 # Proposing Changes
 
 {% if cookiecutter.__app_group == 'tui' -%}

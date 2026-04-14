@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - For Your Information
+  - Workflows
+---
+
+{% endraw -%}
 # Contributing by Reviewing Changes
 
 Changes to {{ cookiecutter.project_name }} source code are

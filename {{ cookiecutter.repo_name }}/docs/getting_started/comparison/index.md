@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Section Intros
+  - For Your Information
+---
+
+{% endraw -%}
 # Comparison with other Tools
 
 {{ cookiecutter.project_name }} can be used

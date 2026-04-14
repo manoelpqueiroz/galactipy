@@ -1,3 +1,10 @@
+{% raw -%}
+---
+tags:
+  - For Your Information
+---
+
+{% endraw -%}
 # Contributing with Documentation Changes
 
 Contributing to the documentation benefits

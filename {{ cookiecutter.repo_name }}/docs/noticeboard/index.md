@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Section Intros
+  - For Your Information
+---
+
+{% endraw -%}
 # Noticeboard
 {%- if cookiecutter.licence != 'nos' %}
 
@@ -34,7 +42,7 @@ Here you will find:
   and any security advisories published
   to address security issues;
 {%- endif %}
-- Guides for migrating your installation of {{ cookiecutter.project_name }}
+- User Guidess for migrating your installation of {{ cookiecutter.project_name }}
   when we publish releases
   with breaking changes.
 

@@ -1,3 +1,12 @@
+{% raw -%}
+---
+tags:
+  - Section Intros
+  - For Your Information
+  - Living Docs
+---
+
+{% endraw -%}
 # Release History
 
 In this section,

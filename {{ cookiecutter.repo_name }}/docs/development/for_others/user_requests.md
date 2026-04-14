@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - For Your Information
+  - Workflows
+---
+
+{% endraw -%}
 # Contributing through User Requests
 
 If you are simply

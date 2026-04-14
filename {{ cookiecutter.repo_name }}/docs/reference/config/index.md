@@ -1,3 +1,12 @@
+{% raw -%}
+---
+tags:
+  - Section Intros
+  - User Guides
+  - Configuration
+---
+
+{% endraw -%}
 # {{ cookiecutter.project_name }} Configuration
 
 {{ cookiecutter.project_name }} uses [Orbittings][1]

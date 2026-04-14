@@ -1,3 +1,12 @@
+{% raw -%}
+---
+tags:
+  - Section Intros
+  - Living Docs
+  - For Your Information
+---
+
+{% endraw -%}
 # Security Advisories
 
 We keep a record

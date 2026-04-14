@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - For Your Information
+  - Workflows
+---
+
+{% endraw -%}
 # Power User Features
 
 This page's content

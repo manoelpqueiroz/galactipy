@@ -1,3 +1,11 @@
+{% raw -%}
+---
+tags:
+  - Development Guides
+  - Workflows
+---
+
+{% endraw -%}
 # Checks & Hooks
 
 Developers are encouraged
