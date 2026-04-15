@@ -2226,20 +2226,82 @@ inside [`.{{ cookiecutter.__scm_platform_lc }}`][style4] and [`CHANGELOG.md`][st
 {% endif -%}
 ### Checks & Hooks
 
-Developers are encouraged
-to run local tests,
-check codestyle and static typing
-with the `invoke sweep` command
-before committing.
+Before pushing local changes
+to the repository,
+developers should run
+content integrity
+through two possible routes:
 
-Pre-commit hooks are configured
-to block updates not following the rules:
+- Locally running tests,
+  checking codestyle
+  and static typing
+  using [Invoke tasks][invoke]
+  – especially the `invoke sweep` command –
+  before committing;
+  this is manually run
+  by the developer;
+- Pass all validations
+  set up in our [Pre-Commit configuration][hooks1]
+  before committing
+  or pushing the changes;
+  this is automatically run
+  once the hooks are installed
+  after setting the [development environment][setup].
 
-- All files must comply to the [POSIX][hooks1] standard;
-- Code files must comply with the Ruff linter.
+The pre-commit hooks are configured
+to expect the following:
 
-Ensure both Invoke and Pre-Commit are [installed][setup]
-in your virtual environment.
+- All files must comply to the [POSIX][hooks2] standard,
+  except licence-related files;
+- Syntax for TOML, YAML and JSON files
+  must contain no errors;
+- Pure JSON files must have an indentation of `2` spaces;
+- JSON files for
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+  GitLab CI
+{%- else %}
+  GitHub Issue templates,
+  issue configuration,
+  GitHub Actions workflows
+  and Dependabot configuration
+{%- endif %}
+  must adhere to
+  their respective JSON schema;
+- There must be no merge conflict identifiers
+  in the files
+  (e.g.,
+  `<<<<<<< HEAD`,
+  `=======`,
+  etc.);
+{%- if cookiecutter.version_schema == 'trunkver' %}
+- All unit tests must pass;
+- Test coverage must be above the threshold
+  defined in `pyproject.toml`;
+- No security issues should be found
+  by running [Bandit][hooks3];
+{%- endif %}
+- Type checking must not find any inconsistencies
+  in type annotations;
+- Code files must comply with
+  both the Ruff linter
+  and formatter;
+- Code files must be properly marked
+  with a copyright notice;
+{%- if cookiecutter.commit_convention == 'conventional' %}
+- Commit messages must comply
+  with the [Conventional Commits][convention] convention;
+{%- elif cookiecutter.commit_convention == 'conventional-gitmoji' %}
+- Commit messages must comply
+  with the [Conventional Gitmoji][convention] convention;
+{%- endif %}
+- The `pyproject.toml` must have no inconsistencies;
+- The `poetry.lock` file must be updated;
+- The pre-commit hooks themselves
+  must be configured
+  to use their latest available version.
+
+Any updates that do not comply
+with these rules will be blocked.
 
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 ### Continuous Integration
@@ -6808,7 +6870,11 @@ what we are doing matters!
 [style5]: {{ cookiecutter.__scm_link_url }}/blob/master/CHANGELOG.md
 
 {% endif -%}
-[hooks1]: https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap03.html#tag_03_206
+[hooks1]: {{ cookiecutter.__scm_link_url }}/blob/master/.pre-commit-config.yaml
+[hooks2]: https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap03.html#tag_03_206
+{%- if cookiecutter.version_schema == 'trunkver' %}
+[hooks3]: https://bandit.readthedocs.io/en/latest/
+{%- endif %}
 
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
