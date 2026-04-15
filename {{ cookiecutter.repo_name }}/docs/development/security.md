@@ -11,7 +11,7 @@ tags:
 
 ## Announcements
 
-### Current Vulnerability Status
+### :lucide-shield-alert: Current Vulnerability Status
 
 As of
 **{% now 'local', '%B %Y' %}**,
@@ -21,7 +21,7 @@ that have been publicly known
 for more than 60 days
 in the {{ cookiecutter.project_name }} codebase.
 
-### Current Security Advisories
+### :lucide-radar: Current Security Advisories
 
 We [publish][1] security advisories
 for any vulnerabilities
@@ -33,7 +33,7 @@ no security advisories have been announced.
 
 ## Guidelines
 
-### Reporting Vulnerabilities
+### :lucide-mailbox: Reporting Vulnerabilities
 
 !!! warning
 
@@ -99,7 +99,7 @@ triage your report more quickly.
 We prefer all communications
 to be in **English**.
 
-### Response Process
+### :lucide-clipboard-check: Response Process
 
 When you report a vulnerability,
 you can expect:
@@ -118,7 +118,7 @@ you can expect:
    we will coordinate with you
    on the disclosure timeline.
 
-### Disclosure Policy
+### :lucide-volume-2: Disclosure Policy
 
 The following process
 will be triggered
@@ -181,7 +181,7 @@ the release process above
 to ensure that
 we handle disclosure consistently.
 
-### Code of Conduct and Vulnerability Reporting Guidelines
+### :lucide-scroll-text: Code of Conduct and Vulnerability Reporting Guidelines
 
 When reporting security vulnerabilities,
 reporters must adhere
@@ -241,7 +241,7 @@ Failure to follow these guidelines may result in:
 
 ## For Your Information
 
-### Severity levels
+### :lucide-waves-ladder: Severity Levels
 
 The {{ cookiecutter.project_name }} project's security team
 rates security problems
@@ -346,7 +346,7 @@ using most {{ cookiecutter.project_name }} configurations.
 
 <!-- RECORD a past example when available -->
 
-### Supported Versions
+### :lucide-shield-check: Supported Versions
 
 {% if cookiecutter.version_schema == 'trunkver' -%}
 {{ cookiecutter.project_name }} follows the TrunkVer versioning schema,
@@ -391,7 +391,7 @@ and vulnerability reporting:
 {%- endif %}
 
 {% endif -%}
-### Use Contexts
+### :lucide-drill: Use Contexts
 
 {{ cookiecutter.project_name }} can be used
 {%- if cookiecutter.app_type == 'bare_repo' %}
@@ -492,7 +492,7 @@ across all usage contexts.
 
 {% endif -%}
 {% endif -%}
-### Threat Model
+### :lucide-venetian-mask: Threat Model
 
 #### Underlying Primitives
 
@@ -691,7 +691,7 @@ to prevent unauthorized file access:
   occur during normal operation.
 
 {% endif -%}
-### NOT Security Issues
+### :lucide-door-open: NOT Security Issues
 
 This is an incomplete list of issues
 that are not considered vulnerability issues for {{ cookiecutter.project_name }},
@@ -826,7 +826,7 @@ in the case of vulnerabilities.
 
 <!-- RECORD additional concepts of non-security-issues -->
 
-### Security Measures
+### :lucide-door-closed-locked: Security Measures
 
 {{ cookiecutter.project_name }} implements
 the following measures
@@ -855,7 +855,7 @@ to enhance code security:
 - Signed commits
   and releases.
 
-### Security Guarantees
+### :lucide-shield-plus: Security Guarantees
 
 Security guarantees provided
 by the project:
@@ -897,7 +897,7 @@ by:
   via the Orbittings API.
 
 {% endif -%}
-### Comments on This Policy
+### :lucide-speech: Comments on This Policy
 
 If you have any suggestions
 on how our security processes
@@ -912,7 +912,7 @@ in our Discussions page.
 We will reply to you
 in due time.
 
-### Relevant Policies
+### :lucide-log-out: Relevant Policies
 
 <!-- RECORD with security policies of third-party libraries relevant to {{ cookiecutter.project_name }} -->
 
