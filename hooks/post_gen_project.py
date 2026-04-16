@@ -255,9 +255,7 @@ def _get_cli_related_files(
             [
                 directory / package_name / "cli" / "commands" / "config",
                 directory / package_name / "cli" / "helpers" / "printer.py",
-                directory / package_name / "config" / "helpers.py",
-                directory / package_name / "config" / "manager.py",
-                directory / package_name / "config" / "mappings.py",
+                directory / package_name / "config",
                 directory / "tests" / "cli" / "test_config_command.py",
             ]
         )
