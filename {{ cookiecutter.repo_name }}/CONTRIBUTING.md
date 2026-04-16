@@ -2,10 +2,12 @@
 
 {{ cookiecutter.project_description }}.
 
+{% if cookiecutter.licence != 'nos' -%}
 We would like to encourage you
 to contribute to this project
 and we strive to make it
 as easy as possible.
+{% endif -%}
 This guide is aimed at
 facilitating onboarding
 for new collaborators
@@ -93,36 +95,39 @@ contributing as a developer:
   be done following [our specific practices][practices].
 
 ### Development Setup
+{%- if cookiecutter.licence != 'nos' %}
 
 To start contributing to {{ cookiecutter.project_name }},
 you should start
-by [forking][setup1] the upstream repository
-to your own {{ cookiecutter.__scm_platform_base }} [group][setup2].
+by [forking][setup0a] the upstream repository
+to your own {{ cookiecutter.__scm_platform_base }} [group][setup0b].
 {%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
 We manage contributions
-{%- if cookiecutter.licence != 'nos' %}
 from the community
-{%- endif %}
-through the [fork][setup2a] system,
+through the [fork][setup0x] system,
 which helps us
 monitor and appreciate continuous input
 from individuals and organisations.
-{%- if cookiecutter.licence != 'nos' %}
 Contributors who can
 demonstrate their competence
 in further developing {{ cookiecutter.project_name }}
 may be [promoted][promotion]
 to upstream Developers or Maintainers.
-{%- endif %}
-{%- endif %}
 
 After forking the upstream repository,
 cloning it to your local environment
 and accessing the root dir
 via your IDE or the terminal:
+{%- endif %}
+{%- else %}
+
+After cloning it to your local environment
+and accessing the root dir
+via your IDE or the terminal:
+{%- endif %}
 
 1. Make sure
-   you have Poetry [installed][setup3];
+   you have Poetry [installed][setup1];
 2. Create and activate
    your virtual environment:
 
@@ -172,6 +177,7 @@ Otherwise,
 something is not right
 and there might be an opportunity
 for a [first contribution][workflow].
+{%- if cookiecutter.licence != 'nos' %}
 
 ## :shrug: Not Sure Where to Start?
 
@@ -179,6 +185,14 @@ If you don't feel
 ready to start contributing,
 the following steps
 should help:
+{%- else %}
+
+## :arrow_forward: Basic Topics
+
+To become more comfortable
+before contributing,
+refer to the following items:
+{%- endif %}
 
 - The project [`README`][readme] details
   how to use {{ cookiecutter.project_name }},
@@ -250,6 +264,7 @@ should help:
 {%- endif %}
   to get familiar
   with the team's plans
+{%- if cookiecutter.licence != 'nos' %}
   for future releases;
 - When you feel ready
   to jump into {{ cookiecutter.project_name }} development,
@@ -269,7 +284,6 @@ should help:
   you can contribute
   by participating in discussions on issues
   at any of the **Needs** statuses,
-{%- if cookiecutter.licence != 'nos' %}
   especially those in the [**Needs Triage**][query3] stage;
   we are always looking for people
   who help refine issues,
@@ -501,7 +515,7 @@ an even more robust contributor:
 >    and every feedback.
 {%- endif %}
 {%- else %}
-  especially those in the [**Needs Triage**][query3] stage.
+  for future releases.
 {%- endif %}
 {%- endif %}
 
@@ -2365,6 +2379,7 @@ on licencing the project.
 {% endif -%}
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 ## :book: Our Philosophy
+{%- if cookiecutter.licence != 'nos' %}
 
 This document is
 more than just a technical guide
@@ -2377,6 +2392,7 @@ This section outlines our _modus operandi_
 and provides insight
 into the mindset needed
 for successful contributions.
+{%- endif %}
 
 Our project's guidelines
 are strongly influenced by the [GitLab Handbook][values1],
@@ -2386,9 +2402,13 @@ are transferable
 to any team,
 and we have adopted several
 of these principles
+{%- if cookiecutter.licence != 'nos' %}
 to formalise expectations
 for contributors
 within our development ecosystem.
+{%- else %}
+to guide how we work.
+{%- endif %}
 
 ### Start with a {{ cookiecutter.__mr_term }}
 
@@ -2694,6 +2714,7 @@ or jostling
 our general practices
 when working together.
 
+{% if cookiecutter.licence != 'nos' -%}
 ### Interactions Enable Insights
 
 At {{ cookiecutter.project_name }},
@@ -2809,7 +2830,6 @@ can significantly impact
 the value of the project
 to someone else.
 
-{% if cookiecutter.licence != 'nos' -%}
 ### There Are no Good First Issues
 
 The concept of
@@ -3587,6 +3607,7 @@ of the work at {{ cookiecutter.project_name }},
 and developers are expected
 to give as much attention to docs
 as they give to the code.
+{%- if cookiecutter.licence != 'nos' %}
 
 Our documentation should also be viewed
 as one of the selling points of {{ cookiecutter.project_name }}.
@@ -3630,6 +3651,7 @@ and we encourage developers
 to familiarise themselves
 with specific guidelines
 on this domain.
+{%- endif %}
 
 #### Anatomy
 
@@ -3640,6 +3662,7 @@ it can refer to any one
 of the following distinct domains
 where knowledge is collected
 and presented to different audiences.
+{%- if cookiecutter.licence != 'nos' %}
 
 ##### The `README` File
 
@@ -3677,6 +3700,7 @@ Should any of these topics
 not be made explicit
 from the perspective of a new user,
 then changes in these files are warranted.
+{%- endif %}
 
 ##### Hard Policy Files
 
@@ -3747,9 +3771,11 @@ The hard policy files are:
     and disclose a security report
     once it is send;
   - Informs of any current vulnerabilities and advisories;
+{%- if cookiecutter.licence != 'nos' %}
 - The [Code of Conduct][cc2],
   for which more specific information
   can be found in [its respective section][covenant].
+{%- endif %}
 
 These files are not immutable,
 and can be submitted for changes and updates
@@ -3788,9 +3814,13 @@ to facilitate their filling out
 in an orderly and complete manner,
 and should be updated
 whenever they are increasingly misused
+{%- if cookiecutter.licence != 'nos' %}
 by submitters,
 be they contributors
 or community members.
+{%- else %}
+by submitters.
+{%- endif %}
 This includes
 creating new types of templates
 when the project's circumstances
@@ -3812,7 +3842,7 @@ prefer splitting them
 in separate nested items
 and orient users
 to leverage
-[complete/inapplicable tasks][docs2].
+[complete/inapplicable tasks][docs1a].
 >>>
 {%- endif %}
 
@@ -3844,7 +3874,7 @@ that went undetected.
 
 Those {{ cookiecutter.__mr_acronym }}s
 are functionally the same
-as [enhancement proposals][docs3],
+as [enhancement proposals][docs2],
 collecting feedback
 on a design
 and producing a historical record
@@ -3873,7 +3903,7 @@ on discussion points.
 >
 > Those {{ cookiecutter.__mr_acronym }}s
 > are functionally the same
-> as [enhancement proposals][docs3],
+> as [enhancement proposals][docs2],
 > collecting feedback
 > on a design
 > and producing a historical record
@@ -3896,7 +3926,7 @@ should be done via a [**Project Policy Proposal** {{ cookiecutter.__mr_acronym }
 
 Apart from individual files
 spread across the repository,
-the [`docs/`][docs4] directory stores
+the [`docs/`][docs3] directory stores
 what we call the "formal" documentation
 for {{ cookiecutter.project_name }}.
 These are the docs
@@ -3906,14 +3936,18 @@ via a static website.
 We use Zensical
 as the backbone of our documentation,
 which is configured
-in the [`zensical.toml`][docs5] file.
+in the [`zensical.toml`][docs4] file.
 Contributors are instructed
-to read [Zensical's][docs6] documentation
+to read [Zensical's][docs5] documentation
 before proposing changes to ours.
 
 The formal docs
 have their own structure,
+{%- if cookiecutter.licence != 'nos' %}
 split across four major branches of knowledge:
+{%- else %}
+split across three major branches of knowledge:
+{%- endif %}
 
 - The **Reference Guide**,
   a technical document
@@ -3974,6 +4008,7 @@ split across four major branches of knowledge:
     and more easily migrate from them;
   - Sections dedicated to power users
     who aim to take the most
+{%- if cookiecutter.licence != 'nos' %}
     out of the library's functionalities;
   - A collection of community-generated guides
     and FAQs to address the most common issues
@@ -3996,6 +4031,9 @@ split across four major branches of knowledge:
   - The collection of all previous releases
     and their release notes
     for reference.
+{%- else %}
+    out of the library's functionalities.
+{%- endif %}
 
 Changes to any part of the formal documentation
 are also done via [**Project Policy Proposal** {{ cookiecutter.__mr_acronym }}s][roadmap1],
@@ -4004,7 +4042,7 @@ presented in its [specific section][docchanges].
 
 #### Documentation Philosophy
 
-> Adapted from the [Google Style Guides][docs7].
+> Adapted from the [Google Style Guides][docs6].
 
 When dealing with any
 of the content and files
@@ -4212,7 +4250,7 @@ during content edition:
   do not attempt to
   accommodate multiple reader types
   to a single page;
-- Leverage [Zensical's features][docs8] where appropriate
+- Leverage [Zensical's features][docs7] where appropriate
   to elevate knowledge transmission;
   use them strategically,
   however,
@@ -4234,8 +4272,8 @@ through the pages.
 
 ##### API Collection
 
-The project uses [`mkdocstrings`][docs9]
-(and, more specifically, [`mkdocstrings-python`][docs10])
+The project uses [`mkdocstrings`][docs8]
+(and, more specifically, [`mkdocstrings-python`][docs9])
 to collect the API from {{ cookiecutter.project_name }}.
 This makes the process
 of providing API details to users
@@ -4268,7 +4306,7 @@ this encompasses
 a specific structure
 with distinct `mkdocstrings` options:
 
-1. A [navigation section][docs11] page
+1. A [navigation section][docs10] page
    to present the class' docstring
    and objects:
 
@@ -4429,7 +4467,9 @@ with documentation rules.
 ##### Policy Mirroring
 
 The contents of
+{%- if cookiecutter.licence != 'nos' %}
 `CONTRIBUTING.md`,
+{%- endif %}
 `ROADMAP.md`
 and `SECURITY.md`
 should always be reflected
@@ -4445,15 +4485,19 @@ Content must not be blindly copied
 from one to the other:
 since features and Markdown syntax
 differ between [{{ cookiecutter.__scm_platform_base }} Flavoured Markdown][request0c]
-and [Zensical][docs8],
+and [Zensical][docs7],
 contributors should aim
 to leverage each one's
 leading components,
 which may lead to
+{%- if cookiecutter.licence != 'nos' %}
 different layouts altogether
 (cf. the Invoke command list
 in [`CONTRIBUTING.md`][invoke]
-and [the formal documentation][docs12]).
+and [the formal documentation][docs11]).
+{%- else %}
+different layouts altogether.
+{%- endif %}
 
 Whenever mirroring content,
 make sure to leave comments
@@ -4472,7 +4516,7 @@ where it is presented.
 
 To facilitate navigation
 for users,
-we leverage [Zensical tags][docs13]
+we leverage [Zensical tags][docs12]
 on our documentation pages.
 Broadly speaking,
 they are grouped
@@ -4491,17 +4535,23 @@ across two purposes:
 | ------------------------ | :-------------: | ---------------------------------------------------------------------------------------------------------------------------------- |
 | **For Your Information** |  General Users  | Descriptive content detailing a topic or concept.                                                                                  |
 | **User Guides**          |  General Users  | Tutorials and step-by-step guides to enable {{ cookiecutter.project_name }} usage.                                                 |
+{%- if cookiecutter.licence != 'nos' %}
 | **Community Content**    |  General Users  | Content provided by the community at large.                                                                                        |
 | **Design Definitions**   |  Contributors   | Descriptive content providing context behind the design and architecture of {{ cookiecutter.project_name }} elements.              |
+{%- endif %}
 | **Policies & Rules**     |  Contributors   | Descriptive content detailing rules for project development and expected behaviour from contributors.                              |
+{%- if cookiecutter.licence != 'nos' %}
 | **Development Guides**   |  Contributors   | Tutorials and guides to enable contributions from new developers.                                                                  |
+{%- endif %}
 | **Workflows**            |     Either      | Guides explaining how to perform operations to achieve specific outcomes.                                                          |
 | **Setup**                |     Either      | Pages containing instructions to set up environments under specific configuration and enable further actions.                      |
 | **Configuration**        |  General Users  | Pages related to concepts, objects and features which customise the user's installation of {{ cookiecutter.project_name }}.        |
 | **CLI**                  |     Either      | Pages related to concepts, objects and features directly associated with {{ cookiecutter.project_name }}'s command-line interface. |
 | **TUI**                  |     Either      | Pages related to concepts, objects and features directly associated with {{ cookiecutter.project_name }}'s user interface.         |
 | **Supporting Objects**   |  General Users  | Pages related to publicly exposed API that is not directly associated with either the CLI or TUI.                                  |
+{%- if cookiecutter.licence != 'nos' %}
 | **Backend**              |  Contributors   | Pages related to non-public API objects.                                                                                           |
+{%- endif %}
 
 Besides the tags listed above,
 the following tags
@@ -4977,7 +5027,6 @@ or any other reviewers
 are strictly counter
 to the [Code of Conduct][cc2].
 
-{% endif -%}
 When reviewing a {{ cookiecutter.__mr_term }},
 the primary goals are
 for the codebase to improve
@@ -4990,6 +5039,7 @@ or unappreciated.
 Every {{ cookiecutter.__mr_term }} from a new contributor
 is an opportunity to grow the community.
 
+{% endif -%}
 Review a bit at a time,
 do not overwhelm new contributors.
 It is tempting to micro-optimise
@@ -5062,6 +5112,7 @@ Then:
 - Let the submitter know
   if changes are required following your review.
 
+{% if cookiecutter.licence != 'nos' -%}
 When changes are necessary,
 **request** them,
 do not _demand_ them,
@@ -5077,6 +5128,7 @@ and conventions
 change over time.
 **The first impression you give to a new contributor never does.**
 
+{% endif -%}
 [Nits][reviewing1]
 (requests for small changes
 that are not essential)
@@ -5094,6 +5146,7 @@ when you comment
 (e.g.,
 `Nit: change foo() to bar(). But this is not blocking.`).
 
+{%- if cookiecutter.licence != 'nos' %}
 **Be aware of the person behind the change:**
 _how_ you communicate requests and reviews in your feedback
 can have a significant impact
@@ -5204,6 +5257,7 @@ created by a submitter.
   and use the [`seeking-contributors::opinion`][query2] label.
 {%- else %}
   and use the [`seeking-input`][query2] label.
+{%- endif %}
 {%- endif %}
 
 #### The Responsibility of the Maintainers
@@ -6698,17 +6752,17 @@ what we are doing matters!
 
 {% endif -%}
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
-[setup1]: {{ cookiecutter.__scm_link_url }}/forks/new
-[setup2]: https://docs.gitlab.com/user/group/
+[setup0a]: {{ cookiecutter.__scm_link_url }}/forks/new
+[setup0b]: https://docs.gitlab.com/user/group/
 {% if cookiecutter.scm_platform == 'GitLab Free' -%}
-[setup2a]: https://docs.gitlab.com/user/project/repository/forking_workflow/
+[setup0x]: https://docs.gitlab.com/user/project/repository/forking_workflow/
 {% endif -%}
 {% else -%}
-[setup1]: {{ cookiecutter.__scm_link_url }}/fork
-[setup2]: https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/about-organizations
-[setup2a]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
+[setup0a]: {{ cookiecutter.__scm_link_url }}/fork
+[setup0b]: https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/about-organizations
+[setup0x]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
 {% endif -%}
-[setup3]: https://python-poetry.org/docs/#installation
+[setup1]: https://python-poetry.org/docs/#installation
 {%- if cookiecutter.app_type != 'bare_repo' %}
 
 [apptopic1]: https://typer.tiangolo.com/tutorial/
@@ -6740,14 +6794,16 @@ what we are doing matters!
 {%- else %}
 [topic2]: {{ cookiecutter.__scm_link_url }}/projects
 {%- endif %}
+{%- if cookiecutter.licence != 'nos' %}
 [topic3]: {{ cookiecutter.__scm_link_url }}/labels
-{%- if cookiecutter.licence != 'nos' and cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
 [topic4]: https://goauthentik.io/blog/2024-03-07-why-contributing-to-open-source-is-scary/
 [topic5]: mailto:{{ cookiecutter.email }}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [topic6]: https://gitlab.com/gitlab-org/gitlab-foss/-/issues/234#note_17497758
 {%- else %}
 [topic6]: https://docs.github.com/en/subscriptions-and-notifications/get-started/configuring-notifications#about-participating-and-watching-notifications
+{%- endif %}
 {%- endif %}
 
 [cc1]: https://www.contributor-covenant.org/
@@ -6903,8 +6959,8 @@ what we are doing matters!
 [values3]: https://handbook.gitlab.com/handbook/values/#say-why-not-just-what
 [values4]: https://theknowledge.io/chestertons-fence-explained/
 [values5]: https://handbook.gitlab.com/handbook/values/#operate-with-a-bias-for-action
-[values6]: https://conversational-leadership.net/we-human-beings-are-complex/
 {%- if cookiecutter.licence != 'nos' %}
+[values6]: https://conversational-leadership.net/we-human-beings-are-complex/
 [values7]: https://kentcdodds.com/blog/first-timers-only
 {%- endif %}
 
@@ -6956,18 +7012,20 @@ what we are doing matters!
 [workflow6]: {{ cookiecutter.__scm_link_url }}/blob/master/pyproject.toml
 
 [docs1]: {{ cookiecutter.__scm_link_url }}/blob/master/SECURITY.md
-[docs2]: https://docs.gitlab.com/user/markdown/#task-lists
-[docs3]: https://pydevtools.com/handbook/explanation/pep/
-[docs4]: {{ cookiecutter.__scm_link_url }}/tree/master/docs
-[docs5]: {{ cookiecutter.__scm_link_url }}/blob/master/zensical.toml
-[docs6]: https://zensical.org/
-[docs7]: https://google.github.io/styleguide/docguide/best_practices.html
-[docs8]: https://zensical.org/docs/authoring/markdown/
-[docs9]: https://mkdocstrings.github.io/
-[docs10]: https://mkdocstrings.github.io/python/
-[docs11]: https://zensical.org/docs/setup/navigation/#navigation-sections
-[docs12]: {{ cookiecutter.__scm_link_url }}/blob/master/docs/development/for_developers/workflow/invoke.md
-[docs13]: https://zensical.org/docs/setup/tags/
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+[docs1a]: https://docs.gitlab.com/user/markdown/#task-lists
+{%- endif %}
+[docs2]: https://pydevtools.com/handbook/explanation/pep/
+[docs3]: {{ cookiecutter.__scm_link_url }}/tree/master/docs
+[docs4]: {{ cookiecutter.__scm_link_url }}/blob/master/zensical.toml
+[docs5]: https://zensical.org/
+[docs6]: https://google.github.io/styleguide/docguide/best_practices.html
+[docs7]: https://zensical.org/docs/authoring/markdown/
+[docs8]: https://mkdocstrings.github.io/
+[docs9]: https://mkdocstrings.github.io/python/
+[docs10]: https://zensical.org/docs/setup/navigation/#navigation-sections
+[docs11]: {{ cookiecutter.__scm_link_url }}/blob/master/docs/development/for_developers/workflow/invoke.md
+[docs12]: https://zensical.org/docs/setup/tags/
 {%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
 
 [reviewing1]: https://josipmisko.com/posts/code-review-nit
