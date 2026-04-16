@@ -6,11 +6,19 @@ tags:
 
 {% endraw -%}
 # Anatomy
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#anatomy
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#anatomy
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 As a contributor,
 be aware that
@@ -21,11 +29,19 @@ where knowledge is collected
 and presented to different audiences.
 
 ## The `README` File
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#the-readme-file
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#the-readme-file
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 The [`README`][1] file
 is the one that users will first interact with
@@ -63,11 +79,19 @@ from the perspective of a new user,
 then changes in these files are warranted.
 
 ## Hard Policy Files
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#hard-policy-files
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#hard-policy-files
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 These are files
 that delineate the core principles
@@ -145,11 +169,19 @@ by any contributor
 via a [**Project Policy Proposal** {{ cookiecutter.__mr_acronym }}][7].
 
 ## Issue and {{ cookiecutter.__mr_term }} Templates
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#issue-and-{{ cookiecutter.__mr_term_slug }}-templates
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#issue-and-{{ cookiecutter.__mr_term_slug }}-templates
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 Templates used for
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
@@ -257,11 +289,19 @@ as well as proposing new template types,
 should be done via a [**Project Policy Proposal** {{ cookiecutter.__mr_acronym }}][7].
 
 ## The Formal Documentation
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#the-formal-documentation
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#the-formal-documentation
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 Apart from individual files
 spread across the repository,

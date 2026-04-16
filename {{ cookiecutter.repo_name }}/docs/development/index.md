@@ -74,11 +74,20 @@ in addressing your issue
 or assessing patches and features.
 
 ## Not Sure Where to Start?
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in project and group CONTRIBUTING.md guides
+  [project]: ../../../../CONTRIBUTING.md#shrug-not-sure-where-to-start
+  [group]: {{ cookiecutter.__contributing_prefix }}#shrug-not-sure-where-to-start
+
+  REMEMBER TO INCORPORATE CHANGES FROM BOTH GUIDES WHEN UPDATING THIS FILE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#shrug-not-sure-where-to-start
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 If you don't feel
 ready to start contributing,

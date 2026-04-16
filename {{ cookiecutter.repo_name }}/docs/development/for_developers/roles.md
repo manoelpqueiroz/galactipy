@@ -7,18 +7,34 @@ tags:
 
 {% endraw -%}
 # Roles and Attributions
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#roles-and-attributions
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#roles-and-attributions
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 ## The Responsibility of the {{ cookiecutter.__mr_term }} Author
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#the-responsibility-of-the-{{ cookiecutter.__mr_term_slug }}-author
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#the-responsibility-of-the-{{ cookiecutter.__mr_term_slug }}-author
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 The responsibility to
 find the best solution
@@ -175,11 +191,19 @@ This saves reviewers time
 and helps authors catch mistakes earlier.
 
 ### Recommendations to Get Your Changes Merged Faster
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#recommendations-to-get-your-changes-merged-faster
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#recommendations-to-get-your-changes-merged-faster
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 1. Make sure
    to follow best practices:
@@ -234,11 +258,19 @@ and helps authors catch mistakes earlier.
    in a single {{ cookiecutter.__mr_acronym }}.
 
 ### Recommendations for Facilitating Reviews
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#recommendations-for-facilitating-reviews
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#recommendations-for-facilitating-reviews
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 Keep in mind that
 code review is a process
@@ -319,11 +351,19 @@ the first time.
   `@` mention the reviewer instead.
 
 ## The Responsibility of the Reviewer
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#the-responsibility-of-the-reviewer
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#the-responsibility-of-the-reviewer
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 All {{ cookiecutter.project_name }} contributors
 who choose to review
@@ -503,11 +543,19 @@ or ridiculed for even trying
 run counter to the [Code of Conduct][4].
 
 ### The Right Balance
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#the-right-balance
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#the-right-balance
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 One of the most difficult things
 during code review
@@ -588,11 +636,19 @@ created by a submitter.
 {%- endif %}
 
 ## The Responsibility of the Maintainers
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#the-responsibility-of-the-maintainers
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#the-responsibility-of-the-maintainers
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 Maintainers are responsible for
 the overall health,

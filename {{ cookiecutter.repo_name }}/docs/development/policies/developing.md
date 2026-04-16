@@ -24,11 +24,19 @@ a {{ cookiecutter.__scm_platform_base }} account is needed
 to start contributing.
 
 ## Contributor Promotion
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#contributor-promotion
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#contributor-promotion
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 Access to the upstream repository is granted
 at the project owner's discretion,
@@ -97,11 +105,20 @@ for candidate contributors
 in more detail.
 
 ## Work Item Tracking
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in project and group CONTRIBUTING.md guides
+  [project]: ../../../../CONTRIBUTING.md#work-item-tracking
+  [group]: {{ cookiecutter.__contributing_prefix }}#work-item-tracking
+
+  REMEMBER TO INCORPORATE CHANGES FROM BOTH GUIDES WHEN UPDATING THIS FILE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#work-item-tracking
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 [![Issues][badge1]][query1]
 {%- if cookiecutter.scm_platform == 'GitLab Free' %}
@@ -139,11 +156,20 @@ Use cases for this type of work item include:
   due to scope or team capacity.
 
 ### Labels
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in project and group CONTRIBUTING.md guides
+  [project]: ../../../../CONTRIBUTING.md#labels
+  [group]: {{ cookiecutter.__contributing_prefix }}#labels
+
+  REMEMBER TO INCORPORATE CHANGES FROM BOTH GUIDES WHEN UPDATING THIS FILE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#labels
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 {{ cookiecutter.project_name }} defines
 the following labels
@@ -256,11 +282,19 @@ with their usage:
 
 {% endif -%}
 ### Work Item Lifecycle
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#work-item-lifecycle
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#work-item-lifecycle
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 To effectively manage
 issue and {{ cookiecutter.__task_item }} lifecycles,
@@ -362,18 +396,34 @@ a lifecycle label.
 
 {% endif -%}
 ## General Practices
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#general-practices
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#general-practices
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 ### Issue Titles Should be Framed in Imperative Mood
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#issue-titles-should-be-framed-in-imperative-mood
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#issue-titles-should-be-framed-in-imperative-mood
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 Issue titles should be clear
 to allow anyone
@@ -426,11 +476,19 @@ is trying to address.
     to close the issue.
 
 ### {{ cookiecutter.__task_item.capitalize() }}s Are Used as Acceptance Criteria for Issues
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#{{ cookiecutter.__task_item }}s-are-used-as-acceptance-criteria-for-issues
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#{{ cookiecutter.__task_item }}s-are-used-as-acceptance-criteria-for-issues
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 [{{ cookiecutter.__task_item.capitalize() }}s][15] are a specific type of work item
 in {{ cookiecutter.__scm_platform_base }}
@@ -464,11 +522,19 @@ if relevant to understand implementation.
     associated with a {{ cookiecutter.__task_item }}.
 
 ### Usage of the `seeking-contributors` Labels
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#usage-of-the-seeking-contributors-labels
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#usage-of-the-seeking-contributors-labels
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 `seeking-contributors` is the label used
 to indicate work items
@@ -533,11 +599,19 @@ with intermediate experience in the project.
     etc.
 
 ### Blocks Must be Set at the Same Issue Level
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#blocks-must-be-set-at-the-same-issue-level
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#blocks-must-be-set-at-the-same-issue-level
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 [Issue blocks][18] are not mandatory
 for development,
@@ -562,11 +636,19 @@ issues can only block **issues**,
 {{ cookiecutter.__task_item }}s can only block **{{ cookiecutter.__task_item}}s**.
 
 ### Tasks Should Have no Milestones
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#tasks-should-have-no-milestones
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#tasks-should-have-no-milestones
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 Given GitLab Tasks are used
 for acceptance criteria of issues,

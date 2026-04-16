@@ -7,19 +7,37 @@ tags:
 
 {% endraw -%}
 # Commit Customs
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in project and group CONTRIBUTING.md guides
+  [project]: ../../../../CONTRIBUTING.md#commit-customs
+  [group]: {{ cookiecutter.__contributing_prefix }}#commit-customs
+
+  REMEMBER TO INCORPORATE CHANGES FROM BOTH GUIDES WHEN UPDATING THIS FILE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#commit-customs
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 {% if cookiecutter.commit_convention == 'gitmoji' -%}
 ## Gitmoji
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in project and group CONTRIBUTING.md guides
+  [project]: ../../../../CONTRIBUTING.md#gitmoji
+  [group]: {{ cookiecutter.__contributing_prefix }}#gitmoji
+
+  REMEMBER TO INCORPORATE CHANGES FROM BOTH GUIDES WHEN UPDATING THIS FILE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#gitmoji
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 {{ cookiecutter.project_name }} uses [Gitmoji][1]
 to characterise
@@ -285,11 +303,19 @@ so the CI will ignore it.
 
 {% endif -%}
 ## Commit Message Structure
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#commit-message-structure
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#commit-message-structure
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 Commit messages should be clear
 and concise,

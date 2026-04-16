@@ -7,11 +7,19 @@ tags:
 
 {% endraw -%}
 # How to Behave among Other Contributors
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#how-to-behave-among-other-contributors
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#how-to-behave-among-other-contributors
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 {{ cookiecutter.__mr_term }}s,
 when worked under the concept of [proposals][1],

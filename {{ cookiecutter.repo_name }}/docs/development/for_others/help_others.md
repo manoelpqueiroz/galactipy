@@ -7,11 +7,20 @@ tags:
 
 {% endraw -%}
 # Contributing by Helping Other People
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in project and group CONTRIBUTING.md guides
+  [project]: ../../../../CONTRIBUTING.md#contributing-by-helping-others
+  [group]: {{ cookiecutter.__contributing_prefix }}#contributing-by-helping-others
+
+  REMEMBER TO INCORPORATE CHANGES FROM BOTH GUIDES WHEN UPDATING THIS FILE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#contributing-by-helping-others
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 [![RFSs][1]][2]
 
@@ -59,11 +68,19 @@ for more details
 on how we deal with these cases.
 
 ## Orientation for Effectively Helping Others
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#orientation-for-effectively-helping-others
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#orientation-for-effectively-helping-others
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 Here is a general guide
 on how to help other users
@@ -183,11 +200,19 @@ with their requests:
     avoid generalisations.
 
 ## Commitment to Help
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#commitment-to-help
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#commitment-to-help
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 What consumes
 most of the time of the development team

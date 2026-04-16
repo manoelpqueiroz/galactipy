@@ -7,11 +7,20 @@ tags:
 
 {% endraw -%}
 # Contributing through User Requests
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in project and group CONTRIBUTING.md guides
+  [project]: ../../../../CONTRIBUTING.md#contributing-through-user-requests
+  [group]: {{ cookiecutter.__contributing_prefix }}#contributing-through-user-requests
+
+  REMEMBER TO INCORPORATE CHANGES FROM BOTH GUIDES WHEN UPDATING THIS FILE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#contributing-through-user-requests
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 If you are simply
 having trouble using {{ cookiecutter.project_name }},
@@ -161,11 +170,20 @@ of a quick response:
   down the line.
 
 ## Specific Guidelines for Requests for Support
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in project and group CONTRIBUTING.md guides
+  [project]: ../../../../CONTRIBUTING.md#specific-guidelines-for-requests-for-support
+  [group]: {{ cookiecutter.__contributing_prefix }}#specific-guidelines-for-requests-for-support
+
+  REMEMBER TO INCORPORATE CHANGES FROM BOTH GUIDES WHEN UPDATING THIS FILE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#specific-guidelines-for-requests-for-support
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 If {{ cookiecutter.project_name }} is not working correctly for you,
 most likely it is a simple configuration issue.
@@ -201,11 +219,20 @@ prefer sticking to the Request for Support
 as the means to reach the team.
 
 ## Specific Guidelines for Requests for Improvement
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in project and group CONTRIBUTING.md guides
+  [project]: ../../../../CONTRIBUTING.md#specific-guidelines-for-requests-for-improvement
+  [group]: {{ cookiecutter.__contributing_prefix }}#specific-guidelines-for-requests-for-improvement
+
+  REMEMBER TO INCORPORATE CHANGES FROM BOTH GUIDES WHEN UPDATING THIS FILE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#specific-guidelines-for-requests-for-improvement
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 Requests for Improvement are used
 when users feel a need for development
@@ -279,11 +306,20 @@ to make a contribution
 is to make one [that comes from yourself][9].
 
 ## Specific Guidelines for Requests for Correction
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in project and group CONTRIBUTING.md guides
+  [project]: ../../../../CONTRIBUTING.md#specific-guidelines-for-requests-for-correction
+  [group]: {{ cookiecutter.__contributing_prefix }}#specific-guidelines-for-requests-for-correction
+
+  REMEMBER TO INCORPORATE CHANGES FROM BOTH GUIDES WHEN UPDATING THIS FILE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#specific-guidelines-for-requests-for-correction
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 [![RFCs][10]][11]
 

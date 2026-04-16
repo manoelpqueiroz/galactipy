@@ -122,6 +122,10 @@ contributing as a developer:
   [link]: ./docs/development/development_setup.md#development-setup
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
 -->
 
 To start contributing to {{ cookiecutter.project_name }},
@@ -211,6 +215,10 @@ for a [first contribution][workflow].
   [link]: ./docs/development/index.md#not-sure-where-to-start
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
 -->
 
 If you don't feel
@@ -829,6 +837,10 @@ the completed {{ cookiecutter.__roadmap_item }}.
   [link]: ./docs/development/policies/developing.md#work-item-tracking
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
 -->
 {%- endif %}
 
@@ -877,6 +889,10 @@ Use cases for this type of work item include:
   [link]: ./docs/development/policies/developing.md#labels
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
 -->
 {%- endif %}
 
@@ -1903,16 +1919,22 @@ or detailed documentation.
   [link]: ./docs/development/policies/committing.md#commit-customs
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
 -->
 {%- endif %}
 
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' and cookiecutter.commit_convention == 'gitmoji' -%}
 #### Gitmoji
 {%- if cookiecutter.licence != 'nos' %}
-<!-- This section is also described in the formal documentation with the entire content, including group policies
+<!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/committing.md#gitmoji
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
 -->
 {%- endif %}
 
@@ -3225,6 +3247,10 @@ _The best good first issues are the ones you open yourself._
   [link]: ./docs/development/for_developers/index.md#proposing-changes
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
 -->
 
 {% else -%}
@@ -3408,6 +3434,10 @@ on the following topics not covered here:
   [link]: ./docs/development/for_developers/prepare.md#preparing-to-contribute
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
 -->
 {%- endif %}
 
@@ -3417,6 +3447,10 @@ on the following topics not covered here:
   [link]: ./docs/development/for_developers/prepare.md#choosing-what-to-contribute
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
 -->
 {%- endif %}
 
@@ -6212,6 +6246,10 @@ will reach out to you.
   [link]: ./docs/development/for_others/index.md#other-ways-to-contribute
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
 -->
 
 You can contribute to {{ cookiecutter.project_name }}
@@ -6255,6 +6293,10 @@ faster communication and resolution.
   [link]: ./docs/development/for_others/help_others.md#contributing-by-helping-other-people
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
 -->
 
 [![RFSs][badge10]][query10]
@@ -6574,6 +6616,10 @@ whenever possible.
   [link]: ./docs/development/for_others/user_requests.md#contributing-through-user-requests
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
 -->
 
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
@@ -6751,6 +6797,10 @@ of a quick response:
   [link]: ./docs/development/for_others/user_requests.md#specific-guidelines-for-requests-for-support
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
 -->
 
 If {{ cookiecutter.project_name }} is not working correctly for you,
@@ -6791,6 +6841,10 @@ as the means to reach the team.
   [link]: ./docs/development/for_others/user_requests.md#specific-guidelines-for-requests-for-improvement
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
 -->
 
 Requests for Improvement are used
@@ -6879,6 +6933,10 @@ is to make one [that comes from yourself][gfi].
   [link]: ./docs/development/for_others/user_requests.md#specific-guidelines-for-requests-for-correction
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
 -->
 
 [![RFCs][badge8]][query8]
@@ -7013,6 +7071,10 @@ by the development team.
   [link]: ./docs/development/for_others/review_changes.md#contributing-by-reviewing-changes
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
 -->
 
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
@@ -7124,6 +7186,10 @@ We appreciate your commitment beforehand!
   [link]: ./docs/development/for_others/documentation_changes.md#contributing-with-documentation-changes
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
 -->
 
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
@@ -7191,6 +7257,10 @@ to our docs.
   [link]: ./docs/development/for_others/roadmap_maintenance.md#contributing-to-roadmap-maintenance
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
 -->
 
 [![Issues][badge1]][query1]

@@ -6,11 +6,20 @@ tags:
 
 {% endraw -%}
 # Contributing with Documentation Changes
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in project and group CONTRIBUTING.md guides
+  [project]: ../../../../CONTRIBUTING.md#contributing-with-documentation-changes
+  [group]: {{ cookiecutter.__contributing_prefix }}#contributing-with-documentation-changes
+
+  REMEMBER TO INCORPORATE CHANGES FROM BOTH GUIDES WHEN UPDATING THIS FILE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#contributing-with-documentation-changes
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 Contributing to the documentation benefits
 everyone who uses {{ cookiecutter.project_name }}.

@@ -7,11 +7,20 @@ tags:
 
 {% endraw -%}
 # Other Ways to Contribute
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in project and group CONTRIBUTING.md guides
+  [project]: ../../../../CONTRIBUTING.md#reminder_ribbon-other-ways-to-contribute
+  [group]: {{ cookiecutter.__contributing_prefix }}#reminder_ribbon-other-ways-to-contribute
+
+  REMEMBER TO INCORPORATE CHANGES FROM BOTH GUIDES WHEN UPDATING THIS FILE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#reminder_ribbon-other-ways-to-contribute
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 You can contribute to {{ cookiecutter.project_name }}
 in additional ways,

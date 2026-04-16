@@ -7,11 +7,20 @@ tags:
 
 {% endraw -%}
 # Proposing Changes
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in project and group CONTRIBUTING.md guides
+  [project]: ../../../../CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
+  [group]: {{ cookiecutter.__contributing_prefix }}#speaking_head-proposing-changes-as-a-developer
+
+  REMEMBER TO INCORPORATE CHANGES FROM BOTH GUIDES WHEN UPDATING THIS FILE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 {% if cookiecutter.__app_group == 'tui' -%}
 <!-- RECORD the context and purposes of your library -->

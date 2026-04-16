@@ -7,11 +7,19 @@ tags:
 
 {% endraw -%}
 # {{ cookiecutter.__mr_term }} Review Process
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#{{ cookiecutter.__mr_term_slug }}-review-process
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#{{ cookiecutter.__mr_term_slug }}-review-process
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 After [starting with a {{ cookiecutter.__mr_term }}][1],
 ensuring you have opened an [admissible {{ cookiecutter.__mr_acronym }}][2]
@@ -19,11 +27,19 @@ and have finished contributing with changes,
 the review process can start.
 
 ## Contribution Acceptance Criteria
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#contribution-acceptance-criteria
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#contribution-acceptance-criteria
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 To make sure that
 your {{ cookiecutter.__mr_term }} can be approved,
@@ -89,11 +105,19 @@ it meets the contribution acceptance criteria below:
     why you need it.
 
 ## Getting Reviewed
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in the group CONTRIBUTING.md guide
+  [link]: {{ cookiecutter.__contributing_prefix }}#getting-reviewed
+
+  REMEMBER TO INCORPORATE CHANGES TO THIS FILE WHEN UPDATING THE GUIDE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#getting-reviewed
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 As soon as you have changes to review,
 have the changes reviewed

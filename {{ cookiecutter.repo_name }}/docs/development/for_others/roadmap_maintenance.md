@@ -6,11 +6,20 @@ tags:
 
 {% endraw -%}
 # Contributing to Roadmap Maintenance
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in project and group CONTRIBUTING.md guides
+  [project]: ../../../../CONTRIBUTING.md#contributing-to-roadmap-maintenance
+  [group]: {{ cookiecutter.__contributing_prefix }}#contributing-to-roadmap-maintenance
+
+  REMEMBER TO INCORPORATE CHANGES FROM BOTH GUIDES WHEN UPDATING THIS FILE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#contributing-to-roadmap-maintenance
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 [![Issues][1]][2]
 {%- if cookiecutter.scm_platform == 'GitLab Free' %}

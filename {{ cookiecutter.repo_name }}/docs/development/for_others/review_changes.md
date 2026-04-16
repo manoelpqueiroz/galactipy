@@ -7,11 +7,20 @@ tags:
 
 {% endraw -%}
 # Contributing by Reviewing Changes
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+<!-- This section is also described in project and group CONTRIBUTING.md guides
+  [project]: ../../../../CONTRIBUTING.md#contributing-by-reviewing-changes
+  [group]: {{ cookiecutter.__contributing_prefix }}#contributing-by-reviewing-changes
+
+  REMEMBER TO INCORPORATE CHANGES FROM BOTH GUIDES WHEN UPDATING THIS FILE
+-->
+{%- else %}
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#contributing-by-reviewing-changes
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 Changes to {{ cookiecutter.project_name }} source code are
 proposed,
