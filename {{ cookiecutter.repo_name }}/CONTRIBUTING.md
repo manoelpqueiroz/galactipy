@@ -71,10 +71,25 @@ or assessing patches and features.
 
 {% endif -%}
 {% else -%}
-and as a complimentary source of information
-to our [main `CONTRIBUTING` guide][intro1],
-which you should read
-before diving into this specific guide.
+and presenting guidelines
+for proper contributions.
+
+>>> [!important]
+This guide contains information
+that complements group-level policies and rules
+for the {{ cookiecutter.scm_namespace.capitalize() }} organisation.
+
+Before diving into this specific guide,
+contributors are expected
+to read our [main `CONTRIBUTING` guide][intro1].
+
+Unless when explicitly expressed
+in the present guide,
+policies defined
+in the main `CONTRIBUTING` guide
+are also to be applied
+for {{ cookiecutter.project_name }} project development.
+>>>
 
 {% endif -%}
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
@@ -2626,7 +2641,6 @@ on licencing the project.
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
-{%- endif %}
 
 This document is
 more than just a technical guide
@@ -3204,6 +3218,7 @@ _The best good first issues are the ones you open yourself._
 
 {% endif -%}
 {% endif -%}
+{% endif -%}
 {% if cookiecutter.licence != 'nos' -%}
 ## :speaking_head: Proposing Changes as a Developer
 <!-- This section is also described in the formal documentation
@@ -3374,6 +3389,18 @@ will involve:
   - The policies that orient
     {{ cookiecutter.project_name }} development
     and contributor interactions.
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+
+>>> [!tip]
+The [group-level guide][intro1] contains guidance
+on the following topics not covered here:
+
+- How to open admissible Merge Requests;
+- The review process for MRs;
+- Roles and attributions;
+- How to make changes to project documentation.
+>>>
+{%- endif %}
 
 ### Preparing to Contribute
 {%- if cookiecutter.licence != 'nos' %}
@@ -3983,7 +4010,6 @@ do so through a [**Project Policy Proposal**][roadmap1].
 <!-- DEFINE the guidelines on how to implement and handle feature flags -->
 
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
-
 ### Documentation Guide
 {%- if cookiecutter.licence != 'nos' %}
 <!-- This section is also described in the formal documentation
@@ -7100,6 +7126,16 @@ We appreciate your commitment beforehand!
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
 
+{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+>>> [!tip] :pushpin: Further Guidance
+You can find more information
+about documentation changes
+in our [main `CONTRIBUTING` guide][intro1],
+take a look at it
+whenever possible.
+>>>
+
+{% else -%}
 Contributing to the documentation benefits
 everyone who uses {{ cookiecutter.project_name }}.
 We encourage you
@@ -7149,6 +7185,7 @@ for instructions
 on how to make changes
 to our docs.
 
+{% endif -%}
 ### Contributing to Roadmap Maintenance
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_others/roadmap_maintenance.md#contributing-to-roadmap-maintenance
