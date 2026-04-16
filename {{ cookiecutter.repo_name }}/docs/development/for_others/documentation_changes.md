@@ -6,6 +6,11 @@ tags:
 
 {% endraw -%}
 # Contributing with Documentation Changes
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#contributing-with-documentation-changes
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Contributing to the documentation benefits
 everyone who uses {{ cookiecutter.project_name }}.

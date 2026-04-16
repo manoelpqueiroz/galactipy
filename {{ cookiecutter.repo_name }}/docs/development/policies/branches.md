@@ -7,6 +7,11 @@ tags:
 
 {% endraw -%}
 # Branch Organization
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#branch-organization
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 We apply the [{{ cookiecutter.project_name }} Philosophy][1]
 for conducting new development,
@@ -37,6 +42,11 @@ or `wip-` prefixes
 so the CI will ignore it.
 
 ## Branch Naming Standards
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#branch-naming-standards
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 While standard branch naming
 is not strictly required,

@@ -9,6 +9,11 @@ tags:
 
 {% endraw -%}
 # Behaviour-Driven Development
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#behaviour-driven-development
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 At {{ cookiecutter.project_name }},
 we believe building software
@@ -116,6 +121,11 @@ contributors are valued
 and everyone feels empowered to grow and succeed.
 
 ## References for BDD
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#references-for-bdd
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 The structured approach BDD offers
 will help us maintain

@@ -6,6 +6,11 @@ tags:
 
 {% endraw -%}
 # Anatomy
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#anatomy
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 As a contributor,
 be aware that
@@ -16,6 +21,11 @@ where knowledge is collected
 and presented to different audiences.
 
 ## The `README` File
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#the-readme-file
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 The [`README`][1] file
 is the one that users will first interact with
@@ -53,6 +63,11 @@ from the perspective of a new user,
 then changes in these files are warranted.
 
 ## Hard Policy Files
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#hard-policy-files
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 These are files
 that delineate the core principles
@@ -130,6 +145,11 @@ by any contributor
 via a [**Project Policy Proposal** {{ cookiecutter.__mr_acronym }}][7].
 
 ## Issue and {{ cookiecutter.__mr_term }} Templates
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#issue-and-{{ cookiecutter.__mr_term_slug }}-templates
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Templates used for
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
@@ -237,6 +257,11 @@ as well as proposing new template types,
 should be done via a [**Project Policy Proposal** {{ cookiecutter.__mr_acronym }}][7].
 
 ## The Formal Documentation
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#the-formal-documentation
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Apart from individual files
 spread across the repository,

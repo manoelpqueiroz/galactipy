@@ -7,9 +7,19 @@ tags:
 
 {% endraw -%}
 # Commit Customs
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#commit-customs
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {% if cookiecutter.commit_convention == 'gitmoji' -%}
 ## Gitmoji
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#gitmoji
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {{ cookiecutter.project_name }} uses [Gitmoji][1]
 to characterise
@@ -83,6 +93,11 @@ to apply on commits:
 
 {% elif cookiecutter.commit_convention == 'conventional' -%}
 ## Conventional Commits
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#conventional-commits
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {{ cookiecutter.project_name }} uses [Conventional Commits][1]
 to characterise
@@ -131,6 +146,11 @@ so the CI will ignore it.
 
 {% else -%}
 ## Conventional Gitmoji
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#conventional-gitmoji
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {{ cookiecutter.project_name }} uses [Conventional Gitmoji][1]
 to characterise
@@ -265,6 +285,11 @@ so the CI will ignore it.
 
 {% endif -%}
 ## Commit Message Structure
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#commit-message-structure
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Commit messages should be clear
 and concise,
@@ -286,6 +311,11 @@ to apply those principles
 when committing.
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 ## Git Trailers
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#git-trailers
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Every commit should
 be identified with the respective [Git trailer][3]

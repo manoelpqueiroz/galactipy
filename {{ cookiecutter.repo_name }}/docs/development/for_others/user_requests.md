@@ -7,6 +7,11 @@ tags:
 
 {% endraw -%}
 # Contributing through User Requests
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#contributing-through-user-requests
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 If you are simply
 having trouble using {{ cookiecutter.project_name }},
@@ -156,6 +161,11 @@ of a quick response:
   down the line.
 
 ## Specific Guidelines for Requests for Support
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#specific-guidelines-for-requests-for-support
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 If {{ cookiecutter.project_name }} is not working correctly for you,
 most likely it is a simple configuration issue.
@@ -191,6 +201,11 @@ prefer sticking to the Request for Support
 as the means to reach the team.
 
 ## Specific Guidelines for Requests for Improvement
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#specific-guidelines-for-requests-for-improvement
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Requests for Improvement are used
 when users feel a need for development
@@ -264,6 +279,11 @@ to make a contribution
 is to make one [that comes from yourself][9].
 
 ## Specific Guidelines for Requests for Correction
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#specific-guidelines-for-requests-for-correction
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 [![RFCs][10]][11]
 

@@ -7,6 +7,11 @@ tags:
 
 {% endraw -%}
 # Development
+<!-- This section is also described in CONTRIBUTING.md with a different presentation
+  [link]: ../../../../CONTRIBUTING.md#how-to-contribute
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES, ADAPTING TO THE RESPECTIVE MEDIUM
+-->
 
 We would like to encourage you
 to contribute to this project
@@ -14,16 +19,13 @@ and we strive to make it
 as easy as possible.
 This guide is aimed at
 facilitating onboarding
-for new collaborators
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+for new collaborators
 and serving as the single source of truth
 for the project's rules
 and modus operandi.
 {% else -%}
-and as a complimentary source of information
-to our [main `CONTRIBUTING` guide][0],
-which you should read
-before diving into this specific guide.
+for new collaborators.
 {% endif -%}
 
 Contributions to {{ cookiecutter.project_name }} include
@@ -72,6 +74,11 @@ in addressing your issue
 or assessing patches and features.
 
 ## Not Sure Where to Start?
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#shrug-not-sure-where-to-start
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 If you don't feel
 ready to start contributing,
@@ -337,9 +344,6 @@ with your first steps here:
 
 <!-- Anchors -->
 
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
-[0]: {{ cookiecutter.__contributing_prefix }}
-{% endif -%}
 [1]: {{ cookiecutter.__scm_link_url }}/issues
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [2]: {{ cookiecutter.__scm_link_url }}/merge_requests

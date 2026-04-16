@@ -8,10 +8,25 @@ tags:
 
 {% endraw -%}
 # Guide
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#closed_lock_with_key-security
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 ## Announcements
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#announcements
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 ### :lucide-shield-alert: Current Vulnerability Status
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#placard-current-vulnerability-status
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 As of
 **{% now 'local', '%B %Y' %}**,
@@ -22,6 +37,11 @@ for more than 60 days
 in the {{ cookiecutter.project_name }} codebase.
 
 ### :lucide-radar: Current Security Advisories
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#atm-current-security-advisories
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 We publish security advisories
 for any vulnerabilities
@@ -32,8 +52,18 @@ As of
 no security advisories have been announced.
 
 ## Guidelines
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#guidelines
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 ### :lucide-mailbox: Reporting Vulnerabilities
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#postbox-reporting-vulnerabilities
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 !!! warning
 
@@ -100,6 +130,11 @@ We prefer all communications
 to be in **English**.
 
 ### :lucide-clipboard-check: Response Process
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#clipboard-response-process
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 When you report a vulnerability,
 you can expect:
@@ -119,6 +154,11 @@ you can expect:
    on the disclosure timeline.
 
 ### :lucide-volume-2: Disclosure Policy
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#loudspeaker-disclosure-policy
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 The following process
 will be triggered
@@ -182,6 +222,11 @@ to ensure that
 we handle disclosure consistently.
 
 ### :lucide-scroll-text: Code of Conduct and Vulnerability Reporting Guidelines
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#scroll-code-of-conduct-and-vulnerability-reporting-guidelines
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 When reporting security vulnerabilities,
 reporters must adhere
@@ -240,8 +285,18 @@ Failure to follow these guidelines may result in:
   in cases of malicious intent.
 
 ## For Your Information
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#for-your-information
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 ### :lucide-waves-ladder: Severity Levels
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#traffic_light-severity-levels
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 The {{ cookiecutter.project_name }} project's security team
 rates security problems
@@ -291,6 +346,11 @@ integrity
 or availability problems.
 
 #### Low
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#low
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 This is a security problem
 that is truly hard
@@ -305,6 +365,11 @@ are rare etc.
 <!-- RECORD a past example when available -->
 
 #### Medium
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#medium
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 This is a security problem
 that is less hard than **Low**
@@ -319,6 +384,11 @@ to also happen to become serious.
 <!-- RECORD a past example when available -->
 
 #### High
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#high
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 This issue is in itself a serious problem
 with real world impact.
@@ -332,6 +402,11 @@ is not hard.
 <!-- RECORD a past example when available -->
 
 #### Critical
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#critical
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Easily exploitable
 by a remote unauthenticated attacker
@@ -347,6 +422,11 @@ using most {{ cookiecutter.project_name }} configurations.
 <!-- RECORD a past example when available -->
 
 ### :lucide-shield-check: Supported Versions
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#accept-supported-versions
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {% if cookiecutter.version_schema == 'trunkver' -%}
 {{ cookiecutter.project_name }} follows the TrunkVer versioning schema,
@@ -392,6 +472,11 @@ and vulnerability reporting:
 
 {% endif -%}
 ### :lucide-drill: Use Contexts
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#thinking-use-contexts
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {{ cookiecutter.project_name }} can be used
 {%- if cookiecutter.app_type == 'bare_repo' %}
@@ -415,6 +500,11 @@ and each has its own threat model
 and security posture notes.
 
 #### Python CLI Program
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#python-cli-program
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {{ cookiecutter.project_name }} ships as a Python module
 distributed via [PyPI][2].
@@ -429,6 +519,11 @@ and verified during the build process
 to ensure consistent and secure installations.
 
 #### Python Library
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#python-library
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 The package can also be imported directly
 as a Python library.
@@ -455,6 +550,11 @@ to avoid arbitrary code execution.
 
 {% if cookiecutter.__app_group == 'tui' -%}
 #### TUI Application
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#tui-application
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {{ cookiecutter.project_name }} also ships as a TUI application
 built with Textual,
@@ -493,8 +593,18 @@ across all usage contexts.
 {% endif -%}
 {% endif -%}
 ### :lucide-venetian-mask: Threat Model
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#man_supervillain-threat-model
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 #### Underlying Primitives
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#underlying-primitives
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {% if cookiecutter.app_type == 'bare_repo' -%}
 <!-- RECORD your underlying primitives for building the threat model -->
@@ -548,6 +658,11 @@ of every release.
 {% endif -%}
 {% endif -%}
 #### Underlying Libraries
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#underlying-libraries
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {% if cookiecutter.__app_class == 'bare' -%}
 <!-- RECORD your underlying libraries considerations within the threat model -->
@@ -599,6 +714,11 @@ and keep dependencies updated.
 
 {% endif -%}
 #### Build Pipelines
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#build-pipelines
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {% if cookiecutter.__app_class == 'bare' -%}
 <!-- RECORD which potential harmful behaviour can take place if {{ cookiecutter.project_name }} is used in CI build pipelines -->
@@ -625,6 +745,11 @@ or execute arbitrary code.
 
 {% endif -%}
 #### File Access
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#file-access
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {% if cookiecutter.__app_class == 'bare' -%}
 <!-- RECORD with how, where and when your application accesses files in the user's system -->
@@ -692,6 +817,11 @@ to prevent unauthorized file access:
 
 {% endif -%}
 ### :lucide-door-open: NOT Security Issues
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#x-not-security-issues
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 This is an incomplete list of issues
 that are not considered vulnerability issues for {{ cookiecutter.project_name }},
@@ -707,6 +837,11 @@ that do not meet
 the criteria of a vulnerability.
 
 #### API Misuse
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#api-misuse
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 If a reported issue is only triggered
 by an application using the API
@@ -726,6 +861,11 @@ which might end up with us
 still agreeing that it is a security problem.
 
 #### Local Attackers already Present
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#local-attackers-already-present
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 When an issue can only be attacked or misused
 by an attacker present
@@ -738,6 +878,11 @@ they can probably already do much worse harm
 and the problem is not really in {{ cookiecutter.project_name }}.
 
 #### Debug, Experiments & Feature Flags
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#debug-experiments--feature-flags
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Vulnerabilities in features
 which are off by default
@@ -753,6 +898,11 @@ through `pip`.
 
 {% if cookiecutter.app_type != 'bare_repo' -%}
 #### Visible Command-line Arguments
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#visible-command-line-arguments
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Sensitive user inputs
 are not automatically hidden in the CLI.
@@ -768,6 +918,11 @@ as per standard security best practices.
 
 {% endif -%}
 #### Busy Loops
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#busy-loops
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Busy-loops that consume 100% CPU time
 but eventually end
@@ -782,6 +937,11 @@ so while a prolonged such busy-loop is a nasty bug,
 we do not consider it a security problem.
 
 #### Saving Files
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#saving-files
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {{ cookiecutter.project_name }} cannot protect against attacks
 where an attacker has write access
@@ -790,6 +950,11 @@ where {{ cookiecutter.project_name }} is directed to save files.
 
 {% if cookiecutter.app_type != 'bare_repo' -%}
 #### Tricking a User to Run a Command Line
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#tricking-a-user-to-run-a-command
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 A creative,
 misleading
@@ -807,6 +972,11 @@ that can do something fatal
 
 {% endif -%}
 #### Upstream Dependencies
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#upstream-dependencies
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 The project depends on libraries
 like Dynaconf and tomlkit,
@@ -827,6 +997,11 @@ in the case of vulnerabilities.
 <!-- RECORD additional concepts of non-security-issues -->
 
 ### :lucide-door-closed-locked: Security Measures
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#octagonal_sign-security-measures
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {{ cookiecutter.project_name }} implements
 the following measures
@@ -856,6 +1031,11 @@ to enhance code security:
   and releases.
 
 ### :lucide-shield-plus: Security Guarantees
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#lock_with_ink_pen-security-guarantees
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Security guarantees provided
 by the project:
@@ -898,6 +1078,11 @@ by:
 
 {% endif -%}
 ### :lucide-speech: Comments on This Policy
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#speech_balloon-comments-on-this-policy
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 If you have any suggestions
 on how our security processes
@@ -913,6 +1098,11 @@ We will reply to you
 in due time.
 
 ### :lucide-log-out: Relevant Policies
+<!-- This section is also described in SECURITY.md
+  [link]: ../../../../SECURITY.md#mag-relevant-policies
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 <!-- RECORD with security policies of third-party libraries relevant to {{ cookiecutter.project_name }} -->
 

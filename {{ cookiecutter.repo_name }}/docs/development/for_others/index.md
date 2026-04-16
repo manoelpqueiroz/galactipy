@@ -7,6 +7,11 @@ tags:
 
 {% endraw -%}
 # Other Ways to Contribute
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#reminder_ribbon-other-ways-to-contribute
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 You can contribute to {{ cookiecutter.project_name }}
 in additional ways,
@@ -45,6 +50,11 @@ everyone benefits from
 faster communication and resolution.
 
 ## Contributing by Promoting {{ cookiecutter.project_name }}
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#contributing-by-promoting-{{ cookiecutter.project_name.lower().split() | join('-') }}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Promoting {{ cookiecutter.project_name }}
 helps us reach a larger audience

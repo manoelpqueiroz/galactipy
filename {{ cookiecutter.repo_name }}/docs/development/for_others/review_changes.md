@@ -7,6 +7,11 @@ tags:
 
 {% endraw -%}
 # Contributing by Reviewing Changes
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#contributing-by-reviewing-changes
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Changes to {{ cookiecutter.project_name }} source code are
 proposed,

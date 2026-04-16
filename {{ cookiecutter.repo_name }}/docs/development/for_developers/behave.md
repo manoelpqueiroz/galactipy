@@ -7,6 +7,11 @@ tags:
 
 {% endraw -%}
 # How to Behave among Other Contributors
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#how-to-behave-among-other-contributors
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {{ cookiecutter.__mr_term }}s,
 when worked under the concept of [proposals][1],

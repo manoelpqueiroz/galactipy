@@ -7,6 +7,11 @@ tags:
 
 {% endraw -%}
 # Checks & Hooks
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#checks--hooks
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Before pushing local changes
 to the repository,

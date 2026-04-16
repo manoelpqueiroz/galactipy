@@ -8,6 +8,11 @@ tags:
 
 {% endraw -%}
 # Fostering an Inviting Community
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#fostering-an-inviting-community
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 As a {{ cookiecutter.project_name }} contributor, your responsibilities
 are not supposed to be restricted to
@@ -99,6 +104,11 @@ to achieve this goal:
      Why not turn them into [starter assignments][9]?
 
 ## About Starter Assignments
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#about-starter-assignments
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 We refer to our "Good First Issue" work items
 as **starter assignments**,

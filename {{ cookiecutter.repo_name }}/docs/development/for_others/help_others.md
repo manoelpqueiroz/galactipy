@@ -7,6 +7,11 @@ tags:
 
 {% endraw -%}
 # Contributing by Helping Other People
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#contributing-by-helping-others
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 [![RFSs][1]][2]
 
@@ -54,6 +59,11 @@ for more details
 on how we deal with these cases.
 
 ## Orientation for Effectively Helping Others
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#orientation-for-effectively-helping-others
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Here is a general guide
 on how to help other users
@@ -173,6 +183,11 @@ with their requests:
     avoid generalisations.
 
 ## Commitment to Help
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#commitment-to-help
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 What consumes
 most of the time of the development team

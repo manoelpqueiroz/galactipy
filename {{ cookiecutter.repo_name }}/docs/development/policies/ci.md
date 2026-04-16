@@ -7,6 +7,11 @@ tags:
 
 {% endraw -%}
 # Continuous Integration
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#continuous-integration
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Besides being hosted in {{ cookiecutter.__scm_platform_base }},
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}

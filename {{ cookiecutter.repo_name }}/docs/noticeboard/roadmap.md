@@ -7,6 +7,11 @@ tags:
 
 {% endraw -%}
 # Project Roadmap
+<!-- This section is also described in ROADMAP.md with a different presentation
+  [link]: ../../../../ROADMAP.md#project-mission
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES, ADAPTING TO THE RESPECTIVE MEDIUM
+-->
 
 <!-- RECORD your project mission, in tandem with the "Purpose & Function" section on README.md -->
 
@@ -29,6 +34,11 @@ by our releases.
     or implied dates of completion.
 
 ## Development Stages and Features
+<!-- This section is also described in ROADMAP.md
+  [link]: ../../../../ROADMAP.md#development-stages
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 ![Project stage][1]
 
@@ -38,27 +48,48 @@ refining its foundational features
 and laying out the thresholds
 for each further stage of development.
 
-<!-- RECORD relevant information to divulge to the community -->
+<!-- RECORD relevant information to divulge to the community
 
 ### :lucide-line-squiggle: Pre-Alpha Stage
+<!-- This section is also described in ROADMAP.md
+  [link]: ../../../../ROADMAP.md#pre-alpha-stage
 
-<!-- RECORD the features and capabilities the library will offer at the pre-alpha stage -->
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+
+<!-- RECORD the features and capabilities the library will offer at the pre-alpha stage
 
 ### :lucide-bean: Alpha Stage
+<!-- This section is also described in ROADMAP.md
+  [link]: ../../../../ROADMAP.md#alpha-stage
 
-<!-- RECORD the features and capabilities the library will offer at the alpha stage -->
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+
+<!-- RECORD the features and capabilities the library will offer at the alpha stage
 
 ### :lucide-sprout: Beta Stage
+<!-- This section is also described in ROADMAP.md
+  [link]: ../../../../ROADMAP.md#beta-stage
 
-<!-- RECORD the features and capabilities the library will offer at the beta stage -->
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+
+<!-- RECORD the features and capabilities the library will offer at the beta stage
 
 ### :lucide-tree-pine: Stable Release
+<!-- This section is also described in ROADMAP.md
+  [link]: ../../../../ROADMAP.md#stable-release
 
-<!-- RECORD the features and capabilities the library will offer for it to be considered stable -->
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+
+<!-- RECORD the features and capabilities the library will offer for it to be considered stable
 
 ### :lucide-infinity: Project Maturation
+<!-- This section is also described in ROADMAP.md
+  [link]: ../../../../ROADMAP.md#project-maturation
 
-<!-- RECORD the features and capabilities that will lead the project's capabilities beyond what is currently expected for a stable release -->
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+
+<!-- RECORD the features and capabilities that will lead the project's capabilities beyond what is currently expected for a stable release
+-->
 
 <!-- Anchors -->
 

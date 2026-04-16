@@ -7,6 +7,11 @@ tags:
 
 {% endraw -%}
 # Documentation Philosophy
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#documentation-philosophy
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 > Adapted from the [Google Style Guides][1].
 
@@ -18,6 +23,11 @@ on top of our [core values][2]
 to achieve the best results possible.
 
 ## Minimum Viable Documentation
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#minimum-viable-documentation
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 A small set of fresh and accurate docs
 is better than
@@ -42,6 +52,11 @@ in various states of disrepair.
 </div>
 
 ## Update Docs with Code
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#update-docs-with-code
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Update your documentation
 in the same [{{ cookiecutter.__mr_term }}][3]
@@ -59,6 +74,11 @@ and any other docs get updated
 alongside the proposed change.
 
 ## Delete Dead Documentation
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#delete-dead-documentation
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Dead docs are bad.
 They misinform,
@@ -93,6 +113,11 @@ If the docs are in bad shape:
 - Iterate.
 
 ## Prefer Good over the Perfect
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#prefer-good-over-the-perfect
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Documentation is an art.
 There is no perfect document,
@@ -143,6 +168,11 @@ As an author:
   as often as needed.
 
 ## Documentation is the Story of Our Code
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#documentation-is-the-story-of-our-code
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Writing excellent code
 doesn't end when your code compiles
@@ -157,6 +187,11 @@ Documentation is an important part
 of this skill.
 
 ## Duplication is Evil
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#duplication-is-evil
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Do not write your own guide
 to a common technology or process

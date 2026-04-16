@@ -7,6 +7,11 @@ tags:
 
 {% endraw -%}
 # Invoke Usage
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#invoke-usage
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 [`invoke`][1] is a library that
 enables easy configuration of
@@ -31,6 +36,11 @@ should be proposed
 through a [**Internal Improvement**][3] {{ cookiecutter.__mr_term }}.
 
 ## Environment Setup
+<!-- This section is also described in CONTRIBUTING.md with a different presentation
+  [link]: ../../../../CONTRIBUTING.md#environment-setup
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES, ADAPTING TO THE RESPECTIVE MEDIUM
+-->
 
 ::: tasks.install
     options:
@@ -51,6 +61,11 @@ through a [**Internal Improvement**][3] {{ cookiecutter.__mr_term }}.
       separate_signature: false
 
 ## Quality Assurance Tasks
+<!-- This section is also described in CONTRIBUTING.md with a different presentation
+  [link]: ../../../../CONTRIBUTING.md#quality-assurance-tasks
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES, ADAPTING TO THE RESPECTIVE MEDIUM
+-->
 
 ::: tasks.codestyle
     options:
@@ -95,6 +110,11 @@ through a [**Internal Improvement**][3] {{ cookiecutter.__mr_term }}.
       separate_signature: false
 
 ## Project Building & Publishing
+<!-- This section is also described in CONTRIBUTING.md with a different presentation
+  [link]: ../../../../CONTRIBUTING.md#project-building--publishing
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES, ADAPTING TO THE RESPECTIVE MEDIUM
+-->
 
 ::: tasks.build
     options:
@@ -116,6 +136,11 @@ through a [**Internal Improvement**][3] {{ cookiecutter.__mr_term }}.
 
 {% if cookiecutter.create_docker -%}
 ## Docker Operations
+<!-- This section is also described in CONTRIBUTING.md with a different presentation
+  [link]: ../../../../CONTRIBUTING.md#docker-operations
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES, ADAPTING TO THE RESPECTIVE MEDIUM
+-->
 
 ::: tasks.login
     options:
@@ -143,6 +168,11 @@ through a [**Internal Improvement**][3] {{ cookiecutter.__mr_term }}.
 
 {% endif -%}
 ## Cleanup Tasks
+<!-- This section is also described in CONTRIBUTING.md with a different presentation
+  [link]: ../../../../CONTRIBUTING.md#cleanup-tasks
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES, ADAPTING TO THE RESPECTIVE MEDIUM
+-->
 
 ::: tasks.remove_cache
     options:

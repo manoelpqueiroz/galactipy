@@ -7,6 +7,11 @@ tags:
 
 {% endraw -%}
 # Our Philosophy
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#book-our-philosophy
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 This document defines
 the deeper principles we follow
@@ -30,6 +35,11 @@ for contributors
 within our development ecosystem.
 
 ## Start with a {{ cookiecutter.__mr_term }}
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#start-with-a-{{ cookiecutter.__mr_term_slug }}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 > Adapted from the [Communication][2] section of the GitLab Handbook.
 
@@ -209,6 +219,11 @@ to take action on.
     avoid auto-closing the related issue.
 
 ## _Say Why, Not Just What_
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#say-why-not-just-what
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 > Adapted from the [GitLab Values][4].
 
@@ -306,6 +321,11 @@ that can lead to disruption
 and inefficiency.
 
 ## Operate with a Bias for Action
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#operate-with-a-bias-for-action
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 > Adapted from the [GitLab Values][6].
 
@@ -334,6 +354,11 @@ our general practices
 when working together.
 
 ## Interactions Enable Insights
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#interactions-enable-insights
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 At {{ cookiecutter.project_name }},
 we approach every single interaction
@@ -371,6 +396,11 @@ so it can be useful
 and cherished by others.
 
 ## Sharing Insights Drives Progress
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#sharing-insights-drives-progress
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 By extracting the root
 of those four values,
@@ -449,6 +479,11 @@ the value of the project
 to someone else.
 
 ## There Are no Good First Issues
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#there-are-no-good-first-issues
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 The concept of
 labelling issues in open source projects

@@ -7,6 +7,11 @@ tags:
 
 {% endraw -%}
 # Development Setup
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#development-setup
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 To start contributing to {{ cookiecutter.project_name }},
 you should start

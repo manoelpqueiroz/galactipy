@@ -7,6 +7,11 @@ tags:
 
 {% endraw -%}
 # Documentation Guide
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#documentation-guide
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Documentation is a crucial part
 of the work at {{ cookiecutter.project_name }},

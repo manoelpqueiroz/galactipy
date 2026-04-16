@@ -6,6 +6,11 @@ tags:
 
 {% endraw -%}
 # Contributing to Roadmap Maintenance
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#contributing-to-roadmap-maintenance
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 [![Issues][1]][2]
 {%- if cookiecutter.scm_platform == 'GitLab Free' %}

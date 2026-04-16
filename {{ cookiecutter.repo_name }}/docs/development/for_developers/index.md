@@ -7,6 +7,11 @@ tags:
 
 {% endraw -%}
 # Proposing Changes
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {% if cookiecutter.__app_group == 'tui' -%}
 <!-- RECORD the context and purposes of your library -->

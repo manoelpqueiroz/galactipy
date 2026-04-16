@@ -7,6 +7,11 @@ tags:
 
 {% endraw -%}
 # {{ cookiecutter.__mr_term }} Review Process
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#{{ cookiecutter.__mr_term_slug }}-review-process
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 After [starting with a {{ cookiecutter.__mr_term }}][1],
 ensuring you have opened an [admissible {{ cookiecutter.__mr_acronym }}][2]
@@ -14,6 +19,11 @@ and have finished contributing with changes,
 the review process can start.
 
 ## Contribution Acceptance Criteria
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#contribution-acceptance-criteria
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 To make sure that
 your {{ cookiecutter.__mr_term }} can be approved,
@@ -79,6 +89,11 @@ it meets the contribution acceptance criteria below:
     why you need it.
 
 ## Getting Reviewed
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#getting-reviewed
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 As soon as you have changes to review,
 have the changes reviewed

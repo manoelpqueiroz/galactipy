@@ -5,6 +5,15 @@
 {{ cookiecutter.project_description }}.
 
 ### Project Mission
+<!-- This section is also described in the formal documentation with a different structure
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/roadmap.md#roadmap
+{%- else %}
+  [link]: ./docs/noticeboard/roadmap.md#project-roadmap
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES, ADAPTING TO THE RESPECTIVE MEDIUM
+-->
 
 <!-- DEFINE your project mission, in tandem with the "Purpose & Function" section on README.md -->
 
@@ -79,6 +88,15 @@ Please review the roadmap
 to avoid potential duplicated effort.
 
 ## Development Stages
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/roadmap.md#development-stages
+{%- else %}
+  [link]: ./docs/noticeboard/roadmap.md#development-stages
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 ![Project stage][4]
 
@@ -96,22 +114,62 @@ We envision that {{ cookiecutter.project_name }}
 will evolve through the following phases:
 
 ### Pre-Alpha Stage
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/roadmap.md#lucide-line-squiggle-pre-alpha-stage
+{%- else %}
+  [link]: ./docs/noticeboard/roadmap.md#lucide-line-squiggle-pre-alpha-stage
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 
 <!-- DEFINE the features and capabilities the library will offer at the pre-alpha stage
 
 ### Alpha Stage
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/roadmap.md#lucide-bean-alpha-stage
+{%- else %}
+  [link]: ./docs/noticeboard/roadmap.md#lucide-bean-alpha-stage
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 
 <!-- DEFINE the features and capabilities the library will offer at the alpha stage
 
 ### Beta Stage
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/roadmap.md#lucide-sprout-beta-stage
+{%- else %}
+  [link]: ./docs/noticeboard/roadmap.md#lucide-sprout-beta-stage
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 
 <!-- DEFINE the features and capabilities the library will offer at the beta stage
 
 ### Stable Release
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/roadmap.md#lucide-tree-pine-stable-release
+{%- else %}
+  [link]: ./docs/noticeboard/roadmap.md#lucide-tree-pine-stable-release
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 
 <!-- DEFINE the features and capabilities the library will offer for it to be considered stable
 
 ### Project Maturation
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/roadmap.md#lucide-infinity-project-maturation
+{%- else %}
+  [link]: ./docs/noticeboard/roadmap.md#lucide-infinity-project-maturation
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 
 <!-- DEFINE the features and capabilities that will lead the project's capabilities beyond what is currently expected for a stable release
 

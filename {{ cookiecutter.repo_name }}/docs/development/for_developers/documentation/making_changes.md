@@ -8,6 +8,11 @@ tags:
 
 {% endraw -%}
 # Making Changes to the Documentation
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#making-changes-to-the-documentation
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 !!! warning
 
@@ -63,6 +68,11 @@ helping users more easily navigate
 through the pages.
 
 ## API Collection
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#api-collection
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 The project uses [`mkdocstrings`][4]
 (and, more specifically, [`mkdocstrings-python`][5])
@@ -247,6 +257,11 @@ for full compliance
 with documentation rules.
 
 ## Policy Mirroring
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#policy-mirroring
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 The contents of
 `CONTRIBUTING.md`,
@@ -289,6 +304,11 @@ to suit the environment
 where it is presented.
 
 ## Page Tags
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#page-tags
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 To facilitate navigation
 for users,

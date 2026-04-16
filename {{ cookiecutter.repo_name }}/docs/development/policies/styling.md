@@ -8,8 +8,18 @@ tags:
 
 {% endraw -%}
 # Styling
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#styling
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 ## Codestyle
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#codestyle
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 The project uses [Ruff][1]
 for formatting and codestyle.
@@ -25,6 +35,11 @@ for the project,
 use a [Project Policy Proposal {{ cookiecutter.__mr_acronym }}][2].
 
 ## Docstring Convention
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#docstring-convention
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {% if cookiecutter.docstring_style != 'other' -%}
 We choose to write our docstrings
@@ -81,6 +96,11 @@ when making your contributions.
 
 {% endif -%}
 ## Semantic Line Breaks
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#semantic-line-breaks
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 When editing Markdown files,
 [Semantic Line Breaks][3] should be applied.

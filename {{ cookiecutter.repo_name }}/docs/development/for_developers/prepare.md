@@ -7,8 +7,18 @@ tags:
 
 {% endraw -%}
 # Preparing to Contribute
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#preparing-to-contribute
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 ## Choosing What to Contribute
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#choosing-what-to-contribute
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 [![Needs Triage][1]][2]
 
@@ -94,6 +104,11 @@ to less fundamental building blocks.
 
 {% endif -%}
 ## Opening Admissible {{ cookiecutter.__mr_term }}s
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#opening-admissible-{{ cookiecutter.__mr_term_slug }}s
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 For developers and maintainers,
 changes should not be approached
@@ -187,6 +202,11 @@ from the Kubernetes team
 also has some great points regarding this.
 
 ## Review Criteria
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#review-criteria
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Before considering how to contribute,
 it's useful to understand

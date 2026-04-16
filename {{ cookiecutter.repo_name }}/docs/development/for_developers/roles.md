@@ -7,8 +7,18 @@ tags:
 
 {% endraw -%}
 # Roles and Attributions
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#roles-and-attributions
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 ## The Responsibility of the {{ cookiecutter.__mr_term }} Author
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#the-responsibility-of-the-{{ cookiecutter.__mr_term_slug }}-author
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 The responsibility to
 find the best solution
@@ -165,6 +175,11 @@ This saves reviewers time
 and helps authors catch mistakes earlier.
 
 ### Recommendations to Get Your Changes Merged Faster
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#recommendations-to-get-your-changes-merged-faster
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 1. Make sure
    to follow best practices:
@@ -219,6 +234,11 @@ and helps authors catch mistakes earlier.
    in a single {{ cookiecutter.__mr_acronym }}.
 
 ### Recommendations for Facilitating Reviews
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#recommendations-for-facilitating-reviews
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Keep in mind that
 code review is a process
@@ -299,6 +319,11 @@ the first time.
   `@` mention the reviewer instead.
 
 ## The Responsibility of the Reviewer
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#the-responsibility-of-the-reviewer
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 All {{ cookiecutter.project_name }} contributors
 who choose to review
@@ -478,6 +503,11 @@ or ridiculed for even trying
 run counter to the [Code of Conduct][4].
 
 ### The Right Balance
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#the-right-balance
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 One of the most difficult things
 during code review
@@ -558,6 +588,11 @@ created by a submitter.
 {%- endif %}
 
 ## The Responsibility of the Maintainers
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#the-responsibility-of-the-maintainers
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Maintainers are responsible for
 the overall health,

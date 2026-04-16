@@ -1,4 +1,11 @@
 # How to Contribute
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation with a different presentation
+  [link]: ./docs/development/index.md#development
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES, ADAPTING TO THE RESPECTIVE MEDIUM
+-->
+{%- endif %}
 
 {{ cookiecutter.project_description }}.
 
@@ -96,6 +103,11 @@ contributing as a developer:
 
 ### Development Setup
 {%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/development_setup.md#development-setup
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 To start contributing to {{ cookiecutter.project_name }},
 you should start
@@ -180,6 +192,11 @@ for a [first contribution][workflow].
 {%- if cookiecutter.licence != 'nos' %}
 
 ## :shrug: Not Sure Where to Start?
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/index.md#not-sure-where-to-start
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 If you don't feel
 ready to start contributing,
@@ -520,9 +537,20 @@ an even more robust contributor:
 {%- endif %}
 
 ## :classical_building: Fundamental Policies
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/index.md#policies
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {% if cookiecutter.licence != 'nos' and cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 ### Code of Conduct
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/index.md#code-of-conduct
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {{ cookiecutter.project_name }} has adopted the [Contributor Covenant][cc1]
 as its Code of Conduct,
@@ -536,8 +564,18 @@ and know which actions
 will and will not be tolerated.
 
 {% endif -%}
-### {% if cookiecutter.licence != 'nos' %}Open {% endif %}Development
+{% if cookiecutter.licence != 'nos' -%}
+### Open Development
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/developing.md#open-development
 
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+
+{% else -%}
+### Development
+
+{% endif -%}
 All work on {{ cookiecutter.project_name }} happens
 directly on [{{ cookiecutter.__scm_platform_base }}][development1],
 including roadmap
@@ -548,6 +586,11 @@ to start contributing.
 
 {% if cookiecutter.licence != 'nos' and cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 #### Contributor Promotion
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/developing.md#contributor-promotion
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Access to the upstream repository is granted
 at the project owner's discretion,
@@ -766,6 +809,13 @@ the completed {{ cookiecutter.__roadmap_item }}.
 
 {% endif -%}
 #### Work Item Tracking
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/developing.md#work-item-tracking
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 [![Issues][badge1]][query1]
 {%- if cookiecutter.scm_platform == 'GitLab Free' %}
@@ -807,6 +857,13 @@ Use cases for this type of work item include:
 
 {% endif -%}
 ##### Labels
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/developing.md#labels
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 {{ cookiecutter.project_name }} defines
@@ -993,6 +1050,13 @@ with their usage:
 
 {% endif -%}
 ##### Work Item Lifecycle
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/developing.md#work-item-lifecycle
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 To effectively manage
 issue and {{ cookiecutter.__task_item }} lifecycles,
@@ -1089,8 +1153,22 @@ specific to this project:
 {% endif -%}
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 #### General Practices
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/developing.md#general-practices
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 ##### Issue Titles Should be Framed in Imperative Mood
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/developing.md#issue-titles-should-be-framed-in-imperative-mood
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Issue titles should be clear
 to allow anyone
@@ -1164,6 +1242,13 @@ to close the issue.
 {%- endif %}
 
 ##### {{ cookiecutter.__task_item.capitalize() }}s Are Used as Acceptance Criteria for Issues
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/developing.md#{{ cookiecutter.__task_item }}s-are-used-as-acceptance-criteria-for-issues
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 [{{ cookiecutter.__task_item.capitalize() }}s][practices2] are a specific type of work item
 in {{ cookiecutter.__scm_platform_base }}
@@ -1207,6 +1292,13 @@ associated with a {{ cookiecutter.__task_item }}.
 {%- if cookiecutter.licence != 'nos' %}
 
 ##### Usage of the `seeking-contributors` Labels
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/developing.md#usage-of-the-seeking-contributors-labels
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 `seeking-contributors` is the label used
 to indicate work items
@@ -1292,6 +1384,13 @@ etc.
 {%- endif %}
 
 ##### Blocks Must be Set at the Same Issue Level
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/developing.md#blocks-must-be-set-at-the-same-issue-level
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 [Issue blocks][practices3] are not mandatory
 for development,
@@ -1317,6 +1416,13 @@ issues can only block **issues**,
 
 {% if cookiecutter.scm_platform == 'GitLab Free' -%}
 ##### Tasks Should Have no Milestones
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/developing.md#tasks-should-have-no-milestones
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Given GitLab Tasks are used
 for acceptance criteria of issues,
@@ -1342,8 +1448,13 @@ through the "Bulk edit" option.
 {% endif -%}
 {% if cookiecutter.use_bdd -%}
 ### Behaviour-Driven Development
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/bdd.md#behaviour-driven-development
 
-{% if cookiecutter.licence != 'nos' -%}
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+
 At {{ cookiecutter.project_name }},
 we believe building software
 goes beyond just coding
@@ -1380,8 +1491,8 @@ towards this vision
 is to leverage
 [Behaviour-Driven Development][bdd1]
 for our development cycle.
+{%- endif %}
 
-{% endif -%}
 We expect all contributors
 to understand
 and adopt BDD best practices
@@ -1453,6 +1564,11 @@ and everyone feels empowered to grow and succeed.
 
 {% endif -%}
 #### References for BDD
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/bdd.md#references-for-bdd
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 The structured approach BDD offers
 will help us maintain
@@ -1481,6 +1597,13 @@ we provide a suggested list of references below:
 
 {% endif -%}
 ### Versioning Customs
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/versioning.md#versioning-customs
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 At {{ cookiecutter.project_name }},
 we chose to adhere
@@ -1589,6 +1712,13 @@ regarding versioning in general:
 
 {% if cookiecutter.__schema_type == 'segmented' and cookiecutter.version_schema != 'calver-auto' -%}
 #### Tips for Defining New Versions
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/versioning.md#tips-for-defining-new-versions
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Contributors can refer to
 the following list
@@ -1630,6 +1760,13 @@ through their related {{ cookiecutter.__mr_acronym }}.
 {% endif -%}
 {% endif -%}
 ### Branch Organization
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/branches.md#branch-organization
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 We apply the [{{ cookiecutter.project_name }} Philosophy][philosophy]
 for conducting new development,
@@ -1660,6 +1797,13 @@ or `wip-` prefixes
 so the CI will ignore it.
 
 #### Branch Naming Standards
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/branches.md#branch-naming-standards
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 While standard branch naming
 is not strictly required,
@@ -1739,9 +1883,23 @@ or detailed documentation.
 
 {% endif -%}
 ### Commit Customs
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/committing.md#commit-customs
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' and cookiecutter.commit_convention == 'gitmoji' -%}
 #### Gitmoji
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation with the entire content, including group policies
+  [link]: ./docs/development/policies/committing.md#gitmoji
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 <!-- DEFINE the specific Gitmoji for this project
 Besides the Gitmoji
@@ -1757,6 +1915,13 @@ to apply on commits:
 {% elif cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 {% if cookiecutter.commit_convention == 'gitmoji' -%}
 #### Gitmoji
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/committing.md#gitmoji
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 {{ cookiecutter.project_name }} uses [Gitmoji][committing0]
 to characterise
@@ -1830,6 +1995,13 @@ to apply on commits:
 
 {% elif cookiecutter.commit_convention == 'conventional' -%}
 #### Conventional Commits
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/committing.md#conventional-commits
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 {{ cookiecutter.project_name }} uses [Conventional Commits][committing0]
 to characterise
@@ -1878,6 +2050,13 @@ so the CI will ignore it.
 
 {% else -%}
 #### Conventional Gitmoji
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/committing.md#conventional-gitmoji
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 {{ cookiecutter.project_name }} uses [Conventional Gitmoji][committing0]
 to characterise
@@ -2011,6 +2190,13 @@ so the CI will ignore it.
 
 {% endif -%}
 #### Commit Message Structure
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/committing.md#commit-message-structure
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Commit messages should be clear
 and concise,
@@ -2034,6 +2220,13 @@ when committing.
 {% endif -%}
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 #### Git Trailers
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/committing.md#git-trailers
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Every commit should
 be identified with the respective [Git trailer][committing1]
@@ -2094,8 +2287,22 @@ and defined in the [`changelog-config.yml`][committing2] file:
 {% endif -%}
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 ### Styling
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/styling.md#styling
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 #### Codestyle
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/styling.md#codestyle
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 The project uses [Ruff][style1]
 for formatting and codestyle.
@@ -2111,6 +2318,13 @@ for the project,
 use a [Project Policy Proposal {{ cookiecutter.__mr_acronym }}][roadmap1].
 
 #### Docstring Convention
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/styling.md#docstring-convention
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 {% if cookiecutter.docstring_style != 'other' -%}
 We choose to write our docstrings
@@ -2167,6 +2381,13 @@ when making your contributions.
 
 {% endif -%}
 #### Semantic Line Breaks
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/styling.md#semantic-line-breaks
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 When editing Markdown files,
 [Semantic Line Breaks][style2] should be applied.
@@ -2239,6 +2460,13 @@ inside [`.{{ cookiecutter.__scm_platform_lc }}`][style4] and [`CHANGELOG.md`][st
 
 {% endif -%}
 ### Checks & Hooks
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/checks.md#checks--hooks
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Before pushing local changes
 to the repository,
@@ -2319,6 +2547,13 @@ with these rules will be blocked.
 
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 ### Continuous Integration
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/ci.md#continuous-integration
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Besides being hosted in {{ cookiecutter.__scm_platform_base }},
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
@@ -2363,23 +2598,35 @@ of the development cycle.
 
 {% endif -%}
 ### Licence
+{%- if cookiecutter.licence != 'nos' %}
 
-{% if cookiecutter.licence != 'nos' -%}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/index.md#licence
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+
 By contributing to {{ cookiecutter.project_name }},
 you agree that your contributions
 will be licensed under
 {{ cookiecutter.__licence_article }}[{{ cookiecutter.__licence_simple }}][licence1].
+{%- else %}
 
-{% else -%}
 {{ cookiecutter.project_name }} is _**not**_ open source software.
 Please [contact][topic5] the maintainers
 for more information
 on licencing the project.
+{%- endif %}
 
-{% endif -%}
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 ## :book: Our Philosophy
 {%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/philosophy.md#our-philosophy
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 This document is
 more than just a technical guide
@@ -2411,6 +2658,13 @@ to guide how we work.
 {%- endif %}
 
 ### Start with a {{ cookiecutter.__mr_term }}
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/philosophy.md#start-with-a-{{ cookiecutter.__mr_term_slug }}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 > Adapted from the [Communication][values2] section of the GitLab Handbook.
 
@@ -2590,6 +2844,13 @@ to take action on.
     avoid auto-closing the related issue.
 
 ### _Say Why, Not Just What_
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/philosophy.md#say-why-not-just-what
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 > Adapted from the [GitLab Values][values3].
 
@@ -2687,6 +2948,13 @@ that can lead to disruption
 and inefficiency.
 
 ### Operate with a Bias for Action
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/philosophy.md#operate-with-a-bias-for-action
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 > Adapted from the [GitLab Values][values5].
 
@@ -2716,6 +2984,11 @@ when working together.
 
 {% if cookiecutter.licence != 'nos' -%}
 ### Interactions Enable Insights
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/philosophy.md#interactions-enable-insights
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 At {{ cookiecutter.project_name }},
 we approach every single interaction
@@ -2753,6 +3026,11 @@ so it can be useful
 and cherished by others.
 
 ### Sharing Insights Drives Progress
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/philosophy.md#sharing-insights-drives-progress
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 By extracting the root
 of those four values,
@@ -2831,6 +3109,11 @@ the value of the project
 to someone else.
 
 ### There Are no Good First Issues
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/philosophy.md#there-are-no-good-first-issues
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 The concept of
 labelling issues in open source projects
@@ -2921,8 +3204,18 @@ _The best good first issues are the ones you open yourself._
 
 {% endif -%}
 {% endif -%}
+{% if cookiecutter.licence != 'nos' -%}
 ## :speaking_head: Proposing Changes as a Developer
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/index.md#proposing-changes
 
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+
+{% else -%}
+## :speaking_head: Proposing Changes
+
+{% endif -%}
 {% if cookiecutter.__app_group == 'tui' -%}
 <!-- DEFINE the context and purposes of your library -->
 {{ cookiecutter.project_name }} is a Terminal User Interface (TUI) application,
@@ -3083,8 +3376,22 @@ will involve:
     and contributor interactions.
 
 ### Preparing to Contribute
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/prepare.md#preparing-to-contribute
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 #### Choosing What to Contribute
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/prepare.md#choosing-what-to-contribute
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 [![Needs Triage][badge3]][query3]
 
@@ -3178,6 +3485,13 @@ to less fundamental building blocks.
 {% endif -%}
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 #### Opening Admissible {{ cookiecutter.__mr_term }}s
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/prepare.md#opening-admissible-{{ cookiecutter.__mr_term_slug }}s
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 For developers and maintainers,
 changes should not be approached
@@ -3271,6 +3585,13 @@ from the Kubernetes team
 also has some great points regarding this.
 
 #### Review Criteria
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/prepare.md#review-criteria
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Before considering how to contribute,
 it's useful to understand
@@ -3336,6 +3657,13 @@ its probability of being merged:
 
 {% endif -%}
 ### Development Workflow
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/workflow/index.md#development-workflow
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 After cloning {{ cookiecutter.project_name }}
 and following the [development setup][setup],
@@ -3401,6 +3729,13 @@ A non-exhaustive list of steps to consider:
 {%- endif %}
 
 #### Invoke Usage
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/workflow/invoke.md#invoke-usage
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 {% if cookiecutter.app_type == 'bare_repo' -%}
 [`invoke`][workflow0a] is a library that
@@ -3433,6 +3768,13 @@ should be proposed
 through a [**Internal Improvement**][workflow1] {{ cookiecutter.__mr_term }}.
 
 ##### Environment Setup
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation with a different presentation
+  [link]: ./docs/development/for_developers/workflow/invoke.md#environment-setup
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES, ADAPTING TO THE RESPECTIVE MEDIUM
+-->
+{%- endif %}
 
 |      Command       | Details                                                                                                                        |
 | :----------------: | ------------------------------------------------------------------------------------------------------------------------------ |
@@ -3459,6 +3801,13 @@ to set up the repository.
 
 {% endif -%}
 ##### Quality Assurance Tasks
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation with a different presentation
+  [link]: ./docs/development/for_developers/workflow/invoke.md#quality-assurance-tasks
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES, ADAPTING TO THE RESPECTIVE MEDIUM
+-->
+{%- endif %}
 
 |      Command       | Details                                                                                          |
 | :----------------: | ------------------------------------------------------------------------------------------------ |
@@ -3477,6 +3826,13 @@ to run the Ruff formatter and linter
 with a single command.
 
 ##### Project Building & Publishing
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation with a different presentation
+  [link]: ./docs/development/for_developers/workflow/invoke.md#project-building--publishing
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES, ADAPTING TO THE RESPECTIVE MEDIUM
+-->
+{%- endif %}
 
 |     Command      | Details                                                                                                                     |
 | :--------------: | --------------------------------------------------------------------------------------------------------------------------- |
@@ -3518,6 +3874,13 @@ pointing to the desired custom registry.
 {% endif -%}
 {% if cookiecutter.create_docker -%}
 ##### Docker Operations
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation with a different presentation
+  [link]: ./docs/development/for_developers/workflow/invoke.md#docker-operations
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES, ADAPTING TO THE RESPECTIVE MEDIUM
+-->
+{%- endif %}
 
 |      Command       | Details                                                                                                  |
 | :----------------: | -------------------------------------------------------------------------------------------------------- |
@@ -3532,6 +3895,13 @@ pointing to the desired custom registry.
 
 {% endif -%}
 ##### Cleanup Tasks
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation with a different presentation
+  [link]: ./docs/development/for_developers/workflow/invoke.md#cleanup-tasks
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES, ADAPTING TO THE RESPECTIVE MEDIUM
+-->
+{%- endif %}
 
 |         Command         | Details                                                                                                         |
 | :---------------------: | --------------------------------------------------------------------------------------------------------------- |
@@ -3548,6 +3918,13 @@ except for `remove-build`
 into a single command.
 
 #### Test Markers
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/workflow/index.md#test-markers
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 When writing tests,
 we strongly encourage developers
@@ -3595,12 +3972,26 @@ to the marker options,
 do so through a [**Project Policy Proposal**][roadmap1].
 
 #### Feature Flags
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/workflow/index.md#feature-flags
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 <!-- DEFINE the guidelines on how to implement and handle feature flags -->
 
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 
 ### Documentation Guide
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/index.md#documentation-guide
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Documentation is a crucial part
 of the work at {{ cookiecutter.project_name }},
@@ -3654,6 +4045,13 @@ on this domain.
 {%- endif %}
 
 #### Anatomy
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/anatomy.md#anatomy
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 As a contributor,
 be aware that
@@ -3665,6 +4063,11 @@ and presented to different audiences.
 {%- if cookiecutter.licence != 'nos' %}
 
 ##### The `README` File
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/anatomy.md#the-readme-file
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 The [`README`][readme] file
 is the one that users will first interact with
@@ -3703,6 +4106,13 @@ then changes in these files are warranted.
 {%- endif %}
 
 ##### Hard Policy Files
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/anatomy.md#hard-policy-files
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 These are files
 that delineate the core principles
@@ -3783,6 +4193,13 @@ by any contributor
 via a [**Project Policy Proposal** {{ cookiecutter.__mr_acronym }}][roadmap1].
 
 ##### Issue and {{ cookiecutter.__mr_term }} Templates
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/anatomy.md#issue-and-{{ cookiecutter.__mr_term_slug }}-templates
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Templates used for
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
@@ -3923,6 +4340,13 @@ as well as proposing new template types,
 should be done via a [**Project Policy Proposal** {{ cookiecutter.__mr_acronym }}][roadmap1].
 
 ##### The Formal Documentation
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/anatomy.md#the-formal-documentation
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Apart from individual files
 spread across the repository,
@@ -4041,6 +4465,13 @@ with more detailed guidelines
 presented in its [specific section][docchanges].
 
 #### Documentation Philosophy
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/philosophy.md#documentation-philosophy
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 > Adapted from the [Google Style Guides][docs6].
 
@@ -4052,6 +4483,13 @@ on top of our [core values][philosophy]
 to achieve the best results possible.
 
 ##### Minimum Viable Documentation
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/philosophy.md#minimum-viable-documentation
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 A small set of fresh and accurate docs
 is better than
@@ -4076,6 +4514,13 @@ _Docs work best when they are alive but frequently trimmed, like a bonsai tree._
 </div>
 
 ##### Update Docs with Code
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/philosophy.md#update-docs-with-code
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Update your documentation
 in the same [{{ cookiecutter.__mr_term }}][swmr]
@@ -4093,6 +4538,13 @@ and any other docs get updated
 alongside the proposed change.
 
 ##### Delete Dead Documentation
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/philosophy.md#delete-dead-documentation
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Dead docs are bad.
 They misinform,
@@ -4127,6 +4579,13 @@ If the docs are in bad shape:
 - Iterate.
 
 ##### Prefer Good over the Perfect
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/philosophy.md#prefer-good-over-the-perfect
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Documentation is an art.
 There is no perfect document,
@@ -4177,6 +4636,13 @@ As an author:
   as often as needed.
 
 ##### Documentation is the Story of Our Code
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/philosophy.md#documentation-is-the-story-of-our-code
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Writing excellent code
 doesn't end when your code compiles
@@ -4191,6 +4657,13 @@ Documentation is an important part
 of this skill.
 
 ##### Duplication is Evil
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/philosophy.md#duplication-is-evil
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Do not write your own guide
 to a common technology or process
@@ -4204,6 +4677,13 @@ other teams will usually
 welcome your contributions.
 
 #### Making Changes to the Documentation
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/making_changes.md#making-changes-to-the-documentation
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 >>> [!important]
@@ -4271,6 +4751,13 @@ helping users more easily navigate
 through the pages.
 
 ##### API Collection
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation with a different presentation
+  [link]: ./docs/development/for_developers/documentation/making_changes.md#api-collection
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES, ADAPTING TO THE RESPECTIVE MEDIUM
+-->
+{%- endif %}
 
 The project uses [`mkdocstrings`][docs8]
 (and, more specifically, [`mkdocstrings-python`][docs9])
@@ -4465,6 +4952,13 @@ for full compliance
 with documentation rules.
 
 ##### Policy Mirroring
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/making_changes.md#policy-mirroring
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 The contents of
 {%- if cookiecutter.licence != 'nos' %}
@@ -4513,6 +5007,13 @@ to suit the environment
 where it is presented.
 
 ##### Page Tags
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/making_changes.md#page-tags
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 To facilitate navigation
 for users,
@@ -4567,14 +5068,31 @@ serve as navigation facilitator tags:
   to check them periodically.
 
 ### {{ cookiecutter.__mr_term }} Review Process
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/review.md#{{ cookiecutter.__mr_term_slug }}-review-process
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 After [starting with a {{ cookiecutter.__mr_term }}][swmr],
 ensuring you have opened an [admissible {{ cookiecutter.__mr_acronym }}][admission]
 and have finished contributing with changes,
 the review process can start.
 
+{% if cookiecutter.licence != 'nos' -%}
 #### Contribution Acceptance Criteria
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/review.md#contribution-acceptance-criteria
 
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+
+{% else -%}
+#### Change Acceptance Criteria
+
+{% endif -%}
 To make sure that
 your {{ cookiecutter.__mr_term }} can be approved,
 ensure that
@@ -4639,6 +5157,13 @@ it meets the contribution acceptance criteria below:
     why you need it.
 
 #### Getting Reviewed
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/review.md#getting-reviewed
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 As soon as you have changes to review,
 have the changes reviewed
@@ -4704,8 +5229,22 @@ the last maintainer
 to review and approve merges it.
 
 ### Roles and Attributions
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/roles.md#roles-and-attributions
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 #### The Responsibility of the {{ cookiecutter.__mr_term }} Author
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/roles.md#the-responsibility-of-the-{{ cookiecutter.__mr_term_slug }}-author
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 The responsibility to
 find the best solution
@@ -4862,6 +5401,13 @@ This saves reviewers time
 and helps authors catch mistakes earlier.
 
 ##### Recommendations to Get Your Changes Merged Faster
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/roles.md#recommendations-to-get-your-changes-merged-faster
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 1. Make sure
    to follow best practices:
@@ -4916,6 +5462,13 @@ and helps authors catch mistakes earlier.
    in a single {{ cookiecutter.__mr_acronym }}.
 
 ##### Recommendations for Facilitating Reviews
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/roles.md#recommendations-for-facilitating-reviews
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Keep in mind that
 code review is a process
@@ -4996,6 +5549,13 @@ the first time.
   `@` mention the reviewer instead.
 
 #### The Responsibility of the Reviewer
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/roles.md#the-responsibility-of-the-reviewer
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 All {{ cookiecutter.project_name }} contributors
 who choose to review
@@ -5180,6 +5740,11 @@ or ridiculed for even trying
 run counter to the [Code of Conduct][cc2].
 
 ##### The Right Balance
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/roles.md#the-right-balance
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 One of the most difficult things
 during code review
@@ -5261,6 +5826,13 @@ created by a submitter.
 {%- endif %}
 
 #### The Responsibility of the Maintainers
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/roles.md#the-responsibility-of-the-maintainers
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Maintainers are responsible for
 the overall health,
@@ -5329,6 +5901,11 @@ and explain why in a comment.
 {% endif -%}
 {% if cookiecutter.licence != 'nos' and cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 ### How to Behave among Other Contributors
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/behave.md#how-to-behave-among-other-contributors
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {{ cookiecutter.__mr_term }}s,
 when worked under the concept of [proposals][admission],
@@ -5387,6 +5964,11 @@ to write your comments:
   they don't have to respond.
 
 ### Fostering an Inviting Community
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/foster.md#fostering-an-inviting-community
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 As a {{ cookiecutter.project_name }} contributor, your responsibilities
 are not supposed to be restricted to
@@ -5478,6 +6060,11 @@ to achieve this goal:
      Why not turn them into [starter assignments][starter]?
 
 #### About Starter Assignments
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/foster.md#about-starter-assignments
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 We refer to our "Good First Issue" work items
 as **starter assignments**,
@@ -5595,6 +6182,11 @@ will reach out to you.
 {% endif -%}
 {% if cookiecutter.licence != 'nos' -%}
 ## :reminder_ribbon: Other Ways to Contribute
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_others/index.md#other-ways-to-contribute
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 You can contribute to {{ cookiecutter.project_name }}
 in additional ways,
@@ -5633,6 +6225,11 @@ everyone benefits from
 faster communication and resolution.
 
 ### Contributing by Helping Other People
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_others/help_others.md#contributing-by-helping-other-people
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 [![RFSs][badge10]][query10]
 
@@ -5681,6 +6278,11 @@ for more details
 on how we deal with these cases.
 
 #### Orientation for Effectively Helping Others
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_others/help_others.md#orientation-for-effectively-helping-others
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Here is a general guide
 on how to help other users
@@ -5857,6 +6459,11 @@ avoid generalisations.
 
 {% endif -%}
 #### Commitment to Help
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_others/help_others.md#commitment-to-help
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 What consumes
 most of the time of the development team
@@ -5937,6 +6544,11 @@ whenever possible.
 
 {% endif -%}
 ### Contributing through User Requests
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_others/user_requests.md#contributing-through-user-requests
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
 >>> [!tip] :pushpin: Further Guidance
@@ -6109,6 +6721,11 @@ of a quick response:
 
 {% endif -%}
 #### Specific Guidelines for Requests for Support
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_others/user_requests.md#specific-guidelines-for-requests-for-support
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 If {{ cookiecutter.project_name }} is not working correctly for you,
 most likely it is a simple configuration issue.
@@ -6144,6 +6761,11 @@ prefer sticking to the Request for Support
 as the means to reach the team.
 
 #### Specific Guidelines for Requests for Improvement
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_others/user_requests.md#specific-guidelines-for-requests-for-improvement
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Requests for Improvement are used
 when users feel a need for development
@@ -6227,6 +6849,11 @@ is to make one [that comes from yourself][gfi].
 
 {% endif -%}
 #### Specific Guidelines for Requests for Correction
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_others/user_requests.md#specific-guidelines-for-requests-for-correction
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 [![RFCs][badge8]][query8]
 
@@ -6356,6 +6983,11 @@ by the development team.
 {%- endif %}
 
 ### Contributing by Reviewing Changes
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_others/review_changes.md#contributing-by-reviewing-changes
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
 >>> [!tip] :pushpin: Further Guidance
@@ -6462,6 +7094,11 @@ We appreciate your commitment beforehand!
 
 {% endif -%}
 ### Contributing with Documentation Changes
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_others/documentation_changes.md#contributing-with-documentation-changes
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Contributing to the documentation benefits
 everyone who uses {{ cookiecutter.project_name }}.
@@ -6513,6 +7150,11 @@ on how to make changes
 to our docs.
 
 ### Contributing to Roadmap Maintenance
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_others/roadmap_maintenance.md#contributing-to-roadmap-maintenance
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 [![Issues][badge1]][query1]
 {%- if cookiecutter.scm_platform == 'GitLab Free' %}
@@ -6570,6 +7212,11 @@ to the development team:
 
 {% endif -%}
 ### Contributing by Promoting {{ cookiecutter.project_name }}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_others/index.md#contributing-by-promoting-{{ cookiecutter.project_name.lower().split() | join('-') }}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Promoting {{ cookiecutter.project_name }}
 helps us reach a larger audience

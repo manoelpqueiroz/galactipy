@@ -8,6 +8,11 @@ tags:
 
 {% endraw -%}
 # Development Workflow
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#development-workflow
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 After cloning {{ cookiecutter.project_name }}
 and following the [development setup][1],
@@ -73,6 +78,11 @@ A non-exhaustive list of steps to consider:
 {%- endif %}
 
 ## Test Markers
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#test-markers
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 When writing tests,
 we strongly encourage developers
@@ -120,6 +130,11 @@ to the marker options,
 do so through a [**Project Policy Proposal**][4].
 
 ## Feature Flags
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#feature-flags
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 <!-- RECORD the guidelines on how to implement and handle feature flags -->
 

@@ -7,6 +7,11 @@ tags:
 
 {% endraw -%}
 # Versioning Customs
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#versioning-customs
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 At {{ cookiecutter.project_name }},
 we chose to adhere
@@ -115,6 +120,11 @@ regarding versioning in general:
 
 {% if cookiecutter.__schema_type == 'segmented' and cookiecutter.version_schema != 'calver-auto' -%}
 ## Tips for Defining New Versions
+<!-- This section is also described in CONTRIBUTING.md
+  [link]: ../../../../CONTRIBUTING.md#tips-for-defining-new-versions
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Contributors can refer to
 the following list
