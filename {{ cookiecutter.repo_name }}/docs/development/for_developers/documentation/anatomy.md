@@ -418,7 +418,7 @@ presented in its [specific section][14].
 [3]: ../../roadmap.md
 [4]: {{ cookiecutter.__scm_link_url }}/blob/master/SECURITY.md
 [5]: {{ cookiecutter.__scm_link_url }}/blob/master/CODE_OF_CONDUCT.md
-[6]: #code-of-conduct
+[6]: ../../policies/index.md#code-of-conduct
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [7]: {{ cookiecutter.__scm_link_url }}/merge_requests/new?issuable_template=Project%2520Policies
 {%- else %}

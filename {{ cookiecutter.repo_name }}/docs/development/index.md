@@ -403,7 +403,7 @@ with your first steps here:
 [12]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astarter-assignment
 {%- endif %}
 [13]: {{ cookiecutter.__scm_link_url }}/labels
-[14]: ./policies/open_development.md#work-item-tracking
+[14]: ./policies/developing.md#work-item-lifecycle
 {%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
 [15]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&status=Needs%20Triage&type%5B%5D=issue
 {%- elif cookiecutter.scm_platform == 'GitLab Free' %}

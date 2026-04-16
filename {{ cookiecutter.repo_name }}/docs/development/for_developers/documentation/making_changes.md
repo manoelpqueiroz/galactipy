@@ -407,6 +407,6 @@ serve as navigation facilitator tags:
 {%- else %}
 [9]: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
 {%- endif %}
-[10]: ../workflow/invoke.md
-[11]: {{ cookiecutter.__scm_link_url }}/blob/master/docs/development/for_developers/workflow/invoke.md
+[10]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#invoke-usage
+[11]: ../workflow/invoke.md
 [12]: https://zensical.org/docs/setup/tags/

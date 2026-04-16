@@ -25,5 +25,7 @@ to vulnerability reports.
 <!-- RECORD one subpage for each advisory -->
 
 <!-- Anchors -->
+{%- if cookiecutter.licence != 'nos' %}
 
 [1]: ../../development/security.md
+{%- endif %}

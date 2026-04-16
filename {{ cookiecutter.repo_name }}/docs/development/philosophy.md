@@ -638,5 +638,5 @@ This is represented by our philosophy:
 [6]: https://handbook.gitlab.com/handbook/values/#operate-with-a-bias-for-action
 [7]: https://conversational-leadership.net/we-human-beings-are-complex/
 [8]: https://kentcdodds.com/blog/first-timers-only
-[9]: #fostering-an-inviting-community
-[10]: #how-to-behave-among-other-contributors
+[9]: ./for_developers/foster.md
+[10]: ./for_developers/behave.md

@@ -140,7 +140,7 @@ do so through a [**Project Policy Proposal**][4].
 
 <!-- Anchors -->
 
-[1]: ../development_setup.md
+[1]: ../../development_setup.md
 {%- if cookiecutter.use_bdd %}
 [2]: https://pytest-bdd.readthedocs.io/en/latest/#organizing-your-scenarios
 {%- else %}

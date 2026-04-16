@@ -31,7 +31,7 @@ the central space
 for discussing design,
 implementation
 and monitoring development health
-{%- if cookiecutter.__scm_platform_base == 'gitlab' %}
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 with [CI pipelines][2].
 {%- else %}
 with [GitHub Actions][2].
