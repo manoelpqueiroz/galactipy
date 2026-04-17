@@ -110,13 +110,11 @@ pytest-benchmark = "^5.2.2"
 pytest-sugar = "^1.1.1"
 pytest-pikachu = "^1.0.0"
 coverage = "^7.11.1"
-{%- if cookiecutter.__debug %}
 
 [tool.poetry.group.docs.dependencies]
-sphinx = "^5.3.0"
-pydata-sphinx-theme = "^0.14.3"
-ipython = "^8.18.0"
-{%- endif %}
+zensical = "^0.0.27"
+mkdocstrings = "^1.0.3"
+mkdocstrings-python = "^2.0.3"
 
 
 [tool.poetry.requires-plugins]
@@ -577,8 +575,8 @@ source = ["{{ cookiecutter.package_name }}"]
 
 
 [tool.codespell]
-# UPDATEME with your desired Codespell configuration
 # https://github.com/codespell-project/codespell
+ignore-words-list = "sive"
 
 
 [tool.typos.default]

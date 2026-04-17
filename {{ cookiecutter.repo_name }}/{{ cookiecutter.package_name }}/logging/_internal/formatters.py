@@ -1,6 +1,6 @@
 """Custom logger formatting utilities for {{ cookiecutter.project_name }}."""
 
-from {{ cookiecutter.package_name }}.logging.text_tools import LoggerFormatter
+from {{ cookiecutter.package_name }}.logging._internal.text_tools import LoggerFormatter
 
 LOGGER_FORMATTER = LoggerFormatter()
 

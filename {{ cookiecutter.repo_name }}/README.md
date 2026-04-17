@@ -156,172 +156,26 @@ for fine-grained
 control of the application:
 
 > _`{{ cookiecutter.repo_name }} [--version | -v] [(--config | -c) <file>]`_
->> **`--version`**
->>
->> **`-v`**
->>
->> Print
->> the current version of the program
->> and exit.
->
->> **`--config`**
->>
->> **`-c`**
->>
->> Specify a custom configuration file
->> to launch the application.
 
-{% elif cookiecutter.app_type == 'hybrid' -%}
+{% else -%}
 The top-level command
 is the entry point
 for additional
 operations:
 
 > _`{{ cookiecutter.repo_name }} [--version | -v]`_
->> **`--version`**
->>
->> **`-v`**
->>
->> Print
->> the current version of the program
->> and exit.
 
-### Launch the Interface
-
+{% if cookiecutter.app_type == 'hybrid' -%}
 Launch the terminal interface
 with the `{{ cookiecutter.repo_name }} launch` command:
 
 > _`{{ cookiecutter.repo_name }} launch [(--config | -c) <file>]`_
->> **`--config`**
->>
->> **`-c`**
->>
->> Specify a custom configuration file
->> to launch the application.
-
-{% else -%}
-The top-level command
-is the entry point
-for additional
-operations:
-
-> _`{{ cookiecutter.repo_name }} [--version | -v]`_
->> **`--version`**
->>
->> **`-v`**
->>
->> Print
->> the current version of the program
->> and exit.
 
 {% endif -%}
-{% if cookiecutter.app_type != 'bare_cli' -%}
-### Manage the Configuration
-
-The `{{ cookiecutter.repo_name }} config` command provides
-additional subcommands
-to manipulate
-the settings
-for your {{ cookiecutter.project_name }} installation:
-
-> _`{{ cookiecutter.repo_name }} config get [--path <file>] [--secret | -s] KEY`_
->> **`KEY`**
->>
->> The configuration key
->> to be retrieved. **[required]**
->
->> **`--path`**
->>
->> Specify
->> a custom configuration file.
->
->> **`--secret`**
->>
->> **`-s`**
->>
->> Retrieve configuration
->> from the secret manager instead.
-
-> _`{{ cookiecutter.repo_name }} config set [--path <file>] [--secret | -s] KEY VALUE`_
->> **`KEY`**
->>
->> The configuration key
->> to be retrieved. **[required]**
->
->> **`VALUE`**
->>
->> The value to be stored
->> with the key. **[required]**
->
->> **`--path`**
->>
->> Specify
->> a custom configuration file.
->
->> **`--secret`**
->>
->> **`-s`**
->>
->> Store configuration
->> in the secret manager instead.
-
-> _`{{ cookiecutter.repo_name }} config extend [--path <file>] [--secret | -s] [--create-on-missing | -c] KEY VALUE`_
->> **`KEY`**
->>
->> The configuration key
->> to be extended. **[required]**
->
->> **`VALUE`**
->>
->> The value to be appended
->> to the key. **[required]**
->
->> **`--path`**
->>
->> Specify
->> a custom configuration file.
->
->> **`--secret`**
->>
->> **`-s`**
->>
->> Store configuration
->> in the secret manager instead.
->
->> **`--create-on-missing`**
->>
->> **`-c`**
->>
->> Add the provided value
->> in an array
->> if the setting is not set.
->> Will raise an error
->> otherwise.
-
-> _`{{ cookiecutter.repo_name }} config unset [--path <file>] [--secret | -s] KEY`_
->> **`KEY`**
->>
->> The configuration key
->> to be removed. **[required]**
->
->> **`--path`**
->>
->> Specify
->> a custom configuration file.
->
->> **`--secret`**
->>
->> **`-s`**
->>
->> Retrieve configuration
->> from the secret manager instead.
-
-{% else -%}
-### Subcommands
-
-<!-- UPDATEME with your application's custom commands -->
-
 {% endif -%}
+You can see the complete list of commands
+and how to use them properly
+in our documentation's _CLI Guide_ section.
 {% endif -%}
 ## :reminder_ribbon: Contributing
 
@@ -673,13 +527,13 @@ This project was generated with [Galactipy][burl4].
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 
 [bdocker1]: https://img.shields.io/gitlab/v/release/{{ cookiecutter.scm_namespace }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&logo=linux-containers&logoColor=C5F4EC&label=image&color=C5F4EC
-[bdocker2]: {{ cookiecutter.__scm_base_url }}/container_registry
+[bdocker2]: {{ cookiecutter.__docker_repo }}
 
 [docker1]: https://docs.gitlab.com/user/packages/container_registry/
 {%- else %}
 
 [bdocker1]: https://img.shields.io/docker/v/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=docker&logoColor=lightblue&label=image&color=lightblue
-[bdocker2]: https://hub.docker.com/r/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}
+[bdocker2]: {{ cookiecutter.__docker_repo }}
 
 [docker1]: https://hub.docker.com/
 {%- endif %}

@@ -4,7 +4,7 @@ from pytest_bdd import parsers, scenario, then, when
 import pytest
 {%- endif %}
 
-from {{ cookiecutter.package_name }}.logging.parsers import FILE_PARSER
+from {{ cookiecutter.package_name }}.logging import FILE_PARSER
 
 
 {% if cookiecutter.use_bdd -%}

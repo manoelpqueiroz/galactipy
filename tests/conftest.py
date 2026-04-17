@@ -196,12 +196,44 @@ def removal_tree(tmp_path):
 
     config_directory = tmp_path / package_name / "config"
     bulk_file_creation(
-        config_directory, "constants.py", "helpers.py", "manager.py", "mappings.py"
+        config_directory,
+        "helpers.py",
+        "manager.py",
+        "mappings.py",
+        _internal=["constants.py"],
     )
 
     logging_directory = tmp_path / package_name / "logging"
     bulk_file_creation(
         logging_directory, "formatters.py", "parsers.py", "text_tools.py"
+    )
+
+    docs_directory = tmp_path / "docs"
+    bulk_file_creation(docs_directory, getting_started=["tutorials.md", "overview.md"])
+    bulk_file_creation(
+        docs_directory / "noticeboard",
+        "roadmap.md",
+        advisories=["guide.md", "index.md"],
+    )
+    bulk_file_creation(
+        docs_directory / "user_guide", "faq.md", cli=["options.md", "index.md"]
+    )
+    bulk_file_creation(
+        docs_directory / "development", "index.md", policies=["bdd.md", "versioning.md"]
+    )
+    bulk_file_creation(
+        docs_directory / "development" / "dev_packages",
+        "index.md",
+        cli=["pretty_print.md", "basic_converter.md", "themes.md"],
+        internal=["config.md", "logging.md"],
+        tests=["index.md", "helpers.md", "utils.md"],
+        tui=["terminal_app.md"],
+    )
+    bulk_file_creation(
+        docs_directory / "reference",
+        "index.md",
+        config=["resolve_app_manager.md", "index.md"],
+        utilities=["file_parser.md", "setup_app_logging.md"],
     )
 
     return {
@@ -258,9 +290,9 @@ def removal_tree(tmp_path):
         },
         "config": {
             "root": config_directory,
-            "constants": config_directory / "constants.py",
             "helpers": config_directory / "helpers.py",
             "manager": config_directory / "manager.py",
+            "constants": config_directory / "_internal" / "constants.py",
         },
         "logging": {
             "root": logging_directory,
@@ -350,6 +382,133 @@ def removal_tree(tmp_path):
             "github_workflow": tmp_path / ".github" / "workflows" / "docker.yml",
             "gitlab_components": tmp_path / ".gitlab" / "components",
             "dockerignore": tmp_path / ".dockerignore",
+        },
+        "docs": {
+            "root": docs_directory,
+            "getting_started": {
+                "tutorials": docs_directory / "getting_started" / "tutorials.md",
+                "overview": docs_directory / "getting_started" / "overview.md",
+            },
+            "noticeboard": {
+                "roadmap": docs_directory / "noticeboard" / "roadmap.md",
+                "advisories": docs_directory
+                / "noticeboard"
+                / "advisories"
+                / "index.md",
+                "security": docs_directory / "noticeboard" / "advisories" / "guide.md",
+            },
+            "user_guide": {
+                "faq": docs_directory / "user_guide" / "faq.md",
+                "cli": {
+                    "root": docs_directory / "user_guide" / "cli",
+                    "index": docs_directory / "user_guide" / "cli" / "index.md",
+                    "options": docs_directory / "user_guide" / "cli" / "options.md",
+                },
+            },
+            "reference": {
+                "root": docs_directory / "reference",
+                "index": docs_directory / "reference" / "index.md",
+                "config": {
+                    "root": docs_directory / "reference" / "config",
+                    "manager": docs_directory
+                    / "reference"
+                    / "config"
+                    / "resolve_app_manager.md",
+                    "index": docs_directory / "reference" / "config" / "index.md",
+                },
+                "utils": {
+                    "root": docs_directory / "reference" / "utilities",
+                    "parser": docs_directory
+                    / "reference"
+                    / "utilities"
+                    / "file_parser.md",
+                    "logger": docs_directory
+                    / "reference"
+                    / "utilities"
+                    / "setup_app_logging.md",
+                },
+            },
+            "development": {
+                "root": docs_directory / "development",
+                "index": docs_directory / "development" / "index.md",
+                "policies": {
+                    "bdd": docs_directory / "development" / "policies" / "bdd.md",
+                    "versioning": docs_directory
+                    / "development"
+                    / "policies"
+                    / "versioning.md",
+                },
+                "dev_packages": {
+                    "root": docs_directory / "development" / "dev_packages",
+                    "index": docs_directory
+                    / "development"
+                    / "dev_packages"
+                    / "index.md",
+                    "cli": {
+                        "root": docs_directory / "development" / "dev_packages" / "cli",
+                        "printer": docs_directory
+                        / "development"
+                        / "dev_packages"
+                        / "cli"
+                        / "pretty_print.md",
+                        "converter": docs_directory
+                        / "development"
+                        / "dev_packages"
+                        / "cli"
+                        / "basic_converter.md",
+                        "themes": docs_directory
+                        / "development"
+                        / "dev_packages"
+                        / "cli"
+                        / "themes.md",
+                    },
+                    "tui": {
+                        "root": docs_directory / "development" / "dev_packages" / "tui",
+                        "app": docs_directory
+                        / "development"
+                        / "dev_packages"
+                        / "tui"
+                        / "terminal_app.md",
+                    },
+                    "internal": {
+                        "root": docs_directory
+                        / "development"
+                        / "dev_packages"
+                        / "internal",
+                        "config": docs_directory
+                        / "development"
+                        / "dev_packages"
+                        / "internal"
+                        / "config.md",
+                        "logging": docs_directory
+                        / "development"
+                        / "dev_packages"
+                        / "internal"
+                        / "logging.md",
+                    },
+                    "tests": {
+                        "root": docs_directory
+                        / "development"
+                        / "dev_packages"
+                        / "tests",
+                        "index": docs_directory
+                        / "development"
+                        / "dev_packages"
+                        / "tests"
+                        / "index.md",
+                        "helpers": docs_directory
+                        / "development"
+                        / "dev_packages"
+                        / "tests"
+                        / "helpers.md",
+                        "utils": docs_directory
+                        / "development"
+                        / "dev_packages"
+                        / "tests"
+                        / "utils.md",
+                    },
+                },
+            },
         },
     }
 

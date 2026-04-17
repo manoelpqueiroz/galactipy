@@ -1,27 +1,20 @@
-{% set licence_list = cookiecutter._licence_mapping_simple[cookiecutter.licence] -%}
-{% set roadmap_mapping = {
-  'GitLab Premium/Ultimate': 'epic',
-  'GitLab Free': 'milestone',
-  'GitHub': 'project'
-} -%}
-{% set docstring_mapping = {
-  'numpy': 'numpydoc',
-  'google': 'Google Python Style',
-  'sphinx': 'Sphinx Style',
-  'other': 'custom'
-} -%}
-{% set roadmap_item = roadmap_mapping[cookiecutter.scm_platform] -%}
-{% set docstring_name = docstring_mapping[cookiecutter.docstring_style] -%}
-{% set roadmap_item_undefined = 'an' ~ roadmap_item if roadmap_item == 'epic' else 'a ' ~ roadmap_item -%}
-{% set task_item = 'task' if cookiecutter.__scm_platform_lc == 'gitlab' else 'sub-issue' -%}
 # How to Contribute
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation with a different presentation
+  [link]: ./docs/development/index.md#development
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES, ADAPTING TO THE RESPECTIVE MEDIUM
+-->
+{%- endif %}
 
 {{ cookiecutter.project_description }}.
 
+{% if cookiecutter.licence != 'nos' -%}
 We would like to encourage you
 to contribute to this project
 and we strive to make it
 as easy as possible.
+{% endif -%}
 This guide is aimed at
 facilitating onboarding
 for new collaborators
@@ -78,10 +71,26 @@ or assessing patches and features.
 
 {% endif -%}
 {% else -%}
-and as a complimentary source of information
-to our [main `CONTRIBUTING` guide][intro1],
-which you should read
-before diving into this specific guide.
+and presenting guidelines
+for proper contributions.
+
+>>> [!important]
+This guide contains information
+that complements group-level policies and rules
+for the {{ cookiecutter.scm_namespace.capitalize() }} organisation.
+
+Before diving into this specific guide,
+contributors are expected
+to read our [main `CONTRIBUTING` guide][intro1].
+
+Unless when explicitly expressed
+in the present guide,
+policies defined
+in the main `CONTRIBUTING` guide
+are also to be applied
+for {{ cookiecutter.project_name }} project development.
+>>>
+
 {% endif -%}
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [[_TOC_]]
@@ -108,36 +117,48 @@ contributing as a developer:
   be done following [our specific practices][practices].
 
 ### Development Setup
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/development_setup.md#development-setup
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
+-->
 
 To start contributing to {{ cookiecutter.project_name }},
 you should start
-by [forking][setup1] the upstream repository
-to your own {{ cookiecutter.__scm_platform_base }} [group][setup2].
+by [forking][setup0a] the upstream repository
+to your own {{ cookiecutter.__scm_platform_base }} [group][setup0b].
 {%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
 We manage contributions
-{%- if cookiecutter.licence != 'nos' %}
 from the community
-{%- endif %}
-through the [fork][setup2a] system,
+through the [fork][setup0x] system,
 which helps us
 monitor and appreciate continuous input
 from individuals and organisations.
-{%- if cookiecutter.licence != 'nos' %}
 Contributors who can
 demonstrate their competence
 in further developing {{ cookiecutter.project_name }}
 may be [promoted][promotion]
 to upstream Developers or Maintainers.
-{%- endif %}
-{%- endif %}
 
 After forking the upstream repository,
 cloning it to your local environment
 and accessing the root dir
 via your IDE or the terminal:
+{%- endif %}
+{%- else %}
+
+After cloning it to your local environment
+and accessing the root dir
+via your IDE or the terminal:
+{%- endif %}
 
 1. Make sure
-   you have Poetry [installed][setup3];
+   you have Poetry [installed][setup1];
 2. Create and activate
    your virtual environment:
 
@@ -187,13 +208,31 @@ Otherwise,
 something is not right
 and there might be an opportunity
 for a [first contribution][workflow].
+{%- if cookiecutter.licence != 'nos' %}
 
 ## :shrug: Not Sure Where to Start?
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/index.md#not-sure-where-to-start
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
+-->
 
 If you don't feel
 ready to start contributing,
 the following steps
 should help:
+{%- else %}
+
+## :arrow_forward: Basic Topics
+
+To become more comfortable
+before contributing,
+refer to the following items:
+{%- endif %}
 
 - The project [`README`][readme] details
   how to use {{ cookiecutter.project_name }},
@@ -257,14 +296,15 @@ should help:
 {%- endif %}
 - Take a look at
 {%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
-  the organisation's [{{ roadmap_item.capitalize() }}s][topic2] page
+  the organisation's [{{ cookiecutter.__roadmap_item.capitalize() }}s][topic2] page
 {%- elif cookiecutter.scm_platform == 'GitLab Free' %}
-  the project's [{{ roadmap_item.capitalize() }}s][topic2] page
+  the project's [{{ cookiecutter.__roadmap_item.capitalize() }}s][topic2] page
 {%- else %}
-  our [{{ roadmap_item.capitalize() }}s][topic2] page
+  our [{{ cookiecutter.__roadmap_item.capitalize() }}s][topic2] page
 {%- endif %}
   to get familiar
   with the team's plans
+{%- if cookiecutter.licence != 'nos' %}
   for future releases;
 - When you feel ready
   to jump into {{ cookiecutter.project_name }} development,
@@ -274,17 +314,16 @@ should help:
   and discussions
 {%- endif %}
 {%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
-  labelled with [`seeking-contributors`][query6]
+  labelled with [`seeking-contributors`][query5]
 {%- else %}
-  labelled with [`seeking-builders`][query6]
+  labelled with [`seeking-builders`][query5]
 {%- endif %}
-  or [`starter-assignment`][query5];
+  or [`starter-assignment`][query4a];
 - After familiarising yourself
   with the project's [labels][topic3] and [stages][tracking],
   you can contribute
   by participating in discussions on issues
   at any of the **Needs** statuses,
-{%- if cookiecutter.licence != 'nos' %}
   especially those in the [**Needs Triage**][query3] stage;
   we are always looking for people
   who help refine issues,
@@ -389,7 +428,7 @@ with your first steps here:
   as you work up
   to the more complex contributions
   that {{ cookiecutter.project_name }} needs.
-  Check [starter assignment][query5] issues,
+  Check [starter assignment][query4a] issues,
   or [find your own][gfi]
   that deserves your time and effort.
 
@@ -516,14 +555,25 @@ an even more robust contributor:
 >    and every feedback.
 {%- endif %}
 {%- else %}
-  especially those in the [**Needs Triage**][query3] stage.
+  for future releases.
 {%- endif %}
 {%- endif %}
 
 ## :classical_building: Fundamental Policies
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/index.md#policies
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {% if cookiecutter.licence != 'nos' and cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 ### Code of Conduct
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/index.md#code-of-conduct
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {{ cookiecutter.project_name }} has adopted the [Contributor Covenant][cc1]
 as its Code of Conduct,
@@ -537,18 +587,33 @@ and know which actions
 will and will not be tolerated.
 
 {% endif -%}
-### {% if cookiecutter.licence != 'nos' %}Open {% endif %}Development
+{% if cookiecutter.licence != 'nos' -%}
+### Open Development
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/developing.md#open-development
 
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+
+{% else -%}
+### Development
+
+{% endif -%}
 All work on {{ cookiecutter.project_name }} happens
 directly on [{{ cookiecutter.__scm_platform_base }}][development1],
 including roadmap
-and [{{ roadmap_item }}s][topic2].
+and [{{ cookiecutter.__roadmap_item }}s][topic2].
 Therefore,
 a {{ cookiecutter.__scm_platform_base }} account is needed
 to start contributing.
 
 {% if cookiecutter.licence != 'nos' and cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 #### Contributor Promotion
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/developing.md#contributor-promotion
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Access to the upstream repository is granted
 at the project owner's discretion,
@@ -616,7 +681,8 @@ into the attitude
 for candidate contributors
 in more detail.
 
-{% elif cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% endif -%}
+{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 #### Roadmap Management
 
 Medium and long-term vision for {{ cookiecutter.project_name }}
@@ -632,32 +698,32 @@ discussions
 and {{ cookiecutter.__mr_term }}s
 should ideally
 {%- endif %}
-be related to {{ roadmap_item_undefined }}
+be related to {{ cookiecutter.__roadmap_item_indefinite }}
 once a work item has been created.
 
 Any contributor can propose a new distinct deliverable
 to be added to the roadmap.
 A [{{ cookiecutter.__mr_term }}][swmr] containing the proposal
 must be opened with the [**Project Policies** template][roadmap1],
-detailing nature, scope and purpose of the {{ roadmap_item }}.
+detailing nature, scope and purpose of the {{ cookiecutter.__roadmap_item }}.
 
-The {{ cookiecutter.__mr_acronym }} must detail the proposed {{ roadmap_item }}
+The {{ cookiecutter.__mr_acronym }} must detail the proposed {{ cookiecutter.__roadmap_item }}
 added to the [`ROADMAP.md` table][roadmap2]
 for discussion,
 containing:
 
 - **Title:**
-  the proposed title for the {{ roadmap_item }};
+  the proposed title for the {{ cookiecutter.__roadmap_item }};
 - **Proposal:**
   an overview of the development,
   in a short summary.
-  Details regarding the {{ roadmap_item }}
+  Details regarding the {{ cookiecutter.__roadmap_item }}
   will be discussed in the {{ cookiecutter.__mr_acronym }} and
-  later be included in the official project {{ roadmap_item }}
+  later be included in the official project {{ cookiecutter.__roadmap_item }}
   if accepted;
 - **Theme:**
   the theme to which
-  the proposed {{ roadmap_item }} is best related to.
+  the proposed {{ cookiecutter.__roadmap_item }} is best related to.
   The naming is open to discussion and
   the author is free to suggest it,
   along with an Emoji to
@@ -669,12 +735,12 @@ containing:
   whose requirements are addressed
   by the proposed epic;
 - **Timeline:**
-  a broad estimation of when this proposed {{ roadmap_item }}
+  a broad estimation of when this proposed {{ cookiecutter.__roadmap_item }}
   could be delivered in full.
   Should act as a starting point for
   the actual work tracking
   to be done via
-  the official {{ roadmap_item }};
+  the official {{ cookiecutter.__roadmap_item }};
 - **Proposal Status:**
   an emoji to represent
   the status of the proposal:
@@ -683,15 +749,15 @@ containing:
   - `:no_entry:` for rejected proposals.
 
 Contributors and maintainers will participate in the discussion to
-[refine][swnjw] the scope of the {{ roadmap_item }} and
+[refine][swnjw] the scope of the {{ cookiecutter.__roadmap_item }} and
 either accept of reject the proposal via [thumbs-up/thumbs-down][roadmap3] reactions
 on the author's initial comment.
 
-Once {{ roadmap_item_undefined }} has been accepted for inclusion in the roadmap,
-it will be officially created in the [{{ roadmap_item.capitalize() }}s][topic2] page.
-The {{ roadmap_item }} itself should contain:
+Once {{ cookiecutter.__roadmap_item_indefinite }} has been accepted for inclusion in the roadmap,
+it will be officially created in the [{{ cookiecutter.__roadmap_item.capitalize() }}s][topic2] page.
+The {{ cookiecutter.__roadmap_item }} itself should contain:
 
-- The [Motivational Narrative][roadmap4] as a summary to the {{ roadmap_item }}'s goal;
+- The [Motivational Narrative][roadmap4] as a summary to the {{ cookiecutter.__roadmap_item }}'s goal;
   - We suggest using the following pattern if the actor of the deliverable is not clear:
     `**In order to** {GOAL},<br>**The project will** {ACTION}.`;
   - An accompanying executive summary
@@ -706,13 +772,13 @@ The {{ roadmap_item }} itself should contain:
 - Details on potential bottleneck mappings
   in the **Caveats** section;
 - Details on future developments
-  enabled by the {{ roadmap_item }} delivery
+  enabled by the {{ cookiecutter.__roadmap_item }} delivery
   in the **Building from Here** section.
 
-Once the official {{ roadmap_item }} is created,
+Once the official {{ cookiecutter.__roadmap_item }} is created,
 it should be attached to the proposal {{ cookiecutter.__mr_acronym }} and
 the `ROADMAP.md` table should be updated
-with the actual link to the {{ roadmap_item }}
+with the actual link to the {{ cookiecutter.__roadmap_item }}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 (replacing the **Title**
 with the enhanced [GLFM reference][roadmap4a])
@@ -721,12 +787,12 @@ before merging to `master`.
 
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 >>> [!tip]
-{{ roadmap_item.capitalize() }}s should be the entry door for new contributors
+{{ cookiecutter.__roadmap_item.capitalize() }}s should be the entry door for new contributors
 to have a general glimpse on
 what the project has been prioritising and
 where it wants to go,
 helping newcomers get onboarded more quickly.
-Therefore, contributors writing official {{ roadmap_item }}s
+Therefore, contributors writing official {{ cookiecutter.__roadmap_item }}s
 should approach the task with the following goals in mind:
 
 - [_Comprehensive, yet succinct_][roadmap5];
@@ -734,19 +800,19 @@ should approach the task with the following goals in mind:
 >>>
 {%- else -%}
 > [!TIP]
-> {{ roadmap_item.capitalize() }}s should be the entry door for new contributors
+> {{ cookiecutter.__roadmap_item.capitalize() }}s should be the entry door for new contributors
 > to have a general glimpse on
 > what the project has been prioritising and
 > where it wants to go,
 > helping newcomers get onboarded more quickly.
-> Therefore, contributors writing official {{ roadmap_item }}s
+> Therefore, contributors writing official {{ cookiecutter.__roadmap_item }}s
 > should approach the task with the following goals in mind:
 >
 > - [_Comprehensive, yet succinct_][roadmap5];
 > - [_Standardised, yet conscious_][roadmap6].
 {%- endif %}
 
-After {{ roadmap_item_undefined }} has been completed,
+After {{ cookiecutter.__roadmap_item_indefinite }} has been completed,
 a new {{ cookiecutter.__mr_term }} should be opened to
 update the `ROADMAP.md` table in the **Timeline** field
 with the following possible values:
@@ -758,14 +824,25 @@ with the following possible values:
 {%- endif %}
   if properly associated to a [{{ cookiecutter.__scm_platform_base }} Release][roadmap7];
 - `**Delivered Internally :100:**`,
-  if the {{ roadmap_item }} has no impact on project releases.
+  if the {{ cookiecutter.__roadmap_item }} has no impact on project releases.
 
 Likewise,
 the {{ cookiecutter.__mr_acronym }}s should be associated with
-the completed {{ roadmap_item }}.
+the completed {{ cookiecutter.__roadmap_item }}.
 
 {% endif -%}
 #### Work Item Tracking
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/developing.md#work-item-tracking
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
+-->
+{%- endif %}
 
 [![Issues][badge1]][query1]
 {%- if cookiecutter.scm_platform == 'GitLab Free' %}
@@ -776,22 +853,24 @@ the completed {{ roadmap_item }}.
 [![Needs Triage][badge3]][query3]
 [![Designs][badge4]][query4]
 
-[![Starter Assignments][badge5]][query5]
-[![Needs Delivery][badge6]][query6]
-[![Quick Wins][badge7]][query7]
+{% if cookiecutter.licence != 'nos' -%}
+[![Starter Assignments][badge4a]][query4a]
+{% endif -%}
+[![Needs Delivery][badge5]][query5]
+[![Quick Wins][badge6]][query6]
 
-[![Stale Issues][badge8]][query8]
+[![Stale Issues][badge7]][query7]
 
-[![RFCs][badge9]][query9]
-[![RFIs][badge10]][query10]
-[![RFSs][badge11]][query11]
+[![RFCs][badge8]][query8]
+[![RFIs][badge9]][query9]
+[![RFSs][badge10]][query10]
 
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 {{ cookiecutter.project_name }} development is iterative
 and structured preferably around [{{ cookiecutter.__mr_term }}s][swmr].
 Whenever project advancements are not immediately deliverable,
 progress is tracked through {{ cookiecutter.__scm_platform_base }} Issues
-and {{ task_item.capitalize() }}s.
+and {{ cookiecutter.__task_item.capitalize() }}s.
 Use cases for this type of work item include:
 
 - User requests
@@ -805,6 +884,17 @@ Use cases for this type of work item include:
 
 {% endif -%}
 ##### Labels
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/developing.md#labels
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
+-->
+{%- endif %}
 
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 {{ cookiecutter.project_name }} defines
@@ -881,7 +971,9 @@ with their usage:
 |         N/A         |      ~"seeking-builders"      | Proposal is polished and can be picked up if you feel inclined to.                                                |
 |         N/A         |       ~"seeking-input"        | In need of help to further discuss and define scope.                                                              |
 |         N/A         |           ~"stale"            | Work items without activity that are marked for closing.                                                          |
+{%- if cookiecutter.licence != 'nos' %}
 |         N/A         |     ~"starter-assignment"     | Proposal and delivery steps are clear and can be picked up by first-time contributors.                            |
+{%- endif %}
 {%- if cookiecutter.__app_group == 'tui' %}
 |   User Interface    |      ~"ui-accessibility"      | Promotes accessibility options for users in the interface.                                                        |
 |   User Interface    |          ~"ui-arch"           | Changes to rendering logic in the layer directly below the user interface.                                        |
@@ -961,7 +1053,9 @@ with their usage:
 |         N/A         |      `seeking-builders`      | Proposal is polished and can be picked up if you feel inclined to.                                                |
 |         N/A         |       `seeking-input`        | In need of help to further discuss and define scope.                                                              |
 |         N/A         |           `stale`            | Work items without activity that are marked for closing.                                                          |
+{%- if cookiecutter.licence != 'nos' %}
 |         N/A         |     `starter-assignment`     | Proposal and delivery steps are clear and can be picked up by first-time contributors.                            |
+{%- endif %}
 {%- if cookiecutter.__app_group == 'tui' %}
 |   User Interface    |      `ui-accessibility`      | Promotes accessibility options for users in the interface.                                                        |
 |   User Interface    |          `ui-arch`           | Changes rendering logic in the layer directly below the user interface.                                           |
@@ -987,9 +1081,16 @@ with their usage:
 
 {% endif -%}
 ##### Work Item Lifecycle
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/developing.md#work-item-lifecycle
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 To effectively manage
-issue and {{ task_item }} lifecycles,
+issue and {{ cookiecutter.__task_item }} lifecycles,
 we use specific labels
 {%- if cookiecutter.__scm_platform_lc == 'github' %}
 to mark issues
@@ -1063,7 +1164,7 @@ when to move from one stage to another:
 |      **Duplicate**       |      `sts-duplicate`      |    Canceled     | Items marked as duplicates of previous work items.                                                                                                                                                                                                                                                                                                                        |
 
 {% endif -%}
-{{ task_item.capitalize() }}s do not require
+{{ cookiecutter.__task_item.capitalize() }}s do not require
 a lifecycle label.
 
 {% else -%}
@@ -1083,8 +1184,22 @@ specific to this project:
 {% endif -%}
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 #### General Practices
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/developing.md#general-practices
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 ##### Issue Titles Should be Framed in Imperative Mood
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/developing.md#issue-titles-should-be-framed-in-imperative-mood
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Issue titles should be clear
 to allow anyone
@@ -1157,9 +1272,16 @@ to close the issue.
 > to close the issue.
 {%- endif %}
 
-##### {{ task_item.capitalize() }}s Are Used as Acceptance Criteria for Issues
+##### {{ cookiecutter.__task_item.capitalize() }}s Are Used as Acceptance Criteria for Issues
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/developing.md#{{ cookiecutter.__task_item }}s-are-used-as-acceptance-criteria-for-issues
 
-[{{ task_item.capitalize() }}s][practices2] are a specific type of work item
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
+
+[{{ cookiecutter.__task_item.capitalize() }}s][practices2] are a specific type of work item
 in {{ cookiecutter.__scm_platform_base }}
 which can be associated
 with issues as their child items.
@@ -1173,7 +1295,7 @@ that can not be directly delivered
 through an open {{ cookiecutter.__mr_term }}.
 
 In either case,
-{{ task_item }}s must be used
+{{ cookiecutter.__task_item }}s must be used
 to complement the open issue
 with their acceptance criteria
 to be closed.
@@ -1184,22 +1306,30 @@ if relevant to understand implementation.
 
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 >>> [!caution]
-The only label allowed on {{ task_item }}s
+The only label allowed on {{ cookiecutter.__task_item }}s
 is `manual-closure`.
 Otherwise,
 there should be no labels
-associated with a {{ task_item }}.
+associated with a {{ cookiecutter.__task_item }}.
 >>>
 {%- else -%}
 > [!CAUTION]
-> The only label allowed on {{ task_item }}s
+> The only label allowed on {{ cookiecutter.__task_item }}s
 > is `manual-closure`.
 > Otherwise,
 > there should be no labels
-> associated with a {{ task_item }}.
+> associated with a {{ cookiecutter.__task_item }}.
 {%- endif %}
+{%- if cookiecutter.licence != 'nos' %}
 
 ##### Usage of the `seeking-contributors` Labels
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/developing.md#usage-of-the-seeking-contributors-labels
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 `seeking-contributors` is the label used
 to indicate work items
@@ -1282,8 +1412,16 @@ etc.
 > helping get it into a release
 > etc.
 {%- endif %}
+{%- endif %}
 
 ##### Blocks Must be Set at the Same Issue Level
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/developing.md#blocks-must-be-set-at-the-same-issue-level
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 [Issue blocks][practices3] are not mandatory
 for development,
@@ -1305,10 +1443,17 @@ must only be placed
 between working items
 of the same type:
 issues can only block **issues**,
-{{ task_item }}s can only block **{{ task_item}}s**.
+{{ cookiecutter.__task_item }}s can only block **{{ cookiecutter.__task_item}}s**.
 
 {% if cookiecutter.scm_platform == 'GitLab Free' -%}
 ##### Tasks Should Have no Milestones
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/developing.md#tasks-should-have-no-milestones
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Given GitLab Tasks are used
 for acceptance criteria of issues,
@@ -1334,8 +1479,13 @@ through the "Bulk edit" option.
 {% endif -%}
 {% if cookiecutter.use_bdd -%}
 ### Behaviour-Driven Development
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/bdd.md#behaviour-driven-development
 
-{% if cookiecutter.licence != 'nos' -%}
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+
 At {{ cookiecutter.project_name }},
 we believe building software
 goes beyond just coding
@@ -1372,8 +1522,8 @@ towards this vision
 is to leverage
 [Behaviour-Driven Development][bdd1]
 for our development cycle.
+{%- endif %}
 
-{% endif -%}
 We expect all contributors
 to understand
 and adopt BDD best practices
@@ -1445,6 +1595,11 @@ and everyone feels empowered to grow and succeed.
 
 {% endif -%}
 #### References for BDD
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/bdd.md#references-for-bdd
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 The structured approach BDD offers
 will help us maintain
@@ -1473,6 +1628,13 @@ we provide a suggested list of references below:
 
 {% endif -%}
 ### Versioning Customs
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/versioning.md#versioning-customs
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 At {{ cookiecutter.project_name }},
 we chose to adhere
@@ -1571,7 +1733,7 @@ regarding versioning in general:
 <!-- DEFINE the acceptance criteria for releasing a v1.0 for your project -->
 - Version `v1.0.0` can only be set
   once all requirements specified
-  in the `v1.0 Release` {{ roadmap_item }}
+  in the `v1.0 Release` {{ cookiecutter.__roadmap_item }}
   are satisfied;
 {% endif -%}
 - Versions can only be {% if cookiecutter.version_schema == 'trunkver' %}published{% else %}tagged{% endif %}
@@ -1581,6 +1743,13 @@ regarding versioning in general:
 
 {% if cookiecutter.__schema_type == 'segmented' and cookiecutter.version_schema != 'calver-auto' -%}
 #### Tips for Defining New Versions
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/versioning.md#tips-for-defining-new-versions
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Contributors can refer to
 the following list
@@ -1622,6 +1791,13 @@ through their related {{ cookiecutter.__mr_acronym }}.
 {% endif -%}
 {% endif -%}
 ### Branch Organization
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/branches.md#branch-organization
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 We apply the [{{ cookiecutter.project_name }} Philosophy][philosophy]
 for conducting new development,
@@ -1652,6 +1828,13 @@ or `wip-` prefixes
 so the CI will ignore it.
 
 #### Branch Naming Standards
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/branches.md#branch-naming-standards
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 While standard branch naming
 is not strictly required,
@@ -1731,9 +1914,29 @@ or detailed documentation.
 
 {% endif -%}
 ### Commit Customs
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/committing.md#commit-customs
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
+-->
+{%- endif %}
 
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' and cookiecutter.commit_convention == 'gitmoji' -%}
 #### Gitmoji
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/committing.md#gitmoji
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+-->
+{%- endif %}
 
 <!-- DEFINE the specific Gitmoji for this project
 Besides the Gitmoji
@@ -1749,6 +1952,13 @@ to apply on commits:
 {% elif cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 {% if cookiecutter.commit_convention == 'gitmoji' -%}
 #### Gitmoji
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/committing.md#gitmoji
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 {{ cookiecutter.project_name }} uses [Gitmoji][committing0]
 to characterise
@@ -1822,6 +2032,13 @@ to apply on commits:
 
 {% elif cookiecutter.commit_convention == 'conventional' -%}
 #### Conventional Commits
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/committing.md#conventional-commits
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 {{ cookiecutter.project_name }} uses [Conventional Commits][committing0]
 to characterise
@@ -1870,6 +2087,13 @@ so the CI will ignore it.
 
 {% else -%}
 #### Conventional Gitmoji
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/committing.md#conventional-gitmoji
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 {{ cookiecutter.project_name }} uses [Conventional Gitmoji][committing0]
 to characterise
@@ -2003,6 +2227,13 @@ so the CI will ignore it.
 
 {% endif -%}
 #### Commit Message Structure
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/committing.md#commit-message-structure
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Commit messages should be clear
 and concise,
@@ -2026,6 +2257,13 @@ when committing.
 {% endif -%}
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 #### Git Trailers
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/committing.md#git-trailers
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Every commit should
 be identified with the respective [Git trailer][committing1]
@@ -2086,8 +2324,22 @@ and defined in the [`changelog-config.yml`][committing2] file:
 {% endif -%}
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 ### Styling
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/styling.md#styling
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 #### Codestyle
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/styling.md#codestyle
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 The project uses [Ruff][style1]
 for formatting and codestyle.
@@ -2103,10 +2355,17 @@ for the project,
 use a [Project Policy Proposal {{ cookiecutter.__mr_acronym }}][roadmap1].
 
 #### Docstring Convention
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/styling.md#docstring-convention
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 {% if cookiecutter.docstring_style != 'other' -%}
 We choose to write our docstrings
-using {% if cookiecutter.docstring_style == 'other' %}a{% else %}the{% endif %} [{{ docstring_name }}][style1a] standard.
+using the [{{ cookiecutter.__docstring_name }}][style1a] standard.
 Please be aware
 to adhere to it
 when making your contributions.
@@ -2129,9 +2388,25 @@ for docstrings:
   must define only the short summary;
   other sections
   are left to the contributor's discretion;
-- Objects defined in the `tests` directory
-  are not obliged
-  to define docstrings.
+- For classes:
+  - If a class does not define attributes
+    – or only does so using properties –,
+    the class docstring does not need
+    to describe the "Attributes" section;
+    otherwise,
+    all attributes and properties
+    must be listed
+    in this section;
+  - The parameters for the `__init__` method
+    should be declared in the class docstring,
+    with the method's docstring itself containing
+    only the short summary
+    for the purpose to pass codestyle rules;
+- If a module exposes public constants
+  to users,
+  the module docstring must contain
+  the "Attributes" section
+  listing all constants.
 
 {% else -%}
 <!-- DEFINE your docstring convention details and usage guidelines -->
@@ -2143,6 +2418,13 @@ when making your contributions.
 
 {% endif -%}
 #### Semantic Line Breaks
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/styling.md#semantic-line-breaks
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 When editing Markdown files,
 [Semantic Line Breaks][style2] should be applied.
@@ -2215,24 +2497,100 @@ inside [`.{{ cookiecutter.__scm_platform_lc }}`][style4] and [`CHANGELOG.md`][st
 
 {% endif -%}
 ### Checks & Hooks
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/checks.md#checks--hooks
 
-Developers are encouraged
-to run local tests,
-check codestyle and static typing
-with the `invoke sweep` command
-before committing.
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
-Pre-commit hooks are configured
-to block updates not following the rules:
+Before pushing local changes
+to the repository,
+developers should run
+content integrity
+through two possible routes:
 
-- All files must comply to the [POSIX][hooks1] standard;
-- Code files must comply with the Ruff linter.
+- Locally running tests,
+  checking codestyle
+  and static typing
+  using [Invoke tasks][invoke]
+  – especially the `invoke sweep` command –
+  before committing;
+  this is manually run
+  by the developer;
+- Pass all validations
+  set up in our [Pre-Commit configuration][hooks1]
+  before committing
+  or pushing the changes;
+  this is automatically run
+  once the hooks are installed
+  after setting the [development environment][setup].
 
-Ensure both Invoke and Pre-Commit are [installed][setup]
-in your virtual environment.
+The pre-commit hooks are configured
+to expect the following:
+
+- All files must comply to the [POSIX][hooks2] standard,
+  except licence-related files;
+- Syntax for TOML, YAML and JSON files
+  must contain no errors;
+- Pure JSON files must have an indentation of `2` spaces;
+- JSON files for
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+  GitLab CI
+{%- else %}
+  GitHub Issue templates,
+  issue configuration,
+  GitHub Actions workflows
+  and Dependabot configuration
+{%- endif %}
+  must adhere to
+  their respective JSON schema;
+- There must be no merge conflict identifiers
+  in the files
+  (e.g.,
+  `<<<<<<< HEAD`,
+  `=======`,
+  etc.);
+{%- if cookiecutter.version_schema == 'trunkver' %}
+- All unit tests must pass;
+- Test coverage must be above the threshold
+  defined in `pyproject.toml`;
+- No security issues should be found
+  by running [Bandit][hooks3];
+{%- endif %}
+- Type checking must not find any inconsistencies
+  in type annotations;
+- Code files must comply with
+  both the Ruff linter
+  and formatter;
+- Code files must be properly marked
+  with a copyright notice;
+{%- if cookiecutter.commit_convention == 'conventional' %}
+- Commit messages must comply
+  with the [Conventional Commits][convention] convention;
+{%- elif cookiecutter.commit_convention == 'conventional-gitmoji' %}
+- Commit messages must comply
+  with the [Conventional Gitmoji][convention] convention;
+{%- endif %}
+- The `pyproject.toml` must have no inconsistencies;
+- The `poetry.lock` file must be updated;
+- The pre-commit hooks themselves
+  must be configured
+  to use their latest available version.
+
+Any updates that do not comply
+with these rules will be blocked.
 
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 ### Continuous Integration
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/ci.md#continuous-integration
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Besides being hosted in {{ cookiecutter.__scm_platform_base }},
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
@@ -2277,22 +2635,34 @@ of the development cycle.
 
 {% endif -%}
 ### Licence
+{%- if cookiecutter.licence != 'nos' %}
 
-{% if cookiecutter.licence != 'nos' -%}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/policies/index.md#licence
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+
 By contributing to {{ cookiecutter.project_name }},
 you agree that your contributions
 will be licensed under
-{{ licence_list[0] }}[{{ licence_list[1] }}][licence1].
+{{ cookiecutter.__licence_article }}[{{ cookiecutter.__licence_simple }}][licence1].
+{%- else %}
 
-{% else -%}
 {{ cookiecutter.project_name }} is _**not**_ open source software.
 Please [contact][topic5] the maintainers
 for more information
 on licencing the project.
+{%- endif %}
 
-{% endif -%}
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 ## :book: Our Philosophy
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/philosophy.md#our-philosophy
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 This document is
 more than just a technical guide
@@ -2305,6 +2675,7 @@ This section outlines our _modus operandi_
 and provides insight
 into the mindset needed
 for successful contributions.
+{%- endif %}
 
 Our project's guidelines
 are strongly influenced by the [GitLab Handbook][values1],
@@ -2314,11 +2685,22 @@ are transferable
 to any team,
 and we have adopted several
 of these principles
+{%- if cookiecutter.licence != 'nos' %}
 to formalise expectations
 for contributors
 within our development ecosystem.
+{%- else %}
+to guide how we work.
+{%- endif %}
 
 ### Start with a {{ cookiecutter.__mr_term }}
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/philosophy.md#start-with-a-{{ cookiecutter.__mr_term_slug }}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 > Adapted from the [Communication][values2] section of the GitLab Handbook.
 
@@ -2498,6 +2880,13 @@ to take action on.
     avoid auto-closing the related issue.
 
 ### _Say Why, Not Just What_
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/philosophy.md#say-why-not-just-what
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 > Adapted from the [GitLab Values][values3].
 
@@ -2568,7 +2957,7 @@ to articulate their reasoning
 for the change.
 
 When a contributor comes across
-{{ roadmap_item_undefined }},
+{{ cookiecutter.__roadmap_item_indefinite }},
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 {{ cookiecutter.__mr_term }}
 {%- else %}
@@ -2595,6 +2984,13 @@ that can lead to disruption
 and inefficiency.
 
 ### Operate with a Bias for Action
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/philosophy.md#operate-with-a-bias-for-action
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 > Adapted from the [GitLab Values][values5].
 
@@ -2622,7 +3018,13 @@ or jostling
 our general practices
 when working together.
 
+{% if cookiecutter.licence != 'nos' -%}
 ### Interactions Enable Insights
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/philosophy.md#interactions-enable-insights
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 At {{ cookiecutter.project_name }},
 we approach every single interaction
@@ -2660,6 +3062,11 @@ so it can be useful
 and cherished by others.
 
 ### Sharing Insights Drives Progress
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/philosophy.md#sharing-insights-drives-progress
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 By extracting the root
 of those four values,
@@ -2737,8 +3144,12 @@ can significantly impact
 the value of the project
 to someone else.
 
-{% if cookiecutter.licence != 'nos' -%}
 ### There Are no Good First Issues
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/philosophy.md#there-are-no-good-first-issues
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 The concept of
 labelling issues in open source projects
@@ -2829,8 +3240,23 @@ _The best good first issues are the ones you open yourself._
 
 {% endif -%}
 {% endif -%}
+{% endif -%}
+{% if cookiecutter.licence != 'nos' -%}
 ## :speaking_head: Proposing Changes as a Developer
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/index.md#proposing-changes
 
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
+-->
+
+{% else -%}
+## :speaking_head: Proposing Changes
+
+{% endif -%}
 {% if cookiecutter.__app_group == 'tui' -%}
 <!-- DEFINE the context and purposes of your library -->
 {{ cookiecutter.project_name }} is a Terminal User Interface (TUI) application,
@@ -2989,10 +3415,44 @@ will involve:
   - The policies that orient
     {{ cookiecutter.project_name }} development
     and contributor interactions.
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+
+>>> [!tip]
+The [group-level guide][intro1] contains guidance
+on the following topics not covered here:
+
+- How to open admissible Merge Requests;
+- The review process for MRs;
+- Roles and attributions;
+- How to make changes to project documentation.
+>>>
+{%- endif %}
 
 ### Preparing to Contribute
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/prepare.md#preparing-to-contribute
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
+-->
+{%- endif %}
 
 #### Choosing What to Contribute
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/prepare.md#choosing-what-to-contribute
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
+-->
+{%- endif %}
 
 [![Needs Triage][badge3]][query3]
 
@@ -3009,7 +3469,7 @@ a contributor will already have
 a particular new change or fix
 in mind.
 If seeking ideas,
-consult the list of [starter assignments][query5].
+consult the list of [starter assignments][query4a].
 
 {% endif -%}
 Before proceeding,
@@ -3086,6 +3546,13 @@ to less fundamental building blocks.
 {% endif -%}
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 #### Opening Admissible {{ cookiecutter.__mr_term }}s
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/prepare.md#opening-admissible-{{ cookiecutter.__mr_term_slug }}s
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 For developers and maintainers,
 changes should not be approached
@@ -3179,6 +3646,13 @@ from the Kubernetes team
 also has some great points regarding this.
 
 #### Review Criteria
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/prepare.md#review-criteria
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Before considering how to contribute,
 it's useful to understand
@@ -3244,6 +3718,13 @@ its probability of being merged:
 
 {% endif -%}
 ### Development Workflow
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/workflow/index.md#development-workflow
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 After cloning {{ cookiecutter.project_name }}
 and following the [development setup][setup],
@@ -3308,14 +3789,210 @@ A non-exhaustive list of steps to consider:
 {%- endif %}
 {%- endif %}
 
+#### Invoke Usage
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/workflow/invoke.md#invoke-usage
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
+
+{% if cookiecutter.app_type == 'bare_repo' -%}
+[`invoke`][workflow0a] is a library that
+{% else -%}
+[`invoke`][changes6] is a library that
+{% endif -%}
+enables easy configuration of
+shell-oriented subprocesses
+as Python functions.
+At {{ cookiecutter.project_name }},
+it is our tool of choice
+to streamline common operations
+developers might perform
+during their work,
+without requiring them
+to memorise complex commands.
+
+Available tasks can be viewed
+at anytime
+with the `invoke --list` command
+{% if cookiecutter.app_type == 'bare_repo' -%}
+and are defined in the [`tasks.py`][workflow0b] file.
+{% else -%}
+and are defined in the [`tasks.py`][changes5] file.
+{% endif -%}
+
+Changes to the set of tasks
+and their behaviour
+should be proposed
+through a [**Internal Improvement**][workflow1] {{ cookiecutter.__mr_term }}.
+
+##### Environment Setup
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation with a different presentation
+  [link]: ./docs/development/for_developers/workflow/invoke.md#environment-setup
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES, ADAPTING TO THE RESPECTIVE MEDIUM
+-->
+{%- endif %}
+
+|      Command       | Details                                                                                                                        |
+| :----------------: | ------------------------------------------------------------------------------------------------------------------------------ |
+|  `invoke install`  | Sets up the Poetry virtual environment, installs the dependencies, pre-commit hooks and runs a mypy check.                     |
+| `invoke pyproject` | Checks `pyproject.toml` integrity.                                                                                             |
+|  `invoke update`   | Updates dependencies to their latest compatible release requirements, with an option to update to the latest versions overall. |
+
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
+>>> [!warning]
+For `invoke install` to run,
+Invoke must be installed and callable
+from your system.
+Otherwise, it is recommended to run `poetry install`
+to set up the repository.
+>>>
+
+{% else -%}
+> [!WARNING]
+> For `invoke install` to run,
+> Invoke must be installed and callable
+> from your system.
+> Otherwise, it is recommended to run `poetry install`
+> to set up the repository.
+
+{% endif -%}
+##### Quality Assurance Tasks
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation with a different presentation
+  [link]: ./docs/development/for_developers/workflow/invoke.md#quality-assurance-tasks
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES, ADAPTING TO THE RESPECTIVE MEDIUM
+-->
+{%- endif %}
+
+|      Command       | Details                                                                                          |
+| :----------------: | ------------------------------------------------------------------------------------------------ |
+| `invoke codestyle` | Format files with Ruff, with an option to check files only.                                      |
+|   `invoke lint`    | Check compliance with linting rules, with an option to correct those considered fixable by Ruff. |
+|   `invoke mypy`    | Run mypy to check for static typing.                                                             |
+|   `invoke test`    | Run the test suite with Pytest.                                                                  |
+|  `invoke report`   | Run the `test` and `mypy` tasks and open their HTML coverage reports.                            |
+| `invoke security`  | Run security checks with Bandit and check `pyproject.toml` integrity.                            |
+
+The **`invoke sweep`** task groups all tasks
+except for `report`
+into a single command.
+**`invoke ruff`** can be used
+to run the Ruff formatter and linter
+with a single command.
+
+##### Project Building & Publishing
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation with a different presentation
+  [link]: ./docs/development/for_developers/workflow/invoke.md#project-building--publishing
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES, ADAPTING TO THE RESPECTIVE MEDIUM
+-->
+{%- endif %}
+
+|     Command      | Details                                                                                                                     |
+| :--------------: | --------------------------------------------------------------------------------------------------------------------------- |
+|  `invoke build`  | Build the project wheels.                                                                                                   |
+| `invoke config`  | Configure PyPI repositories, requiring at least an API token, with optional repository name and URL arguments.              |
+| `invoke publish` | Publish the project to a registry, defaulting to the canonical PyPI repository, with an option to build the project wheels. |
+
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
+>>> [!note]
+When `invoke config` is provided
+with no `--repo` option,
+Invoke will configure the connection
+to the [canonical PyPI repository][workflow2],
+with only the API token being required.
+When provided with the `--repo testpypi` option instead,
+it will configure the connection
+to [TestPyPI][workflow3]
+and no URL is needed.
+Other `--repo` values must also
+receive a `--url` argument
+pointing to the desired custom registry.
+>>>
+
+{% else -%}
+> [!NOTE]
+> When `invoke config` is provided
+> with no `--repo` option,
+> Invoke will configure the connection
+> to the [canonical PyPI repository][workflow2],
+> with only the API token being required.
+> When provided with the `--repo testpypi` option instead,
+> it will configure the connection
+> to [TestPyPI][workflow3]
+> and no URL is needed.
+> Other `--repo` values must also
+> receive a `--url` argument
+> pointing to the desired custom registry.
+
+{% endif -%}
+{% if cookiecutter.create_docker -%}
+##### Docker Operations
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation with a different presentation
+  [link]: ./docs/development/for_developers/workflow/invoke.md#docker-operations
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES, ADAPTING TO THE RESPECTIVE MEDIUM
+-->
+{%- endif %}
+
+|      Command       | Details                                                                                                  |
+| :----------------: | -------------------------------------------------------------------------------------------------------- |
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+|   `invoke login`   | Log in to the [GitLab Container Registry][workflow4] for the repository.                              |
+{%- else %}
+|   `invoke login`   | Log in to [Docker Hub][workflow4].                                                                    |
+{%- endif %}
+| `invoke container` | Build local container images, with the option to set multiple tags and an alternate repository to point. |
+|   `invoke push`    | Push all project images to a container registry, with the option to set an alternate repository to push. |
+|   `invoke prune`   | Remove all local images built for the project, with the option to set an alternate repository to point.  |
+
+{% endif -%}
+##### Cleanup Tasks
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation with a different presentation
+  [link]: ./docs/development/for_developers/workflow/invoke.md#cleanup-tasks
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES, ADAPTING TO THE RESPECTIVE MEDIUM
+-->
+{%- endif %}
+
+|         Command         | Details                                                                                                         |
+| :---------------------: | --------------------------------------------------------------------------------------------------------------- |
+|  `invoke remove-cache`  | Remove `__pycache__` files from the local repository.                                                           |
+| `invoke remove-dsstore` | Remove the `.DS_Store` directory from the local repository.                                                     |
+|  `invoke remove-mypy`   | Remove the `.mypy_cache` directory from the local repository.                                                   |
+|  `invoke remove-ipynb`  | Remove the `.ipynb_checkpoints` directory from the local repository.                                            |
+| `invoke remove-pytest`  | Remove the `.pytest_cache` directory and the `.coverage` and `test_report.xml` files from the local repository. |
+|  `invoke remove-ruff`   | Remove the `.ruff_cache` directory from the local repository.                                                   |
+|  `invoke remove-build`  | Remove wheels built locally.                                                                                    |
+
+The **`invoke cleanup`** task groups all tasks
+except for `remove-build`
+into a single command.
+
 #### Test Markers
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/workflow/index.md#test-markers
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 When writing tests,
 we strongly encourage developers
 {%- if cookiecutter.use_bdd %}
-to leverage [feature file tags][workflow1]
+to leverage [feature file tags][workflow5]
 {%- else %}
-to leverage [custom Pytest markers][workflow1]
+to leverage [custom Pytest markers][workflow5]
 {%- endif %}
 to improve test collection
 and organisation.
@@ -3325,7 +4002,7 @@ if tests start to fail
 after introducing a change.
 
 The following markers are specified
-in [`pyproject.toml`][workflow2]:
+in [`pyproject.toml`][workflow6]:
 
 |     Marker      | Specification                                                                                                                   |
 | :-------------: | ------------------------------------------------------------------------------------------------------------------------------- |
@@ -3353,22 +4030,1129 @@ in [`pyproject.toml`][workflow2]:
 
 To propose changes
 to the marker options,
-do so through a [Project Policy Proposal][roadmap1].
+do so through a [**Project Policy Proposal**][roadmap1].
 
 #### Feature Flags
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/workflow/index.md#feature-flags
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 <!-- DEFINE the guidelines on how to implement and handle feature flags -->
 
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+### Documentation Guide
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/index.md#documentation-guide
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
+
+Documentation is a crucial part
+of the work at {{ cookiecutter.project_name }},
+and developers are expected
+to give as much attention to docs
+as they give to the code.
+{%- if cookiecutter.licence != 'nos' %}
+
+Our documentation should also be viewed
+as one of the selling points of {{ cookiecutter.project_name }}.
+The more understandable our docs become:
+
+1. The more **developers**
+   shall feel inclined to contribute
+   to {{ cookiecutter.project_name }}'s further growth;
+2. The more empowered
+   will the **absolute beginners**
+   (e.g.,
+   people who have no prior contact
+   with our solution
+   )
+   feel to use our software;
+3. **The more credible our project will get**.
+
+On the other hand,
+not taking care of our documentation
+entails the following mindset
+from people:
+
+- If people don't know
+  why our project exists,
+  they won't use it;
+- If people can't figure out
+  how to install our solution,
+  _they won't use it_;
+- If people can't understand
+  how to use our software,
+  _**they won't use it**_.
+
+Thus,
+aiming for a polished state for our docs
+helps our users succeed with {{ cookiecutter.project_name }},
+empowers them to be self-sufficient
+and enables them to give us further feedback.
+It's a virtuous cycle
+that can only play to everyone's advantage,
+and we encourage developers
+to familiarise themselves
+with specific guidelines
+on this domain.
+{%- endif %}
+
+#### Anatomy
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/anatomy.md#anatomy
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
+
+As a contributor,
+be aware that
+whenever the term "documentation" is mentioned,
+it can refer to any one
+of the following distinct domains
+where knowledge is collected
+and presented to different audiences.
+{%- if cookiecutter.licence != 'nos' %}
+
+##### The `README` File
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/anatomy.md#the-readme-file
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+
+The [`README`][readme] file
+is the one that users will first interact with
+when they decide to check {{ cookiecutter.project_name }}
+– be it in the project repository
+or the PyPI package listing.
+Its main purpose is
+to provide the essential information
+to get people started with
+the project.
+
+Thus,
+the content should be targeted
+towards people who are not familiar with the project,
+strictly aiming for brevity and clarity
+in its contents.
+
+It should aptly fulfill
+the following functions:
+
+1. Present the purpose of the project;
+2. Show how {{ cookiecutter.project_name }}
+   can help people solve
+   their problem at hand;
+3. Provide information
+   on common use cases
+   for {{ cookiecutter.project_name }};
+4. Swiftly detail the installation process;
+5. Tell how anyone
+   could contribute to {{ cookiecutter.project_name }}.
+
+Should any of these topics
+not be made explicit
+from the perspective of a new user,
+then changes in these files are warranted.
+{%- endif %}
+
+##### Hard Policy Files
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/anatomy.md#hard-policy-files
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
+
+These are files
+that delineate the core principles
+guiding the work at {{ cookiecutter.project_name }}.
+Collectively,
+they form what we could call
+the "statute" of the project,
+and are geared towards
+contributors of all levels
+of familiriaty
+and activity
+in the project.
+
+Their main purpose
+is to place all contributors
+under a single understanding
+of how the work should be done in {{ cookiecutter.project_name }},
+and act as a paramount resource
+to address contesting visions
+for implementing something
+when discussions arise.
+
+The hard policy files are:
+
+- The `CONTRIBUTING` guide
+  (i.e., this very file):
+  - Shows how people can get started
+    setting up a development environment
+    for {{ cookiecutter.project_name }};
+  - Lists the main tools
+    used for managing development of the project
+    and how contributors
+    should approach them;
+  - Contains all sets of rules regulating
+    what contributors are expected to do,
+    how they should behave
+    – individually and on interactions –
+    and how flexibly or not
+    these rules should be followed;
+- The [`ROADMAP`][roadmap] file:
+  - Delves relatively deeper than the `README`
+    on the purpose of the project;
+  - States the mission of the project,
+    a visionary declaration
+    of what the contributors see
+    as the endgame of development;
+  - Lays out the different stages of development
+    and what is expected to be achieved
+    at each one of them;
+  - Provides anyone
+    with a quick reference table
+    of the history of major milestones
+    that have been either
+    discussed,
+    already delivered,
+    currently developed
+    or planned for the future,
+    aiming to more easily situate newcomers
+    and people interest in contributing;
+- The [`SECURITY`][docs1] file:
+  - Presents the threat model for the project;
+  - Provides guidance to people
+    on how to report a security vulnerability
+    (and what is **not** considered one);
+  - Clarifies how we respond to
+    and disclose a security report
+    once it is send;
+  - Informs of any current vulnerabilities and advisories;
+{%- if cookiecutter.licence != 'nos' %}
+- The [Code of Conduct][cc2],
+  for which more specific information
+  can be found in [its respective section][covenant].
+{%- endif %}
+
+These files are not immutable,
+and can be submitted for changes and updates
+by any contributor
+via a [**Project Policy Proposal** {{ cookiecutter.__mr_acronym }}][roadmap1].
+
+##### Issue and {{ cookiecutter.__mr_term }} Templates
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/anatomy.md#issue-and-{{ cookiecutter.__mr_term_slug }}-templates
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
+
+Templates used for
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+issues
+{%- else %}
+issues,
+discussions
+{%- endif %}
+and {{ cookiecutter.__mr_term }}s
+are also part of {{ cookiecutter.project_name }} policies,
+as they regulate,
+for specific themes:
+
+- When to use a template;
+- What information to provide
+  to start discussions;
+- How to frame
+  the work item's structure
+  for submission.
+
+But since they are more flexible
+in their presentation,
+they are considered "soft" policy files instead.
+
+To effectively provide value to the project,
+these files must be arranged
+as high-level instructions
+to facilitate their filling out
+in an orderly and complete manner,
+and should be updated
+whenever they are increasingly misused
+{%- if cookiecutter.licence != 'nos' %}
+by submitters,
+be they contributors
+or community members.
+{%- else %}
+by submitters.
+{%- endif %}
+This includes
+creating new types of templates
+when the project's circumstances
+call for.
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+
+>>> [!tip]
+Checklists can be leveraged
+for submitters and reviewers
+to follow more easily
+in regards to relevant actions
+related to the item.
+
+For the sake of clarity,
+whenever an action
+might take the form
+of binary choices,
+prefer splitting them
+in separate nested items
+and orient users
+to leverage
+[complete/inapplicable tasks][docs1a].
+>>>
+{%- endif %}
+
+Moreover,
+our view is that
+**work items are also part of documentation**.
+Contributors,
+especially those
+who have an active role
+in {{ cookiecutter.project_name }},
+should always be aware
+to treat posts and interactions
+in work item discussions
+anticipating how their input
+can be useful in the future,
+following our [guiding principles][swnjw].
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+
+>>> [!important]
+Special attention should be given
+when participating in a **Structural Design** discussion.
+Those {{ cookiecutter.__mr_acronym }}s are more delicate
+as their purpose is
+to signal other project members
+the formation of a validation board
+which will ratify future feature implementation
+or reevaluate previous implementation flaws
+that went undetected.
+
+Those {{ cookiecutter.__mr_acronym }}s
+are functionally the same
+as [enhancement proposals][docs2],
+collecting feedback
+on a design
+and producing a historical record
+on the rationale
+behind our design decisions.
+Every contributor is welcome to participate
+and provide input to the discussions,
+but we kindly ask you
+to refrain from adding trivial comments
+in these occasions
+and actively focus
+on discussion points.
+>>>
+{%- else %}
+
+> [!IMPORTANT]
+> Special attention should be given
+> when participating in a **Structural Design** discussion.
+> Those {{ cookiecutter.__mr_acronym }}s are more delicate
+> as their purpose is
+> to signal other project members
+> the formation of a validation board
+> which will ratify future feature implementation
+> or reevaluate previous implementation flaws
+> that went undetected.
+>
+> Those {{ cookiecutter.__mr_acronym }}s
+> are functionally the same
+> as [enhancement proposals][docs2],
+> collecting feedback
+> on a design
+> and producing a historical record
+> on the rationale
+> behind our design decisions.
+> Every contributor is welcome to participate
+> and provide input to the discussions,
+> but we kindly ask you
+> to refrain from adding trivial comments
+> in these occasions
+> and actively focus
+> on discussion points.
+{%- endif %}
+
+Improvements to the structure of these files,
+as well as proposing new template types,
+should be done via a [**Project Policy Proposal** {{ cookiecutter.__mr_acronym }}][roadmap1].
+
+##### The Formal Documentation
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/anatomy.md#the-formal-documentation
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
+
+Apart from individual files
+spread across the repository,
+the [`docs/`][docs3] directory stores
+what we call the "formal" documentation
+for {{ cookiecutter.project_name }}.
+These are the docs
+that are exposed to the public
+via a static website.
+
+We use Zensical
+as the backbone of our documentation,
+which is configured
+in the [`zensical.toml`][docs4] file.
+Contributors are instructed
+to read [Zensical's][docs5] documentation
+before proposing changes to ours.
+
+The formal docs
+have their own structure,
+{%- if cookiecutter.licence != 'nos' %}
+split across four major branches of knowledge:
+{%- else %}
+split across three major branches of knowledge:
+{%- endif %}
+
+- The **Reference Guide**,
+  a technical document
+  which collects the public API
+  for technical reference;
+  it presents:
+  - All the functions and methods
+    publicly available in the software;
+  - How they work;
+  - What inputs and outputs
+    users should expect,
+    along with side effects;
+  - Examples of implementation
+    and use contexts;
+- Instruction guides,
+  with varying levels of detail;
+  those are tutorial-like documents
+  that take the user "by the hand"
+  and loop through the features
+  of {{ cookiecutter.project_name }},
+  which include:
+  - The installation guide,
+    with full instructions
+    on all different methods
+    of installation;
+  - An overview of the package,
+    illustrating purpose,
+    main features
+    and core aspects;
+  - Manuals on
+    how to use {{ cookiecutter.project_name }}
+{%- if cookiecutter.app_type != 'bare_repo' %}
+    on an elementary level,
+    guidance on caveats
+    users should be aware of
+    and the complete catalog
+    of CLI commands and options;
+{%- else %}
+    on an elementary level
+    and guidance on caveats
+    users should be aware of;
+{%- endif %}
+- Cookbook-style content,
+  containing recipes
+  for how to use the library
+  to accomplish specific tasks:
+  - 1-minute tutorials
+    to quickly showcase
+    practical usage of {{ cookiecutter.project_name }},
+    one feature at a time;
+  - Dedicated guides
+    comparing {{ cookiecutter.project_name }} to alternatives,
+    providing their users
+    with relevant content
+    to easily translate concepts
+    from those alternatives
+    into {{ cookiecutter.project_name }}
+    and more easily migrate from them;
+  - Sections dedicated to power users
+    who aim to take the most
+{%- if cookiecutter.licence != 'nos' %}
+    out of the library's functionalities;
+  - A collection of community-generated guides
+    and FAQs to address the most common issues
+    faced by {{ cookiecutter.project_name }} users;
+- The **Development Guide**,
+  aimed at existing and potential contributors
+  to serve as the reference
+  for how development of {{ cookiecutter.project_name }} takes place,
+  which encompasses:
+  - The transcription
+    of all hard policy files
+    defining the rules
+    for development;
+  - The reference
+    for non-public API objects
+    present in the {{ cookiecutter.project_name }} codebase
+    (i.e., those that are not exposed to users);
+  - Information on how to contact the team
+    for different purposes;
+  - The collection of all previous releases
+    and their release notes
+    for reference.
+{%- else %}
+    out of the library's functionalities.
+{%- endif %}
+
+Changes to any part of the formal documentation
+are also done via [**Project Policy Proposal** {{ cookiecutter.__mr_acronym }}s][roadmap1],
+with more detailed guidelines
+presented in its [specific section][docchanges].
+
+#### Documentation Philosophy
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/philosophy.md#documentation-philosophy
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
+
+> Adapted from the [Google Style Guides][docs6].
+
+When dealing with any
+of the content and files
+which can be declared documentation,
+contributors should follow these principles
+on top of our [core values][philosophy]
+to achieve the best results possible.
+
+##### Minimum Viable Documentation
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/philosophy.md#minimum-viable-documentation
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
+
+A small set of fresh and accurate docs
+is better than
+a large assembly of "documentation"
+in various states of disrepair.
+
+- Write short and useful documents;
+- Cut out everything unnecessary,
+  including out-of-date,
+  incorrect,
+  or redundant information;
+- Make a habit
+  of continually massaging
+  and improving every doc
+  to suit the changing needs
+  of their audience.
+
+<div align="center">
+
+_Docs work best when they are alive but frequently trimmed, like a bonsai tree._
+
+</div>
+
+##### Update Docs with Code
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/philosophy.md#update-docs-with-code
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
+
+Update your documentation
+in the same [{{ cookiecutter.__mr_term }}][swmr]
+as the code change.
+This keeps your docs fresh,
+and is also a good place
+to explain to your reviewer
+what you're doing.
+
+A good reviewer can at least insist
+that docstrings,
+header files,
+the `README` file
+and any other docs get updated
+alongside the proposed change.
+
+##### Delete Dead Documentation
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/philosophy.md#delete-dead-documentation
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
+
+Dead docs are bad.
+They misinform,
+they slow down,
+they incite despair in users
+and laziness in team members.
+They set a precedent
+for leaving behind messes
+in the codebase.
+If your home is clean,
+most guests will be clean
+without being asked.
+
+Just like any big cleaning project,
+it's easy to be overwhelmed.
+If the docs are in bad shape:
+
+- Take it slow,
+  doc health is a gradual accumulation;
+- First delete
+  what you're certain is wrong,
+  ignore what's unclear.
+- Get other team members involved;
+  devote time
+  to quickly scan every doc
+  and make a simple decision:
+  should we keep it
+  or delete it?
+- Default to delete
+  or leave behind if migrating;
+  stragglers can always be recovered.
+- Iterate.
+
+##### Prefer Good over the Perfect
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/philosophy.md#prefer-good-over-the-perfect
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
+
+Documentation is an art.
+There is no perfect document,
+there are only proven methods
+and prudent guidelines.
+
+The standards
+for an internal documentation review
+are different
+from the standards
+for code reviews.
+Reviewers should ask for improvements,
+but in general,
+the author should always be able
+to invoke the _Better/Best Rule_.
+
+Fast iteration is your friend.
+To get long-term improvement,
+authors must stay productive
+when making short-term improvements.
+Set lower standards for each {{ cookiecutter.__mr_term }},
+so that more such {{ cookiecutter.__mr_acronym }}s can happen.
+
+As a reviewer of a documentation {{ cookiecutter.__mr_acronym }}:
+
+- When reasonable,
+  clear the {{ cookiecutter.__mr_acronym }} immediately
+  and trust that
+  comments will be fixed appropriately;
+- Prefer to suggest an alternative
+  rather than leaving a vague comment;
+- For substantial changes,
+  start your own follow-up {{ cookiecutter.__mr_acronym }} instead;
+  try especially to avoid comments
+  of the form "You should also...";
+- On rare occasions,
+  hold up submission if the {{ cookiecutter.__mr_acronym }}
+  actually makes the docs worse;
+  it's okay to ask the author
+  to revert.
+
+As an author:
+
+- Avoid wasting cycles
+  with trivial argument;
+  capitulate early and move on;
+- Cite the _Better/Best Rule_
+  as often as needed.
+
+##### Documentation is the Story of Our Code
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/philosophy.md#documentation-is-the-story-of-our-code
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
+
+Writing excellent code
+doesn't end when your code compiles
+or even if your test coverage reaches 100%.
+It's easy to write something
+a computer understands,
+it's much harder to write something
+both a human and a computer understand.
+Your mission as a Code Health-conscious contributor
+is to **write for humans first, computers second**.
+Documentation is an important part
+of this skill.
+
+##### Duplication is Evil
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/philosophy.md#duplication-is-evil
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
+
+Do not write your own guide
+to a common technology or process
+– link to it instead.
+If the guide doesn't exist
+or it's badly out of date,
+submit your own updates
+directly to the upstream libraries.
+Take ownership and don't be shy:
+other teams will usually
+welcome your contributions.
+
+#### Making Changes to the Documentation
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/making_changes.md#making-changes-to-the-documentation
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
+
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
+>>> [!important]
+This section refers to guidelines
+for changing the **Formal Documentation**.
+
+If you wish to make changes
+to another type of file,
+refer to its respective commentary
+in the [Anatomy section][anatomy].
+>>>
+
+{% else -%}
+> [!IMPORTANT]
+> This section refers to guidelines
+> for changing the **Formal Documentation**.
+>
+> If you wish to make changes
+> to another type of file,
+> refer to its respective commentary
+> in the [Anatomy section][anatomy].
+
+{% endif -%}
+Anyone is welcome
+to make improvements to the documentation,
+validated through a [**Project Policy Proposal** {{ cookiecutter.__mr_term }}][roadmap1].
+Even if the updates are marginal,
+we encourage contributors
+to submit their changes
+and help us get closer
+to delivering flawless docs
+to our community.
+
+Be aware to observe
+the following protocols
+to orient your approach
+at all times
+during content edition:
+
+- The target reader varies
+  depending on the page;
+  strive to change/add content
+  so it suits its respective audience;
+  do not attempt to
+  accommodate multiple reader types
+  to a single page;
+- Leverage [Zensical's features][docs7] where appropriate
+  to elevate knowledge transmission;
+  use them strategically,
+  however,
+  and avoid overrelying on them
+  to build a page's content;
+- Keep pages
+  with a maximum heading depth of **3**
+  to reduce cognitive load on readers,
+  and split into multiple pages
+  to focus on a single unit of knowledge
+  at a time.
+
+Additionally,
+some parts of the documentation
+should adhere to specific conventions
+to standardise content and formatting,
+helping users more easily navigate
+through the pages.
+
+##### API Collection
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation with a different presentation
+  [link]: ./docs/development/for_developers/documentation/making_changes.md#api-collection
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES, ADAPTING TO THE RESPECTIVE MEDIUM
+-->
+{%- endif %}
+
+The project uses [`mkdocstrings`][docs8]
+(and, more specifically, [`mkdocstrings-python`][docs9])
+to collect the API from {{ cookiecutter.project_name }}.
+This makes the process
+of providing API details to users
+much more efficient,
+but mkdocstrings does not make
+the process completely automatic.
+Thus,
+contributors are required to understand
+specific conventions defined here
+to ensure their changes
+follow a logical standard.
+
+For the public API,
+we enforce the rule of
+**one page per method/attribute**.
+Instead of collecting the entire class
+or module
+in a single page,
+by having each method,
+attribute
+or function
+be placed in its own page
+we reduce clutter
+and readers can focus on
+those objects' implementation
+without distraction.
+
+For classes,
+this encompasses
+a specific structure
+with distinct `mkdocstrings` options:
+
+1. A [navigation section][docs10] page
+   to present the class' docstring
+   and objects:
+
+```
+::: <object_path>
+    options:
+      members: false
+      show_root_full_path: true
+      show_symbol_type_heading: false
+      show_signature: false
+      separate_signature: false
+      show_docstring_parameters: false
+      show_docstring_returns: false
+      show_docstring_examples: false
+      show_docstring_raises: false
+      show_docstring_warns: false
+      show_docstring_yields: false
+```
+
+2. A page to provide the class' constructor
+   and `__init__` method details,
+   named `init.md`:
+
+```
+::: <object_path>
+    options:
+      show_docstring_attributes: false
+      show_docstring_functions: false
+      show_docstring_description: false
+      members:
+      - __init__
+```
+
+3. Additional subpages
+   to document each method
+   or property for the class
+   (does not require
+   `mkdocstrings` handler option overriding).
+
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
+>>> [!note]
+For simpler classes
+that do not require a constructor,
+such as Enums or dataclasses,
+the `init.md` file can be skipped altogether,
+using the navigation section page
+to perform its purpose:
+
+```
+::: <object_path>
+    options:
+      members: false
+      show_root_full_path: true
+```
+>>>
+
+{% else -%}
+> [!note]
+> For simpler classes
+> that do not require a constructor,
+> such as Enums or dataclasses,
+> the `init.md` file can be skipped altogether,
+> using the navigation section page
+> to perform its purpose:
+>
+> ```
+> ::: <object_path>
+>     options:
+>       members: false
+>       show_root_full_path: true
+> ```
+
+{% endif -%}
+For any public functions,
+only the object path
+should be overridden
+from `mkdocstrings` handlers:
+
+```
+::: <object_path>
+    options:
+      show_root_full_path: true
+```
+
+If a constant is exposed to users
+in the public API,
+their collection into the docs
+must also include content
+manually added
+to explain its purpose and usage,
+as constants are object instances
+and thus lack docstrings on their own.
+The `mkdocstrings` configuration
+for this object is the following:
+
+```
+::: <object_path>
+    options:
+      show_root_full_path: true
+      separate_signature: false
+      show_attribute_values: false
+```
+
+Some of the objects
+are not exposed to users
+in the public API.
+They should be collected instead
+in the **Development Guide**
+as a reference for developers
+working in {{ cookiecutter.project_name }}.
+{%- if cookiecutter.app_type != 'bare_cli' %}
+Their configuration is simpler:
+
+- For objects defined
+{%- if cookiecutter.__app_group == 'tui' %}
+  either in the `tui` or `cli` packages,
+{%- else %}
+  in the `cli` package,
+{%- endif %}
+  they should be individually collected,
+  but classes do not require multiple pages
+  and can be displayed
+  with all attributes and methods
+  listed in a single page;
+- For everything else,
+  objects should be collected
+  for each module
+  that is not exposed publicly,
+  including any auxiliary packages
+  defined in `tests`.
+
+For both cases,
+the API can be collected
+{%- else %}
+
+<!-- DEFINE your rules for non-exposed API collection -->
+
+For auxiliary packages
+in the `tests` directory,
+objects should be collected
+at the module level
+{%- endif %}
+using the following `mkdocstrings` configuration:
+
+```
+::: <object_path>
+    options:
+      show_root_full_path: true
+```
+
+The rules for API collection
+described here
+should be applied
+in conjunction with [docstring rules][docstrings]
+for full compliance
+with documentation rules.
+
+##### Policy Mirroring
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/making_changes.md#policy-mirroring
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
+
+The contents of
+{%- if cookiecutter.licence != 'nos' %}
+`CONTRIBUTING.md`,
+{%- endif %}
+`ROADMAP.md`
+and `SECURITY.md`
+should always be reflected
+in the formal documentation.
+Whenever you make changes
+to files in the `docs/` directory
+or these policy files,
+always make sure to check
+for changes required
+in the other.
+
+Content must not be blindly copied
+from one to the other:
+since features and Markdown syntax
+differ between [{{ cookiecutter.__scm_platform_base }} Flavoured Markdown][request0c]
+and [Zensical][docs7],
+contributors should aim
+to leverage each one's
+leading components,
+which may lead to
+{%- if cookiecutter.licence != 'nos' %}
+different layouts altogether
+(cf. the Invoke command list
+in [`CONTRIBUTING.md`][invoke]
+and [the formal documentation][docs11]).
+{%- else %}
+different layouts altogether.
+{%- endif %}
+
+Whenever mirroring content,
+make sure to leave comments
+at Markdown headings on each file
+pointing to where contributors
+can find their counterpart.
+While this makes
+the process of updating documentation
+unable to be fully automated,
+this ensures team members focus
+on tailoring knowledge sharing
+to suit the environment
+where it is presented.
+
+##### Page Tags
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/documentation/making_changes.md#page-tags
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
+
+To facilitate navigation
+for users,
+we leverage [Zensical tags][docs12]
+on our documentation pages.
+Broadly speaking,
+they are grouped
+to more properly
+categorise each page
+across two purposes:
+
+- The intended **target audience**
+  for the file:
+  either _general users_
+  or _developers/contributors_;
+- A specific **field**
+  the page's contents delves into.
+
+| Tag                      | Target Audience | Description                                                                                                                        |
+| ------------------------ | :-------------: | ---------------------------------------------------------------------------------------------------------------------------------- |
+| **For Your Information** |  General Users  | Descriptive content detailing a topic or concept.                                                                                  |
+| **User Guides**          |  General Users  | Tutorials and step-by-step guides to enable {{ cookiecutter.project_name }} usage.                                                 |
+{%- if cookiecutter.licence != 'nos' %}
+| **Community Content**    |  General Users  | Content provided by the community at large.                                                                                        |
+| **Design Definitions**   |  Contributors   | Descriptive content providing context behind the design and architecture of {{ cookiecutter.project_name }} elements.              |
+{%- endif %}
+| **Policies & Rules**     |  Contributors   | Descriptive content detailing rules for project development and expected behaviour from contributors.                              |
+{%- if cookiecutter.licence != 'nos' %}
+| **Development Guides**   |  Contributors   | Tutorials and guides to enable contributions from new developers.                                                                  |
+{%- endif %}
+| **Workflows**            |     Either      | Guides explaining how to perform operations to achieve specific outcomes.                                                          |
+| **Setup**                |     Either      | Pages containing instructions to set up environments under specific configuration and enable further actions.                      |
+| **Configuration**        |  General Users  | Pages related to concepts, objects and features which customise the user's installation of {{ cookiecutter.project_name }}.        |
+| **CLI**                  |     Either      | Pages related to concepts, objects and features directly associated with {{ cookiecutter.project_name }}'s command-line interface. |
+| **TUI**                  |     Either      | Pages related to concepts, objects and features directly associated with {{ cookiecutter.project_name }}'s user interface.         |
+| **Supporting Objects**   |  General Users  | Pages related to publicly exposed API that is not directly associated with either the CLI or TUI.                                  |
+{%- if cookiecutter.licence != 'nos' %}
+| **Backend**              |  Contributors   | Pages related to non-public API objects.                                                                                           |
+{%- endif %}
+
+Besides the tags listed above,
+the following tags
+serve as navigation facilitator tags:
+
+- **Navigation Sections** simply
+  mark `index.md` pages
+  to provide a quick reference
+  in the search bar;
+- **Living Docs** determine pages
+  which can be updated at any time,
+  making it easier for readers
+  to check them periodically.
+
 ### {{ cookiecutter.__mr_term }} Review Process
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/review.md#{{ cookiecutter.__mr_term_slug }}-review-process
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 After [starting with a {{ cookiecutter.__mr_term }}][swmr],
 ensuring you have opened an [admissible {{ cookiecutter.__mr_acronym }}][admission]
 and have finished contributing with changes,
 the review process can start.
 
+{% if cookiecutter.licence != 'nos' -%}
 #### Contribution Acceptance Criteria
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/review.md#contribution-acceptance-criteria
 
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+
+{% else -%}
+#### Change Acceptance Criteria
+
+{% endif -%}
 To make sure that
 your {{ cookiecutter.__mr_term }} can be approved,
 ensure that
@@ -3433,6 +5217,13 @@ it meets the contribution acceptance criteria below:
     why you need it.
 
 #### Getting Reviewed
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/review.md#getting-reviewed
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 As soon as you have changes to review,
 have the changes reviewed
@@ -3498,8 +5289,22 @@ the last maintainer
 to review and approve merges it.
 
 ### Roles and Attributions
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/roles.md#roles-and-attributions
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 #### The Responsibility of the {{ cookiecutter.__mr_term }} Author
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/roles.md#the-responsibility-of-the-{{ cookiecutter.__mr_term_slug }}-author
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 The responsibility to
 find the best solution
@@ -3656,6 +5461,13 @@ This saves reviewers time
 and helps authors catch mistakes earlier.
 
 ##### Recommendations to Get Your Changes Merged Faster
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/roles.md#recommendations-to-get-your-changes-merged-faster
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 1. Make sure
    to follow best practices:
@@ -3710,6 +5522,13 @@ and helps authors catch mistakes earlier.
    in a single {{ cookiecutter.__mr_acronym }}.
 
 ##### Recommendations for Facilitating Reviews
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/roles.md#recommendations-for-facilitating-reviews
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Keep in mind that
 code review is a process
@@ -3790,6 +5609,13 @@ the first time.
   `@` mention the reviewer instead.
 
 #### The Responsibility of the Reviewer
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/roles.md#the-responsibility-of-the-reviewer
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 All {{ cookiecutter.project_name }} contributors
 who choose to review
@@ -3821,7 +5647,6 @@ or any other reviewers
 are strictly counter
 to the [Code of Conduct][cc2].
 
-{% endif -%}
 When reviewing a {{ cookiecutter.__mr_term }},
 the primary goals are
 for the codebase to improve
@@ -3834,6 +5659,7 @@ or unappreciated.
 Every {{ cookiecutter.__mr_term }} from a new contributor
 is an opportunity to grow the community.
 
+{% endif -%}
 Review a bit at a time,
 do not overwhelm new contributors.
 It is tempting to micro-optimise
@@ -3906,6 +5732,7 @@ Then:
 - Let the submitter know
   if changes are required following your review.
 
+{% if cookiecutter.licence != 'nos' -%}
 When changes are necessary,
 **request** them,
 do not _demand_ them,
@@ -3921,6 +5748,7 @@ and conventions
 change over time.
 **The first impression you give to a new contributor never does.**
 
+{% endif -%}
 [Nits][reviewing1]
 (requests for small changes
 that are not essential)
@@ -3938,6 +5766,7 @@ when you comment
 (e.g.,
 `Nit: change foo() to bar(). But this is not blocking.`).
 
+{%- if cookiecutter.licence != 'nos' %}
 **Be aware of the person behind the change:**
 _how_ you communicate requests and reviews in your feedback
 can have a significant impact
@@ -3971,6 +5800,11 @@ or ridiculed for even trying
 run counter to the [Code of Conduct][cc2].
 
 ##### The Right Balance
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/roles.md#the-right-balance
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 One of the most difficult things
 during code review
@@ -4049,8 +5883,16 @@ created by a submitter.
 {%- else %}
   and use the [`seeking-input`][query2] label.
 {%- endif %}
+{%- endif %}
 
 #### The Responsibility of the Maintainers
+{%- if cookiecutter.licence != 'nos' %}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/roles.md#the-responsibility-of-the-maintainers
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Maintainers are responsible for
 the overall health,
@@ -4119,6 +5961,11 @@ and explain why in a comment.
 {% endif -%}
 {% if cookiecutter.licence != 'nos' and cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 ### How to Behave among Other Contributors
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/behave.md#how-to-behave-among-other-contributors
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 {{ cookiecutter.__mr_term }}s,
 when worked under the concept of [proposals][admission],
@@ -4177,6 +6024,11 @@ to write your comments:
   they don't have to respond.
 
 ### Fostering an Inviting Community
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/foster.md#fostering-an-inviting-community
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 As a {{ cookiecutter.project_name }} contributor, your responsibilities
 are not supposed to be restricted to
@@ -4234,11 +6086,11 @@ to achieve this goal:
      and either propose [actions][bias]
      for eliminating them
      or seek discussion and feedback
-     via an [**Internal Improvement**][community3] {{ cookiecutter.__mr_acronym }};
+     via an [**Internal Improvement**][workflow1] {{ cookiecutter.__mr_acronym }};
    - Keep the {{ cookiecutter.__scm_platform_base }} repository efficient
      by properly labelling work items
      and associating them
-     with the relevant project {{ roadmap_item }};
+     with the relevant project {{ cookiecutter.__roadmap_item }};
 2. Become an advocate for new contributors:
    - Be overly conscious of [how to behave][behaviour]
      when interacting with a user
@@ -4259,7 +6111,7 @@ to achieve this goal:
      to guide them
      on our ways and standards,
      empower them to understand how the project operates.
-     You have [started small][community4],
+     You have [started small][community3],
      so why not help someone else
      take this small first step?
    - Likewise,
@@ -4268,6 +6120,11 @@ to achieve this goal:
      Why not turn them into [starter assignments][starter]?
 
 #### About Starter Assignments
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_developers/foster.md#about-starter-assignments
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 We refer to our "Good First Issue" work items
 as **starter assignments**,
@@ -4365,7 +6222,7 @@ However, if you ever feel stuck
 or confused,
 don't hesitate to seek help.
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-Leverage [replies][community5]
+Leverage [replies][community4]
 {%- else %}
 Leverage replies
 {%- endif %}
@@ -4385,6 +6242,15 @@ will reach out to you.
 {% endif -%}
 {% if cookiecutter.licence != 'nos' -%}
 ## :reminder_ribbon: Other Ways to Contribute
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_others/index.md#other-ways-to-contribute
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
+-->
 
 You can contribute to {{ cookiecutter.project_name }}
 in additional ways,
@@ -4423,8 +6289,17 @@ everyone benefits from
 faster communication and resolution.
 
 ### Contributing by Helping Other People
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_others/help_others.md#contributing-by-helping-other-people
 
-[![RFSs][badge11]][query11]
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
+-->
+
+[![RFSs][badge10]][query10]
 
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 Inspired by [Typer's][help1] welcoming community
@@ -4444,7 +6319,7 @@ or the development team itself.
 
 The most direct way
 you can provide your help to others
-is to look for open [Requests for Support][query11]
+is to look for open [Requests for Support][query10]
 and try to answer other users' questions.
 In many cases
 you might already know the answer to them!
@@ -4471,6 +6346,11 @@ for more details
 on how we deal with these cases.
 
 #### Orientation for Effectively Helping Others
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_others/help_others.md#orientation-for-effectively-helping-others
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Here is a general guide
 on how to help other users
@@ -4647,6 +6527,11 @@ avoid generalisations.
 
 {% endif -%}
 #### Commitment to Help
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_others/help_others.md#commitment-to-help
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 What consumes
 most of the time of the development team
@@ -4727,6 +6612,15 @@ whenever possible.
 
 {% endif -%}
 ### Contributing through User Requests
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_others/user_requests.md#contributing-through-user-requests
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
+-->
 
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
 >>> [!tip] :pushpin: Further Guidance
@@ -4751,7 +6645,7 @@ three types of requests for users
 through [Issue Templates][request0a]:
 {%- else %}
 through [Issue][request0a]
-and [Discussion][oldrequest1a] templates:
+and [Discussion][request0z] templates:
 {%- endif %}
 
 - **Requests for Correction**;
@@ -4899,6 +6793,15 @@ of a quick response:
 
 {% endif -%}
 #### Specific Guidelines for Requests for Support
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_others/user_requests.md#specific-guidelines-for-requests-for-support
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
+-->
 
 If {{ cookiecutter.project_name }} is not working correctly for you,
 most likely it is a simple configuration issue.
@@ -4934,6 +6837,15 @@ prefer sticking to the Request for Support
 as the means to reach the team.
 
 #### Specific Guidelines for Requests for Improvement
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_others/user_requests.md#specific-guidelines-for-requests-for-improvement
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
+-->
 
 Requests for Improvement are used
 when users feel a need for development
@@ -5017,8 +6929,17 @@ is to make one [that comes from yourself][gfi].
 
 {% endif -%}
 #### Specific Guidelines for Requests for Correction
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_others/user_requests.md#specific-guidelines-for-requests-for-correction
 
-[![RFCs][badge9]][query9]
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
+-->
+
+[![RFCs][badge8]][query8]
 
 Requests for Correction are used
 to track unexpected behaviour
@@ -5032,7 +6953,7 @@ the code in the repository.
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 Guidelines for [RFCs][request2a]:
 
-- Use the [issue search][query9]
+- Use the [issue search][query8]
   to check if a request
   has already been reported;
 - Check if the issue has been fixed
@@ -5146,6 +7067,15 @@ by the development team.
 {%- endif %}
 
 ### Contributing by Reviewing Changes
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_others/review_changes.md#contributing-by-reviewing-changes
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
+-->
 
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
 >>> [!tip] :pushpin: Further Guidance
@@ -5252,23 +7182,86 @@ We appreciate your commitment beforehand!
 
 {% endif -%}
 ### Contributing with Documentation Changes
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_others/documentation_changes.md#contributing-with-documentation-changes
 
-Currently,
-the documentation surrounding {{ cookiecutter.project_name }}, including
-features,
-how to use,
-options
-and reference material
-are found directly
-in the project [`README`][readme] file.
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
+-->
 
-You can propose changes and additions
-to the documentation
-by editing the `README` file
-and [opening a {{ cookiecutter.__mr_term }}][swmr]
-to integrate your changes to the project.
+{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+>>> [!tip] :pushpin: Further Guidance
+You can find more information
+about documentation changes
+in our [main `CONTRIBUTING` guide][intro1],
+take a look at it
+whenever possible.
+>>>
 
+{% else -%}
+Contributing to the documentation benefits
+everyone who uses {{ cookiecutter.project_name }}.
+We encourage you
+to help us improve the documentation,
+and you don't have to be an expert on {{ cookiecutter.project_name }}
+to do so!
+In fact,
+there are sections of the docs
+that are worse off
+after being written by experts.
+
+The main goal of any documentation
+is to make usage of the library
+easy for any user,
+regardless of their level of experience
+with it.
+If something in the docs
+doesn't make sense to you,
+that means there is room for improvement
+and disclosing it to the community at large
+allows everyone to discuss
+and figure out
+what can be done.
+This is a great way to ensure
+changes will be made
+so they help the next person.
+
+If you have found an inconsistency
+or have a suggestion
+on how the {{ cookiecutter.project_name }} can improve,
+don't hesitate in letting us know!
+Open an [Request for Improvement][request2]
+and tell us what you would like
+to see changed
+in the docs.
+
+You are also much welcome
+to make modifications to the documentation
+yourself
+to help us
+get ever closer
+to providing
+an outstanding reference
+in the open source space!
+See the [Documentation Guide][docs]
+for instructions
+on how to make changes
+to our docs.
+
+{% endif -%}
 ### Contributing to Roadmap Maintenance
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_others/roadmap_maintenance.md#contributing-to-roadmap-maintenance
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+  AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
+  TO PROVIDE READERS WITH THE COMPLETE CONTENT
+{%- endif %}
+-->
 
 [![Issues][badge1]][query1]
 {%- if cookiecutter.scm_platform == 'GitLab Free' %}
@@ -5286,7 +7279,7 @@ whenever possible.
 
 {% else -%}
 The project roadmap is maintained
-through [{{ cookiecutter.__scm_platform_base }} {{ roadmap_item.capitalize() }}s][topic2].
+through [{{ cookiecutter.__scm_platform_base }} {{ cookiecutter.__roadmap_item.capitalize() }}s][topic2].
 It provides an overview
 of the medium and long-term priorities of {{ cookiecutter.project_name }}
 as a project,
@@ -5308,8 +7301,8 @@ to the development team:
   and associated items,
   and then
   opening additional [**Requests for Improvement**][request2]
-  that pertain to existing {{ roadmap_item }}s;
-- Commenting on [issues without associated {{ roadmap_item }}s][query1]
+  that pertain to existing {{ cookiecutter.__roadmap_item }}s;
+- Commenting on [issues without associated {{ cookiecutter.__roadmap_item }}s][query1]
   and suggesting what relevant developments
   could they be associated with
   for the development team to evaluate;
@@ -5320,12 +7313,17 @@ to the development team:
   can be delivered with the same solution,
   we can generate increased aggregated value;
 - Becoming a [contributor][proposals]
-  to act on existing {{ roadmap_item }}s,
+  to act on existing {{ cookiecutter.__roadmap_item }}s,
   propose new developments not yet mapped
   or recommend [changes to the roadmap itself][roadmap].
 
 {% endif -%}
 ### Contributing by Promoting {{ cookiecutter.project_name }}
+<!-- This section is also described in the formal documentation
+  [link]: ./docs/development/for_others/index.md#contributing-by-promoting-{{ cookiecutter.project_name.lower().split() | join('-') }}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
 
 Promoting {{ cookiecutter.project_name }}
 helps us reach a larger audience
@@ -5389,13 +7387,13 @@ what we are doing matters!
 [practices]: {{ cookiecutter.__contributing_prefix }}#general-practices
 {%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
 [swnjw]: #say-why-not-just-what
-[starter]: #about-starter-assignments
 [bias]: #operate-with-a-bias-for-action
-[admission]: #opening-admissible-merge-requests
-[review]: #merge-request-review-process
+[admission]: #opening-admissible-{{ cookiecutter.__mr_term_slug }}s
+[review]: #{{ cookiecutter.__mr_term_slug }}-review-process
 [reviewer]: #the-responsibility-of-the-reviewer
 [roadmap]: #roadmap-management
 {%- if cookiecutter.licence != 'nos' %}
+[starter]: #about-starter-assignments
 [promotion]: #contributor-promotion
 [gfi]: #there-are-no-good-first-issues
 [proposals]: #speaking_head-proposing-changes-as-a-developer
@@ -5418,34 +7416,45 @@ what we are doing matters!
 [workflow]: #development-workflow
 [tracking]: #work-item-tracking
 [setup]: #development-setup
+[docs]: #documentation-guide
+[covenant]: #code-of-conduct
+[requests]: #contributing-through-user-requests
+[docchanges]: #making-changes-to-the-documentation
+[anatomy]: #anatomy
+[docstrings]: #docstring-convention
+[invoke]: #invoke-usage
 
-[badge1]: https://img.shields.io/badge/issues_without_{{ roadmap_item }}-006272?style=for-the-badge
+[badge1]: https://img.shields.io/badge/issues_without_{{ cookiecutter.__roadmap_item }}-006272?style=for-the-badge
 {%- if cookiecutter.scm_platform == 'GitLab Free' %}
-[badge1a]: https://img.shields.io/badge/{{ task_item }}s_with_{{ roadmap_item }}-08b1ab?style=for-the-badge
+[badge1a]: https://img.shields.io/badge/{{ cookiecutter.__task_item }}s_with_{{ cookiecutter.__roadmap_item }}-08b1ab?style=for-the-badge
 {%- endif %}
 [badge2]: https://img.shields.io/badge/seeking_input-69ad6b?style=for-the-badge
 [badge3]: https://img.shields.io/badge/needs_triage-4285f4?style=for-the-badge
 [badge4]: https://img.shields.io/badge/designs_under_discussion-ff2f82?style=for-the-badge
-[badge5]: https://img.shields.io/badge/starter_assignments-66aa9c?style=for-the-badge
-[badge6]: https://img.shields.io/badge/seeking_contributors-9ccfcd?style=for-the-badge
-[badge7]: https://img.shields.io/badge/quick_wins-5ebc8b?style=for-the-badge
-[badge8]: https://img.shields.io/badge/stale_issues-9400d3?style=for-the-badge
-[badge9]: https://img.shields.io/badge/requests_for_correction-dc143c?style=for-the-badge
-[badge10]: https://img.shields.io/badge/requests_for_improvement-0055ff?style=for-the-badge
-[badge11]: https://img.shields.io/badge/requests_for_support-ed9121?style=for-the-badge
+{%- if cookiecutter.licence != 'nos' %}
+[badge4a]: https://img.shields.io/badge/starter_assignments-66aa9c?style=for-the-badge
+{%- endif %}
+[badge5]: https://img.shields.io/badge/seeking_contributors-9ccfcd?style=for-the-badge
+[badge6]: https://img.shields.io/badge/quick_wins-5ebc8b?style=for-the-badge
+[badge7]: https://img.shields.io/badge/stale_issues-9400d3?style=for-the-badge
+[badge8]: https://img.shields.io/badge/requests_for_correction-dc143c?style=for-the-badge
+[badge9]: https://img.shields.io/badge/requests_for_improvement-0055ff?style=for-the-badge
+[badge10]: https://img.shields.io/badge/requests_for_support-ed9121?style=for-the-badge
 
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
 [query1]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&parent_id=None
 [query2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Aopinion&type%5B%5D=issue
 [query3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&status=Needs%20Triage&type%5B%5D=issue
 [query4]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=design%3A%3A%2A&type%5B%5D=issue
-[query5]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment%3A%3A%2A&type%5B%5D=issue
-[query6]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Adelivery&type%5B%5D=issue
-[query7]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&or%5Blabel_name%5D%5B%5D=quick-win&or%5Blabel_name%5D%5B%5D=starter-assignment%3A%3Aquick-win
-[query8]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=stale&type%5B%5D=issue
-[query9]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Acorrection&type%5B%5D=issue
-[query10]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Aimprovement&type%5B%5D=issue
-[query11]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Asupport&type%5B%5D=issue
+{%- if cookiecutter.licence != 'nos' %}
+[query4a]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment%3A%3A%2A&type%5B%5D=issue
+{%- endif %}
+[query5]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Adelivery&type%5B%5D=issue
+[query6]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&or%5Blabel_name%5D%5B%5D=quick-win&or%5Blabel_name%5D%5B%5D=starter-assignment%3A%3Aquick-win
+[query7]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=stale&type%5B%5D=issue
+[query8]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Acorrection&type%5B%5D=issue
+[query9]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Aimprovement&type%5B%5D=issue
+[query10]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Asupport&type%5B%5D=issue
 
 {% elif cookiecutter.scm_platform == 'GitLab Free' -%}
 [query1]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&milestone_title=None
@@ -5453,26 +7462,30 @@ what we are doing matters!
 [query2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-input&type%5B%5D=issue
 [query3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=sts-needs-triage&type%5B%5D=issue
 [query4]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5D%5B%5D=design-discovery&or%5Blabel_name%5D%5B%5D=design-formulation&or%5Blabel_name%5D%5B%5D=design-reassessment&type%5B%5D=issue
-[query5]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment&type%5B%5D=issue
-[query6]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-builders&type%5B%5D=issue
-[query7]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=quick-win&type%5B%5D=issue
-[query8]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=stale&type%5B%5D=issue
+{%- if cookiecutter.licence != 'nos' %}
+[query4a]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment&type%5B%5D=issue
+{%- endif %}
+[query5]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-builders&type%5B%5D=issue
+[query6]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=quick-win&type%5B%5D=issue
+[query7]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=stale&type%5B%5D=issue
+[query8]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfc&type%5B%5D=issue
 [query9]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfc&type%5B%5D=issue
-[query10]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfc&type%5B%5D=issue
-[query11]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfs&type%5B%5D=issue
+[query10]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfs&type%5B%5D=issue
 
 {% else -%}
 [query1]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20no%3Aproject
 [query2]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-input
 [query3]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Asts-needs-triage
 [query4]: {{ cookiecutter.__scm_link_url }}/issues?q=label%3Adesign-discovery%20OR%20label%3Adesign-formulation%20OR%20label%3Adesign-reassessment
-[query5]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astarter-assignment
-[query6]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-builders
-[query7]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aquick-win
-[query8]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astale
-[query9]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Arfc
-[query10]: {{ cookiecutter.__scm_link_url }}/discussions/categories/requests-for-improvement
-[query11]: {{ cookiecutter.__scm_link_url }}/discussions/categories/requests-for-support
+{%- if cookiecutter.licence != 'nos' %}
+[query4a]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astarter-assignment
+{%- endif %}
+[query5]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-builders
+[query6]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aquick-win
+[query7]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astale
+[query8]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Arfc
+[query9]: {{ cookiecutter.__scm_link_url }}/discussions/categories/requests-for-improvement
+[query10]: {{ cookiecutter.__scm_link_url }}/discussions/categories/requests-for-support
 
 {% endif -%}
 {% if cookiecutter.licence != 'nos' or cookiecutter.use_bdd -%}
@@ -5493,17 +7506,17 @@ what we are doing matters!
 
 {% endif -%}
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
-[setup1]: {{ cookiecutter.__scm_link_url }}/forks/new
-[setup2]: https://docs.gitlab.com/user/group/
+[setup0a]: {{ cookiecutter.__scm_link_url }}/forks/new
+[setup0b]: https://docs.gitlab.com/user/group/
 {% if cookiecutter.scm_platform == 'GitLab Free' -%}
-[setup2a]: https://docs.gitlab.com/user/project/repository/forking_workflow/
+[setup0x]: https://docs.gitlab.com/user/project/repository/forking_workflow/
 {% endif -%}
 {% else -%}
-[setup1]: {{ cookiecutter.__scm_link_url }}/fork
-[setup2]: https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/about-organizations
-[setup2a]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
+[setup0a]: {{ cookiecutter.__scm_link_url }}/fork
+[setup0b]: https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/about-organizations
+[setup0x]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
 {% endif -%}
-[setup3]: https://python-poetry.org/docs/#installation
+[setup1]: https://python-poetry.org/docs/#installation
 {%- if cookiecutter.app_type != 'bare_repo' %}
 
 [apptopic1]: https://typer.tiangolo.com/tutorial/
@@ -5535,14 +7548,16 @@ what we are doing matters!
 {%- else %}
 [topic2]: {{ cookiecutter.__scm_link_url }}/projects
 {%- endif %}
+{%- if cookiecutter.licence != 'nos' %}
 [topic3]: {{ cookiecutter.__scm_link_url }}/labels
-{%- if cookiecutter.licence != 'nos' and cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
 [topic4]: https://goauthentik.io/blog/2024-03-07-why-contributing-to-open-source-is-scary/
 [topic5]: mailto:{{ cookiecutter.email }}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [topic6]: https://gitlab.com/gitlab-org/gitlab-foss/-/issues/234#note_17497758
 {%- else %}
 [topic6]: https://docs.github.com/en/subscriptions-and-notifications/get-started/configuring-notifications#about-participating-and-watching-notifications
+{%- endif %}
 {%- endif %}
 
 [cc1]: https://www.contributor-covenant.org/
@@ -5660,12 +7675,16 @@ what we are doing matters!
 [style1a]: https://sphinx-rtd-tutorial.readthedocs.io/en/latest/docstrings.html
 {%- endif %}
 [style2]: https://sembr.org/
-[style3]: https://sive.rs/1s <!-- codespell:ignore -->
+[style3]: https://sive.rs/1s
 [style4]: {{ cookiecutter.__scm_link_url }}/tree/master/.{{ cookiecutter.__scm_platform_lc }}
 [style5]: {{ cookiecutter.__scm_link_url }}/blob/master/CHANGELOG.md
 
 {% endif -%}
-[hooks1]: https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap03.html#tag_03_206
+[hooks1]: {{ cookiecutter.__scm_link_url }}/blob/master/.pre-commit-config.yaml
+[hooks2]: https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap03.html#tag_03_206
+{%- if cookiecutter.version_schema == 'trunkver' %}
+[hooks3]: https://bandit.readthedocs.io/en/latest/
+{%- endif %}
 
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
@@ -5694,8 +7713,8 @@ what we are doing matters!
 [values3]: https://handbook.gitlab.com/handbook/values/#say-why-not-just-what
 [values4]: https://theknowledge.io/chestertons-fence-explained/
 [values5]: https://handbook.gitlab.com/handbook/values/#operate-with-a-bias-for-action
-[values6]: https://conversational-leadership.net/we-human-beings-are-complex/
 {%- if cookiecutter.licence != 'nos' %}
+[values6]: https://conversational-leadership.net/we-human-beings-are-complex/
 [values7]: https://kentcdodds.com/blog/first-timers-only
 {%- endif %}
 
@@ -5723,12 +7742,44 @@ what we are doing matters!
 [prepare3]: https://google.github.io/eng-practices/review/
 
 {% endif -%}
-{% if cookiecutter.use_bdd -%}
-[workflow1]: https://pytest-bdd.readthedocs.io/en/latest/#organizing-your-scenarios
-{% else -%}
-[workflow1]: https://docs.pytest.org/en/stable/example/markers.html#mark-examples
+{% if cookiecutter.app_type == 'bare_repo' -%}
+[workflow0a]: https://www.pyinvoke.org/
+[workflow0b]: {{ cookiecutter.__scm_link_url }}/blob/master/tasks.py
 {% endif -%}
-[workflow2]: {{ cookiecutter.__scm_link_url }}/blob/master/pyproject.toml
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
+[workflow1]: {{ cookiecutter.__scm_link_url }}/merge_requests/new?issuable_template=Internal%2520Improvements
+{% else -%}
+[workflow1]: {{ cookiecutter.__scm_link_url }}/pulls/compare?template=internal_improvements.md
+{% endif -%}
+[workflow2]: https://pypi.org/
+[workflow3]: https://test.pypi.org/
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
+[workflow4]: https://docs.gitlab.com/ee/user/packages/container_registry/
+{% else -%}
+[workflow4]: https://hub.docker.com/
+{% endif -%}
+{% if cookiecutter.use_bdd -%}
+[workflow5]: https://pytest-bdd.readthedocs.io/en/latest/#organizing-your-scenarios
+{% else -%}
+[workflow5]: https://docs.pytest.org/en/stable/example/markers.html#mark-examples
+{% endif -%}
+[workflow6]: {{ cookiecutter.__scm_link_url }}/blob/master/pyproject.toml
+
+[docs1]: {{ cookiecutter.__scm_link_url }}/blob/master/SECURITY.md
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+[docs1a]: https://docs.gitlab.com/user/markdown/#task-lists
+{%- endif %}
+[docs2]: https://pydevtools.com/handbook/explanation/pep/
+[docs3]: {{ cookiecutter.__scm_link_url }}/tree/master/docs
+[docs4]: {{ cookiecutter.__scm_link_url }}/blob/master/zensical.toml
+[docs5]: https://zensical.org/
+[docs6]: https://google.github.io/styleguide/docguide/best_practices.html
+[docs7]: https://zensical.org/docs/authoring/markdown/
+[docs8]: https://mkdocstrings.github.io/
+[docs9]: https://mkdocstrings.github.io/python/
+[docs10]: https://zensical.org/docs/setup/navigation/#navigation-sections
+[docs11]: {{ cookiecutter.__scm_link_url }}/blob/master/docs/development/for_developers/workflow/invoke.md
+[docs12]: https://zensical.org/docs/setup/tags/
 {%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
 
 [reviewing1]: https://josipmisko.com/posts/code-review-nit
@@ -5736,14 +7787,9 @@ what we are doing matters!
 
 [community1]: https://gregorybeamer.wordpress.com/2020/11/12/why-code-organization-is-so-important-in-software/
 [community2]: https://simonsinek.com/stories/the-right-way-to-stand-up-for-yourself-at-work/
+[community3]: https://firstpr.me/
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[community3]: {{ cookiecutter.__scm_link_url }}/merge_requests/new?issuable_template=Internal%2520Improvements
-{%- else %}
-[community3]: {{ cookiecutter.__scm_link_url }}/pulls/compare?template=internal_improvements.md
-{%- endif %}
-[community4]: https://firstpr.me/
-{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[community5]: https://docs.gitlab.com/user/discussions/
+[community4]: https://docs.gitlab.com/user/discussions/
 {%- endif %}
 
 [help1]: https://typer.tiangolo.com/help-typer/#help-others-with-questions-in-github
@@ -5769,7 +7815,7 @@ what we are doing matters!
 {%- else %}
 
 [request0a]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/ISSUE_TEMPLATE
-[oldrequest1a]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/DISCUSSION_TEMPLATE
+[request0z]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/DISCUSSION_TEMPLATE
 [request0b]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue
 [request0x]: {{ cookiecutter.__scm_link_url }}/discussions?discussions_q=
 [request0c]: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax

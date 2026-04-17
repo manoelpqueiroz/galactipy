@@ -1,0 +1,310 @@
+[project]
+site_name = "{{ cookiecutter.project_name }} Documentation"
+copyright = "Copyright &copy; {% now 'local', '%Y' %} {{ cookiecutter.copyright }}"
+
+nav = [
+  { "Home" = "index.md" },
+  { "Getting Started" = [
+    "getting_started/index.md",
+    "getting_started/install.md",
+    "getting_started/overview.md",
+    { "1-Minute Tutorials" = [
+      "getting_started/intro_tutorials/index.md",
+    ] },
+    { "Comparison with other Tools" = [
+      "getting_started/comparison/index.md",
+    ] },
+{%- if cookiecutter.licence != 'nos' %}
+    "getting_started/tutorials.md",
+{%- endif %}
+  ] },
+  { "User Guide" = [
+    "user_guide/index.md",
+    "user_guide/10min.md",
+    "user_guide/basics.md",
+{%- if cookiecutter.app_type != 'bare_repo' %}
+    { "CLI Guide" = [
+      "user_guide/cli/index.md",
+{%- if cookiecutter.app_type != 'bare_cli' %}
+      "user_guide/cli/options.md",
+{%- endif %}
+    ] },
+{%- endif %}
+    "user_guide/gotchas.md",
+{%- if cookiecutter.licence != 'nos' %}
+    "user_guide/faq.md",
+{%- endif %}
+  ] },
+  { "API Reference" = [
+    "reference/index.md",
+{%- if cookiecutter.app_type != 'bare_repo' %}
+{%- if cookiecutter.app_type != 'bare_cli' %}
+    { "Configuration" = [
+      "reference/config/index.md",
+      { "AppManager" = [
+        "reference/config/app_manager/index.md",
+        "reference/config/app_manager/init.md",
+        "reference/config/app_manager/default.md",
+        "reference/config/app_manager/custom.md",
+      ] },
+      { "ConfigurationDomain" = [
+        "reference/config/configuration_domain/index.md",
+        "reference/config/configuration_domain/from_flag.md",
+      ] },
+      "reference/config/resolve_app_manager.md",
+    ] },
+{%- endif %}
+    { "Utilities" = [
+      "reference/utilities/index.md",
+      "reference/utilities/setup_app_logging.md",
+      "reference/utilities/log_caster.md",
+      "reference/utilities/file_parser.md",
+    ] },
+{%- endif %}
+  ] },
+{%- if cookiecutter.licence != 'nos' %}
+  { "Development" = [
+    "development/index.md",
+    "development/development_setup.md",
+    "development/philosophy.md",
+    { "Policies" = [
+      "development/policies/index.md",
+      "development/policies/developing.md",
+{%- if cookiecutter.use_bdd %}
+      "development/policies/bdd.md",
+{%- endif %}
+      "development/policies/versioning.md",
+      "development/policies/branches.md",
+      "development/policies/committing.md",
+      "development/policies/styling.md",
+      "development/policies/checks.md",
+      "development/policies/ci.md",
+    ] },
+    { "Proposing Changes" = [
+      "development/for_developers/index.md",
+      "development/for_developers/prepare.md",
+      { "Development Workflow" = [
+        "development/for_developers/workflow/index.md",
+        "development/for_developers/workflow/invoke.md",
+      ] },
+      { "Documentation Guide" = [
+        "development/for_developers/documentation/index.md",
+        "development/for_developers/documentation/anatomy.md",
+        "development/for_developers/documentation/philosophy.md",
+        "development/for_developers/documentation/making_changes.md",
+      ] },
+      "development/for_developers/review.md",
+      "development/for_developers/roles.md",
+      "development/for_developers/behave.md",
+      "development/for_developers/foster.md",
+    ] },
+    { "Other Ways to Contribute" = [
+      "development/for_others/index.md",
+      "development/for_others/help_others.md",
+      "development/for_others/user_requests.md",
+      "development/for_others/review_changes.md",
+      "development/for_others/documentation_changes.md",
+      "development/for_others/roadmap_maintenance.md",
+    ] },
+    "development/meet.md",
+    "development/roadmap.md",
+    "development/security.md",
+    { "Development Packages Reference" = [
+      "development/dev_packages/index.md",
+{%- if cookiecutter.app_type != 'bare_repo' %}
+      { "CLI" = [
+        "development/dev_packages/cli/index.md",
+        "development/dev_packages/cli/basic_converter.md",
+{%- if cookiecutter.app_type != 'bare_cli' %}
+        "development/dev_packages/cli/pretty_print.md",
+{%- endif %}
+        "development/dev_packages/cli/themes.md",
+      ] },
+{%- endif %}
+{%- if cookiecutter.__app_group == 'tui' %}
+      { "TUI" = [
+        "development/dev_packages/tui/index.md",
+        "development/dev_packages/tui/terminal_app.md",
+      ] },
+{%- endif %}
+{%- if cookiecutter.app_type != 'bare_repo' %}
+      { "Internal Objects" = [
+        "development/dev_packages/internal/index.md",
+{%- if cookiecutter.app_type != 'bare_cli' %}
+        "development/dev_packages/internal/config.md",
+{%- endif %}
+        "development/dev_packages/internal/logging.md",
+      ] },
+      { "Test Objects" = [
+        "development/dev_packages/tests/index.md",
+{%- if cookiecutter.use_bdd %}
+{%- if cookiecutter.__app_group == 'tui'%}
+        "development/dev_packages/tests/helpers.md",
+{%- endif %}
+        "development/dev_packages/tests/utils.md",
+{%- endif %}
+      ] },
+{%- endif %}
+    ] },
+  ] },
+{%- endif %}
+  { "Noticeboard" = [
+    "noticeboard/index.md",
+{%- if cookiecutter.licence == 'nos' %}
+    "noticeboard/roadmap.md",
+{%- endif %}
+    { "Release History" = [
+      "noticeboard/release_notes/index.md",
+    ] },
+{%- if cookiecutter.licence != 'nos' %}
+    { "Security Advisories" = [
+{%- else %}
+    { "Security" = [
+{%- endif %}
+      "noticeboard/advisories/index.md",
+{%- if cookiecutter.licence == 'nos' %}
+      "noticeboard/advisories/guide.md",
+{%- endif %}
+    ] },
+    { "Migration Guides" = [
+      "noticeboard/migration/index.md",
+    ] },
+  ] },
+]
+
+
+[project.theme]
+features = [
+  "navigation.indexes",
+  "navigation.tabs",
+  "navigation.tabs.sticky",
+  "navigation.path",
+  "navigation.top",
+  "navigation.footer",
+  "search.highlight",
+  "toc.follow",
+  "content.code.copy",
+  "content.footnote.tooltips",
+]
+
+
+[project.theme.font]
+code = "Cascadia Code"
+
+
+[project.theme.palette]
+scheme = "slate"
+primary = "orange"
+accent = "teal"
+
+
+[project.plugins.mkdocstrings.handlers.python]
+paths = ["{{ cookiecutter.package_name }}"]
+
+
+[project.plugins.mkdocstrings.handlers.python.options]
+{%- if cookiecutter.docstring_style != 'other' %}
+docstring_style = "{{ cookiecutter.docstring_style }}"
+{%- else %}
+# UPDATEME by setting the value for `docstring_style`, see documentation at:
+# https://mkdocstrings.github.io/python/usage/
+{%- endif %}
+show_source = false
+show_bases = false
+inherited_members = false
+filters = ["!^_"]
+
+# Headings configuration
+heading_level = 1
+show_root_full_path = false
+show_root_heading = true
+show_symbol_type_heading = true
+show_symbol_type_toc = true
+
+# Docstring configuration
+merge_init_into_class = true
+docstring_options = { ignore_init_summary = true }
+summary = true
+
+# Signature configuration
+line_length = {{ cookiecutter.docstring_length }}
+separate_signature = true
+
+
+[project.markdown_extensions.admonition]
+[project.markdown_extensions.pymdownx.details]
+[project.markdown_extensions.pymdownx.superfences]
+[project.markdown_extensions.tables]
+[project.markdown_extensions.attr_list]
+[project.markdown_extensions.md_in_html]
+[project.markdown_extensions.footnotes]
+[project.markdown_extensions.pymdownx.snippets]
+[project.markdown_extensions.pymdownx.inlinehilite]
+[project.markdown_extensions.pymdownx.keys]
+[project.markdown_extensions.pymdownx.highlight]
+anchor_linenums = true
+line_spans = "__span"
+pygments_lang_class = true
+
+[project.markdown_extensions.toc]
+permalink = true
+
+[project.markdown_extensions.pymdownx.emoji]
+emoji_index = "zensical.extensions.emoji.twemoji"
+emoji_generator = "zensical.extensions.emoji.to_svg"
+
+
+[project.extra.tags]
+Setup = "setup"
+"For Your Information" = "default"
+"Section Intros" = "default"
+"User Guides" = "guide"
+"Community Content" = "community"
+Configuration = "config"
+CLI = "cli"
+TUI = "tui"
+"Supporting Objects" = "aux"
+Backend = "backend"
+"Development Guides" = "dev"
+"Design Definitions" = "design"
+"Policies & Rules" = "policy"
+Workflows = "workflow"
+"Living Docs" = "default"
+
+[project.theme.icon.tag]
+setup = "lucide/tent-tree"
+guide = "lucide/footprints"
+community = "lucide/users"
+config = "lucide/cog"
+cli = "lucide/terminal"
+tui = "lucide/scan-text"
+aux = "lucide/life-buoy"
+backend = "lucide/file-code-corner"
+dev = "lucide/tool-case"
+design = "lucide/layout-dashboard"
+policy = "lucide/scroll-text"
+workflow = "lucide/workflow"
+
+
+[[project.extra.social]]
+icon = "fontawesome/brands/{{ cookiecutter.__scm_platform_lc }}"
+link = "{{ cookiecutter.__scm_base_url }}"
+name = "{{ cookiecutter.project_name }} development repository"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/python"
+link = "https://pypi.org/project/{{ cookiecutter.repo_name }}/"
+name = "PyPI package page"
+{%- if cookiecutter.create_docker %}
+
+[[project.extra.social]]
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+icon = "fontawesome/solid/box-open"
+link = "{{ cookiecutter.__docker_repo }}"
+name = "{{ cookiecutter.project_name }} Container Registry"
+{%- else %}
+icon = "fontawesome/brands/docker"
+link = "{{ cookiecutter.__docker_repo }}"
+name = "{{ cookiecutter.project_name }} is on Docker Hub!"
+{%- endif %}
+{%- endif %}
