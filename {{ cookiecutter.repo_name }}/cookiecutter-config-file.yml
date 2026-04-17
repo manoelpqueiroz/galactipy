@@ -20,4 +20,5 @@ default_context:
   use_bdd: {{ cookiecutter.use_bdd }}
   coverage_service: "{{ cookiecutter.coverage_service }}"
   create_docker: {{ cookiecutter.create_docker }}
+  create_docs: {{ cookiecutter.create_docs }}
   app_type: "{{ cookiecutter.app_type }}"

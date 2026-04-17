@@ -57,6 +57,7 @@
     "Coveralls"
   ],
   "create_docker": true,
+  "create_docs": true,
   "app_type": [
     "tui",
     "hybrid",
@@ -119,6 +120,7 @@
       "Coveralls": "Basic code coverage with Coveralls"
     },
     "create_docker": "Containerize your application with Docker?",
+    "create_docs": "Provide documentation for your project with Zensical?",
     "app_type": {
       "__prompt__": "Which kind of application do you want to build?",
       "tui": "Integrated CLI+TUI",
