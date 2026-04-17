@@ -138,10 +138,12 @@ nav = [
       ] },
       { "Test Objects" = [
         "development/dev_packages/tests/index.md",
-{%- if cookiecutter.__app_group == 'tui' %}
+{%- if cookiecutter.use_bdd %}
+{%- if cookiecutter.__app_group == 'tui'%}
         "development/dev_packages/tests/helpers.md",
 {%- endif %}
         "development/dev_packages/tests/utils.md",
+{%- endif %}
       ] },
 {%- endif %}
     ] },
