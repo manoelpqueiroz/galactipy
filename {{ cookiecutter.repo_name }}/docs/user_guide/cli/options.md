@@ -10,7 +10,7 @@ tags:
 # Options & Settings
 
 {{ cookiecutter.project_name }} provides configuration files,
-located by default at `$XDG_CONFIG_HOME/{{ cookiecutter.project_name }}`,
+located by default at `$XDG_CONFIG_HOME/{{ cookiecutter.repo_name }}`,
 that fine-tune the application's behaviour.
 On this page,
 we go through each one of these settings

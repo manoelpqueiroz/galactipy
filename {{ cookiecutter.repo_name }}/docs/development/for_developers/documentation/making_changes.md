@@ -250,7 +250,7 @@ For both cases,
 the API can be collected
 {%- else %}
 
-<!-- DEFINE your rules for non-exposed API collection -->
+<!-- RECORD your rules for non-exposed API collection -->
 
 For auxiliary packages
 in the `tests` directory,

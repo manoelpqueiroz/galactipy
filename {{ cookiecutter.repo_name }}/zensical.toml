@@ -59,7 +59,7 @@ nav = [
       "reference/utilities/setup_app_logging.md",
       "reference/utilities/log_caster.md",
       "reference/utilities/file_parser.md",
-  ] },
+    ] },
 {%- endif %}
   ] },
 {%- if cookiecutter.licence != 'nos' %}
@@ -107,7 +107,6 @@ nav = [
       "development/for_others/roadmap_maintenance.md",
     ] },
     "development/meet.md",
-    ] },
     "development/roadmap.md",
     "development/security.md",
     { "Development Packages Reference" = [

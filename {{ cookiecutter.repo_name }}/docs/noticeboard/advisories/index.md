@@ -17,8 +17,13 @@ in this section.
 As of
 **{% now 'local', '%B %Y' %}**,
 no security advisories have been announced.
+{%- if cookiecutter.licence != 'nos' %}
 See the [Security Guide][1]
 for more information
+{%- else %}
+The Security Guide
+contains more information
+{%- endif %}
 on the process related
 to vulnerability reports.
 

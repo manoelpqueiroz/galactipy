@@ -129,14 +129,13 @@ To propose changes
 to the marker options,
 do so through a [**Project Policy Proposal**][4].
 
+<!-- RECORD the guidelines on how to implement and handle feature flags
 ## Feature Flags
 <!-- This section is also described in CONTRIBUTING.md
   [link]: ../../../../CONTRIBUTING.md#feature-flags
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
-
-<!-- RECORD the guidelines on how to implement and handle feature flags -->
 
 <!-- Anchors -->
 

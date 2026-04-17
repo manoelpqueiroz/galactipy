@@ -117,48 +117,48 @@ when discussions arise.
 The hard policy files are:
 
 - The [`CONTRIBUTING`][2] guide;
-  - Shows how people can get started
-    setting up a development environment
-    for {{ cookiecutter.project_name }};
-  - Lists the main tools
-    used for managing development of the project
-    and how contributors
-    should approach them;
-  - Contains all sets of rules regulating
-    what contributors are expected to do,
-    how they should behave
-    – individually and on interactions –
-    and how flexibly or not
-    these rules should be followed;
+    - Shows how people can get started
+      setting up a development environment
+      for {{ cookiecutter.project_name }};
+    - Lists the main tools
+      used for managing development of the project
+      and how contributors
+      should approach them;
+    - Contains all sets of rules regulating
+      what contributors are expected to do,
+      how they should behave
+      – individually and on interactions –
+      and how flexibly or not
+      these rules should be followed;
 - The [`ROADMAP`][3] file:
-  - Delves relatively deeper than the `README`
-    on the purpose of the project;
-  - States the mission of the project,
-    a visionary declaration
-    of what the contributors see
-    as the endgame of development;
-  - Lays out the different stages of development
-    and what is expected to be achieved
-    at each one of them;
-  - Provides anyone
-    with a quick reference table
-    of the history of major milestones
-    that have been either
-    discussed,
-    already delivered,
-    currently developed
-    or planned for the future,
-    aiming to more easily situate newcomers
-    and people interest in contributing;
+    - Delves relatively deeper than the `README`
+      on the purpose of the project;
+    - States the mission of the project,
+      a visionary declaration
+      of what the contributors see
+      as the endgame of development;
+    - Lays out the different stages of development
+      and what is expected to be achieved
+      at each one of them;
+    - Provides anyone
+      with a quick reference table
+      of the history of major milestones
+      that have been either
+      discussed,
+      already delivered,
+      currently developed
+      or planned for the future,
+      aiming to more easily situate newcomers
+      and people interest in contributing;
 - The [`SECURITY`][4] file:
-  - Presents the threat model for the project;
-  - Provides guidance to people
-    on how to report a security vulnerability
-    (and what is **not** considered one);
-  - Clarifies how we respond to
-    and disclose a security report
-    once it is send;
-  - Informs of any current vulnerabilities and advisories;
+    - Presents the threat model for the project;
+    - Provides guidance to people
+      on how to report a security vulnerability
+      (and what is **not** considered one);
+    - Clarifies how we respond to
+      and disclose a security report
+      once it is send;
+    - Informs of any current vulnerabilities and advisories;
 - The [Code of Conduct][5],
   for which more specific information
   can be found in [its respective section][6].
@@ -239,7 +239,6 @@ call for.
     and orient users
     to leverage
     [complete/inapplicable tasks][7].
->>>
 {%- endif %}
 
 Moreover,
@@ -329,14 +328,14 @@ split across four major branches of knowledge:
   which collects the public API
   for technical reference;
   it presents:
-  - All the functions and methods
-    publicly available in the software;
-  - How they work;
-  - What inputs and outputs
-    users should expect,
-    along with side effects;
-  - Examples of implementation
-    and use contexts;
+    - All the functions and methods
+      publicly available in the software;
+    - How they work;
+    - What inputs and outputs
+      users should expect,
+      along with side effects;
+    - Examples of implementation
+      and use contexts;
 - Instruction guides,
   with varying levels of detail;
   those are tutorial-like documents
@@ -344,67 +343,67 @@ split across four major branches of knowledge:
   and loop through the features
   of {{ cookiecutter.project_name }},
   which include:
-  - The installation guide,
-    with full instructions
-    on all different methods
-    of installation;
-  - An overview of the package,
-    illustrating purpose,
-    main features
-    and core aspects;
-  - Manuals on
-    how to use {{ cookiecutter.project_name }}
+    - The installation guide,
+      with full instructions
+      on all different methods
+      of installation;
+    - An overview of the package,
+      illustrating purpose,
+      main features
+      and core aspects;
+    - Manuals on
+      how to use {{ cookiecutter.project_name }}
 {%- if cookiecutter.app_type != 'bare_repo' %}
-    on an elementary level,
-    guidance on caveats
-    users should be aware of
-    and the complete catalog
-    of CLI commands and options;
+      on an elementary level,
+      guidance on caveats
+      users should be aware of
+      and the complete catalog
+      of CLI commands and options;
 {%- else %}
-    on an elementary level
-    and guidance on caveats
-    users should be aware of;
+      on an elementary level
+      and guidance on caveats
+      users should be aware of;
 {%- endif %}
 - Cookbook-style content,
   containing recipes
   for how to use the library
   to accomplish specific tasks:
-  - 1-minute tutorials
-    to quickly showcase
-    practical usage of {{ cookiecutter.project_name }},
-    one feature at a time;
-  - Dedicated guides
-    comparing {{ cookiecutter.project_name }} to alternatives,
-    providing their users
-    with relevant content
-    to easily translate concepts
-    from those alternatives
-    into {{ cookiecutter.project_name }}
-    and more easily migrate from them;
-  - Sections dedicated to power users
-    who aim to take the most
-    out of the library's functionalities;
-  - A collection of community-generated guides
-    and FAQs to address the most common issues
-    faced by {{ cookiecutter.project_name }} users;
+    - 1-minute tutorials
+      to quickly showcase
+      practical usage of {{ cookiecutter.project_name }},
+      one feature at a time;
+    - Dedicated guides
+      comparing {{ cookiecutter.project_name }} to alternatives,
+      providing their users
+      with relevant content
+      to easily translate concepts
+      from those alternatives
+      into {{ cookiecutter.project_name }}
+      and more easily migrate from them;
+    - Sections dedicated to power users
+      who aim to take the most
+      out of the library's functionalities;
+    - A collection of community-generated guides
+      and FAQs to address the most common issues
+      faced by {{ cookiecutter.project_name }} users;
 - The **Development Guide**,
   aimed at existing and potential contributors
   to serve as the reference
   for how development of {{ cookiecutter.project_name }} takes place,
   which encompasses:
-  - The transcription
-    of all hard policy files
-    defining the rules
-    for development;
-  - The reference
-    for non-public API objects
-    present in the {{ cookiecutter.project_name }} codebase
-    (i.e., those that are not exposed to users);
-  - Information on how to contact the team
-    for different purposes;
-  - The collection of all previous releases
-    and their release notes
-    for reference.
+    - The transcription
+      of all hard policy files
+      defining the rules
+      for development;
+    - The reference
+      for non-public API objects
+      present in the {{ cookiecutter.project_name }} codebase
+      (i.e., those that are not exposed to users);
+    - Information on how to contact the team
+      for different purposes;
+    - The collection of all previous releases
+      and their release notes
+      for reference.
 
 Changes to any part of the formal documentation
 are also done via [**Project Policy Proposal** {{ cookiecutter.__mr_acronym }}s][7],

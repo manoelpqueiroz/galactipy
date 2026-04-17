@@ -1097,14 +1097,13 @@ in our Discussions page.
 We will reply to you
 in due time.
 
+<!-- RECORD security policies of third-party libraries relevant to {{ cookiecutter.project_name }}
 ### :lucide-log-out: Relevant Policies
 <!-- This section is also described in SECURITY.md
   [link]: ../../../../SECURITY.md#mag-relevant-policies
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
-
-<!-- RECORD with security policies of third-party libraries relevant to {{ cookiecutter.project_name }} -->
 
 <!-- Anchors -->
 

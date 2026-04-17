@@ -65,7 +65,7 @@ get ever closer
 to providing
 an outstanding reference
 in the open source space!
-See the [Documentation Guideline][2]
+See the [Documentation Guide][2]
 for instructions
 on how to make changes
 to our docs.
