@@ -198,7 +198,7 @@ your report:
    - This person will
      coordinate the fix and release process;
    - The problem is validated
-     against all supported Galactipy versions;
+     against all supported {{ cookiecutter.project_name }} versions;
    - Once confirmed,
      a list of all affected versions
      is determined;
