@@ -501,7 +501,7 @@ def _get_licence_related_doc_files(
 
     Parameters
     ----------
-    directory : Path
+    docs_directory : Path
         Directory containing the project's documentation.
     app_type : str
         Type of application defined by the `app_type` Cookiecutter variable.
@@ -562,6 +562,17 @@ def _get_licence_related_doc_files(
 def _get_bdd_related_doc_files(
     docs_directory: Path, app_type: str, remove_bdd: bool
 ) -> list[Path] | None:
+    """Return the files to remove from the documentation based on BDD option.
+
+    Parameters
+    ----------
+    docs_directory : Path
+        Directory containing the project's documentation.
+    app_type : str
+        Type of application defined by the `app_type` Cookiecutter variable.
+    remove_bdd : bool
+        Flag for determining if BDD will be used or not.
+    """
     bare_repo_tests = docs_directory / "development" / "dev_packages" / "tests"
 
     if remove_bdd:
