@@ -173,9 +173,29 @@ with the `{{ cookiecutter.repo_name }} launch` command:
 
 {% endif -%}
 {% endif -%}
+{% if cookiecutter.create_docs -%}
 You can see the complete list of commands
 and how to use them properly
 in our documentation's _CLI Guide_ section.
+
+{% endif -%}
+{% endif -%}
+## :books: Documentation
+
+{% if cookiecutter.create_docs -%}
+{{ cookiecutter.project_name }} provides
+a comprehensive documentation.
+It contains in-depth guides
+on how to use it
+and the complete API reference,
+suited for newcomers
+and veteran users alike! :raised_hands:
+
+You can find everything you need
+[:rightwards_hand: :rightwards_hand: right here][docs1].
+{% else -%}
+<!-- UPDATEME with info on how your users can find your documentation for reference -->
+
 {% endif -%}
 ## :reminder_ribbon: Contributing
 
@@ -495,6 +515,10 @@ This project was generated with [Galactipy][burl4].
 
 {% else -%}
 [install1]: https://pip.pypa.io/en/stable/installation/
+
+{% endif -%}
+{% if cookiecutter.create_docs -%}
+[docs1]: {{ cookiecutter.__scm_link_url }}/blob/master/docs/index.md
 
 {% endif -%}
 [contributing1]: {{ cookiecutter.__scm_link_url }}/blob/master/ROADMAP.md#project-mission
