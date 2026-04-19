@@ -1,5 +1,5 @@
 # How to Contribute
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation with a different presentation
   [link]: ./docs/development/index.md#development
 
@@ -118,6 +118,7 @@ contributing as a developer:
 
 ### Development Setup
 {%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/development_setup.md#development-setup
 
@@ -127,6 +128,7 @@ contributing as a developer:
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
 -->
+{%- endif %}
 
 To start contributing to {{ cookiecutter.project_name }},
 you should start
@@ -211,6 +213,7 @@ for a [first contribution][workflow].
 {%- if cookiecutter.licence != 'nos' %}
 
 ## :shrug: Not Sure Where to Start?
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/index.md#not-sure-where-to-start
 
@@ -220,6 +223,7 @@ for a [first contribution][workflow].
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
 -->
+{%- endif %}
 
 If you don't feel
 ready to start contributing,
@@ -560,20 +564,24 @@ an even more robust contributor:
 {%- endif %}
 
 ## :classical_building: Fundamental Policies
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/index.md#policies
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
-{% if cookiecutter.licence != 'nos' and cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.licence != 'nos' -%}
 ### Code of Conduct
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/index.md#code-of-conduct
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 {{ cookiecutter.project_name }} has adopted the [Contributor Covenant][cc1]
 as its Code of Conduct,
@@ -587,13 +595,26 @@ and know which actions
 will and will not be tolerated.
 
 {% endif -%}
+{% else -%}
+>>> [!tip]
+The [group-level guide][intro1] contains
+additional information
+on the topics below,
+as well as guidance
+on topics not covered here.
+Be sure to refer to it first.
+>>>
+
+{% endif -%}
 {% if cookiecutter.licence != 'nos' -%}
 ### Open Development
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/developing.md#open-development
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 {% else -%}
 ### Development
@@ -609,11 +630,13 @@ to start contributing.
 
 {% if cookiecutter.licence != 'nos' and cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 #### Contributor Promotion
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/developing.md#contributor-promotion
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 Access to the upstream repository is granted
 at the project owner's discretion,
@@ -832,7 +855,7 @@ the completed {{ cookiecutter.__roadmap_item }}.
 
 {% endif -%}
 #### Work Item Tracking
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/developing.md#work-item-tracking
 
@@ -884,7 +907,7 @@ Use cases for this type of work item include:
 
 {% endif -%}
 ##### Labels
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/developing.md#labels
 
@@ -935,9 +958,11 @@ with their usage:
 |       Design        |      ~"design-discovery"      | Debates high-level concepts for new {{ cookiecutter.project_name }} features.                                     |
 |       Design        |     ~"design-formulation"     | Specifies expected behaviour for {{ cookiecutter.project_name }} features under different possible circumstances. |
 |       Design        |    ~"design-reassessment"     | Reevaluates a previous design that did not consider all possible cases.                                           |
+{%- if cookiecutter.create_docs %}
 |    Documentation    |        ~"docs-nudging"        | Updates formal documentation with tips and tricks for better {{ cookiecutter.project_name }} usage.               |
 |    Documentation    |        ~"docs-guides"         | Updates formal documentation with structured user guides.                                                         |
 |    Documentation    |       ~"docs-technical"       | Updates formal documentation with API reference or development guides.                                            |
+{%- endif %}
 | Internal Operations |  ~"internals-configuration"   | Regulates current development toolset behaviour.                                                                  |
 | Internal Operations | ~"internals-developer-output" | Boosts team productivity with incremental automation and simplification.                                          |
 | Internal Operations |      ~"internals-invoke"      | Streamlines local development operations.                                                                         |
@@ -955,7 +980,11 @@ with their usage:
 |       Plugins       |        ~"plugins-api"         | Updates logic to enable third-party extensions based on the core {{ cookiecutter.project_name }} implementation.  |
 |       Plugins       |        ~"plugins-arch"        | Implements undelying systems and structures for supporting plugins, including loading and discovery mechanisms.   |
 |      Policies       |        ~"policies-ci"         | Changes rules triggering CI jobs.                                                                                 |
+{%- if cookiecutter.create_docs %}
 |      Policies       |    ~"policies-guidelines"     | Changes project guidelines in `CONTRIBUTING.md` or the formal documentation.                                      |
+{%- else %}
+|      Policies       |    ~"policies-guidelines"     | Changes project guidelines in `CONTRIBUTING.md`.                                                                  |
+{%- endif %}
 |      Policies       |      ~"policies-roadmap"      | Work items related to debates and proposals relating to the project roadmap.                                      |
 |      Policies       |       ~"policies-rules"       | Changes rules for development tools (e.g., Ruff/mypy rules, issue triaging etc.).                                 |
 |      Policies       |     ~"policies-templates"     | Changes issue and {{ cookiecutter.__mr_term }} templates.                                                         |
@@ -1017,9 +1046,11 @@ with their usage:
 |       Design        |      `design-discovery`      | Debates high-level concepts for new {{ cookiecutter.project_name }} features.                                     |
 |       Design        |     `design-formulation`     | Specifies expected behaviour for {{ cookiecutter.project_name }} features under different possible circumstances. |
 |       Design        |    `design-reassessment`     | Reevaluates a previous design that did not consider all possible cases.                                           |
+{%- if cookiecutter.create_docs %}
 |    Documentation    |        `docs-nudging`        | Updates formal documentation with tips and tricks for better {{ cookiecutter.project_name }} usage.               |
 |    Documentation    |        `docs-guides`         | Updates formal documentation with structured user guides.                                                         |
 |    Documentation    |       `docs-technical`       | Updates formal documentation with API reference or development guides.                                            |
+{%- endif %}
 | Internal Operations |  `internals-configuration`   | Regulates current development toolset behaviour.                                                                  |
 | Internal Operations | `internals-developer-output` | Boosts team productivity with incremental automation and simplification.                                          |
 | Internal Operations |      `internals-invoke`      | Streamlines local development operations.                                                                         |
@@ -1037,7 +1068,11 @@ with their usage:
 |       Plugins       |        `plugins-api`         | Updates logic to enable third-party extensions based on the core {{ cookiecutter.project_name }} implementation.  |
 |       Plugins       |        `plugins-arch`        | Implements undelying systems and structures for supporting plugins, including loading and discovery mechanisms.   |
 |      Policies       |        `policies-ci`         | Changes rules triggering CI jobs.                                                                                 |
+{%- if cookiecutter.create_docs %}
 |      Policies       |    `policies-guidelines`     | Changes project guidelines in `CONTRIBUTING.md` or the formal documentation.                                      |
+{%- else %}
+|      Policies       |    `policies-guidelines`     | Changes project guidelines in `CONTRIBUTING.md`.                                                                  |
+{%- endif %}
 |      Policies       |      `policies-roadmap`      | Work items related to debates and proposals relating to the project roadmap.                                      |
 |      Policies       |       `policies-rules`       | Changes rules for development tools (e.g., Ruff/mypy rules, issue triaging etc.).                                 |
 |      Policies       |     `policies-templates`     | Changes issue and {{ cookiecutter.__mr_term }} templates.                                                         |
@@ -1081,7 +1116,7 @@ with their usage:
 
 {% endif -%}
 ##### Work Item Lifecycle
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/developing.md#work-item-lifecycle
 
@@ -1184,7 +1219,7 @@ specific to this project:
 {% endif -%}
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 #### General Practices
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/developing.md#general-practices
 
@@ -1193,7 +1228,7 @@ specific to this project:
 {%- endif %}
 
 ##### Issue Titles Should be Framed in Imperative Mood
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/developing.md#issue-titles-should-be-framed-in-imperative-mood
 
@@ -1273,7 +1308,7 @@ to close the issue.
 {%- endif %}
 
 ##### {{ cookiecutter.__task_item.capitalize() }}s Are Used as Acceptance Criteria for Issues
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/developing.md#{{ cookiecutter.__task_item }}s-are-used-as-acceptance-criteria-for-issues
 
@@ -1323,7 +1358,7 @@ associated with a {{ cookiecutter.__task_item }}.
 {%- if cookiecutter.licence != 'nos' %}
 
 ##### Usage of the `seeking-contributors` Labels
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/developing.md#usage-of-the-seeking-contributors-labels
 
@@ -1415,7 +1450,7 @@ etc.
 {%- endif %}
 
 ##### Blocks Must be Set at the Same Issue Level
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/developing.md#blocks-must-be-set-at-the-same-issue-level
 
@@ -1447,7 +1482,7 @@ issues can only block **issues**,
 
 {% if cookiecutter.scm_platform == 'GitLab Free' -%}
 ##### Tasks Should Have no Milestones
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/developing.md#tasks-should-have-no-milestones
 
@@ -1480,11 +1515,13 @@ through the "Bulk edit" option.
 {% if cookiecutter.use_bdd -%}
 ### Behaviour-Driven Development
 {%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/bdd.md#behaviour-driven-development
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 At {{ cookiecutter.project_name }},
 we believe building software
@@ -1592,14 +1629,16 @@ _and_ users
 —
 contributors are valued
 and everyone feels empowered to grow and succeed.
+{%- endif %}
 
-{% endif -%}
 #### References for BDD
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/bdd.md#references-for-bdd
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 The structured approach BDD offers
 will help us maintain
@@ -1628,7 +1667,7 @@ we provide a suggested list of references below:
 
 {% endif -%}
 ### Versioning Customs
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/versioning.md#versioning-customs
 
@@ -1743,7 +1782,7 @@ regarding versioning in general:
 
 {% if cookiecutter.__schema_type == 'segmented' and cookiecutter.version_schema != 'calver-auto' -%}
 #### Tips for Defining New Versions
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/versioning.md#tips-for-defining-new-versions
 
@@ -1791,7 +1830,7 @@ through their related {{ cookiecutter.__mr_acronym }}.
 {% endif -%}
 {% endif -%}
 ### Branch Organization
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/branches.md#branch-organization
 
@@ -1828,7 +1867,7 @@ or `wip-` prefixes
 so the CI will ignore it.
 
 #### Branch Naming Standards
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/branches.md#branch-naming-standards
 
@@ -1914,7 +1953,7 @@ or detailed documentation.
 
 {% endif -%}
 ### Commit Customs
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/committing.md#commit-customs
 
@@ -1928,7 +1967,7 @@ or detailed documentation.
 
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' and cookiecutter.commit_convention == 'gitmoji' -%}
 #### Gitmoji
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/committing.md#gitmoji
 
@@ -1952,7 +1991,7 @@ to apply on commits:
 {% elif cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 {% if cookiecutter.commit_convention == 'gitmoji' -%}
 #### Gitmoji
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/committing.md#gitmoji
 
@@ -2032,7 +2071,7 @@ to apply on commits:
 
 {% elif cookiecutter.commit_convention == 'conventional' -%}
 #### Conventional Commits
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/committing.md#conventional-commits
 
@@ -2087,7 +2126,7 @@ so the CI will ignore it.
 
 {% else -%}
 #### Conventional Gitmoji
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/committing.md#conventional-gitmoji
 
@@ -2227,7 +2266,7 @@ so the CI will ignore it.
 
 {% endif -%}
 #### Commit Message Structure
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/committing.md#commit-message-structure
 
@@ -2257,7 +2296,7 @@ when committing.
 {% endif -%}
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 #### Git Trailers
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/committing.md#git-trailers
 
@@ -2324,7 +2363,7 @@ and defined in the [`changelog-config.yml`][committing2] file:
 {% endif -%}
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 ### Styling
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/styling.md#styling
 
@@ -2333,7 +2372,7 @@ and defined in the [`changelog-config.yml`][committing2] file:
 {%- endif %}
 
 #### Codestyle
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/styling.md#codestyle
 
@@ -2355,7 +2394,7 @@ for the project,
 use a [Project Policy Proposal {{ cookiecutter.__mr_acronym }}][roadmap1].
 
 #### Docstring Convention
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/styling.md#docstring-convention
 
@@ -2418,7 +2457,7 @@ when making your contributions.
 
 {% endif -%}
 #### Semantic Line Breaks
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/styling.md#semantic-line-breaks
 
@@ -2497,7 +2536,7 @@ inside [`.{{ cookiecutter.__scm_platform_lc }}`][style4] and [`CHANGELOG.md`][st
 
 {% endif -%}
 ### Checks & Hooks
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/checks.md#checks--hooks
 
@@ -2584,7 +2623,7 @@ with these rules will be blocked.
 
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 ### Continuous Integration
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/ci.md#continuous-integration
 
@@ -2635,7 +2674,7 @@ of the development cycle.
 
 {% endif -%}
 ### Licence
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/policies/index.md#licence
@@ -2658,11 +2697,13 @@ on licencing the project.
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 ## :book: Our Philosophy
 {%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/philosophy.md#our-philosophy
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 This document is
 more than just a technical guide
@@ -2694,7 +2735,7 @@ to guide how we work.
 {%- endif %}
 
 ### Start with a {{ cookiecutter.__mr_term }}
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/philosophy.md#start-with-a-{{ cookiecutter.__mr_term_slug }}
 
@@ -2880,7 +2921,7 @@ to take action on.
     avoid auto-closing the related issue.
 
 ### _Say Why, Not Just What_
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/philosophy.md#say-why-not-just-what
 
@@ -2984,7 +3025,7 @@ that can lead to disruption
 and inefficiency.
 
 ### Operate with a Bias for Action
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/philosophy.md#operate-with-a-bias-for-action
 
@@ -3020,11 +3061,13 @@ when working together.
 
 {% if cookiecutter.licence != 'nos' -%}
 ### Interactions Enable Insights
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/philosophy.md#interactions-enable-insights
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 At {{ cookiecutter.project_name }},
 we approach every single interaction
@@ -3062,11 +3105,13 @@ so it can be useful
 and cherished by others.
 
 ### Sharing Insights Drives Progress
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/philosophy.md#sharing-insights-drives-progress
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 By extracting the root
 of those four values,
@@ -3145,11 +3190,13 @@ the value of the project
 to someone else.
 
 ### There Are no Good First Issues
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/philosophy.md#there-are-no-good-first-issues
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 The concept of
 labelling issues in open source projects
@@ -3240,9 +3287,9 @@ _The best good first issues are the ones you open yourself._
 
 {% endif -%}
 {% endif -%}
-{% endif -%}
 {% if cookiecutter.licence != 'nos' -%}
 ## :speaking_head: Proposing Changes as a Developer
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_developers/index.md#proposing-changes
 
@@ -3252,6 +3299,7 @@ _The best good first issues are the ones you open yourself._
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
 -->
+{%- endif %}
 
 {% else -%}
 ## :speaking_head: Proposing Changes
@@ -3403,6 +3451,7 @@ will involve:
     provided by {{ cookiecutter.project_name }},
     basic instructions on setup
     and usage;
+{%- if cookiecutter.create_docs %}
   - The formal documentation, providing
     detailed instructions on installation,
     in-depth user guide
@@ -3412,6 +3461,7 @@ will involve:
     on technical details
     for developing the application,
     as well as release notes;
+{%- endif %}
   - The policies that orient
     {{ cookiecutter.project_name }} development
     and contributor interactions.
@@ -3429,7 +3479,7 @@ on the following topics not covered here:
 {%- endif %}
 
 ### Preparing to Contribute
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_developers/prepare.md#preparing-to-contribute
 
@@ -3442,7 +3492,7 @@ on the following topics not covered here:
 {%- endif %}
 
 #### Choosing What to Contribute
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_developers/prepare.md#choosing-what-to-contribute
 
@@ -3546,7 +3596,7 @@ to less fundamental building blocks.
 {% endif -%}
 {% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 #### Opening Admissible {{ cookiecutter.__mr_term }}s
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_developers/prepare.md#opening-admissible-{{ cookiecutter.__mr_term_slug }}s
 
@@ -3646,7 +3696,7 @@ from the Kubernetes team
 also has some great points regarding this.
 
 #### Review Criteria
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_developers/prepare.md#review-criteria
 
@@ -3718,7 +3768,7 @@ its probability of being merged:
 
 {% endif -%}
 ### Development Workflow
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_developers/workflow/index.md#development-workflow
 
@@ -3790,7 +3840,7 @@ A non-exhaustive list of steps to consider:
 {%- endif %}
 
 #### Invoke Usage
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_developers/workflow/invoke.md#invoke-usage
 
@@ -3829,7 +3879,7 @@ should be proposed
 through a [**Internal Improvement**][workflow1] {{ cookiecutter.__mr_term }}.
 
 ##### Environment Setup
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation with a different presentation
   [link]: ./docs/development/for_developers/workflow/invoke.md#environment-setup
 
@@ -3862,7 +3912,7 @@ to set up the repository.
 
 {% endif -%}
 ##### Quality Assurance Tasks
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation with a different presentation
   [link]: ./docs/development/for_developers/workflow/invoke.md#quality-assurance-tasks
 
@@ -3887,7 +3937,7 @@ to run the Ruff formatter and linter
 with a single command.
 
 ##### Project Building & Publishing
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation with a different presentation
   [link]: ./docs/development/for_developers/workflow/invoke.md#project-building--publishing
 
@@ -3935,7 +3985,7 @@ pointing to the desired custom registry.
 {% endif -%}
 {% if cookiecutter.create_docker -%}
 ##### Docker Operations
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation with a different presentation
   [link]: ./docs/development/for_developers/workflow/invoke.md#docker-operations
 
@@ -3956,7 +4006,7 @@ pointing to the desired custom registry.
 
 {% endif -%}
 ##### Cleanup Tasks
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation with a different presentation
   [link]: ./docs/development/for_developers/workflow/invoke.md#cleanup-tasks
 
@@ -3979,7 +4029,7 @@ except for `remove-build`
 into a single command.
 
 #### Test Markers
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_developers/workflow/index.md#test-markers
 
@@ -4033,7 +4083,7 @@ to the marker options,
 do so through a [**Project Policy Proposal**][roadmap1].
 
 #### Feature Flags
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_developers/workflow/index.md#feature-flags
 
@@ -4043,7 +4093,7 @@ do so through a [**Project Policy Proposal**][roadmap1].
 
 <!-- DEFINE the guidelines on how to implement and handle feature flags -->
 
-{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' and cookiecutter.create_docs -%}
 ### Documentation Guide
 {%- if cookiecutter.licence != 'nos' %}
 <!-- This section is also described in the formal documentation
@@ -5128,7 +5178,7 @@ serve as navigation facilitator tags:
   to check them periodically.
 
 ### {{ cookiecutter.__mr_term }} Review Process
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_developers/review.md#{{ cookiecutter.__mr_term_slug }}-review-process
 
@@ -5143,11 +5193,13 @@ the review process can start.
 
 {% if cookiecutter.licence != 'nos' -%}
 #### Contribution Acceptance Criteria
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_developers/review.md#contribution-acceptance-criteria
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 {% else -%}
 #### Change Acceptance Criteria
@@ -5217,7 +5269,7 @@ it meets the contribution acceptance criteria below:
     why you need it.
 
 #### Getting Reviewed
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_developers/review.md#getting-reviewed
 
@@ -5289,7 +5341,7 @@ the last maintainer
 to review and approve merges it.
 
 ### Roles and Attributions
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_developers/roles.md#roles-and-attributions
 
@@ -5298,7 +5350,7 @@ to review and approve merges it.
 {%- endif %}
 
 #### The Responsibility of the {{ cookiecutter.__mr_term }} Author
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_developers/roles.md#the-responsibility-of-the-{{ cookiecutter.__mr_term_slug }}-author
 
@@ -5461,7 +5513,7 @@ This saves reviewers time
 and helps authors catch mistakes earlier.
 
 ##### Recommendations to Get Your Changes Merged Faster
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_developers/roles.md#recommendations-to-get-your-changes-merged-faster
 
@@ -5522,7 +5574,7 @@ and helps authors catch mistakes earlier.
    in a single {{ cookiecutter.__mr_acronym }}.
 
 ##### Recommendations for Facilitating Reviews
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_developers/roles.md#recommendations-for-facilitating-reviews
 
@@ -5609,7 +5661,7 @@ the first time.
   `@` mention the reviewer instead.
 
 #### The Responsibility of the Reviewer
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_developers/roles.md#the-responsibility-of-the-reviewer
 
@@ -5800,11 +5852,13 @@ or ridiculed for even trying
 run counter to the [Code of Conduct][cc2].
 
 ##### The Right Balance
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_developers/roles.md#the-right-balance
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 One of the most difficult things
 during code review
@@ -5886,7 +5940,7 @@ created by a submitter.
 {%- endif %}
 
 #### The Responsibility of the Maintainers
-{%- if cookiecutter.licence != 'nos' %}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_developers/roles.md#the-responsibility-of-the-maintainers
 
@@ -5961,11 +6015,13 @@ and explain why in a comment.
 {% endif -%}
 {% if cookiecutter.licence != 'nos' and cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
 ### How to Behave among Other Contributors
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_developers/behave.md#how-to-behave-among-other-contributors
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 {{ cookiecutter.__mr_term }}s,
 when worked under the concept of [proposals][admission],
@@ -6024,11 +6080,13 @@ to write your comments:
   they don't have to respond.
 
 ### Fostering an Inviting Community
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_developers/foster.md#fostering-an-inviting-community
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 As a {{ cookiecutter.project_name }} contributor, your responsibilities
 are not supposed to be restricted to
@@ -6120,11 +6178,13 @@ to achieve this goal:
      Why not turn them into [starter assignments][starter]?
 
 #### About Starter Assignments
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_developers/foster.md#about-starter-assignments
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 We refer to our "Good First Issue" work items
 as **starter assignments**,
@@ -6242,6 +6302,7 @@ will reach out to you.
 {% endif -%}
 {% if cookiecutter.licence != 'nos' -%}
 ## :reminder_ribbon: Other Ways to Contribute
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_others/index.md#other-ways-to-contribute
 
@@ -6251,6 +6312,7 @@ will reach out to you.
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
 -->
+{%- endif %}
 
 You can contribute to {{ cookiecutter.project_name }}
 in additional ways,
@@ -6289,6 +6351,7 @@ everyone benefits from
 faster communication and resolution.
 
 ### Contributing by Helping Other People
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_others/help_others.md#contributing-by-helping-other-people
 
@@ -6298,6 +6361,7 @@ faster communication and resolution.
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
 -->
+{%- endif %}
 
 [![RFSs][badge10]][query10]
 
@@ -6346,11 +6410,13 @@ for more details
 on how we deal with these cases.
 
 #### Orientation for Effectively Helping Others
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_others/help_others.md#orientation-for-effectively-helping-others
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 Here is a general guide
 on how to help other users
@@ -6527,11 +6593,13 @@ avoid generalisations.
 
 {% endif -%}
 #### Commitment to Help
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_others/help_others.md#commitment-to-help
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 What consumes
 most of the time of the development team
@@ -6612,6 +6680,7 @@ whenever possible.
 
 {% endif -%}
 ### Contributing through User Requests
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_others/user_requests.md#contributing-through-user-requests
 
@@ -6621,6 +6690,7 @@ whenever possible.
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
 -->
+{%- endif %}
 
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
 >>> [!tip] :pushpin: Further Guidance
@@ -6793,6 +6863,7 @@ of a quick response:
 
 {% endif -%}
 #### Specific Guidelines for Requests for Support
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_others/user_requests.md#specific-guidelines-for-requests-for-support
 
@@ -6802,6 +6873,7 @@ of a quick response:
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
 -->
+{%- endif %}
 
 If {{ cookiecutter.project_name }} is not working correctly for you,
 most likely it is a simple configuration issue.
@@ -6837,6 +6909,7 @@ prefer sticking to the Request for Support
 as the means to reach the team.
 
 #### Specific Guidelines for Requests for Improvement
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_others/user_requests.md#specific-guidelines-for-requests-for-improvement
 
@@ -6846,6 +6919,7 @@ as the means to reach the team.
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
 -->
+{%- endif %}
 
 Requests for Improvement are used
 when users feel a need for development
@@ -6929,6 +7003,7 @@ is to make one [that comes from yourself][gfi].
 
 {% endif -%}
 #### Specific Guidelines for Requests for Correction
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_others/user_requests.md#specific-guidelines-for-requests-for-correction
 
@@ -6938,6 +7013,7 @@ is to make one [that comes from yourself][gfi].
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
 -->
+{%- endif %}
 
 [![RFCs][badge8]][query8]
 
@@ -7067,6 +7143,7 @@ by the development team.
 {%- endif %}
 
 ### Contributing by Reviewing Changes
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_others/review_changes.md#contributing-by-reviewing-changes
 
@@ -7076,6 +7153,7 @@ by the development team.
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
 -->
+{%- endif %}
 
 {% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
 >>> [!tip] :pushpin: Further Guidance
@@ -7181,6 +7259,7 @@ as a reviewer.
 We appreciate your commitment beforehand!
 
 {% endif -%}
+{% if cookiecutter.create_docs -%}
 ### Contributing with Documentation Changes
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_others/documentation_changes.md#contributing-with-documentation-changes
@@ -7252,7 +7331,9 @@ on how to make changes
 to our docs.
 
 {% endif -%}
+{% endif -%}
 ### Contributing to Roadmap Maintenance
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_others/roadmap_maintenance.md#contributing-to-roadmap-maintenance
 
@@ -7262,6 +7343,7 @@ to our docs.
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
 -->
+{%- endif %}
 
 [![Issues][badge1]][query1]
 {%- if cookiecutter.scm_platform == 'GitLab Free' %}
@@ -7319,11 +7401,13 @@ to the development team:
 
 {% endif -%}
 ### Contributing by Promoting {{ cookiecutter.project_name }}
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
   [link]: ./docs/development/for_others/index.md#contributing-by-promoting-{{ cookiecutter.project_name.lower().split() | join('-') }}
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 Promoting {{ cookiecutter.project_name }}
 helps us reach a larger audience
