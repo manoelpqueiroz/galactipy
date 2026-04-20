@@ -7855,6 +7855,7 @@ what we are doing matters!
 [workflow5]: https://docs.pytest.org/en/stable/example/markers.html#mark-examples
 {% endif -%}
 [workflow6]: {{ cookiecutter.__scm_link_url }}/blob/master/pyproject.toml
+{%- if cookiecutter.create_docs %}
 
 [docs1]: {{ cookiecutter.__scm_link_url }}/blob/master/SECURITY.md
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
@@ -7871,6 +7872,7 @@ what we are doing matters!
 [docs10]: https://zensical.org/docs/setup/navigation/#navigation-sections
 [docs11]: {{ cookiecutter.__scm_link_url }}/blob/master/docs/development/for_developers/workflow/invoke.md
 [docs12]: https://zensical.org/docs/setup/tags/
+{%- endif %}
 {%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
 
 [reviewing1]: https://josipmisko.com/posts/code-review-nit
