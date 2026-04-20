@@ -111,6 +111,7 @@ def removal_tree(tmp_path):
         "renovate.json",
         ".dockerignore",
         "pyproject.toml",
+        "zensical.toml",
         "file1_feature.md",
         package_test=["__main__.py"],
         docker=["Dockerfile", "README.md", "file2_feature.md"],
@@ -385,6 +386,7 @@ def removal_tree(tmp_path):
         },
         "docs": {
             "root": docs_directory,
+            "config": tmp_path / "zensical.toml",
             "getting_started": {
                 "tutorials": docs_directory / "getting_started" / "tutorials.md",
                 "overview": docs_directory / "getting_started" / "overview.md",
