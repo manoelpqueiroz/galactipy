@@ -176,7 +176,11 @@ with the `{{ cookiecutter.repo_name }} launch` command:
 {% if cookiecutter.create_docs -%}
 You can see the complete list of commands
 and how to use them properly
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+in our documentation's [_CLI Guide_][htu1] section.
+{%- else %}
 in our documentation's _CLI Guide_ section.
+{%- endif %}
 
 {% endif -%}
 {% endif -%}
@@ -518,8 +522,15 @@ This project was generated with [Galactipy][burl4].
 
 {% endif -%}
 {% if cookiecutter.create_docs -%}
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
+[htu1]: {{ cookiecutter.__pages_url }}/user_guide/cli
+
+[docs1]: {{ cookiecutter.__pages_url }}
+
+{% else -%}
 [docs1]: {{ cookiecutter.__scm_link_url }}/blob/master/docs/index.md
 
+{% endif -%}
 {% endif -%}
 [contributing1]: {{ cookiecutter.__scm_link_url }}/blob/master/ROADMAP.md#project-mission
 {%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
