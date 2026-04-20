@@ -172,7 +172,7 @@
 {%- endif %}{% raw %}
       ]
     },
-{%- endraw %}{% if cookiecutter.__debug %}
+{%- endraw %}{% if cookiecutter.create_docs %}
     {
       "description": "Group docs dependencies",
       "groupName": "documentation dependencies",

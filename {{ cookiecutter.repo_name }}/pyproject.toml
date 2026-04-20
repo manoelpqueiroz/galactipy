@@ -110,11 +110,13 @@ pytest-benchmark = "^5.2.2"
 pytest-sugar = "^1.1.1"
 pytest-pikachu = "^1.0.0"
 coverage = "^7.11.1"
+{%- if cookiecutter.create_docs %}
 
 [tool.poetry.group.docs.dependencies]
 zensical = "^0.0.27"
 mkdocstrings = "^1.0.3"
 mkdocstrings-python = "^2.0.3"
+{%- endif %}
 
 
 [tool.poetry.requires-plugins]

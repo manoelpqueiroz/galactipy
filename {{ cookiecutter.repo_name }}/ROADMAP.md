@@ -5,6 +5,7 @@
 {{ cookiecutter.project_description }}.
 
 ### Project Mission
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation with a different structure
 {%- if cookiecutter.licence != 'nos' %}
   [link]: ./docs/development/roadmap.md#roadmap
@@ -14,6 +15,7 @@
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES, ADAPTING TO THE RESPECTIVE MEDIUM
 -->
+{%- endif %}
 
 <!-- DEFINE your project mission, in tandem with the "Purpose & Function" section on README.md -->
 
@@ -88,6 +90,7 @@ Please review the roadmap
 to avoid potential duplicated effort.
 
 ## Development Stages
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
 {%- if cookiecutter.licence != 'nos' %}
   [link]: ./docs/development/roadmap.md#development-stages
@@ -97,6 +100,7 @@ to avoid potential duplicated effort.
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
 -->
+{%- endif %}
 
 ![Project stage][4]
 
@@ -114,6 +118,7 @@ We envision that {{ cookiecutter.project_name }}
 will evolve through the following phases:
 
 ### Pre-Alpha Stage
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
 {%- if cookiecutter.licence != 'nos' %}
   [link]: ./docs/development/roadmap.md#lucide-line-squiggle-pre-alpha-stage
@@ -122,10 +127,12 @@ will evolve through the following phases:
 {%- endif %}
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- endif %}
 
 <!-- DEFINE the features and capabilities the library will offer at the pre-alpha stage
 
 ### Alpha Stage
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
 {%- if cookiecutter.licence != 'nos' %}
   [link]: ./docs/development/roadmap.md#lucide-bean-alpha-stage
@@ -134,10 +141,12 @@ will evolve through the following phases:
 {%- endif %}
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- endif %}
 
 <!-- DEFINE the features and capabilities the library will offer at the alpha stage
 
 ### Beta Stage
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
 {%- if cookiecutter.licence != 'nos' %}
   [link]: ./docs/development/roadmap.md#lucide-sprout-beta-stage
@@ -146,10 +155,12 @@ will evolve through the following phases:
 {%- endif %}
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- endif %}
 
 <!-- DEFINE the features and capabilities the library will offer at the beta stage
 
 ### Stable Release
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
 {%- if cookiecutter.licence != 'nos' %}
   [link]: ./docs/development/roadmap.md#lucide-tree-pine-stable-release
@@ -158,10 +169,12 @@ will evolve through the following phases:
 {%- endif %}
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- endif %}
 
 <!-- DEFINE the features and capabilities the library will offer for it to be considered stable
 
 ### Project Maturation
+{%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
 {%- if cookiecutter.licence != 'nos' %}
   [link]: ./docs/development/roadmap.md#lucide-infinity-project-maturation
@@ -170,6 +183,7 @@ will evolve through the following phases:
 {%- endif %}
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+{%- endif %}
 
 <!-- DEFINE the features and capabilities that will lead the project's capabilities beyond what is currently expected for a stable release
 
@@ -260,13 +274,13 @@ with clarifications.
 [contributing]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md
 
 {% endif -%}
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
 [1]: {{ cookiecutter.__gitlab_org }}/epics
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+{% elif cookiecutter.scm_platform == 'GitLab Free' -%}
 [1]: {{ cookiecutter.__scm_link_url }}/milestones
-{%- else %}
+{% else -%}
 [1]: {{ cookiecutter.__scm_link_url }}/projects
-{%- endif %}
+{% endif -%}
 [2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#start-with-a-{{ cookiecutter.__mr_term_slug }}
 [3]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#roadmap-management
 [4]: https://img.shields.io/pypi/status/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=theplanetarysociety&label=stage
