@@ -32,6 +32,7 @@ APP_TYPE = "{{ cookiecutter.app_type }}"
 # avoid raising errors when testing
 CREATE_DOCKER = "{{ cookiecutter.create_docker }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
 USE_BDD = "{{ cookiecutter.use_bdd }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
+CREATE_DOCS = "{{ cookiecutter.create_docs }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
 ENABLE_FLAGS = "{{ cookiecutter.__debug }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
 
 licences_dict = {
@@ -56,6 +57,7 @@ class ProjectFlags:  # noqa: D101
     remove_gitlab: bool
     remove_docker: bool
     remove_bdd: bool
+    remove_docs: bool
     remove_features: bool
     is_oss_licence: bool
     version_schema: str
@@ -199,7 +201,11 @@ def _get_files_to_delete(
     )
 
     documentation_files = _get_documentation_files(
-        directory, flags.app_type, flags.remove_bdd, flags.is_oss_licence
+        directory,
+        flags.app_type,
+        flags.remove_docs,
+        flags.remove_bdd,
+        flags.is_oss_licence,
     )
 
     gitlab_specific_files = [
@@ -466,7 +472,11 @@ def _get_schema_specific_files(
 
 
 def _get_documentation_files(
-    directory: Path, app_type: str, remove_bdd: bool, oss_licence: bool
+    directory: Path,
+    app_type: str,
+    remove_docs: bool,
+    remove_bdd: bool,
+    oss_licence: bool,
 ) -> list[Path]:
     """Return the files to remove from the documentation.
 
@@ -476,12 +486,17 @@ def _get_documentation_files(
         Root directory of the project.
     app_type : str
         Type of application defined by the `app_type` Cookiecutter variable.
+    remove_docs : bool
+        Flag for determining if documentation files will be kept.
     remove_bdd : bool
         Flag for determining if BDD will be used or not.
     oss_licence : bool
         Flag for determining if the project has an open source licence.
     """
     docs = directory / "docs"
+
+    if remove_docs:
+        return [docs, directory / "zensical.toml"]
 
     doc_removals = _get_licence_related_doc_files(
         docs, app_type, remove_bdd, oss_licence
@@ -787,6 +802,7 @@ def main() -> None:  # noqa: D103
     remove_gitlab = SCM_PLATFORM_LC != "gitlab"
     remove_docker = not CREATE_DOCKER
     remove_bdd = not USE_BDD
+    remove_docs = not CREATE_DOCS
     remove_features = not ENABLE_FLAGS
 
     selected_licence = licences_dict[LICENCE]
@@ -796,6 +812,7 @@ def main() -> None:  # noqa: D103
         remove_gitlab,
         remove_docker,
         remove_bdd,
+        remove_docs,
         remove_features,
         oss_licence,
         VERSION_SCHEMA,
