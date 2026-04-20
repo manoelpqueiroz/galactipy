@@ -305,6 +305,7 @@ task-tags = [
 [tool.ruff.lint.per-file-ignores]
 {%- if cookiecutter.app_type != 'bare_repo' %}
 "{{ cookiecutter.package_name }}/cli/commands/**.py" = ["FBT", "ARG001", "RUF013", "RUF067"]
+"wrappers.py" = ["ANN202", "ANN002", "ANN003"]
 "text_tools.py" = ["B019"]
 {%- endif %}
 "tests/**.py" = [
