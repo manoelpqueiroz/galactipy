@@ -1569,6 +1569,7 @@ striving to formulate unclear specifications,
 engaging with other contributors
 to debate different implementation choices
 and safeguarding [institutional knowledge][knowledge].
+{%- if cookiecutter.licence != 'nos' %}
 
 We understand that
 adopting BDD might seem like
@@ -1595,6 +1596,7 @@ we ensure that everyone
 — developers, testers, and users —
 shares a clear understanding
 of what we aim to achieve.
+{%- endif %}
 This approach promotes upfront clarity,
 reducing misunderstandings and misalignments
 down the line.
@@ -1629,7 +1631,6 @@ _and_ users
 —
 contributors are valued
 and everyone feels empowered to grow and succeed.
-{%- endif %}
 
 #### References for BDD
 {%- if cookiecutter.create_docs %}
@@ -1664,6 +1665,7 @@ we provide a suggested list of references below:
   with test scenarios;
 - Automation Panda's [BDD Guide][bdd7];
 - [_Behaviour-Driven Development: A Data Scientist Perspective_][bdd8].
+{%- endif %}
 
 {% endif -%}
 ### Versioning Customs
@@ -7708,7 +7710,7 @@ what we are doing matters!
 [practices3]: https://github.blog/changelog/2025-08-21-dependencies-on-issues/
 
 {% endif -%}
-{% if cookiecutter.use_bdd -%}
+{% if cookiecutter.use_bdd and cookiecutter != 'nos' -%}
 [bdd1]: https://cucumber.io/docs/
 [bdd2]: https://cucumber.io/docs/bdd/
 [bdd3]: https://youtube.com/playlist?list=PLwLLcwQlnXByKR1Fo7UnE6gQAbx-JfYJZ
@@ -7719,20 +7721,25 @@ what we are doing matters!
 [bdd8]: https://data-ai.theodo.com/en/technical-blog/behavior-driven-development-data-scientist-perspective
 
 {% endif -%}
-{%- if cookiecutter.__version_schema_base == 'effver' %}
+{% if cookiecutter.__version_schema_base == 'effver' -%}
 [versioning1]: https://jacobtomlinson.dev/effver/
-{%- elif cookiecutter.__version_schema_base == 'semver' %}
-[versioning1]: https://semver.org/
-{%- elif cookiecutter.__version_schema_base == 'calver' %}
-[versioning1]: https://calver.org/
-{%- elif cookiecutter.__version_schema_base == 'romver' %}
-[versioning1]: https://github.com/romversioning/romver
-{%- elif cookiecutter.__version_schema_base == 'solover' %}
-[versioning1]: https://beza1e1.tuxen.de/SoloVer
-{%- elif cookiecutter.__version_schema_base == 'trunkver' %}
-[versioning1]: https://trunkver.org/
-{%- endif %}
 
+{% elif cookiecutter.__version_schema_base == 'semver' -%}
+[versioning1]: https://semver.org/
+
+{% elif cookiecutter.__version_schema_base == 'calver' -%}
+[versioning1]: https://calver.org/
+
+{% elif cookiecutter.__version_schema_base == 'romver' -%}
+[versioning1]: https://github.com/romversioning/romver
+
+{% elif cookiecutter.__version_schema_base == 'solover' -%}
+[versioning1]: https://beza1e1.tuxen.de/SoloVer
+
+{% elif cookiecutter.__version_schema_base == 'trunkver' -%}
+[versioning1]: https://trunkver.org/
+
+{% endif -%}
 {% if cookiecutter.commit_convention == 'gitmoji' -%}
 [committing0]: https://gitmoji.dev/
 {% elif cookiecutter.commit_convention == 'conventional' -%}

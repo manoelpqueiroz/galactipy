@@ -274,13 +274,13 @@ with clarifications.
 [contributing]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md
 
 {% endif -%}
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
 [1]: {{ cookiecutter.__gitlab_org }}/epics
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+{% elif cookiecutter.scm_platform == 'GitLab Free' -%}
 [1]: {{ cookiecutter.__scm_link_url }}/milestones
-{%- else %}
+{% else -%}
 [1]: {{ cookiecutter.__scm_link_url }}/projects
-{%- endif %}
+{% endif -%}
 [2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#start-with-a-{{ cookiecutter.__mr_term_slug }}
 [3]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#roadmap-management
 [4]: https://img.shields.io/pypi/status/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=theplanetarysociety&label=stage

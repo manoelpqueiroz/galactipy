@@ -35,8 +35,8 @@ and how to use them.
     for non-binary inputs.
 
 ## Calling the Program
+{%- if cookiecutter.app_type == 'tui' %}
 
-{% if cookiecutter.app_type == 'tui' -%}
 You can simply
 launch {{ cookiecutter.project_name }}
 by calling `{{ cookiecutter.repo_name }}`
@@ -70,8 +70,8 @@ control of the application:
     >
     > Specify a custom configuration file
     > to launch the application.
+{%- elif cookiecutter.app_type == 'hybrid' %}
 
-{% elif cookiecutter.app_type == 'hybrid' -%}
 The top-level command
 is the entry point
 for additional
@@ -98,6 +98,7 @@ with the `{{ cookiecutter.repo_name }} launch` command:
     > Specify a custom configuration file
     > to launch the application.
 {%- else %}
+
 The top-level command
 is the entry point
 for additional
