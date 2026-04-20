@@ -230,29 +230,30 @@ between the features available in this package
 depending on which platform
 you choose to host your project:
 
-|            Feature            |       GitLab       |       GitHub       | Observations                                                                                                                                                                                                                                                |
-| :---------------------------: | :----------------: | :----------------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|        Issue templates        | :white_check_mark: | :white_check_mark: | Both options feature automatic labels, but GitHub has an extra configuration to prevent the creation of empty issues.                                                                                                                                       |
-| Merge/pull requests templates | :white_check_mark: |     :warning:      | For GitHub, templates can only be accessed by applying custom [query parameters][ft43] during PR creation.                                                                                                                                                  |
-|   Project conditions checks   | :white_check_mark: | :white_check_mark: | A basic workflow to install the package and run tests, check codestyle and safety.                                                                                                                                                                          |
-|    Publication to TestPyPI    | :white_check_mark: | :white_check_mark: | For GitHub, the workflow uses the official [PyPI Publish action][ft44], while GitLab CI uses the [PyPI API][ft45].                                                                                                                                          |
-|      Publication to PyPI      | :white_check_mark: | :white_check_mark: | Both GitHub and GitLab projects use [trusted publishing][ft46] to upload packages to the canonical PyPI registry. Projects on both platforms will also publish the build files attestations.                                                                |
-|   SLSA Level 3 provenances    | :white_check_mark: |        :x:         | GitLab projects use the [SLSA][ft47] CI/CD component to sign the PyPI attestations and the metadata generated during package building to comply with level 3 standards.                                                                                     |
-|       Image publication       | :white_check_mark: | :white_check_mark: | For GitHub, images are pushed to [Docker Hub][ft48], while GitLab CI pushes images to the repository's [Container Registry][ft49] by default (and can be reconfigured).                                                                                     |
-|        Snapshot images        | :white_check_mark: |        :x:         | For GitLab, the [Docker][ft50] CI/CD component is used and allows for pushing snapshot images for testing when a Merge Request is open.                                                                                                                     |
-|      Dockerfile linting       | :white_check_mark: |        :x:         | The Docker GitLab CI/CD component includes a job for linting the Dockerfile with [Hadolint][ft51].                                                                                                                                                          |
-| Image vulnerability analysis  | :white_check_mark: |        :x:         | The Docker GitLab CI/CD component uses [Trivy][ft52] to scan the image for vulnerabilities.                                                                                                                                                                 |
-|       Docker SBOM files       | :white_check_mark: |        :x:         | The Docker GitLab CI/CD component generates a bill of materials with [CycloneDX][ft53].                                                                                                                                                                     |
-|      Dependency scanning      | :white_check_mark: |        :x:         | For GitLab, the [Dependency Scanning][ft54] CI/CD component generates a bill of materials with CycloneDX.                                                                                                                                                   |
-|             SAST              | :white_check_mark: |        :x:         | For GitLab, the [SAST][ft55] CI/CD component performs a security analysis and provides a report with its results.                                                                                                                                           |
-|       Secret detection        | :white_check_mark: |        :x:         | For GitLab, the [Secret Detection][ft56] CI/CD component performs an analysis on potential leaked secrets in tracked files and provides a report with its results.                                                                                          |
-|         Stale issues          | :white_check_mark: | :white_check_mark: | GitLab rules are more flexible, marking stale issues only for those not opened by project members.                                                                                                                                                          |
-|      Greetings workflow       |        :x:         | :white_check_mark: | GitHub provides workflows to automatically reply to issues and merge requests with the [First Interaction][ft57] action.                                                                                                                                    |
-|      Dependency updates       | :white_check_mark: | :white_check_mark: | To reduce development overhead, GitLab projects use a [Renovate][ft33] configuration which should be paired with a separate repository implementing the [Renovate CI/CD component][ft58], while GitHub projects use [Dependabot][ft34] out of the box.      |
-|        Release drafter        |        :x:         | :white_check_mark: | [Release Drafter][ft32] is a custom workflow available on GitHub Marketplace. You may see the list of labels in [`release-drafter.yml`][ft59]. Works perfectly with any SemVer-compatible schema.                                                           |
-|    Changelog configuration    | :white_check_mark: |        :x:         | GitLab provides automatic changelog updates through their [API][ft31]. You may modify the template in [`changelog_config.yml`][ft60]. GitLab projects also leverage use of [Galactic Releases][ft61] to manage release cycles and release notes.            |
-|         Test Reports          | :white_check_mark: |        :x:         | JUnit XML reports are supported by GitLab to allow [test reports][ft62] to be displayed in pipelines and merge requests.                                                                                                                                    |
-|  CI control over pushed tags  | :white_check_mark: |     :warning:      | GitLab provides full control for tags pushed to the repository using [regex][ft63], while GitHub Actions is more restricted in how it [filters][ft64] workflows to run, and can only apply these filters at the top level, limiting workflow customization. |
+|              Feature              |       GitLab       |       GitHub       | Observations                                                                                                                                                                                                                                                |
+| :-------------------------------: | :----------------: | :----------------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|          Issue templates          | :white_check_mark: | :white_check_mark: | Both options feature automatic labels, but GitHub has an extra configuration to prevent the creation of empty issues.                                                                                                                                       |
+|   Merge/pull requests templates   | :white_check_mark: |     :warning:      | For GitHub, templates can only be accessed by applying custom [query parameters][ft43] during PR creation.                                                                                                                                                  |
+|     Project conditions checks     | :white_check_mark: | :white_check_mark: | A basic workflow to install the package and run tests, check codestyle and safety.                                                                                                                                                                          |
+|      Publication to TestPyPI      | :white_check_mark: | :white_check_mark: | For GitHub, the workflow uses the official [PyPI Publish action][ft44], while GitLab CI uses the [PyPI API][ft45].                                                                                                                                          |
+|        Publication to PyPI        | :white_check_mark: | :white_check_mark: | Both GitHub and GitLab projects use [trusted publishing][ft46] to upload packages to the canonical PyPI registry. Projects on both platforms will also publish the build files attestations.                                                                |
+| Documentation deployment to Pages | :white_check_mark: |        :x:         | Currently, only GitLab projects have CI jobs preconfigured to publish the documentation to the Pages environment, but we [plan][ft47] to provide this to GitHub projects as well.                                                                           |
+|     SLSA Level 3 provenances      | :white_check_mark: |        :x:         | GitLab projects use the [SLSA][ft48] CI/CD component to sign the PyPI attestations and the metadata generated during package building to comply with level 3 standards.                                                                                     |
+|         Image publication         | :white_check_mark: | :white_check_mark: | For GitHub, images are pushed to [Docker Hub][ft49], while GitLab CI pushes images to the repository's [Container Registry][ft50] by default (and can be reconfigured).                                                                                     |
+|          Snapshot images          | :white_check_mark: |        :x:         | For GitLab, the [Docker][ft51] CI/CD component is used and allows for pushing snapshot images for testing when a Merge Request is open.                                                                                                                     |
+|        Dockerfile linting         | :white_check_mark: |        :x:         | The Docker GitLab CI/CD component includes a job for linting the Dockerfile with [Hadolint][ft52].                                                                                                                                                          |
+|   Image vulnerability analysis    | :white_check_mark: |        :x:         | The Docker GitLab CI/CD component uses [Trivy][ft53] to scan the image for vulnerabilities.                                                                                                                                                                 |
+|         Docker SBOM files         | :white_check_mark: |        :x:         | The Docker GitLab CI/CD component generates a bill of materials with [CycloneDX][ft54].                                                                                                                                                                     |
+|        Dependency scanning        | :white_check_mark: |        :x:         | For GitLab, the [Dependency Scanning][ft55] CI/CD component generates a bill of materials with CycloneDX.                                                                                                                                                   |
+|               SAST                | :white_check_mark: |        :x:         | For GitLab, the [SAST][ft56] CI/CD component performs a security analysis and provides a report with its results.                                                                                                                                           |
+|         Secret detection          | :white_check_mark: |        :x:         | For GitLab, the [Secret Detection][ft57] CI/CD component performs an analysis on potential leaked secrets in tracked files and provides a report with its results.                                                                                          |
+|           Stale issues            | :white_check_mark: | :white_check_mark: | GitLab rules are more flexible, marking stale issues only for those not opened by project members.                                                                                                                                                          |
+|        Greetings workflow         |        :x:         | :white_check_mark: | GitHub provides workflows to automatically reply to issues and merge requests with the [First Interaction][ft58] action.                                                                                                                                    |
+|        Dependency updates         | :white_check_mark: | :white_check_mark: | To reduce development overhead, GitLab projects use a [Renovate][ft33] configuration which should be paired with a separate repository implementing the [Renovate CI/CD component][ft59], while GitHub projects use [Dependabot][ft34] out of the box.      |
+|          Release drafter          |        :x:         | :white_check_mark: | [Release Drafter][ft32] is a custom workflow available on GitHub Marketplace. You may see the list of labels in [`release-drafter.yml`][ft60]. Works perfectly with any SemVer-compatible schema.                                                           |
+|      Changelog configuration      | :white_check_mark: |        :x:         | GitLab provides automatic changelog updates through their [API][ft31]. You may modify the template in [`changelog_config.yml`][ft61]. GitLab projects also leverage use of [Galactic Releases][ft62] to manage release cycles and release notes.            |
+|           Test Reports            | :white_check_mark: |        :x:         | JUnit XML reports are supported by GitLab to allow [test reports][ft63] to be displayed in pipelines and merge requests.                                                                                                                                    |
+|    CI control over pushed tags    | :white_check_mark: |     :warning:      | GitLab provides full control for tags pushed to the repository using [regex][ft64], while GitHub Actions is more restricted in how it [filters][ft65] workflows to run, and can only apply these filters at the top level, limiting workflow customization. |
 
 ## :black_joker: How to Use It
 
@@ -489,7 +490,7 @@ with a single command.
 
 |      Command       | Details                                                                                                                                                             |
 | :----------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|   `invoke login`   | Log in to a container registry. For GitHub users, points to [Docker Hub][ft48]. For GitLab users, points to the repository's [integrated container registry][ft49]. |
+|   `invoke login`   | Log in to a container registry. For GitHub users, points to [Docker Hub][ft49]. For GitLab users, points to the repository's [integrated container registry][ft50]. |
 | `invoke container` | Build local container images, with the option to set multiple tags and an alternate repository to point.                                                            |
 |   `invoke push`    | Push all project images to a container registry, with the option to set an alternate repository to push.                                                            |
 |   `invoke prune`   | Remove all local images built for the project, with the option to set an alternate repository to point.                                                             |
@@ -978,24 +979,25 @@ any of the following:
 [ft44]: https://github.com/marketplace/actions/pypi-publish
 [ft45]: https://docs.pypi.org/api/upload/
 [ft46]: https://docs.pypi.org/trusted-publishers/
-[ft47]: https://gitlab.com/explore/catalog/components/slsa
-[ft48]: https://hub.docker.com/
-[ft49]: https://docs.gitlab.com/ee/user/packages/container_registry/
-[ft50]: https://gitlab.com/explore/catalog/to-be-continuous/docker
-[ft51]: https://github.com/hadolint/hadolint
-[ft52]: http://trivy.dev/latest/
-[ft53]: https://cyclonedx.org/
-[ft54]: https://gitlab.com/explore/catalog/components/dependency-scanning
-[ft55]: https://gitlab.com/explore/catalog/components/sast
-[ft56]: https://gitlab.com/explore/catalog/components/secret-detection
-[ft57]: https://github.com/marketplace/actions/first-interaction
-[ft58]: https://gitlab.com/explore/catalog/to-be-continuous/renovate
-[ft59]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/release-drafter.yml
-[ft60]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/changelog_config.yml
-[ft61]: https://gitlab.com/explore/catalog/galactipy/components/versioning
-[ft62]: https://docs.gitlab.com/ee/ci/testing/unit_test_reports.html
-[ft63]: https://docs.gitlab.com/ee/ci/jobs/job_rules.html#compare-a-variable-to-a-regular-expression
-[ft64]: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+[ft47]: https://gitlab.com/galactipy/galactipy/-/work_items/9
+[ft48]: https://gitlab.com/explore/catalog/components/slsa
+[ft49]: https://hub.docker.com/
+[ft50]: https://docs.gitlab.com/ee/user/packages/container_registry/
+[ft51]: https://gitlab.com/explore/catalog/to-be-continuous/docker
+[ft52]: https://github.com/hadolint/hadolint
+[ft53]: http://trivy.dev/latest/
+[ft54]: https://cyclonedx.org/
+[ft55]: https://gitlab.com/explore/catalog/components/dependency-scanning
+[ft56]: https://gitlab.com/explore/catalog/components/sast
+[ft57]: https://gitlab.com/explore/catalog/components/secret-detection
+[ft58]: https://github.com/marketplace/actions/first-interaction
+[ft59]: https://gitlab.com/explore/catalog/to-be-continuous/renovate
+[ft60]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/release-drafter.yml
+[ft61]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/changelog_config.yml
+[ft62]: https://gitlab.com/explore/catalog/galactipy/components/versioning
+[ft63]: https://docs.gitlab.com/ee/ci/testing/unit_test_reports.html
+[ft64]: https://docs.gitlab.com/ee/ci/jobs/job_rules.html#compare-a-variable-to-a-regular-expression
+[ft65]: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
 
 [htu1]: http://ivantomic.com/projects/ospnc/
 [htu2]: #gitlab-vs-github-features
