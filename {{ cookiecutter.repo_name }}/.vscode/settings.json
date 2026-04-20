@@ -100,6 +100,11 @@
             "icon": "info",
             "iconColour": "#545fff",
             "foreground": "#545fff"
+        },
+        "RECORD": {
+            "icon": "note",
+            "iconColour": "#58d6a2",
+            "foreground": "#41b98d"
         }
     },
     "todo-tree.general.tags": [
@@ -114,6 +119,7 @@
         "DEFINE",
         "TODO",
         "REFACTOR",
+        "RECORD",
         "[ ]"
     ],
     "todo-tree.general.tagGroups": {

@@ -1,4 +1,3 @@
-{%- set docker_repo = 'registry.gitlab.com/' ~ cookiecutter.scm_namespace ~ '/' ~ cookiecutter.repo_name if cookiecutter.__scm_platform_lc == 'gitlab' else cookiecutter.scm_namespace ~ '/' ~ cookiecutter.repo_name -%}
 # Docker for {{ cookiecutter.project_name }}
 
 ## Published Images
@@ -21,7 +20,7 @@ To run {{ cookiecutter.project_name }} inside a Docker container,
 use the following command:
 
 ```bash
-docker run -it --rm {{ docker_repo }}:latest
+docker run -it --rm {{ cookiecutter.__docker_registry }}:latest
 ```
 
 ## Local Building
@@ -45,7 +44,7 @@ This will create a default image `{{ cookiecutter.repo_name }}:wip-local`.
 You may provide
 multiple tags for the image,
 and you can also override
-the default `{{ docker_repo }}` repository:
+the default `{{ cookiecutter.__docker_registry }}` repository:
 
 ```bash
 invoke container -t sometag
@@ -69,12 +68,10 @@ invoke prune -t latest -t sometag
 ```
 
 <!-- Anchors -->
-{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 
+{% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [1]: https://docs.gitlab.com/user/packages/container_registry/
-[2]: {{ cookiecutter.__scm_base_url }}/container_registry
-{%- else %}
-
+{% else -%}
 [1]: https://hub.docker.com/
-[2]: https://hub.docker.com/r/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}
-{%- endif %}
+{% endif -%}
+[2]: {{ cookiecutter.__docker_repo }}

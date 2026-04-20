@@ -1,12 +1,45 @@
 # :closed_lock_with_key: Security
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#security-guide
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#guide
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 
 [[_TOC_]]
 {%- endif %}
 
 ## Announcements
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#announcements
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#announcements
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 ### :placard: Current Vulnerability Status
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#lucide-shield-alert-current-vulnerability-status
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#lucide-shield-alert-current-vulnerability-status
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 As of
 **{% now 'local', '%B %Y' %}**,
@@ -17,6 +50,17 @@ for more than 60 days
 in the {{ cookiecutter.project_name }} codebase.
 
 ### :atm: Current Security Advisories
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#lucide-radar-current-security-advisories
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#lucide-radar-current-security-advisories
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 We publish security advisories
 for any vulnerabilities
@@ -27,8 +71,30 @@ As of
 no security advisories have been announced.
 
 ## Guidelines
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#guidelines
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#guidelines
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 ### :postbox: Reporting Vulnerabilities
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#lucide-mailbox-reporting-vulnerabilities
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#lucide-mailbox-reporting-vulnerabilities
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 > [!WARNING]
 > Do not open public issues
@@ -96,6 +162,17 @@ We prefer all communications
 to be in **English**.
 
 ### :clipboard: Response Process
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#lucide-clipboard-check-response-process
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#lucide-clipboard-check-response-process
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 When you report a vulnerability,
 you can expect:
@@ -115,6 +192,17 @@ you can expect:
    on the disclosure timeline.
 
 ### :loudspeaker: Disclosure Policy
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#lucide-volume-2-disclosure-policy
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#lucide-volume-2-disclosure-policy
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 The following process
 will be triggered
@@ -126,7 +214,7 @@ your report:
    - This person will
      coordinate the fix and release process;
    - The problem is validated
-     against all supported Galactipy versions;
+     against all supported {{ cookiecutter.project_name }} versions;
    - Once confirmed,
      a list of all affected versions
      is determined;
@@ -177,6 +265,17 @@ to ensure that
 we handle disclosure consistently.
 
 ### :scroll: Code of Conduct and Vulnerability Reporting Guidelines
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#lucide-scroll-text-code-of-conduct-and-vulnerability-reporting-guidelines
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#lucide-scroll-text-code-of-conduct-and-vulnerability-reporting-guidelines
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 When reporting security vulnerabilities,
 reporters must adhere
@@ -235,8 +334,30 @@ Failure to follow these guidelines may result in:
   in cases of malicious intent.
 
 ## For Your Information
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#for-your-information
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#for-your-information
+{%- endif %}
 
-### :traffic_light: Severity levels
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
+
+### :traffic_light: Severity Levels
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#lucide-waves-ladder-severity-levels
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#lucide-waves-ladder-severity-levels
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 The {{ cookiecutter.project_name }} project's security team
 rates security problems
@@ -285,6 +406,17 @@ integrity
 or availability problems.
 
 #### Low
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#low
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#low
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 This is a security problem
 that is truly hard
@@ -299,6 +431,17 @@ are rare etc.
 <!-- UPDATEME with a past example when available -->
 
 #### Medium
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#medium
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#medium
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 This is a security problem
 that is less hard than **Low**
@@ -313,6 +456,17 @@ to also happen to become serious.
 <!-- UPDATEME with a past example when available -->
 
 #### High
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#high
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#high
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 This issue is in itself a serious problem
 with real world impact.
@@ -326,6 +480,17 @@ is not hard.
 <!-- UPDATEME with a past example when available -->
 
 #### Critical
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#critical
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#critical
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Easily exploitable
 by a remote unauthenticated attacker
@@ -341,19 +506,73 @@ using most {{ cookiecutter.project_name }} configurations.
 <!-- UPDATEME with a past example when available -->
 
 ### :accept: Supported Versions
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#lucide-shield-check-supported-versions
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#lucide-shield-check-supported-versions
+{%- endif %}
 
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
+
+{% if cookiecutter.version_schema == 'trunkver' -%}
+{{ cookiecutter.project_name }} follows the TrunkVer versioning schema,
+which brings on a rapid development cycle.
+No single version is considered
+for long-term support
+and users are expected
+to always use {{ cookiecutter.project_name }}
+with the latest available version.
+
+If a vulnerability is reported,
+the advisory will mention
+the release in which
+said vulnerability
+has been addressed.
+
+{% else -%}
 The following library versions
 are currently supported
 for security updates
 and vulnerability reporting:
 
 <!-- DEFINE your supported versions for security reporting -->
+{%- if cookiecutter.__schema_group == 'calver' %}
+
+|   Version   |   Support Status   | Commentary |
+|:-----------:|:------------------:|------------|
+{%- if cookiecutter.version_schema == 'calver-auto' %}
+| `v1{% now 'local', '%Y.%U' %}` | :white_check_mark: |            |
+{%- else %}
+| `v1{% now 'local', '%Y.%m' %}` | :white_check_mark: |            |
+{%- endif %}
+{%- else %}
 
 | Version  |   Support Status   | Commentary |
 |:--------:|:------------------:|------------|
+{%- if cookiecutter.__schema_group == 'semver-like' %}
 | `v0.1.0` | :white_check_mark: |            |
+{%- else %}
+|   `v1`   | :white_check_mark: |            |
+{%- endif %}
+{%- endif %}
 
+{% endif -%}
 ### :thinking: Use Contexts
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#lucide-drill-use-contexts
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#lucide-drill-use-contexts
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 {{ cookiecutter.project_name }} can be used
 {%- if cookiecutter.app_type == 'bare_repo' %}
@@ -377,6 +596,17 @@ and each has its own threat model
 and security posture notes.
 
 #### Python CLI Program
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#python-cli-program
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#python-cli-program
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 {{ cookiecutter.project_name }} ships as a Python module
 distributed via [PyPI][2].
@@ -391,6 +621,17 @@ and verified during the build process
 to ensure consistent and secure installations.
 
 #### Python Library
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#python-library
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#python-library
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 The package can also be imported directly
 as a Python library.
@@ -417,6 +658,17 @@ to avoid arbitrary code execution.
 
 {% if cookiecutter.__app_group == 'tui' -%}
 #### TUI Application
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#tui-application
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#tui-application
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 {{ cookiecutter.project_name }} also ships as a TUI application
 built with Textual,
@@ -455,8 +707,30 @@ across all usage contexts.
 {% endif -%}
 {% endif -%}
 ### :man_supervillain: Threat Model
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#lucide-venetian-mark-threat-model
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#lucide-venetian-mark-threat-model
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 #### Underlying Primitives
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#underlying-primitives
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#underlying-primitives
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 {% if cookiecutter.app_type == 'bare_repo' -%}
 <!-- DEFINE your underlying primitives for building the threat model -->
@@ -510,6 +784,17 @@ of every release.
 {% endif -%}
 {% endif -%}
 #### Underlying Libraries
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#underlying-libraries
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#underlying-libraries
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 {% if cookiecutter.__app_class == 'bare' -%}
 <!-- DEFINE your underlying libraries considerations within the threat model -->
@@ -561,6 +846,17 @@ and keep dependencies updated.
 
 {% endif -%}
 #### Build Pipelines
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#build-pipelines
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#build-pipelines
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 {% if cookiecutter.__app_class == 'bare' -%}
 <!-- DEFINE which potential harmful behaviour can take place if {{ cookiecutter.project_name }} is used in CI build pipelines -->
@@ -587,6 +883,17 @@ or execute arbitrary code.
 
 {% endif -%}
 #### File Access
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#file-access
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#file-access
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 {% if cookiecutter.__app_class == 'bare' -%}
 <!-- UPDATEME with how, where and when your application accesses files in the user's system -->
@@ -654,6 +961,17 @@ to prevent unauthorized file access:
 
 {% endif -%}
 ### :x: NOT Security Issues
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#lucide-door-open-not-security-issues
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#lucide-door-open-not-security-issues
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 This is an incomplete list of issues
 that are not considered vulnerability issues for {{ cookiecutter.project_name }},
@@ -669,6 +987,17 @@ that do not meet
 the criteria of a vulnerability.
 
 #### API Misuse
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#api-misuse
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#api-misuse
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 If a reported issue is only triggered
 by an application using the API
@@ -688,6 +1017,17 @@ which might end up with us
 still agreeing that it is a security problem.
 
 #### Local Attackers already Present
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#local-attackers-already-present
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#local-attackers-already-present
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 When an issue can only be attacked or misused
 by an attacker present
@@ -700,6 +1040,17 @@ they can probably already do much worse harm
 and the problem is not really in {{ cookiecutter.project_name }}.
 
 #### Debug, Experiments & Feature Flags
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#debug-experiments--feature-flags
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#debug-experiments--feature-flags
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Vulnerabilities in features
 which are off by default
@@ -715,6 +1066,17 @@ through `pip`.
 
 {% if cookiecutter.app_type != 'bare_repo' -%}
 #### Visible Command-line Arguments
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#visible-command-line-arguments
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#visible-command-line-arguments
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Sensitive user inputs
 are not automatically hidden in the CLI.
@@ -730,6 +1092,17 @@ as per standard security best practices.
 
 {% endif -%}
 #### Busy Loops
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#busy-loops
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#busy-loops
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Busy-loops that consume 100% CPU time
 but eventually end
@@ -744,6 +1117,17 @@ so while a prolonged such busy-loop is a nasty bug,
 we do not consider it a security problem.
 
 #### Saving Files
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#saving-files
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#saving-files
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 {{ cookiecutter.project_name }} cannot protect against attacks
 where an attacker has write access
@@ -752,6 +1136,17 @@ where {{ cookiecutter.project_name }} is directed to save files.
 
 {% if cookiecutter.app_type != 'bare_repo' -%}
 #### Tricking a User to Run a Command Line
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#tricking-a-user-to-run-a-command-line
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#tricking-a-user-to-run-a-command-line
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 A creative,
 misleading
@@ -769,6 +1164,17 @@ that can do something fatal
 
 {% endif -%}
 #### Upstream Dependencies
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#upstream-dependencies
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#upstream-dependencies
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 The project depends on libraries
 like Dynaconf and tomlkit,
@@ -789,6 +1195,17 @@ in the case of vulnerabilities.
 <!-- DEFINE additional concepts of non-security-issues -->
 
 ### :octagonal_sign: Security Measures
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#lucide-door-closed-locked-security-measures
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#lucide-door-closed-locked-security-measures
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 {{ cookiecutter.project_name }} implements
 the following measures
@@ -818,6 +1235,17 @@ to enhance code security:
   and releases.
 
 ### :lock_with_ink_pen: Security Guarantees
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#lucide-shield-plus-security-guarantees
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#lucide-shield-plus-security-guarantees
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 Security guarantees provided
 by the project:
@@ -860,6 +1288,17 @@ by:
 
 {% endif -%}
 ### :speech_balloon: Comments on This Policy
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#lucide-speech-comments-on-this-policy
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#lucide-speech-comments-on-this-policy
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 If you have any suggestions
 on how our security processes
@@ -875,6 +1314,17 @@ We will reply to you
 in due time.
 
 ### :mag: Relevant Policies
+{%- if cookiecutter.create_docs %}
+<!-- This section is also described in the formal documentation
+{%- if cookiecutter.licence != 'nos' %}
+  [link]: ./docs/development/security.md#lucide-log-out-relevant-policies
+{%- else %}
+  [link]: ./docs/noticeboard/advisories/guide.md#lucide-log-out-relevant-policies
+{%- endif %}
+
+  REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
+-->
+{%- endif %}
 
 <!-- UPDATEME with security policies of third-party libraries relevant to {{ cookiecutter.project_name }} -->
 

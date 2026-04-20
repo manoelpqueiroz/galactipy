@@ -32,6 +32,7 @@ APP_TYPE = "{{ cookiecutter.app_type }}"
 # avoid raising errors when testing
 CREATE_DOCKER = "{{ cookiecutter.create_docker }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
 USE_BDD = "{{ cookiecutter.use_bdd }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
+CREATE_DOCS = "{{ cookiecutter.create_docs }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
 ENABLE_FLAGS = "{{ cookiecutter.__debug }}" == "True"  # type: ignore[comparison-overlap] # noqa: PLR0133
 
 licences_dict = {
@@ -56,7 +57,9 @@ class ProjectFlags:  # noqa: D101
     remove_gitlab: bool
     remove_docker: bool
     remove_bdd: bool
+    remove_docs: bool
     remove_features: bool
+    is_oss_licence: bool
     version_schema: str
     app_type: str
 
@@ -197,6 +200,14 @@ def _get_files_to_delete(
         directory, flags.version_schema, flags.remove_gitlab
     )
 
+    documentation_files = _get_documentation_files(
+        directory,
+        flags.app_type,
+        flags.remove_docs,
+        flags.remove_bdd,
+        flags.is_oss_licence,
+    )
+
     gitlab_specific_files = [
         directory / ".gitlab-ci.yml",
         directory / ".triage-policies.yml",
@@ -227,6 +238,7 @@ def _get_files_to_delete(
 
     files_to_delete.extend(bdd_specific_files)
     files_to_delete.extend(tui_related_files)
+    files_to_delete.extend(documentation_files)
 
     return files_to_delete
 
@@ -255,9 +267,7 @@ def _get_cli_related_files(
             [
                 directory / package_name / "cli" / "commands" / "config",
                 directory / package_name / "cli" / "helpers" / "printer.py",
-                directory / package_name / "config" / "helpers.py",
-                directory / package_name / "config" / "manager.py",
-                directory / package_name / "config" / "mappings.py",
+                directory / package_name / "config",
                 directory / "tests" / "cli" / "test_config_command.py",
             ]
         )
@@ -461,6 +471,188 @@ def _get_schema_specific_files(
     return None
 
 
+def _get_documentation_files(
+    directory: Path,
+    app_type: str,
+    remove_docs: bool,
+    remove_bdd: bool,
+    oss_licence: bool,
+) -> list[Path]:
+    """Return the files to remove from the documentation.
+
+    Parameters
+    ----------
+    directory : Path
+        Root directory of the project.
+    app_type : str
+        Type of application defined by the `app_type` Cookiecutter variable.
+    remove_docs : bool
+        Flag for determining if documentation files will be kept.
+    remove_bdd : bool
+        Flag for determining if BDD will be used or not.
+    oss_licence : bool
+        Flag for determining if the project has an open source licence.
+    """
+    docs = directory / "docs"
+
+    if remove_docs:
+        return [docs, directory / "zensical.toml"]
+
+    doc_removals = _get_licence_related_doc_files(
+        docs, app_type, remove_bdd, oss_licence
+    )
+    app_type_removals = _get_app_type_related_doc_files(docs, app_type)
+
+    if app_type_removals is not None:
+        doc_removals.extend(app_type_removals)
+
+    return doc_removals
+
+
+def _get_licence_related_doc_files(
+    docs_directory: Path, app_type: str, remove_bdd: bool, oss_licence: bool
+) -> list[Path]:
+    """Return the files to remove from the documentation based on the licence.
+
+    Parameters
+    ----------
+    docs_directory : Path
+        Directory containing the project's documentation.
+    app_type : str
+        Type of application defined by the `app_type` Cookiecutter variable.
+    remove_bdd : bool
+        Flag for determining if BDD will be used or not.
+    oss_licence : bool
+        Flag for determining if the project has an open source licence.
+    """
+    if not oss_licence:
+        return [
+            docs_directory / "getting_started" / "tutorials.md",
+            docs_directory / "user_guide" / "faq.md",
+            docs_directory / "development",
+        ]
+
+    removals = [
+        docs_directory / "noticeboard" / "roadmap.md",
+        docs_directory / "noticeboard" / "advisories" / "guide.md",
+    ]
+
+    if app_type == "bare_repo":
+        removals.extend(
+            [
+                docs_directory / "development" / "dev_packages" / "cli",
+                docs_directory / "development" / "dev_packages" / "tui",
+                docs_directory / "development" / "dev_packages" / "internal",
+            ]
+        )
+
+    elif app_type == "bare_cli":
+        removals.extend(
+            [
+                docs_directory
+                / "development"
+                / "dev_packages"
+                / "cli"
+                / "pretty_print.md",
+                docs_directory / "development" / "dev_packages" / "tui",
+                docs_directory
+                / "development"
+                / "dev_packages"
+                / "internal"
+                / "config.md",
+            ]
+        )
+
+    elif app_type == "cli":
+        removals.append(docs_directory / "development" / "dev_packages" / "tui")
+
+    bdd_files = _get_bdd_related_doc_files(docs_directory, app_type, remove_bdd)
+
+    if bdd_files is not None:
+        removals.extend(bdd_files)
+
+    return removals
+
+
+def _get_bdd_related_doc_files(
+    docs_directory: Path, app_type: str, remove_bdd: bool
+) -> list[Path] | None:
+    """Return the files to remove from the documentation based on BDD option.
+
+    Parameters
+    ----------
+    docs_directory : Path
+        Directory containing the project's documentation.
+    app_type : str
+        Type of application defined by the `app_type` Cookiecutter variable.
+    remove_bdd : bool
+        Flag for determining if BDD will be used or not.
+    """
+    bare_repo_tests = docs_directory / "development" / "dev_packages" / "tests"
+
+    if remove_bdd:
+        removals = [docs_directory / "development" / "policies" / "bdd.md"]
+
+        if app_type == "bare_repo":
+            removals.append(bare_repo_tests)
+
+        else:
+            removals.extend(
+                [
+                    docs_directory
+                    / "development"
+                    / "dev_packages"
+                    / "tests"
+                    / "utils.md",
+                    docs_directory
+                    / "development"
+                    / "dev_packages"
+                    / "tests"
+                    / "helpers.md",
+                ]
+            )
+
+        return removals
+
+    if app_type == "bare_repo":
+        return [bare_repo_tests]
+
+    if app_type in ["bare_cli", "cli"]:
+        return [
+            docs_directory / "development" / "dev_packages" / "tests" / "helpers.md"
+        ]
+
+    return None
+
+
+def _get_app_type_related_doc_files(
+    docs_directory: Path, app_type: str
+) -> list[Path] | None:
+    """Return the files to remove from the documentation based on app type.
+
+    Parameters
+    ----------
+    docs_directory : Path
+        Directory containing the project's documentation.
+    app_type : str
+        Type of application defined by the `app_type` Cookiecutter variable.
+    """
+    if app_type == "bare_repo":
+        return [
+            docs_directory / "user_guide" / "cli",
+            docs_directory / "reference" / "config",
+            docs_directory / "reference" / "utilities",
+        ]
+
+    if app_type == "bare_cli":
+        return [
+            docs_directory / "user_guide" / "cli" / "options.md",
+            docs_directory / "reference" / "config",
+        ]
+
+    return None
+
+
 def _get_feature_files(directory: Path) -> list[Path]:
     """Return all feature files for removal.
 
@@ -610,18 +802,24 @@ def main() -> None:  # noqa: D103
     remove_gitlab = SCM_PLATFORM_LC != "gitlab"
     remove_docker = not CREATE_DOCKER
     remove_bdd = not USE_BDD
+    remove_docs = not CREATE_DOCS
     remove_features = not ENABLE_FLAGS
+
+    selected_licence = licences_dict[LICENCE]
+    oss_licence = selected_licence is not None
 
     config = ProjectFlags(
         remove_gitlab,
         remove_docker,
         remove_bdd,
+        remove_docs,
         remove_features,
+        oss_licence,
         VERSION_SCHEMA,
         APP_TYPE,
     )
 
-    generate_licence(directory=PROJECT_DIRECTORY, licence=licences_dict[LICENCE])
+    generate_licence(directory=PROJECT_DIRECTORY, licence=selected_licence)
 
     generate_templates(directory=PROJECT_DIRECTORY, scm_platform=SCM_PLATFORM_LC)
 

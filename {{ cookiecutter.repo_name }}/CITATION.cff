@@ -18,4 +18,12 @@ license: {{ cookiecutter.licence }}
 {%- else %}
 license-url: '{{ cookiecutter.__scm_base_url }}'  # UPDATEME with a link for your custom licence
 {%- endif %}
+{%- if cookiecutter.__schema_group == 'semver-like' %}
 version: '0.1.0'  # UPDATEME with your latest version
+{%- elif cookiecutter.version_schema == 'calver-auto' %}
+version: '1{% now 'local', '%Y.%U' %}'  # UPDATEME with your latest version
+{%- elif cookiecutter.version_schema == 'calver-explicit' %}
+version: '1{% now 'local', '%Y.%m' %}'  # UPDATEME with your latest version
+{%- elif cookiecutter.version_schema == 'solover' %}
+version: '1'  # UPDATEME with your latest version
+{%- endif %}

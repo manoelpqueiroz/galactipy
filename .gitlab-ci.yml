@@ -163,13 +163,6 @@ github-mirror-update:
         --output gh_mirror_create_mr_response.json \
       "$CI_API_V4_URL/projects/$CI_PROJECT_ID/merge_requests"
     - MR_ID=$(jq --raw-output .iid gh_mirror_create_mr_response.json)
-    - >
-      curl --request PUT --fail-with-body \
-        --header "PRIVATE-TOKEN: $GALACTIPY_BOT_API_TOKEN" \
-        --header "Content-Type: application/json" \
-        --data "@${GH_MIRROR_AUTOMERGE_PAYLOAD}" \
-        --output gh_mirror_automerge_mr_response.json \
-      "$CI_API_V4_URL/projects/$CI_PROJECT_ID/merge_requests/$MR_ID/merge"
   artifacts:
     name: gh-mirror-ops-$CI_COMMIT_TAG
     paths:

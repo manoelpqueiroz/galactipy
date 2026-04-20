@@ -74,7 +74,7 @@ class TestServiceRemovals:
         triage_file = gitlab_files["triage"]
         renovate_file = gitlab_files["renovate"]
 
-        config = ProjectFlags(True, False, False, False, "semver", "cli")
+        config = ProjectFlags(True, False, False, False, False, True, "semver", "cli")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -96,7 +96,7 @@ class TestServiceRemovals:
         dockerignore = docker_files["dockerignore"]
         components_directory = docker_files["gitlab_components"]
 
-        config = ProjectFlags(False, True, False, False, "semver", "cli")
+        config = ProjectFlags(False, True, False, False, False, True, "semver", "cli")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -115,7 +115,7 @@ class TestServiceRemovals:
         dockerignore = docker_files["dockerignore"]
         docker_workflow = docker_files["github_workflow"]
 
-        config = ProjectFlags(True, True, False, False, "semver", "cli")
+        config = ProjectFlags(True, True, False, False, False, True, "semver", "cli")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -144,7 +144,7 @@ class TestApplicationOptions:
         config_files = removal_tree["config"]
         logging_files = removal_tree["logging"]
 
-        config = ProjectFlags(False, False, False, False, "semver", "tui")
+        config = ProjectFlags(False, False, False, False, False, True, "semver", "tui")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -214,7 +214,7 @@ class TestApplicationOptions:
         config_files = removal_tree["config"]
         logging_files = removal_tree["logging"]
 
-        config = ProjectFlags(False, False, True, False, "semver", "tui")
+        config = ProjectFlags(False, False, True, False, False, True, "semver", "tui")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -275,7 +275,9 @@ class TestApplicationOptions:
         config_files = removal_tree["config"]
         logging_files = removal_tree["logging"]
 
-        config = ProjectFlags(False, False, False, False, "semver", "hybrid")
+        config = ProjectFlags(
+            False, False, False, False, False, True, "semver", "hybrid"
+        )
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -345,7 +347,9 @@ class TestApplicationOptions:
         config_files = removal_tree["config"]
         logging_files = removal_tree["logging"]
 
-        config = ProjectFlags(False, False, True, False, "semver", "hybrid")
+        config = ProjectFlags(
+            False, False, True, False, False, True, "semver", "hybrid"
+        )
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -406,7 +410,7 @@ class TestApplicationOptions:
         config_files = removal_tree["config"]
         logging_files = removal_tree["logging"]
 
-        config = ProjectFlags(False, False, False, False, "semver", "cli")
+        config = ProjectFlags(False, False, False, False, False, True, "semver", "cli")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -473,7 +477,7 @@ class TestApplicationOptions:
         config_files = removal_tree["config"]
         logging_files = removal_tree["logging"]
 
-        config = ProjectFlags(False, False, True, False, "semver", "cli")
+        config = ProjectFlags(False, False, True, False, False, True, "semver", "cli")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -530,7 +534,9 @@ class TestApplicationOptions:
         config_files = removal_tree["config"]
         logging_files = removal_tree["logging"]
 
-        config = ProjectFlags(False, False, False, False, "semver", "bare_cli")
+        config = ProjectFlags(
+            False, False, False, False, False, True, "semver", "bare_cli"
+        )
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -541,9 +547,7 @@ class TestApplicationOptions:
         assert not command_files["launch"].exists()
         assert not command_files["config"]["root"].exists()
 
-        assert config_files["constants"].exists()
-        assert not config_files["helpers"].exists()
-        assert not config_files["manager"].exists()
+        assert not config_files["root"].exists()
 
         assert logging_files["formatters"].exists()
         assert logging_files["parsers"].exists()
@@ -593,7 +597,9 @@ class TestApplicationOptions:
         config_files = removal_tree["config"]
         logging_files = removal_tree["logging"]
 
-        config = ProjectFlags(False, False, True, False, "semver", "bare_cli")
+        config = ProjectFlags(
+            False, False, True, False, False, True, "semver", "bare_cli"
+        )
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -604,9 +610,7 @@ class TestApplicationOptions:
         assert not command_files["launch"].exists()
         assert not command_files["config"]["root"].exists()
 
-        assert config_files["constants"].exists()
-        assert not config_files["helpers"].exists()
-        assert not config_files["manager"].exists()
+        assert not config_files["root"].exists()
 
         assert logging_files["formatters"].exists()
         assert logging_files["parsers"].exists()
@@ -633,7 +637,7 @@ class TestApplicationOptions:
         assert removal_tree["gitlab"]["ux"].exists()
         assert removal_tree["gitlab"]["arch"].exists()
 
-    def test_bare_with_bdd(self, removal_tree):
+    def test_bare_repo_with_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
 
         config_command_files = cli_files["commands"]["config"]
@@ -646,7 +650,9 @@ class TestApplicationOptions:
         config_files = removal_tree["config"]
         logging_files = removal_tree["logging"]
 
-        config = ProjectFlags(False, False, False, False, "semver", "bare_repo")
+        config = ProjectFlags(
+            False, False, False, False, False, True, "semver", "bare_repo"
+        )
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -686,7 +692,7 @@ class TestApplicationOptions:
         assert not removal_tree["gitlab"]["ux"].exists()
         assert not removal_tree["gitlab"]["arch"].exists()
 
-    def test_bare_no_bdd(self, removal_tree):
+    def test_bare_repo_no_bdd(self, removal_tree):
         cli_files = removal_tree["cli"]
 
         config_command_files = cli_files["commands"]["config"]
@@ -699,7 +705,9 @@ class TestApplicationOptions:
         config_files = removal_tree["config"]
         logging_files = removal_tree["logging"]
 
-        config = ProjectFlags(False, False, True, False, "semver", "bare_repo")
+        config = ProjectFlags(
+            False, False, True, False, False, True, "semver", "bare_repo"
+        )
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -761,7 +769,9 @@ class TestApplicationOptions:
         ux_template = removal_tree["github"]["ux"]
         arch_template = removal_tree["github"]["arch"]
 
-        config = ProjectFlags(True, True, True, True, "trunkver", "bare_repo")
+        config = ProjectFlags(
+            True, True, True, True, True, False, "trunkver", "bare_repo"
+        )
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -799,7 +809,9 @@ class TestVersioningSchemas:
 
         tag_workflow = github_files["weekly_tag_workflow"]
 
-        config = ProjectFlags(True, False, False, False, "calver-auto", "cli")
+        config = ProjectFlags(
+            True, False, False, False, False, True, "calver-auto", "cli"
+        )
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -814,7 +826,7 @@ class TestVersioningSchemas:
 
         tag_workflow = github_files["weekly_tag_workflow"]
 
-        config = ProjectFlags(True, False, False, False, schema, "cli")
+        config = ProjectFlags(True, False, False, False, False, True, schema, "cli")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -828,7 +840,7 @@ class TestVersioningSchemas:
         test_template = github_files["test_template"]
         test_workflow = github_files["test_workflow"]
 
-        config = ProjectFlags(True, False, False, False, "trunkver", "cli")
+        config = ProjectFlags(True, False, False, False, False, True, "trunkver", "cli")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -850,7 +862,7 @@ class TestVersioningSchemas:
         test_template = github_files["test_template"]
         test_workflow = github_files["test_workflow"]
 
-        config = ProjectFlags(True, False, False, False, schema, "cli")
+        config = ProjectFlags(True, False, False, False, False, True, schema, "cli")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -858,6 +870,481 @@ class TestVersioningSchemas:
         assert release_drafter_workflow.exists()
         assert test_template.exists()
         assert test_workflow.exists()
+
+
+class TestDocsGeneration:
+    def test_docs_removal(self, removal_tree):
+        docs = removal_tree["docs"]["root"]
+        zensical = removal_tree["docs"]["config"]
+
+        config = ProjectFlags(
+            False, False, False, True, True, True, "semver-like", "tui"
+        )
+
+        remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
+
+        assert not docs.exists()
+        assert not zensical.exists()
+
+    def test_oss_licence(self, removal_tree):
+        getting_started = removal_tree["docs"]["getting_started"]
+        tutorials = getting_started["tutorials"]
+        overview = getting_started["overview"]
+
+        dev = removal_tree["docs"]["development"]
+        dev_section = dev["index"]
+        dev_packages = dev["dev_packages"]["index"]
+
+        ref = removal_tree["docs"]["reference"]
+        ref_section = ref["index"]
+
+        noticeboard = removal_tree["docs"]["noticeboard"]
+        roadmap = noticeboard["roadmap"]
+        security_guide = noticeboard["security"]
+        advisories = noticeboard["advisories"]
+
+        config = ProjectFlags(
+            False, False, False, False, True, True, "semver-like", "tui"
+        )
+
+        remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
+
+        assert tutorials.exists()
+        assert overview.exists()
+
+        assert dev_section.exists()
+        assert dev_packages.exists()
+        assert ref_section.exists()
+
+        assert not roadmap.exists()
+        assert not security_guide.exists()
+        assert advisories.exists()
+
+    def test_non_oss_licence(self, removal_tree):
+        getting_started = removal_tree["docs"]["getting_started"]
+        tutorials = getting_started["tutorials"]
+        overview = getting_started["overview"]
+
+        dev = removal_tree["docs"]["development"]
+        dev_section = dev["root"]
+
+        ref = removal_tree["docs"]["reference"]
+        ref_section = ref["index"]
+
+        noticeboard = removal_tree["docs"]["noticeboard"]
+        roadmap = noticeboard["roadmap"]
+        security_guide = noticeboard["security"]
+        advisories = noticeboard["advisories"]
+
+        config = ProjectFlags(
+            False, False, False, False, True, False, "semver-like", "tui"
+        )
+
+        remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
+
+        assert not tutorials.exists()
+        assert overview.exists()
+
+        assert not dev_section.exists()
+        assert ref_section.exists()
+
+        assert roadmap.exists()
+        assert advisories.exists()
+        assert security_guide.exists()
+
+    @pytest.mark.parametrize("app_type", ["tui", "hybrid"])
+    def test_tui_options_with_bdd(self, removal_tree, app_type):
+        policies = removal_tree["docs"]["development"]["policies"]
+        policy_bdd = policies["bdd"]
+        policy_versioning = policies["versioning"]
+
+        cli_guide = removal_tree["docs"]["user_guide"]["cli"]
+        cli_guide_index = cli_guide["index"]
+        cli_guide_options = cli_guide["options"]
+
+        ref = removal_tree["docs"]["reference"]
+        ref_manager = ref["config"]["manager"]
+        ref_parser = ref["utils"]["parser"]
+        ref_logger = ref["utils"]["logger"]
+
+        dev_packages = removal_tree["docs"]["development"]["dev_packages"]
+        dev_printer = dev_packages["cli"]["printer"]
+        dev_converter = dev_packages["cli"]["converter"]
+        dev_themes = dev_packages["cli"]["themes"]
+        dev_tui = dev_packages["tui"]["app"]
+        dev_config = dev_packages["internal"]["config"]
+        dev_logging = dev_packages["internal"]["logging"]
+        dev_tests = dev_packages["tests"]["index"]
+        dev_helpers = dev_packages["tests"]["helpers"]
+        dev_utils = dev_packages["tests"]["utils"]
+
+        config = ProjectFlags(
+            False, False, False, False, True, True, "semver-like", app_type
+        )
+
+        remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
+
+        assert policy_bdd.exists()
+        assert policy_versioning.exists()
+
+        assert cli_guide_index.exists()
+        assert cli_guide_options.exists()
+
+        assert ref_manager.exists()
+        assert ref_parser.exists()
+        assert ref_logger.exists()
+
+        assert dev_printer.exists()
+        assert dev_converter.exists()
+        assert dev_themes.exists()
+        assert dev_tui.exists()
+        assert dev_config.exists()
+        assert dev_logging.exists()
+        assert dev_tests.exists()
+        assert dev_helpers.exists()
+        assert dev_utils.exists()
+
+    @pytest.mark.parametrize("app_type", ["tui", "hybrid"])
+    def test_tui_options_no_bdd(self, removal_tree, app_type):
+        policies = removal_tree["docs"]["development"]["policies"]
+        policy_bdd = policies["bdd"]
+        policy_versioning = policies["versioning"]
+
+        cli_guide = removal_tree["docs"]["user_guide"]["cli"]
+        cli_guide_index = cli_guide["index"]
+        cli_guide_options = cli_guide["options"]
+
+        ref = removal_tree["docs"]["reference"]
+        ref_manager = ref["config"]["manager"]
+        ref_parser = ref["utils"]["parser"]
+        ref_logger = ref["utils"]["logger"]
+
+        dev_packages = removal_tree["docs"]["development"]["dev_packages"]
+        dev_printer = dev_packages["cli"]["printer"]
+        dev_converter = dev_packages["cli"]["converter"]
+        dev_themes = dev_packages["cli"]["themes"]
+        dev_tui = dev_packages["tui"]["app"]
+        dev_config = dev_packages["internal"]["config"]
+        dev_logging = dev_packages["internal"]["logging"]
+        dev_tests = dev_packages["tests"]["index"]
+        dev_helpers = dev_packages["tests"]["helpers"]
+        dev_utils = dev_packages["tests"]["utils"]
+
+        config = ProjectFlags(
+            False, False, True, False, True, True, "semver-like", app_type
+        )
+
+        remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
+
+        assert not policy_bdd.exists()
+        assert policy_versioning.exists()
+
+        assert cli_guide_index.exists()
+        assert cli_guide_options.exists()
+
+        assert ref_manager.exists()
+        assert ref_parser.exists()
+        assert ref_logger.exists()
+
+        assert dev_printer.exists()
+        assert dev_converter.exists()
+        assert dev_themes.exists()
+        assert dev_tui.exists()
+        assert dev_config.exists()
+        assert dev_logging.exists()
+        assert dev_tests.exists()
+        assert not dev_helpers.exists()
+        assert not dev_utils.exists()
+
+    def test_cli_with_bdd(self, removal_tree):
+        policies = removal_tree["docs"]["development"]["policies"]
+        policy_bdd = policies["bdd"]
+        policy_versioning = policies["versioning"]
+
+        cli_guide = removal_tree["docs"]["user_guide"]["cli"]
+        cli_guide_index = cli_guide["index"]
+        cli_guide_options = cli_guide["options"]
+
+        ref = removal_tree["docs"]["reference"]
+        ref_manager = ref["config"]["manager"]
+        ref_parser = ref["utils"]["parser"]
+        ref_logger = ref["utils"]["logger"]
+
+        dev_packages = removal_tree["docs"]["development"]["dev_packages"]
+        dev_printer = dev_packages["cli"]["printer"]
+        dev_converter = dev_packages["cli"]["converter"]
+        dev_themes = dev_packages["cli"]["themes"]
+        dev_tui = dev_packages["tui"]["root"]
+        dev_config = dev_packages["internal"]["config"]
+        dev_logging = dev_packages["internal"]["logging"]
+        dev_tests = dev_packages["tests"]["index"]
+        dev_helpers = dev_packages["tests"]["helpers"]
+        dev_utils = dev_packages["tests"]["utils"]
+
+        config = ProjectFlags(
+            False, False, False, False, True, True, "semver-like", "cli"
+        )
+
+        remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
+
+        assert policy_bdd.exists()
+        assert policy_versioning.exists()
+
+        assert cli_guide_index.exists()
+        assert cli_guide_options.exists()
+
+        assert ref_manager.exists()
+        assert ref_parser.exists()
+        assert ref_logger.exists()
+
+        assert dev_printer.exists()
+        assert dev_converter.exists()
+        assert dev_themes.exists()
+        assert not dev_tui.exists()
+        assert dev_config.exists()
+        assert dev_logging.exists()
+        assert dev_tests.exists()
+        assert not dev_helpers.exists()
+        assert dev_utils.exists()
+
+    def test_cli_no_bdd(self, removal_tree):
+        policies = removal_tree["docs"]["development"]["policies"]
+        policy_bdd = policies["bdd"]
+        policy_versioning = policies["versioning"]
+
+        cli_guide = removal_tree["docs"]["user_guide"]["cli"]
+        cli_guide_index = cli_guide["index"]
+        cli_guide_options = cli_guide["options"]
+
+        ref = removal_tree["docs"]["reference"]
+        ref_manager = ref["config"]["manager"]
+        ref_parser = ref["utils"]["parser"]
+        ref_logger = ref["utils"]["logger"]
+
+        dev_packages = removal_tree["docs"]["development"]["dev_packages"]
+        dev_printer = dev_packages["cli"]["printer"]
+        dev_converter = dev_packages["cli"]["converter"]
+        dev_themes = dev_packages["cli"]["themes"]
+        dev_tui = dev_packages["tui"]["root"]
+        dev_config = dev_packages["internal"]["config"]
+        dev_logging = dev_packages["internal"]["logging"]
+        dev_tests = dev_packages["tests"]["index"]
+        dev_helpers = dev_packages["tests"]["helpers"]
+        dev_utils = dev_packages["tests"]["utils"]
+
+        config = ProjectFlags(
+            False, False, True, False, True, True, "semver-like", "cli"
+        )
+
+        remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
+
+        assert not policy_bdd.exists()
+        assert policy_versioning.exists()
+
+        assert cli_guide_index.exists()
+        assert cli_guide_options.exists()
+
+        assert ref_manager.exists()
+        assert ref_parser.exists()
+        assert ref_logger.exists()
+
+        assert dev_printer.exists()
+        assert dev_converter.exists()
+        assert dev_themes.exists()
+        assert not dev_tui.exists()
+        assert dev_config.exists()
+        assert dev_logging.exists()
+        assert dev_tests.exists()
+        assert not dev_helpers.exists()
+        assert not dev_utils.exists()
+
+    def test_bare_cli_with_bdd(self, removal_tree):
+        policies = removal_tree["docs"]["development"]["policies"]
+        policy_bdd = policies["bdd"]
+        policy_versioning = policies["versioning"]
+
+        cli_guide = removal_tree["docs"]["user_guide"]["cli"]
+        cli_guide_index = cli_guide["index"]
+        cli_guide_options = cli_guide["options"]
+
+        ref = removal_tree["docs"]["reference"]
+        ref_config = ref["config"]["root"]
+        ref_parser = ref["utils"]["parser"]
+        ref_logger = ref["utils"]["logger"]
+
+        dev_packages = removal_tree["docs"]["development"]["dev_packages"]
+        dev_printer = dev_packages["cli"]["printer"]
+        dev_converter = dev_packages["cli"]["converter"]
+        dev_themes = dev_packages["cli"]["themes"]
+        dev_tui = dev_packages["tui"]["root"]
+        dev_config = dev_packages["internal"]["config"]
+        dev_logging = dev_packages["internal"]["logging"]
+        dev_tests = dev_packages["tests"]["index"]
+        dev_helpers = dev_packages["tests"]["helpers"]
+        dev_utils = dev_packages["tests"]["utils"]
+
+        config = ProjectFlags(
+            False, False, False, False, True, True, "semver-like", "bare_cli"
+        )
+
+        remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
+
+        assert policy_bdd.exists()
+        assert policy_versioning.exists()
+
+        assert cli_guide_index.exists()
+        assert not cli_guide_options.exists()
+
+        assert not ref_config.exists()
+        assert ref_parser.exists()
+        assert ref_logger.exists()
+
+        assert not dev_printer.exists()
+        assert dev_converter.exists()
+        assert dev_themes.exists()
+        assert not dev_tui.exists()
+        assert not dev_config.exists()
+        assert dev_logging.exists()
+        assert dev_tests.exists()
+        assert not dev_helpers.exists()
+        assert dev_utils.exists()
+
+    def test_bare_cli_no_bdd(self, removal_tree):
+        policies = removal_tree["docs"]["development"]["policies"]
+        policy_bdd = policies["bdd"]
+        policy_versioning = policies["versioning"]
+
+        cli_guide = removal_tree["docs"]["user_guide"]["cli"]
+        cli_guide_index = cli_guide["index"]
+        cli_guide_options = cli_guide["options"]
+
+        ref = removal_tree["docs"]["reference"]
+        ref_config = ref["config"]["root"]
+        ref_parser = ref["utils"]["parser"]
+        ref_logger = ref["utils"]["logger"]
+
+        dev_packages = removal_tree["docs"]["development"]["dev_packages"]
+        dev_printer = dev_packages["cli"]["printer"]
+        dev_converter = dev_packages["cli"]["converter"]
+        dev_themes = dev_packages["cli"]["themes"]
+        dev_tui = dev_packages["tui"]["root"]
+        dev_config = dev_packages["internal"]["config"]
+        dev_logging = dev_packages["internal"]["logging"]
+        dev_tests = dev_packages["tests"]["index"]
+        dev_helpers = dev_packages["tests"]["helpers"]
+        dev_utils = dev_packages["tests"]["utils"]
+
+        config = ProjectFlags(
+            False, False, True, False, True, True, "semver-like", "bare_cli"
+        )
+
+        remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
+
+        assert not policy_bdd.exists()
+        assert policy_versioning.exists()
+
+        assert cli_guide_index.exists()
+        assert not cli_guide_options.exists()
+
+        assert not ref_config.exists()
+        assert ref_parser.exists()
+        assert ref_logger.exists()
+
+        assert not dev_printer.exists()
+        assert dev_converter.exists()
+        assert dev_themes.exists()
+        assert not dev_tui.exists()
+        assert not dev_config.exists()
+        assert dev_logging.exists()
+        assert dev_tests.exists()
+        assert not dev_helpers.exists()
+        assert not dev_utils.exists()
+
+    def test_bare_repo_with_bdd(self, removal_tree):
+        policies = removal_tree["docs"]["development"]["policies"]
+        policy_bdd = policies["bdd"]
+        policy_versioning = policies["versioning"]
+
+        user_guide = removal_tree["docs"]["user_guide"]
+        cli_guide = user_guide["cli"]["root"]
+        faq = user_guide["faq"]
+
+        ref = removal_tree["docs"]["reference"]
+        ref_index = ref["index"]
+        ref_config = ref["config"]["root"]
+        ref_utils = ref["utils"]["root"]
+
+        dev_packages = removal_tree["docs"]["development"]["dev_packages"]
+        dev_packages_index = dev_packages["index"]
+        dev_cli = dev_packages["cli"]["root"]
+        dev_tui = dev_packages["tui"]["root"]
+        dev_config = dev_packages["internal"]["root"]
+        dev_tests = dev_packages["tests"]["root"]
+
+        config = ProjectFlags(
+            False, False, False, False, True, True, "semver-like", "bare_repo"
+        )
+
+        remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
+
+        assert policy_bdd.exists()
+        assert policy_versioning.exists()
+
+        assert not cli_guide.exists()
+        assert faq.exists()
+
+        assert ref_index.exists()
+        assert not ref_config.exists()
+        assert not ref_utils.exists()
+
+        assert dev_packages_index.exists()
+        assert not dev_cli.exists()
+        assert not dev_tui.exists()
+        assert not dev_config.exists()
+        assert not dev_tests.exists()
+
+    def test_bare_repo_no_bdd(self, removal_tree):
+        policies = removal_tree["docs"]["development"]["policies"]
+        policy_bdd = policies["bdd"]
+        policy_versioning = policies["versioning"]
+
+        user_guide = removal_tree["docs"]["user_guide"]
+        cli_guide = user_guide["cli"]["root"]
+        faq = user_guide["faq"]
+
+        ref = removal_tree["docs"]["reference"]
+        ref_index = ref["index"]
+        ref_config = ref["config"]["root"]
+        ref_utils = ref["utils"]["root"]
+
+        dev_packages = removal_tree["docs"]["development"]["dev_packages"]
+        dev_packages_index = dev_packages["index"]
+        dev_cli = dev_packages["cli"]["root"]
+        dev_tui = dev_packages["tui"]["root"]
+        dev_config = dev_packages["internal"]["root"]
+        dev_tests = dev_packages["tests"]["root"]
+
+        config = ProjectFlags(
+            False, False, True, False, True, True, "semver-like", "bare_repo"
+        )
+
+        remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
+
+        assert not policy_bdd.exists()
+        assert policy_versioning.exists()
+
+        assert not cli_guide.exists()
+        assert faq.exists()
+
+        assert ref_index.exists()
+        assert not ref_config.exists()
+        assert not ref_utils.exists()
+
+        assert dev_packages_index.exists()
+        assert not dev_cli.exists()
+        assert not dev_tui.exists()
+        assert not dev_config.exists()
+        assert not dev_tests.exists()
 
 
 class TestFeatureFiles:
@@ -868,7 +1355,7 @@ class TestFeatureFiles:
         file2 = feature_files["file2"]
         directory = feature_files["directory"]
 
-        config = ProjectFlags(False, False, False, True, "semver", "cli")
+        config = ProjectFlags(False, False, False, False, True, True, "semver", "cli")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
@@ -893,7 +1380,7 @@ class TestFeatureFiles:
         sample2 = feature_files["sample2"]
         sample3 = feature_files["sample3"]
 
-        config = ProjectFlags(False, False, False, False, "semver", "cli")
+        config = ProjectFlags(False, False, False, False, False, True, "semver", "cli")
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
