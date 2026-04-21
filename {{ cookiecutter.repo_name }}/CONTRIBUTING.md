@@ -3952,6 +3952,9 @@ with a single command.
 |  `invoke build`  | Build the project wheels.                                                                                                   |
 | `invoke config`  | Configure PyPI repositories, requiring at least an API token, with optional repository name and URL arguments.              |
 | `invoke publish` | Publish the project to a registry, defaulting to the canonical PyPI repository, with an option to build the project wheels. |
+{%- if cookiecutter.create_docs %}
+|  `invoke docs`   | Build the project documentation with Zensical.                                                                              |
+{%- endif %}
 
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 >>> [!note]

@@ -472,6 +472,7 @@ with a single command.
 |  `invoke build`  | Build the project wheels.                                                                                                           |
 | `invoke config`  | :small_red_triangle: Configure PyPI repositories, requiring at least an API token, with optional repository name and URL arguments. |
 | `invoke publish` | Publish the project to a registry, defaulting to the canonical PyPI repository, with an option to build the project wheels.         |
+|  `invoke docs`   | Build the project documentation with [Zensical][ft40].                                                                              |
 
 > [!NOTE]
 > :small_red_triangle: When provided with no `--repo` option,
