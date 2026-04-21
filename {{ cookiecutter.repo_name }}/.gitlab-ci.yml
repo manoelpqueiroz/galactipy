@@ -575,9 +575,9 @@ publish-pages:
         paths:
           - docs/**/*
           - zensical.toml
-      when: never # UPDATEME by removing this line when docs are ready to be published
+      when: never # TODO remove this line when your docs are ready to be published
   script:
-    - zensical build --clean
+    - invoke docs --clean
   pages:
     publish: site
 {%- endif %}
