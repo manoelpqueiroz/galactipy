@@ -1,3 +1,13 @@
+## 3.1.1 (2026-04-21)
+
+### :metro: Template Internals (1 change)
+
+- [:wrench: Reorder Changelog documentation category for the template](galactipy/galactipy@e84a7967edb71191719709cf739ba13d132a9c74)
+
+### :scroll: Project Policies (1 change)
+
+- [:wrench: Refine project MR templates checklist](galactipy/galactipy@f067785df6125bd0c6d8f8b2f6fe0645c0466904)
+
 ## 3.1.0 (2026-04-21)
 
 ### :milky_way: Components (1 change)
