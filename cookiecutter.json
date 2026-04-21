@@ -253,6 +253,7 @@
   "__gitlab_org": "https://gitlab.com/groups/{{ cookiecutter.scm_namespace }}/-",
   "__gitlab_premium_templates": "https://gitlab.com/{{ cookiecutter.scm_namespace }}/templates/-/blob/master",
   "__contributing_prefix": "{{ cookiecutter.__gitlab_premium_templates ~ '/CONTRIBUTING.md' if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' }}",
+  "__pages_url": "https://{{ cookiecutter.scm_namespace }}.{{ cookiecutter.__scm_platform_lc }}.io/{{ cookiecutter.repo_name }}",
 
   "_roadmap_mapping": {
     "GitLab Premium/Ultimate": "epic",

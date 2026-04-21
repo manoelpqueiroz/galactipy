@@ -563,7 +563,25 @@ publish-registry:
   artifacts:
     reports:
       dotenv: package.env
-{%- else %}
+{%- endif %}
+{%- if cookiecutter.create_docs %}
+
+publish-pages:
+  stage: publish
+  extends: .install_project
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      changes:
+        paths:
+          - docs/**/*
+          - zensical.toml
+      when: never # TODO remove this line when your docs are ready to be published
+  script:
+    - invoke docs --clean
+  pages:
+    publish: site
+{%- endif %}
+{%- if cookiecutter.version_schema == 'trunkver' %}
 
 {{ cookiecutter.__coverage_lc }}-report:
   stage: coverage

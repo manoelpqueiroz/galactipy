@@ -3952,6 +3952,9 @@ with a single command.
 |  `invoke build`  | Build the project wheels.                                                                                                   |
 | `invoke config`  | Configure PyPI repositories, requiring at least an API token, with optional repository name and URL arguments.              |
 | `invoke publish` | Publish the project to a registry, defaulting to the canonical PyPI repository, with an option to build the project wheels. |
+{%- if cookiecutter.create_docs %}
+|  `invoke docs`   | Build the project documentation with Zensical.                                                                              |
+{%- endif %}
 
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 >>> [!note]
@@ -4467,7 +4470,11 @@ what we call the "formal" documentation
 for {{ cookiecutter.project_name }}.
 These are the docs
 that are exposed to the public
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+in the [GitLab Pages][pages].
+{%- else %}
 via a static website.
+{%- endif %}
 
 We use Zensical
 as the backbone of our documentation,
@@ -7509,6 +7516,9 @@ what we are doing matters!
 [anatomy]: #anatomy
 [docstrings]: #docstring-convention
 [invoke]: #invoke-usage
+{%- if cookiecutter.create_docs and cookiecutter.__scm_platform_lc == 'gitlab' %}
+[pages]: {{ cookiecutter.__pages_url }}
+{%- endif %}
 
 [badge1]: https://img.shields.io/badge/issues_without_{{ cookiecutter.__roadmap_item }}-006272?style=for-the-badge
 {%- if cookiecutter.scm_platform == 'GitLab Free' %}
@@ -7870,7 +7880,11 @@ what we are doing matters!
 [docs8]: https://mkdocstrings.github.io/
 [docs9]: https://mkdocstrings.github.io/python/
 [docs10]: https://zensical.org/docs/setup/navigation/#navigation-sections
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+[docs11]: {{ cookiecutter.__pages_url }}/development/for_developers/workflow/invoke
+{%- else %}
 [docs11]: {{ cookiecutter.__scm_link_url }}/blob/master/docs/development/for_developers/workflow/invoke.md
+{%- endif %}
 [docs12]: https://zensical.org/docs/setup/tags/
 {%- endif %}
 {%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}

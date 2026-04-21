@@ -31,6 +31,13 @@ dynamic = ["version", "classifiers"]
 [project.urls]
 homepage = "{{ cookiecutter.__scm_base_url }}"
 "Contributing Guidelines" = "{{ cookiecutter.__scm_link_url }}/tree/master/CONTRIBUTING.md"
+{%- if cookiecutter.create_docs %}
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+documentation = "{{ cookiecutter.__pages_url }}"
+{%- else %}
+documentation = "{{ cookiecutter.__scm_link_url }}/blob/master/docs/index.md"
+{%- endif %}
+{%- endif %}
 
 
 [build-system]
