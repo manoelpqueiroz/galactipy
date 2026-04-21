@@ -1,3 +1,36 @@
+## 3.1.0 (2026-04-21)
+
+### :milky_way: Components (1 change)
+
+- [:sparkles: Enable documentation publishing to GitLab Pages](galactipy/galactipy@3afa062f9896a67ddcb42f89945a97be0c3aea7b) ([merge request](galactipy/galactipy!210))
+
+### :metro: Template Internals (4 changes)
+
+- [:wrench: Configure template `pyproject.toml` with documentation link](galactipy/galactipy@677fdebba75cebbe424200391adbac18d45cc517) ([merge request](galactipy/galactipy!210))
+- [:construction_worker: Use Invoke task for documentation building](galactipy/galactipy@d9ee561fcb32c95f45b00284fa1115e37b576658) ([merge request](galactipy/galactipy!210))
+- [:hammer: Create Invoke task to build documentation](galactipy/galactipy@5b320fe62adc0211e2bc12211501ecb5ec8e58de) ([merge request](galactipy/galactipy!210))
+- [:arrow_up: Update template pre-commit hooks](galactipy/galactipy@9f5bed10e9547c51fe8fa262bfcec838a9c98a57)
+
+### :ballot_box: Settings & Options (1 change)
+
+- [:cookie: Add hidden Cookiecutter variable for Pages URL](galactipy/galactipy@b3f4f73ba01e9f43fd08c60178b113372af4945b) ([merge request](galactipy/galactipy!210))
+
+### :pouring_liquid: Nits (2 changes)
+
+- [:shinto_shrine: Improve Jinja whitespace control configuration in template `tasks.py`](galactipy/galactipy@b3c52849fef6d45928908aa97ca3017eb687f383)
+- [:shinto_shrine: Fix missing Jinja conditional for template `CONTRIBUTING.md`](galactipy/galactipy@2a80204749305d003055b00a5038c171c8cecdff)
+
+### :books: Documentation (4 changes)
+
+- [:pencil: Update Invoke reference with documentation building task](galactipy/galactipy@8e7b7ff00cbb4ec8fe06a29e36081e51d0b4886c) ([merge request](galactipy/galactipy!210))
+- [:pencil: Add badge pointing to documentation homepage in template `README.md`](galactipy/galactipy@a9cc29e82116fab10384e2576cc3c7325769ca63) ([merge request](galactipy/galactipy!210))
+- [:pencil: Update comparison table with Pages feature](galactipy/galactipy@598937269b87a1393b26d09d670fa953ff8f1b44) ([merge request](galactipy/galactipy!210))
+- [:pencil: Update template Markdown files to point to GitLab Pages URL](galactipy/galactipy@b69ccc1ba589a4f71ca3583e20b6ee3c1468a495) ([merge request](galactipy/galactipy!210))
+
+### fixes (1 change)
+
+- [:rotating_light: Fix Ruff warnings for restructured template](galactipy/galactipy@f49a0571dd680ed360052b4d92715616a1b7d410)
+
 ## 3.0.0 (2026-04-20)
 
 ### :milky_way: Components (8 changes)
