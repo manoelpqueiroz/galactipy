@@ -59,7 +59,7 @@ This template should be used to propose and discuss the maintenance of existing 
 - Regarding user nugding:
   - [ ] I have evaluated that this change does not require specifying or changing `TODO`/`UPDATEME` comments;
   - [ ] I have included or removed the relevant `TODO` and `UPDATEME` comments to orient users on next steps after generating projects with Galactipy;
-- [ ] I have bumped the Galactipy [version][8] appropriately as my final commit for this change.
+- [ ] I have bumped the Galactipy [version][8] appropriately and updated the date keyword in `CITATION.cff` as my final commit for this change.
 >>>
 
 >>> [!tip] :reminder_ribbon: Contribution control
