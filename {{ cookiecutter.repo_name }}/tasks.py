@@ -315,6 +315,16 @@ def publish(
             "`pyproject.toml`?"
         )
         raise Exit(msg)
+{%- if cookiecutter.create_docs %}
+
+
+@task(call(venv, hide=True), aliases=["build-docs"])
+def docs(c: Context, clean: bool = False) -> None:
+    """Build documentation with Zensical."""
+    flag = "--clean" if clean else ""
+
+    c.run(f"{c.venv_bin_path}/zensical build {flag}", pty=IS_UNIX_OS)
+{%- endif %}
 
 
 # Formatting, linting and other checks
