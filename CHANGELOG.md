@@ -15,6 +15,10 @@
 
 - [:cookie: Add hidden Cookiecutter variable for Pages URL](galactipy/galactipy@b3f4f73ba01e9f43fd08c60178b113372af4945b) ([merge request](galactipy/galactipy!210))
 
+### :toolbox: Fixes (1 change)
+
+- [:rotating_light: Fix Ruff warnings for restructured template](galactipy/galactipy@f49a0571dd680ed360052b4d92715616a1b7d410)
+
 ### :pouring_liquid: Nits (2 changes)
 
 - [:shinto_shrine: Improve Jinja whitespace control configuration in template `tasks.py`](galactipy/galactipy@b3c52849fef6d45928908aa97ca3017eb687f383)
@@ -26,10 +30,6 @@
 - [:pencil: Add badge pointing to documentation homepage in template `README.md`](galactipy/galactipy@a9cc29e82116fab10384e2576cc3c7325769ca63) ([merge request](galactipy/galactipy!210))
 - [:pencil: Update comparison table with Pages feature](galactipy/galactipy@598937269b87a1393b26d09d670fa953ff8f1b44) ([merge request](galactipy/galactipy!210))
 - [:pencil: Update template Markdown files to point to GitLab Pages URL](galactipy/galactipy@b69ccc1ba589a4f71ca3583e20b6ee3c1468a495) ([merge request](galactipy/galactipy!210))
-
-### fixes (1 change)
-
-- [:rotating_light: Fix Ruff warnings for restructured template](galactipy/galactipy@f49a0571dd680ed360052b4d92715616a1b7d410)
 
 ## 3.0.0 (2026-04-20)
 
