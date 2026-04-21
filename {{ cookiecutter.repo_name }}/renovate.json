@@ -1,9 +1,9 @@
-{%- raw %}
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "timezone": "America/Sao_Paulo",
   "branchPrefix": "bot-",
   "commitMessageAction": "Renovate",
+{% raw -%}
   "commitMessageExtra": "with {{updateType}} {{#if isPinDigest}}{{{newDigestShort}}}{{else}}version {{#if isMajor}}{{prettyNewMajor}}.0{{else}}{{prettyNewVersion}}{{/if}}{{/if}}",
   "constraints": {
     "python": "{% endraw %}^{{ cookiecutter.minimal_python_version }}{% raw %}"
