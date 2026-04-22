@@ -54,7 +54,7 @@ This template should be used to propose and discuss the inclusion of new tools a
 - [ ] I have provided links to repository and configuration reference of the proposed tool/service as inline comments;
 - [ ] I have updated the documentation promoting the tool/service as a feature, along with any additional references that might be useful for users;
 - [ ] I have included the relevant `TODO` and `UPDATEME` comments to orient users on next steps after generating projects with Galactipy;
-- [ ] I have bumped the Galactipy [version][8] appropriately as my final commit for this change.
+- [ ] I have bumped the Galactipy [version][8] appropriately and updated the date keyword in `CITATION.cff` as my final commit for this change.
 >>>
 
 >>> [!tip] :reminder_ribbon: Contribution control

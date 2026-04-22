@@ -1,3 +1,79 @@
+## 3.2.0 (2026-04-22)
+
+### :ballot_box: Settings & Options (3 changes)
+
+- [:cookie: Rework Cookiecutter variables to prioritise lowercase strings](galactipy/galactipy@f898bbe6dada70461b163c0c38c0d64a28d0b948) ([merge request](galactipy/galactipy!212))
+- [:recycle: Refactor existing Cookiecutter variables](galactipy/galactipy@0289af4ae2a4a009330c5738b97e1a6cf014ae25) ([merge request](galactipy/galactipy!212))
+- [:cookie: Enable subgroup namespaces for projects](galactipy/galactipy@17b374ac8ac944aa5f4a7717061ee1a6eb39a08b) ([merge request](galactipy/galactipy!212))
+
+### :factory_worker: Template Maintenance (1 change)
+
+- [:recycle: Refactor pre-gen hooks to reduce function parameters](galactipy/galactipy@f4a8d5b3571bb96db03c377077d2095cf9e6964b) ([merge request](galactipy/galactipy!212))
+
+### :gear: Project Internals (4 changes)
+
+- [:wrench: Update project `pyproject.toml` with bumpversion replacements](galactipy/galactipy@34bfe481470c2ccb7e21527c70c895331b5594e5) ([merge request](galactipy/galactipy!212))
+- [:art: Standardise variables related to namespaces](galactipy/galactipy@18cd93b8cbfb645b446581f933a3087a7c63b599) ([merge request](galactipy/galactipy!212))
+- [:hammer: Update pre-gen hooks to allow subgroup namespaces](galactipy/galactipy@0bd7bd614ec125b534510196b7927865640cc35f) ([merge request](galactipy/galactipy!212))
+- [:wrench: Remove template libraries group from Renovate](galactipy/galactipy@f8954ea6cc8911284a23a3ac224b63b599b8adbb)
+
+### :repeat: Design & Validation (1 change)
+
+- [:white_check_mark: Adequate unit tests to updated pre-gen hooks logic](galactipy/galactipy@3433af41fe535948c76c45cdb8e3da2a0b7b489a) ([merge request](galactipy/galactipy!212))
+
+### :pouring_liquid: Nits (3 changes)
+
+- [:bulb: Specify Galactipy version in `cookiecutter-config-file.yml`](galactipy/galactipy@1bf4d5cabe228baba94dbedf104e5bdde52172b3) ([merge request](galactipy/galactipy!212))
+- [:shinto_shrine: Update Jinja conditionals with overhauled configuration](galactipy/galactipy@27a64c8a5e39d9c851fcc0e35cf53a6252084823) ([merge request](galactipy/galactipy!212))
+- [:shinto_shrine: Fix Jinja whitespace control for Renovate configuration](galactipy/galactipy@dc07eade16a814b7bc35b162a6e5cee9fef2b3af)
+
+### :books: Documentation (1 change)
+
+- [:pencil: Update project `README.md` with GitLab Premium/Ultimate separation](galactipy/galactipy@d3bf7ad528270b9b522a3c2a780cf1c9d45f2872) ([merge request](galactipy/galactipy!212))
+
+## 3.1.1 (2026-04-21)
+
+### :metro: Template Internals (1 change)
+
+- [:wrench: Reorder Changelog documentation category for the template](galactipy/galactipy@e84a7967edb71191719709cf739ba13d132a9c74)
+
+### :scroll: Project Policies (1 change)
+
+- [:wrench: Refine project MR templates checklist](galactipy/galactipy@f067785df6125bd0c6d8f8b2f6fe0645c0466904)
+
+## 3.1.0 (2026-04-21)
+
+### :milky_way: Components (1 change)
+
+- [:sparkles: Enable documentation publishing to GitLab Pages](galactipy/galactipy@3afa062f9896a67ddcb42f89945a97be0c3aea7b) ([merge request](galactipy/galactipy!210))
+
+### :metro: Template Internals (4 changes)
+
+- [:wrench: Configure template `pyproject.toml` with documentation link](galactipy/galactipy@677fdebba75cebbe424200391adbac18d45cc517) ([merge request](galactipy/galactipy!210))
+- [:construction_worker: Use Invoke task for documentation building](galactipy/galactipy@d9ee561fcb32c95f45b00284fa1115e37b576658) ([merge request](galactipy/galactipy!210))
+- [:hammer: Create Invoke task to build documentation](galactipy/galactipy@5b320fe62adc0211e2bc12211501ecb5ec8e58de) ([merge request](galactipy/galactipy!210))
+- [:arrow_up: Update template pre-commit hooks](galactipy/galactipy@9f5bed10e9547c51fe8fa262bfcec838a9c98a57)
+
+### :ballot_box: Settings & Options (1 change)
+
+- [:cookie: Add hidden Cookiecutter variable for Pages URL](galactipy/galactipy@b3f4f73ba01e9f43fd08c60178b113372af4945b) ([merge request](galactipy/galactipy!210))
+
+### :toolbox: Fixes (1 change)
+
+- [:rotating_light: Fix Ruff warnings for restructured template](galactipy/galactipy@f49a0571dd680ed360052b4d92715616a1b7d410)
+
+### :pouring_liquid: Nits (2 changes)
+
+- [:shinto_shrine: Improve Jinja whitespace control configuration in template `tasks.py`](galactipy/galactipy@b3c52849fef6d45928908aa97ca3017eb687f383)
+- [:shinto_shrine: Fix missing Jinja conditional for template `CONTRIBUTING.md`](galactipy/galactipy@2a80204749305d003055b00a5038c171c8cecdff)
+
+### :books: Documentation (4 changes)
+
+- [:pencil: Update Invoke reference with documentation building task](galactipy/galactipy@8e7b7ff00cbb4ec8fe06a29e36081e51d0b4886c) ([merge request](galactipy/galactipy!210))
+- [:pencil: Add badge pointing to documentation homepage in template `README.md`](galactipy/galactipy@a9cc29e82116fab10384e2576cc3c7325769ca63) ([merge request](galactipy/galactipy!210))
+- [:pencil: Update comparison table with Pages feature](galactipy/galactipy@598937269b87a1393b26d09d670fa953ff8f1b44) ([merge request](galactipy/galactipy!210))
+- [:pencil: Update template Markdown files to point to GitLab Pages URL](galactipy/galactipy@b69ccc1ba589a4f71ca3583e20b6ee3c1468a495) ([merge request](galactipy/galactipy!210))
+
 ## 3.0.0 (2026-04-20)
 
 ### :milky_way: Components (8 changes)

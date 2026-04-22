@@ -8,7 +8,7 @@ tags:
 
 {% endraw -%}
 # Styling
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#styling
 
@@ -23,7 +23,7 @@ tags:
 {%- endif %}
 
 ## Codestyle
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#codestyle
 
@@ -51,7 +51,7 @@ for the project,
 use a [Project Policy Proposal {{ cookiecutter.__mr_acronym }}][2].
 
 ## Docstring Convention
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#docstring-convention
 
@@ -120,7 +120,7 @@ when making your contributions.
 
 {% endif -%}
 ## Semantic Line Breaks
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#semantic-line-breaks
 

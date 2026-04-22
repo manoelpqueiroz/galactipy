@@ -9,7 +9,7 @@ tags:
 
 {% endraw -%}
 # Behaviour-Driven Development
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#behaviour-driven-development
 
@@ -129,7 +129,7 @@ contributors are valued
 and everyone feels empowered to grow and succeed.
 
 ## References for BDD
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#references-for-bdd
 

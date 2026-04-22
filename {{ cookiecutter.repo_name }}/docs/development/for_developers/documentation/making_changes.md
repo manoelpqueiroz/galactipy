@@ -8,7 +8,7 @@ tags:
 
 {% endraw -%}
 # Making Changes to the Documentation
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#making-changes-to-the-documentation
 
@@ -76,7 +76,7 @@ helping users more easily navigate
 through the pages.
 
 ## API Collection
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#api-collection
 
@@ -273,7 +273,7 @@ for full compliance
 with documentation rules.
 
 ## Policy Mirroring
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#policy-mirroring
 
@@ -328,7 +328,7 @@ to suit the environment
 where it is presented.
 
 ## Page Tags
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#page-tags
 

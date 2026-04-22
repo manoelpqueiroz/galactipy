@@ -146,13 +146,6 @@
       ]
     },
     {
-      "description": "Group template libraries",
-      "groupName": "template libraries",
-      "matchFileNames": ["*cookiecutter.repo_name*/pyproject.toml"],
-      "commitMessagePrefix": ":construction:",
-      "separateMajorMinor": false
-    },
-    {
       "description": "Group foundational libraries for templates",
       "groupName": "foundational template libraries",
       "branchTopic": "templating-libraries",

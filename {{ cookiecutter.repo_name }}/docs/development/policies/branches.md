@@ -7,7 +7,7 @@ tags:
 
 {% endraw -%}
 # Branch Organization
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#branch-organization
 
@@ -50,7 +50,7 @@ or `wip-` prefixes
 so the CI will ignore it.
 
 ## Branch Naming Standards
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#branch-naming-standards
 

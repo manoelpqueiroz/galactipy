@@ -1021,7 +1021,7 @@ to enhance code security:
   through Dependabot;
 {%- endif %}
 - Automated security scans
-{%- if cookiecutter.coverage_service == 'Codacy' %}
+{%- if cookiecutter.coverage_service == 'codacy' %}
   using Bandit locally
   and Codacy externally;
 {%- else %}

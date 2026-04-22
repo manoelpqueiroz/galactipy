@@ -7,7 +7,7 @@ tags:
 
 {% endraw -%}
 # Contributing by Reviewing Changes
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in project and group CONTRIBUTING.md guides
   [project]: ../../../../CONTRIBUTING.md#contributing-by-reviewing-changes
   [group]: {{ cookiecutter.__contributing_prefix }}#contributing-by-reviewing-changes

@@ -31,6 +31,13 @@ dynamic = ["version", "classifiers"]
 [project.urls]
 homepage = "{{ cookiecutter.__scm_base_url }}"
 "Contributing Guidelines" = "{{ cookiecutter.__scm_link_url }}/tree/master/CONTRIBUTING.md"
+{%- if cookiecutter.create_docs %}
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+documentation = "{{ cookiecutter.__pages_url }}"
+{%- else %}
+documentation = "{{ cookiecutter.__scm_link_url }}/blob/master/docs/index.md"
+{%- endif %}
+{%- endif %}
 
 
 [build-system]
@@ -305,6 +312,7 @@ task-tags = [
 [tool.ruff.lint.per-file-ignores]
 {%- if cookiecutter.app_type != 'bare_repo' %}
 "{{ cookiecutter.package_name }}/cli/commands/**.py" = ["FBT", "ARG001", "RUF013", "RUF067"]
+"wrappers.py" = ["ANN202", "ANN002", "ANN003"]
 "text_tools.py" = ["B019"]
 {%- endif %}
 "tests/**.py" = [

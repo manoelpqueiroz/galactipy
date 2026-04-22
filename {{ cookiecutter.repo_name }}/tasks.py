@@ -315,6 +315,16 @@ def publish(
             "`pyproject.toml`?"
         )
         raise Exit(msg)
+{%- if cookiecutter.create_docs %}
+
+
+@task(call(venv, hide=True), aliases=["build-docs"])
+def docs(c: Context, clean: bool = False) -> None:
+    """Build documentation with Zensical."""
+    flag = "--clean" if clean else ""
+
+    c.run(f"{c.venv_bin_path}/zensical build {flag}", pty=IS_UNIX_OS)
+{%- endif %}
 
 
 # Formatting, linting and other checks
@@ -445,8 +455,9 @@ def sweep(c: Context) -> None:
         )
 
         raise Exit(msg)
+{%- if cookiecutter.create_docker %}
 
-{%+ if cookiecutter.create_docker %}
+
 # Docker commands
 @task(aliases=["docker-login"])
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
@@ -532,8 +543,9 @@ def push(
         docker_images = " ".join(f"{repository}:{tag}" for tag in tags)
 
     c.run(f"docker push -f {docker_images}", pty=IS_UNIX_OS)
+{%- endif %}
 
-{% endif %}
+
 # Cleaning commands for Bash, Zsh and PowerShell
 @task(aliases=["rm-cache", "clean-cache"])
 def remove_cache(c: Context) -> None:

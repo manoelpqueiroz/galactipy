@@ -26,7 +26,7 @@ Please read the [`CONTRIBUTING`][1] guide for best practices when opening issues
 - [ ] I have provided a concise and clear title for this issue;
 - [ ] I have populated this issue with as much detail as possible, including links to issues, MRs and external sources;
 - [ ] I have assigned proper labels for this issue;
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 - [ ] I have set the fitting [status][3] for this issue;
 - [ ] I have uploaded the relevant [Designs][4] for further discussing implementation;
 - [ ] I have added the **acceptance criteria** for closing this issue as [tasks][5].
@@ -36,7 +36,7 @@ Please read the [`CONTRIBUTING`][1] guide for best practices when opening issues
 {%- endif %}
 
 ## Reviewer Checklist
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 
 - [ ] I attest that the **acceptance criteria** are well-defined and encompass all expected development for this issue;
 - [ ] I have flagged the work item with the appropriate [`To Do` status][6].
@@ -46,7 +46,7 @@ Please read the [`CONTRIBUTING`][1] guide for best practices when opening issues
 {%- endif %}
 
 [2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#start-with-a-merge-request
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
 [3]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#work-item-tracking
 [4]: https://docs.gitlab.com/user/project/issues/design_management/
 [5]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#tasks-are-used-as-acceptance-criteria-for-issues
@@ -57,7 +57,7 @@ Please read the [`CONTRIBUTING`][1] guide for best practices when opening issues
 {%- endif %}
 
 /assign me
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 /label ~"seeking-contributors::opinion"
 {%- else %}
 /label ~"seeking-contributors" ~"seeking-input" ~"sts-needs-refinement"

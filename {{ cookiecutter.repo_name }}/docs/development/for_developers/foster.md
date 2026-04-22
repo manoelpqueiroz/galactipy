@@ -8,7 +8,7 @@ tags:
 
 {% endraw -%}
 # Fostering an Inviting Community
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#fostering-an-inviting-community
 
@@ -112,7 +112,7 @@ to achieve this goal:
      Why not turn them into [starter assignments][9]?
 
 ## About Starter Assignments
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#about-starter-assignments
 

@@ -7,7 +7,7 @@ tags:
 
 {% endraw -%}
 # Roles and Attributions
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#roles-and-attributions
 
@@ -22,7 +22,7 @@ tags:
 {%- endif %}
 
 ## The Responsibility of the {{ cookiecutter.__mr_term }} Author
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#the-responsibility-of-the-{{ cookiecutter.__mr_term_slug }}-author
 
@@ -191,7 +191,7 @@ This saves reviewers time
 and helps authors catch mistakes earlier.
 
 ### Recommendations to Get Your Changes Merged Faster
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#recommendations-to-get-your-changes-merged-faster
 
@@ -258,7 +258,7 @@ and helps authors catch mistakes earlier.
    in a single {{ cookiecutter.__mr_acronym }}.
 
 ### Recommendations for Facilitating Reviews
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#recommendations-for-facilitating-reviews
 
@@ -351,7 +351,7 @@ the first time.
   `@` mention the reviewer instead.
 
 ## The Responsibility of the Reviewer
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#the-responsibility-of-the-reviewer
 
@@ -543,7 +543,7 @@ or ridiculed for even trying
 run counter to the [Code of Conduct][4].
 
 ### The Right Balance
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#the-right-balance
 
@@ -629,14 +629,14 @@ created by a submitter.
   to find the right balance,
   ask other people
   about their opinion
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
   and use the [`seeking-contributors::opinion`][7] label.
 {%- else %}
   and use the [`seeking-input`][7] label.
 {%- endif %}
 
 ## The Responsibility of the Maintainers
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#the-responsibility-of-the-maintainers
 
@@ -722,9 +722,9 @@ and explain why in a comment.
 [4]: {{ cookiecutter.__scm_link_url }}/blob/master/CODE_OF_CONDUCT.md
 [5]: https://josipmisko.com/posts/code-review-nit
 [6]: ../policies/styling.md#codestyle
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 [7]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Aopinion&type%5B%5D=issue
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+{%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
 [7]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-input&type%5B%5D=issue
 {%- else %}
 [7]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-input

@@ -12,7 +12,7 @@ on:
       upload-coverage:
         required: true
         type: boolean
-{%- endraw %}{% if cookiecutter.__coverage_lc == 'codacy' %}{% raw %}
+{%- endraw %}{% if cookiecutter.coverage_service == 'codacy' %}{% raw %}
     secrets:
       codacy-token:
         required: false
@@ -56,11 +56,11 @@ jobs:
       - name: 👮 Run safety checks
         run: invoke security
 
-      - name: 📤 Upload Coverage to {% endraw %}{{ cookiecutter.coverage_service }}{% raw %}
+      - name: 📤 Upload Coverage to {% endraw %}{{ cookiecutter.__coverage_title }}{% raw %}
         if: ${{ inputs.upload-coverage }}
-{%- endraw %}{% if cookiecutter.__coverage_lc == 'coveralls' %}
+{%- endraw %}{% if cookiecutter.coverage_service == 'coveralls' %}
         uses: coverallsapp/github-action@v2.3.6
-{%- elif cookiecutter.__coverage_lc == 'codacy' %}
+{%- else %}
         uses: codacy/codacy-coverage-reporter-action@v1.3.0
         with:
           project-token: {% raw %}${{ secrets.codacy-token }}{% endraw %}

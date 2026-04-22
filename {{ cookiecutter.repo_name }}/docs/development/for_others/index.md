@@ -7,7 +7,7 @@ tags:
 
 {% endraw -%}
 # Other Ways to Contribute
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in project and group CONTRIBUTING.md guides
   [project]: ../../../../CONTRIBUTING.md#reminder_ribbon-other-ways-to-contribute
   [group]: {{ cookiecutter.__contributing_prefix }}#reminder_ribbon-other-ways-to-contribute

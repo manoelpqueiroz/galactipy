@@ -18,7 +18,7 @@ as easy as possible.
 This guide is aimed at
 facilitating onboarding
 for new collaborators
-{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
 and serving as the single source of truth
 for the project's rules
 and modus operandi.
@@ -123,7 +123,7 @@ contributing as a developer:
   [link]: ./docs/development/development_setup.md#development-setup
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
   AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
@@ -134,7 +134,7 @@ To start contributing to {{ cookiecutter.project_name }},
 you should start
 by [forking][setup0a] the upstream repository
 to your own {{ cookiecutter.__scm_platform_base }} [group][setup0b].
-{%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group != 'glab-paid' %}
 We manage contributions
 from the community
 through the [fork][setup0x] system,
@@ -218,7 +218,7 @@ for a [first contribution][workflow].
   [link]: ./docs/development/index.md#not-sure-where-to-start
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
   AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
@@ -299,9 +299,9 @@ refer to the following items:
     defined for the project;
 {%- endif %}
 - Take a look at
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
   the organisation's [{{ cookiecutter.__roadmap_item.capitalize() }}s][topic2] page
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+{%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
   the project's [{{ cookiecutter.__roadmap_item.capitalize() }}s][topic2] page
 {%- else %}
   our [{{ cookiecutter.__roadmap_item.capitalize() }}s][topic2] page
@@ -317,7 +317,7 @@ refer to the following items:
 {%- if cookiecutter.__scm_platform_lc == 'github' %}
   and discussions
 {%- endif %}
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
   labelled with [`seeking-contributors`][query5]
 {%- else %}
   labelled with [`seeking-builders`][query5]
@@ -335,7 +335,7 @@ refer to the following items:
   guide issue authors toward better clarification
   and promote project activity
   through constructive discussions.
-{%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group != 'glab-paid' %}
 
 If the steps above seem daunting,
 we can relate!
@@ -572,7 +572,7 @@ an even more robust contributor:
 -->
 {%- endif %}
 
-{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
 {% if cookiecutter.licence != 'nos' -%}
 ### Code of Conduct
 {%- if cookiecutter.create_docs %}
@@ -628,7 +628,7 @@ Therefore,
 a {{ cookiecutter.__scm_platform_base }} account is needed
 to start contributing.
 
-{% if cookiecutter.licence != 'nos' and cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.licence != 'nos' and cookiecutter.__scm_platform_group != 'glab-paid' -%}
 #### Contributor Promotion
 {%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
@@ -705,7 +705,7 @@ for candidate contributors
 in more detail.
 
 {% endif -%}
-{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
 #### Roadmap Management
 
 Medium and long-term vision for {{ cookiecutter.project_name }}
@@ -860,7 +860,7 @@ the completed {{ cookiecutter.__roadmap_item }}.
   [link]: ./docs/development/policies/developing.md#work-item-tracking
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
   AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
@@ -868,7 +868,7 @@ the completed {{ cookiecutter.__roadmap_item }}.
 {%- endif %}
 
 [![Issues][badge1]][query1]
-{%- if cookiecutter.scm_platform == 'GitLab Free' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-free' %}
 [![Tasks][badge1a]][query1a]
 {%- endif %}
 
@@ -888,7 +888,7 @@ the completed {{ cookiecutter.__roadmap_item }}.
 [![RFIs][badge9]][query9]
 [![RFSs][badge10]][query10]
 
-{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
 {{ cookiecutter.project_name }} development is iterative
 and structured preferably around [{{ cookiecutter.__mr_term }}s][swmr].
 Whenever project advancements are not immediately deliverable,
@@ -912,14 +912,14 @@ Use cases for this type of work item include:
   [link]: ./docs/development/policies/developing.md#labels
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
   AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
 -->
 {%- endif %}
 
-{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
 {{ cookiecutter.project_name }} defines
 the following labels
 to mark
@@ -933,7 +933,7 @@ and {{ cookiecutter.__mr_term }}s,
 contributors should be familiar
 with their usage:
 
-{% if cookiecutter.scm_platform == 'GitLab Free' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-free' -%}
 | Development Domain  |             Label             | Usage                                                                                                             |
 | :-----------------: | :---------------------------: | ----------------------------------------------------------------------------------------------------------------- |
 |      Back-End       |      ~"backend-external"      | Changes modules interacting directly with external APIs.                                                          |
@@ -1217,7 +1217,7 @@ specific to this project:
 -->
 
 {% endif -%}
-{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
 #### General Practices
 {%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
@@ -1371,7 +1371,7 @@ to indicate work items
 whose authors need help from the community
 in further advancing with development.
 
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
 The `opinion` value label marks work items which
 {% else -%}
 The `seeking-input` label marks work items which
@@ -1384,7 +1384,7 @@ to provide opinion on the matter,
 as a consensus for its final scope
 has not been reached yet.
 
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
 The `delivery` value label,
 {% else -%}
 The `seeking-builders` label,
@@ -1397,7 +1397,7 @@ if a contributor is interested
 in delivering the solution.
 It is similar in this manner
 to the `starter-assignment` labels,
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 with the difference that `seeking-contributors::delivery` is aimed
 {%- else %}
 with the difference that `seeking-builders` is aimed
@@ -1410,7 +1410,7 @@ with intermediate experience in the project.
 Contributors planning
 on refining an issue
 or {{ cookiecutter.__mr_term }}
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 to mark with the `seeking-contributors::delivery` label
 {%- else %}
 to mark with the `seeking-builders` label
@@ -1480,7 +1480,7 @@ of the same type:
 issues can only block **issues**,
 {{ cookiecutter.__task_item }}s can only block **{{ cookiecutter.__task_item}}s**.
 
-{% if cookiecutter.scm_platform == 'GitLab Free' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-free' -%}
 ##### Tasks Should Have no Milestones
 {%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
@@ -1960,14 +1960,14 @@ or detailed documentation.
   [link]: ./docs/development/policies/committing.md#commit-customs
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
   AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
 -->
 {%- endif %}
 
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' and cookiecutter.commit_convention == 'gitmoji' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-paid' and cookiecutter.commit_convention == 'gitmoji' -%}
 #### Gitmoji
 {%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
@@ -1990,7 +1990,7 @@ to apply on commits:
 | :-----: | :-------: | ----- |
 -->
 
-{% elif cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% elif cookiecutter.__scm_platform_group != 'glab-paid' -%}
 {% if cookiecutter.commit_convention == 'gitmoji' -%}
 #### Gitmoji
 {%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
@@ -2363,7 +2363,7 @@ and defined in the [`changelog-config.yml`][committing2] file:
 {%- endif %}
 
 {% endif -%}
-{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
 ### Styling
 {%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
@@ -2623,7 +2623,7 @@ to expect the following:
 Any updates that do not comply
 with these rules will be blocked.
 
-{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
 ### Continuous Integration
 {%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
@@ -2643,7 +2643,7 @@ to automate the following development streams:
 
 - Testing;
 - Test coverage reporting;
-{%- if cookiecutter.__coverage_lc == 'codacy' %}
+{%- if cookiecutter.coverage_service == 'codacy' %}
 - Code quality analysis;
 {%- endif %}
 - Releases.
@@ -2653,7 +2653,7 @@ unless its CI pipeline passes.
 The project's CI configuration
 runs under more strict rules
 and no jobs are allowed to fail.
-{%- if cookiecutter.__coverage_lc == 'codacy' %}
+{%- if cookiecutter.coverage_service == 'codacy' %}
 This includes the external job
 provided by [Codacy][ci1a],
 which is used for code quality assurance.
@@ -2696,7 +2696,7 @@ for more information
 on licencing the project.
 {%- endif %}
 
-{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
 ## :book: Our Philosophy
 {%- if cookiecutter.licence != 'nos' %}
 {%- if cookiecutter.create_docs %}
@@ -3296,7 +3296,7 @@ _The best good first issues are the ones you open yourself._
   [link]: ./docs/development/for_developers/index.md#proposing-changes
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
   AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
@@ -3467,7 +3467,7 @@ will involve:
   - The policies that orient
     {{ cookiecutter.project_name }} development
     and contributor interactions.
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 
 >>> [!tip]
 The [group-level guide][intro1] contains guidance
@@ -3486,7 +3486,7 @@ on the following topics not covered here:
   [link]: ./docs/development/for_developers/prepare.md#preparing-to-contribute
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
   AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
@@ -3499,7 +3499,7 @@ on the following topics not covered here:
   [link]: ./docs/development/for_developers/prepare.md#choosing-what-to-contribute
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
   AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
@@ -3515,7 +3515,7 @@ clear,
 easy to evaluate,
 and already pass basic checks.
 
-{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
 Sometimes,
 a contributor will already have
 a particular new change or fix
@@ -3530,7 +3530,7 @@ if the proposed change
 is likely to be
 relevant,
 new
-{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
 and actionable:
 
 - Is it clear
@@ -3596,7 +3596,7 @@ than changes
 to less fundamental building blocks.
 
 {% endif -%}
-{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
 #### Opening Admissible {{ cookiecutter.__mr_term }}s
 {%- if cookiecutter.licence != 'nos' and cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
@@ -3811,7 +3811,7 @@ A non-exhaustive list of steps to consider:
   on first thought?
 - Are all checks passing
   with `invoke sweep`?
-{%- if cookiecutter.__coverage_lc == 'codacy' %}
+{%- if cookiecutter.coverage_service == 'codacy' %}
 - Did you address
   all issues raised by Codacy
   for the {{ cookiecutter.__mr_term }} branch in question?
@@ -3952,6 +3952,9 @@ with a single command.
 |  `invoke build`  | Build the project wheels.                                                                                                   |
 | `invoke config`  | Configure PyPI repositories, requiring at least an API token, with optional repository name and URL arguments.              |
 | `invoke publish` | Publish the project to a registry, defaulting to the canonical PyPI repository, with an option to build the project wheels. |
+{%- if cookiecutter.create_docs %}
+|  `invoke docs`   | Build the project documentation with Zensical.                                                                              |
+{%- endif %}
 
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 >>> [!note]
@@ -4095,7 +4098,7 @@ do so through a [**Project Policy Proposal**][roadmap1].
 
 <!-- DEFINE the guidelines on how to implement and handle feature flags -->
 
-{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' and cookiecutter.create_docs -%}
+{% if cookiecutter.__scm_platform_group != 'glab-paid' and cookiecutter.create_docs -%}
 ### Documentation Guide
 {%- if cookiecutter.licence != 'nos' %}
 <!-- This section is also described in the formal documentation
@@ -4467,7 +4470,11 @@ what we call the "formal" documentation
 for {{ cookiecutter.project_name }}.
 These are the docs
 that are exposed to the public
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+in the [GitLab Pages][pages].
+{%- else %}
 via a static website.
+{%- endif %}
 
 We use Zensical
 as the backbone of our documentation,
@@ -5934,7 +5941,7 @@ created by a submitter.
   to find the right balance,
   ask other people
   about their opinion
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
   and use the [`seeking-contributors::opinion`][query2] label.
 {%- else %}
   and use the [`seeking-input`][query2] label.
@@ -6015,7 +6022,7 @@ If still awaiting further approvals from others,
 and explain why in a comment.
 
 {% endif -%}
-{% if cookiecutter.licence != 'nos' and cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.licence != 'nos' and cookiecutter.__scm_platform_group != 'glab-paid' -%}
 ### How to Behave among Other Contributors
 {%- if cookiecutter.create_docs %}
 <!-- This section is also described in the formal documentation
@@ -6309,7 +6316,7 @@ will reach out to you.
   [link]: ./docs/development/for_others/index.md#other-ways-to-contribute
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
   AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
@@ -6358,7 +6365,7 @@ faster communication and resolution.
   [link]: ./docs/development/for_others/help_others.md#contributing-by-helping-other-people
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
   AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
@@ -6367,7 +6374,7 @@ faster communication and resolution.
 
 [![RFSs][badge10]][query10]
 
-{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
 Inspired by [Typer's][help1] welcoming community
 and their positive outlook
 on the effect of [collective intelligence][help2],
@@ -6687,14 +6694,14 @@ whenever possible.
   [link]: ./docs/development/for_others/user_requests.md#contributing-through-user-requests
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
   AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
 -->
 {%- endif %}
 
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
 >>> [!tip] :pushpin: Further Guidance
 You can find more information
 about user requests
@@ -6710,7 +6717,7 @@ go through the [`README`][readme] file and links
 directing to support content first,
 rather than filing a request.
 
-{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
 {{ cookiecutter.project_name }} implements
 three types of requests for users
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
@@ -6870,7 +6877,7 @@ of a quick response:
   [link]: ./docs/development/for_others/user_requests.md#specific-guidelines-for-requests-for-support
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
   AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
@@ -6916,7 +6923,7 @@ as the means to reach the team.
   [link]: ./docs/development/for_others/user_requests.md#specific-guidelines-for-requests-for-improvement
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
   AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
@@ -6928,7 +6935,7 @@ when users feel a need for development
 related to features provided by {{ cookiecutter.project_name }},
 either existent
 or yet-to-be-implemented.
-{%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group != 'glab-paid' %}
 They are much welcome,
 as they help us engage with the community
 on a more proactive level
@@ -6994,7 +7001,7 @@ to make your case stronger:
   once this feature is integrated
   into {{ cookiecutter.project_name }}?
 
-{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
 Also,
 why not take this opportunity
 to [become a contributor][bias]?
@@ -7010,7 +7017,7 @@ is to make one [that comes from yourself][gfi].
   [link]: ./docs/development/for_others/user_requests.md#specific-guidelines-for-requests-for-correction
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
   AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
@@ -7028,7 +7035,7 @@ A bug is a **demonstrable** problem
 that is caused by
 the code in the repository.
 
-{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
 Guidelines for [RFCs][request2a]:
 
 - Use the [issue search][query8]
@@ -7100,7 +7107,7 @@ to accelerate the process:
 These details
 will help people
 to fix any potential issues.
-{%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group != 'glab-paid' %}
 It is important to note
 that **all** reports are valuable,
 even if they are not perfectly detailed.
@@ -7150,14 +7157,14 @@ by the development team.
   [link]: ./docs/development/for_others/review_changes.md#contributing-by-reviewing-changes
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
   AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
 -->
 {%- endif %}
 
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
 >>> [!tip] :pushpin: Further Guidance
 You can find more information
 about reviewing changes
@@ -7267,13 +7274,13 @@ We appreciate your commitment beforehand!
   [link]: ./docs/development/for_others/documentation_changes.md#contributing-with-documentation-changes
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
   AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
 -->
 
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
 >>> [!tip] :pushpin: Further Guidance
 You can find more information
 about documentation changes
@@ -7340,7 +7347,7 @@ to our docs.
   [link]: ./docs/development/for_others/roadmap_maintenance.md#contributing-to-roadmap-maintenance
 
   REMEMBER TO MIRROR ANY CHANGES ON BOTH FILES
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
   AND TO MERGE ANY SUPPLEMENTARY CONTENT FROM THE GROUP-LEVEL CONTRIBUTING GUIDE
   TO PROVIDE READERS WITH THE COMPLETE CONTENT
 {%- endif %}
@@ -7348,11 +7355,11 @@ to our docs.
 {%- endif %}
 
 [![Issues][badge1]][query1]
-{%- if cookiecutter.scm_platform == 'GitLab Free' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-free' %}
 [![Tasks][badge1a]][query1a]
 {%- endif %}
 
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
 >>> [!tip] :pushpin: Further Guidance
 You can find more information
 about roadmap maintenance
@@ -7471,7 +7478,7 @@ what we are doing matters!
 [bdd]: {{ cookiecutter.__contributing_prefix }}#behaviour-driven-development
 {%- endif %}
 [practices]: {{ cookiecutter.__contributing_prefix }}#general-practices
-{%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group != 'glab-paid' %}
 [swnjw]: #say-why-not-just-what
 [bias]: #operate-with-a-bias-for-action
 [admission]: #opening-admissible-{{ cookiecutter.__mr_term_slug }}s
@@ -7509,9 +7516,12 @@ what we are doing matters!
 [anatomy]: #anatomy
 [docstrings]: #docstring-convention
 [invoke]: #invoke-usage
+{%- if cookiecutter.create_docs and cookiecutter.__scm_platform_lc == 'gitlab' %}
+[pages]: {{ cookiecutter.__pages_url }}
+{%- endif %}
 
 [badge1]: https://img.shields.io/badge/issues_without_{{ cookiecutter.__roadmap_item }}-006272?style=for-the-badge
-{%- if cookiecutter.scm_platform == 'GitLab Free' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-free' %}
 [badge1a]: https://img.shields.io/badge/{{ cookiecutter.__task_item }}s_with_{{ cookiecutter.__roadmap_item }}-08b1ab?style=for-the-badge
 {%- endif %}
 [badge2]: https://img.shields.io/badge/seeking_input-69ad6b?style=for-the-badge
@@ -7527,7 +7537,7 @@ what we are doing matters!
 [badge9]: https://img.shields.io/badge/requests_for_improvement-0055ff?style=for-the-badge
 [badge10]: https://img.shields.io/badge/requests_for_support-ed9121?style=for-the-badge
 
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
 [query1]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&parent_id=None
 [query2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Aopinion&type%5B%5D=issue
 [query3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&status=Needs%20Triage&type%5B%5D=issue
@@ -7542,7 +7552,7 @@ what we are doing matters!
 [query9]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Aimprovement&type%5B%5D=issue
 [query10]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Asupport&type%5B%5D=issue
 
-{% elif cookiecutter.scm_platform == 'GitLab Free' -%}
+{% elif cookiecutter.__scm_platform_group == 'glab-free' -%}
 [query1]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&milestone_title=None
 [query1a]: {{ cookiecutter.__scm_link_url }}/issues?state=all&type%5B%5D=task&milestone_title=Any
 [query2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-input&type%5B%5D=issue
@@ -7578,7 +7588,7 @@ what we are doing matters!
 [knowledge]: https://www.teachfloor.com/elearning-glossary/institutional-knowledge
 
 {% endif -%}
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
 [intro1]: {{ cookiecutter.__contributing_prefix }}
 
 {% else -%}
@@ -7594,7 +7604,7 @@ what we are doing matters!
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [setup0a]: {{ cookiecutter.__scm_link_url }}/forks/new
 [setup0b]: https://docs.gitlab.com/user/group/
-{% if cookiecutter.scm_platform == 'GitLab Free' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-free' -%}
 [setup0x]: https://docs.gitlab.com/user/project/repository/forking_workflow/
 {% endif -%}
 {% else -%}
@@ -7627,16 +7637,16 @@ what we are doing matters!
 
 [topic1]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/workflows
 {%- endif %}
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 [topic2]: {{ cookiecutter.__gitlab_org }}/epics
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+{%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
 [topic2]: {{ cookiecutter.__scm_link_url }}/milestones
 {%- else %}
 [topic2]: {{ cookiecutter.__scm_link_url }}/projects
 {%- endif %}
 {%- if cookiecutter.licence != 'nos' %}
 [topic3]: {{ cookiecutter.__scm_link_url }}/labels
-{%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group != 'glab-paid' %}
 [topic4]: https://goauthentik.io/blog/2024-03-07-why-contributing-to-open-source-is-scary/
 [topic5]: mailto:{{ cookiecutter.email }}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
@@ -7651,7 +7661,7 @@ what we are doing matters!
 {%- endif %}
 
 [development1]: {{ cookiecutter.__scm_base_url }}
-{%- if cookiecutter.licence != 'nos' and cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{%- if cookiecutter.licence != 'nos' and cookiecutter.__scm_platform_group != 'glab-paid' -%}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [development2]: https://docs.gitlab.com/user/permissions/
 {%- else %}
@@ -7659,7 +7669,7 @@ what we are doing matters!
 {%- endif %}
 [development3]: https://diurnal.st/2025/03/02/the-pragmatic-open-source-contributor.html
 {%- endif %}
-{%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group != 'glab-paid' %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 
 [roadmap1]: {{ cookiecutter.__scm_link_url }}/merge_requests/new?issuable_template=Project%2520Policies
@@ -7686,14 +7696,14 @@ what we are doing matters!
 {%- endif %}
 {%- endif %}
 
-{% if cookiecutter.scm_platform == 'GitHub' -%}
+{% if cookiecutter.scm_platform == 'github' -%}
 [labels1]: {{ cookiecutter.__scm_link_url }}/.github/release-drafter.yml
 
 {% else -%}
 [labels1]: {{ cookiecutter.__contributing_prefix }}#labels
 
 {% endif -%}
-{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
 [practices1]: https://cbea.ms/git-commit/#imperative
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [practices2]: https://docs.gitlab.com/user/tasks/
@@ -7702,7 +7712,7 @@ what we are doing matters!
 {% endif -%}
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [practices3]: https://docs.gitlab.com/user/project/issues/related_issues/#blocking-issues
-{%- if cookiecutter.scm_platform == 'GitLab Free' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-free' %}
 [practices4]: https://docs.gitlab.com/user/tasks/#add-a-task-to-a-milestone
 {%- endif %}
 
@@ -7756,7 +7766,7 @@ what we are doing matters!
 [committing2]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/changelog_config.yml
 
 {% endif -%}
-{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
 [style1]: https://docs.astral.sh/ruff/
 {%- if cookiecutter.docstring_style == 'numpy' %}
 [style1a]: https://numpydoc.readthedocs.io/en/latest/format.html
@@ -7777,13 +7787,13 @@ what we are doing matters!
 [hooks3]: https://bandit.readthedocs.io/en/latest/
 {%- endif %}
 
-{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [ci1]: https://docs.gitlab.com/topics/build_your_application/
 {%- else -%}
 [ci1]: https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/control-deployments
 {%- endif %}
-{%- if cookiecutter.__coverage_lc == 'codacy' %}
+{%- if cookiecutter.coverage_service == 'codacy' %}
 [ci1a]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}
 [ci1b]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/pull-requests/open
 {%- endif %}
@@ -7798,7 +7808,7 @@ what we are doing matters!
 [licence1]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
 
 {% endif -%}
-{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
 [values1]: https://handbook.gitlab.com/
 [values2]: https://handbook.gitlab.com/handbook/communication/#start-with-a-merge-request
 [values3]: https://handbook.gitlab.com/handbook/values/#say-why-not-just-what
@@ -7823,7 +7833,7 @@ what we are doing matters!
 [changes6]: https://www.pyinvoke.org/
 
 {% endif -%}
-{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [prepare1]: {{ cookiecutter.__scm_link_url }}/tree/master/.gitlab/merge_request_templates
 {% else -%}
@@ -7855,6 +7865,7 @@ what we are doing matters!
 [workflow5]: https://docs.pytest.org/en/stable/example/markers.html#mark-examples
 {% endif -%}
 [workflow6]: {{ cookiecutter.__scm_link_url }}/blob/master/pyproject.toml
+{%- if cookiecutter.create_docs %}
 
 [docs1]: {{ cookiecutter.__scm_link_url }}/blob/master/SECURITY.md
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
@@ -7869,9 +7880,14 @@ what we are doing matters!
 [docs8]: https://mkdocstrings.github.io/
 [docs9]: https://mkdocstrings.github.io/python/
 [docs10]: https://zensical.org/docs/setup/navigation/#navigation-sections
+{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
+[docs11]: {{ cookiecutter.__pages_url }}/development/for_developers/workflow/invoke
+{%- else %}
 [docs11]: {{ cookiecutter.__scm_link_url }}/blob/master/docs/development/for_developers/workflow/invoke.md
+{%- endif %}
 [docs12]: https://zensical.org/docs/setup/tags/
-{%- if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' %}
+{%- endif %}
+{%- if cookiecutter.__scm_platform_group != 'glab-paid' %}
 
 [reviewing1]: https://josipmisko.com/posts/code-review-nit
 {%- if cookiecutter.licence != 'nos' %}
@@ -7887,12 +7903,12 @@ what we are doing matters!
 [help2]: https://www.blockchain-council.org/ai/collective-intelligence-framework/
 [help3]: https://stackoverflow.com/help/minimal-reproducible-example
 {%- endif %}
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 
 [request1]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Support
 [request2]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Improvement
 [request3]: https://reprexpy.readthedocs.io/en/latest/
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+{%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
 
 [request0a]: {{ cookiecutter.__scm_link_url }}/tree/master/.gitlab/issue_templates
 [request0b]: {{ cookiecutter.__scm_link_url }}/issues?state=all&type%5B%5D=issue

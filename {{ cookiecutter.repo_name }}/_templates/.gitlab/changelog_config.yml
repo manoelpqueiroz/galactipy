@@ -141,6 +141,10 @@ categories:
   typo: ":toolbox: Fixes"
   typos: ":toolbox: Fixes"
 
+  documentation: ":books: Documentation"
+  doc: ":books: Documentation"
+  docs: ":books: Documentation"
+
   # 3. Changes that are irrelevant to users
   architecture: ":factory_worker: Codebase Renovation"
   arch: ":factory_worker: Codebase Renovation"
@@ -198,10 +202,6 @@ categories:
   specs: ":suspension_railway: Developer Experience"
 
   # 4. Knowledge Management
-  documentation: ":books: Documentation"
-  doc: ":books: Documentation"
-  docs: ":books: Documentation"
-
   policy: ":scroll: Project Policies"
   policies: ":scroll: Project Policies"
   rule: ":scroll: Project Policies"

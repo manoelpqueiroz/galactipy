@@ -50,7 +50,7 @@ After reading the [Commitment to Help][4] section of the `CONTRIBUTING` guide an
 
 <!-- Add the details for your request here -->
 
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
 /label ~"request::support"
 {%- else -%}
 /label ~"rfs" ~"sts-needs-triage"

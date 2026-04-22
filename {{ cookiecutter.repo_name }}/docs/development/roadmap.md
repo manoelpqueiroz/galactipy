@@ -35,9 +35,9 @@ with the community.
 For complete details,
 including discussion history
 and delivered items,
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 please refer to the [GitLab Epics][1]
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+{%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
 please refer to the [GitLab Milestones][1]
 {%- else %}
 please refer to the [GitHub Projects][1]
@@ -112,9 +112,9 @@ for each stage of development.
 
 <!-- Anchors -->
 
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
 [1]: {{ cookiecutter.__gitlab_org }}/epics
-{% elif cookiecutter.scm_platform == 'GitLab Free' -%}
+{% elif cookiecutter.__scm_platform_group == 'glab-free' -%}
 [1]: {{ cookiecutter.__scm_link_url }}/milestones
 {% else -%}
 [1]: {{ cookiecutter.__scm_link_url }}/projects

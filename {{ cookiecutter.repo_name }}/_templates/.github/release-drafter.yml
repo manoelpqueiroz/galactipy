@@ -68,6 +68,12 @@ categories:
     labels:
       - rfc
 
+  - title: ":books: Documentation" # Formal Documentation
+    labels:
+      - docs-guides
+      - docs-technical
+      - maintenance-knowledge
+
   # 3. Changes that are irrelevant to users
   - title: ":factory_worker: Codebase Renovation" # architectural changes, refactoring and other improvements done under the hood
     labels:
@@ -94,11 +100,6 @@ categories:
       - internals-invoke
 
   # 4. Knowledge Management
-  - title: ":books: Documentation" # Formal Documentation
-    labels:
-      - docs-guides
-      - docs-technical
-      - maintenance-knowledge
   - title: ":scroll: Project Policies"
     labels:
       - policies-ci

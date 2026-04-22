@@ -133,6 +133,14 @@ through a [**Internal Improvement**][3] {{ cookiecutter.__mr_term }}.
       heading_level: 3
       show_signature: false
       separate_signature: false
+{%- if cookiecutter.create_docs %}
+
+::: tasks.docs
+    options:
+      heading_level: 3
+      show_signature: false
+      separate_signature: false
+{%- endif %}
 
 {% if cookiecutter.create_docker -%}
 ## Docker Operations

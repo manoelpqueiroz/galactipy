@@ -58,7 +58,7 @@ This template should be used to propose changes resolving a major issue with the
 - [ ] I have assembled the minimal configuration to resolve the root cause of the issue;
 - [ ] I have tested my implementation to confirm the issue is resolved;
 - Regarding versioning: <!-- Pick only one -->
-  - [ ] I have bumped the Galactipy [version][9] appropriately as my final commit for this change;
+  - [ ] I have bumped the Galactipy [version][9] appropriately and updated the date keyword in `CITATION.cff` as my final commit for this change;
   - [ ] I have kept the Galactipy version the same, as it does not change end-user files.
 >>>
 
