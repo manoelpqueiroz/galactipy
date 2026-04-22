@@ -1,3 +1,36 @@
+## 3.2.0 (2026-04-22)
+
+### :ballot_box: Settings & Options (3 changes)
+
+- [:cookie: Rework Cookiecutter variables to prioritise lowercase strings](galactipy/galactipy@f898bbe6dada70461b163c0c38c0d64a28d0b948) ([merge request](galactipy/galactipy!212))
+- [:recycle: Refactor existing Cookiecutter variables](galactipy/galactipy@0289af4ae2a4a009330c5738b97e1a6cf014ae25) ([merge request](galactipy/galactipy!212))
+- [:cookie: Enable subgroup namespaces for projects](galactipy/galactipy@17b374ac8ac944aa5f4a7717061ee1a6eb39a08b) ([merge request](galactipy/galactipy!212))
+
+### :factory_worker: Template Maintenance (1 change)
+
+- [:recycle: Refactor pre-gen hooks to reduce function parameters](galactipy/galactipy@f4a8d5b3571bb96db03c377077d2095cf9e6964b) ([merge request](galactipy/galactipy!212))
+
+### :gear: Project Internals (4 changes)
+
+- [:wrench: Update project `pyproject.toml` with bumpversion replacements](galactipy/galactipy@34bfe481470c2ccb7e21527c70c895331b5594e5) ([merge request](galactipy/galactipy!212))
+- [:art: Standardise variables related to namespaces](galactipy/galactipy@18cd93b8cbfb645b446581f933a3087a7c63b599) ([merge request](galactipy/galactipy!212))
+- [:hammer: Update pre-gen hooks to allow subgroup namespaces](galactipy/galactipy@0bd7bd614ec125b534510196b7927865640cc35f) ([merge request](galactipy/galactipy!212))
+- [:wrench: Remove template libraries group from Renovate](galactipy/galactipy@f8954ea6cc8911284a23a3ac224b63b599b8adbb)
+
+### :repeat: Design & Validation (1 change)
+
+- [:white_check_mark: Adequate unit tests to updated pre-gen hooks logic](galactipy/galactipy@3433af41fe535948c76c45cdb8e3da2a0b7b489a) ([merge request](galactipy/galactipy!212))
+
+### :pouring_liquid: Nits (3 changes)
+
+- [:bulb: Specify Galactipy version in `cookiecutter-config-file.yml`](galactipy/galactipy@1bf4d5cabe228baba94dbedf104e5bdde52172b3) ([merge request](galactipy/galactipy!212))
+- [:shinto_shrine: Update Jinja conditionals with overhauled configuration](galactipy/galactipy@27a64c8a5e39d9c851fcc0e35cf53a6252084823) ([merge request](galactipy/galactipy!212))
+- [:shinto_shrine: Fix Jinja whitespace control for Renovate configuration](galactipy/galactipy@dc07eade16a814b7bc35b162a6e5cee9fef2b3af)
+
+### :books: Documentation (1 change)
+
+- [:pencil: Update project `README.md` with GitLab Premium/Ultimate separation](galactipy/galactipy@d3bf7ad528270b9b522a3c2a780cf1c9d45f2872) ([merge request](galactipy/galactipy!212))
+
 ## 3.1.1 (2026-04-21)
 
 ### :metro: Template Internals (1 change)
