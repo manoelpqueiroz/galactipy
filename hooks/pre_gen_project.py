@@ -171,15 +171,27 @@ def validate_package_name(package_name: str) -> None:
         raise ValueError(message)
 
 
-def validate_namespace(namespace: str, reserved_names: list[str]) -> None:
-    """Ensure that `username` is valid under GitLab and GitHub restrictions.
+def validate_namespace(scm_namespace: str) -> None:
+    """Ensure that `namespace` is valid under GitLab and GitHub restrictions.
 
     Parameters
     ----------
-    username : str
-        Source control management platform username.
-    reserved_projects : list
-        List of reserved usernames that can not be used.
+    namespace : str
+        Source control management platform username/organisation name.
+    """
+    namespace_list = scm_namespace.split("/")
+
+    for namespace in namespace_list:
+        _validate_single_namespace(namespace)
+
+
+def _validate_single_namespace(namespace: str) -> None:
+    """Validate a single namespace component.
+
+    Parameters
+    ----------
+    namespace : str
+        Source control management platform username/organisation name.
 
     Raises
     ------
@@ -196,7 +208,7 @@ def validate_namespace(namespace: str, reserved_names: list[str]) -> None:
 
     if USERNAME_REGEX.fullmatch(namespace) is None:
         raise ValueError(message)
-    if namespace in reserved_names:
+    if namespace in RESERVED_NAMESPACES:
         raise ValueError(message)
 
 
@@ -247,7 +259,7 @@ def main() -> None:  # noqa: D103
 
         validate_package_name(package_name=PACKAGE_NAME)
 
-        validate_namespace(namespace=NAMESPACE, reserved_names=RESERVED_NAMESPACES)
+        validate_namespace(scm_namespace=NAMESPACE)
 
         validate_line_length(line_length=int(LINE_LENGTH_PARAMETER))
 
