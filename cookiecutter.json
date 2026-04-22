@@ -167,7 +167,7 @@
     "Apache-2.0": "Apache Software License 2.0",
     "nos": "a non-open-source licence"
   },
-  "__licence_article": "{{ 'the ' if cookiecutter.licence in ['MIT', 'MPL-2.0', 'Apache-2.0'] else '' }}",
+  "__licence_article": "{{ 'the ' if cookiecutter.licence in ['MIT', 'MPL-2.0', 'Apache-2.0'] }}",
   "__licence_simple": "{{ cookiecutter._licence_mapping_simple[cookiecutter.licence] }}",
   "__licence_extended": "{{ cookiecutter._licence_mapping_extended[cookiecutter.licence] }}",
 
@@ -264,8 +264,14 @@
   "__scm_platform_base": "{{ 'GitLab' if 'GitLab' in cookiecutter.scm_platform else 'GitHub' }}",
   "__scm_platform_lc": "{{ cookiecutter.__scm_platform_base.lower() }}",
   "__scm_platform_redux": "{{ 'gl' if cookiecutter.__scm_platform_lc == 'gitlab' else 'gh' }}",
-  "__scm_base_url": "https://{{ cookiecutter.__scm_platform_lc }}.com/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}",
-  "__scm_link_url": "https://{{ cookiecutter.__scm_platform_lc }}.com/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}{% if cookiecutter.__scm_platform_lc == 'gitlab' %}/-{% endif %}",
+
+  "__base_url_parts": [
+    "https://{{ cookiecutter.__scm_platform_lc }}.com",
+    "{{ cookiecutter.scm_namespace }}",
+    "{{ cookiecutter.repo_name }}"
+  ],
+  "__scm_base_url": "{{ cookiecutter.__base_url_parts }} | join('/') }}",
+  "__scm_link_url": "{{ cookiecutter.__scm_base_url }}{% if cookiecutter.__scm_platform_lc == 'gitlab' %}/-{% endif %}",
   "__gitlab_org": "https://gitlab.com/groups/{{ cookiecutter.scm_namespace }}/-",
   "__gitlab_premium_templates": "https://gitlab.com/{{ cookiecutter.scm_namespace }}/templates/-/blob/master",
   "__contributing_prefix": "{{ cookiecutter.__gitlab_premium_templates ~ '/CONTRIBUTING.md' if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' }}",
@@ -286,11 +292,38 @@
     "GitLab Free": "milestone",
     "GitHub": "project"
   },
+  "_indefinite_map": {
+    "epic": "an ",
+    "milestone": "a ",
+    "project": "a "
+  },
   "__roadmap_item": "{{ cookiecutter._roadmap_mapping[cookiecutter.scm_platform] }}",
-  "__roadmap_item_indefinite": "{{ 'an ' ~ cookiecutter.__roadmap_item if cookiecutter.__roadmap_item == 'epic' else 'a ' ~ cookiecutter.__roadmap_item }}",
+  "__roadmap_item_indefinite": "{{ cookiecutter._indefinite_map[cookiecutter.__roadmap_item] ~ cookiecutter.__roadmap_item }}",
 
-  "__docker_registry": "{{ 'registry.gitlab.com/' ~ cookiecutter.scm_namespace ~ '/' ~ cookiecutter.repo_name if cookiecutter.__scm_platform_lc == 'gitlab' else cookiecutter.scm_namespace ~ '/' ~ cookiecutter.repo_name }}",
-  "__docker_repo": "{{ cookiecutter.__scm_base_url ~ '/container_registry' if cookiecutter.__scm_platform_lc == 'gitlab' else 'https://hub.docker.com/r/' ~ cookiecutter.scm_namespace ~ '/' ~ cookiecutter.repo_name }}",
+  "__registry_parts": {
+    "gitlab": [
+      "registry.gitlab.com",
+      "{{ cookiecutter.scm_namespace }}",
+      "{{ cookiecutter.repo_name }}"
+    ],
+    "github": [
+      "{{ cookiecutter.__top_namespace }}",
+      "{{ cookiecutter.repo_name }}"
+    ]
+  },
+  "__repo_parts": {
+    "gitlab": [
+      "{{ cookiecutter.__scm_base_url }}",
+      "container_registry"
+    ],
+    "github": [
+      "https://hub.docker.com/r",
+      "{{ cookiecutter.__top_namespace }}",
+      "{{ cookiecutter.repo_name }}"
+    ]
+  },
+  "__docker_registry": "{{ cookiecutter.__registry_parts[cookiecutter.__scm_platform_lc] | join('/') }}",
+  "__docker_repo": "{{ cookiecutter.__repo_parts[cookiecutter.__scm_platform_lc] | join('/') }}",
 
   "__mr_term": "{{ 'Merge Request' if cookiecutter.__scm_platform_redux == 'gl' else 'Pull Request' }}",
   "__mr_acronym": "{{ 'MR' if cookiecutter.__scm_platform_redux == 'gl' else 'PR' }}",
