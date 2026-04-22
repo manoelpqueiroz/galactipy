@@ -7,7 +7,7 @@ tags:
 
 {% endraw -%}
 # Development Setup
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in project and group CONTRIBUTING.md guides
   [project]: ../../../../CONTRIBUTING.md#development-setup
   [group]: {{ cookiecutter.__contributing_prefix }}#development-setup

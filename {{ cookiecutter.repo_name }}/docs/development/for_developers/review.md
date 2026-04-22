@@ -7,7 +7,7 @@ tags:
 
 {% endraw -%}
 # {{ cookiecutter.__mr_term }} Review Process
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#{{ cookiecutter.__mr_term_slug }}-review-process
 
@@ -27,7 +27,7 @@ and have finished contributing with changes,
 the review process can start.
 
 ## Contribution Acceptance Criteria
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#contribution-acceptance-criteria
 
@@ -105,7 +105,7 @@ it meets the contribution acceptance criteria below:
     why you need it.
 
 ## Getting Reviewed
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#getting-reviewed
 

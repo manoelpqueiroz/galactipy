@@ -40,7 +40,7 @@ _Expand your project structure from atoms of code to **galactic** dimensions._ :
 ## TL;DR
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v3.1.1
+cookiecutter gl:galactipy/galactipy --checkout v3.2.0
 ```
 
 **All you need is the latest version of Cookiecutter!** :wink:
@@ -268,7 +268,7 @@ pipx upgrade cookiecutter
 then go to a directory where you want to create your project and run:
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v3.1.1
+cookiecutter gl:galactipy/galactipy --checkout v3.2.0
 ```
 
 ### Input variables
@@ -285,7 +285,7 @@ The input variables, with their default values, are as follows:
 |  `project_description`   |   based on `project_name`    | A brief one-line description of your project.                                                                                                                                                                               |
 |       `copyright`        | `The Galactipy Contributors` | Name of the author or organisation which will hold the project's copyright. Used to specify code ownership in `LICENCE`.                                                                                                    |
 |       `maintainer`       | `Manoel Pereira de Queiroz`  | Name of the primary maintainer of the project. Used to specify author data in `pyproject.toml` and `CITATION.cff`.                                                                                                          |
-|      `scm_platform`      |        `GitLab Free`         | One of `GitLab Free`, `GitLab Premium/Ultimate` and `GitHub`. Depending on the choice you will have [different features][htu2] to work with.                                                                                |
+|      `scm_platform`      |        `GitLab Free`         | One of `GitLab Free`, `GitLab Premium`, `GitLab Ultimate` and `GitHub`. Depending on the choice you will have [different features][htu2] to work with.                                                                      |
 |     `scm_namespace`      |         `galactipy`          | GitHub or GitLab namespace for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for either platform.                                                                                           |
 |         `email`          |   based on `scm_namespace`   | Email for `CODE_OF_CONDUCT.md`, `SECURITY.md` files and to specify author data in `pyproject.toml` and `CITATION.cff`.                                                                                                      |
 |        `licence`         |            `MIT`             | One of `MIT`, `BSD-3`, `GNU GPL v3.0`, `GNU AGLP v3.0`, `GNU LGPL v3.0`, `Mozilla Public License 2.0` and `Apache Software License 2.0`, or `Not open source`.                                                              |
@@ -611,7 +611,7 @@ For further setting up your project:
 - Make sure to
   create your desired Issue labels
   (and GitLab statuses,
-  if you're using GitLab Premium)
+  if you're using GitLab Premium or Ultimate)
   on your repository
   before you start tracking issues;
 - Make changes

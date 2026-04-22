@@ -31,7 +31,7 @@ PROJECT_REGEX = re.compile(
     re.VERBOSE,
 )
 PACKAGE_REGEX = re.compile(r"^[a-z][a-z0-9\_]+[a-z0-9]$")
-USERNAME_REGEX = re.compile(
+NAMESPACE_REGEX = re.compile(
     r"""
         ^[a-zA-Z0-9]            # Must begin with letter or number
         (?!.*(-){2})            # Must not have any two consecutive - ahead
@@ -112,7 +112,7 @@ RESERVED_NAMESPACES = [
 ]
 
 
-def validate_repo_name(repo_name: str, reserved_projects: list[str]) -> None:
+def validate_repo_name(repo_name: str) -> None:
     """Ensure that `repo_name` is valid under GitLab restrictions.
 
     Valid input starts with a digit or letter, can be comprised of any
@@ -127,8 +127,6 @@ def validate_repo_name(repo_name: str, reserved_projects: list[str]) -> None:
     ----------
     repo_name : str
         Current project repository slug.
-    reserved_projects : list
-        List of reserved project names that can not be used.
 
     Raises
     ------
@@ -141,7 +139,7 @@ def validate_repo_name(repo_name: str, reserved_projects: list[str]) -> None:
         )
         raise ValueError(message)
 
-    if repo_name in reserved_projects:
+    if repo_name in RESERVED_PROJECTS:
         message = f"ERROR: The project slug `{repo_name}` is a reserved project name."
         raise ValueError(message)
 
@@ -171,15 +169,27 @@ def validate_package_name(package_name: str) -> None:
         raise ValueError(message)
 
 
-def validate_namespace(namespace: str, reserved_names: list[str]) -> None:
-    """Ensure that `username` is valid under GitLab and GitHub restrictions.
+def validate_namespace(scm_namespace: str) -> None:
+    """Ensure that `namespace` is valid under GitLab and GitHub restrictions.
 
     Parameters
     ----------
-    username : str
-        Source control management platform username.
-    reserved_projects : list
-        List of reserved usernames that can not be used.
+    namespace : str
+        Source control management platform username/organisation name.
+    """
+    namespace_list = scm_namespace.split("/")
+
+    for namespace in namespace_list:
+        _validate_single_namespace(namespace)
+
+
+def _validate_single_namespace(namespace: str) -> None:
+    """Validate a single namespace component.
+
+    Parameters
+    ----------
+    namespace : str
+        Source control management platform username/organisation name.
 
     Raises
     ------
@@ -194,9 +204,9 @@ def validate_namespace(namespace: str, reserved_names: list[str]) -> None:
 
     message = f"ERROR: `{namespace}` is not a valid name for user or organisation."
 
-    if USERNAME_REGEX.fullmatch(namespace) is None:
+    if NAMESPACE_REGEX.fullmatch(namespace) is None:
         raise ValueError(message)
-    if namespace in reserved_names:
+    if namespace in RESERVED_NAMESPACES:
         raise ValueError(message)
 
 
@@ -243,11 +253,11 @@ def validate_docstring_length(line_length: int, docstring_length: int) -> None:
 
 def main() -> None:  # noqa: D103
     try:
-        validate_repo_name(repo_name=REPO_NAME, reserved_projects=RESERVED_PROJECTS)
+        validate_repo_name(repo_name=REPO_NAME)
 
         validate_package_name(package_name=PACKAGE_NAME)
 
-        validate_namespace(namespace=NAMESPACE, reserved_names=RESERVED_NAMESPACES)
+        validate_namespace(scm_namespace=NAMESPACE)
 
         validate_line_length(line_length=int(LINE_LENGTH_PARAMETER))
 

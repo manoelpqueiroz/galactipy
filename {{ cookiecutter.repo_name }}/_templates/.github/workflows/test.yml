@@ -47,7 +47,7 @@ jobs:
     with:
       python-version: "{{ cookiecutter.minimal_python_version }}"
       upload-coverage: true
-{%- if cookiecutter.__coverage_lc == 'codacy' %}
+{%- if cookiecutter.coverage_service == 'codacy' %}
     secrets:
       # TODO Set a token for your repository (https://docs.codacy.com/codacy-api/api-tokens/#repository-api-tokens)
       # TODO Store the token as the CODACY_PROJECT_TOKEN secret in the repository configuration
@@ -59,10 +59,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📤 Upload Coverage to {{ cookiecutter.coverage_service }}
-{% if cookiecutter.__coverage_lc == 'coveralls' %}
+      - name: 📤 Upload Coverage to {{ cookiecutter.__coverage_title }}
+{% if cookiecutter.coverage_service == 'coveralls' %}
         uses: coverallsapp/github-action@v2.3.6
-{%- elif cookiecutter.__coverage_lc == 'codacy' %}
+{%- else %}
         uses: codacy/codacy-coverage-reporter-action@v1.3.0
         with:
           project-token: {% raw %}${{ secrets.CODACY_PROJECT_TOKEN }}{% endraw %}

@@ -1,8 +1,6 @@
 from hooks.pre_gen_project import (
     MAX_NAMESPACE_LENGTH,
     MIN_NAMESPACE_LENGTH,
-    RESERVED_NAMESPACES,
-    RESERVED_PROJECTS,
     validate_namespace,
     validate_package_name,
     validate_repo_name,
@@ -57,7 +55,7 @@ import pytest
     ],
 )
 def test_valid_repo_names(valid_slug):
-    assert validate_repo_name(valid_slug, RESERVED_PROJECTS) is None  # type: ignore[func-returns-value]
+    assert validate_repo_name(valid_slug) is None  # type: ignore[func-returns-value]
 
 
 @pytest.mark.parametrize(
@@ -112,7 +110,7 @@ def test_valid_repo_names(valid_slug):
 )
 def test_invalid_repo_names(invalid_slug):
     with pytest.raises(ValueError):
-        validate_repo_name(invalid_slug, RESERVED_PROJECTS)
+        validate_repo_name(invalid_slug)
 
 
 @pytest.mark.parametrize(
@@ -142,7 +140,7 @@ def test_invalid_repo_names(invalid_slug):
 )
 def test_doubly_invalid_repo_names(invalid_slug):
     with pytest.raises(ValueError):
-        validate_repo_name(invalid_slug, RESERVED_PROJECTS)
+        validate_repo_name(invalid_slug)
 
 
 @pytest.mark.parametrize(
@@ -195,7 +193,7 @@ def test_invalid_package_names(invalid_package):
 
 
 @pytest.mark.parametrize(
-    "valid_username",
+    "valid_namespace",
     [
         "15SV",
         "vIOh",
@@ -207,14 +205,15 @@ def test_invalid_package_names(invalid_package):
         "K-fpQC",
         "A-zn-ET-K-k-k-3I",
         "MvkWGKFKj-qRFT",
+        "alpha/beta/gaga",
     ],
 )
-def test_valid_usernames(valid_username):
-    assert validate_namespace(valid_username, RESERVED_NAMESPACES) is None  # type: ignore[func-returns-value]
+def test_valid_namespaces(valid_namespace):
+    assert validate_namespace(valid_namespace) is None  # type: ignore[func-returns-value]
 
 
 @pytest.mark.parametrize(
-    "invalid_username",
+    "invalid_namespace",
     [
         "robots.txt",
         "groups",
@@ -233,11 +232,12 @@ def test_valid_usernames(valid_username):
         "Go!b",
         "#4FeBLTCDd@",
         "dhsqWL/d",
+        "alpha/projects/groups",
     ],
 )
-def test_invalid_usernames(invalid_username):
+def test_invalid_namespaces(invalid_namespace):
     with pytest.raises(ValueError):
-        validate_namespace(invalid_username, RESERVED_NAMESPACES)
+        validate_namespace(invalid_namespace)
 
 
 def test_username_length():
@@ -247,7 +247,7 @@ def test_username_length():
         username = string * n
 
         if MIN_NAMESPACE_LENGTH <= n <= MAX_NAMESPACE_LENGTH:
-            assert validate_namespace(username, RESERVED_NAMESPACES) is None  # type: ignore[func-returns-value]
+            assert validate_namespace(username) is None  # type: ignore[func-returns-value]
         else:
             with pytest.raises(ValueError):
-                validate_namespace(username, RESERVED_NAMESPACES)
+                validate_namespace(username)

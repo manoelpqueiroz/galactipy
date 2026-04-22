@@ -7,7 +7,7 @@ tags:
 
 {% endraw -%}
 # Contributing by Helping Other People
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in project and group CONTRIBUTING.md guides
   [project]: ../../../../CONTRIBUTING.md#contributing-by-helping-others
   [group]: {{ cookiecutter.__contributing_prefix }}#contributing-by-helping-others
@@ -68,7 +68,7 @@ for more details
 on how we deal with these cases.
 
 ## Orientation for Effectively Helping Others
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#orientation-for-effectively-helping-others
 
@@ -200,7 +200,7 @@ with their requests:
     avoid generalisations.
 
 ## Commitment to Help
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#commitment-to-help
 
@@ -285,9 +285,9 @@ for your kindness and dedication!
 <!-- Anchors -->
 
 [1]: https://img.shields.io/badge/requests_for_support-ed9121?style=for-the-badge
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
 [2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Asupport&type%5B%5D=issue
-{% elif cookiecutter.scm_platform == 'GitLab Free' -%}
+{% elif cookiecutter.__scm_platform_group == 'glab-free' -%}
 [2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfs&type%5B%5D=issue
 {% else -%}
 [2]: {{ cookiecutter.__scm_link_url }}/discussions/categories/requests-for-support

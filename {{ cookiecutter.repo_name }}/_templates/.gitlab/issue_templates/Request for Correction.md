@@ -84,7 +84,7 @@ Please run through all items under the **`Applicant Checklist`** section and be 
   %USERPROFILE%\AppData\Local\{{ cookiecutter.repo_name }}\Logs\report.log (Windows)
 -->
 {%- endif %}
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 
 /label ~"request::correction"
 {%- else %}

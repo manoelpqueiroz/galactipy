@@ -6,7 +6,7 @@ tags:
 
 {% endraw -%}
 # Contributing to Roadmap Maintenance
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in project and group CONTRIBUTING.md guides
   [project]: ../../../../CONTRIBUTING.md#contributing-to-roadmap-maintenance
   [group]: {{ cookiecutter.__contributing_prefix }}#contributing-to-roadmap-maintenance
@@ -22,7 +22,7 @@ tags:
 {%- endif %}
 
 [![Issues][1]][2]
-{%- if cookiecutter.scm_platform == 'GitLab Free' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-free' %}
 [![Tasks][2a]][2b]
 {%- endif %}
 
@@ -68,10 +68,10 @@ to the development team:
 <!-- Anchors -->
 
 [1]: https://img.shields.io/badge/issues_without_{{ cookiecutter.__roadmap_item }}-006272?style=for-the-badge
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 [2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&parent_id=None
 [3]: {{ cookiecutter.__gitlab_org }}/epics
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+{%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
 [2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&milestone_title=None
 [2a]: https://img.shields.io/badge/{{ cookiecutter.__task_item }}s_with_{{ cookiecutter.__roadmap_item }}-08b1ab?style=for-the-badge
 [2b]: {{ cookiecutter.__scm_link_url }}/issues?state=all&type%5B%5D=task&milestone_title=Any

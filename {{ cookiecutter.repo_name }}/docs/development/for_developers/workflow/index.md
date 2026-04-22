@@ -47,7 +47,7 @@ A non-exhaustive list of steps to consider:
   on first thought?
 - Are all checks passing
   with `invoke sweep`?
-{%- if cookiecutter.__coverage_lc == 'codacy' %}
+{%- if cookiecutter.coverage_service == 'codacy' %}
 - Did you address
   all issues raised by Codacy
   for the {{ cookiecutter.__mr_term }} branch in question?

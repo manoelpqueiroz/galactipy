@@ -37,7 +37,7 @@ Please run through all items under the **`Applicant Checklist`** section and fol
 <!-- Please check all items with an `x` (like `[x]`) before proceeding -->
 
 - [ ] I am using the latest version of {{ cookiecutter.project_name }};
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 - [ ] I have looked at issues and MRs associated with the current [epics][2] to check if my request is not already anticipated by the development team;
 {%- else %}
 - [ ] I have looked at issues and MRs associated with the current [milestones][2] to check if my request is not already anticipated by the development team;
@@ -52,7 +52,7 @@ Please run through all items under the **`Applicant Checklist`** section and fol
 - [ ] I have followed the [_why, not just what_][1] directive to open this request;
 - [ ] I am confident this discussion does not fall in another category.
 
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
 [2]: {{ cookiecutter.__gitlab_org }}/epics
 {%- else -%}
 [2]: {{ cookiecutter.__scm_link_url }}/milestones
@@ -115,7 +115,7 @@ How would you classify this request?
   Screenshots, links and any content that helps us better visualise your desired outcome are welcome!
 -->
 
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
 /label ~"request::improvement"
 {%- else -%}
 /label ~"rfi" ~"sts-needs-triage"

@@ -1,4 +1,4 @@
-{% set scope_separator = '::' if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' else '-' -%}
+{% set scope_separator = '::' if cookiecutter.__scm_platform_group == 'glab-paid' else '-' -%}
 {% raw -%}
 ---
 tags:
@@ -24,7 +24,7 @@ a {{ cookiecutter.__scm_platform_base }} account is needed
 to start contributing.
 
 ## Contributor Promotion
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#contributor-promotion
 
@@ -105,7 +105,7 @@ for candidate contributors
 in more detail.
 
 ## Work Item Tracking
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in project and group CONTRIBUTING.md guides
   [project]: ../../../../CONTRIBUTING.md#work-item-tracking
   [group]: {{ cookiecutter.__contributing_prefix }}#work-item-tracking
@@ -121,7 +121,7 @@ in more detail.
 {%- endif %}
 
 [![Issues][badge1]][query1]
-{%- if cookiecutter.scm_platform == 'GitLab Free' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-free' %}
 [![Tasks][badge1a]][query1a]
 {%- endif %}
 
@@ -156,7 +156,7 @@ Use cases for this type of work item include:
   due to scope or team capacity.
 
 ### Labels
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in project and group CONTRIBUTING.md guides
   [project]: ../../../../CONTRIBUTING.md#labels
   [group]: {{ cookiecutter.__contributing_prefix }}#labels
@@ -240,7 +240,7 @@ with their usage:
 |    User Requests    |                      `rfc`                       | For work items for when something is not working properly.                                                        |
 |    User Requests    |                      `rfi`                       | For work items containing suggestions for new features from the community.                                        |
 |    User Requests    |                      `rfs`                       | For issues opened by users seeking advice regarding {{ cookiecutter.project_name }}.                              |
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 |         N/A         |         `seeking-contributors::delivery`         | Proposal is polished and can be picked up if you feel inclined to.                                                |
 |         N/A         |         `seeking-contributors::opinion`          | In need of help to further discuss and define scope.                                                              |
 {%- else %}
@@ -249,7 +249,7 @@ with their usage:
 |         N/A         |                 `seeking-input`                  | In need of help to further discuss and define scope.                                                              |
 {%- endif %}
 |         N/A         |                     `stale`                      | Work items without activity that are marked for closing.                                                          |
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 |         N/A         |         `starter-assignment::quick-win`          | Development requires low effort and is ideal for first-time contributors.                                         |
 |         N/A         |         `starter-assignment::supervised`         | Proposal and delivery steps are clear and can be picked up by first-time contributors.                            |
 {%- else %}
@@ -282,7 +282,7 @@ with their usage:
 
 {% endif -%}
 ### Work Item Lifecycle
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#work-item-lifecycle
 
@@ -298,7 +298,7 @@ with their usage:
 
 To effectively manage
 issue and {{ cookiecutter.__task_item }} lifecycles,
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 we use [GitLab Statuses][11].
 {%- else %}
 we use specific labels
@@ -336,7 +336,7 @@ understand
 each use case and
 when to move from one stage to another:
 
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
 | Status                                               | Status Category | Description                                                                                                                                                                                                                                                                                                                                                               |
 | :--------------------------------------------------- | :-------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | ![Triage icon][icon1] **Needs Triage**               |     Triage      | Initial stage for User requests, which require a first analysis by a {{ cookiecutter.project_name }} contributor before work on its scope is either accepted or declined. It is also the default open state for new items if not overriden.                                                                                                                               |
@@ -396,7 +396,7 @@ a lifecycle label.
 
 {% endif -%}
 ## General Practices
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#general-practices
 
@@ -411,7 +411,7 @@ a lifecycle label.
 {%- endif %}
 
 ### Issue Titles Should be Framed in Imperative Mood
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#issue-titles-should-be-framed-in-imperative-mood
 
@@ -476,7 +476,7 @@ is trying to address.
     to close the issue.
 
 ### {{ cookiecutter.__task_item.capitalize() }}s Are Used as Acceptance Criteria for Issues
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#{{ cookiecutter.__task_item }}s-are-used-as-acceptance-criteria-for-issues
 
@@ -522,7 +522,7 @@ if relevant to understand implementation.
     associated with a {{ cookiecutter.__task_item }}.
 
 ### Usage of the `seeking-contributors` Labels
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#usage-of-the-seeking-contributors-labels
 
@@ -541,7 +541,7 @@ to indicate work items
 whose authors need help from the community
 in further advancing with development.
 
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
 The `opinion` value label marks work items which
 {% else -%}
 The `seeking-input` label marks work items which
@@ -554,7 +554,7 @@ to provide opinion on the matter,
 as a consensus for its final scope
 has not been reached yet.
 
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
 The `delivery` value label,
 {% else -%}
 The `seeking-builders` label,
@@ -567,7 +567,7 @@ if a contributor is interested
 in delivering the solution.
 It is similar in this manner
 to the `starter-assignment` labels,
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 with the difference that `seeking-contributors::delivery` is aimed
 {%- else %}
 with the difference that `seeking-builders` is aimed
@@ -580,7 +580,7 @@ with intermediate experience in the project.
     Contributors planning
     on refining an issue
     or {{ cookiecutter.__mr_term }}
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
     to mark with the `seeking-contributors::delivery` label
 {%- else %}
     to mark with the `seeking-builders` label
@@ -599,7 +599,7 @@ with intermediate experience in the project.
     etc.
 
 ### Blocks Must be Set at the Same Issue Level
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#blocks-must-be-set-at-the-same-issue-level
 
@@ -636,7 +636,7 @@ issues can only block **issues**,
 {{ cookiecutter.__task_item }}s can only block **{{ cookiecutter.__task_item}}s**.
 
 ### Tasks Should Have no Milestones
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#tasks-should-have-no-milestones
 
@@ -674,9 +674,9 @@ through the "Bulk edit" option.
 <!-- Anchors -->
 
 [1]: {{ cookiecutter.__scm_base_url }}
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 [2]: {{ cookiecutter.__gitlab_org }}/epics
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+{%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
 [2]: {{ cookiecutter.__scm_link_url }}/milestones
 {%- else %}
 [2]: {{ cookiecutter.__scm_link_url }}/projects
@@ -706,7 +706,7 @@ through the "Bulk edit" option.
 [17]: #work-item-tracking
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [18]: https://docs.gitlab.com/user/project/issues/related_issues/#blocking-issues
-{%- if cookiecutter.scm_platform == 'GitLab Free' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-free' %}
 [19]: https://docs.gitlab.com/user/tasks/#add-a-task-to-a-milestone
 {%- endif %}
 {%- else %}
@@ -714,7 +714,7 @@ through the "Bulk edit" option.
 {%- endif %}
 
 [badge1]: https://img.shields.io/badge/issues_without_{{ cookiecutter.__roadmap_item }}-006272?style=for-the-badge
-{%- if cookiecutter.scm_platform == 'GitLab Free' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-free' %}
 [badge1a]: https://img.shields.io/badge/{{ cookiecutter.__task_item }}s_with_{{ cookiecutter.__roadmap_item }}-08b1ab?style=for-the-badge
 {%- endif %}
 [badge2]: https://img.shields.io/badge/seeking_input-69ad6b?style=for-the-badge
@@ -727,7 +727,7 @@ through the "Bulk edit" option.
 [badge9]: https://img.shields.io/badge/requests_for_correction-dc143c?style=for-the-badge
 [badge10]: https://img.shields.io/badge/requests_for_improvement-0055ff?style=for-the-badge
 [badge11]: https://img.shields.io/badge/requests_for_support-ed9121?style=for-the-badge
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 
 [query1]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&parent_id=None
 [query2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Aopinion&type%5B%5D=issue
@@ -758,7 +758,7 @@ through the "Bulk edit" option.
 [icon15]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/created.png
 [icon16]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/ongoing.png
 [icon17]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/aborted.png
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+{%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
 
 [query1]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&milestone_title=None
 [query1a]: {{ cookiecutter.__scm_link_url }}/issues?state=all&type%5B%5D=task&milestone_title=Any

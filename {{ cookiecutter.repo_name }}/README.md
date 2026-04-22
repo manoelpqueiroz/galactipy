@@ -76,9 +76,9 @@
 {%- elif cookiecutter.__version_schema_base == 'trunkver' %}
 [![TrunkVer][badge19]][burl19]
 {%- endif %}
-{%- if cookiecutter.__coverage_lc == 'coveralls' %}
+{%- if cookiecutter.coverage_service == 'coveralls' %}
 [![Coverage][badge20]][burl20]
-{%- elif cookiecutter.__coverage_lc == 'codacy' %}
+{%- else %}
 <!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
 [![Code Quality][bqa1]][bqa2] -->
 <!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
@@ -427,7 +427,7 @@ This project was generated with [Galactipy][burl4].
 {%- elif cookiecutter.version_schema == 'trunkver' %}
 [badge19]: https://img.shields.io/badge/trunkver-3F54A3?style=for-the-badge&logo=roots&logoColor=white
 {%- endif %}
-{%- if cookiecutter.__coverage_lc == 'coveralls' %}
+{%- if cookiecutter.coverage_service == 'coveralls' %}
 [badge20]: https://img.shields.io/coverallsCoverage/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=coveralls
 {%- else %}
 <!-- TODO Replace the hash `d5402a91aa7b4234bd1c19b5e86a63be` with your project ID in the "Codacy Badge" section available at https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/settings
@@ -468,7 +468,7 @@ This project was generated with [Galactipy][burl4].
 [burl17]: https://pycqa.github.io/isort/
 [burl18]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
 [burl19]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#versioning-customs
-{%- if cookiecutter.__coverage_lc == 'coveralls' %}
+{%- if cookiecutter.coverage_service == 'coveralls' %}
 [burl20]: https://coveralls.io/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}
 {%- else %}
 [burl20]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/coverage
@@ -504,7 +504,7 @@ This project was generated with [Galactipy][burl4].
 [bossf4]: https://ossrank.com/p/200 -->
 
 {% endif -%}
-{% if cookiecutter.__coverage_lc == 'codacy' -%}
+{% if cookiecutter.coverage_service == 'codacy' -%}
 <!-- TODO Replace the hash `d5402a91aa7b4234bd1c19b5e86a63be` with your project ID in the "Codacy Badge" section available at https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/settings
 [bqa1]: https://img.shields.io/codacy/grade/d5402a91aa7b4234bd1c19b5e86a63be?style=for-the-badge&logo=codacy
 [bqa2]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/dashboard -->
@@ -542,9 +542,9 @@ This project was generated with [Galactipy][burl4].
 {% endif -%}
 {% endif -%}
 [contributing1]: {{ cookiecutter.__scm_link_url }}/blob/master/ROADMAP.md#project-mission
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 [contributing2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=design%3A%3A%2A&type%5B%5D=issue
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+{%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
 [contributing2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5D%5B%5D=design-discovery&or%5Blabel_name%5D%5B%5D=design-formulation&or%5Blabel_name%5D%5B%5D=design-reassessment&type%5B%5D=issue
 {%- else %}
 [contributing2]: {{ cookiecutter.__scm_link_url }}/issues?q=label%3Adesign-discovery%20OR%20label%3Adesign-formulation%20OR%20label%3Adesign-reassessment

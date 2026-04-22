@@ -1,4 +1,4 @@
-{% set bot_envvar = cookiecutter.scm_namespace.upper().split() | join('-') ~ '_BOT_API_TOKEN' if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' else 'PROJECT_BOT_TOKEN' -%}
+{% set bot_envvar = cookiecutter.__top_namespace.upper().split() | join('_') ~ '_BOT_API_TOKEN' if cookiecutter.__scm_platform_group == 'glab-paid' else 'PROJECT_BOT_TOKEN' -%}
 # GitLab CI documentation at:
 # https://docs.gitlab.com/ci/
 
@@ -96,7 +96,7 @@ include:
     inputs:
       stage: security-checks
       enable_mr_pipelines: true
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.scm_platform == 'glab-u' %}
       run_advanced_sast: true
   - component: $CI_SERVER_FQDN/components/dependency-scanning/main@0.9.1
     rules:
@@ -395,7 +395,7 @@ test-py{{ version[0] }}{{ version[1] }}:
       junit: test_report.xml
     expire_in: 1 week
 
-{{ cookiecutter.__coverage_lc }}-report:
+{{ cookiecutter.coverage_service }}-report:
   stage: coverage
   image: badouralix/curl-jq:latest
   rules:
@@ -406,12 +406,12 @@ test-py{{ version[0] }}{{ version[1] }}:
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   script:
-{%- if cookiecutter.__coverage_lc == 'coveralls' %}
+{%- if cookiecutter.coverage_service == 'coveralls' %}
     - curl -L https://coveralls.io/coveralls-linux.tar.gz | tar -xz -C /usr/local/bin
     # TODO Set the COVERALLS_REPO_TOKEN CI/CD variable in {{ cookiecutter.__scm_link_url }}/settings/ci_cd, see documentation at:
     # https://docs.coveralls.io/#integrate-coveralls-with-your-codebase
     - coveralls report coverage.xml --repo-token $COVERALLS_REPO_TOKEN
-{%- elif cookiecutter.__coverage_lc == 'codacy' %}
+{%- else %}
     - curl -Ls https://coverage.codacy.com/get.sh -o codacy.sh
     # TODO Set the CODACY_PROJECT_TOKEN CI/CD variable in {{ cookiecutter.__scm_link_url }}/settings/ci_cd, see documentation at:
     # https://docs.codacy.com/codacy-api/api-tokens/#repository-api-tokens
@@ -583,7 +583,7 @@ publish-pages:
 {%- endif %}
 {%- if cookiecutter.version_schema == 'trunkver' %}
 
-{{ cookiecutter.__coverage_lc }}-report:
+{{ cookiecutter.coverage_service }}-report:
   stage: coverage
   image: badouralix/curl-jq:latest
   rules:
@@ -592,12 +592,12 @@ publish-pages:
         paths: *codechecks
       when: manual
   script:
-{%- if cookiecutter.__coverage_lc == 'coveralls' %}
+{%- if cookiecutter.coverage_service == 'coveralls' %}
     - curl -L https://coveralls.io/coveralls-linux.tar.gz | tar -xz -C /usr/local/bin
     # TODO Set the COVERALLS_REPO_TOKEN CI/CD variable in {{ cookiecutter.__scm_link_url }}/settings/ci_cd, see documentation at:
     # https://docs.coveralls.io/#integrate-coveralls-with-your-codebase
     - coveralls report coverage.xml --repo-token $COVERALLS_REPO_TOKEN
-{%- elif cookiecutter.__coverage_lc == 'codacy' %}
+{%- else %}
     - curl -Ls https://coverage.codacy.com/get.sh -o codacy.sh
     # TODO Set the CODACY_PROJECT_TOKEN CI/CD variable in {{ cookiecutter.__scm_link_url }}/settings/ci_cd, see documentation at:
     # https://docs.codacy.com/codacy-api/api-tokens/#repository-api-tokens

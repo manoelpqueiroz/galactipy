@@ -2,16 +2,25 @@
   "project_name": "Python Project",
   "repo_name": "{{ cookiecutter.project_name.lower().split() | join('-') }}",
   "package_name": "{{ cookiecutter.repo_name.replace('-', '_') }}",
+
   "project_description": "{{ cookiecutter.project_name }} is a Python library created with https://gitlab.com/galactipy/galactipy",
+
   "copyright": "The Galactipy Contributors",
   "maintainer": "Manoel Pereira de Queiroz",
+
   "scm_platform": [
-    "GitLab Free",
-    "GitLab Premium/Ultimate",
-    "GitHub"
+    "glab-f",
+    "glab-p",
+    "glab-u",
+    "github"
   ],
+
   "scm_namespace": "galactipy",
-  "email": "contact@{{ cookiecutter.scm_namespace.lower().split() | join('-') }}.com",
+  "__top_namespace": "{{ cookiecutter.scm_namespace.split('/', maxsplit=1) | first }}",
+  "__bottom_namespace": "{{ cookiecutter.scm_namespace.split('/', maxsplit=1) | last }}",
+
+  "email": "contact@{{ cookiecutter.__top_namespace.lower().split() | join('-') }}.com",
+
   "licence": [
     "MIT",
     "BSD-3-Clause",
@@ -22,6 +31,7 @@
     "Apache-2.0",
     "nos"
   ],
+
   "minimal_python_version": [
     "3.10",
     "3.11",
@@ -29,6 +39,7 @@
     "3.13",
     "3.14"
   ],
+
   "line_length": 88,
   "docstring_style": [
     "numpy",
@@ -37,6 +48,7 @@
     "other"
   ],
   "docstring_length": "{{ cookiecutter.line_length }}",
+
   "version_schema": [
     "effver",
     "semver",
@@ -46,18 +58,23 @@
     "solover",
     "trunkver"
   ],
+
   "commit_convention": [
     "gitmoji",
     "conventional",
     "conventional-gitmoji"
   ],
+
   "use_bdd": true,
+
   "coverage_service": [
-    "Codacy",
-    "Coveralls"
+    "codacy",
+    "coveralls"
   ],
+
   "create_docker": true,
   "create_docs": true,
+
   "app_type": [
     "tui",
     "hybrid",
@@ -73,7 +90,13 @@
     "project_description": "Short description of the project",
     "copyright": "Copyright holder",
     "maintainer": "Project maintainer",
-    "scm_platform": "In which platform would you like to host your code?",
+    "scm_platform": {
+      "__prompt__": "In which platform would you like to host your code?",
+      "glab-f": "GitLab Free",
+      "glab-p": "GitLab Premium",
+      "glab-u": "GitLab Ultimate",
+      "github": "GitHub"
+    },
     "scm_namespace": "Platform namespace",
     "email": "Contact email",
     "licence": {
@@ -116,8 +139,8 @@
     },
     "coverage_service": {
       "__prompt__": "What would you like to use for code quality services?",
-      "Codacy": "Full code analysis with Codacy",
-      "Coveralls": "Basic code coverage with Coveralls"
+      "codacy": "Full code analysis with Codacy",
+      "coveralls": "Basic code coverage with Coveralls"
     },
     "create_docker": "Containerize your application with Docker?",
     "create_docs": "Provide documentation for your project with Zensical?",
@@ -151,7 +174,7 @@
     "Apache-2.0": "Apache Software License 2.0",
     "nos": "a non-open-source licence"
   },
-  "__licence_article": "{{ 'the ' if cookiecutter.licence in ['MIT', 'MPL-2.0', 'Apache-2.0'] else '' }}",
+  "__licence_article": "{{ 'the ' if cookiecutter.licence in ['MIT', 'MPL-2.0', 'Apache-2.0'] }}",
   "__licence_simple": "{{ cookiecutter._licence_mapping_simple[cookiecutter.licence] }}",
   "__licence_extended": "{{ cookiecutter._licence_mapping_extended[cookiecutter.licence] }}",
 
@@ -245,33 +268,89 @@
   "__envvar": "{{ cookiecutter.package_name.upper() }}",
   "__security_email": "{{ cookiecutter.email.replace('.', ' dot ').replace('@', ' at ').replace('_', ' underscore ').replace('-', ' dash ') }}",
 
-  "__scm_platform_base": "{{ 'GitLab' if 'GitLab' in cookiecutter.scm_platform else 'GitHub' }}",
+  "_scm_platform_mapping": {
+    "glab-f": "GitLab",
+    "glab-p": "GitLab",
+    "glab-u": "GitLab",
+    "github": "GitHub"
+  },
+  "_scm_platform_group_mapping": {
+    "glab-f": "glab-free",
+    "glab-p": "glab-paid",
+    "glab-u": "glab-paid",
+    "github": "github"
+  },
+  "__scm_platform_base": "{{ cookiecutter._scm_platform_mapping[cookiecutter.scm_platform] }}",
   "__scm_platform_lc": "{{ cookiecutter.__scm_platform_base.lower() }}",
   "__scm_platform_redux": "{{ 'gl' if cookiecutter.__scm_platform_lc == 'gitlab' else 'gh' }}",
-  "__scm_base_url": "https://{{ cookiecutter.__scm_platform_lc }}.com/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}",
-  "__scm_link_url": "https://{{ cookiecutter.__scm_platform_lc }}.com/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}{% if cookiecutter.__scm_platform_lc == 'gitlab' %}/-{% endif %}",
+  "__scm_platform_group": "{{ cookiecutter._scm_platform_group_mapping[cookiecutter.scm_platform] }}",
+
+  "__base_url_parts": [
+    "https://{{ cookiecutter.__scm_platform_lc }}.com",
+    "{{ cookiecutter.scm_namespace }}",
+    "{{ cookiecutter.repo_name }}"
+  ],
+  "__scm_base_url": "{{ cookiecutter.__base_url_parts }} | join('/') }}",
+  "__scm_link_url": "{{ cookiecutter.__scm_base_url }}{% if cookiecutter.__scm_platform_lc == 'gitlab' %}/-{% endif %}",
   "__gitlab_org": "https://gitlab.com/groups/{{ cookiecutter.scm_namespace }}/-",
   "__gitlab_premium_templates": "https://gitlab.com/{{ cookiecutter.scm_namespace }}/templates/-/blob/master",
   "__contributing_prefix": "{{ cookiecutter.__gitlab_premium_templates ~ '/CONTRIBUTING.md' if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' }}",
-  "__pages_url": "https://{{ cookiecutter.scm_namespace }}.{{ cookiecutter.__scm_platform_lc }}.io/{{ cookiecutter.repo_name }}",
+
+  "__single_namespace_parts": [
+    "https://{{ cookiecutter.__top_namespace }}.{{ cookiecutter.__scm_platform_lc }}.io",
+    "{{ cookiecutter.repo_name }}"
+  ],
+  "__multiple_namespace_parts": [
+    "https://{{ cookiecutter.__top_namespace }}.{{ cookiecutter.__scm_platform_lc }}.io",
+    "{{ cookiecutter.__bottom_namespace }}",
+    "{{ cookiecutter.repo_name }}"
+  ],
+  "__pages_url": "{{ cookiecutter.__single_namespace_parts | join('/') if cookiecutter.scm_namespace.split('/') | length == 1 else cookiecutter.__multiple_namespace_parts | join ('/') }}",
 
   "_roadmap_mapping": {
-    "GitLab Premium/Ultimate": "epic",
-    "GitLab Free": "milestone",
-    "GitHub": "project"
+    "glab-paid": "epic",
+    "glab-free": "milestone",
+    "github": "project"
   },
-  "__roadmap_item": "{{ cookiecutter._roadmap_mapping[cookiecutter.scm_platform] }}",
-  "__roadmap_item_indefinite": "{{ 'an ' ~ cookiecutter.__roadmap_item if cookiecutter.__roadmap_item == 'epic' else 'a ' ~ cookiecutter.__roadmap_item }}",
+  "_indefinite_map": {
+    "epic": "an ",
+    "milestone": "a ",
+    "project": "a "
+  },
+  "__roadmap_item": "{{ cookiecutter._roadmap_mapping[cookiecutter.__scm_platform_group] }}",
+  "__roadmap_item_indefinite": "{{ cookiecutter._indefinite_map[cookiecutter.__roadmap_item] ~ cookiecutter.__roadmap_item }}",
 
-  "__docker_registry": "{{ 'registry.gitlab.com/' ~ cookiecutter.scm_namespace ~ '/' ~ cookiecutter.repo_name if cookiecutter.__scm_platform_lc == 'gitlab' else cookiecutter.scm_namespace ~ '/' ~ cookiecutter.repo_name }}",
-  "__docker_repo": "{{ cookiecutter.__scm_base_url ~ '/container_registry' if cookiecutter.__scm_platform_lc == 'gitlab' else 'https://hub.docker.com/r/' ~ cookiecutter.scm_namespace ~ '/' ~ cookiecutter.repo_name }}",
+  "__registry_parts": {
+    "gitlab": [
+      "registry.gitlab.com",
+      "{{ cookiecutter.scm_namespace }}",
+      "{{ cookiecutter.repo_name }}"
+    ],
+    "github": [
+      "{{ cookiecutter.__top_namespace }}",
+      "{{ cookiecutter.repo_name }}"
+    ]
+  },
+  "__repo_parts": {
+    "gitlab": [
+      "{{ cookiecutter.__scm_base_url }}",
+      "container_registry"
+    ],
+    "github": [
+      "https://hub.docker.com/r",
+      "{{ cookiecutter.__top_namespace }}",
+      "{{ cookiecutter.repo_name }}"
+    ]
+  },
+  "__docker_registry": "{{ cookiecutter.__registry_parts[cookiecutter.__scm_platform_lc] | join('/') }}",
+  "__docker_repo": "{{ cookiecutter.__repo_parts[cookiecutter.__scm_platform_lc] | join('/') }}",
 
   "__mr_term": "{{ 'Merge Request' if cookiecutter.__scm_platform_redux == 'gl' else 'Pull Request' }}",
   "__mr_acronym": "{{ 'MR' if cookiecutter.__scm_platform_redux == 'gl' else 'PR' }}",
   "__mr_term_slug": "{{ 'merge-request' if cookiecutter.__scm_platform_redux == 'gl' else 'pull-request' }}",
   "__task_item": "{{ 'task' if cookiecutter.__scm_platform_redux == 'gl' else 'sub-issue' }}",
 
-  "__coverage_lc": "{{ cookiecutter.coverage_service.lower() }}",
+  "__coverage_title": "{{ cookiecutter.coverage_service.title() }}",
 
   "_docstring_mapping": {
     "numpy": "numpydoc",
