@@ -9,9 +9,10 @@
   "maintainer": "Manoel Pereira de Queiroz",
 
   "scm_platform": [
-    "GitLab Free",
-    "GitLab Premium/Ultimate",
-    "GitHub"
+    "glab-f",
+    "glab-p",
+    "glab-u",
+    "github"
   ],
 
   "scm_namespace": "galactipy",
@@ -67,8 +68,8 @@
   "use_bdd": true,
 
   "coverage_service": [
-    "Codacy",
-    "Coveralls"
+    "codacy",
+    "coveralls"
   ],
 
   "create_docker": true,
@@ -89,7 +90,13 @@
     "project_description": "Short description of the project",
     "copyright": "Copyright holder",
     "maintainer": "Project maintainer",
-    "scm_platform": "In which platform would you like to host your code?",
+    "scm_platform": {
+      "__prompt__": "In which platform would you like to host your code?",
+      "glab-f": "GitLab Free",
+      "glab-p": "GitLab Premium",
+      "glab-u": "GitLab Ultimate",
+      "github": "GitHub"
+    },
     "scm_namespace": "Platform namespace",
     "email": "Contact email",
     "licence": {
@@ -132,8 +139,8 @@
     },
     "coverage_service": {
       "__prompt__": "What would you like to use for code quality services?",
-      "Codacy": "Full code analysis with Codacy",
-      "Coveralls": "Basic code coverage with Coveralls"
+      "codacy": "Full code analysis with Codacy",
+      "coveralls": "Basic code coverage with Coveralls"
     },
     "create_docker": "Containerize your application with Docker?",
     "create_docs": "Provide documentation for your project with Zensical?",
@@ -261,9 +268,22 @@
   "__envvar": "{{ cookiecutter.package_name.upper() }}",
   "__security_email": "{{ cookiecutter.email.replace('.', ' dot ').replace('@', ' at ').replace('_', ' underscore ').replace('-', ' dash ') }}",
 
-  "__scm_platform_base": "{{ 'GitLab' if 'GitLab' in cookiecutter.scm_platform else 'GitHub' }}",
+  "_scm_platform_mapping": {
+    "glab-f": "GitLab",
+    "glab-p": "GitLab",
+    "glab-u": "GitLab",
+    "github": "GitHub"
+  },
+  "_scm_platform_group_mapping": {
+    "glab-f": "glab-free",
+    "glab-p": "glab-paid",
+    "glab-u": "glab-paid",
+    "github": "github"
+  },
+  "__scm_platform_base": "{{ cookiecutter._scm_platform_mapping[cookiecutter.scm_platform] }}",
   "__scm_platform_lc": "{{ cookiecutter.__scm_platform_base.lower() }}",
   "__scm_platform_redux": "{{ 'gl' if cookiecutter.__scm_platform_lc == 'gitlab' else 'gh' }}",
+  "__scm_platform_group": "{{ cookiecutter._scm_platform_group_mapping[cookiecutter.scm_platform] }}",
 
   "__base_url_parts": [
     "https://{{ cookiecutter.__scm_platform_lc }}.com",
@@ -288,16 +308,16 @@
   "__pages_url": "{{ cookiecutter.__single_namespace_parts | join('/') if cookiecutter.scm_namespace.split('/') | length == 1 else cookiecutter.__multiple_namespace_parts | join ('/') }}",
 
   "_roadmap_mapping": {
-    "GitLab Premium/Ultimate": "epic",
-    "GitLab Free": "milestone",
-    "GitHub": "project"
+    "glab-paid": "epic",
+    "glab-free": "milestone",
+    "github": "project"
   },
   "_indefinite_map": {
     "epic": "an ",
     "milestone": "a ",
     "project": "a "
   },
-  "__roadmap_item": "{{ cookiecutter._roadmap_mapping[cookiecutter.scm_platform] }}",
+  "__roadmap_item": "{{ cookiecutter._roadmap_mapping[cookiecutter.__scm_platform_group] }}",
   "__roadmap_item_indefinite": "{{ cookiecutter._indefinite_map[cookiecutter.__roadmap_item] ~ cookiecutter.__roadmap_item }}",
 
   "__registry_parts": {
@@ -330,7 +350,7 @@
   "__mr_term_slug": "{{ 'merge-request' if cookiecutter.__scm_platform_redux == 'gl' else 'pull-request' }}",
   "__task_item": "{{ 'task' if cookiecutter.__scm_platform_redux == 'gl' else 'sub-issue' }}",
 
-  "__coverage_lc": "{{ cookiecutter.coverage_service.lower() }}",
+  "__coverage_title": "{{ cookiecutter.coverage_service.title() }}",
 
   "_docstring_mapping": {
     "numpy": "numpydoc",
