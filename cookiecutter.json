@@ -2,16 +2,24 @@
   "project_name": "Python Project",
   "repo_name": "{{ cookiecutter.project_name.lower().split() | join('-') }}",
   "package_name": "{{ cookiecutter.repo_name.replace('-', '_') }}",
+
   "project_description": "{{ cookiecutter.project_name }} is a Python library created with https://gitlab.com/galactipy/galactipy",
+
   "copyright": "The Galactipy Contributors",
   "maintainer": "Manoel Pereira de Queiroz",
+
   "scm_platform": [
     "GitLab Free",
     "GitLab Premium/Ultimate",
     "GitHub"
   ],
+
   "scm_namespace": "galactipy",
-  "email": "contact@{{ cookiecutter.scm_namespace.lower().split() | join('-') }}.com",
+  "__top_namespace": "{{ cookiecutter.scm_namespace.split('/', maxsplit=1) | first }}",
+  "__bottom_namespace": "{{ cookiecutter.scm_namespace.split('/', maxsplit=1) | last }}",
+
+  "email": "contact@{{ cookiecutter.__top_namespace.lower().split() | join('-') }}.com",
+
   "licence": [
     "MIT",
     "BSD-3-Clause",
@@ -22,6 +30,7 @@
     "Apache-2.0",
     "nos"
   ],
+
   "minimal_python_version": [
     "3.10",
     "3.11",
@@ -29,6 +38,7 @@
     "3.13",
     "3.14"
   ],
+
   "line_length": 88,
   "docstring_style": [
     "numpy",
@@ -37,6 +47,7 @@
     "other"
   ],
   "docstring_length": "{{ cookiecutter.line_length }}",
+
   "version_schema": [
     "effver",
     "semver",
@@ -46,18 +57,23 @@
     "solover",
     "trunkver"
   ],
+
   "commit_convention": [
     "gitmoji",
     "conventional",
     "conventional-gitmoji"
   ],
+
   "use_bdd": true,
+
   "coverage_service": [
     "Codacy",
     "Coveralls"
   ],
+
   "create_docker": true,
   "create_docs": true,
+
   "app_type": [
     "tui",
     "hybrid",
@@ -253,7 +269,17 @@
   "__gitlab_org": "https://gitlab.com/groups/{{ cookiecutter.scm_namespace }}/-",
   "__gitlab_premium_templates": "https://gitlab.com/{{ cookiecutter.scm_namespace }}/templates/-/blob/master",
   "__contributing_prefix": "{{ cookiecutter.__gitlab_premium_templates ~ '/CONTRIBUTING.md' if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' }}",
-  "__pages_url": "https://{{ cookiecutter.scm_namespace }}.{{ cookiecutter.__scm_platform_lc }}.io/{{ cookiecutter.repo_name }}",
+
+  "__single_namespace_parts": [
+    "https://{{ cookiecutter.__top_namespace }}.{{ cookiecutter.__scm_platform_lc }}.io",
+    "{{ cookiecutter.repo_name }}"
+  ],
+  "__multiple_namespace_parts": [
+    "https://{{ cookiecutter.__top_namespace }}.{{ cookiecutter.__scm_platform_lc }}.io",
+    "{{ cookiecutter.__bottom_namespace }}",
+    "{{ cookiecutter.repo_name }}"
+  ],
+  "__pages_url": "{{ cookiecutter.__single_namespace_parts | join('/') if cookiecutter.scm_namespace.split('/') | length == 1 else cookiecutter.__multiple_namespace_parts | join ('/') }}",
 
   "_roadmap_mapping": {
     "GitLab Premium/Ultimate": "epic",
