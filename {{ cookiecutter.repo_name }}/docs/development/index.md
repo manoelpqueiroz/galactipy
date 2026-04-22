@@ -19,7 +19,7 @@ and we strive to make it
 as easy as possible.
 This guide is aimed at
 facilitating onboarding
-{% if cookiecutter.scm_platform != 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
 for new collaborators
 and serving as the single source of truth
 for the project's rules
@@ -74,7 +74,7 @@ in addressing your issue
 or assessing patches and features.
 
 ## Not Sure Where to Start?
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in project and group CONTRIBUTING.md guides
   [project]: ../../../../CONTRIBUTING.md#shrug-not-sure-where-to-start
   [group]: {{ cookiecutter.__contributing_prefix }}#shrug-not-sure-where-to-start
@@ -155,9 +155,9 @@ should help:
       defined for the project;
 {%- endif %}
 - Take a look at
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
   the organisation's [{{ cookiecutter.__roadmap_item.capitalize() }}s][10] page
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+{%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
   the project's [{{ cookiecutter.__roadmap_item.capitalize() }}s][10] page
 {%- else %}
   our [{{ cookiecutter.__roadmap_item.capitalize() }}s][10] page
@@ -172,7 +172,7 @@ should help:
 {%- if cookiecutter.__scm_platform_lc == 'github' %}
   and discussions
 {%- endif %}
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
   labelled with [`seeking-contributors`][11]
 {%- else %}
   labelled with [`seeking-builders`][11]
@@ -385,17 +385,17 @@ with your first steps here:
 [8]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/workflows
 {%- endif %}
 [9]: ./policies/ci.md
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 [10]: {{ cookiecutter.__gitlab_org }}/epics
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+{%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
 [10]: {{ cookiecutter.__scm_link_url }}/milestones
 {%- else %}
 [10]: {{ cookiecutter.__scm_link_url }}/projects
 {%- endif %}
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 [11]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Adelivery&type%5B%5D=issue
 [12]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment%3A%3A%2A&type%5B%5D=issue
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+{%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
 [11]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-builders&type%5B%5D=issue
 [12]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment&type%5B%5D=issue
 {%- else %}
@@ -404,9 +404,9 @@ with your first steps here:
 {%- endif %}
 [13]: {{ cookiecutter.__scm_link_url }}/labels
 [14]: ./policies/developing.md#work-item-lifecycle
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 [15]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&status=Needs%20Triage&type%5B%5D=issue
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+{%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
 [15]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=sts-needs-triage&type%5B%5D=issue
 {%- else %}
 [15]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Asts-needs-triage

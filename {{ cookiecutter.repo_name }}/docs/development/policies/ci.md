@@ -7,7 +7,7 @@ tags:
 
 {% endraw -%}
 # Continuous Integration
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#continuous-integration
 
@@ -31,7 +31,7 @@ to automate the following development streams:
 
 - Testing;
 - Test coverage reporting;
-{%- if cookiecutter.__coverage_lc == 'codacy' %}
+{%- if cookiecutter.coverage_service == 'codacy' %}
 - Code quality analysis;
 {%- endif %}
 - Releases.
@@ -41,7 +41,7 @@ unless its CI pipeline passes.
 The project's CI configuration
 runs under more strict rules
 and no jobs are allowed to fail.
-{%- if cookiecutter.__coverage_lc == 'codacy' %}
+{%- if cookiecutter.coverage_service == 'codacy' %}
 This includes the external job
 provided by [Codacy][1a],
 which is used for code quality assurance.
@@ -70,7 +70,7 @@ of the development cycle.
 
 [1]: https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/control-deployments
 {%- endif %}
-{%- if cookiecutter.__coverage_lc == 'codacy' %}
+{%- if cookiecutter.coverage_service == 'codacy' %}
 [1a]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}
 [1b]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/pull-requests/open
 {%- endif %}

@@ -39,9 +39,9 @@ an overview on the project's major phases
 and features users should expect
 at each stage of development.
 It also presents
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 a summary of the {{ cookiecutter.project_name }} [GitLab Epics][1]
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+{%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
 a summary of the {{ cookiecutter.project_name }} [GitLab Milestones][1]
 {%- else %}
 a summary of the {{ cookiecutter.project_name }} [GitHub Projects][1]
@@ -196,9 +196,9 @@ and discussion purposes only.
 Dates provided here
 are gross estimations
 and might be outdated,
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 please refer to each epic
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+{%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
 please refer to each milestone
 {%- else %}
 please refer to each project
@@ -215,9 +215,9 @@ etc.
 If you depend
 on a specific item,
 check if it is mapped for development
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 through the most appropriate epic.
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+{%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
 through the most appropriate milestone.
 {%- else %}
 through the most appropriate project.
@@ -235,9 +235,9 @@ We will try our best
 to bring updated status information.
 
 {% endif -%}
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
 | Epic | Description | Theme | Timeline |
-{% elif cookiecutter.scm_platform == 'GitLab Free' -%}
+{% elif cookiecutter.__scm_platform_group == 'glab-free' -%}
 | Milestone | Description | Theme | Timeline |
 {% else -%}
 | Project | Description | Theme | Timeline |
@@ -274,9 +274,9 @@ with clarifications.
 [contributing]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md
 
 {% endif -%}
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
 [1]: {{ cookiecutter.__gitlab_org }}/epics
-{% elif cookiecutter.scm_platform == 'GitLab Free' -%}
+{% elif cookiecutter.__scm_platform_group == 'glab-free' -%}
 [1]: {{ cookiecutter.__scm_link_url }}/milestones
 {% else -%}
 [1]: {{ cookiecutter.__scm_link_url }}/projects

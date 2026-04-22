@@ -7,7 +7,7 @@ tags:
 
 {% endraw -%}
 # Proposing Changes
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in project and group CONTRIBUTING.md guides
   [project]: ../../../../CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
   [group]: {{ cookiecutter.__contributing_prefix }}#speaking_head-proposing-changes-as-a-developer

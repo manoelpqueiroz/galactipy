@@ -3,7 +3,7 @@
 >>> [!note] :bulb: To modify documents and rules for {{ cookiecutter.project_name }} development
 This template should be used to propose and discuss any changes that affect knowledge management of the project.
 
-:ok: **Types of changes to be proposed with this template:** changes to project documentation and issue/MR templates, changes to project guidelines, changes to CI rules,{% if cookiecutter.scm_platform == 'GitLab Free' %} milestone creation/completion,{% endif %} roadmap updates, changes to linting, styling, testing and issue triaging rules
+:ok: **Types of changes to be proposed with this template:** changes to project documentation and issue/MR templates, changes to project guidelines, changes to CI rules,{% if cookiecutter.__scm_platform_group == 'glab-free' %} milestone creation/completion,{% endif %} roadmap updates, changes to linting, styling, testing and issue triaging rules
 
 :no_good: **What this type of proposal does not stand for:**
 
@@ -41,7 +41,7 @@ This template should be used to propose and discuss any changes that affect know
 - [ ] I provided a concise and clear title for this discussion;
 - [ ] I have presented my proposal following the [{{ cookiecutter.project_name }} philosophy][2];
 - [ ] I have added the proper [labels][3] to start this discussion;
-{%- if cookiecutter.scm_platform == 'GitLab Free' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-free' %}
 - [ ] I have associated the proposal with the adequate [development milestone][3a];
 {%- endif %}
 - [ ] I have followed the [commit customs][5] for the project;
@@ -73,7 +73,7 @@ This template should be used to propose and discuss any changes that affect know
 [1]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
 [2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#book-our-philosophy
 [3]: {{ cookiecutter.__scm_link_url }}/labels
-{%- if cookiecutter.scm_platform == 'GitLab Free' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-free' %}
 [3a]: {{ cookiecutter.__scm_link_url }}/milestones
 {%- endif %}
 [5]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#commit-customs

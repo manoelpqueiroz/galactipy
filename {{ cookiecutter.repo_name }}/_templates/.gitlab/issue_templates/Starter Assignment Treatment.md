@@ -93,7 +93,7 @@ Should you feel interested in delivering this item after reading this treatment,
 - Assign the work item to you by clicking on the _"assign yourself"_ link at the right panel;
 - Read the [`CONTRIBUTING`][4] guide to become familiar with our procedures before you start working on the solution.
 
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
 /status "Needs Delivery Steps"
 {%- else -%}
 /label ~"starter-assignment" ~"sts-needs-delivery-steps"

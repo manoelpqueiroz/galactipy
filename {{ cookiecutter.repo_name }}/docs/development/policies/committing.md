@@ -7,7 +7,7 @@ tags:
 
 {% endraw -%}
 # Commit Customs
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in project and group CONTRIBUTING.md guides
   [project]: ../../../../CONTRIBUTING.md#commit-customs
   [group]: {{ cookiecutter.__contributing_prefix }}#commit-customs
@@ -24,7 +24,7 @@ tags:
 
 {% if cookiecutter.commit_convention == 'gitmoji' -%}
 ## Gitmoji
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in project and group CONTRIBUTING.md guides
   [project]: ../../../../CONTRIBUTING.md#gitmoji
   [group]: {{ cookiecutter.__contributing_prefix }}#gitmoji
@@ -303,7 +303,7 @@ so the CI will ignore it.
 
 {% endif -%}
 ## Commit Message Structure
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#commit-message-structure
 

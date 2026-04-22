@@ -14,7 +14,7 @@
     ":separateMajorReleases"
   ],
   "labels": [
-{%-endraw %}{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%-endraw %}{% if cookiecutter.__scm_platform_group == 'glab-paid' %}
     "maintenance::renovate"
 {%- else %}
     "maintenance-renovate"
@@ -45,7 +45,7 @@
       "automerge": true,
       "enabled": true,
       "addLabels": [
-{%- endraw %}{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- endraw %}{% if cookiecutter.__scm_platform_group == 'glab-paid' %}
         "ci::build"
 {%- else %}
         "ci-build"
@@ -77,7 +77,7 @@
       "automerge": false,
       "addLabels": [
         "manual-check",
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
         "ci::docker"
 {%- else %}
         "ci-docker"
@@ -196,7 +196,7 @@
     {
       "automerge": true,
       "addLabels": [
-{%- endraw %}{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- endraw %}{% if cookiecutter.__scm_platform_group == 'glab-paid' %}
         "internals::toolset"
 {%- else %}
         "internals-toolset"

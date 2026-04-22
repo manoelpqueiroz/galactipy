@@ -7,7 +7,7 @@ tags:
 
 {% endraw -%}
 # Our Philosophy
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#book-our-philosophy
 
@@ -43,7 +43,7 @@ for contributors
 within our development ecosystem.
 
 ## Start with a {{ cookiecutter.__mr_term }}
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#start-with-a-{{ cookiecutter.__mr_term_slug }}
 
@@ -235,7 +235,7 @@ to take action on.
     avoid auto-closing the related issue.
 
 ## _Say Why, Not Just What_
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#say-why-not-just-what
 
@@ -345,7 +345,7 @@ that can lead to disruption
 and inefficiency.
 
 ## Operate with a Bias for Action
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#operate-with-a-bias-for-action
 
@@ -386,7 +386,7 @@ our general practices
 when working together.
 
 ## Interactions Enable Insights
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#interactions-enable-insights
 
@@ -436,7 +436,7 @@ so it can be useful
 and cherished by others.
 
 ## Sharing Insights Drives Progress
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#sharing-insights-drives-progress
 
@@ -527,7 +527,7 @@ the value of the project
 to someone else.
 
 ## There Are no Good First Issues
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#there-are-no-good-first-issues
 

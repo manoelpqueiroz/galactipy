@@ -7,7 +7,7 @@ tags:
 
 {% endraw -%}
 # Documentation Philosophy
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#documentation-philosophy
 
@@ -31,7 +31,7 @@ on top of our [core values][2]
 to achieve the best results possible.
 
 ## Minimum Viable Documentation
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#minimum-viable-documentation
 
@@ -68,7 +68,7 @@ in various states of disrepair.
 </div>
 
 ## Update Docs with Code
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#update-docs-with-code
 
@@ -98,7 +98,7 @@ and any other docs get updated
 alongside the proposed change.
 
 ## Delete Dead Documentation
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#delete-dead-documentation
 
@@ -145,7 +145,7 @@ If the docs are in bad shape:
 - Iterate.
 
 ## Prefer Good over the Perfect
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#prefer-good-over-the-perfect
 
@@ -208,7 +208,7 @@ As an author:
   as often as needed.
 
 ## Documentation is the Story of Our Code
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#documentation-is-the-story-of-our-code
 
@@ -235,7 +235,7 @@ Documentation is an important part
 of this skill.
 
 ## Duplication is Evil
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#duplication-is-evil
 

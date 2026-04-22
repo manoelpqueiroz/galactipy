@@ -7,7 +7,7 @@ tags:
 
 {% endraw -%}
 # Preparing to Contribute
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in project and group CONTRIBUTING.md guides
   [project]: ../../../../CONTRIBUTING.md#preparing-to-contribute
   [group]: {{ cookiecutter.__contributing_prefix }}#preparing-to-contribute
@@ -23,7 +23,7 @@ tags:
 {%- endif %}
 
 ## Choosing What to Contribute
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in project and group CONTRIBUTING.md guides
   [project]: ../../../../CONTRIBUTING.md#choosing-what-to-contribute
   [group]: {{ cookiecutter.__contributing_prefix }}#choosing-what-to-contribute
@@ -122,7 +122,7 @@ to less fundamental building blocks.
 
 {% endif -%}
 ## Opening Admissible {{ cookiecutter.__mr_term }}s
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#opening-admissible-{{ cookiecutter.__mr_term_slug }}s
 
@@ -228,7 +228,7 @@ from the Kubernetes team
 also has some great points regarding this.
 
 ## Review Criteria
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#review-criteria
 
@@ -307,10 +307,10 @@ its probability of being merged:
 <!-- Anchors -->
 
 [1]: https://img.shields.io/badge/needs_triage-4285f4?style=for-the-badge
-{% if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' -%}
+{% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
 [2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&status=Needs%20Triage&type%5B%5D=issue
 [3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment%3A%3A%2A&type%5B%5D=issue
-{% elif cookiecutter.scm_platform == 'GitLab Free' -%}
+{% elif cookiecutter.__scm_platform_group == 'glab-free' -%}
 [2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=sts-needs-triage&type%5B%5D=issue
 [3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment&type%5B%5D=issue
 {% else -%}

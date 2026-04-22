@@ -7,7 +7,7 @@ tags:
 
 {% endraw -%}
 # Contributing through User Requests
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in project and group CONTRIBUTING.md guides
   [project]: ../../../../CONTRIBUTING.md#contributing-through-user-requests
   [group]: {{ cookiecutter.__contributing_prefix }}#contributing-through-user-requests
@@ -170,7 +170,7 @@ of a quick response:
   down the line.
 
 ## Specific Guidelines for Requests for Support
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in project and group CONTRIBUTING.md guides
   [project]: ../../../../CONTRIBUTING.md#specific-guidelines-for-requests-for-support
   [group]: {{ cookiecutter.__contributing_prefix }}#specific-guidelines-for-requests-for-support
@@ -219,7 +219,7 @@ prefer sticking to the Request for Support
 as the means to reach the team.
 
 ## Specific Guidelines for Requests for Improvement
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in project and group CONTRIBUTING.md guides
   [project]: ../../../../CONTRIBUTING.md#specific-guidelines-for-requests-for-improvement
   [group]: {{ cookiecutter.__contributing_prefix }}#specific-guidelines-for-requests-for-improvement
@@ -306,7 +306,7 @@ to make a contribution
 is to make one [that comes from yourself][9].
 
 ## Specific Guidelines for Requests for Correction
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in project and group CONTRIBUTING.md guides
   [project]: ../../../../CONTRIBUTING.md#specific-guidelines-for-requests-for-correction
   [group]: {{ cookiecutter.__contributing_prefix }}#specific-guidelines-for-requests-for-correction
@@ -442,9 +442,9 @@ even if they are not perfectly detailed.
 [5]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-support
 [6]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-improvement
 {%- endif %}
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 [7]: {{ cookiecutter.__gitlab_org }}/epics
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+{%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
 [7]: {{ cookiecutter.__scm_link_url }}/milestones
 {%- else %}
 [7]: {{ cookiecutter.__scm_link_url }}/projects
@@ -452,9 +452,9 @@ even if they are not perfectly detailed.
 [8]: ../philosophy.md#operate-with-a-bias-for-action
 [9]: ../philosophy.md#there-are-no-good-first-issues
 [10]: https://img.shields.io/badge/requests_for_correction-dc143c?style=for-the-badge
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 [11]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Acorrection&type%5B%5D=issue
-{%- elif cookiecutter.scm_platform == 'GitLab Free' %}
+{%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
 [11]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfc&type%5B%5D=issue
 {%- else %}
 [11]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Arfc

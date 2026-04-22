@@ -50,7 +50,7 @@ This template should be used to propose and discuss incremental or novel working
 - [ ] I provided a concise and clear title for this discussion;
 - [ ] I have presented my proposal following the [{{ cookiecutter.project_name }} philosophy][2];
 - [ ] I have added the proper [labels][3] to start this discussion;
-{%- if cookiecutter.scm_platform == 'GitLab Free' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-free' %}
 - [ ] I have associated the proposal with the adequate [development milestone][3a];
 {%- endif %}
 - [ ] I have followed the [commit customs][5] for the project;
@@ -89,7 +89,7 @@ Regarding technical delivery:
 [1]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
 [2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#book-our-philosophy
 [3]: {{ cookiecutter.__scm_link_url }}/labels
-{%- if cookiecutter.scm_platform == 'GitLab Free' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-free' %}
 [3a]: {{ cookiecutter.__scm_link_url }}/milestones
 {%- endif %}
 [5]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#commit-customs

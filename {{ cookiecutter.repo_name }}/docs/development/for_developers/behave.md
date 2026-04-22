@@ -7,7 +7,7 @@ tags:
 
 {% endraw -%}
 # How to Behave among Other Contributors
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#how-to-behave-among-other-contributors
 

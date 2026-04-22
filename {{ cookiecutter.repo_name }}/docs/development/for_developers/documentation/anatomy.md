@@ -6,7 +6,7 @@ tags:
 
 {% endraw -%}
 # Anatomy
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#anatomy
 
@@ -29,7 +29,7 @@ where knowledge is collected
 and presented to different audiences.
 
 ## The `README` File
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#the-readme-file
 
@@ -79,7 +79,7 @@ from the perspective of a new user,
 then changes in these files are warranted.
 
 ## Hard Policy Files
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#hard-policy-files
 
@@ -169,7 +169,7 @@ by any contributor
 via a [**Project Policy Proposal** {{ cookiecutter.__mr_acronym }}][7].
 
 ## Issue and {{ cookiecutter.__mr_term }} Templates
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#issue-and-{{ cookiecutter.__mr_term_slug }}-templates
 
@@ -288,7 +288,7 @@ as well as proposing new template types,
 should be done via a [**Project Policy Proposal** {{ cookiecutter.__mr_acronym }}][7].
 
 ## The Formal Documentation
-{%- if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' %}
+{%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 <!-- This section is also described in the group CONTRIBUTING.md guide
   [link]: {{ cookiecutter.__contributing_prefix }}#the-formal-documentation
 
