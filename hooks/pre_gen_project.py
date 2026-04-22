@@ -31,7 +31,7 @@ PROJECT_REGEX = re.compile(
     re.VERBOSE,
 )
 PACKAGE_REGEX = re.compile(r"^[a-z][a-z0-9\_]+[a-z0-9]$")
-USERNAME_REGEX = re.compile(
+NAMESPACE_REGEX = re.compile(
     r"""
         ^[a-zA-Z0-9]            # Must begin with letter or number
         (?!.*(-){2})            # Must not have any two consecutive - ahead
@@ -204,7 +204,7 @@ def _validate_single_namespace(namespace: str) -> None:
 
     message = f"ERROR: `{namespace}` is not a valid name for user or organisation."
 
-    if USERNAME_REGEX.fullmatch(namespace) is None:
+    if NAMESPACE_REGEX.fullmatch(namespace) is None:
         raise ValueError(message)
     if namespace in RESERVED_NAMESPACES:
         raise ValueError(message)
