@@ -112,7 +112,7 @@ RESERVED_NAMESPACES = [
 ]
 
 
-def validate_repo_name(repo_name: str, reserved_projects: list[str]) -> None:
+def validate_repo_name(repo_name: str) -> None:
     """Ensure that `repo_name` is valid under GitLab restrictions.
 
     Valid input starts with a digit or letter, can be comprised of any
@@ -127,8 +127,6 @@ def validate_repo_name(repo_name: str, reserved_projects: list[str]) -> None:
     ----------
     repo_name : str
         Current project repository slug.
-    reserved_projects : list
-        List of reserved project names that can not be used.
 
     Raises
     ------
@@ -141,7 +139,7 @@ def validate_repo_name(repo_name: str, reserved_projects: list[str]) -> None:
         )
         raise ValueError(message)
 
-    if repo_name in reserved_projects:
+    if repo_name in RESERVED_PROJECTS:
         message = f"ERROR: The project slug `{repo_name}` is a reserved project name."
         raise ValueError(message)
 
@@ -255,7 +253,7 @@ def validate_docstring_length(line_length: int, docstring_length: int) -> None:
 
 def main() -> None:  # noqa: D103
     try:
-        validate_repo_name(repo_name=REPO_NAME, reserved_projects=RESERVED_PROJECTS)
+        validate_repo_name(repo_name=REPO_NAME)
 
         validate_package_name(package_name=PACKAGE_NAME)
 
