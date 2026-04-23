@@ -595,6 +595,7 @@ ignore-words-list = "sive"
 
 
 [tool.pre-commit-update.yaml]
+# https://gitlab.com/vojko.pribudic.foss/pre-commit-update#5-configuration
 mapping = 2
 sequence = 4
 offset = 2
