@@ -290,7 +290,7 @@
     "{{ cookiecutter.scm_namespace }}",
     "{{ cookiecutter.repo_name }}"
   ],
-  "__scm_base_url": "{{ cookiecutter.__base_url_parts }} | join('/') }}",
+  "__scm_base_url": "{{ cookiecutter.__base_url_parts | join('/') }}",
   "__scm_link_url": "{{ cookiecutter.__scm_base_url }}{% if cookiecutter.__scm_platform_lc == 'gitlab' %}/-{% endif %}",
   "__gitlab_org": "https://gitlab.com/groups/{{ cookiecutter.scm_namespace }}/-",
   "__gitlab_premium_templates": "https://gitlab.com/{{ cookiecutter.scm_namespace }}/templates/-/blob/master",
