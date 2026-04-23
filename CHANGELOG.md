@@ -1,3 +1,13 @@
+## 3.2.1 (2026-04-23)
+
+### :toolbox: Fixes (1 change)
+
+- [:ambulance: Fix malformed Cookiecutter variable for base URL](galactipy/galactipy@4f89c2b4784c58ad8fb6a9c5d9fa9226df6ac963)
+
+### :books: Documentation (1 change)
+
+- [:pencil: Update input variables table with default coverage service](galactipy/galactipy@fdf397757a7f0dac7a74889f5e2e1d716214f2b9)
+
 ## 3.2.0 (2026-04-22)
 
 ### :ballot_box: Settings & Options (3 changes)
