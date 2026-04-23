@@ -1,5 +1,5 @@
 # These are the variables used to generate this project with Cookiecutter
-# Made with Galactipy (release v3.2.0)
+# Made with Galactipy (release v3.2.1)
 # Documentation at: https://gitlab.com/galactipy/galactipy
 default_context:
   project_name: "{{ cookiecutter.project_name }}"

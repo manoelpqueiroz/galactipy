@@ -40,7 +40,7 @@ _Expand your project structure from atoms of code to **galactic** dimensions._ :
 ## TL;DR
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v3.2.0
+cookiecutter gl:galactipy/galactipy --checkout v3.2.1
 ```
 
 **All you need is the latest version of Cookiecutter!** :wink:
@@ -268,7 +268,7 @@ pipx upgrade cookiecutter
 then go to a directory where you want to create your project and run:
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v3.2.0
+cookiecutter gl:galactipy/galactipy --checkout v3.2.1
 ```
 
 ### Input variables
