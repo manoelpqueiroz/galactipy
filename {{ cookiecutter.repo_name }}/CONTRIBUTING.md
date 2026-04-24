@@ -4883,8 +4883,9 @@ The project uses [`mkdocstrings`][docs8]
 to collect the API from {{ cookiecutter.project_name }}.
 This makes the process
 of providing API details to users
-much more efficient,
-but mkdocstrings does not make
+more configurable,
+but on the other hand
+`mkdocstrings` does not make
 the process completely automatic.
 Thus,
 contributors are required to understand
