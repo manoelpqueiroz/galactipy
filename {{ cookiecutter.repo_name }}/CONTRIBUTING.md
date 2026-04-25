@@ -7469,7 +7469,7 @@ what we are doing matters!
 {% endif -%}
 <!-- Anchors -->
 
-[readme]: {{ cookiecutter.__scm_link_url }}/blob/master/README.md
+[readme]: {{ cookiecutter.__scm_repo_latch }}/blob/master/README.md
 
 [swmr]: {{ cookiecutter.__contributing_prefix }}#start-with-a-{{ cookiecutter.__mr_term_slug }}
 [philosophy]: {{ cookiecutter.__contributing_prefix }}#book-our-philosophy
@@ -7539,50 +7539,50 @@ what we are doing matters!
 [badge10]: https://img.shields.io/badge/requests_for_support-ed9121?style=for-the-badge
 
 {% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
-[query1]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&parent_id=None
-[query2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Aopinion&type%5B%5D=issue
-[query3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&status=Needs%20Triage&type%5B%5D=issue
-[query4]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=design%3A%3A%2A&type%5B%5D=issue
+[query1]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&type%5B%5D=issue&parent_id=None
+[query2]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Aopinion&type%5B%5D=issue
+[query3]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&status=Needs%20Triage&type%5B%5D=issue
+[query4]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=design%3A%3A%2A&type%5B%5D=issue
 {%- if cookiecutter.licence != 'nos' %}
-[query4a]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment%3A%3A%2A&type%5B%5D=issue
+[query4a]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=starter-assignment%3A%3A%2A&type%5B%5D=issue
 {%- endif %}
-[query5]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Adelivery&type%5B%5D=issue
-[query6]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&or%5Blabel_name%5D%5B%5D=quick-win&or%5Blabel_name%5D%5B%5D=starter-assignment%3A%3Aquick-win
-[query7]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=stale&type%5B%5D=issue
-[query8]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Acorrection&type%5B%5D=issue
-[query9]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Aimprovement&type%5B%5D=issue
-[query10]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Asupport&type%5B%5D=issue
+[query5]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Adelivery&type%5B%5D=issue
+[query6]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&or%5Blabel_name%5D%5B%5D=quick-win&or%5Blabel_name%5D%5B%5D=starter-assignment%3A%3Aquick-win
+[query7]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=stale&type%5B%5D=issue
+[query8]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=request%3A%3Acorrection&type%5B%5D=issue
+[query9]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=request%3A%3Aimprovement&type%5B%5D=issue
+[query10]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=request%3A%3Asupport&type%5B%5D=issue
 
 {% elif cookiecutter.__scm_platform_group == 'glab-free' -%}
-[query1]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&milestone_title=None
-[query1a]: {{ cookiecutter.__scm_link_url }}/issues?state=all&type%5B%5D=task&milestone_title=Any
-[query2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-input&type%5B%5D=issue
-[query3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=sts-needs-triage&type%5B%5D=issue
-[query4]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5D%5B%5D=design-discovery&or%5Blabel_name%5D%5B%5D=design-formulation&or%5Blabel_name%5D%5B%5D=design-reassessment&type%5B%5D=issue
+[query1]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&type%5B%5D=issue&milestone_title=None
+[query1a]: {{ cookiecutter.__scm_repo_latch }}/issues?state=all&type%5B%5D=task&milestone_title=Any
+[query2]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-input&type%5B%5D=issue
+[query3]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=sts-needs-triage&type%5B%5D=issue
+[query4]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5D%5B%5D=design-discovery&or%5Blabel_name%5D%5B%5D=design-formulation&or%5Blabel_name%5D%5B%5D=design-reassessment&type%5B%5D=issue
 {%- if cookiecutter.licence != 'nos' %}
-[query4a]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment&type%5B%5D=issue
+[query4a]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=starter-assignment&type%5B%5D=issue
 {%- endif %}
-[query5]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-builders&type%5B%5D=issue
-[query6]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=quick-win&type%5B%5D=issue
-[query7]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=stale&type%5B%5D=issue
-[query8]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfc&type%5B%5D=issue
-[query9]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfc&type%5B%5D=issue
-[query10]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfs&type%5B%5D=issue
+[query5]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-builders&type%5B%5D=issue
+[query6]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=quick-win&type%5B%5D=issue
+[query7]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=stale&type%5B%5D=issue
+[query8]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=rfc&type%5B%5D=issue
+[query9]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=rfc&type%5B%5D=issue
+[query10]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=rfs&type%5B%5D=issue
 
 {% else -%}
-[query1]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20no%3Aproject
-[query2]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-input
-[query3]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Asts-needs-triage
-[query4]: {{ cookiecutter.__scm_link_url }}/issues?q=label%3Adesign-discovery%20OR%20label%3Adesign-formulation%20OR%20label%3Adesign-reassessment
+[query1]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue%20state%3Aopen%20no%3Aproject
+[query2]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-input
+[query3]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Asts-needs-triage
+[query4]: {{ cookiecutter.__scm_repo_latch }}/issues?q=label%3Adesign-discovery%20OR%20label%3Adesign-formulation%20OR%20label%3Adesign-reassessment
 {%- if cookiecutter.licence != 'nos' %}
-[query4a]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astarter-assignment
+[query4a]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astarter-assignment
 {%- endif %}
-[query5]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-builders
-[query6]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aquick-win
-[query7]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astale
-[query8]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Arfc
-[query9]: {{ cookiecutter.__scm_link_url }}/discussions/categories/requests-for-improvement
-[query10]: {{ cookiecutter.__scm_link_url }}/discussions/categories/requests-for-support
+[query5]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-builders
+[query6]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aquick-win
+[query7]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astale
+[query8]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Arfc
+[query9]: {{ cookiecutter.__scm_repo_latch }}/discussions/categories/requests-for-improvement
+[query10]: {{ cookiecutter.__scm_repo_latch }}/discussions/categories/requests-for-support
 
 {% endif -%}
 {% if cookiecutter.licence != 'nos' or cookiecutter.use_bdd -%}
@@ -7593,23 +7593,23 @@ what we are doing matters!
 [intro1]: {{ cookiecutter.__contributing_prefix }}
 
 {% else -%}
-[intro1]: {{ cookiecutter.__scm_link_url }}/issues
+[intro1]: {{ cookiecutter.__scm_repo_latch }}/issues
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[intro2]: {{ cookiecutter.__scm_link_url }}/merge_requests
+[intro2]: {{ cookiecutter.__scm_repo_latch }}/merge_requests
 {%- else %}
-[intro2]: {{ cookiecutter.__scm_link_url }}/pulls
-[intro3]: {{ cookiecutter.__scm_link_url }}/discussions
+[intro2]: {{ cookiecutter.__scm_repo_latch }}/pulls
+[intro3]: {{ cookiecutter.__scm_repo_latch }}/discussions
 {%- endif %}
 
 {% endif -%}
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
-[setup0a]: {{ cookiecutter.__scm_link_url }}/forks/new
+[setup0a]: {{ cookiecutter.__scm_repo_latch }}/forks/new
 [setup0b]: https://docs.gitlab.com/user/group/
 {% if cookiecutter.__scm_platform_group == 'glab-free' -%}
 [setup0x]: https://docs.gitlab.com/user/project/repository/forking_workflow/
 {% endif -%}
 {% else -%}
-[setup0a]: {{ cookiecutter.__scm_link_url }}/fork
+[setup0a]: {{ cookiecutter.__scm_repo_latch }}/fork
 [setup0b]: https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/about-organizations
 [setup0x]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
 {% endif -%}
@@ -7627,26 +7627,26 @@ what we are doing matters!
 [apptopic2]: https://gitlab.com/galactipy/nebulog
 [apptopic3]: https://loguru.readthedocs.io/en/stable/
 {%- if cookiecutter.use_bdd %}
-[apptopic3a]: {{ cookiecutter.__scm_link_url }}/tree/master/tests/features
+[apptopic3a]: {{ cookiecutter.__scm_repo_latch }}/tree/master/tests/features
 {%- endif %}
-[apptopic4]: {{ cookiecutter.__scm_link_url }}/tree/master/tests
+[apptopic4]: {{ cookiecutter.__scm_repo_latch }}/tree/master/tests
 {%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 
-[topic1]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab-ci.yml
+[topic1]: {{ cookiecutter.__scm_repo_latch }}/blob/master/.gitlab-ci.yml
 {%- else %}
 
-[topic1]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/workflows
+[topic1]: {{ cookiecutter.__scm_repo_latch }}/blob/master/.github/workflows
 {%- endif %}
 {%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
-[topic2]: {{ cookiecutter.__gitlab_org }}/epics
+[topic2]: {{ cookiecutter.__gitlab_org_latch }}/epics
 {%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
-[topic2]: {{ cookiecutter.__scm_link_url }}/milestones
+[topic2]: {{ cookiecutter.__scm_repo_latch }}/milestones
 {%- else %}
-[topic2]: {{ cookiecutter.__scm_link_url }}/projects
+[topic2]: {{ cookiecutter.__scm_repo_latch }}/projects
 {%- endif %}
 {%- if cookiecutter.licence != 'nos' %}
-[topic3]: {{ cookiecutter.__scm_link_url }}/labels
+[topic3]: {{ cookiecutter.__scm_repo_latch }}/labels
 {%- if cookiecutter.__scm_platform_group != 'glab-paid' %}
 [topic4]: https://goauthentik.io/blog/2024-03-07-why-contributing-to-open-source-is-scary/
 [topic5]: mailto:{{ cookiecutter.email }}
@@ -7658,10 +7658,10 @@ what we are doing matters!
 {%- endif %}
 
 [cc1]: https://www.contributor-covenant.org/
-[cc2]: {{ cookiecutter.__scm_link_url }}/blob/master/CODE_OF_CONDUCT.md
+[cc2]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CODE_OF_CONDUCT.md
 {%- endif %}
 
-[development1]: {{ cookiecutter.__scm_base_url }}
+[development1]: {{ cookiecutter.__scm_repo_url }}
 {%- if cookiecutter.licence != 'nos' and cookiecutter.__scm_platform_group != 'glab-paid' -%}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [development2]: https://docs.gitlab.com/user/permissions/
@@ -7673,12 +7673,12 @@ what we are doing matters!
 {%- if cookiecutter.__scm_platform_group != 'glab-paid' %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 
-[roadmap1]: {{ cookiecutter.__scm_link_url }}/merge_requests/new?issuable_template=Project%2520Policies
+[roadmap1]: {{ cookiecutter.__scm_repo_latch }}/merge_requests/new?issuable_template=Project%2520Policies
 {%- else %}
 
-[roadmap1]: {{ cookiecutter.__scm_link_url }}/pulls/compare?template=project_policies.md
+[roadmap1]: {{ cookiecutter.__scm_repo_latch }}/pulls/compare?template=project_policies.md
 {%- endif %}
-[roadmap2]: {{ cookiecutter.__scm_link_url }}/blob/master/ROADMAP.md#roadmap-history
+[roadmap2]: {{ cookiecutter.__scm_repo_latch }}/blob/master/ROADMAP.md#roadmap-history
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [roadmap3]: https://docs.gitlab.com/user/emoji_reactions/
 {%- else %}
@@ -7698,7 +7698,7 @@ what we are doing matters!
 {%- endif %}
 
 {% if cookiecutter.scm_platform == 'github' -%}
-[labels1]: {{ cookiecutter.__scm_link_url }}/.github/release-drafter.yml
+[labels1]: {{ cookiecutter.__scm_repo_latch }}/.github/release-drafter.yml
 
 {% else -%}
 [labels1]: {{ cookiecutter.__contributing_prefix }}#labels
@@ -7764,7 +7764,7 @@ what we are doing matters!
 {% endif -%}
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
 [committing1]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
-[committing2]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/changelog_config.yml
+[committing2]: {{ cookiecutter.__scm_repo_latch }}/blob/master/.gitlab/changelog_config.yml
 
 {% endif -%}
 {% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
@@ -7778,11 +7778,11 @@ what we are doing matters!
 {%- endif %}
 [style2]: https://sembr.org/
 [style3]: https://sive.rs/1s
-[style4]: {{ cookiecutter.__scm_link_url }}/tree/master/.{{ cookiecutter.__scm_platform_lc }}
-[style5]: {{ cookiecutter.__scm_link_url }}/blob/master/CHANGELOG.md
+[style4]: {{ cookiecutter.__scm_repo_latch }}/tree/master/.{{ cookiecutter.__scm_platform_lc }}
+[style5]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CHANGELOG.md
 
 {% endif -%}
-[hooks1]: {{ cookiecutter.__scm_link_url }}/blob/master/.pre-commit-config.yaml
+[hooks1]: {{ cookiecutter.__scm_repo_latch }}/blob/master/.pre-commit-config.yaml
 [hooks2]: https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap03.html#tag_03_206
 {%- if cookiecutter.version_schema == 'trunkver' %}
 [hooks3]: https://bandit.readthedocs.io/en/latest/
@@ -7806,7 +7806,7 @@ what we are doing matters!
 
 {% endif -%}
 {% if cookiecutter.licence != 'nos' -%}
-[licence1]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
+[licence1]: {{ cookiecutter.__scm_repo_latch }}/blob/master/LICENCE
 
 {% endif -%}
 {% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
@@ -7822,23 +7822,23 @@ what we are doing matters!
 
 {% endif -%}
 {% if cookiecutter.__app_group == 'tui' -%}
-[changes0a]: {{ cookiecutter.__scm_link_url }}/tree/master/{{ cookiecutter.package_name }}/tui
+[changes0a]: {{ cookiecutter.__scm_repo_latch }}/tree/master/{{ cookiecutter.package_name }}/tui
 [changes0b]: https://textual.textualize.io/
 {% endif -%}
 {% if cookiecutter.app_type != 'bare_repo' -%}
-[changes1]: {{ cookiecutter.__scm_link_url }}/tree/master/{{ cookiecutter.package_name }}/cli
+[changes1]: {{ cookiecutter.__scm_repo_latch }}/tree/master/{{ cookiecutter.package_name }}/cli
 [changes2]: https://typer.tiangolo.com/
-[changes3]: {{ cookiecutter.__scm_link_url }}/tree/master/{{ cookiecutter.package_name }}/config
-[changes4]: {{ cookiecutter.__scm_link_url }}/tree/master/{{ cookiecutter.package_name }}/logging
-[changes5]: {{ cookiecutter.__scm_link_url }}/blob/master/tasks.py
+[changes3]: {{ cookiecutter.__scm_repo_latch }}/tree/master/{{ cookiecutter.package_name }}/config
+[changes4]: {{ cookiecutter.__scm_repo_latch }}/tree/master/{{ cookiecutter.package_name }}/logging
+[changes5]: {{ cookiecutter.__scm_repo_latch }}/blob/master/tasks.py
 [changes6]: https://www.pyinvoke.org/
 
 {% endif -%}
 {% if cookiecutter.__scm_platform_group != 'glab-paid' -%}
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
-[prepare1]: {{ cookiecutter.__scm_link_url }}/tree/master/.gitlab/merge_request_templates
+[prepare1]: {{ cookiecutter.__scm_repo_latch }}/tree/master/.gitlab/merge_request_templates
 {% else -%}
-[prepare1]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/MERGE_REQUEST_TEMPLATE
+[prepare1]: {{ cookiecutter.__scm_repo_latch }}/tree/master/.github/MERGE_REQUEST_TEMPLATE
 {% endif -%}
 [prepare2]: https://github.com/kubernetes/kubernetes/blob/release-1.5/docs/devel/faster_reviews.md
 [prepare3]: https://google.github.io/eng-practices/review/
@@ -7846,12 +7846,12 @@ what we are doing matters!
 {% endif -%}
 {% if cookiecutter.app_type == 'bare_repo' -%}
 [workflow0a]: https://www.pyinvoke.org/
-[workflow0b]: {{ cookiecutter.__scm_link_url }}/blob/master/tasks.py
+[workflow0b]: {{ cookiecutter.__scm_repo_latch }}/blob/master/tasks.py
 {% endif -%}
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
-[workflow1]: {{ cookiecutter.__scm_link_url }}/merge_requests/new?issuable_template=Internal%2520Improvements
+[workflow1]: {{ cookiecutter.__scm_repo_latch }}/merge_requests/new?issuable_template=Internal%2520Improvements
 {% else -%}
-[workflow1]: {{ cookiecutter.__scm_link_url }}/pulls/compare?template=internal_improvements.md
+[workflow1]: {{ cookiecutter.__scm_repo_latch }}/pulls/compare?template=internal_improvements.md
 {% endif -%}
 [workflow2]: https://pypi.org/
 [workflow3]: https://test.pypi.org/
@@ -7865,16 +7865,16 @@ what we are doing matters!
 {% else -%}
 [workflow5]: https://docs.pytest.org/en/stable/example/markers.html#mark-examples
 {% endif -%}
-[workflow6]: {{ cookiecutter.__scm_link_url }}/blob/master/pyproject.toml
+[workflow6]: {{ cookiecutter.__scm_repo_latch }}/blob/master/pyproject.toml
 {%- if cookiecutter.create_docs %}
 
-[docs1]: {{ cookiecutter.__scm_link_url }}/blob/master/SECURITY.md
+[docs1]: {{ cookiecutter.__scm_repo_latch }}/blob/master/SECURITY.md
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [docs1a]: https://docs.gitlab.com/user/markdown/#task-lists
 {%- endif %}
 [docs2]: https://pydevtools.com/handbook/explanation/pep/
-[docs3]: {{ cookiecutter.__scm_link_url }}/tree/master/docs
-[docs4]: {{ cookiecutter.__scm_link_url }}/blob/master/zensical.toml
+[docs3]: {{ cookiecutter.__scm_repo_latch }}/tree/master/docs
+[docs4]: {{ cookiecutter.__scm_repo_latch }}/blob/master/zensical.toml
 [docs5]: https://zensical.org/
 [docs6]: https://google.github.io/styleguide/docguide/best_practices.html
 [docs7]: https://zensical.org/docs/authoring/markdown/
@@ -7884,7 +7884,7 @@ what we are doing matters!
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [docs11]: {{ cookiecutter.__pages_url }}/development/for_developers/workflow/invoke
 {%- else %}
-[docs11]: {{ cookiecutter.__scm_link_url }}/blob/master/docs/development/for_developers/workflow/invoke.md
+[docs11]: {{ cookiecutter.__scm_repo_latch }}/blob/master/docs/development/for_developers/workflow/invoke.md
 {%- endif %}
 [docs12]: https://zensical.org/docs/setup/tags/
 {%- endif %}
@@ -7906,30 +7906,30 @@ what we are doing matters!
 {%- endif %}
 {%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 
-[request1]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Support
-[request2]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Improvement
+[request1]: {{ cookiecutter.__scm_repo_latch }}/issues/new?description_template=Request%20for%20Support
+[request2]: {{ cookiecutter.__scm_repo_latch }}/issues/new?description_template=Request%20for%20Improvement
 [request3]: https://reprexpy.readthedocs.io/en/latest/
 {%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
 
-[request0a]: {{ cookiecutter.__scm_link_url }}/tree/master/.gitlab/issue_templates
-[request0b]: {{ cookiecutter.__scm_link_url }}/issues?state=all&type%5B%5D=issue
+[request0a]: {{ cookiecutter.__scm_repo_latch }}/tree/master/.gitlab/issue_templates
+[request0b]: {{ cookiecutter.__scm_repo_latch }}/issues?state=all&type%5B%5D=issue
 [request0c]: https://docs.gitlab.com/user/markdown/
-[request1]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Support
-[request2]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Improvement
-[request2a]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Correction
+[request1]: {{ cookiecutter.__scm_repo_latch }}/issues/new?description_template=Request%20for%20Support
+[request2]: {{ cookiecutter.__scm_repo_latch }}/issues/new?description_template=Request%20for%20Improvement
+[request2a]: {{ cookiecutter.__scm_repo_latch }}/issues/new?description_template=Request%20for%20Correction
 [request2b]: https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists
 [request2c]: https://docs.gitlab.com/user/snippets/
 [request3]: https://reprexpy.readthedocs.io/en/latest/
 {%- else %}
 
-[request0a]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/ISSUE_TEMPLATE
-[request0z]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/DISCUSSION_TEMPLATE
-[request0b]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue
-[request0x]: {{ cookiecutter.__scm_link_url }}/discussions?discussions_q=
+[request0a]: {{ cookiecutter.__scm_repo_latch }}/tree/master/.github/ISSUE_TEMPLATE
+[request0z]: {{ cookiecutter.__scm_repo_latch }}/tree/master/.github/DISCUSSION_TEMPLATE
+[request0b]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue
+[request0x]: {{ cookiecutter.__scm_repo_latch }}/discussions?discussions_q=
 [request0c]: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
-[request1]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-support
-[request2]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-improvement
-[request2a]: {{ cookiecutter.__scm_link_url }}/issues/new?template=request_for_correction.yml
+[request1]: {{ cookiecutter.__scm_repo_latch }}/discussions/new?category=requests-for-support
+[request2]: {{ cookiecutter.__scm_repo_latch }}/discussions/new?category=requests-for-improvement
+[request2a]: {{ cookiecutter.__scm_repo_latch }}/issues/new?template=request_for_correction.yml
 [request2b]: https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists
 [request2c]: https://docs.gitlab.com/user/snippets/
 [request3]: https://reprexpy.readthedocs.io/en/latest/

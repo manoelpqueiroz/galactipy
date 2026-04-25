@@ -85,14 +85,14 @@ on licencing the project.
 <!-- Anchors -->
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 
-[1]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Support
-[2]: {{ cookiecutter.__scm_link_url }}/issues
+[1]: {{ cookiecutter.__scm_repo_latch }}/issues/new?description_template=Request%20for%20Support
+[2]: {{ cookiecutter.__scm_repo_latch }}/issues
 {%- else %}
 
-[1]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-support
-[2]: {{ cookiecutter.__scm_link_url }}/discussions
+[1]: {{ cookiecutter.__scm_repo_latch }}/discussions/new?category=requests-for-support
+[2]: {{ cookiecutter.__scm_repo_latch }}/discussions
 {%- endif %}
 {%- if cookiecutter.licence != 'nos' %}
 [3]: https://img.shields.io/{{ cookiecutter.__scm_platform_lc }}/license/{{ cookiecutter.scm_namespace}}/{{ cookiecutter.repo_name }}?style=for-the-badge
-[4]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
+[4]: {{ cookiecutter.__scm_repo_latch }}/blob/master/LICENCE
 {%- endif %}

@@ -288,7 +288,7 @@ workflow = "lucide/workflow"
 
 [[project.extra.social]]
 icon = "fontawesome/brands/{{ cookiecutter.__scm_platform_lc }}"
-link = "{{ cookiecutter.__scm_base_url }}"
+link = "{{ cookiecutter.__scm_repo_url }}"
 name = "{{ cookiecutter.project_name }} development repository"
 
 [[project.extra.social]]

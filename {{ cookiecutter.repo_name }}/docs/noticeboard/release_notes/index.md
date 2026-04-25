@@ -19,4 +19,4 @@ by visiting [our repository][1].
 
 <!-- RECORD one subpage containing the release notes for each release -->
 
-[1]: {{ cookiecutter.__scm_link_url }}/releases
+[1]: {{ cookiecutter.__scm_repo_latch }}/releases

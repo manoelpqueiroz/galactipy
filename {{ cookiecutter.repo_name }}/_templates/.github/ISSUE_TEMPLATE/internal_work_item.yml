@@ -6,7 +6,7 @@ body:
     attributes:
       value: |
         > [!IMPORTANT]
-        > Please read the [`CONTRIBUTING`]({{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md) guide for best practices when opening issues and run through the items under the **`Author Checklist`**.
+        > Please read the [`CONTRIBUTING`]({{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md) guide for best practices when opening issues and run through the items under the **`Author Checklist`**.
         >
         > ---
         >
@@ -24,7 +24,7 @@ body:
       label: Author Checklist
       description: Leaving list items unchecked is not an impediment to opening the Internal Work Item.
       options:
-        - label: I am confident this work item is not immediately deliverable via a [Pull Request]({{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#start-with-a-pull-request);
+        - label: I am confident this work item is not immediately deliverable via a [Pull Request]({{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#start-with-a-pull-request);
           required: true
         - label: I have provided a concise and clear title for this issue;
           required: true
@@ -37,4 +37,4 @@ body:
       description: Leave this list unchecked for latter completion.
       options:
         - label: I attest that the **acceptance criteria** are well-defined and encompass all expected development for this issue;
-        - label: I have labelled the work item with the appropriate [status tag]({{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#work-item-tracking).
+        - label: I have labelled the work item with the appropriate [status tag]({{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#work-item-tracking).

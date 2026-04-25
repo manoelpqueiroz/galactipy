@@ -189,18 +189,18 @@ will involve:
 {%- if cookiecutter.app_type != 'bare_repo' %}
 
 {% if cookiecutter.__app_group == 'tui' -%}
-[0a]: {{ cookiecutter.__scm_link_url }}/tree/master/{{ cookiecutter.package_name }}/tui
+[0a]: {{ cookiecutter.__scm_repo_latch }}/tree/master/{{ cookiecutter.package_name }}/tui
 [0b]: https://textual.textualize.io/
 {% endif -%}
-[1]: {{ cookiecutter.__scm_link_url }}/tree/master/{{ cookiecutter.package_name }}/cli
+[1]: {{ cookiecutter.__scm_repo_latch }}/tree/master/{{ cookiecutter.package_name }}/cli
 [2]: https://typer.tiangolo.com/
-[3]: {{ cookiecutter.__scm_link_url }}/tree/master/{{ cookiecutter.package_name }}/config
-[4]: {{ cookiecutter.__scm_link_url }}/tree/master/{{ cookiecutter.package_name }}/logging
-[5]: {{ cookiecutter.__scm_link_url }}/tree/master/tests
-[6]: {{ cookiecutter.__scm_link_url }}/blob/master/tasks.py
+[3]: {{ cookiecutter.__scm_repo_latch }}/tree/master/{{ cookiecutter.package_name }}/config
+[4]: {{ cookiecutter.__scm_repo_latch }}/tree/master/{{ cookiecutter.package_name }}/logging
+[5]: {{ cookiecutter.__scm_repo_latch }}/tree/master/tests
+[6]: {{ cookiecutter.__scm_repo_latch }}/blob/master/tasks.py
 [7]: https://www.pyinvoke.org/
-[8]: {{ cookiecutter.__scm_link_url }}/blob/master/README.md
+[8]: {{ cookiecutter.__scm_repo_latch }}/blob/master/README.md
 {%- else %}
 
-[1]: {{ cookiecutter.__scm_link_url }}/blob/master/README.md
+[1]: {{ cookiecutter.__scm_repo_latch }}/blob/master/README.md
 {%- endif %}

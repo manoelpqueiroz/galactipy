@@ -52,8 +52,8 @@ tui/
 <!-- Anchors -->
 
 [1]: https://textual.textualize.io/
-[2]: {{ cookiecutter.__scm_link_url }}/tree/master/{{ cookiecutter.package_name }}/tui/components
-[3]: {{ cookiecutter.__scm_link_url }}/tree/master/{{ cookiecutter.package_name }}/tui/css
+[2]: {{ cookiecutter.__scm_repo_latch }}/tree/master/{{ cookiecutter.package_name }}/tui/components
+[3]: {{ cookiecutter.__scm_repo_latch }}/tree/master/{{ cookiecutter.package_name }}/tui/css
 [4]: https://textual.textualize.io/guide/CSS/
-[5]: {{ cookiecutter.__scm_link_url }}/blob/master/{{ cookiecutter.package_name }}/tui/main_window.py
-[6]: {{ cookiecutter.__scm_link_url }}/blob/master/{{ cookiecutter.package_name }}/tui/themes.py
+[5]: {{ cookiecutter.__scm_repo_latch }}/blob/master/{{ cookiecutter.package_name }}/tui/main_window.py
+[6]: {{ cookiecutter.__scm_repo_latch }}/blob/master/{{ cookiecutter.package_name }}/tui/themes.py

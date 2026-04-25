@@ -118,10 +118,10 @@ We appreciate your commitment beforehand!
 <!-- Anchors -->
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 
-[1]: {{ cookiecutter.__scm_link_url }}/merge_requests
+[1]: {{ cookiecutter.__scm_repo_latch }}/merge_requests
 {%- else %}
 
-[1]: {{ cookiecutter.__scm_link_url }}/pulls
+[1]: {{ cookiecutter.__scm_repo_latch }}/pulls
 {%- endif %}
 [2]: ../philosophy.md#operate-with-a-bias-for-action
 [3]: ../for_developers/review.md

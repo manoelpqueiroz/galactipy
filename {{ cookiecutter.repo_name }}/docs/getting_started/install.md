@@ -255,9 +255,9 @@ Installable with `pipx install "{{ cookiecutter.repo_name }}[<extra_group>]"`:
 
 [1]: https://pypi.org/project/{{ cookiecutter.repo_name }}/
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[1a]: {{ cookiecutter.__scm_link_url }}/packages?type=PyPI
+[1a]: {{ cookiecutter.__scm_repo_latch }}/packages?type=PyPI
 {%- endif %}
-[2]: {{ cookiecutter.__scm_base_url }}
+[2]: {{ cookiecutter.__scm_repo_url }}
 {%- if cookiecutter.create_docker %}
 [2a]: {{ cookiecutter.__docker_repo }}
 {%- endif %}

@@ -145,9 +145,9 @@ do so through a [**Project Policy Proposal**][4].
 {%- else %}
 [2]: https://docs.pytest.org/en/stable/example/markers.html#mark-examples
 {%- endif %}
-[3]: {{ cookiecutter.__scm_link_url }}/blob/master/pyproject.toml
+[3]: {{ cookiecutter.__scm_repo_latch }}/blob/master/pyproject.toml
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[4]: {{ cookiecutter.__scm_link_url }}/merge_requests/new?issuable_template=Project%2520Policies
+[4]: {{ cookiecutter.__scm_repo_latch }}/merge_requests/new?issuable_template=Project%2520Policies
 {%- else %}
-[4]: {{ cookiecutter.__scm_link_url }}/pulls/compare?template=project_policies.md
+[4]: {{ cookiecutter.__scm_repo_latch }}/pulls/compare?template=project_policies.md
 {%- endif %}

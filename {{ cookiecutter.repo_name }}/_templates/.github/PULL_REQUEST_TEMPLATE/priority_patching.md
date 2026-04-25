@@ -43,10 +43,10 @@
 > - [ ] I have presented my case following the [{{ cookiecutter.project_name }} philosophy][3];
 > - [ ] I have added the proper [labels][4] to start this discussion.
 
-[1]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
-[2]: {{ cookiecutter.__scm_link_url }}/blob/master/SECURITY.md
-[3]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#book-our-philosophy
-[4]: {{ cookiecutter.__scm_link_url }}/labels
+[1]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
+[2]: {{ cookiecutter.__scm_repo_latch }}/blob/master/SECURITY.md
+[3]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#book-our-philosophy
+[4]: {{ cookiecutter.__scm_repo_latch }}/labels
 
 ## Assignee Checklist
 
@@ -69,10 +69,10 @@
 >
 > - [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][9] or the Related Issues section.
 
-[5]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#commit-customs
-[6]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#say-why-not-just-what
-[7]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#git-trailers
-[8]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#styling
+[5]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#commit-customs
+[6]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#say-why-not-just-what
+[7]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#git-trailers
+[8]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#styling
 [9]: https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue
 
 ## Reviewer Checklist
@@ -110,6 +110,6 @@
 > - [ ] We have covered all the edge cases we could come up with;
 > - [ ] We have found [opportunities][12] for future development and have created work items to take action on later.
 
-[10]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
-[11]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#versioning-customs
-[12]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
+[10]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
+[11]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#versioning-customs
+[12]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress

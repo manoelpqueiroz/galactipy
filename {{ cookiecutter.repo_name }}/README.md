@@ -440,43 +440,43 @@ This project was generated with [Galactipy][burl4].
 {%- endif %}
 
 [burl1]: https://pypi.org/project/{{ cookiecutter.repo_name }}/
-[burl2]: {{ cookiecutter.__scm_base_url }}
+[burl2]: {{ cookiecutter.__scm_repo_url }}
 {%- if cookiecutter.create_docs and cookiecutter.__scm_platform_lc == 'gitlab' %}
 [burl2a]: {{ cookiecutter.__pages_url }}
 {%- endif %}
 [burl4]: https://kutt.it/7fYqQl
 [burl5]: https://project-types.github.io/#toy
-[burl6]: {{ cookiecutter.__scm_link_url }}/blob/master/ROADMAP.md#development-stages
-[burl7]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md
-[burl8]: {{ cookiecutter.__scm_link_url }}/issues
+[burl6]: {{ cookiecutter.__scm_repo_latch }}/blob/master/ROADMAP.md#development-stages
+[burl7]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md
+[burl8]: {{ cookiecutter.__scm_repo_latch }}/issues
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[burl9]: {{ cookiecutter.__scm_link_url }}/merge_requests
+[burl9]: {{ cookiecutter.__scm_repo_latch }}/merge_requests
 {%- else %}
-[burl9]: {{ cookiecutter.__scm_link_url }}/pulls
+[burl9]: {{ cookiecutter.__scm_repo_latch }}/pulls
 {%- endif %}
-[burl10]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#codestyle
-[burl11]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#commit-customs
-[burl12]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#semantic-line-breaks
+[burl10]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#codestyle
+[burl11]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#commit-customs
+[burl12]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#semantic-line-breaks
 [burl13]: https://python-poetry.org/
-[burl14]: {{ cookiecutter.__scm_link_url }}/blob/master/.pre-commit-config.yaml
+[burl14]: {{ cookiecutter.__scm_repo_latch }}/blob/master/.pre-commit-config.yaml
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[burl15]: {{ cookiecutter.__scm_link_url }}/blob/master/renovate.json
+[burl15]: {{ cookiecutter.__scm_repo_latch }}/blob/master/renovate.json
 {%- else %}
-[burl15]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/dependabot.yml
+[burl15]: {{ cookiecutter.__scm_repo_latch }}/blob/master/.github/dependabot.yml
 {%- endif %}
 [burl16]: https://bandit.readthedocs.io/en/latest/
 [burl17]: https://pycqa.github.io/isort/
-[burl18]: {{ cookiecutter.__scm_link_url }}/blob/master/.editorconfig
-[burl19]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#versioning-customs
+[burl18]: {{ cookiecutter.__scm_repo_latch }}/blob/master/.editorconfig
+[burl19]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#versioning-customs
 {%- if cookiecutter.coverage_service == 'coveralls' %}
 [burl20]: https://coveralls.io/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}
 {%- else %}
 [burl20]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/coverage
 {%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[burl21]: {{ cookiecutter.__scm_link_url }}/pipelines
+[burl21]: {{ cookiecutter.__scm_repo_latch }}/pipelines
 {%- else %}
-[burl21]: {{ cookiecutter.__scm_link_url }}/actions/workflows/build.yml
+[burl21]: {{ cookiecutter.__scm_repo_latch }}/actions/workflows/build.yml
 {%- endif %}
 
 {% if cookiecutter.version_schema != 'trunkver' -%}
@@ -485,7 +485,7 @@ This project was generated with [Galactipy][burl4].
 {% else -%}
 [brel1]: https://img.shields.io/github/v/release/{{ cookiecutter.scm_namespace}}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=semantic-release&color=347d39
 {% endif -%}
-[brel2]: {{ cookiecutter.__scm_link_url }}/releases
+[brel2]: {{ cookiecutter.__scm_repo_latch }}/releases
 
 {% endif -%}
 {% if cookiecutter.licence != 'nos' -%}
@@ -494,7 +494,7 @@ This project was generated with [Galactipy][burl4].
 {% elif cookiecutter.__scm_platform_lc == 'github' -%}
 [blic1]: https://img.shields.io/github/license/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}?style=for-the-badge
 {% endif -%}
-[blic2]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
+[blic2]: {{ cookiecutter.__scm_repo_latch }}/blob/master/LICENCE
 
 <!-- TODO Replace the `100` ID with your project's index at https://www.bestpractices.dev/en
 [bossf1]: https://img.shields.io/cii/level/100?style=for-the-badge&logo=linux-foundation&label=openssf%20best%20practices
@@ -537,21 +537,21 @@ This project was generated with [Galactipy][burl4].
 [docs1]: {{ cookiecutter.__pages_url }}
 
 {% else -%}
-[docs1]: {{ cookiecutter.__scm_link_url }}/blob/master/docs/index.md
+[docs1]: {{ cookiecutter.__scm_repo_latch }}/blob/master/docs/index.md
 
 {% endif -%}
 {% endif -%}
-[contributing1]: {{ cookiecutter.__scm_link_url }}/blob/master/ROADMAP.md#project-mission
+[contributing1]: {{ cookiecutter.__scm_repo_latch }}/blob/master/ROADMAP.md#project-mission
 {%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
-[contributing2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=design%3A%3A%2A&type%5B%5D=issue
+[contributing2]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=design%3A%3A%2A&type%5B%5D=issue
 {%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
-[contributing2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5D%5B%5D=design-discovery&or%5Blabel_name%5D%5B%5D=design-formulation&or%5Blabel_name%5D%5B%5D=design-reassessment&type%5B%5D=issue
+[contributing2]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5D%5B%5D=design-discovery&or%5Blabel_name%5D%5B%5D=design-formulation&or%5Blabel_name%5D%5B%5D=design-reassessment&type%5B%5D=issue
 {%- else %}
-[contributing2]: {{ cookiecutter.__scm_link_url }}/issues?q=label%3Adesign-discovery%20OR%20label%3Adesign-formulation%20OR%20label%3Adesign-reassessment
+[contributing2]: {{ cookiecutter.__scm_repo_latch }}/issues?q=label%3Adesign-discovery%20OR%20label%3Adesign-formulation%20OR%20label%3Adesign-reassessment
 {%- endif %}
 {%- if cookiecutter.version_schema != 'trunkver' %}
 
-[release1]: {{ cookiecutter.__scm_link_url }}/releases
+[release1]: {{ cookiecutter.__scm_repo_latch }}/releases
 {%- if cookiecutter.__version_schema_base == 'effver' %}
 [release2]: https://jacobtomlinson.dev/effver/
 {%- elif cookiecutter.__version_schema_base == 'semver' %}
@@ -593,12 +593,12 @@ This project was generated with [Galactipy][burl4].
 [bdocstr1]: https://img.shields.io/badge/docstrings-sphinx%2Frest-ce3f31?style=for-the-badge&labelColor=0a507a
 {%- endif %}
 {%- if cookiecutter.docstring_style != 'other' %}
-[bdocstr2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#docstring-convention
+[bdocstr2]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#docstring-convention
 {%- endif %}
 
 {% if cookiecutter.use_bdd -%}
 [bbbd1]: https://img.shields.io/badge/BDD-23D96C?style=for-the-badge&logo=cucumber&logoColor=white
-[bbbd2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#behaviour-driven-development
+[bbbd2]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#behaviour-driven-development
 
 {% endif -%}
-[cite1]: {{ cookiecutter.__scm_link_url }}/blob/master/CITATION.cff
+[cite1]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CITATION.cff
