@@ -172,6 +172,13 @@ with the following pattern:
     without altering
     their behaviour;
   - Markdown files are modified;
+  - Modifications to `cookiecutter.json` encompass
+    only hidden variables
+    and do not alter user inputs;
+  - Existing Jinja statements in template files
+    are updated
+    without modifications to logic
+    (i.e., `if`/`else`/`endif` statement additions or removals);
 - Update **MAJOR** versions when:
   - Project generation behaviour is modified
     without modifications
