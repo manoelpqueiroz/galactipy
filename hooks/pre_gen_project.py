@@ -6,6 +6,9 @@ import sys
 REPO_NAME = "{{ cookiecutter.repo_name }}"
 PACKAGE_NAME = "{{ cookiecutter.package_name }}"
 NAMESPACE = "{{ cookiecutter.scm_namespace }}"
+
+SCM_PLATFORM = "{{ cookiecutter.__scm_platform_base }}"
+
 # Integer value wrapped inside strings to avoid raising errors when testing
 LINE_LENGTH_PARAMETER = "{{ cookiecutter.line_length }}"
 DOCSTRING_LENGTH_PARAMETER = "{{ cookiecutter.docstring_length }}"
@@ -22,7 +25,7 @@ PROJECT_REGEX = re.compile(
         ^
         [a-zA-Z0-9]             # Must begin with letter or number
         (?!.*([._-]){2})        # Must not have any two consecutive of . - _ ahead
-        [a-zA-Z0-9\.\_\-]*      # Can contain any letters, numbers or . - _
+        [a-zA-Z0-9._-]*         # Can contain any letters, numbers or . - _
         [a-zA-Z0-9]             # Must end with letter or number
         (?<!\.atom)             # Must not end with .atom
         (?<!\.git)              # Must not end with .git
@@ -30,7 +33,9 @@ PROJECT_REGEX = re.compile(
     """,
     re.VERBOSE,
 )
-PACKAGE_REGEX = re.compile(r"^[a-z][a-z0-9\_]+[a-z0-9]$")
+PYPI_PROJECT_REGEX = re.compile(
+    r"^([A-Z0-9]|[A-Z0-9][A-Z0-9._-]*[A-Z0-9])\Z", re.IGNORECASE
+)
 NAMESPACE_REGEX = re.compile(
     r"""
         ^[a-zA-Z0-9]            # Must begin with letter or number
@@ -41,6 +46,8 @@ NAMESPACE_REGEX = re.compile(
     """,
     re.VERBOSE,
 )
+
+PACKAGE_REGEX = re.compile(r"^[A-Z_][A-Z0-9\_]*$", re.IGNORECASE)
 
 # Reserved project and group names in GitLab
 # https://docs.gitlab.com/ee/user/reserved_names.html#reserved-project-names
@@ -111,6 +118,46 @@ RESERVED_NAMESPACES = [
     "v2",
 ]
 
+# Reserved Python keywords, i.e., package name restrictions
+# https://docs.python.org/3/reference/lexical_analysis.html#keywords
+RESERVED_KEYWORDS = [
+    "False",
+    "await",
+    "else",
+    "import",
+    "pass",
+    "None",
+    "break",
+    "except",
+    "in",
+    "raise",
+    "True",
+    "class",
+    "finally",
+    "is",
+    "return",
+    "and",
+    "continue",
+    "for",
+    "lambda",
+    "try",
+    "as",
+    "def",
+    "from",
+    "nonlocal",
+    "while",
+    "assert",
+    "del",
+    "global",
+    "not",
+    "with",
+    "async",
+    "elif",
+    "if",
+    "or",
+    "yield",
+]
+
 
 def validate_repo_name(repo_name: str) -> None:
     """Ensure that `repo_name` is valid under GitLab restrictions.
@@ -135,12 +182,22 @@ def validate_repo_name(repo_name: str) -> None:
     """
     if PROJECT_REGEX.fullmatch(repo_name) is None:
         message = (
-            f"ERROR: The project slug `{repo_name}` is not a valid GitLab/GitHub name."
+            f"ERROR: The repo name `{repo_name}` "
+            f"is not valid for a {SCM_PLATFORM} repository."
         )
         raise ValueError(message)
 
     if repo_name in RESERVED_PROJECTS:
-        message = f"ERROR: The project slug `{repo_name}` is a reserved project name."
+        message = (
+            f"ERROR: The repo name `{repo_name}` is a reserved name in {SCM_PLATFORM}."
+        )
+        raise ValueError(message)
+
+    if PYPI_PROJECT_REGEX.fullmatch(repo_name) is None:
+        message = (
+            f"ERROR: The repo name `{repo_name}` "
+            "is not compliant with PyPA for a project name."
+        )
         raise ValueError(message)
 
 
@@ -165,6 +222,19 @@ def validate_package_name(package_name: str) -> None:
         message = (
             f"ERROR: The package name `{package_name}` "
             "is not a valid Python module name."
+        )
+        raise ValueError(message)
+
+    if package_name in RESERVED_KEYWORDS:
+        message = (
+            f"ERROR: The package name `{package_name}` is a reserved Python keyword."
+        )
+        raise ValueError(message)
+
+    if PYPI_PROJECT_REGEX.fullmatch(package_name) is None:
+        message = (
+            f"ERROR: The package name `{package_name}` "
+            "is not compliant with PyPA standards."
         )
         raise ValueError(message)
 
