@@ -439,7 +439,7 @@ This project was generated with [Galactipy][burl4].
 [badge21]: https://img.shields.io/github/actions/workflow/status/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/build.yml?style=for-the-badge&logo=github
 {%- endif %}
 
-[burl1]: https://pypi.org/project/{{ cookiecutter.repo_name }}/
+[burl1]: {{ cookiecutter.__pypi_url }}
 [burl2]: {{ cookiecutter.__scm_repo_url }}
 {%- if cookiecutter.create_docs and cookiecutter.__scm_platform_lc == 'gitlab' %}
 [burl2a]: {{ cookiecutter.__pages_url }}

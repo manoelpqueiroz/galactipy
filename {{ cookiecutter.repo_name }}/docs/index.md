@@ -103,7 +103,7 @@ through the process of improving {{ cookiecutter.project_name }}.
 
 {% if cookiecutter.version_schema == 'trunkver' -%}
 [0a]: https://trunkver.org/
-[0b]: https://pypi.org/project/{{ cookiecutter.repo_name }}/#history
+[0b]: {{ cookiecutter.__pypi_url }}/#history
 [0c]: ./noticeboard/release_notes/index.md
 {% endif -%}
 [1]: ./getting_started/index.md

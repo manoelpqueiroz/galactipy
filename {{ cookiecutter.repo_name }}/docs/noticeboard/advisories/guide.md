@@ -1109,7 +1109,7 @@ in due time.
 <!-- Anchors -->
 
 [1]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md
-[2]: https://pypi.org/project/{{ cookiecutter.repo_name }}/
+[2]: {{ cookiecutter.__pypi_url }}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [3]: https://advisories.gitlab.com/
 [4]: {{ cookiecutter.__scm_repo_latch }}/releases

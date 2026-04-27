@@ -293,7 +293,7 @@ name = "{{ cookiecutter.project_name }} development repository"
 
 [[project.extra.social]]
 icon = "fontawesome/brands/python"
-link = "https://pypi.org/project/{{ cookiecutter.repo_name }}/"
+link = "{{ cookiecutter.__pypi_url }}"
 name = "PyPI package page"
 {%- if cookiecutter.create_docker %}
 
