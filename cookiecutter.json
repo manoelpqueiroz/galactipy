@@ -303,6 +303,8 @@
   ],
   "__pages_url": "{{ cookiecutter.__single_namespace_parts | join('/') if cookiecutter.scm_namespace.split('/') | length == 1 else cookiecutter.__multiple_namespace_parts | join ('/') }}",
 
+  "__pypi_url": "https://pypi.org/project/{{ cookiecutter.repo_name }}",
+
   "_roadmap_mapping": {
     "glab-paid": "epic",
     "glab-free": "milestone",
