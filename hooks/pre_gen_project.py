@@ -9,6 +9,8 @@ NAMESPACE = "{{ cookiecutter.scm_namespace }}"
 
 SCM_PLATFORM = "{{ cookiecutter.__scm_platform_base }}"
 
+EMAIL = "{{ cookiecutter.email }}"
+
 # Integer value wrapped inside strings to avoid raising errors when testing
 LINE_LENGTH_PARAMETER = "{{ cookiecutter.line_length }}"
 DOCSTRING_LENGTH_PARAMETER = "{{ cookiecutter.docstring_length }}"
@@ -48,6 +50,24 @@ NAMESPACE_REGEX = re.compile(
 )
 
 PACKAGE_REGEX = re.compile(r"^[A-Z_][A-Z0-9\_]*$", re.IGNORECASE)
+
+# Simplified version of the RFC 5332 compliant regex found at:
+# https://stackoverflow.com/a/201378
+EMAIL_REGEX = re.compile(
+    r"""
+        ^
+        [a-z0-9#+\/=_\-]+(?:\.[a-z0-9#+\/=_\-]+)*
+        @
+        (?:
+            [a-z0-9](?:[a-z0-9\-]*[a-z0-9])?
+            \.
+        )+
+        [a-z0-9](?:[a-z0-9\-]*[a-z0-9])?
+        $
+    """,
+    re.VERBOSE,
+)
+
 
 # Reserved project and group names in GitLab
 # https://docs.gitlab.com/ee/user/reserved_names.html#reserved-project-names
@@ -276,7 +296,26 @@ def _validate_single_namespace(namespace: str) -> None:
 
     if NAMESPACE_REGEX.fullmatch(namespace) is None:
         raise ValueError(message)
+
     if namespace in RESERVED_NAMESPACES:
+        raise ValueError(message)
+
+
+def validate_email_address(email: str) -> None:
+    """Ensure that `email` is under valid restrictions based on RFC 5332.
+
+    Parameters
+    ----------
+    email : str
+        E-mail address to be validated.
+
+    Raises
+    ------
+    ValueError
+        If `email` does not match the regex.
+    """
+    if EMAIL_REGEX.fullmatch(email) is None:
+        message = f"ERROR: `{email}` is not a valid e-mail address."
         raise ValueError(message)
 
 
@@ -328,6 +367,8 @@ def main() -> None:  # noqa: D103
         validate_package_name(package_name=PACKAGE_NAME)
 
         validate_namespace(scm_namespace=NAMESPACE)
+
+        validate_email_address(email=EMAIL)
 
         validate_line_length(line_length=int(LINE_LENGTH_PARAMETER))
 
