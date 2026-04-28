@@ -1,3 +1,18 @@
+## 3.2.3 (2026-04-28)
+
+### :ballot_box: Settings & Options (1 change)
+
+- [:wrench: Modify Changelog categories for the template](galactipy/galactipy@7f2b9eb3d0844b7dd3d443fade9ab93921698b8e)
+
+### :newspaper2: Utility Files (1 change)
+
+- [:pencil: Update committing guidelines with modified changelog categories](galactipy/galactipy@8230056b693eed30677a17358d24eb9696a21fa3)
+
+### :scroll: Project Policies (2 changes)
+
+- [:pencil: Update Git Trailers section on project `CONTRIBUTING.md`](galactipy/galactipy@3c9ab89bc978f95b4e39a1af123da517297672e9)
+- [:wrench: Modify project GitLab Changelog categories](galactipy/galactipy@56b68eae9a84bef343d2aa24f0dbc3ce81da0b61)
+
 ## 3.2.2 (2026-04-28)
 
 ### :metro: Template Internals (1 change)
