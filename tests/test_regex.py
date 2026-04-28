@@ -107,6 +107,7 @@ def test_valid_repo_names(valid_slug):
         "t0bmh!sj55",
         "tGcyDjUQoZ-ecMuyUCiFVd.git",
         "cFLtG.4Q0lty8vNjMew1kef.atom",
+        "_somerepo",
     ],
 )
 def test_invalid_repo_names(invalid_slug):
@@ -180,12 +181,16 @@ def test_valid_package_names(valid_package):
         "61txxnrpi#1x7",
         "g9hzu1ia_",
         "sysfeq.ywbw",
-        "jFC1",
-        "NHKs",
+        "jFC1_",
+        "_NHKs",
         "DAc9_",
-        "h0CKQF",
-        "s_nGo7mR6",
+        "h0C.KQF",
+        "s_nGo7mR6.",
         "@4cjsO#VB3jn",
+        "_somerepo",
+        "await",
+        "return",
+        "nonlocal",
     ],
 )
 def test_invalid_package_names(invalid_package):

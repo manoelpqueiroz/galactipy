@@ -213,7 +213,9 @@ def validate_repo_name(repo_name: str) -> None:
         )
         raise ValueError(message)
 
-    if PYPI_PROJECT_REGEX.fullmatch(repo_name) is None:
+    # ANY regex that matches PROJECT_REGEX will also match PYPI_PROJECT_REGEX,
+    # so coverage is excluded for this branch
+    if PYPI_PROJECT_REGEX.fullmatch(repo_name) is None:  # pragma: no cover
         message = (
             f"ERROR: The repo name `{repo_name}` "
             "is not compliant with PyPA for a project name."
