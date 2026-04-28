@@ -1,3 +1,44 @@
+## 3.2.2 (2026-04-28)
+
+### :metro: Template Internals (1 change)
+
+- [:wrench: Improve project URLs section in template `pyproject.toml`](galactipy/galactipy@d8e6ba92e079186108b8cd74145714ea8a5687d7) ([merge request](galactipy/galactipy!213))
+
+### :ballot_box: Settings & Options (2 changes)
+
+- [:shinto_shrine: Replace hardcoded PyPI URLs with Cookiecutter variable](galactipy/galactipy@d08e754a63a8f5c136543e5fcd4184af29f1f522) ([merge request](galactipy/galactipy!213))
+- [:cookie: Add hidden Cookiecutter variable for PyPI project URL](galactipy/galactipy@237da9bce20484660fb8196c498c80f609feb859) ([merge request](galactipy/galactipy!213))
+
+### :factory_worker: Template Maintenance (2 changes)
+
+- [:shinto_shrine: Update Jinja statements with refactored variables](galactipy/galactipy@d485304907b2662e6748a8959a547192ef020cb2) ([merge request](galactipy/galactipy!213))
+- [:cookie: Refactor hidden Cookiecutter variables related to source control](galactipy/galactipy@850815facf8886916f267214ed45cfc4191481d9) ([merge request](galactipy/galactipy!213))
+
+### :gear: Project Internals (2 changes)
+
+- [:hammer: Add e-mail validation to pre-gen hooks](galactipy/galactipy@3b0b35fa31b7a1153848682862365092579983d5) ([merge request](galactipy/galactipy!213))
+- [:hammer: Improve pre-gen validations](galactipy/galactipy@001d1a1713ecbeacf0e25d2999df2f6c5a68679f) ([merge request](galactipy/galactipy!213))
+
+### :repeat: Design & Validation (2 changes)
+
+- [:white_check_mark: Revalidate repository and package name tests](galactipy/galactipy@35b8719a06318d81895cec48ef8c5e021b3cbb63) ([merge request](galactipy/galactipy!213))
+- [:white_check_mark: Add unit tests for e-mail validation](galactipy/galactipy@7820919a190b9cf74b7643022db522aee3dc1d58) ([merge request](galactipy/galactipy!213))
+
+### :pouring_liquid: Nits (2 changes)
+
+- [:bulb: Refine instructions for `cookiecutter-config-file.yml`](galactipy/galactipy@b8c88b2870c8816a23c9e95860f9c59c91e3943a) ([merge request](galactipy/galactipy!213))
+- [:bulb: Add reference URL for pre-commit update configuration](galactipy/galactipy@af6d8839c97b576d21f98d2f5764315091e369fe)
+
+### :books: Documentation (3 changes)
+
+- [:pencil: Update input variables table in project `README.md`](galactipy/galactipy@2be246ad72ff809895ed3a05ed063a69066505ff) ([merge request](galactipy/galactipy!213))
+- [:pencil: Split release info content for each versioning schema in docs](galactipy/galactipy@315b6c3dc155a9df49f21896fd8b3c43ed0b947b) ([merge request](galactipy/galactipy!213))
+- [:pencil: Improve template `CONTRIBUTING.md` wording](galactipy/galactipy@5bcef6f30c6c77488d40ff1817ee19e63664f150) ([merge request](galactipy/galactipy!213))
+
+### :scroll: Project Policies (1 change)
+
+- [:pencil: Refine version update conditions](galactipy/galactipy@03da0287f48b5037dee646a4f5e7c9e3c57c7ecf) ([merge request](galactipy/galactipy!213))
+
 ## 3.2.1 (2026-04-23)
 
 ### :toolbox: Fixes (1 change)
