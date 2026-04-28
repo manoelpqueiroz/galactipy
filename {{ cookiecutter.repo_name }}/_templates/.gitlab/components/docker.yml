@@ -1,5 +1,5 @@
 # DEFINE Your image cleanup policy at:
-# {{ cookiecutter.__scm_link_url }}/settings/packages_and_registries/cleanup_image_tags
+# {{ cookiecutter.__scm_repo_latch }}/settings/packages_and_registries/cleanup_image_tags
 # Anchors for common commands and file groups
 .codechecks: &codechecks
   - {{ cookiecutter.package_name }}/**/*

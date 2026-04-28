@@ -47,10 +47,10 @@ Please run through all items under the **`Applicant Checklist`** section and be 
 - [ ] I have provided the development team the context surrounding this issue as most detailed as I possibly can;
 - [ ] I am confident this discussion does not fall in another category.
 
-[1]: {{ cookiecutter.__scm_link_url }}/merge_requests
-[2]: {{ cookiecutter.__scm_link_url }}/issues/?state=all&type%5B%5D=issue
-[3]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contributing-through-user-requests
-[4]: {{ cookiecutter.__scm_link_url }}/blob/master/SECURITY.md
+[1]: {{ cookiecutter.__scm_repo_latch }}/merge_requests
+[2]: {{ cookiecutter.__scm_repo_latch }}/issues/?state=all&type%5B%5D=issue
+[3]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#contributing-through-user-requests
+[4]: {{ cookiecutter.__scm_repo_latch }}/blob/master/SECURITY.md
 
 ## :speech_balloon: Context
 

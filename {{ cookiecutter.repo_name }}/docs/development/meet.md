@@ -59,8 +59,8 @@ for more information.
 <!-- Anchors -->
 
 [1]: ./for_developers/behave.md
-[2]: {{ cookiecutter.__scm_link_url }}/issues
+[2]: {{ cookiecutter.__scm_repo_latch }}/issues
 {%- if cookiecutter.__scm_platform_lc == 'github' %}
-[2a]: {{ cookiecutter.__scm_link_url }}/discussions
+[2a]: {{ cookiecutter.__scm_repo_latch }}/discussions
 {%- endif %}
 [3]: ./for_others/index.md

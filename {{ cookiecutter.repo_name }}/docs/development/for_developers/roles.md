@@ -719,13 +719,13 @@ and explain why in a comment.
 [1]: ./review.md
 [2]: ../philosophy.md#say-why-not-just-what
 [3]: ./prepare.md#opening-admissible-{{ cookiecutter.__mr_term_slug }}s
-[4]: {{ cookiecutter.__scm_link_url }}/blob/master/CODE_OF_CONDUCT.md
+[4]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CODE_OF_CONDUCT.md
 [5]: https://josipmisko.com/posts/code-review-nit
 [6]: ../policies/styling.md#codestyle
 {%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
-[7]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Aopinion&type%5B%5D=issue
+[7]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Aopinion&type%5B%5D=issue
 {%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
-[7]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-input&type%5B%5D=issue
+[7]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-input&type%5B%5D=issue
 {%- else %}
-[7]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-input
+[7]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-input
 {%- endif %}

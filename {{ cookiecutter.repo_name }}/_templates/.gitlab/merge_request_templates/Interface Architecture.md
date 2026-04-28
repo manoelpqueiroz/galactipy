@@ -84,18 +84,18 @@ Regarding change validation:
 - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
 >>>
 
-[1]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
-[2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#book-our-philosophy
-[3]: {{ cookiecutter.__scm_link_url }}/labels
+[1]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
+[2]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#book-our-philosophy
+[3]: {{ cookiecutter.__scm_repo_latch }}/labels
 {%- if cookiecutter.__scm_platform_group == 'glab-free' %}
-[3a]: {{ cookiecutter.__scm_link_url }}/milestones
+[3a]: {{ cookiecutter.__scm_repo_latch }}/milestones
 {%- endif %}
-[5]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#commit-customs
-[6]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#say-why-not-just-what
-[7]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#git-trailers
-[8]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#styling
+[5]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#commit-customs
+[6]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#say-why-not-just-what
+[7]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#git-trailers
+[8]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#styling
 [9]: https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically
-[10]: {{ cookiecutter.__scm_link_url }}/blob/master/ROADMAP.md
+[10]: {{ cookiecutter.__scm_repo_latch }}/blob/master/ROADMAP.md
 
 ## Reviewer Checklist
 
@@ -133,7 +133,7 @@ I attest that during this development, the following interactions have taken pla
 - [ ] We have found [opportunities][14] for future development and have created work items to take action on later.
 >>>
 
-[11]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
+[11]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
 [12]: https://www.teachfloor.com/elearning-glossary/institutional-knowledge
-[13]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#versioning-customs
-[14]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
+[13]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#versioning-customs
+[14]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress

@@ -308,29 +308,29 @@ its probability of being merged:
 
 [1]: https://img.shields.io/badge/needs_triage-4285f4?style=for-the-badge
 {% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
-[2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&status=Needs%20Triage&type%5B%5D=issue
-[3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment%3A%3A%2A&type%5B%5D=issue
+[2]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&status=Needs%20Triage&type%5B%5D=issue
+[3]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=starter-assignment%3A%3A%2A&type%5B%5D=issue
 {% elif cookiecutter.__scm_platform_group == 'glab-free' -%}
-[2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=sts-needs-triage&type%5B%5D=issue
-[3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment&type%5B%5D=issue
+[2]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=sts-needs-triage&type%5B%5D=issue
+[3]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=starter-assignment&type%5B%5D=issue
 {% else -%}
-[2]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Asts-needs-triage
-[3]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astarter-assignment
+[2]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Asts-needs-triage
+[3]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astarter-assignment
 {% endif -%}
-[4]: {{ cookiecutter.__scm_link_url }}/blob/master/README.md
+[4]: {{ cookiecutter.__scm_repo_latch }}/blob/master/README.md
 [5]: mailto:{{ cookiecutter.email }}
-[6]: {{ cookiecutter.__scm_link_url }}/issues
+[6]: {{ cookiecutter.__scm_repo_latch }}/issues
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
-[7]: {{ cookiecutter.__scm_link_url }}/merge_requests
+[7]: {{ cookiecutter.__scm_repo_latch }}/merge_requests
 {% else -%}
-[6a]: {{ cookiecutter.__scm_link_url }}/discussions
-[7]: {{ cookiecutter.__scm_link_url }}/pulls
+[6a]: {{ cookiecutter.__scm_repo_latch }}/discussions
+[7]: {{ cookiecutter.__scm_repo_latch }}/pulls
 {%- endif %}
 [8]: ../philosophy.md#start-with-a-{{ cookiecutter.__mr_term_slug }}
 {% if cookiecutter.__scm_platform_lc == 'gitlab' -%}
-[9]: {{ cookiecutter.__scm_link_url }}/tree/master/.gitlab/merge_request_templates
+[9]: {{ cookiecutter.__scm_repo_latch }}/tree/master/.gitlab/merge_request_templates
 {% else -%}
-[9]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/MERGE_REQUEST_TEMPLATE
+[9]: {{ cookiecutter.__scm_repo_latch }}/tree/master/.github/MERGE_REQUEST_TEMPLATE
 {% endif -%}
 [10]: ../philosophy.md#say-why-not-just-what
 [11]: ../policies/committing.md

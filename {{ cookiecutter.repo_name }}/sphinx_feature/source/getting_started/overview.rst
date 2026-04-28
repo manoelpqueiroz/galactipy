@@ -81,7 +81,7 @@ Getting Support
 ---------------
 
 The first stop for {{ cookiecutter.project_name }} is the `{{ cookiecutter.scm_platform }}
-Issue Tracker <{{ cookiecutter.__scm_link_url }}/issues>`_. If you have a general
+Issue Tracker <{{ cookiecutter.__scm_repo_latch }}/issues>`_. If you have a general
 question, you can ask over there using the "Question" issue template.
 
 Community

@@ -416,5 +416,5 @@ and defined in the [`changelog-config.yml`][4] file:
 [2]: https://cbea.ms/git-commit/
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [3]: https://docs.gitlab.com/ee/user/project/changelogs.html#add-a-trailer-to-a-git-commit
-[4]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab/changelog_config.yml
+[4]: {{ cookiecutter.__scm_repo_latch }}/blob/master/.gitlab/changelog_config.yml
 {%- endif %}

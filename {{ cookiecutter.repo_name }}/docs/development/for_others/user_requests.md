@@ -426,46 +426,46 @@ even if they are not perfectly detailed.
 
 <!-- Anchors -->
 
-[1]: {{ cookiecutter.__scm_link_url }}/blob/master/README.md
+[1]: {{ cookiecutter.__scm_repo_latch }}/blob/master/README.md
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[2]: {{ cookiecutter.__scm_link_url }}/tree/master/.gitlab/issue_templates
-[3]: {{ cookiecutter.__scm_link_url }}/issues?state=all&type%5B%5D=issue
+[2]: {{ cookiecutter.__scm_repo_latch }}/tree/master/.gitlab/issue_templates
+[3]: {{ cookiecutter.__scm_repo_latch }}/issues?state=all&type%5B%5D=issue
 [4]: https://docs.gitlab.com/user/markdown/
-[5]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Support
-[6]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Improvement
+[5]: {{ cookiecutter.__scm_repo_latch }}/issues/new?description_template=Request%20for%20Support
+[6]: {{ cookiecutter.__scm_repo_latch }}/issues/new?description_template=Request%20for%20Improvement
 {%- else %}
-[2]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/ISSUE_TEMPLATE
-[2a]: {{ cookiecutter.__scm_link_url }}/tree/master/.github/DISCUSSION_TEMPLATE
-[3]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue
-[3a]: {{ cookiecutter.__scm_link_url }}/discussions?discussions_q=
+[2]: {{ cookiecutter.__scm_repo_latch }}/tree/master/.github/ISSUE_TEMPLATE
+[2a]: {{ cookiecutter.__scm_repo_latch }}/tree/master/.github/DISCUSSION_TEMPLATE
+[3]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue
+[3a]: {{ cookiecutter.__scm_repo_latch }}/discussions?discussions_q=
 [4]: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
-[5]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-support
-[6]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-improvement
+[5]: {{ cookiecutter.__scm_repo_latch }}/discussions/new?category=requests-for-support
+[6]: {{ cookiecutter.__scm_repo_latch }}/discussions/new?category=requests-for-improvement
 {%- endif %}
 {%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
-[7]: {{ cookiecutter.__gitlab_org }}/epics
+[7]: {{ cookiecutter.__gitlab_org_latch }}/epics
 {%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
-[7]: {{ cookiecutter.__scm_link_url }}/milestones
+[7]: {{ cookiecutter.__scm_repo_latch }}/milestones
 {%- else %}
-[7]: {{ cookiecutter.__scm_link_url }}/projects
+[7]: {{ cookiecutter.__scm_repo_latch }}/projects
 {%- endif %}
 [8]: ../philosophy.md#operate-with-a-bias-for-action
 [9]: ../philosophy.md#there-are-no-good-first-issues
 [10]: https://img.shields.io/badge/requests_for_correction-dc143c?style=for-the-badge
 {%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
-[11]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Acorrection&type%5B%5D=issue
+[11]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=request%3A%3Acorrection&type%5B%5D=issue
 {%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
-[11]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfc&type%5B%5D=issue
+[11]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=rfc&type%5B%5D=issue
 {%- else %}
-[11]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Arfc
+[11]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Arfc
 {%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[12]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Correction
+[12]: {{ cookiecutter.__scm_repo_latch }}/issues/new?description_template=Request%20for%20Correction
 [13]: https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists
 [14]: https://docs.gitlab.com/user/snippets/
 [15]: https://reprexpy.readthedocs.io/en/latest/
 {%- else %}
-[12]: {{ cookiecutter.__scm_link_url }}/issues/new?template=request_for_correction.yml
+[12]: {{ cookiecutter.__scm_repo_latch }}/issues/new?template=request_for_correction.yml
 [13]: https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists
 [14]: https://docs.gitlab.com/user/snippets/
 [15]: https://reprexpy.readthedocs.io/en/latest/

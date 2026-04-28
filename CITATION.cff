@@ -58,5 +58,5 @@ keywords:
   - python-packages
   - semantic-versions
 license: MIT
-version: v3.2.1
-date-released: '2026-04-22'
+version: v3.2.2
+date-released: '2026-04-27'

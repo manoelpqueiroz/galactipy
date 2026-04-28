@@ -40,7 +40,7 @@ _Expand your project structure from atoms of code to **galactic** dimensions._ :
 ## TL;DR
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v3.2.1
+cookiecutter gl:galactipy/galactipy --checkout v3.2.2
 ```
 
 **All you need is the latest version of Cookiecutter!** :wink:
@@ -268,43 +268,57 @@ pipx upgrade cookiecutter
 then go to a directory where you want to create your project and run:
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v3.2.1
+cookiecutter gl:galactipy/galactipy --checkout v3.2.2
 ```
 
 ### Input variables
 
-Cookiecutter will ask you to fill some variables in order to generate the files with everything you need already set up.
+Cookiecutter will ask you
+to fill some variables
+in order to generate the files
+with everything you need
+already set up.
 
-The input variables, with their default values, are as follows:
+The input variables
+are as follows:
 
-|        Parameter         |        Default value         | Description                                                                                                                                                                                                                 |
-| :----------------------: | :--------------------------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|      `project_name`      |       `Python Project`       | A suitable name by which people will refer to, you are free to name it however you wish to.                                                                                                                                 |
-|       `repo_name`        |   based on `project_name`    | Name of the repository to develop the project on. [Check the availability of possible names][htu1] before creating the project.                                                                                             |
-|      `package_name`      |   based on `project_name`    | PyPI-compliant Python package name. [Check the availability of possible names][htu1] before creating the project.                                                                                                           |
-|  `project_description`   |   based on `project_name`    | A brief one-line description of your project.                                                                                                                                                                               |
-|       `copyright`        | `The Galactipy Contributors` | Name of the author or organisation which will hold the project's copyright. Used to specify code ownership in `LICENCE`.                                                                                                    |
-|       `maintainer`       | `Manoel Pereira de Queiroz`  | Name of the primary maintainer of the project. Used to specify author data in `pyproject.toml` and `CITATION.cff`.                                                                                                          |
-|      `scm_platform`      |        `GitLab Free`         | One of `GitLab Free`, `GitLab Premium`, `GitLab Ultimate` and `GitHub`. Depending on the choice you will have [different features][htu2] to work with.                                                                      |
-|     `scm_namespace`      |         `galactipy`          | GitHub or GitLab namespace for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for either platform.                                                                                           |
-|         `email`          |   based on `scm_namespace`   | Email for `CODE_OF_CONDUCT.md`, `SECURITY.md` files and to specify author data in `pyproject.toml` and `CITATION.cff`.                                                                                                      |
-|        `licence`         |            `MIT`             | One of `MIT`, `BSD-3`, `GNU GPL v3.0`, `GNU AGLP v3.0`, `GNU LGPL v3.0`, `Mozilla Public License 2.0` and `Apache Software License 2.0`, or `Not open source`.                                                              |
-| `minimal_python_version` |            `3.10`            | Minimal Python version. All versions since `3.10` are available to choose. It is used for builds, pipelines and formatters.                                                                                                 |
-|      `line_length`       |              88              | The max length per line. NOTE: This value must be between 50 and 300.                                                                                                                                                       |
-|    `docstring_style`     |          `Numpydoc`          | One of `Numpydoc`, `Google Python Style`, `Sphinx` or `Other`. This latter option will only render the docstring short summaries, while the former ones will detail arguments and returns for public methods and functions. |
-|    `docstring_length`    |    based on `line_lenght`    | The max length for docstrings. NOTE: This value must be between 50 and 300 and lower of equal to `line_lenght`.                                                                                                             |
-|     `version_schema`     |           `EffVer`           | One of `EffVer`, `SemVer`, `CalVer (automanaged)`, `CalVer (explicit)`, `RomVer`, `SoloVer` and `TrunkVer`, each with adequate CI/CD configuration to manage releases.                                                      |
-|   `commit_convention`    |          `Gitmoji`           | One of `Gitmoji`, `Conventional Commits` and `Conventional Commits with Gitmoji` for the commit standard to follow.                                                                                                         |
-|        `use_bdd`         |            `True`            | :small_red_triangle: Option to use [behaviour-driven development][ft17] for managing tests.                                                                                                                                 |
-|    `coverage_service`    |           `Codacy`           | One of `Coveralls` for code coverage and `Codacy` for code quality and static analysis.                                                                                                                                     |
-|     `create_docker`      |            `True`            | :small_red_triangle: Option to create a [Dockerfile][ft30] to build an image for your project.                                                                                                                              |
-|      `create_docs`       |            `True`            | :small_red_triangle: Option to create documentation files using [Zensical][ft40].                                                                                                                                           |
-|        `app_type`        |     `Integrated CLI+TUI`     | One of `Integrated CLI+TUI`, `Hybrid CLI/TUI`, `CLI-only application`, `Minimal CLI structure` and `Bare repository`. Employs [Typer][ft2] and [Textual][ft3] as libraries.                                                 |
+|         Variable         |         Type         |        Default value         |                                                                         Valid options                                                                          | Observations                                                                                                                                                                                 |
+| :----------------------: | :------------------: | :--------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|      `project_name`      |    :writing_hand:    |       `Python Project`       |                                                                              Any                                                                               | A suitable name by which people will refer to.                                                                                                                                               |
+|       `repo_name`        |    :writing_hand:    |   based on `project_name`    |                                                [GitLab-compliant][htu1] values<br>[PyPA-compliant][htu2] values                                                | Name of the repository to develop the project on. [Check the availability of possible names][htu3] before creating the project.                                                              |
+|      `package_name`      |    :writing_hand:    |   based on `project_name`    |                                               Valid [Python identifiers][htu4]<br>[PyPA-compliant][htu2] values                                                | [Check the availability of possible names][htu3] before creating the project.                                                                                                                |
+|  `project_description`   |    :writing_hand:    |   based on `project_name`    |                                                                              Any                                                                               | A brief one-line description of your project.                                                                                                                                                |
+|       `copyright`        |    :writing_hand:    | `The Galactipy Contributors` |                                                                              Any                                                                               | Name of the author or organisation which will hold the project's copyright. Used to specify code ownership in `LICENCE`.                                                                     |
+|       `maintainer`       |    :writing_hand:    | `Manoel Pereira de Queiroz`  |                                                                              Any                                                                               | Name of the primary maintainer of the project. Used to specify author data in `pyproject.toml` and `CITATION.cff`.                                                                           |
+|      `scm_platform`      |    :capital_abcd:    |        `GitLab Free`         |                                               `GitLab Free`<br>`GitLab Premium`<br>`GitLab Ultimate`<br>`GitHub`                                               | Depending on the choice you will have [different features][htu5] to work with.                                                                                                               |
+|     `scm_namespace`      |    :writing_hand:    |         `galactipy`          |                                                [GitLab-compliant][htu1] values<br>Between 2 and 255 characters                                                 | GitHub or GitLab namespace for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for either platform. Can be provided as a nested subgroup separated by slashes. |
+|         `email`          |    :writing_hand:    |   based on `scm_namespace`   |                                                             Values complying with [RFC 5332][htu6]                                                             | Email for `CODE_OF_CONDUCT.md`, `SECURITY.md` files and to specify author data in `pyproject.toml` and `CITATION.cff`.                                                                       |
+|        `licence`         |    :capital_abcd:    |            `MIT`             | `MIT`<br>`BSD-3`<br>`GNU GPL v3.0`<br>`GNU AGLP v3.0`<br>`GNU LGPL v3.0`<br>`Mozilla Public License 2.0`<br>`Apache Software License 2.0`<br>`Not open source` | The non-OSS licence option provides policy documents with different rules for project development.                                                                                           |
+| `minimal_python_version` |    :capital_abcd:    |            `3.10`            |                                                         `3.10`<br>`3.11`<br>`3.12`<br>`3.13`<br>`3.14`                                                         | Used for builds, pipelines and formatters.                                                                                                                                                   |
+|      `line_length`       |        :hash:        |              88              |                                                                       Between 50 and 300                                                                       | The max line length to be validated by the formatter.                                                                                                                                        |
+|    `docstring_style`     |    :capital_abcd:    |          `Numpydoc`          |                                                  `Numpydoc`<br>`Google Python Style`<br>`Sphinx`<br>`Other`                                                   | `Other` will only render the docstring short summaries, while all others will detail arguments and returns for public classes, methods and functions.                                        |
+|    `docstring_length`    |        :hash:        |    based on `line_length`    |                                                    Between 50 and 300<br>Equal or lower than `line_length`                                                     | The max line length for docstrings to be validated by the formatter.                                                                                                                         |
+|     `version_schema`     |    :capital_abcd:    |           `EffVer`           |                          `EffVer`<br>`SemVer`<br>`CalVer (automanaged)`<br>`CalVer (explicit)`<br>`RomVer`<br>`SoloVer`<br>`TrunkVer`                          | Automanaged CalVer provides a CI/CD configuration to automatically create tags and release the package on a weekly basis. The TrunkVer option sets up a new package release on each commit made to the default branch. Other options require a tag to be manually created to trigger releases.                                                                    |
+|   `commit_convention`    |    :capital_abcd:    |          `Gitmoji`           |                                           `Gitmoji`<br>`Conventional Commits`<br>`Conventional Commits with Gitmoji`                                           | The `Conventional Commits` and `Convetional Commits with Gitmoji` options add a pre-commit hook for [Commitizen][htu7] to validate commit message title structure.                           |
+|        `use_bdd`         | :small_red_triangle: |            `True`            |                                                                                                                                                                | Option to use [behaviour-driven development][ft17] for managing tests.                                                                                                                       |
+|    `coverage_service`    |    :capital_abcd:    |           `Codacy`           |                                                                    `Codacy`<br>`Coveralls`                                                                     | Coveralls provide cove coverage only, while Codacy allows for code quality reports and static analysis.                                                                                      |
+|     `create_docker`      | :small_red_triangle: |            `True`            |                                                                                                                                                                | Option to create a [Dockerfile][ft30] and build an image for your project. Also configures CI jobs to publish the image to container registries.                                                                                                                    |
+|      `create_docs`       | :small_red_triangle: |            `True`            |                                                                                                                                                                | Option to create documentation files using [Zensical][ft40].                                                                                                                                 |
+|        `app_type`        |    :capital_abcd:    |     `Integrated CLI+TUI`     |                       `Integrated CLI+TUI`<br>`Hybrid CLI/TUI`<br>`CLI-only application`<br>`Minimal CLI structure`<br>`Bare repository`                       | Depending on the chosen option, configures [Typer][ft2] and [Textual][ft3] as the core dependency libraries.                                                                                          |
 
-> [!NOTE]
-> Input variables marked with :small_red_triangle: are boolean variables, you can dismiss those by typing either `0`, `false`, `f`, `no`, `n` or `off`.
+> [!NOTE] Legend
+>
+> |         Icon         | Type      |
+> | :------------------: | --------- |
+> |    :writing_hand:    | Free text |
+> |        :hash:        | Number    |
+> |    :capital_abcd:    | Option    |
+> | :small_red_triangle: | Boolean   |
+>
+> Boolean variables can be dismissed by typing either `0`, `false`, `f`, `no`, `n` or `off`.
 
-All input values will be saved in the `cookiecutter-config-file.yml` file so that you won't lose them. :wink:
+All input values will be saved in `cookiecutter-config-file.yml`
+so that you won't lose them. :wink:
 
 #### About Application Types
 
@@ -320,8 +334,8 @@ is structured:
 | **Integrated CLI+TUI**    | A TUI-first application, where the top-level command launches the interface. It also includes configuration commands via CLI and allow for additional commands built by the user. | Projects designed to be interacted with mainly through a visual interface.                                                                                                              |
 | **Hybrid CLI/TUI**        | Same as Integrated CLI+TUI, with the difference that the interface is launched via its own command.                                                                               | Projects with many-yet-simple operations which can be mastered solely at the command-line, but also targeted at non-power-users who prefer a visual interface to interact with the API. |
 | **CLI-only application**  | Removes TUI-related features to solely rely on CLI commands. Still includes the configuration commands and config file management available in TUI options.                       | Projects with simpler interactions that do not require much cognitive load or a visual helper to navigate through operations.                                                           |
-| **Minimal CLI structure** | Same as CLI-only application, but removes the API related to configuration management.                                                                                            | Projects that do not require stateful/persisted values to perform operations.                                                                                                           |
-| **Bare repository**       | Removes all sample files altogether while keeping all other features such as CI/CD configuration and pre-commit hooks.                                                            |                                                                                                                                                                                         |
+| **Minimal CLI structure** | Same as CLI-only application, but removes the API related to configuration management.                                                                                            | Projects that do not require stateful/persisted values to perform their operations from the command-line.                                                                               |
+| **Bare repository**       | Removes sample code files altogether while keeping all other development features such as CI/CD configuration and pre-commit hooks.                                               | General-purpose libraries and APIs.                                                                                                                                                     |
 
 ### Initial set up
 
@@ -349,8 +363,8 @@ invoke hooks
 ```
 
 Want to know more about Poetry?
-Check [its documentation][htu3].
-Poetry's [commands][htu4]
+Check [its documentation][htu8].
+Poetry's [commands][htu9]
 are very intuitive
 and easy to learn,
 streamlining your development process.
@@ -392,11 +406,11 @@ To release
 a new version of the application,
 you must first
 have a [PyPI][ft27] account
-and set up [Trusted Publishing][htu5]
+and set up [Trusted Publishing][htu10]
 for your project.
 
 Then,
-when you [push a tag][htu6]
+when you [push a tag][htu11]
 to GitLab or GitHub,
 the preconfigured CI/CD pipeline
 will handle building, publishing and releasing automatically,
@@ -409,7 +423,7 @@ with minimal configuration required! :partying_face:
 > a canonical PyPI token,
 > you must also
 > generate a API token
-> for the [TestPyPI][htu7] repository.
+> for the [TestPyPI][htu12] repository.
 
 If you have generated your project
 with the Docker option enabled,
@@ -481,7 +495,7 @@ with a single command.
 > with only the API token being required.
 > When provided with the `--repo testpypi` option instead,
 > it will configure the connection
-> to [TestPyPI][htu7]
+> to [TestPyPI][htu12]
 > and no URL is needed.
 > Other `--repo` values must also
 > receive a `--url` argument
@@ -519,14 +533,14 @@ in which domain language is used
 to describe the behaviour of the code.
 It emerged as a
 sophisticated evolution
-of [test-driven development][htu8].
+of [test-driven development][htu13].
 
 If you choose to use BDD for your project,
 a `features` directory will be created under `tests`
-and [pytest-bdd][htu9] will be added as a dependency.
+and [pytest-bdd][htu14] will be added as a dependency.
 You should place `.feature` files inside this folder
 to describe **real-life** usage scenarios
-using the [Gherkin][htu10] language:
+using the [Gherkin][htu15] language:
 
 ```
 # tests/features/root_command.feature
@@ -576,7 +590,7 @@ and check the results.
 For more information on behaviour-driven development
 and tools to handle
 more complex conditions,
-please check out the [Cucumber documentation][htu11].
+please check out the [Cucumber documentation][htu16].
 
 ## :motorway: What's next
 
@@ -1000,17 +1014,22 @@ any of the following:
 [ft64]: https://docs.gitlab.com/ee/ci/jobs/job_rules.html#compare-a-variable-to-a-regular-expression
 [ft65]: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
 
-[htu1]: http://ivantomic.com/projects/ospnc/
-[htu2]: #gitlab-vs-github-features
-[htu3]: https://python-poetry.org/docs/
-[htu4]: https://python-poetry.org/docs/cli/#commands
-[htu5]: https://docs.pypi.org/trusted-publishers/
-[htu6]: https://git-scm.com/book/en/v2/Git-Basics-Tagging
-[htu7]: https://test.pypi.org/
-[htu8]: https://tidyfirst.substack.com/p/canon-tdd
-[htu9]: https://pytest-bdd.readthedocs.io/en/latest/
-[htu10]: https://cucumber.io/docs/gherkin/reference
-[htu11]: https://cucumber.io/docs
+[htu1]: https://docs.gitlab.com/user/reserved_names/
+[htu2]: https://packaging.python.org/en/latest/specifications/name-normalization/
+[htu3]: http://ivantomic.com/projects/ospnc/
+[htu4]: https://docs.python.org/3/reference/lexical_analysis.html#names-identifiers-and-keywords
+[htu5]: #gitlab-vs-github-features
+[htu6]: https://datatracker.ietf.org/doc/html/rfc5322#section-3.4
+[htu7]: https://commitizen-tools.github.io/commitizen/
+[htu8]: https://python-poetry.org/docs/
+[htu9]: https://python-poetry.org/docs/cli/#commands
+[htu10]: https://docs.pypi.org/trusted-publishers/
+[htu11]: https://git-scm.com/book/en/v2/Git-Basics-Tagging
+[htu12]: https://test.pypi.org/
+[htu13]: https://tidyfirst.substack.com/p/canon-tdd
+[htu14]: https://pytest-bdd.readthedocs.io/en/latest/
+[htu15]: https://cucumber.io/docs/gherkin/reference
+[htu16]: https://cucumber.io/docs
 
 [wn1]: https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
 [wn2]: https://github.com/willmcgugan/rich

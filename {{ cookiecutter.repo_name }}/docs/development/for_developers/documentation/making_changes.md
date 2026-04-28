@@ -392,9 +392,9 @@ serve as navigation facilitator tags:
 
 [1]: ./anatomy.md
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[2]: {{ cookiecutter.__scm_link_url }}/merge_requests/new?issuable_template=Project%2520Policies
+[2]: {{ cookiecutter.__scm_repo_latch }}/merge_requests/new?issuable_template=Project%2520Policies
 {%- else %}
-[2]: {{ cookiecutter.__scm_link_url }}/pulls/compare?template=project_policies.md
+[2]: {{ cookiecutter.__scm_repo_latch }}/pulls/compare?template=project_policies.md
 {%- endif %}
 [3]: https://zensical.org/docs/authoring/markdown/
 [4]: https://mkdocstrings.github.io/
@@ -407,6 +407,6 @@ serve as navigation facilitator tags:
 {%- else %}
 [9]: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
 {%- endif %}
-[10]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#invoke-usage
+[10]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#invoke-usage
 [11]: ../workflow/invoke.md
 [12]: https://zensical.org/docs/setup/tags/

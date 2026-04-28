@@ -20,7 +20,7 @@ AUTHOR = "{{ cookiecutter.copyright }}"
 SCM_PLATFORM = "{{ cookiecutter.__scm_platform_base }}"
 SCM_PLATFORM_LC = "{{ cookiecutter.__scm_platform_lc }}"
 SCM_NAMESPACE = "{{ cookiecutter.scm_namespace }}"
-SCM_BASE_URL = "{{ cookiecutter.__scm_base_url }}"
+SCM_REPO_URL = "{{ cookiecutter.__scm_repo_url }}"
 
 COMMIT_CONVENTION = "{{ cookiecutter.commit_convention }}"
 
@@ -831,7 +831,7 @@ def main() -> None:  # noqa: D103
         project_name=PROJECT_NAME,
         project_repo=PROJECT_REPO,
         scm_platform=SCM_PLATFORM,
-        scm_base_url=SCM_BASE_URL,
+        scm_base_url=SCM_REPO_URL,
         commit_prefix=commit_prefix_dict[COMMIT_CONVENTION],
     )
 

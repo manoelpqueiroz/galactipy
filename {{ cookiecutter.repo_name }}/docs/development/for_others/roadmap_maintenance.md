@@ -69,21 +69,21 @@ to the development team:
 
 [1]: https://img.shields.io/badge/issues_without_{{ cookiecutter.__roadmap_item }}-006272?style=for-the-badge
 {%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
-[2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&parent_id=None
-[3]: {{ cookiecutter.__gitlab_org }}/epics
+[2]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&type%5B%5D=issue&parent_id=None
+[3]: {{ cookiecutter.__gitlab_org_latch }}/epics
 {%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
-[2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&milestone_title=None
+[2]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&type%5B%5D=issue&milestone_title=None
 [2a]: https://img.shields.io/badge/{{ cookiecutter.__task_item }}s_with_{{ cookiecutter.__roadmap_item }}-08b1ab?style=for-the-badge
-[2b]: {{ cookiecutter.__scm_link_url }}/issues?state=all&type%5B%5D=task&milestone_title=Any
-[3]: {{ cookiecutter.__scm_link_url }}/milestones
+[2b]: {{ cookiecutter.__scm_repo_latch }}/issues?state=all&type%5B%5D=task&milestone_title=Any
+[3]: {{ cookiecutter.__scm_repo_latch }}/milestones
 {%- else %}
-[2]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20no%3Aproject
-[3]: {{ cookiecutter.__scm_link_url }}/projects
+[2]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue%20state%3Aopen%20no%3Aproject
+[3]: {{ cookiecutter.__scm_repo_latch }}/projects
 {%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[4]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Improvement
+[4]: {{ cookiecutter.__scm_repo_latch }}/issues/new?description_template=Request%20for%20Improvement
 {%- else %}
-[4]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-improvement
+[4]: {{ cookiecutter.__scm_repo_latch }}/discussions/new?category=requests-for-improvement
 {%- endif %}
 [5]: ../for_developers/index.md
 [6]: ../roadmap.md

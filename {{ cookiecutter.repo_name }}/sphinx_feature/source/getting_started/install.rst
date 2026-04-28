@@ -19,7 +19,7 @@ Installing from PyPI
 ====================
 
 {{ cookiecutter.project_name }} can be installed via pip from
-`PyPI <https://pypi.org/project/{{ cookiecutter.repo_name }}>`_.
+`PyPI <{{ cookiecutter.__pypi_url }}>`_.
 
 .. code-block:: shell
 

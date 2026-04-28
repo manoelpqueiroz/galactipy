@@ -113,10 +113,10 @@ for each stage of development.
 <!-- Anchors -->
 
 {% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
-[1]: {{ cookiecutter.__gitlab_org }}/epics
+[1]: {{ cookiecutter.__gitlab_org_latch }}/epics
 {% elif cookiecutter.__scm_platform_group == 'glab-free' -%}
-[1]: {{ cookiecutter.__scm_link_url }}/milestones
+[1]: {{ cookiecutter.__scm_repo_latch }}/milestones
 {% else -%}
-[1]: {{ cookiecutter.__scm_link_url }}/projects
+[1]: {{ cookiecutter.__scm_repo_latch }}/projects
 {% endif -%}
 [2]: https://img.shields.io/pypi/status/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=theplanetarysociety&label=stage

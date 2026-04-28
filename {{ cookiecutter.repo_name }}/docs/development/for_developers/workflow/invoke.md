@@ -233,9 +233,9 @@ through a [**Internal Improvement**][3] {{ cookiecutter.__mr_term }}.
 <!-- Anchors -->
 
 [1]: https://www.pyinvoke.org/
-[2]: {{ cookiecutter.__scm_link_url }}/blob/master/tasks.py
+[2]: {{ cookiecutter.__scm_repo_latch }}/blob/master/tasks.py
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[3]: {{ cookiecutter.__scm_link_url }}/merge_requests/new?issuable_template=Internal%2520Improvements
+[3]: {{ cookiecutter.__scm_repo_latch }}/merge_requests/new?issuable_template=Internal%2520Improvements
 {%- else %}
-[3]: {{ cookiecutter.__scm_link_url }}/pulls/compare?template=internal_improvements.md
+[3]: {{ cookiecutter.__scm_repo_latch }}/pulls/compare?template=internal_improvements.md
 {%- endif %}

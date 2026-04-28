@@ -285,16 +285,12 @@
   "__scm_platform_redux": "{{ 'gl' if cookiecutter.__scm_platform_lc == 'gitlab' else 'gh' }}",
   "__scm_platform_group": "{{ cookiecutter._scm_platform_group_mapping[cookiecutter.scm_platform] }}",
 
-  "__base_url_parts": [
-    "https://{{ cookiecutter.__scm_platform_lc }}.com",
-    "{{ cookiecutter.scm_namespace }}",
-    "{{ cookiecutter.repo_name }}"
-  ],
-  "__scm_base_url": "{{ cookiecutter.__base_url_parts | join('/') }}",
-  "__scm_link_url": "{{ cookiecutter.__scm_base_url }}{% if cookiecutter.__scm_platform_lc == 'gitlab' %}/-{% endif %}",
-  "__gitlab_org": "https://gitlab.com/groups/{{ cookiecutter.scm_namespace }}/-",
-  "__gitlab_premium_templates": "https://gitlab.com/{{ cookiecutter.scm_namespace }}/templates/-/blob/master",
-  "__contributing_prefix": "{{ cookiecutter.__gitlab_premium_templates ~ '/CONTRIBUTING.md' if cookiecutter.scm_platform == 'GitLab Premium/Ultimate' }}",
+  "__scm_org_url": "https://{{ cookiecutter.__scm_platform_lc }}.com/{{ cookiecutter.scm_namespace }}",
+  "__scm_repo_url": "{{ cookiecutter.__scm_org_url ~ '/' ~ cookiecutter.repo_name }}",
+  "__scm_repo_latch": "{{ cookiecutter.__scm_repo_url }}{% if cookiecutter.__scm_platform_lc == 'gitlab' %}/-{% endif %}",
+  "__gitlab_org_latch": "https://gitlab.com/groups/{{ cookiecutter.scm_namespace }}/-",
+  "__gitlab_templates_blob": "https://gitlab.com/{{ cookiecutter.scm_namespace }}/templates/-/blob/master",
+  "__contributing_prefix": "{{ cookiecutter.__gitlab_templates_blob ~ '/CONTRIBUTING.md' if cookiecutter.__scm_platform_group == 'glab-paid' }}",
 
   "__single_namespace_parts": [
     "https://{{ cookiecutter.__top_namespace }}.{{ cookiecutter.__scm_platform_lc }}.io",
@@ -306,6 +302,8 @@
     "{{ cookiecutter.repo_name }}"
   ],
   "__pages_url": "{{ cookiecutter.__single_namespace_parts | join('/') if cookiecutter.scm_namespace.split('/') | length == 1 else cookiecutter.__multiple_namespace_parts | join ('/') }}",
+
+  "__pypi_url": "https://pypi.org/project/{{ cookiecutter.repo_name }}",
 
   "_roadmap_mapping": {
     "glab-paid": "epic",
@@ -333,7 +331,7 @@
   },
   "__repo_parts": {
     "gitlab": [
-      "{{ cookiecutter.__scm_base_url }}",
+      "{{ cookiecutter.__scm_repo_url }}",
       "container_registry"
     ],
     "github": [

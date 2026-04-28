@@ -1108,14 +1108,14 @@ in due time.
 <!-- Anchors -->
 
 [1]: ../noticeboard/advisories/index.md
-[2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md
-[3]: https://pypi.org/project/{{ cookiecutter.repo_name }}/
+[2]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md
+[3]: {{ cookiecutter.__pypi_url }}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [4]: https://advisories.gitlab.com/
-[5]: {{ cookiecutter.__scm_link_url }}/releases
+[5]: {{ cookiecutter.__scm_repo_latch }}/releases
 [6]: https://docs.sigstore.dev/cosign/verifying/verify/
-[7]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Improvement
+[7]: {{ cookiecutter.__scm_repo_latch }}/issues/new?description_template=Request%20for%20Improvement
 {%- else %}
 [4]: https://github.com/advisories
-[5]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-improvement
+[5]: {{ cookiecutter.__scm_repo_latch }}/discussions/new?category=requests-for-improvement
 {%- endif %}

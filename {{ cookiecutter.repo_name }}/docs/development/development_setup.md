@@ -89,12 +89,12 @@ for a [first contribution][6].
 <!-- Anchors -->
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 
-[1]: {{ cookiecutter.__scm_link_url }}/forks/new
+[1]: {{ cookiecutter.__scm_repo_latch }}/forks/new
 [2]: https://docs.gitlab.com/user/group/
 [3]: https://docs.gitlab.com/user/project/repository/forking_workflow/
 {%- else %}
 
-[1]: {{ cookiecutter.__scm_link_url }}/fork
+[1]: {{ cookiecutter.__scm_repo_latch }}/fork
 [2]: https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/about-organizations
 [3]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
 {%- endif %}

@@ -58,5 +58,5 @@ will be licensed under
 <!-- Anchors -->
 
 [1]: https://www.contributor-covenant.org/
-[2]: {{ cookiecutter.__scm_link_url }}/blob/master/CODE_OF_CONDUCT.md
-[3]: {{ cookiecutter.__scm_link_url }}/blob/master/LICENCE
+[2]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CODE_OF_CONDUCT.md
+[3]: {{ cookiecutter.__scm_repo_latch }}/blob/master/LICENCE

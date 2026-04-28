@@ -412,21 +412,21 @@ presented in its [specific section][14].
 
 <!-- Anchors -->
 
-[1]: {{ cookiecutter.__scm_link_url }}/blob/master/README.md
-[2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md
+[1]: {{ cookiecutter.__scm_repo_latch }}/blob/master/README.md
+[2]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md
 [3]: ../../roadmap.md
-[4]: {{ cookiecutter.__scm_link_url }}/blob/master/SECURITY.md
-[5]: {{ cookiecutter.__scm_link_url }}/blob/master/CODE_OF_CONDUCT.md
+[4]: {{ cookiecutter.__scm_repo_latch }}/blob/master/SECURITY.md
+[5]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CODE_OF_CONDUCT.md
 [6]: ../../policies/index.md#code-of-conduct
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[7]: {{ cookiecutter.__scm_link_url }}/merge_requests/new?issuable_template=Project%2520Policies
+[7]: {{ cookiecutter.__scm_repo_latch }}/merge_requests/new?issuable_template=Project%2520Policies
 {%- else %}
-[7]: {{ cookiecutter.__scm_link_url }}/pulls/compare?template=project_policies.md
+[7]: {{ cookiecutter.__scm_repo_latch }}/pulls/compare?template=project_policies.md
 {%- endif %}
 [8]: https://docs.gitlab.com/user/markdown/#task-lists
 [9]: ../../philosophy.md#say-why-not-just-what
 [10]: https://pydevtools.com/handbook/explanation/pep/
-[11]: {{ cookiecutter.__scm_link_url }}/tree/master/docs
-[12]: {{ cookiecutter.__scm_link_url }}/blob/master/zensical.toml
+[11]: {{ cookiecutter.__scm_repo_latch }}/tree/master/docs
+[12]: {{ cookiecutter.__scm_repo_latch }}/blob/master/zensical.toml
 [13]: https://zensical.org/
 [14]: ../../for_others/documentation_changes.md

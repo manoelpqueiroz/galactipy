@@ -29,13 +29,31 @@ dynamic = ["version", "classifiers"]
 {%- endif %}
 
 [project.urls]
-homepage = "{{ cookiecutter.__scm_base_url }}"
-"Contributing Guidelines" = "{{ cookiecutter.__scm_link_url }}/tree/master/CONTRIBUTING.md"
+{%- if cookiecutter.licence != 'nos' %}
+repository = "{{ cookiecutter.__scm_repo_url }}"
+{%- if cookiecutter.create_docs and cookiecutter.__scm_platform_lc == 'gitlab' %}
+"Contributing Guidelines" = "{{ cookiecutter.__pages_url }}/development"
+{%- else %}
+"Contributing Guidelines" = "{{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md"
+{%- endif %}
+tracker = "{{ cookiecutter.__scm_repo_latch }}/issues"
 {%- if cookiecutter.create_docs %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 documentation = "{{ cookiecutter.__pages_url }}"
+"Release Notes" = "{{ cookiecutter.__pages_url }}/noticeboard/release_notes"
 {%- else %}
-documentation = "{{ cookiecutter.__scm_link_url }}/blob/master/docs/index.md"
+documentation = "{{ cookiecutter.__scm_repo_latch }}/blob/master/docs/index.md"
+"Release Notes" = "{{ cookiecutter.__scm_repo_latch }}/blob/master/CHANGELOG.md"
+{%- endif %}
+{%- else %}
+"Release Notes" = "{{ cookiecutter.__scm_repo_latch }}/blob/master/CHANGELOG.md"
+{%- endif %}
+{%- else %}
+# UPDATEME with the URL pointing to your project's public issue tracker, if applicable
+{%- if cookiecutter.create_docs and cookiecutter.__scm_platform_lc == 'gitlab' %}
+homepage = "{{ cookiecutter.__pages_url }}"
+documentation = "{{ cookiecutter.__pages_url }}"
+"Release Notes" = "{{ cookiecutter.__pages_url }}/noticeboard/release_notes"
 {%- endif %}
 {%- endif %}
 

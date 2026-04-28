@@ -1328,14 +1328,14 @@ in due time.
 
 <!-- UPDATEME with security policies of third-party libraries relevant to {{ cookiecutter.project_name }} -->
 
-[1]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md
-[2]: https://pypi.org/project/{{ cookiecutter.repo_name }}/
+[1]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md
+[2]: {{ cookiecutter.__pypi_url }}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [3]: https://advisories.gitlab.com/
-[4]: {{ cookiecutter.__scm_link_url }}/releases
+[4]: {{ cookiecutter.__scm_repo_latch }}/releases
 [5]: https://docs.sigstore.dev/cosign/verifying/verify/
-[6]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Improvement
+[6]: {{ cookiecutter.__scm_repo_latch }}/issues/new?description_template=Request%20for%20Improvement
 {%- else %}
 [3]: https://github.com/advisories
-[4]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-improvement
+[4]: {{ cookiecutter.__scm_repo_latch }}/discussions/new?category=requests-for-improvement
 {%- endif %}

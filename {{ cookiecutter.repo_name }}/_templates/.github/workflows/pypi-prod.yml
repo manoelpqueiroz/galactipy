@@ -72,7 +72,7 @@ jobs:
     if: ${{ inputs.publish && github.ref_type == 'tag' }}
 {%- endraw %}{% endif %}{% raw %}
     environment:
-      # TODO Create the "production" environment in {% endraw %}{{ cookiecutter.__scm_link_url }}{% raw %}/settings/environments/new
+      # TODO Create the "production" environment in {% endraw %}{{ cookiecutter.__scm_repo_latch }}{% raw %}/settings/environments/new
       name: production
       url: https://pypi.org/p/{% endraw %}{{ cookiecutter.repo_name }}{% raw %}
     permissions:

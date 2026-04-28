@@ -59,22 +59,22 @@
 > - [ ] I have revised the [`ROADMAP.md`][12] and updated the information on development status;
 > - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
 
-[1]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
-[2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#book-our-philosophy
-[3]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#operate-with-a-bias-for-action
-[4]: {{ cookiecutter.__scm_link_url }}/labels
-[5]: {{ cookiecutter.__scm_link_url }}/projects
-[6]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#commit-customs
-[7]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#say-why-not-just-what
-[8]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#git-trailers
-[9]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#styling
+[1]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
+[2]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#book-our-philosophy
+[3]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#operate-with-a-bias-for-action
+[4]: {{ cookiecutter.__scm_repo_latch }}/labels
+[5]: {{ cookiecutter.__scm_repo_latch }}/projects
+[6]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#commit-customs
+[7]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#say-why-not-just-what
+[8]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#git-trailers
+[9]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#styling
 {%- if cookiecutter.use_bdd %}
 [10]: https://pytest-bdd.readthedocs.io/en/latest/#organizing-your-scenarios
 {%- else %}
 [10]: https://docs.pytest.org/en/stable/reference/reference.html#custom-marks
 {%- endif %}
 [11]: https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue
-[12]: {{ cookiecutter.__scm_link_url }}/blob/master/ROADMAP.md
+[12]: {{ cookiecutter.__scm_repo_latch }}/blob/master/ROADMAP.md
 
 ## Maintainer Checklist
 
@@ -103,5 +103,5 @@
 > - [ ] We have explored possible alternative ideas;
 > - [ ] We have found [opportunities][14] for future development and have created work items to take action on later.
 
-[13]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
-[14]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
+[13]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
+[14]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress

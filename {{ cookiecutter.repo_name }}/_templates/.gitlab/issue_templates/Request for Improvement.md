@@ -30,7 +30,7 @@ Please run through all items under the **`Applicant Checklist`** section and fol
 - You feel your request is not clear enough yet :right_arrow: a **`Request for Support`** is also recommended.
 >>>
 
-[1]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#say-why-not-just-what
+[1]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#say-why-not-just-what
 
 ## Applicant Checklist
 
@@ -53,12 +53,12 @@ Please run through all items under the **`Applicant Checklist`** section and fol
 - [ ] I am confident this discussion does not fall in another category.
 
 {% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
-[2]: {{ cookiecutter.__gitlab_org }}/epics
+[2]: {{ cookiecutter.__gitlab_org_latch }}/epics
 {%- else -%}
-[2]: {{ cookiecutter.__scm_link_url }}/milestones
+[2]: {{ cookiecutter.__scm_repo_latch }}/milestones
 {%- endif %}
-[3]: {{ cookiecutter.__scm_link_url }}/issues/?state=all&type%5B%5D=issue
-[4]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contributing-through-user-requests
+[3]: {{ cookiecutter.__scm_repo_latch }}/issues/?state=all&type%5B%5D=issue
+[4]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#contributing-through-user-requests
 
 ### Commitment to Project Support
 
@@ -68,10 +68,10 @@ After reading the [Commitment to Help][5] section of the `CONTRIBUTING` guide an
 - [ ] Hit the ["Watch"][7] button in this repository to receive notifications about the project and help **2** people that ask questions in the future;
 - [ ] Review **1** Merge Request by cloning the project and following the [review process][8].
 
-[5]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#commitment-to-help
-[6]: {{ cookiecutter.__scm_link_url }}/issues/?type%5B%5D=issue
+[5]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#commitment-to-help
+[6]: {{ cookiecutter.__scm_repo_latch }}/issues/?type%5B%5D=issue
 [7]: https://gitlab.com/gitlab-org/gitlab-foss/-/issues/234#note_17497758
-[8]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contributing-by-reviewing-changes
+[8]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#contributing-by-reviewing-changes
 
 ## :thought_balloon: Request Details
 

@@ -353,16 +353,16 @@ with your first steps here:
 
 <!-- Anchors -->
 
-[1]: {{ cookiecutter.__scm_link_url }}/issues
+[1]: {{ cookiecutter.__scm_repo_latch }}/issues
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[2]: {{ cookiecutter.__scm_link_url }}/merge_requests
+[2]: {{ cookiecutter.__scm_repo_latch }}/merge_requests
 {%- else %}
-[2]: {{ cookiecutter.__scm_link_url }}/pulls
-[2x]: {{ cookiecutter.__scm_link_url }}/discussions
+[2]: {{ cookiecutter.__scm_repo_latch }}/pulls
+[2x]: {{ cookiecutter.__scm_repo_latch }}/discussions
 {%- endif %}
 [2a]: ./for_developers/index.md
 [2b]: ./for_others/index.md
-[3]: {{ cookiecutter.__scm_link_url }}/blob/master/README.md
+[3]: {{ cookiecutter.__scm_repo_latch }}/blob/master/README.md
 {%- if cookiecutter.app_type != 'bare_repo' %}
 [4]: https://typer.tiangolo.com/tutorial/
 {%- if cookiecutter.__app_group == 'tui' %}
@@ -375,41 +375,41 @@ with your first steps here:
 [5]: https://gitlab.com/galactipy/nebulog
 [6]: https://loguru.readthedocs.io/en/stable/
 {%- if cookiecutter.use_bdd %}
-[6a]: {{ cookiecutter.__scm_link_url }}/tree/master/tests/features
+[6a]: {{ cookiecutter.__scm_repo_latch }}/tree/master/tests/features
 {%- endif %}
-[7]: {{ cookiecutter.__scm_link_url }}/tree/master/tests
+[7]: {{ cookiecutter.__scm_repo_latch }}/tree/master/tests
 {%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[8]: {{ cookiecutter.__scm_link_url }}/blob/master/.gitlab-ci.yml
+[8]: {{ cookiecutter.__scm_repo_latch }}/blob/master/.gitlab-ci.yml
 {%- else %}
-[8]: {{ cookiecutter.__scm_link_url }}/blob/master/.github/workflows
+[8]: {{ cookiecutter.__scm_repo_latch }}/blob/master/.github/workflows
 {%- endif %}
 [9]: ./policies/ci.md
 {%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
-[10]: {{ cookiecutter.__gitlab_org }}/epics
+[10]: {{ cookiecutter.__gitlab_org_latch }}/epics
 {%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
-[10]: {{ cookiecutter.__scm_link_url }}/milestones
+[10]: {{ cookiecutter.__scm_repo_latch }}/milestones
 {%- else %}
-[10]: {{ cookiecutter.__scm_link_url }}/projects
+[10]: {{ cookiecutter.__scm_repo_latch }}/projects
 {%- endif %}
 {%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
-[11]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Adelivery&type%5B%5D=issue
-[12]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment%3A%3A%2A&type%5B%5D=issue
+[11]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Adelivery&type%5B%5D=issue
+[12]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=starter-assignment%3A%3A%2A&type%5B%5D=issue
 {%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
-[11]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-builders&type%5B%5D=issue
-[12]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment&type%5B%5D=issue
+[11]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-builders&type%5B%5D=issue
+[12]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=starter-assignment&type%5B%5D=issue
 {%- else %}
-[11]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-builders
-[12]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astarter-assignment
+[11]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-builders
+[12]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astarter-assignment
 {%- endif %}
-[13]: {{ cookiecutter.__scm_link_url }}/labels
+[13]: {{ cookiecutter.__scm_repo_latch }}/labels
 [14]: ./policies/developing.md#work-item-lifecycle
 {%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
-[15]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&status=Needs%20Triage&type%5B%5D=issue
+[15]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&status=Needs%20Triage&type%5B%5D=issue
 {%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
-[15]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=sts-needs-triage&type%5B%5D=issue
+[15]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=sts-needs-triage&type%5B%5D=issue
 {%- else %}
-[15]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Asts-needs-triage
+[15]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Asts-needs-triage
 {%- endif %}
 [16]: https://goauthentik.io/blog/2024-03-07-why-contributing-to-open-source-is-scary/
 [17]: ./philosophy.md#start-with-a-{{ cookiecutter.__mr_term_slug }}

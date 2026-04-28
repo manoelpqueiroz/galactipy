@@ -113,7 +113,7 @@ with some of this material
 in [_Community Tutorials_][5].
 
 [1]: https://pipx.pypa.io/latest/
-[2]: https://pypi.org/project/{{ cookiecutter.repo_name }}/
+[2]: {{ cookiecutter.__pypi_url }}
 [3]: ./install.md
 [4]: ../user_guide/10min.md
 [5]: ./tutorials.md

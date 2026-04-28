@@ -1,6 +1,7 @@
 from hooks.pre_gen_project import (
     MAX_NAMESPACE_LENGTH,
     MIN_NAMESPACE_LENGTH,
+    validate_email_address,
     validate_namespace,
     validate_package_name,
     validate_repo_name,
@@ -106,6 +107,7 @@ def test_valid_repo_names(valid_slug):
         "t0bmh!sj55",
         "tGcyDjUQoZ-ecMuyUCiFVd.git",
         "cFLtG.4Q0lty8vNjMew1kef.atom",
+        "_somerepo",
     ],
 )
 def test_invalid_repo_names(invalid_slug):
@@ -179,12 +181,16 @@ def test_valid_package_names(valid_package):
         "61txxnrpi#1x7",
         "g9hzu1ia_",
         "sysfeq.ywbw",
-        "jFC1",
-        "NHKs",
+        "jFC1_",
+        "_NHKs",
         "DAc9_",
-        "h0CKQF",
-        "s_nGo7mR6",
+        "h0C.KQF",
+        "s_nGo7mR6.",
         "@4cjsO#VB3jn",
+        "_somerepo",
+        "await",
+        "return",
+        "nonlocal",
     ],
 )
 def test_invalid_package_names(invalid_package):
@@ -238,6 +244,35 @@ def test_valid_namespaces(valid_namespace):
 def test_invalid_namespaces(invalid_namespace):
     with pytest.raises(ValueError):
         validate_namespace(invalid_namespace)
+
+
+@pytest.mark.parametrize(
+    "valid_email",
+    [
+        "something@google.com",
+        "=wild+suff@skills.md.ar",
+        "___still/valid@ultra-secret.society",
+        "helluva#box@number09.after005.expect-this.io",
+        "==kawaii==@district.090.end7",
+    ],
+)
+def test_valid_emails(valid_email):
+    assert validate_email_address(valid_email) is None  # type: ignore[func-returns-value]
+
+
+@pytest.mark.parametrize(
+    "invalid_email",
+    [
+        "@start@does.not.compile",
+        "starts=good@but.does.not.end.well#",
+        "even-with#dashes@you.cant.end-",
+        "so...you-re-telling#me@periods.cant.be.stacked",
+        "hey@underscore_domains_dont_exist.com",
+    ],
+)
+def test_invalid_emails(invalid_email):
+    with pytest.raises(ValueError):
+        validate_email_address(invalid_email)
 
 
 def test_username_length():
