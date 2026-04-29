@@ -199,51 +199,93 @@ def test_invalid_package_names(invalid_package):
 
 
 @pytest.mark.parametrize(
-    "valid_namespace",
+    ("valid_namespace", "platform"),
     [
-        "15SV",
-        "vIOh",
-        "jO5Obrfq6aR8b",
-        "t5cfEsgM3hhV90",
-        "GKeYlsUOT",
-        "75e6R",
-        "VgCaS7mOIzikWJJ",
-        "K-fpQC",
-        "A-zn-ET-K-k-k-3I",
-        "MvkWGKFKj-qRFT",
-        "alpha/beta/gaga",
+        ("15SV", "gitlab"),
+        ("vIOh", "gitlab"),
+        ("jO5Obrfq6aR8b", "gitlab"),
+        ("t5cfEsgM3hhV90", "gitlab"),
+        ("GKeYlsUOT", "gitlab"),
+        ("75e6R", "gitlab"),
+        ("VgCaS7mOIzikWJJ", "gitlab"),
+        ("K-fpQC", "gitlab"),
+        ("A-zn-ET-K-k-k-3I", "gitlab"),
+        ("MvkWGKFKj-qRFT", "gitlab"),
+        ("15SV", "github"),
+        ("vIOh", "github"),
+        ("jO5Obrfq6aR8b", "github"),
+        ("t5cfEsgM3hhV90", "github"),
+        ("GKeYlsUOT", "github"),
+        ("75e6R", "github"),
+        ("VgCaS7mOIzikWJJ", "github"),
+        ("K-fpQC", "github"),
+        ("A-zn-ET-K-k-k-3I", "github"),
+        ("MvkWGKFKj-qRFT", "github"),
     ],
 )
-def test_valid_namespaces(valid_namespace):
-    assert validate_namespace(valid_namespace) is None  # type: ignore[func-returns-value]
+def test_valid_namespaces(valid_namespace, platform):
+    assert validate_namespace(valid_namespace, platform) is None  # type: ignore[func-returns-value]
 
 
 @pytest.mark.parametrize(
-    "invalid_namespace",
+    "valid_namespace", ["alpha/beta/gaga", "nested/structures/valid/for/platform"]
+)
+def test_valid_gitlab_namespaces(valid_namespace):
+    assert validate_namespace(valid_namespace, "gitlab") is None  # type: ignore[func-returns-value]
+
+
+@pytest.mark.parametrize(
+    ("invalid_namespace", "platform"),
     [
-        "robots.txt",
-        "groups",
-        "500.html",
-        "v2",
-        "projects",
-        "7w--StBkn8Pk5s",
-        "7wezIt1ets-",
-        "-sxSfLvkK",
-        "b--5DLF--hueyK3G",
-        "Y9ih5!!SjHPus",
-        "!HXk8A",
-        "c@N9hPPCWoronAm",
-        "OL+UjzQ_C.Z",
-        "Af8.uH",
-        "Go!b",
-        "#4FeBLTCDd@",
-        "dhsqWL/d",
-        "alpha/projects/groups",
+        ("robots.txt", "gitlab"),
+        ("groups", "gitlab"),
+        ("500.html", "gitlab"),
+        ("v2", "gitlab"),
+        ("projects", "gitlab"),
+        ("7w--StBkn8Pk5s", "gitlab"),
+        ("7wezIt1ets-", "gitlab"),
+        ("-sxSfLvkK", "gitlab"),
+        ("b--5DLF--hueyK3G", "gitlab"),
+        ("Y9ih5!!SjHPus", "gitlab"),
+        ("!HXk8A", "gitlab"),
+        ("c@N9hPPCWoronAm", "gitlab"),
+        ("OL+UjzQ_C.Z", "gitlab"),
+        ("Af8.uH", "gitlab"),
+        ("Go!b", "gitlab"),
+        ("#4FeBLTCDd@", "gitlab"),
+        ("dhsqWL/d", "gitlab"),
+        ("alpha/projects/groups", "gitlab"),
+        (
+            (
+                "one/two/three/four/five/six/seven/eight/nine/ten/eleven/twelve/"
+                "thirteen/fourteen/fifteen/sixteen/seventeen/eighteen/nineteen/twenty/"
+                "twentyone"
+            ),
+            "gitlab",
+        ),
+        ("robots.txt", "github"),
+        ("groups", "github"),
+        ("500.html", "github"),
+        ("v2", "github"),
+        ("projects", "github"),
+        ("7w--StBkn8Pk5s", "github"),
+        ("7wezIt1ets-", "github"),
+        ("-sxSfLvkK", "github"),
+        ("b--5DLF--hueyK3G", "github"),
+        ("Y9ih5!!SjHPus", "github"),
+        ("!HXk8A", "github"),
+        ("c@N9hPPCWoronAm", "github"),
+        ("OL+UjzQ_C.Z", "github"),
+        ("Af8.uH", "github"),
+        ("Go!b", "github"),
+        ("#4FeBLTCDd@", "github"),
+        ("dhsqWL/d", "github"),
+        ("alpha/projects/groups", "github"),
     ],
 )
-def test_invalid_namespaces(invalid_namespace):
+def test_invalid_namespaces(invalid_namespace, platform):
     with pytest.raises(ValueError):
-        validate_namespace(invalid_namespace)
+        validate_namespace(invalid_namespace, platform)
 
 
 @pytest.mark.parametrize(
@@ -275,14 +317,15 @@ def test_invalid_emails(invalid_email):
         validate_email_address(invalid_email)
 
 
-def test_username_length():
+@pytest.mark.parametrize("platform", ["gitlab", "github"])
+def test_username_length(platform):
     string = "a"
 
     for n in range(260):
         username = string * n
 
         if MIN_NAMESPACE_LENGTH <= n <= MAX_NAMESPACE_LENGTH:
-            assert validate_namespace(username) is None  # type: ignore[func-returns-value]
+            assert validate_namespace(username, platform) is None  # type: ignore[func-returns-value]
         else:
             with pytest.raises(ValueError):
-                validate_namespace(username)
+                validate_namespace(username, platform)
