@@ -1,3 +1,17 @@
+## 3.2.4 (2026-04-29)
+
+### :hatching_chick: Template Generation (1 change)
+
+- [:hammer: Reinforce pre-gen validations for namespaces](galactipy/galactipy@5de3845b2996bb8d7b362712bf2062bbfe093a10)
+
+### :100: Template Cohesion (1 change)
+
+- [:white_check_mark: Update unit tests with subgroup restrictions](galactipy/galactipy@01fc37e7a155353f30645c8e1bd4a5021931f889)
+
+### :pouring_liquid: Nits (1 change)
+
+- [:technologist: Improve hooks documentation and error messages](galactipy/galactipy@84fe6437ae248b6a5de102fe13e9b80b0c930fe3)
+
 ## 3.2.3 (2026-04-28)
 
 ### :ballot_box: Settings & Options (1 change)
