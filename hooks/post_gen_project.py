@@ -90,7 +90,7 @@ def rmdir(path: Path) -> None:
         path.unlink()
 
     else:
-        message = f"{path} is neither a file nor a directory to remove."
+        message = f"{path} is neither a file nor a directory to remove"
         raise ValueError(message)
 
 

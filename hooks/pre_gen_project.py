@@ -203,13 +203,13 @@ def validate_repo_name(repo_name: str) -> None:
     if PROJECT_REGEX.fullmatch(repo_name) is None:
         message = (
             f"ERROR: The repo name `{repo_name}` "
-            f"is not valid for a {SCM_PLATFORM} repository."
+            f"is not valid for a {SCM_PLATFORM} repository"
         )
         raise ValueError(message)
 
     if repo_name in RESERVED_PROJECTS:
         message = (
-            f"ERROR: The repo name `{repo_name}` is a reserved name in {SCM_PLATFORM}."
+            f"ERROR: The repo name `{repo_name}` is a reserved name in {SCM_PLATFORM}"
         )
         raise ValueError(message)
 
@@ -218,7 +218,7 @@ def validate_repo_name(repo_name: str) -> None:
     if PYPI_PROJECT_REGEX.fullmatch(repo_name) is None:  # pragma: no cover
         message = (
             f"ERROR: The repo name `{repo_name}` "
-            "is not compliant with PyPA for a project name."
+            "is not compliant with PyPA for a project name"
         )
         raise ValueError(message)
 
@@ -243,20 +243,20 @@ def validate_package_name(package_name: str) -> None:
     if PACKAGE_REGEX.fullmatch(package_name) is None:
         message = (
             f"ERROR: The package name `{package_name}` "
-            "is not a valid Python module name."
+            "is not a valid Python module name"
         )
         raise ValueError(message)
 
     if package_name in RESERVED_KEYWORDS:
         message = (
-            f"ERROR: The package name `{package_name}` is a reserved Python keyword."
+            f"ERROR: The package name `{package_name}` is a reserved Python keyword"
         )
         raise ValueError(message)
 
     if PYPI_PROJECT_REGEX.fullmatch(package_name) is None:
         message = (
             f"ERROR: The package name `{package_name}` "
-            "is not compliant with PyPA standards."
+            "is not compliant with PyPA standards"
         )
         raise ValueError(message)
 
@@ -286,15 +286,17 @@ def _validate_single_namespace(namespace: str) -> None:
     Raises
     ------
     ValueError
-        If `username` is not a valid GitLab or GitHub username.
+        If `namespace` is not a valid GitLab or GitHub username/group name.
     """
-    if not (MIN_NAMESPACE_LENGTH <= len(namespace) <= MAX_NAMESPACE_LENGTH):
+    namespace_length = len(namespace)
+    if not (MIN_NAMESPACE_LENGTH <= namespace_length <= MAX_NAMESPACE_LENGTH):
         message = (
-            f"ERROR: scm_namespace must be between 2 and 255. Got `{len(namespace)}`."
+            f"ERROR: scm_namespace must be between {MIN_NAMESPACE_LENGTH} and "
+            f"{MAX_NAMESPACE_LENGTH}. Got `{namespace_length}`"
         )
         raise ValueError(message)
 
-    message = f"ERROR: `{namespace}` is not a valid name for user or organisation."
+    message = f"ERROR: `{namespace}` is not a valid name for user or organisation"
 
     if NAMESPACE_REGEX.fullmatch(namespace) is None:
         raise ValueError(message)
@@ -317,7 +319,7 @@ def validate_email_address(email: str) -> None:
         If `email` does not match the regex.
     """
     if EMAIL_REGEX.fullmatch(email) is None:
-        message = f"ERROR: `{email}` is not a valid e-mail address."
+        message = f"ERROR: `{email}` is not a valid e-mail address"
         raise ValueError(message)
 
 
@@ -335,7 +337,10 @@ def validate_line_length(line_length: int) -> None:
         If line_length isn't between 50 and 300.
     """
     if not (MIN_LINE_LENGTH <= line_length <= MAX_LINE_LENGTH):
-        message = f"ERROR: line_length must be between 50 and 300. Got `{line_length}`."
+        message = (
+            f"ERROR: line_length must be between {MIN_LINE_LENGTH} and "
+            f"{MAX_LINE_LENGTH}. Got `{line_length}`"
+        )
         raise ValueError(message)
 
 
