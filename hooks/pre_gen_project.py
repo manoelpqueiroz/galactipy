@@ -8,6 +8,7 @@ PACKAGE_NAME = "{{ cookiecutter.package_name }}"
 NAMESPACE = "{{ cookiecutter.scm_namespace }}"
 
 SCM_PLATFORM = "{{ cookiecutter.__scm_platform_base }}"
+SCM_PLATFORM_LC = "{{ cookiecutter.__scm_platform_lc }}"
 
 EMAIL = "{{ cookiecutter.email }}"
 
@@ -18,6 +19,7 @@ DOCSTRING_LENGTH_PARAMETER = "{{ cookiecutter.docstring_length }}"
 
 MIN_NAMESPACE_LENGTH = 2
 MAX_NAMESPACE_LENGTH = 255
+MAX_NESTED_SUBGROUPS = 20
 MIN_LINE_LENGTH = 50
 MAX_LINE_LENGTH = 300
 
@@ -261,18 +263,60 @@ def validate_package_name(package_name: str) -> None:
         raise ValueError(message)
 
 
-def validate_namespace(scm_namespace: str) -> None:
-    """Ensure that `namespace` is valid under GitLab and GitHub restrictions.
+def validate_namespace(scm_namespace: str, scm_platform: str) -> None:
+    """Ensure that `scm_namespace` is valid under GitLab/GitHub restrictions.
+
+    Parameters
+    ----------
+    scm_namespace : str
+        Source control management platform username/organisation name.
+    scm_platform : str
+        The source control management platform (GitLab or GitHub).
+    """
+    namespace_list = _validate_full_namespace(scm_namespace, scm_platform)
+
+    for namespace in namespace_list:
+        _validate_single_namespace(namespace)
+
+
+def _validate_full_namespace(namespace: str, platform: str) -> list[str]:
+    """Validate the integrity of the `namespace` variable for each platform.
 
     Parameters
     ----------
     namespace : str
         Source control management platform username/organisation name.
-    """
-    namespace_list = scm_namespace.split("/")
+    platform : str
+        The respective source control management platform.
 
-    for namespace in namespace_list:
-        _validate_single_namespace(namespace)
+    Returns
+    -------
+    list of str
+        A list of strings containing each namespace component separately.
+
+    Raises
+    ------
+    ValueError
+        If `namespace` contains slashes and `platform` is GitHub, since
+        GitHub does not support namespaces with multiple components; and if
+        `namespace` contains more than 20 components, as this is the limit
+        for subgroup nesting in GitLab.
+    """
+    if "/" in namespace and platform == "github":
+        message = "ERROR: GitHub does not support nested namespaces"
+        raise ValueError(message)
+
+    namespace_list = namespace.split("/")
+    subgroups = len(namespace_list)
+
+    if subgroups > MAX_NESTED_SUBGROUPS:
+        message = (
+            f"ERROR: GitLab does not support more than {MAX_NESTED_SUBGROUPS} nested "
+            f"namespaces. Got `{subgroups}`"
+        )
+        raise ValueError(message)
+
+    return namespace_list
 
 
 def _validate_single_namespace(namespace: str) -> None:
@@ -373,7 +417,7 @@ def main() -> None:  # noqa: D103
 
         validate_package_name(package_name=PACKAGE_NAME)
 
-        validate_namespace(scm_namespace=NAMESPACE)
+        validate_namespace(scm_namespace=NAMESPACE, scm_platform=SCM_PLATFORM_LC)
 
         validate_email_address(email=EMAIL)
 
