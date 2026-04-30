@@ -305,7 +305,7 @@ def test_valid_emails(valid_email):
 @pytest.mark.parametrize(
     "invalid_email",
     [
-        "@start@does.not.compile",
+        "emails@have-domain@start@does.not.compile",
         "starts=good@but.does.not.end.well#",
         "even-with#dashes@you.cant.end-",
         "so...you-re-telling#me@periods.cant.be.stacked",
