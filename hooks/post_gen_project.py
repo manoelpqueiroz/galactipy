@@ -206,6 +206,7 @@ def _get_files_to_delete(
         flags.remove_docs,
         flags.remove_bdd,
         flags.is_oss_licence,
+        flags.remove_gitlab,
     )
 
     gitlab_specific_files = [
@@ -477,6 +478,7 @@ def _get_documentation_files(
     remove_docs: bool,
     remove_bdd: bool,
     oss_licence: bool,
+    is_github: bool,
 ) -> list[Path]:
     """Return the files to remove from the documentation.
 
@@ -496,7 +498,12 @@ def _get_documentation_files(
     docs = directory / "docs"
 
     if remove_docs:
-        return [docs, directory / "zensical.toml"]
+        removals = [docs, directory / "zensical.toml"]
+
+        if is_github:
+            removals.append(directory / ".github" / "workflows" / "docs.yml")
+
+        return removals
 
     doc_removals = _get_licence_related_doc_files(
         docs, app_type, remove_bdd, oss_licence
