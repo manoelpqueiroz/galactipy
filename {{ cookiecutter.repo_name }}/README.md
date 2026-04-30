@@ -6,8 +6,8 @@
 [![Python support][badge1]][burl1]
 [![PyPI Release][badge1a]][burl1]
 [![Repository][badge2]][burl2]
-{%- if cookiecutter.create_docs and cookiecutter.__scm_platform_lc == 'gitlab' %}
-[![Docs][badge2a]][burl2a]
+{%- if cookiecutter.create_docs %}
+[![Docs][bdocs1]][bdocs2]
 {%- endif %}
 {%- if cookiecutter.version_schema != 'trunkver' %}
 [![Releases][brel1]][brel2]
@@ -376,9 +376,6 @@ This project was generated with [Galactipy][burl4].
 [badge1a]: https://img.shields.io/pypi/v/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=pypi&color=3775a9
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [badge2]: https://img.shields.io/badge/GitLab-0B2640?style=for-the-badge&logo=gitlab&logoColor=white
-{%- if cookiecutter.create_docs %}
-[badge2a]: https://img.shields.io/badge/docs-F79A10?style=for-the-badge&logo=readme&logoColor=white
-{%- endif %}
 {%- else %}
 [badge2]: https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
 {%- endif %}
@@ -441,9 +438,6 @@ This project was generated with [Galactipy][burl4].
 
 [burl1]: {{ cookiecutter.__pypi_url }}
 [burl2]: {{ cookiecutter.__scm_repo_url }}
-{%- if cookiecutter.create_docs and cookiecutter.__scm_platform_lc == 'gitlab' %}
-[burl2a]: {{ cookiecutter.__pages_url }}
-{%- endif %}
 [burl4]: https://kutt.it/7fYqQl
 [burl5]: https://project-types.github.io/#toy
 [burl6]: {{ cookiecutter.__scm_repo_latch }}/blob/master/ROADMAP.md#development-stages
@@ -508,6 +502,11 @@ This project was generated with [Galactipy][burl4].
 <!-- TODO Replace the hash `d5402a91aa7b4234bd1c19b5e86a63be` with your project ID in the "Codacy Badge" section available at https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/settings
 [bqa1]: https://img.shields.io/codacy/grade/d5402a91aa7b4234bd1c19b5e86a63be?style=for-the-badge&logo=codacy
 [bqa2]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/dashboard -->
+
+{% endif -%}
+{% if cookiecutter.create_docs -%}
+[bdocs1]: https://img.shields.io/badge/docs-F79A10?style=for-the-badge&logo=readme&logoColor=white
+[bdocs2]: {{ cookiecutter.__pages_url }}
 
 {% endif -%}
 {% if cookiecutter.app_type != 'bare_repo' -%}

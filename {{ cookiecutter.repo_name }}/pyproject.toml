@@ -31,7 +31,7 @@ dynamic = ["version", "classifiers"]
 [project.urls]
 {%- if cookiecutter.licence != 'nos' %}
 repository = "{{ cookiecutter.__scm_repo_url }}"
-{%- if cookiecutter.create_docs and cookiecutter.__scm_platform_lc == 'gitlab' %}
+{%- if cookiecutter.create_docs %}
 "Contributing Guidelines" = "{{ cookiecutter.__pages_url }}/development"
 {%- else %}
 "Contributing Guidelines" = "{{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md"
@@ -50,7 +50,7 @@ documentation = "{{ cookiecutter.__scm_repo_latch }}/blob/master/docs/index.md"
 {%- endif %}
 {%- else %}
 # UPDATEME with the URL pointing to your project's public issue tracker, if applicable
-{%- if cookiecutter.create_docs and cookiecutter.__scm_platform_lc == 'gitlab' %}
+{%- if cookiecutter.create_docs %}
 homepage = "{{ cookiecutter.__pages_url }}"
 documentation = "{{ cookiecutter.__pages_url }}"
 "Release Notes" = "{{ cookiecutter.__pages_url }}/noticeboard/release_notes"
