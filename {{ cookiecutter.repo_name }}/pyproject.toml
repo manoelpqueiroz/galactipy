@@ -109,9 +109,11 @@ platformdirs = "^4.5.0"
 nebulog = "^0.1.0"
 {%- endif %}
 
-[tool.poetry.group.dev.dependencies]
+[tool.poetry.group.tasks.dependencies]
 pre-commit = "^4.3.0"
 invoke = "^2.2.1"
+
+[tool.poetry.group.dev.dependencies]
 ruff = "^0.15.5"
 
 bandit = "^1.8.6"
