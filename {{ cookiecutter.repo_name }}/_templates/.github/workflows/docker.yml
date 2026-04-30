@@ -20,10 +20,12 @@ on:
 
 jobs:
   docker-deploy:
+    name: Deploy Docker Container
     runs-on: ubuntu-latest
 {%- endraw %}{% if cookiecutter.version_schema != 'trunkver' %}{% raw %}
     if: ${{ inputs.publish && github.ref_type == 'tag' }}
 {%- endraw %}{% endif %}{% raw %}
+
     steps:
       - name: 🔰 Configure Tags to Push
         uses: docker/metadata-action@v6

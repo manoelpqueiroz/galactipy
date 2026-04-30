@@ -31,6 +31,7 @@ jobs:
     name: Build Package
     runs-on: ubuntu-latest
     if: ${{ inputs.publish }}
+
     steps:
       - uses: actions/checkout@v6
 
