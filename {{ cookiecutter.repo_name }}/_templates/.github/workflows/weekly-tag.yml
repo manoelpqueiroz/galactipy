@@ -10,8 +10,9 @@ on:
 
 jobs:
   push_tag:
-    name: Push Weekly Tag
+    name: Push Weekly Release Tag
     runs-on: ubuntu-latest
+
     steps:
       - name: Generate CalVer
         id: calver

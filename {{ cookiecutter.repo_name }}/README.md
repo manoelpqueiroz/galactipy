@@ -6,8 +6,8 @@
 [![Python support][badge1]][burl1]
 [![PyPI Release][badge1a]][burl1]
 [![Repository][badge2]][burl2]
-{%- if cookiecutter.create_docs and cookiecutter.__scm_platform_lc == 'gitlab' %}
-[![Docs][badge2a]][burl2a]
+{%- if cookiecutter.create_docs %}
+[![Docs][bdocs1]][bdocs2]
 {%- endif %}
 {%- if cookiecutter.version_schema != 'trunkver' %}
 [![Releases][brel1]][brel2]
@@ -18,43 +18,43 @@
 {%- if cookiecutter.licence != 'nos' %}
 [![Licence][blic1]][blic2]
 {%- endif %}
-[![Expand your project structure from atoms of code to galactic dimensions.][badge4]][burl4]
+[![Expand your project structure from atoms of code to galactic dimensions.][badge3]][burl3]
 
 <!-- Information on development -->
-[![Project type][badge5]][burl5]
-[![Project stage][badge6]][burl6]
-[![Contributions Welcome][badge7]][burl7]
-[![Open issues][badge8]][burl8]
-[![Merge Requests][badge9]][burl9]
+[![Project type][badge4]][burl4]
+[![Project stage][badge5]][burl5]
+[![Contributions Welcome][badge6]][burl6]
+[![Open issues][badge7]][burl7]
+[![Merge Requests][badge8]][burl8]
 
 <!-- Styling policies -->
 {%- if cookiecutter.use_bdd %}
 [![BDD][bbbd1]][bbbd2]
 {%- endif %}
-[![Code style: Ruff][badge10]][burl10]
+[![Code style: Ruff][badge9]][burl9]
 {%- if cookiecutter.docstring_style in ['numpy', 'google', 'sphinx'] %}
 [![Docstrings][bdocstr1]][bdocstr2]
 {%- endif %}
 {%- if cookiecutter.commit_convention == 'gitmoji' %}
-[![Gitmoji][badge11]][burl11]
+[![Gitmoji][badge10]][burl10]
 {%- elif cookiecutter.commit_convention == 'conventional' %}
-[![Conventional Commits][badge11]][burl11]
+[![Conventional Commits][badge10]][burl10]
 {%- elif cookiecutter.commit_convention == 'conventional-gitmoji' %}
-[![Conventional Gitmoji][badge11]][burl11]
+[![Conventional Gitmoji][badge10]][burl10]
 {%- endif %}
-[![Semantic Line Breaks][badge12]][burl12]
+[![Semantic Line Breaks][badge11]][burl11]
 
 <!-- Development utilities -->
-[![Poetry][badge13]][burl13]
-[![Pre-commit][badge14]][burl14]
+[![Poetry][badge12]][burl12]
+[![Pre-commit][badge13]][burl13]
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[![Renovate][badge15]][burl15]
+[![Renovate][badge14]][burl14]
 {%- else %}
-[![Dependabot][badge15]][burl15]
+[![Dependabot][badge14]][burl14]
 {%- endif %}
-[![Bandit][badge16]][burl16]
-[![isort][badge17]][burl17]
-[![Editorconfig][badge18]][burl18]
+[![Bandit][badge15]][burl15]
+[![isort][badge16]][burl16]
+[![Editorconfig][badge17]][burl17]
 {%+ if cookiecutter.licence != 'nos' %}
 <!-- Open Source benchmarks -->
 <!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
@@ -64,27 +64,27 @@
 {% endif +%}
 <!-- Quality assurance -->
 {%- if cookiecutter.__version_schema_base == 'effver' %}
-[![Intended Effort Versioning][badge19]][burl19]
+[![Intended Effort Versioning][badge18]][burl18]
 {%- elif cookiecutter.__version_schema_base == 'semver' %}
-[![Semantic Versioning][badge19]][burl19]
+[![Semantic Versioning][badge18]][burl18]
 {%- elif cookiecutter.__version_schema_base == 'calver' %}
-[![Calendar Versioning][badge19]][burl19]
+[![Calendar Versioning][badge18]][burl18]
 {%- elif cookiecutter.__version_schema_base == 'romver' %}
-[![Romantic Versioning][badge19]][burl19]
+[![Romantic Versioning][badge18]][burl18]
 {%- elif cookiecutter.__version_schema_base == 'solover' %}
-[![SoloVer][badge19]][burl19]
+[![SoloVer][badge18]][burl18]
 {%- elif cookiecutter.__version_schema_base == 'trunkver' %}
-[![TrunkVer][badge19]][burl19]
+[![TrunkVer][badge18]][burl18]
 {%- endif %}
 {%- if cookiecutter.coverage_service == 'coveralls' %}
-[![Coverage][badge20]][burl20]
+[![Coverage][badge19]][burl19]
 {%- else %}
 <!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
 [![Code Quality][bqa1]][bqa2] -->
 <!-- UPDATEME by toggling this comment off after replacing your project's index in both anchors below
-[![Coverage][badge20]][burl20] -->
+[![Coverage][badge19]][burl19] -->
 {%- endif %}
-[![Pipelines][badge21]][burl21]
+[![Pipelines][badge20]][burl20]
 
 _{{ cookiecutter.project_description }}._
 
@@ -208,7 +208,7 @@ You can find everything you need
 
 There are several ways
 to contribute to {{ cookiecutter.project_name }}.
-Refer to our [`CONTRIBUTING` guide][burl7]
+Refer to our [`CONTRIBUTING` guide][burl6]
 for all relevant details.
 
 Currently,
@@ -259,7 +259,7 @@ our development,
 we apply the [TrunkVer][release1] versioning schema
 to distribute the package,
 {% endif -%}
-details can be found in our [`CONTRIBUTING` guide][burl19].
+details can be found in our [`CONTRIBUTING` guide][burl18].
 {%- if cookiecutter.create_docker %}
 
 ### Run as a Docker Container
@@ -366,9 +366,9 @@ in your paper.
   List similar projects that inspired yours
 -->
 
-## Credits [![Expand your project structure from atoms of code to galactic dimensions.][badge4]][burl4]
+## Credits [![Expand your project structure from atoms of code to galactic dimensions.][badge3]][burl3]
 
-This project was generated with [Galactipy][burl4].
+This project was generated with [Galactipy][burl3].
 
 <!-- Anchors -->
 
@@ -376,107 +376,101 @@ This project was generated with [Galactipy][burl4].
 [badge1a]: https://img.shields.io/pypi/v/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=pypi&color=3775a9
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [badge2]: https://img.shields.io/badge/GitLab-0B2640?style=for-the-badge&logo=gitlab&logoColor=white
-{%- if cookiecutter.create_docs %}
-[badge2a]: https://img.shields.io/badge/docs-F79A10?style=for-the-badge&logo=readme&logoColor=white
-{%- endif %}
 {%- else %}
 [badge2]: https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
 {%- endif %}
-[badge4]: https://img.shields.io/badge/made%20with-galactipy%20%F0%9F%8C%8C-179287?style=for-the-badge&labelColor=193A3E
-[badge5]: https://img.shields.io/badge/project%20type-toy-blue?style=for-the-badge
-[badge6]: https://img.shields.io/pypi/status/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=theplanetarysociety&label=stage
-[badge7]: https://img.shields.io/static/v1.svg?label=Contributions&message=Welcome&color=0059b3&style=for-the-badge
+[badge3]: https://img.shields.io/badge/made%20with-galactipy%20%F0%9F%8C%8C-179287?style=for-the-badge&labelColor=193A3E
+[badge4]: https://img.shields.io/badge/project%20type-toy-blue?style=for-the-badge
+[badge5]: https://img.shields.io/pypi/status/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=theplanetarysociety&label=stage
+[badge6]: https://img.shields.io/static/v1.svg?label=Contributions&message=Welcome&color=0059b3&style=for-the-badge
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[badge8]: https://img.shields.io/gitlab/issues/open/{{ cookiecutter.scm_namespace }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&color=fca326
-[badge9]: https://img.shields.io/gitlab/merge-requests/open/{{ cookiecutter.scm_namespace }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&color=6fdac9
+[badge7]: https://img.shields.io/gitlab/issues/open/{{ cookiecutter.scm_namespace }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&color=fca326
+[badge8]: https://img.shields.io/gitlab/merge-requests/open/{{ cookiecutter.scm_namespace }}%2F{{ cookiecutter.repo_name }}?style=for-the-badge&color=6fdac9
 {%- else %}
-[badge8]: https://img.shields.io/github/issues/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}?style=for-the-badge&color=bc4c00
-[badge9]: https://img.shields.io/github/issues-pr/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}?style=for-the-badge&color=1f883d
+[badge7]: https://img.shields.io/github/issues/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}?style=for-the-badge&color=bc4c00
+[badge8]: https://img.shields.io/github/issues-pr/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}?style=for-the-badge&color=1f883d
 {%- endif %}
-[badge10]: https://img.shields.io/badge/code%20style-ruff-261230?style=for-the-badge&labelColor=grey
+[badge9]: https://img.shields.io/badge/code%20style-ruff-261230?style=for-the-badge&labelColor=grey
 {%- if cookiecutter.commit_convention == 'gitmoji' %}
-[badge11]: https://img.shields.io/badge/%F0%9F%98%9C_gitmoji-ffdd67?style=for-the-badge
+[badge10]: https://img.shields.io/badge/%F0%9F%98%9C_gitmoji-ffdd67?style=for-the-badge
 {%- elif cookiecutter.commit_convention == 'conventional' %}
-[badge11]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white&style=for-the-badge
+[badge10]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white&style=for-the-badge
 {%- elif cookiecutter.commit_convention == 'conventional-gitmoji' %}
-[badge11]: https://img.shields.io/badge/conventional-%F0%9F%98%9C%20gitmoji-ffdd67?style=for-the-badge&logo=conventionalcommits&logoColor=white&labelColor=fe5196
+[badge10]: https://img.shields.io/badge/conventional-%F0%9F%98%9C%20gitmoji-ffdd67?style=for-the-badge&logo=conventionalcommits&logoColor=white&labelColor=fe5196
 {%- endif %}
-[badge12]: https://img.shields.io/badge/sembr-FF6441?style=for-the-badge&logo=apmterminals&logoColor=white
-[badge13]: https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json&style=for-the-badge
-[badge14]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge
+[badge11]: https://img.shields.io/badge/sembr-FF6441?style=for-the-badge&logo=apmterminals&logoColor=white
+[badge12]: https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json&style=for-the-badge
+[badge13]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[badge15]: https://img.shields.io/badge/Renovate-308BE3?logo=renovate&logoColor=fff&style=for-the-badge
+[badge14]: https://img.shields.io/badge/Renovate-308BE3?logo=renovate&logoColor=fff&style=for-the-badge
 {%- else %}
-[badge15]: https://img.shields.io/badge/Dependabot-025E8C?logo=dependabot&logoColor=fff&style=for-the-badge
+[badge14]: https://img.shields.io/badge/Dependabot-025E8C?logo=dependabot&logoColor=fff&style=for-the-badge
 {%- endif %}
-[badge16]: https://img.shields.io/badge/security-bandit-yellow?style=for-the-badge
-[badge17]: https://img.shields.io/badge/imports-isort-1674b1?style=for-the-badge&labelColor=ef8336
-[badge18]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
+[badge15]: https://img.shields.io/badge/security-bandit-yellow?style=for-the-badge
+[badge16]: https://img.shields.io/badge/imports-isort-1674b1?style=for-the-badge&labelColor=ef8336
+[badge17]: https://img.shields.io/badge/Editorconfig-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000
 {%- if cookiecutter.version_schema == 'effver' %}
-[badge19]: https://img.shields.io/badge/effver-0097a7?style=for-the-badge&logo=semver
+[badge18]: https://img.shields.io/badge/effver-0097a7?style=for-the-badge&logo=semver
 {%- elif cookiecutter.version_schema == 'semver' %}
-[badge19]: https://img.shields.io/badge/semver-3F4551?style=for-the-badge&logo=semver
+[badge18]: https://img.shields.io/badge/semver-3F4551?style=for-the-badge&logo=semver
 {%- elif cookiecutter.version_schema == 'calver-auto' %}
-[badge19]: https://img.shields.io/badge/calver-5Y.WW-006BFF?style=for-the-badge&logo=protoncalendar&logoColor=white
+[badge18]: https://img.shields.io/badge/calver-5Y.WW-006BFF?style=for-the-badge&logo=protoncalendar&logoColor=white
 {%- elif cookiecutter.version_schema == 'calver-explicit' %}
-[badge19]: https://img.shields.io/badge/calver-5Y.0M.MICRO-006BFF?style=for-the-badge&logo=protoncalendar&logoColor=white
+[badge18]: https://img.shields.io/badge/calver-5Y.0M.MICRO-006BFF?style=for-the-badge&logo=protoncalendar&logoColor=white
 {%- elif cookiecutter.version_schema == 'romver' %}
-[badge19]: https://img.shields.io/badge/romver-DE4F4F?style=for-the-badge&logo=semver
+[badge18]: https://img.shields.io/badge/romver-DE4F4F?style=for-the-badge&logo=semver
 {%- elif cookiecutter.version_schema == 'solover' %}
-[badge19]: https://img.shields.io/badge/solover-056473?style=for-the-badge&logo=upptime&logoColor=white
+[badge18]: https://img.shields.io/badge/solover-056473?style=for-the-badge&logo=upptime&logoColor=white
 {%- elif cookiecutter.version_schema == 'trunkver' %}
-[badge19]: https://img.shields.io/badge/trunkver-3F54A3?style=for-the-badge&logo=roots&logoColor=white
+[badge18]: https://img.shields.io/badge/trunkver-3F54A3?style=for-the-badge&logo=roots&logoColor=white
 {%- endif %}
 {%- if cookiecutter.coverage_service == 'coveralls' %}
-[badge20]: https://img.shields.io/coverallsCoverage/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=coveralls
+[badge19]: https://img.shields.io/coverallsCoverage/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=coveralls
 {%- else %}
 <!-- TODO Replace the hash `d5402a91aa7b4234bd1c19b5e86a63be` with your project ID in the "Codacy Badge" section available at https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/settings
-[badge20]: https://img.shields.io/codacy/coverage/d5402a91aa7b4234bd1c19b5e86a63be?style=for-the-badge&logo=codacy -->
+[badge19]: https://img.shields.io/codacy/coverage/d5402a91aa7b4234bd1c19b5e86a63be?style=for-the-badge&logo=codacy -->
 {%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[badge21]: https://img.shields.io/gitlab/pipeline-status/{{ cookiecutter.scm_namespace }}%2F{{ cookiecutter.repo_name }}?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
+[badge20]: https://img.shields.io/gitlab/pipeline-status/{{ cookiecutter.scm_namespace }}%2F{{ cookiecutter.repo_name }}?branch=master&style=for-the-badge&logo=gitlab&logoColor=white&label=master
 {%- else %}
-[badge21]: https://img.shields.io/github/actions/workflow/status/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/build.yml?style=for-the-badge&logo=github
+[badge20]: https://img.shields.io/github/actions/workflow/status/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/build.yml?style=for-the-badge&logo=github
 {%- endif %}
 
 [burl1]: {{ cookiecutter.__pypi_url }}
 [burl2]: {{ cookiecutter.__scm_repo_url }}
-{%- if cookiecutter.create_docs and cookiecutter.__scm_platform_lc == 'gitlab' %}
-[burl2a]: {{ cookiecutter.__pages_url }}
-{%- endif %}
-[burl4]: https://kutt.it/7fYqQl
-[burl5]: https://project-types.github.io/#toy
-[burl6]: {{ cookiecutter.__scm_repo_latch }}/blob/master/ROADMAP.md#development-stages
-[burl7]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md
-[burl8]: {{ cookiecutter.__scm_repo_latch }}/issues
+[burl3]: https://kutt.it/7fYqQl
+[burl4]: https://project-types.github.io/#toy
+[burl5]: {{ cookiecutter.__scm_repo_latch }}/blob/master/ROADMAP.md#development-stages
+[burl6]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md
+[burl7]: {{ cookiecutter.__scm_repo_latch }}/issues
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[burl9]: {{ cookiecutter.__scm_repo_latch }}/merge_requests
+[burl8]: {{ cookiecutter.__scm_repo_latch }}/merge_requests
 {%- else %}
-[burl9]: {{ cookiecutter.__scm_repo_latch }}/pulls
+[burl8]: {{ cookiecutter.__scm_repo_latch }}/pulls
 {%- endif %}
-[burl10]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#codestyle
-[burl11]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#commit-customs
-[burl12]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#semantic-line-breaks
-[burl13]: https://python-poetry.org/
-[burl14]: {{ cookiecutter.__scm_repo_latch }}/blob/master/.pre-commit-config.yaml
+[burl9]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#codestyle
+[burl10]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#commit-customs
+[burl11]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#semantic-line-breaks
+[burl12]: https://python-poetry.org/
+[burl13]: {{ cookiecutter.__scm_repo_latch }}/blob/master/.pre-commit-config.yaml
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[burl15]: {{ cookiecutter.__scm_repo_latch }}/blob/master/renovate.json
+[burl14]: {{ cookiecutter.__scm_repo_latch }}/blob/master/renovate.json
 {%- else %}
-[burl15]: {{ cookiecutter.__scm_repo_latch }}/blob/master/.github/dependabot.yml
+[burl14]: {{ cookiecutter.__scm_repo_latch }}/blob/master/.github/dependabot.yml
 {%- endif %}
-[burl16]: https://bandit.readthedocs.io/en/latest/
-[burl17]: https://pycqa.github.io/isort/
-[burl18]: {{ cookiecutter.__scm_repo_latch }}/blob/master/.editorconfig
-[burl19]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#versioning-customs
+[burl15]: https://bandit.readthedocs.io/en/latest/
+[burl16]: https://pycqa.github.io/isort/
+[burl17]: {{ cookiecutter.__scm_repo_latch }}/blob/master/.editorconfig
+[burl18]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#versioning-customs
 {%- if cookiecutter.coverage_service == 'coveralls' %}
-[burl20]: https://coveralls.io/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}
+[burl19]: https://coveralls.io/{{ cookiecutter.__scm_platform_lc }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}
 {%- else %}
-[burl20]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/coverage
+[burl19]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/coverage
 {%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[burl21]: {{ cookiecutter.__scm_repo_latch }}/pipelines
+[burl20]: {{ cookiecutter.__scm_repo_latch }}/pipelines
 {%- else %}
-[burl21]: {{ cookiecutter.__scm_repo_latch }}/actions/workflows/build.yml
+[burl20]: {{ cookiecutter.__scm_repo_latch }}/actions/workflows/build.yml
 {%- endif %}
 
 {% if cookiecutter.version_schema != 'trunkver' -%}
@@ -508,6 +502,11 @@ This project was generated with [Galactipy][burl4].
 <!-- TODO Replace the hash `d5402a91aa7b4234bd1c19b5e86a63be` with your project ID in the "Codacy Badge" section available at https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/settings
 [bqa1]: https://img.shields.io/codacy/grade/d5402a91aa7b4234bd1c19b5e86a63be?style=for-the-badge&logo=codacy
 [bqa2]: https://app.codacy.com/{{ cookiecutter.__scm_platform_redux }}/{{ cookiecutter.scm_namespace }}/{{ cookiecutter.repo_name }}/dashboard -->
+
+{% endif -%}
+{% if cookiecutter.create_docs -%}
+[bdocs1]: https://img.shields.io/badge/docs-F79A10?style=for-the-badge&logo=readme&logoColor=white
+[bdocs2]: {{ cookiecutter.__pages_url }}
 
 {% endif -%}
 {% if cookiecutter.app_type != 'bare_repo' -%}

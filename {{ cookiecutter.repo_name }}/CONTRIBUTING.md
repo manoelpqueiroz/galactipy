@@ -4474,11 +4474,7 @@ what we call the "formal" documentation
 for {{ cookiecutter.project_name }}.
 These are the docs
 that are exposed to the public
-{%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-in the [GitLab Pages][pages].
-{%- else %}
-via a static website.
-{%- endif %}
+in the [{{ cookiecutter.__scm_platform_base }} Pages][pages].
 
 We use Zensical
 as the backbone of our documentation,
@@ -7521,7 +7517,7 @@ what we are doing matters!
 [anatomy]: #anatomy
 [docstrings]: #docstring-convention
 [invoke]: #invoke-usage
-{%- if cookiecutter.create_docs and cookiecutter.__scm_platform_lc == 'gitlab' %}
+{%- if cookiecutter.create_docs %}
 [pages]: {{ cookiecutter.__pages_url }}
 {%- endif %}
 

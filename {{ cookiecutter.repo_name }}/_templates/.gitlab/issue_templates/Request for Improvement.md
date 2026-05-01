@@ -29,9 +29,13 @@ Please run through all items under the **`Applicant Checklist`** section and fol
 - You are unsure your request involves an actual feature :right_arrow: attempt a **`Request for Support`** first;
 - You feel your request is not clear enough yet :right_arrow: a **`Request for Support`** is also recommended.
 >>>
+{% if cookiecutter.create_docs -%}
+[1]: {{ cookiecutter.__pages_url }}/development/philosophy#say-why-not-just-what
 
+{% else -%}
 [1]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#say-why-not-just-what
 
+{% endif -%}
 ## Applicant Checklist
 
 <!-- Please check all items with an `x` (like `[x]`) before proceeding -->
@@ -46,7 +50,7 @@ Please run through all items under the **`Applicant Checklist`** section and fol
   <!-- List all searches you have performed -->
   - `...`
   - `...`
-- [ ] I have read the [`CONTRIBUTING`][4] guide and I have understood how to improve communication between me and the development team;
+- [ ] I have read the [Contributing Guide][4] and I have understood how to improve communication between me and the development team;
 - [ ] I provided a concise and clear title for this discussion;
 - [ ] I have provided the development team the desired feature as most detailed as I possibly can;
 - [ ] I have followed the [_why, not just what_][1] directive to open this request;
@@ -58,20 +62,32 @@ Please run through all items under the **`Applicant Checklist`** section and fol
 [2]: {{ cookiecutter.__scm_repo_latch }}/milestones
 {%- endif %}
 [3]: {{ cookiecutter.__scm_repo_latch }}/issues/?state=all&type%5B%5D=issue
+{%- if cookiecutter.create_docs %}
+[4]: {{ cookiecutter.__pages_url }}/development/for_others/user_requests
+{%- else %}
 [4]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#contributing-through-user-requests
+{%- endif %}
 
 ### Commitment to Project Support
 
-After reading the [Commitment to Help][5] section of the `CONTRIBUTING` guide and submitting this request, I commit to one of:
+After reading the [Commitment to Help][5] section of the Contributing Guide and submitting this request, I commit to one of:
 
 - [ ] Read [open discussions][6] until I find **2** where I can help someone and add a comment to help there;
 - [ ] Hit the ["Watch"][7] button in this repository to receive notifications about the project and help **2** people that ask questions in the future;
 - [ ] Review **1** Merge Request by cloning the project and following the [review process][8].
 
+{% if cookiecutter.create_docs -%}
+[5]: {{ cookiecutter.__pages_url }}/development/for_others/help_others
+{% else -%}
 [5]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#commitment-to-help
+{% endif -%}
 [6]: {{ cookiecutter.__scm_repo_latch }}/issues/?type%5B%5D=issue
 [7]: https://gitlab.com/gitlab-org/gitlab-foss/-/issues/234#note_17497758
+{%- if cookiecutter.create_docs %}
+[8]: {{ cookiecutter.__pages_url }}/development/for_others/review_changes
+{%- else %}
 [8]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#contributing-by-reviewing-changes
+{%- endif %}
 
 ## :thought_balloon: Request Details
 

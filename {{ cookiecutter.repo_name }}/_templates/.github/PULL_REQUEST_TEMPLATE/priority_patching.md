@@ -97,7 +97,7 @@
 > - [ ] The commit descriptions sufficiently explain design choices;
 > - [ ] Issues marked for automatic closing are accurate;
 > - [ ] Issues requiring manual check have been addressed;
-> - [ ] The proposed {{ cookiecutter.project_name }} version adheres to our view on [EffVer][11].
+> - [ ] The proposed {{ cookiecutter.project_name }} version adheres to our view on [{{ cookiecutter.__schema_cipher }}][11].
 
 > [!TIP]
 > :fountain_pen: **Discretionary**

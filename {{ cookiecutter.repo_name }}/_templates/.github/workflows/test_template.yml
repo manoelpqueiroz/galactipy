@@ -25,12 +25,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
+
       - name: 🐍 Set up Python ${{ inputs.python-version }}
         uses: actions/setup-python@v6.2.0
         with:
           python-version: ${{ inputs.python-version }}
 
-      - name: 💽 Install poetry
+      - name: 💽 Install Poetry
         uses: snok/install-poetry@v1
         with:
           virtualenvs-in-project: true
@@ -42,8 +43,7 @@ jobs:
           key: venv-${{ inputs.python-version }}-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('poetry.lock') }}
 
       - name: 📥 Install dependencies
-        run: |
-          poetry install
+        run: poetry sync
 
       - name: ✒️ Run style checks
         run: |

@@ -41,8 +41,13 @@ body:
         - label: I am using a valid configuration file for {{ cookiecutter.project_name }};
           required: true
         - label: I have looked at the [open Pull Requests]({{ cookiecutter.__scm_repo_latch }}/pulls) to check if my case has not been already identified by the development team;
-        - label: I have read the [`CONTRIBUTING`]({{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#contributing-through-user-requests) guide and I have understood how to improve communication between me and the development team;
+{%- if cookiecutter.create_docs %}
+        - label: I have read the [Contributing Guide]({{ cookiecutter.__pages_url }}/development/for_others/user_requests) and I have understood how to improve communication between me and the development team;
+        - label: I am assured this should not be a confidential issue due to [security implications]({{ cookiecutter.__pages_url }}/development/security);
+{%- else %}
+        - label: I have read the [Contributing Guide]({{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#contributing-through-user-requests) and I have understood how to improve communication between me and the development team;
         - label: I am assured this should not be a confidential issue due to [security implications]({{ cookiecutter.__scm_repo_latch }}/blob/master/SECURITY.md);
+{%- endif %}
         - label: I provided a concise and clear title for this discussion;
         - label: I have provided the development team the context surrounding this issue as most detailed as I possibly can;
         - label: I am confident this discussion does not fall in another category.

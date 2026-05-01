@@ -66,7 +66,7 @@ This template should be used to propose and discuss any changes that affect know
 >>> [!tip] :reminder_ribbon: Contribution control
 
 - [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][10] or the Related Issues section;
-- [ ] I have revised the [`ROADMAP.md`][11] and updated the information on development status;
+- [ ] I have revised the [roadmap][11]{% if cookiecutter.create_docs %}, along with its  [counterpart][11a] in the formal docs,{% endif %} and updated the material on development progression;
 - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
 >>>
 
@@ -83,6 +83,11 @@ This template should be used to propose and discuss any changes that affect know
 [9]: https://docs.gitlab.com/user/markdown/
 [10]: https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically
 [11]: {{ cookiecutter.__scm_repo_latch }}/blob/master/ROADMAP.md
+{%- if cookiecutter.create_docs and cookiecutter.licence != 'nos' %}
+[11a]: {{ cookiecutter.__pages_url }}/development/roadmap
+{%- elif cookiecutter.create_docs %}
+[11a]: {{ cookiecutter.__pages_url }}/noticeboard/roadmap
+{%- endif %}
 
 ## Maintainer Checklist
 

@@ -56,7 +56,7 @@ This template should be used to discuss and validate high-level design decisions
 >>> [!tip] :reminder_ribbon: Contribution control
 
 - [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][11] or the Related Issues section;
-- [ ] I have revised the [`ROADMAP.md`][12] and updated the information on development status;
+- [ ] I have revised the [roadmap][12]{% if cookiecutter.create_docs %}, along with its  [counterpart][12a] in the formal docs,{% endif %} and updated the material on development progression;
 - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
 >>>
 
@@ -78,6 +78,11 @@ This template should be used to discuss and validate high-level design decisions
 {%- endif %}
 [11]: https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically
 [12]: {{ cookiecutter.__scm_repo_latch }}/blob/master/ROADMAP.md
+{%- if cookiecutter.create_docs and cookiecutter.licence != 'nos' %}
+[12a]: {{ cookiecutter.__pages_url }}/development/roadmap
+{%- elif cookiecutter.create_docs %}
+[12a]: {{ cookiecutter.__pages_url }}/noticeboard/roadmap
+{%- endif %}
 
 ## Maintainer Checklist
 
