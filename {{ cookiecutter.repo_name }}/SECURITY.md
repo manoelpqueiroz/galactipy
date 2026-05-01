@@ -1328,7 +1328,7 @@ in due time.
 
 <!-- UPDATEME with security policies of third-party libraries relevant to {{ cookiecutter.project_name }} -->
 
-[1]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md
+[1]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CODE_OF_CONDUCT.md
 [2]: {{ cookiecutter.__pypi_url }}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 [3]: https://advisories.gitlab.com/
