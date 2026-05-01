@@ -41,7 +41,7 @@ Please run through all items under the **`Applicant Checklist`** section and be 
   <!-- List all searches you have performed -->
   - `...`
   - `...`
-- [ ] I have read the [`CONTRIBUTING`][3] guide and I have understood how to improve communication between me and the development team;
+- [ ] I have read the [Contributing Guide][3] and I have understood how to improve communication between me and the development team;
 - [ ] I am assured this should not be a confidential issue due to [security implications][4];
 - [ ] I provided a concise and clear title for this discussion;
 - [ ] I have provided the development team the context surrounding this issue as most detailed as I possibly can;
@@ -49,8 +49,13 @@ Please run through all items under the **`Applicant Checklist`** section and be 
 
 [1]: {{ cookiecutter.__scm_repo_latch }}/merge_requests
 [2]: {{ cookiecutter.__scm_repo_latch }}/issues/?state=all&type%5B%5D=issue
+{%- if cookiecutter.create_docs %}
+[3]: {{ cookiecutter.__pages_url }}/development/for_others/user_requests
+[4]: {{ cookiecutter.__pages_url }}/development/security
+{%- else %}
 [3]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#contributing-through-user-requests
 [4]: {{ cookiecutter.__scm_repo_latch }}/blob/master/SECURITY.md
+{%- endif %}
 
 ## :speech_balloon: Context
 

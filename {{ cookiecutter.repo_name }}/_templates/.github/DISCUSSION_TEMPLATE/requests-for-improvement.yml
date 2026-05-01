@@ -5,7 +5,11 @@ body:
     attributes:
       value: |
         > [!IMPORTANT]
+{%- if cookiecutter.create_docs %}
+        > Please run through all items under the **`Applicant Checklist`** section and follow the [_why, not just what_]({{ cookiecutter.__pages_url }}/development/philosophy#say-why-not-just-what) directive.
+{%- else %}
         > Please run through all items under the **`Applicant Checklist`** section and follow the [_why, not just what_]({{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#say-why-not-just-what) directive.
+{%- endif %}
         >
         > ---
         >
@@ -39,10 +43,18 @@ body:
           required: true
         - label: I have looked at issues and PRs associated with the current [projects]({{ cookiecutter.__scm_repo_latch }}/projects?query=is%3Aopen);
           required: true
-        - label: I have read the [`CONTRIBUTING`]({{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#contributing-through-user-requests) guide and I have understood how to improve communication between me and the development team;
+{%- if cookiecutter.create_docs %}
+        - label: I have read the [Contributing Guide]({{ cookiecutter.__pages_url }}/development/for_others/user_requests) and I have understood how to improve communication between me and the development team;
+{%- else %}
+        - label: I have read the [Contributing Guide]({{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#contributing-through-user-requests) and I have understood how to improve communication between me and the development team;
+{%- endif %}
         - label: I provided a concise and clear title for this discussion;
         - label: I have provided the development team the context surrounding this issue as most detailed as I possibly can;
+{%- if cookiecutter.create_docs %}
+        - label: I have followed the [_why, not just what_]({{ cookiecutter.__pages_url }}/development/philosophy#say-why-not-just-what) directive to open this request;
+{%- else %}
         - label: I have followed the [_why, not just what_]({{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#say-why-not-just-what) directive to open this request;
+{%- endif %}
           required: true
         - label: I am confident this discussion does not fall in another category.
   - type: textarea
@@ -58,11 +70,19 @@ body:
   - type: checkboxes
     attributes:
       label: Commitment to Project Support
-      description: "After reading the [Commitment to Help]({{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#commitment-to-help) section of the `CONTRIBUTING` guide and submitting this request, I commit to one of:"
+{%- if cookiecutter.create_docs %}
+      description: "After reading the [Commitment to Help]({{ cookiecutter.__pages_url }}/development/for_others/help_others) section of the Contributing Guide and submitting this request, I commit to one of:"
+{%- else %}
+      description: "After reading the [Commitment to Help]({{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#commitment-to-help) section of the Contributing Guide and submitting this request, I commit to one of:"
+{%- endif %}
       options:
         - label: Read [open discussions]({{ cookiecutter.__scm_repo_latch }}/issues) until I find **2** where I can help someone and add a comment to help there;
         - label: Hit the "Watch" button in this repository to receive notifications about the project and help **2** people that ask questions in the future;
+{%- if cookiecutter.create_docs %}
+        - label: Review **1** Pull Request by cloning the project and following the [review process]({{ cookiecutter.__pages_url }}/development/for_others/review_changes).
+{%- else %}
         - label: Review **1** Pull Request by cloning the project and following the [review process]({{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#contributing-by-reviewing-changes).
+{%- endif %}
   - type: dropdown
     attributes:
       label: 💭 Request Details

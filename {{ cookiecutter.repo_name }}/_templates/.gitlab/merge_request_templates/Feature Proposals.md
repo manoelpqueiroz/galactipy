@@ -82,7 +82,7 @@ Regarding technical delivery:
 >>> [!tip] :reminder_ribbon: Contribution control
 
 - [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][9] or the Related Issues section;
-- [ ] I have revised the [`ROADMAP.md`][10] and updated the information on development status;
+- [ ] I have revised the [roadmap][10]{% if cookiecutter.create_docs %}, along with its  [counterpart][10a] in the formal docs,{% endif %} and updated the material on development progression;
 - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
 >>>
 
@@ -98,6 +98,11 @@ Regarding technical delivery:
 [8]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#styling
 [9]: https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically
 [10]: {{ cookiecutter.__scm_repo_latch }}/blob/master/ROADMAP.md
+{%- if cookiecutter.create_docs and cookiecutter.licence != 'nos' %}
+[10a]: {{ cookiecutter.__pages_url }}/development/roadmap
+{%- elif cookiecutter.create_docs %}
+[10a]: {{ cookiecutter.__pages_url }}/noticeboard/roadmap
+{%- endif %}
 
 ## Reviewer Checklist
 
