@@ -1,3 +1,49 @@
+## 3.3.0 (2026-05-02)
+
+### :milky_way: Components (1 change)
+
+- [:sparkles: Enable documentation publishing to GitHub Pages](galactipy/galactipy@8714c6c59f78b550257267b34c377c6d1aa5cbbe) ([merge request](galactipy/galactipy!214))
+
+### :metro: Components Configuration (1 change)
+
+- [:wrench: Reorganise Poetry dependency groups for the template](galactipy/galactipy@c688401bca5708ffe4a399247d4eb13cbc071cfe)
+
+### :newspaper2: Utility Files (1 change)
+
+- [:wrench: Update issue and MR templates with documentation URLs](galactipy/galactipy@3304288ca5b5735ee7527b26235359e84ade5859) ([merge request](galactipy/galactipy!214))
+
+### :hatching_chick: Template Generation (2 changes)
+
+- [:shinto_shrine: Allow documentation-related content to be rendered for GitHub projects](galactipy/galactipy@1774061e6be253c4be4ccfc9be94e51fe4c9af4a) ([merge request](galactipy/galactipy!214))
+- [:hammer: Update post-gen hooks with docs workflow removal for GitHub](galactipy/galactipy@e41af1695fc301ee50cc25079fd034981fcdc75e) ([merge request](galactipy/galactipy!214))
+
+### :toolbox: Fixes (1 change)
+
+- [:pencil2: Replace hardcoded EffVer reference with schema cipher variable](galactipy/galactipy@cf0aa4a51cf9405f56969176c898d94e157933e2) ([merge request](galactipy/galactipy!214))
+
+### :gear: Project Internals (1 change)
+
+- [:wrench: Reorganise Poetry dependency groups for the project](galactipy/galactipy@50c3eb52363d77b39a1fc85c9f60c80075dc2a37)
+
+### :gear: project internals (1 change)
+
+- [:arrow_up: Update project dependencies](galactipy/galactipy@e0995eee5c76efc501e1c2a697dd3f530861a54d)
+
+### :100: Template Cohesion (2 changes)
+
+- [:white_check_mark: Update file removal tests for GitHub docs workflow](galactipy/galactipy@c318a81598fb84ea18b3299099f5c193697fe972) ([merge request](galactipy/galactipy!214))
+- [:white_check_mark: Add missing test for e-mail validation](galactipy/galactipy@a4a169175770492c1ce84e70d293f389d9b58330)
+
+### :pouring_liquid: Nits (3 changes)
+
+- [:pencil2: Fix minor aspects of template hard policy files](galactipy/galactipy@f773321d36b1ac1a8b3b6b5a8f78a5adb90b80bf) ([merge request](galactipy/galactipy!214))
+- [:pencil2: Fix template `README.md` badge anchors order](galactipy/galactipy@594c806dd53b81da24f2bdf8ad066b0d74fe09eb) ([merge request](galactipy/galactipy!214))
+- [:pencil2: Improve minor aspects of GitHub workflows](galactipy/galactipy@e33b4eb1ca0a12559cbd2bebe28ff0406869011c) ([merge request](galactipy/galactipy!214))
+
+### :frame_photo: Project Presentation (1 change)
+
+- [:pencil: Update project `README.md` with documentation features](galactipy/galactipy@09591bb97e07b7ef4b5ead7d5a8a704700b3f402) ([merge request](galactipy/galactipy!214))
+
 ## 3.2.4 (2026-04-29)
 
 ### :hatching_chick: Template Generation (1 change)
