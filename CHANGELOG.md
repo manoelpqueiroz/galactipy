@@ -23,11 +23,8 @@
 
 ### :gear: Project Internals (1 change)
 
-- [:wrench: Reorganise Poetry dependency groups for the project](galactipy/galactipy@50c3eb52363d77b39a1fc85c9f60c80075dc2a37)
-
-### :gear: project internals (1 change)
-
 - [:arrow_up: Update project dependencies](galactipy/galactipy@e0995eee5c76efc501e1c2a697dd3f530861a54d)
+- [:wrench: Reorganise Poetry dependency groups for the project](galactipy/galactipy@50c3eb52363d77b39a1fc85c9f60c80075dc2a37)
 
 ### :100: Template Cohesion (2 changes)
 
