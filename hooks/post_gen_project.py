@@ -20,7 +20,7 @@ AUTHOR = "{{ cookiecutter.copyright }}"
 SCM_PLATFORM = "{{ cookiecutter.__scm_platform_base }}"
 SCM_PLATFORM_LC = "{{ cookiecutter.__scm_platform_lc }}"
 SCM_NAMESPACE = "{{ cookiecutter.scm_namespace }}"
-SCM_BASE_URL = "{{ cookiecutter.__scm_base_url }}"
+SCM_REPO_URL = "{{ cookiecutter.__scm_repo_url }}"
 
 COMMIT_CONVENTION = "{{ cookiecutter.commit_convention }}"
 
@@ -90,7 +90,7 @@ def rmdir(path: Path) -> None:
         path.unlink()
 
     else:
-        message = f"{path} is neither a file nor a directory to remove."
+        message = f"{path} is neither a file nor a directory to remove"
         raise ValueError(message)
 
 
@@ -206,6 +206,7 @@ def _get_files_to_delete(
         flags.remove_docs,
         flags.remove_bdd,
         flags.is_oss_licence,
+        flags.remove_gitlab,
     )
 
     gitlab_specific_files = [
@@ -477,6 +478,7 @@ def _get_documentation_files(
     remove_docs: bool,
     remove_bdd: bool,
     oss_licence: bool,
+    is_github: bool,
 ) -> list[Path]:
     """Return the files to remove from the documentation.
 
@@ -496,7 +498,12 @@ def _get_documentation_files(
     docs = directory / "docs"
 
     if remove_docs:
-        return [docs, directory / "zensical.toml"]
+        removals = [docs, directory / "zensical.toml"]
+
+        if is_github:
+            removals.append(directory / ".github" / "workflows" / "docs.yml")
+
+        return removals
 
     doc_removals = _get_licence_related_doc_files(
         docs, app_type, remove_bdd, oss_licence
@@ -831,7 +838,7 @@ def main() -> None:  # noqa: D103
         project_name=PROJECT_NAME,
         project_repo=PROJECT_REPO,
         scm_platform=SCM_PLATFORM,
-        scm_base_url=SCM_BASE_URL,
+        scm_base_url=SCM_REPO_URL,
         commit_prefix=commit_prefix_dict[COMMIT_CONVENTION],
     )
 

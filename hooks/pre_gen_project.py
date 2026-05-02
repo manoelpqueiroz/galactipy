@@ -6,6 +6,12 @@ import sys
 REPO_NAME = "{{ cookiecutter.repo_name }}"
 PACKAGE_NAME = "{{ cookiecutter.package_name }}"
 NAMESPACE = "{{ cookiecutter.scm_namespace }}"
+
+SCM_PLATFORM = "{{ cookiecutter.__scm_platform_base }}"
+SCM_PLATFORM_LC = "{{ cookiecutter.__scm_platform_lc }}"
+
+EMAIL = "{{ cookiecutter.email }}"
+
 # Integer value wrapped inside strings to avoid raising errors when testing
 LINE_LENGTH_PARAMETER = "{{ cookiecutter.line_length }}"
 DOCSTRING_LENGTH_PARAMETER = "{{ cookiecutter.docstring_length }}"
@@ -13,6 +19,7 @@ DOCSTRING_LENGTH_PARAMETER = "{{ cookiecutter.docstring_length }}"
 
 MIN_NAMESPACE_LENGTH = 2
 MAX_NAMESPACE_LENGTH = 255
+MAX_NESTED_SUBGROUPS = 20
 MIN_LINE_LENGTH = 50
 MAX_LINE_LENGTH = 300
 
@@ -22,7 +29,7 @@ PROJECT_REGEX = re.compile(
         ^
         [a-zA-Z0-9]             # Must begin with letter or number
         (?!.*([._-]){2})        # Must not have any two consecutive of . - _ ahead
-        [a-zA-Z0-9\.\_\-]*      # Can contain any letters, numbers or . - _
+        [a-zA-Z0-9._-]*         # Can contain any letters, numbers or . - _
         [a-zA-Z0-9]             # Must end with letter or number
         (?<!\.atom)             # Must not end with .atom
         (?<!\.git)              # Must not end with .git
@@ -30,7 +37,9 @@ PROJECT_REGEX = re.compile(
     """,
     re.VERBOSE,
 )
-PACKAGE_REGEX = re.compile(r"^[a-z][a-z0-9\_]+[a-z0-9]$")
+PYPI_PROJECT_REGEX = re.compile(
+    r"^([A-Z0-9]|[A-Z0-9][A-Z0-9._-]*[A-Z0-9])\Z", re.IGNORECASE
+)
 NAMESPACE_REGEX = re.compile(
     r"""
         ^[a-zA-Z0-9]            # Must begin with letter or number
@@ -41,6 +50,26 @@ NAMESPACE_REGEX = re.compile(
     """,
     re.VERBOSE,
 )
+
+PACKAGE_REGEX = re.compile(r"^[A-Z_][A-Z0-9\_]*$", re.IGNORECASE)
+
+# Simplified version of the RFC 5332 compliant regex found at:
+# https://stackoverflow.com/a/201378
+EMAIL_REGEX = re.compile(
+    r"""
+        ^
+        [a-z0-9#+\/=_\-]+(?:\.[a-z0-9#+\/=_\-]+)*
+        @
+        (?:
+            [a-z0-9](?:[a-z0-9\-]*[a-z0-9])?
+            \.
+        )+
+        [a-z0-9](?:[a-z0-9\-]*[a-z0-9])?
+        $
+    """,
+    re.VERBOSE,
+)
+
 
 # Reserved project and group names in GitLab
 # https://docs.gitlab.com/ee/user/reserved_names.html#reserved-project-names
@@ -111,6 +140,46 @@ RESERVED_NAMESPACES = [
     "v2",
 ]
 
+# Reserved Python keywords, i.e., package name restrictions
+# https://docs.python.org/3/reference/lexical_analysis.html#keywords
+RESERVED_KEYWORDS = [
+    "False",
+    "await",
+    "else",
+    "import",
+    "pass",
+    "None",
+    "break",
+    "except",
+    "in",
+    "raise",
+    "True",
+    "class",
+    "finally",
+    "is",
+    "return",
+    "and",
+    "continue",
+    "for",
+    "lambda",
+    "try",
+    "as",
+    "def",
+    "from",
+    "nonlocal",
+    "while",
+    "assert",
+    "del",
+    "global",
+    "not",
+    "with",
+    "async",
+    "elif",
+    "if",
+    "or",
+    "yield",
+]
+
 
 def validate_repo_name(repo_name: str) -> None:
     """Ensure that `repo_name` is valid under GitLab restrictions.
@@ -135,12 +204,24 @@ def validate_repo_name(repo_name: str) -> None:
     """
     if PROJECT_REGEX.fullmatch(repo_name) is None:
         message = (
-            f"ERROR: The project slug `{repo_name}` is not a valid GitLab/GitHub name."
+            f"ERROR: The repo name `{repo_name}` "
+            f"is not valid for a {SCM_PLATFORM} repository"
         )
         raise ValueError(message)
 
     if repo_name in RESERVED_PROJECTS:
-        message = f"ERROR: The project slug `{repo_name}` is a reserved project name."
+        message = (
+            f"ERROR: The repo name `{repo_name}` is a reserved name in {SCM_PLATFORM}"
+        )
+        raise ValueError(message)
+
+    # ANY regex that matches PROJECT_REGEX will also match PYPI_PROJECT_REGEX,
+    # so coverage is excluded for this branch
+    if PYPI_PROJECT_REGEX.fullmatch(repo_name) is None:  # pragma: no cover
+        message = (
+            f"ERROR: The repo name `{repo_name}` "
+            "is not compliant with PyPA for a project name"
+        )
         raise ValueError(message)
 
 
@@ -164,23 +245,78 @@ def validate_package_name(package_name: str) -> None:
     if PACKAGE_REGEX.fullmatch(package_name) is None:
         message = (
             f"ERROR: The package name `{package_name}` "
-            "is not a valid Python module name."
+            "is not a valid Python module name"
+        )
+        raise ValueError(message)
+
+    if package_name in RESERVED_KEYWORDS:
+        message = (
+            f"ERROR: The package name `{package_name}` is a reserved Python keyword"
+        )
+        raise ValueError(message)
+
+    if PYPI_PROJECT_REGEX.fullmatch(package_name) is None:
+        message = (
+            f"ERROR: The package name `{package_name}` "
+            "is not compliant with PyPA standards"
         )
         raise ValueError(message)
 
 
-def validate_namespace(scm_namespace: str) -> None:
-    """Ensure that `namespace` is valid under GitLab and GitHub restrictions.
+def validate_namespace(scm_namespace: str, scm_platform: str) -> None:
+    """Ensure that `scm_namespace` is valid under GitLab/GitHub restrictions.
+
+    Parameters
+    ----------
+    scm_namespace : str
+        Source control management platform username/organisation name.
+    scm_platform : str
+        The source control management platform (GitLab or GitHub).
+    """
+    namespace_list = _validate_full_namespace(scm_namespace, scm_platform)
+
+    for namespace in namespace_list:
+        _validate_single_namespace(namespace)
+
+
+def _validate_full_namespace(namespace: str, platform: str) -> list[str]:
+    """Validate the integrity of the `namespace` variable for each platform.
 
     Parameters
     ----------
     namespace : str
         Source control management platform username/organisation name.
-    """
-    namespace_list = scm_namespace.split("/")
+    platform : str
+        The respective source control management platform.
 
-    for namespace in namespace_list:
-        _validate_single_namespace(namespace)
+    Returns
+    -------
+    list of str
+        A list of strings containing each namespace component separately.
+
+    Raises
+    ------
+    ValueError
+        If `namespace` contains slashes and `platform` is GitHub, since
+        GitHub does not support namespaces with multiple components; and if
+        `namespace` contains more than 20 components, as this is the limit
+        for subgroup nesting in GitLab.
+    """
+    if "/" in namespace and platform == "github":
+        message = "ERROR: GitHub does not support nested namespaces"
+        raise ValueError(message)
+
+    namespace_list = namespace.split("/")
+    subgroups = len(namespace_list)
+
+    if subgroups > MAX_NESTED_SUBGROUPS:
+        message = (
+            f"ERROR: GitLab does not support more than {MAX_NESTED_SUBGROUPS} nested "
+            f"namespaces. Got `{subgroups}`"
+        )
+        raise ValueError(message)
+
+    return namespace_list
 
 
 def _validate_single_namespace(namespace: str) -> None:
@@ -194,19 +330,40 @@ def _validate_single_namespace(namespace: str) -> None:
     Raises
     ------
     ValueError
-        If `username` is not a valid GitLab or GitHub username.
+        If `namespace` is not a valid GitLab or GitHub username/group name.
     """
-    if not (MIN_NAMESPACE_LENGTH <= len(namespace) <= MAX_NAMESPACE_LENGTH):
+    namespace_length = len(namespace)
+    if not (MIN_NAMESPACE_LENGTH <= namespace_length <= MAX_NAMESPACE_LENGTH):
         message = (
-            f"ERROR: scm_namespace must be between 2 and 255. Got `{len(namespace)}`."
+            f"ERROR: scm_namespace must be between {MIN_NAMESPACE_LENGTH} and "
+            f"{MAX_NAMESPACE_LENGTH}. Got `{namespace_length}`"
         )
         raise ValueError(message)
 
-    message = f"ERROR: `{namespace}` is not a valid name for user or organisation."
+    message = f"ERROR: `{namespace}` is not a valid name for user or organisation"
 
     if NAMESPACE_REGEX.fullmatch(namespace) is None:
         raise ValueError(message)
+
     if namespace in RESERVED_NAMESPACES:
+        raise ValueError(message)
+
+
+def validate_email_address(email: str) -> None:
+    """Ensure that `email` is under valid restrictions based on RFC 5332.
+
+    Parameters
+    ----------
+    email : str
+        E-mail address to be validated.
+
+    Raises
+    ------
+    ValueError
+        If `email` does not match the regex.
+    """
+    if EMAIL_REGEX.fullmatch(email) is None:
+        message = f"ERROR: `{email}` is not a valid e-mail address"
         raise ValueError(message)
 
 
@@ -224,7 +381,10 @@ def validate_line_length(line_length: int) -> None:
         If line_length isn't between 50 and 300.
     """
     if not (MIN_LINE_LENGTH <= line_length <= MAX_LINE_LENGTH):
-        message = f"ERROR: line_length must be between 50 and 300. Got `{line_length}`."
+        message = (
+            f"ERROR: line_length must be between {MIN_LINE_LENGTH} and "
+            f"{MAX_LINE_LENGTH}. Got `{line_length}`"
+        )
         raise ValueError(message)
 
 
@@ -257,7 +417,9 @@ def main() -> None:  # noqa: D103
 
         validate_package_name(package_name=PACKAGE_NAME)
 
-        validate_namespace(scm_namespace=NAMESPACE)
+        validate_namespace(scm_namespace=NAMESPACE, scm_platform=SCM_PLATFORM_LC)
+
+        validate_email_address(email=EMAIL)
 
         validate_line_length(line_length=int(LINE_LENGTH_PARAMETER))
 

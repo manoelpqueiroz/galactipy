@@ -93,7 +93,7 @@ with these rules will be blocked.
 <!-- Anchors -->
 
 [1]: ../for_developers/workflow/invoke.md
-[2]: {{ cookiecutter.__scm_link_url }}/blob/master/.pre-commit-config.yaml
+[2]: {{ cookiecutter.__scm_repo_latch }}/blob/master/.pre-commit-config.yaml
 [3]: ../development_setup.md
 [4]: https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap03.html#tag_03_206
 {%- if cookiecutter.version_schema == 'trunkver' %}

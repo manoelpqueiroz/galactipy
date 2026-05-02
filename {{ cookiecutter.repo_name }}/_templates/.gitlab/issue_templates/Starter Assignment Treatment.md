@@ -19,13 +19,13 @@
 - Make sure to [track progress][7] consistently to keep yourself and your mentor updated on your contribution's status. Keep communication with your mentor and development updates flowing.
 >>>
 
-[1]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#fostering-an-inviting-community
-[2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#the-responsibility-of-the-reviewer
+[1]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#fostering-an-inviting-community
+[2]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#the-responsibility-of-the-reviewer
 [3]: https://engineerinclusion.com/barriers-and-bridges-to-effective-communication/
-[4]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md
-[5]: {{ cookiecutter.__scm_link_url }}/blob/master/CODE_OF_CONDUCT.md
-[6]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
-[7]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#work-item-tracking
+[4]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md
+[5]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CODE_OF_CONDUCT.md
+[6]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
+[7]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#work-item-tracking
 
 ## :microphone2: Overview
 

@@ -1,6 +1,8 @@
-# These are the variables used to generate this project with Cookiecutter
-# Made with Galactipy (release v3.2.0)
-# Documentation at: https://gitlab.com/galactipy/galactipy
+# Variables used to generate this project with Cookiecutter,
+# provide this file to the `--config-file` command-line option to reuse them
+#
+# Made with Galactipy (release v3.3.0), see available options at:
+# https://gitlab.com/galactipy/galactipy/blob/master/README.md#input-variables
 default_context:
   project_name: "{{ cookiecutter.project_name }}"
   repo_name: "{{ cookiecutter.repo_name }}"

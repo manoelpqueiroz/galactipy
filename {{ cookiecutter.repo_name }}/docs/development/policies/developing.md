@@ -673,13 +673,13 @@ through the "Bulk edit" option.
 
 <!-- Anchors -->
 
-[1]: {{ cookiecutter.__scm_base_url }}
+[1]: {{ cookiecutter.__scm_repo_url }}
 {%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
-[2]: {{ cookiecutter.__gitlab_org }}/epics
+[2]: {{ cookiecutter.__gitlab_org_latch }}/epics
 {%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
-[2]: {{ cookiecutter.__scm_link_url }}/milestones
+[2]: {{ cookiecutter.__scm_repo_latch }}/milestones
 {%- else %}
-[2]: {{ cookiecutter.__scm_link_url }}/projects
+[2]: {{ cookiecutter.__scm_repo_latch }}/projects
 {%- endif %}
 [3]: mailto:{{ cookiecutter.email }}
 [4]: ../philosophy.md#operate-with-a-bias-for-action
@@ -729,17 +729,17 @@ through the "Bulk edit" option.
 [badge11]: https://img.shields.io/badge/requests_for_support-ed9121?style=for-the-badge
 {%- if cookiecutter.__scm_platform_group == 'glab-paid' %}
 
-[query1]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&parent_id=None
-[query2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Aopinion&type%5B%5D=issue
-[query3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&status=Needs%20Triage&type%5B%5D=issue
-[query4]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=design%3A%3A%2A&type%5B%5D=issue
-[query5]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment%3A%3A%2A&type%5B%5D=issue
-[query6]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Adelivery&type%5B%5D=issue
-[query7]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&or%5Blabel_name%5D%5B%5D=quick-win&or%5Blabel_name%5D%5B%5D=starter-assignment%3A%3Aquick-win
-[query8]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=stale&type%5B%5D=issue
-[query9]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Acorrection&type%5B%5D=issue
-[query10]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Aimprovement&type%5B%5D=issue
-[query11]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Asupport&type%5B%5D=issue
+[query1]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&type%5B%5D=issue&parent_id=None
+[query2]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Aopinion&type%5B%5D=issue
+[query3]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&status=Needs%20Triage&type%5B%5D=issue
+[query4]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=design%3A%3A%2A&type%5B%5D=issue
+[query5]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=starter-assignment%3A%3A%2A&type%5B%5D=issue
+[query6]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=seeking-contributors%3A%3Adelivery&type%5B%5D=issue
+[query7]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&or%5Blabel_name%5D%5B%5D=quick-win&or%5Blabel_name%5D%5B%5D=starter-assignment%3A%3Aquick-win
+[query8]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=stale&type%5B%5D=issue
+[query9]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=request%3A%3Acorrection&type%5B%5D=issue
+[query10]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=request%3A%3Aimprovement&type%5B%5D=issue
+[query11]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=request%3A%3Asupport&type%5B%5D=issue
 
 [icon1]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/triage.png
 [icon2]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/refinement.png
@@ -760,29 +760,29 @@ through the "Bulk edit" option.
 [icon17]: https://gitlab.com/galactipy/galactipy/-/raw/master/assets/png/aborted.png
 {%- elif cookiecutter.__scm_platform_group == 'glab-free' %}
 
-[query1]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&type%5B%5D=issue&milestone_title=None
-[query1a]: {{ cookiecutter.__scm_link_url }}/issues?state=all&type%5B%5D=task&milestone_title=Any
-[query2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-input&type%5B%5D=issue
-[query3]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=sts-needs-triage&type%5B%5D=issue
-[query4]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5D%5B%5D=design-discovery&or%5Blabel_name%5D%5B%5D=design-formulation&or%5Blabel_name%5D%5B%5D=design-reassessment&type%5B%5D=issue
-[query5]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=starter-assignment&type%5B%5D=issue
-[query6]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-builders&type%5B%5D=issue
-[query7]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=quick-win&type%5B%5D=issue
-[query8]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=stale&type%5B%5D=issue
-[query9]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfc&type%5B%5D=issue
-[query10]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfc&type%5B%5D=issue
-[query11]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfs&type%5B%5D=issue
+[query1]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&type%5B%5D=issue&milestone_title=None
+[query1a]: {{ cookiecutter.__scm_repo_latch }}/issues?state=all&type%5B%5D=task&milestone_title=Any
+[query2]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-input&type%5B%5D=issue
+[query3]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=sts-needs-triage&type%5B%5D=issue
+[query4]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5D%5B%5D=design-discovery&or%5Blabel_name%5D%5B%5D=design-formulation&or%5Blabel_name%5D%5B%5D=design-reassessment&type%5B%5D=issue
+[query5]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=starter-assignment&type%5B%5D=issue
+[query6]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=seeking-contributors&label_name%5B%5D=seeking-builders&type%5B%5D=issue
+[query7]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=quick-win&type%5B%5D=issue
+[query8]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=stale&type%5B%5D=issue
+[query9]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=rfc&type%5B%5D=issue
+[query10]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=rfc&type%5B%5D=issue
+[query11]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=rfs&type%5B%5D=issue
 {%- else %}
 
-[query1]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20no%3Aproject
-[query2]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-input
-[query3]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Asts-needs-triage
-[query4]: {{ cookiecutter.__scm_link_url }}/issues?q=label%3Adesign-discovery%20OR%20label%3Adesign-formulation%20OR%20label%3Adesign-reassessment
-[query5]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astarter-assignment
-[query6]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-builders
-[query7]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aquick-win
-[query8]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astale
-[query9]: {{ cookiecutter.__scm_link_url }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Arfc
-[query10]: {{ cookiecutter.__scm_link_url }}/discussions/categories/requests-for-improvement
-[query11]: {{ cookiecutter.__scm_link_url }}/discussions/categories/requests-for-support
+[query1]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue%20state%3Aopen%20no%3Aproject
+[query2]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-input
+[query3]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Asts-needs-triage
+[query4]: {{ cookiecutter.__scm_repo_latch }}/issues?q=label%3Adesign-discovery%20OR%20label%3Adesign-formulation%20OR%20label%3Adesign-reassessment
+[query5]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astarter-assignment
+[query6]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aseeking-contributors%20label%3Aseeking-builders
+[query7]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Aquick-win
+[query8]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Astale
+[query9]: {{ cookiecutter.__scm_repo_latch }}/issues/?q=is%3Aissue%20state%3Aopen%20label%3Arfc
+[query10]: {{ cookiecutter.__scm_repo_latch }}/discussions/categories/requests-for-improvement
+[query11]: {{ cookiecutter.__scm_repo_latch }}/discussions/categories/requests-for-support
 {%- endif %}

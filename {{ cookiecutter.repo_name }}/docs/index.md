@@ -12,12 +12,35 @@
 3.
 -->
 
+{% if cookiecutter.version_schema != 'trunkver' -%}
 <!-- RECORD the first release version and date -->
+{% endif -%}
 !!! info
+{%- if cookiecutter.__schema_group == 'semver-like' %}
 
-    Current Version: **`0.0.0`**
+    Current Version: **`0.1.0`**
+{%- elif cookiecutter.version_schema == 'calver-auto' %}
+
+    Current Version: **`1{% now 'local', '%Y.%U' %}`**
+{%- elif cookiecutter.version_schema == 'calver-explicit' %}
+
+    Current Version: **`1{% now 'local', '%Y.%m' %}`**
+{%- elif cookiecutter.version_schema == 'solover' %}
+
+    Current Version: **`1`**
+{%- endif %}
+{%- if cookiecutter.version_schema == 'trunkver' %}
+
+    {{ cookiecutter.project_name }} follows the [TrunkVer][0a] versioning schema.
+    You can check the latest available version
+    directly on [PyPI][0b].
+    Refer to the [Release Notes][0c]
+    to see the changes
+    between each version.
+{%- else %}
     <br>
-    Released on **%B %d, %Y**
+    Released on **{% now 'local', '%B %d, %Y' %}**
+{%- endif %}
 
 <div class="grid" markdown>
 
@@ -76,6 +99,13 @@ through the process of improving {{ cookiecutter.project_name }}.
 
 </div>
 
+<!-- Anchors -->
+
+{% if cookiecutter.version_schema == 'trunkver' -%}
+[0a]: https://trunkver.org/
+[0b]: {{ cookiecutter.__pypi_url }}/#history
+[0c]: ./noticeboard/release_notes/index.md
+{% endif -%}
 [1]: ./getting_started/index.md
 [2]: ./user_guide/index.md
 [3]: ./reference/index.md

@@ -76,9 +76,9 @@ workflow:
   - .gitignore
 
 # TODO Set up a bot for automated repository actions and components
-# 1. Create a Project Access Token at {{ cookiecutter.__scm_link_url }}/settings/access_tokens
+# 1. Create a Project Access Token at {{ cookiecutter.__scm_repo_latch }}/settings/access_tokens
 # 2. Ensure token has "Maintainer" role and "api" scope
-# 3. Set the {{ bot_envvar }} variable in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
+# 3. Set the {{ bot_envvar }} variable in {{ cookiecutter.__scm_repo_latch }}/settings/ci_cd
 # 4. Ensure variable has at least "Masked" option flagged and "Protect variable" unchecked
 include:
   # Local components
@@ -169,7 +169,7 @@ include:
       bundle_file: slsa-signed/$SDIST_BINARY.slsa-l3-provenance.json
       provenance_metadata_file: $PROVENANCE_METADATA
   # TODO Create a scheduled pipeline to enable this job:
-  # {{ cookiecutter.__scm_link_url }}/pipeline_schedules/new
+  # {{ cookiecutter.__scm_repo_latch }}/pipeline_schedules/new
   - component: $CI_SERVER_FQDN/components/gitlab-triage/gitlab-triage@0.1.2
     rules:
       - if: $CI_PIPELINE_SOURCE == 'schedule'{% if cookiecutter.version_schema == 'trunkver' %} && $ENABLE_TRUNKVER_CHANGELOG != true{% endif %}
@@ -188,7 +188,7 @@ include:
 {%- endif %}
 {%- if cookiecutter.version_schema == 'trunkver' %}
   # TODO Create a scheduled pipeline to enable this job:
-  # {{ cookiecutter.__scm_link_url }}/pipeline_schedules/new
+  # {{ cookiecutter.__scm_repo_latch }}/pipeline_schedules/new
   # TODO Set a ENABLE_TRUNKVER_CHANGELOG variable to "true" when creating the pipeline
 {%- endif %}
   - component: $CI_SERVER_FQDN/galactipy/components/versioning/release@0.8.1
@@ -408,12 +408,12 @@ test-py{{ version[0] }}{{ version[1] }}:
   script:
 {%- if cookiecutter.coverage_service == 'coveralls' %}
     - curl -L https://coveralls.io/coveralls-linux.tar.gz | tar -xz -C /usr/local/bin
-    # TODO Set the COVERALLS_REPO_TOKEN CI/CD variable in {{ cookiecutter.__scm_link_url }}/settings/ci_cd, see documentation at:
+    # TODO Set the COVERALLS_REPO_TOKEN CI/CD variable in {{ cookiecutter.__scm_repo_latch }}/settings/ci_cd, see documentation at:
     # https://docs.coveralls.io/#integrate-coveralls-with-your-codebase
     - coveralls report coverage.xml --repo-token $COVERALLS_REPO_TOKEN
 {%- else %}
     - curl -Ls https://coverage.codacy.com/get.sh -o codacy.sh
-    # TODO Set the CODACY_PROJECT_TOKEN CI/CD variable in {{ cookiecutter.__scm_link_url }}/settings/ci_cd, see documentation at:
+    # TODO Set the CODACY_PROJECT_TOKEN CI/CD variable in {{ cookiecutter.__scm_repo_latch }}/settings/ci_cd, see documentation at:
     # https://docs.codacy.com/codacy-api/api-tokens/#repository-api-tokens
     - sh ./codacy.sh report -r coverage.xml
 {%- endif %}
@@ -502,7 +502,7 @@ publish-test:
   stage: publish
   extends: .publish_setup
   script:
-    # TODO Set the TESTPYPI_TOKEN variable for https://test.pypi.org in {{ cookiecutter.__scm_link_url }}/settings/ci_cd
+    # TODO Set the TESTPYPI_TOKEN variable for https://test.pypi.org in {{ cookiecutter.__scm_repo_latch }}/settings/ci_cd
     - invoke config $TESTPYPI_TOKEN --repo testpypi
     - invoke publish --repo testpypi --no-build --ignore-pty
 {%- endif %}
@@ -594,12 +594,12 @@ publish-pages:
   script:
 {%- if cookiecutter.coverage_service == 'coveralls' %}
     - curl -L https://coveralls.io/coveralls-linux.tar.gz | tar -xz -C /usr/local/bin
-    # TODO Set the COVERALLS_REPO_TOKEN CI/CD variable in {{ cookiecutter.__scm_link_url }}/settings/ci_cd, see documentation at:
+    # TODO Set the COVERALLS_REPO_TOKEN CI/CD variable in {{ cookiecutter.__scm_repo_latch }}/settings/ci_cd, see documentation at:
     # https://docs.coveralls.io/#integrate-coveralls-with-your-codebase
     - coveralls report coverage.xml --repo-token $COVERALLS_REPO_TOKEN
 {%- else %}
     - curl -Ls https://coverage.codacy.com/get.sh -o codacy.sh
-    # TODO Set the CODACY_PROJECT_TOKEN CI/CD variable in {{ cookiecutter.__scm_link_url }}/settings/ci_cd, see documentation at:
+    # TODO Set the CODACY_PROJECT_TOKEN CI/CD variable in {{ cookiecutter.__scm_repo_latch }}/settings/ci_cd, see documentation at:
     # https://docs.codacy.com/codacy-api/api-tokens/#repository-api-tokens
     - sh ./codacy.sh report -r coverage.xml
 {%- endif %}
@@ -609,7 +609,7 @@ publish-pages:
 # UPDATEME with your preferred release schedule, see available environment variables at:
 # https://gitlab.com/galactipy/components/versioning/-/blob/master/README.md#outputs
 # TODO Create a scheduled pipeline to enable this job:
-# {{ cookiecutter.__scm_link_url }}/pipeline_schedules/new
+# {{ cookiecutter.__scm_repo_latch }}/pipeline_schedules/new
 push-weekly-release-tag:
   stage: maintenance
   variables:

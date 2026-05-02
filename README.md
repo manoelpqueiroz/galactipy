@@ -47,14 +47,14 @@ _Expand your project structure from atoms of code to **galactic** dimensions._ :
 ## TL;DR
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v3.2.0
+cookiecutter gl:galactipy/galactipy --checkout v3.3.0
 ```
 
 **All you need is the latest version of Cookiecutter!** :wink:
 
 ## :sparkles: Features
 
-In this [Cookiecutter :cookie:][ft1] template
+In this [Cookiecutter :cookie:][cookie] template
 we combine state-of-the-art libraries
 and best development practices for Python.
 
@@ -64,45 +64,45 @@ and best development practices for Python.
 - Provides
   minimal boilerplate code
   for CLI/TUI applications
-  with [**Typer**][ft2] and [**Textual**][ft3]
+  with [**Typer**][ft1] and [**Textual**][ft2]
   (or no code at all, you choose)!
   With it, you have:
   - Batteries-included
     configuration setup
     and management
-    with [**Orbittings**][ft4];
+    with [**Orbittings**][ft3];
   - Both
     beautiful logging
     on the terminal
     and easy-to-parse log files
-    thanks to [**Nebulog**][ft5];
-  - Preconfigured [Noctis][ft6] themes
+    thanks to [**Nebulog**][ft4];
+  - Preconfigured [Noctis][ft5] themes
     to make your application
     shine on the terminal;
-- Uses [**Poetry**][ft7]
+- Uses [**Poetry**][ft6]
   as the dependency manager
   and extends functionality
-  with [dynamic versioning][ft8],
-  [virtual environment bundling][ft9],
-  [dependency export][ft10]
-  and [update resolution][ft11];
+  with [dynamic versioning][ft7],
+  [virtual environment bundling][ft8],
+  [dependency export][ft9]
+  and [update resolution][ft10];
   see configuration
-  in [`pyproject.toml`][ft12];
+  in [`pyproject.toml`][ft11];
 - Automatic code formatting with [**Ruff**][b19],
-  with ready-to-use [**pre-commit**][ft13] hooks
+  with ready-to-use [**pre-commit**][ft12] hooks
   and several rules
   already selected for linting;
-- Type checks with [**mypy**][ft14],
-  security checks with [**Bandit**][ft15];
-- Testing with [**Pytest**][ft16]
+- Type checks with [**mypy**][ft13],
+  security checks with [**Bandit**][ft14];
+- Testing with [**Pytest**][ft15]
   and an option
-  to use [behaviour-driven development][ft17]
+  to use [behaviour-driven development][ft16]
   for managing scenarios;
-  more details in [_How to Handle the Development Cycle with BDD_][ft18];
+  more details in [_How to Handle the Development Cycle with BDD_][ft17];
 - Code quality integrations
-  with either [**Coveralls**][ft19]
+  with either [**Coveralls**][ft18]
   for more basic test coverage
-  or [**Codacy**][ft20]
+  or [**Codacy**][ft19]
   for full code analysis,
   both integrated into
   your project's workflow
@@ -114,18 +114,18 @@ and best development practices for Python.
   testing,
   linting,
   docker builds etc.
-  with [**Invoke**][ft28];
-  more details in [_Invoke Usage_][ft29];
-- Predefined VS Code [`settings.json`][ft21]
+  with [**Invoke**][ft20];
+  more details in [_Invoke Usage_][ft21];
+- Predefined VS Code [`settings.json`][ft22]
   with quality-of-life configuration
   for editor,
   workbench,
   debugging
   and more;
 - Ready-to-use
-  [`.editorconfig`][ft22],
-  [`.dockerignore`][ft23]
-  and [`.gitignore`][ft24] files;
+  [`.editorconfig`][ft23],
+  [`.dockerignore`][ft24]
+  and [`.gitignore`][ft25] files;
   you don't have to
   worry about those things.
 
@@ -141,33 +141,36 @@ and best development practices for Python.
   your project's implementation
   without the hassle of
   handling test cases;
-- Predefined CI/CD build workflow
-  with [**GitLab CI**][ft25]
-  and [**Github Actions**][ft26];
+- Predefined CI/CD build workflows
+  with [**GitLab CI**][tl1]
+  and [**Github Actions**][tl2];
 - Automatic package uploads to
-  [**PyPI**][ft27] test
+  [**PyPI**][tl3] test
   and production repositories;
-- A [`Dockerfile`][ft30] for your package,
+- Automatic documentation deployment to
+  [**GitLab Pages**][tl4]
+  and [**GitHub Pages**][tl5]
+- A [`Dockerfile`][tl6] for your package,
   with CI/CD workflows
   to publish your image
   to a container registry;
 - Automatic release cycles
-  with [**GitLab Changelog**][ft31]
-  or [**Release Drafter**][ft32];
+  with [**GitLab Changelog**][tl7]
+  or [**Release Drafter**][tl8];
 - Automatic dependency updates
-  thanks to [**Renovate**][ft33]
-  and [**Dependabot**][ft34].
+  thanks to [**Renovate**][tl9]
+  and [**Dependabot**][tl10].
 
 ### :golfing_man: Manage Your Project like a Walk in the Park
 
-- Ready-to-use [Merge Request templates][ft35]
-  and several [Issue templates][ft36]
+- Ready-to-use [Merge Request templates][mgmt1]
+  and several [Issue templates][mgmt2]
   for easy integration
   with GitLab and GitHub;
 - Workflows to mark and close abandoned issues
   after a period of inactivity
-  for both GitLab with [**Triage Policies**][ft37]
-  and GitHub with [**Stale Bot**][ft38];
+  for both GitLab with [**Triage Policies**][mgmt3]
+  and GitHub with [**Stale Bot**][mgmt4];
 - Choose the versioning schema
   that best suits your project type
   and development style;
@@ -177,7 +180,7 @@ and best development practices for Python.
   if you wish :upside_down:);
 - Option to choose between
   [Gitmoji][b23],
-  [Conventional Commits][ft39]
+  [Conventional Commits][mgmt5]
   or a mix of both
   to standardise your commit titles.
 
@@ -188,7 +191,7 @@ and best development practices for Python.
   complete with user guides,
   API reference
   and announcements
-  powered by [**Zensical**][ft40];
+  powered by [**Zensical**][cmty1];
 - With Galactipy templates,
   you get more than a `CONTRIBUTING.md` file;
   you have a comprehensive development philosophy,
@@ -208,7 +211,7 @@ and best development practices for Python.
   `ROADMAP.md`
   and `SECURITY.md`
   are generated automatically;
-- **Loads** of predefined [badges][ft41]
+- **Loads** of predefined [badges][cmty2]
   to make your project stand out;
   you can either keep them,
   remove as you wish
@@ -219,7 +222,7 @@ and best development practices for Python.
 You are free to choose
 whichever platform works best
 for you and your project.
-The original template by [TezRomacH][ft42]
+The original template by [TezRomacH][vs1]
 was created with GitHub in mind,
 which prompted the creation
 of a similarly fully-featured template
@@ -237,30 +240,30 @@ between the features available in this package
 depending on which platform
 you choose to host your project:
 
-|              Feature              |       GitLab       |       GitHub       | Observations                                                                                                                                                                                                                                                |
-| :-------------------------------: | :----------------: | :----------------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|          Issue templates          | :white_check_mark: | :white_check_mark: | Both options feature automatic labels, but GitHub has an extra configuration to prevent the creation of empty issues.                                                                                                                                       |
-|   Merge/pull requests templates   | :white_check_mark: |     :warning:      | For GitHub, templates can only be accessed by applying custom [query parameters][ft43] during PR creation.                                                                                                                                                  |
-|     Project conditions checks     | :white_check_mark: | :white_check_mark: | A basic workflow to install the package and run tests, check codestyle and safety.                                                                                                                                                                          |
-|      Publication to TestPyPI      | :white_check_mark: | :white_check_mark: | For GitHub, the workflow uses the official [PyPI Publish action][ft44], while GitLab CI uses the [PyPI API][ft45].                                                                                                                                          |
-|        Publication to PyPI        | :white_check_mark: | :white_check_mark: | Both GitHub and GitLab projects use [trusted publishing][ft46] to upload packages to the canonical PyPI registry. Projects on both platforms will also publish the build files attestations.                                                                |
-| Documentation deployment to Pages | :white_check_mark: |        :x:         | Currently, only GitLab projects have CI jobs preconfigured to publish the documentation to the Pages environment, but we [plan][ft47] to provide this to GitHub projects as well.                                                                           |
-|     SLSA Level 3 provenances      | :white_check_mark: |        :x:         | GitLab projects use the [SLSA][ft48] CI/CD component to sign the PyPI attestations and the metadata generated during package building to comply with level 3 standards.                                                                                     |
-|         Image publication         | :white_check_mark: | :white_check_mark: | For GitHub, images are pushed to [Docker Hub][ft49], while GitLab CI pushes images to the repository's [Container Registry][ft50] by default (and can be reconfigured).                                                                                     |
-|          Snapshot images          | :white_check_mark: |        :x:         | For GitLab, the [Docker][ft51] CI/CD component is used and allows for pushing snapshot images for testing when a Merge Request is open.                                                                                                                     |
-|        Dockerfile linting         | :white_check_mark: |        :x:         | The Docker GitLab CI/CD component includes a job for linting the Dockerfile with [Hadolint][ft52].                                                                                                                                                          |
-|   Image vulnerability analysis    | :white_check_mark: |        :x:         | The Docker GitLab CI/CD component uses [Trivy][ft53] to scan the image for vulnerabilities.                                                                                                                                                                 |
-|         Docker SBOM files         | :white_check_mark: |        :x:         | The Docker GitLab CI/CD component generates a bill of materials with [CycloneDX][ft54].                                                                                                                                                                     |
-|        Dependency scanning        | :white_check_mark: |        :x:         | For GitLab, the [Dependency Scanning][ft55] CI/CD component generates a bill of materials with CycloneDX.                                                                                                                                                   |
-|               SAST                | :white_check_mark: |        :x:         | For GitLab, the [SAST][ft56] CI/CD component performs a security analysis and provides a report with its results.                                                                                                                                           |
-|         Secret detection          | :white_check_mark: |        :x:         | For GitLab, the [Secret Detection][ft57] CI/CD component performs an analysis on potential leaked secrets in tracked files and provides a report with its results.                                                                                          |
-|           Stale issues            | :white_check_mark: | :white_check_mark: | GitLab rules are more flexible, marking stale issues only for those not opened by project members.                                                                                                                                                          |
-|        Greetings workflow         |        :x:         | :white_check_mark: | GitHub provides workflows to automatically reply to issues and merge requests with the [First Interaction][ft58] action.                                                                                                                                    |
-|        Dependency updates         | :white_check_mark: | :white_check_mark: | To reduce development overhead, GitLab projects use a [Renovate][ft33] configuration which should be paired with a separate repository implementing the [Renovate CI/CD component][ft59], while GitHub projects use [Dependabot][ft34] out of the box.      |
-|          Release drafter          |        :x:         | :white_check_mark: | [Release Drafter][ft32] is a custom workflow available on GitHub Marketplace. You may see the list of labels in [`release-drafter.yml`][ft60]. Works perfectly with any SemVer-compatible schema.                                                           |
-|      Changelog configuration      | :white_check_mark: |        :x:         | GitLab provides automatic changelog updates through their [API][ft31]. You may modify the template in [`changelog_config.yml`][ft61]. GitLab projects also leverage use of [Galactic Releases][ft62] to manage release cycles and release notes.            |
-|           Test Reports            | :white_check_mark: |        :x:         | JUnit XML reports are supported by GitLab to allow [test reports][ft63] to be displayed in pipelines and merge requests.                                                                                                                                    |
-|    CI control over pushed tags    | :white_check_mark: |     :warning:      | GitLab provides full control for tags pushed to the repository using [regex][ft64], while GitHub Actions is more restricted in how it [filters][ft65] workflows to run, and can only apply these filters at the top level, limiting workflow customization. |
+|            Feature            |       GitLab       |       GitHub       | Observations                                                                                                                                                                                                                                                |
+| :---------------------------: | :----------------: | :----------------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|        Issue templates        | :white_check_mark: | :white_check_mark: | Both options feature automatic labels, but GitHub has an extra configuration to prevent the creation of empty issues.                                                                                                                                       |
+| Merge/pull requests templates | :white_check_mark: |     :warning:      | For GitHub, templates can only be accessed by applying custom [query parameters][vs2] during PR creation.                                                                                                                                                   |
+|   Project conditions checks   | :white_check_mark: | :white_check_mark: | A basic workflow to install the package and run tests, check codestyle and safety.                                                                                                                                                                          |
+|    Publication to TestPyPI    | :white_check_mark: | :white_check_mark: | For GitHub, the workflow uses the official [PyPI Publish action][vs3], while GitLab CI uses the [PyPI API][vs4].                                                                                                                                            |
+|      Publication to PyPI      | :white_check_mark: | :white_check_mark: | Both GitLab and GitHub projects use [trusted publishing][vs5] to upload packages to the canonical PyPI registry. Projects on both platforms will also publish the build files attestations.                                                                 |
+|   Documentation publication   | :white_check_mark: | :white_check_mark: | Both GitLab and GitHub projects allow developers to publish documentation to their respective Pages environment. However, publication is disabled by default and should be set up by the user.                                                              |
+|   SLSA Level 3 provenances    | :white_check_mark: |        :x:         | GitLab projects use the [SLSA][vs6] CI/CD component to sign the PyPI attestations and the metadata generated during package building to comply with level 3 standards.                                                                                      |
+|       Image publication       | :white_check_mark: | :white_check_mark: | For GitHub, images are pushed to [Docker Hub][vs7], while GitLab CI pushes images to the repository's [Container Registry][vs8] by default (and can be reconfigured).                                                                                       |
+|        Snapshot images        | :white_check_mark: |        :x:         | For GitLab, the [Docker][vs9] CI/CD component is used and allows for pushing snapshot images for testing when a Merge Request is open.                                                                                                                      |
+|      Dockerfile linting       | :white_check_mark: |        :x:         | The Docker GitLab CI/CD component includes a job for linting the Dockerfile with [Hadolint][vs10].                                                                                                                                                          |
+| Image vulnerability analysis  | :white_check_mark: |        :x:         | The Docker GitLab CI/CD component uses [Trivy][vs11] to scan the image for vulnerabilities.                                                                                                                                                                 |
+|       Docker SBOM files       | :white_check_mark: |        :x:         | The Docker GitLab CI/CD component generates a bill of materials with [CycloneDX][vs12].                                                                                                                                                                     |
+|      Dependency scanning      | :white_check_mark: |        :x:         | For GitLab, the [Dependency Scanning][vs13] CI/CD component generates a bill of materials with CycloneDX.                                                                                                                                                   |
+|             SAST              | :white_check_mark: |        :x:         | For GitLab, the [SAST][vs14] CI/CD component performs a security analysis and provides a report with its results.                                                                                                                                           |
+|       Secret detection        | :white_check_mark: |        :x:         | For GitLab, the [Secret Detection][vs15] CI/CD component performs an analysis on potential leaked secrets in tracked files and provides a report with its results.                                                                                          |
+|         Stale issues          | :white_check_mark: | :white_check_mark: | GitLab rules are more flexible, marking stale issues only for those not opened by project members.                                                                                                                                                          |
+|      Greetings workflow       |        :x:         | :white_check_mark: | GitHub provides workflows to automatically reply to issues and merge requests with the [First Interaction][vs16] action.                                                                                                                                    |
+|      Dependency updates       | :white_check_mark: | :white_check_mark: | To reduce development overhead, GitLab projects use a [Renovate][tl9] configuration which should be paired with a separate repository implementing the [Renovate CI/CD component][vs17], while GitHub projects use [Dependabot][tl10] out of the box.       |
+|        Release drafter        |        :x:         | :white_check_mark: | [Release Drafter][tl8] is a custom workflow available on GitHub Marketplace. You may see the list of labels in [`release-drafter.yml`][vs18]. Works perfectly with any SemVer-compatible schema.                                                            |
+|    Changelog configuration    | :white_check_mark: |        :x:         | GitLab provides automatic changelog updates through their [API][tl7]. You may modify the template in [`changelog_config.yml`][vs19]. GitLab projects also leverage use of [Galactic Releases][vs20] to manage release cycles and release notes.             |
+|         Test Reports          | :white_check_mark: |        :x:         | JUnit XML reports are supported by GitLab to allow [test reports][vs21] to be displayed in pipelines and merge requests.                                                                                                                                    |
+|  CI control over pushed tags  | :white_check_mark: |     :warning:      | GitLab provides full control for tags pushed to the repository using [regex][vs22], while GitHub Actions is more restricted in how it [filters][vs23] workflows to run, and can only apply these filters at the top level, limiting workflow customization. |
 
 ## :black_joker: How to Use It
 
@@ -275,43 +278,57 @@ pipx upgrade cookiecutter
 then go to a directory where you want to create your project and run:
 
 ```bash
-cookiecutter gl:galactipy/galactipy --checkout v3.2.0
+cookiecutter gl:galactipy/galactipy --checkout v3.3.0
 ```
 
 ### Input variables
 
-Cookiecutter will ask you to fill some variables in order to generate the files with everything you need already set up.
+Cookiecutter will ask you
+to fill some variables
+in order to generate the files
+with everything you need
+already set up.
 
-The input variables, with their default values, are as follows:
+The input variables
+are as follows:
 
-|        Parameter         |        Default value         | Description                                                                                                                                                                                                                 |
-| :----------------------: | :--------------------------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|      `project_name`      |       `Python Project`       | A suitable name by which people will refer to, you are free to name it however you wish to.                                                                                                                                 |
-|       `repo_name`        |   based on `project_name`    | Name of the repository to develop the project on. [Check the availability of possible names][htu1] before creating the project.                                                                                             |
-|      `package_name`      |   based on `project_name`    | PyPI-compliant Python package name. [Check the availability of possible names][htu1] before creating the project.                                                                                                           |
-|  `project_description`   |   based on `project_name`    | A brief one-line description of your project.                                                                                                                                                                               |
-|       `copyright`        | `The Galactipy Contributors` | Name of the author or organisation which will hold the project's copyright. Used to specify code ownership in `LICENCE`.                                                                                                    |
-|       `maintainer`       | `Manoel Pereira de Queiroz`  | Name of the primary maintainer of the project. Used to specify author data in `pyproject.toml` and `CITATION.cff`.                                                                                                          |
-|      `scm_platform`      |        `GitLab Free`         | One of `GitLab Free`, `GitLab Premium`, `GitLab Ultimate` and `GitHub`. Depending on the choice you will have [different features][htu2] to work with.                                                                      |
-|     `scm_namespace`      |         `galactipy`          | GitHub or GitLab namespace for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for either platform.                                                                                           |
-|         `email`          |   based on `scm_namespace`   | Email for `CODE_OF_CONDUCT.md`, `SECURITY.md` files and to specify author data in `pyproject.toml` and `CITATION.cff`.                                                                                                      |
-|        `licence`         |            `MIT`             | One of `MIT`, `BSD-3`, `GNU GPL v3.0`, `GNU AGLP v3.0`, `GNU LGPL v3.0`, `Mozilla Public License 2.0` and `Apache Software License 2.0`, or `Not open source`.                                                              |
-| `minimal_python_version` |            `3.10`            | Minimal Python version. All versions since `3.10` are available to choose. It is used for builds, pipelines and formatters.                                                                                                 |
-|      `line_length`       |              88              | The max length per line. NOTE: This value must be between 50 and 300.                                                                                                                                                       |
-|    `docstring_style`     |          `Numpydoc`          | One of `Numpydoc`, `Google Python Style`, `Sphinx` or `Other`. This latter option will only render the docstring short summaries, while the former ones will detail arguments and returns for public methods and functions. |
-|    `docstring_length`    |    based on `line_lenght`    | The max length for docstrings. NOTE: This value must be between 50 and 300 and lower of equal to `line_lenght`.                                                                                                             |
-|     `version_schema`     |           `EffVer`           | One of `EffVer`, `SemVer`, `CalVer (automanaged)`, `CalVer (explicit)`, `RomVer`, `SoloVer` and `TrunkVer`, each with adequate CI/CD configuration to manage releases.                                                      |
-|   `commit_convention`    |          `Gitmoji`           | One of `Gitmoji`, `Conventional Commits` and `Conventional Commits with Gitmoji` for the commit standard to follow.                                                                                                         |
-|        `use_bdd`         |            `True`            | :small_red_triangle: Option to use [behaviour-driven development][ft17] for managing tests.                                                                                                                                 |
-|    `coverage_service`    |         `Coveralls`          | One of `Coveralls` for code coverage and `Codacy` for code quality and static analysis.                                                                                                                                     |
-|     `create_docker`      |            `True`            | :small_red_triangle: Option to create a [Dockerfile][ft30] to build an image for your project.                                                                                                                              |
-|      `create_docs`       |            `True`            | :small_red_triangle: Option to create documentation files using [Zensical][ft40].                                                                                                                                           |
-|        `app_type`        |     `Integrated CLI+TUI`     | One of `Integrated CLI+TUI`, `Hybrid CLI/TUI`, `CLI-only application`, `Minimal CLI structure` and `Bare repository`. Employs [Typer][ft2] and [Textual][ft3] as libraries.                                                 |
+|         Variable         |         Type         |        Default value         |                                                                         Valid options                                                                          | Observations                                                                                                                                                                                                                                                                                   |
+| :----------------------: | :------------------: | :--------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|      `project_name`      |    :writing_hand:    |       `Python Project`       |                                                                              Any                                                                               | A suitable name by which people will refer to.                                                                                                                                                                                                                                                 |
+|       `repo_name`        |    :writing_hand:    |   based on `project_name`    |                                                [GitLab-compliant][htu1] values<br>[PyPA-compliant][htu2] values                                                | Name of the repository to develop the project on. [Check the availability of possible names][htu3] before creating the project.                                                                                                                                                                |
+|      `package_name`      |    :writing_hand:    |   based on `project_name`    |                                               Valid [Python identifiers][htu4]<br>[PyPA-compliant][htu2] values                                                | [Check the availability of possible names][htu3] before creating the project.                                                                                                                                                                                                                  |
+|  `project_description`   |    :writing_hand:    |   based on `project_name`    |                                                                              Any                                                                               | A brief one-line description of your project.                                                                                                                                                                                                                                                  |
+|       `copyright`        |    :writing_hand:    | `The Galactipy Contributors` |                                                                              Any                                                                               | Name of the author or organisation which will hold the project's copyright. Used to specify code ownership in `LICENCE`.                                                                                                                                                                       |
+|       `maintainer`       |    :writing_hand:    | `Manoel Pereira de Queiroz`  |                                                                              Any                                                                               | Name of the primary maintainer of the project. Used to specify author data in `pyproject.toml` and `CITATION.cff`.                                                                                                                                                                             |
+|      `scm_platform`      |    :capital_abcd:    |        `GitLab Free`         |                                               `GitLab Free`<br>`GitLab Premium`<br>`GitLab Ultimate`<br>`GitHub`                                               | Depending on the choice you will have [different features][htu5] to work with.                                                                                                                                                                                                                 |
+|     `scm_namespace`      |    :writing_hand:    |         `galactipy`          |                                                [GitLab-compliant][htu1] values<br>Between 2 and 255 characters                                                 | GitHub or GitLab namespace for hosting. Also used to set up `README.md`, `pyproject.toml` and template files for either platform. Can be provided as a nested subgroup separated by slashes.                                                                                                   |
+|         `email`          |    :writing_hand:    |   based on `scm_namespace`   |                                                             Values complying with [RFC 5332][htu6]                                                             | Email for `CODE_OF_CONDUCT.md`, `SECURITY.md` files and to specify author data in `pyproject.toml` and `CITATION.cff`.                                                                                                                                                                         |
+|        `licence`         |    :capital_abcd:    |            `MIT`             | `MIT`<br>`BSD-3`<br>`GNU GPL v3.0`<br>`GNU AGLP v3.0`<br>`GNU LGPL v3.0`<br>`Mozilla Public License 2.0`<br>`Apache Software License 2.0`<br>`Not open source` | The non-OSS licence option provides policy documents with different rules for project development.                                                                                                                                                                                             |
+| `minimal_python_version` |    :capital_abcd:    |            `3.10`            |                                                         `3.10`<br>`3.11`<br>`3.12`<br>`3.13`<br>`3.14`                                                         | Used for builds, pipelines and formatters.                                                                                                                                                                                                                                                     |
+|      `line_length`       |        :hash:        |              88              |                                                                       Between 50 and 300                                                                       | The max line length to be validated by the formatter.                                                                                                                                                                                                                                          |
+|    `docstring_style`     |    :capital_abcd:    |          `Numpydoc`          |                                                   `Numpydoc`<br>`Google Python Style`<br>`Sphinx`<br>`Other`                                                   | `Other` will only render the docstring short summaries, while all others will detail arguments and returns for public classes, methods and functions.                                                                                                                                          |
+|    `docstring_length`    |        :hash:        |    based on `line_length`    |                                                    Between 50 and 300<br>Equal or lower than `line_length`                                                     | The max line length for docstrings to be validated by the formatter.                                                                                                                                                                                                                           |
+|     `version_schema`     |    :capital_abcd:    |           `EffVer`           |                          `EffVer`<br>`SemVer`<br>`CalVer (automanaged)`<br>`CalVer (explicit)`<br>`RomVer`<br>`SoloVer`<br>`TrunkVer`                          | Automanaged CalVer provides a CI/CD configuration to automatically create tags and release the package on a weekly basis. The TrunkVer option sets up a new package release on each commit made to the default branch. Other options require a tag to be manually created to trigger releases. |
+|   `commit_convention`    |    :capital_abcd:    |          `Gitmoji`           |                                           `Gitmoji`<br>`Conventional Commits`<br>`Conventional Commits with Gitmoji`                                           | The `Conventional Commits` and `Convetional Commits with Gitmoji` options add a pre-commit hook for [Commitizen][htu7] to validate commit message title structure.                                                                                                                             |
+|        `use_bdd`         | :small_red_triangle: |            `True`            |                                                                                                                                                                | Option to use [behaviour-driven development][ft16] for managing tests.                                                                                                                                                                                                                         |
+|    `coverage_service`    |    :capital_abcd:    |           `Codacy`           |                                                                    `Codacy`<br>`Coveralls`                                                                     | Coveralls provide cove coverage only, while Codacy allows for code quality reports and static analysis.                                                                                                                                                                                        |
+|     `create_docker`      | :small_red_triangle: |            `True`            |                                                                                                                                                                | Option to create a [Dockerfile][tl6] and build an image for your project. Also configures CI jobs to publish the image to container registries.                                                                                                                                                |
+|      `create_docs`       | :small_red_triangle: |            `True`            |                                                                                                                                                                | Option to create documentation files using [Zensical][cmty1].                                                                                                                                                                                                                                  |
+|        `app_type`        |    :capital_abcd:    |     `Integrated CLI+TUI`     |                       `Integrated CLI+TUI`<br>`Hybrid CLI/TUI`<br>`CLI-only application`<br>`Minimal CLI structure`<br>`Bare repository`                       | Depending on the chosen option, configures [Typer][ft1] and [Textual][ft2] as the core dependency libraries.                                                                                                                                                                                   |
 
-> [!NOTE]
-> Input variables marked with :small_red_triangle: are boolean variables, you can dismiss those by typing either `0`, `false`, `f`, `no`, `n` or `off`.
+> [!NOTE] Legend
+>
+> |         Icon         | Type      |
+> | :------------------: | --------- |
+> |    :writing_hand:    | Free text |
+> |        :hash:        | Number    |
+> |    :capital_abcd:    | Option    |
+> | :small_red_triangle: | Boolean   |
+>
+> Boolean variables can be dismissed by typing either `0`, `false`, `f`, `no`, `n` or `off`.
 
-All input values will be saved in the `cookiecutter-config-file.yml` file so that you won't lose them. :wink:
+All input values will be saved in `cookiecutter-config-file.yml`
+so that you won't lose them. :wink:
 
 #### About Application Types
 
@@ -327,8 +344,8 @@ is structured:
 | **Integrated CLI+TUI**    | A TUI-first application, where the top-level command launches the interface. It also includes configuration commands via CLI and allow for additional commands built by the user. | Projects designed to be interacted with mainly through a visual interface.                                                                                                              |
 | **Hybrid CLI/TUI**        | Same as Integrated CLI+TUI, with the difference that the interface is launched via its own command.                                                                               | Projects with many-yet-simple operations which can be mastered solely at the command-line, but also targeted at non-power-users who prefer a visual interface to interact with the API. |
 | **CLI-only application**  | Removes TUI-related features to solely rely on CLI commands. Still includes the configuration commands and config file management available in TUI options.                       | Projects with simpler interactions that do not require much cognitive load or a visual helper to navigate through operations.                                                           |
-| **Minimal CLI structure** | Same as CLI-only application, but removes the API related to configuration management.                                                                                            | Projects that do not require stateful/persisted values to perform operations.                                                                                                           |
-| **Bare repository**       | Removes all sample files altogether while keeping all other features such as CI/CD configuration and pre-commit hooks.                                                            |                                                                                                                                                                                         |
+| **Minimal CLI structure** | Same as CLI-only application, but removes the API related to configuration management.                                                                                            | Projects that do not require stateful/persisted values to perform their operations from the command-line.                                                                               |
+| **Bare repository**       | Removes sample code files altogether while keeping all other development features such as CI/CD configuration and pre-commit hooks.                                               | General-purpose libraries and APIs.                                                                                                                                                     |
 
 ### Initial set up
 
@@ -337,7 +354,7 @@ to leverage the features
 provided with the Galactipy template.
 
 After creating a project,
-ensure you have [Invoke][ft28] installed
+ensure you have [Invoke][ft20] installed
 and run
 the following command
 to install dependencies and pre-commit hooks:
@@ -356,8 +373,8 @@ invoke hooks
 ```
 
 Want to know more about Poetry?
-Check [its documentation][htu3].
-Poetry's [commands][htu4]
+Check [its documentation][htu8].
+Poetry's [commands][htu9]
 are very intuitive
 and easy to learn,
 streamlining your development process.
@@ -370,9 +387,9 @@ either a TUI
 or a simple CLI interface.
 If you choose any of the options for `app_type`
 excluding `Bare repository`,
-your project will embed [Typer][ft2]
+your project will embed [Typer][ft1]
 as a dependency,
-and [Textual][ft3] will be provided for
+and [Textual][ft2] will be provided for
 the `Integrated CLI+TUI` and `Hybrid CLI/TUI` options.
 
 For any of the options providing an interface,
@@ -398,12 +415,12 @@ upon the barebones codebase. :smile:
 To release
 a new version of the application,
 you must first
-have a [PyPI][ft27] account
-and set up [Trusted Publishing][htu5]
+have a [PyPI][tl3] account
+and set up [Trusted Publishing][htu10]
 for your project.
 
 Then,
-when you [push a tag][htu6]
+when you [push a tag][htu11]
 to GitLab or GitHub,
 the preconfigured CI/CD pipeline
 will handle building, publishing and releasing automatically,
@@ -416,7 +433,7 @@ with minimal configuration required! :partying_face:
 > a canonical PyPI token,
 > you must also
 > generate a API token
-> for the [TestPyPI][htu7] repository.
+> for the [TestPyPI][htu12] repository.
 
 If you have generated your project
 with the Docker option enabled,
@@ -427,7 +444,7 @@ to a container registry.
 
 ### Invoke Usage
 
-[`invoke`][ft28] is a library that
+[`invoke`][ft20] is a library that
 enables easy configuration of
 shell-oriented subprocesses
 as Python functions,
@@ -445,7 +462,7 @@ with the `invoke --list` command.
 
 |      Command       | Details                                                                                                                                 |
 | :----------------: | --------------------------------------------------------------------------------------------------------------------------------------- |
-|  `invoke install`  | :small_red_triangle: Sets up the Poetry virtual environment, installs the dependencies, pre-commit hooks and runs a [mypy][ft14] check. |
+|  `invoke install`  | :small_red_triangle: Sets up the Poetry virtual environment, installs the dependencies, pre-commit hooks and runs a [mypy][ft13] check. |
 | `invoke pyproject` | Checks `pyproject.toml` integrity.                                                                                                      |
 |  `invoke update`   | Updates dependencies to their latest compatible release requirements, with an option to update to the latest versions overall.          |
 
@@ -460,10 +477,10 @@ with the `invoke --list` command.
 | :----------------: | ------------------------------------------------------------------------------------------------ |
 | `invoke codestyle` | Format files with [Ruff][b19], with an option to check files only.                               |
 |   `invoke lint`    | Check compliance with linting rules, with an option to correct those considered fixable by Ruff. |
-|   `invoke mypy`    | Run [mypy][ft14] to check for static typing.                                                     |
-|   `invoke test`    | Run the test suite with [Pytest][ft16].                                                          |
+|   `invoke mypy`    | Run [mypy][ft13] to check for static typing.                                                     |
+|   `invoke test`    | Run the test suite with [Pytest][ft15].                                                          |
 |  `invoke report`   | Run the `test` and `mypy` tasks and open their HTML coverage reports.                            |
-| `invoke security`  | Run security checks with [Bandit][ft15] and check `pyproject.toml` integrity.                    |
+| `invoke security`  | Run security checks with [Bandit][ft14] and check `pyproject.toml` integrity.                    |
 
 The **`invoke sweep`** task groups all tasks
 except for `report`
@@ -479,16 +496,16 @@ with a single command.
 |  `invoke build`  | Build the project wheels.                                                                                                           |
 | `invoke config`  | :small_red_triangle: Configure PyPI repositories, requiring at least an API token, with optional repository name and URL arguments. |
 | `invoke publish` | Publish the project to a registry, defaulting to the canonical PyPI repository, with an option to build the project wheels.         |
-|  `invoke docs`   | Build the project documentation with [Zensical][ft40].                                                                              |
+|  `invoke docs`   | Build the project documentation with [Zensical][cmty1].                                                                             |
 
 > [!NOTE]
 > :small_red_triangle: When provided with no `--repo` option,
 > Invoke will configure the connection
-> to the [canonical PyPI repository][ft27],
+> to the [canonical PyPI repository][tl3],
 > with only the API token being required.
 > When provided with the `--repo testpypi` option instead,
 > it will configure the connection
-> to [TestPyPI][htu7]
+> to [TestPyPI][htu12]
 > and no URL is needed.
 > Other `--repo` values must also
 > receive a `--url` argument
@@ -496,12 +513,12 @@ with a single command.
 
 #### Docker Operations
 
-|      Command       | Details                                                                                                                                                             |
-| :----------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|   `invoke login`   | Log in to a container registry. For GitHub users, points to [Docker Hub][ft49]. For GitLab users, points to the repository's [integrated container registry][ft50]. |
-| `invoke container` | Build local container images, with the option to set multiple tags and an alternate repository to point.                                                            |
-|   `invoke push`    | Push all project images to a container registry, with the option to set an alternate repository to push.                                                            |
-|   `invoke prune`   | Remove all local images built for the project, with the option to set an alternate repository to point.                                                             |
+|      Command       | Details                                                                                                                                                           |
+| :----------------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|   `invoke login`   | Log in to a container registry. For GitHub users, points to [Docker Hub][vs7]. For GitLab users, points to the repository's [integrated container registry][vs8]. |
+| `invoke container` | Build local container images, with the option to set multiple tags and an alternate repository to point.                                                          |
+|   `invoke push`    | Push all project images to a container registry, with the option to set an alternate repository to push.                                                          |
+|   `invoke prune`   | Remove all local images built for the project, with the option to set an alternate repository to point.                                                           |
 
 #### Cleanup Tasks
 
@@ -521,19 +538,19 @@ into a single command.
 
 ### How to Handle the Development Cycle with BDD
 
-[Behaviour-driven development][ft17] is a software development paradigm
+[Behaviour-driven development][ft16] is a software development paradigm
 in which domain language is used
 to describe the behaviour of the code.
 It emerged as a
 sophisticated evolution
-of [test-driven development][htu8].
+of [test-driven development][htu13].
 
 If you choose to use BDD for your project,
 a `features` directory will be created under `tests`
-and [pytest-bdd][htu9] will be added as a dependency.
+and [pytest-bdd][htu14] will be added as a dependency.
 You should place `.feature` files inside this folder
 to describe **real-life** usage scenarios
-using the [Gherkin][htu10] language:
+using the [Gherkin][htu15] language:
 
 ```
 # tests/features/root_command.feature
@@ -583,7 +600,7 @@ and check the results.
 For more information on behaviour-driven development
 and tools to handle
 more complex conditions,
-please check out the [Cucumber documentation][htu11].
+please check out the [Cucumber documentation][htu16].
 
 ## :motorway: What's next
 
@@ -674,11 +691,11 @@ with your application:
     a rapid application development framework
     to create Terminal User Interfaces (TUIs),
     made to be fun to build with;
-  - [**Orbittings**][ft4] is
+  - [**Orbittings**][ft3] is
     Galactipy's own utility
     to manage configuration files and settings
     for these CLI/TUI applications; :sunglasses:
-  - [**Nebulog**][ft5] makes logging
+  - [**Nebulog**][ft4] makes logging
     stupidly simple (and _beautiful_),
     brought to you by The Galactipy Contributors; :man_dancing:
 - [**attrs**][wn5] and [**cattrs**][wn6] work together
@@ -728,15 +745,15 @@ to the next level:
   helping visitors quickly grasp
   important details about your work:
   - You can look at dynamic badges
-    available at [Shields.io][wn15];
+    available at [Shields.io][nl1];
   - There is a myriad of static badges
     for brands and services in general
-    at [Simple Badges][wn16];
-  - [awesome-badges][wn17] provides
+    at [Simple Badges][nl2];
+  - [awesome-badges][nl3] provides
     a lot of useful resources
     on this topic;
 - Add your project
-  to the [OpenSSF Best Practices][wn18] and [OSSRank][wn19] indexes;
+  to the [OpenSSF Best Practices][nl4] and [OSSRank][nl5] indexes;
   if you have ambitious goals
   or expect significant growth,
   these indexes provide
@@ -751,16 +768,16 @@ to the next level:
   to help fund your project's
   growth and development;
   popular plaforms include:
-  - [Liberapay][wn20];
-  - [Open Collective][wn21];
-  - [Ko-fi][wn22];
+  - [Liberapay][nl6];
+  - [Open Collective][nl7];
+  - [Ko-fi][nl8];
   - If you host your project on GitHub,
-    you can set a [Sponsors account][wn23]
+    you can set a [Sponsors account][nl9]
     directly integrated into the platform;
 - If you are
   unsure about which versioning logic
   to use,
-  check [this list][wn24]
+  check [this list][nl10]
   briefly explaining
   all available options
   with Galactipy
@@ -769,15 +786,15 @@ to the next level:
 And here are a few articles
 which may help you:
 
-- [Open Source Guides][wn25];
-- [A handy guide to financial support for open source][wn26];
-- [GitLab CI Documentation][wn27];
-- [GitHub Actions Documentation][wn28];
-- [A Comprehensive Look at Testing in Software Development][wn29];
-- [Robust Exception Handling][wn30];
-- [Why Your Mock Doesn't Work][wn31];
-- [Managing TODOs in a codebase][wn32];
-- [The importance of layered thinking in data engineering][wn33].
+- [Open Source Guides][res1];
+- [A handy guide to financial support for open source][res2];
+- [GitLab CI Documentation][res3];
+- [GitHub Actions Documentation][res4];
+- [A Comprehensive Look at Testing in Software Development][res5];
+- [Robust Exception Handling][res6];
+- [Why Your Mock Doesn't Work][res7];
+- [Managing TODOs in a codebase][res8];
+- [The importance of layered thinking in data engineering][res9].
 
 ## :chart_with_upwards_trend: Galactipy Releases
 
@@ -818,7 +835,7 @@ See [`LICENCE`][b7] for more details.
 Firstly,
 there is no way this template would exist
 without the previous phenomenal work
-by [Roman Tezikov][ac1] and his rich [python-package-template][ft42].
+by [Roman Tezikov][ac1] and his rich [python-package-template][vs1].
 If there is anyone more deserving of a :star2:
 and acknowledgement,
 it's him!
@@ -946,83 +963,94 @@ any of the following:
 [b41]: https://img.shields.io/badge/made%20with-galactipy%20%F0%9F%8C%8C-179287?style=for-the-badge&labelColor=193A3E
 [b42]: https://kutt.it/7fYqQl
 
-[ft1]: https://github.com/cookiecutter/cookiecutter
-[ft2]: https://typer.tiangolo.com/
-[ft3]: https://textual.textualize.io/
-[ft4]: https://gitlab.com/galactipy/orbittings
-[ft5]: https://gitlab.com/galactipy/nebulog
-[ft6]: https://github.com/liviuschera/noctis
-[ft7]: https://python-poetry.org/
-[ft8]: https://github.com/mtkennerly/poetry-dynamic-versioning
-[ft9]: https://github.com/python-poetry/poetry-plugin-bundle
-[ft10]: https://github.com/python-poetry/poetry-plugin-export
-[ft11]: https://github.com/MousaZeidBaker/poetry-plugin-up
-[ft12]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/pyproject.toml
-[ft13]: https://pre-commit.com/
-[ft14]: https://mypy.readthedocs.io
-[ft15]: https://bandit.readthedocs.io/en/latest/
-[ft16]: https://docs.pytest.org/en/latest/
-[ft17]: https://cucumber.io/
-[ft18]: #how-to-handle-the-development-cycle-with-bdd
-[ft19]: https://coveralls.io/
-[ft20]: https://www.codacy.com/
-[ft21]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.vscode/settings.json
-[ft22]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.editorconfig
-[ft23]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.dockerignore
-[ft24]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.gitignore
-[ft25]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.gitlab-ci.yml
-[ft26]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/workflows/build.yml
-[ft27]: https://pypi.org/
-[ft28]: https://docs.pyinvoke.org/en/stable/
-[ft29]: #invoke-usage
-[ft30]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker/Dockerfile
-[ft31]: https://docs.gitlab.com/ee/user/project/changelogs.html
-[ft32]: https://github.com/marketplace/actions/release-drafter
-[ft33]: https://docs.renovatebot.com/
-[ft34]: https://docs.github.com/en/code-security/dependabot
-[ft35]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/merge_request_templates/default.md
-[ft36]: https://gitlab.com/galactipy/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/issue_templates
-[ft37]: https://gitlab.com/explore/catalog/components/gitlab-triage
-[ft38]: https://github.com/marketplace/actions/close-stale-issues
-[ft39]: https://www.conventionalcommits.org/en/v1.0.0/
-[ft40]: https://zensical.org/
-[ft41]: https://shields.io/
-[ft42]: https://github.com/TezRomacH/python-package-template
-[ft43]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/using-query-parameters-to-create-a-pull-request
-[ft44]: https://github.com/marketplace/actions/pypi-publish
-[ft45]: https://docs.pypi.org/api/upload/
-[ft46]: https://docs.pypi.org/trusted-publishers/
-[ft47]: https://gitlab.com/galactipy/galactipy/-/work_items/9
-[ft48]: https://gitlab.com/explore/catalog/components/slsa
-[ft49]: https://hub.docker.com/
-[ft50]: https://docs.gitlab.com/ee/user/packages/container_registry/
-[ft51]: https://gitlab.com/explore/catalog/to-be-continuous/docker
-[ft52]: https://github.com/hadolint/hadolint
-[ft53]: http://trivy.dev/latest/
-[ft54]: https://cyclonedx.org/
-[ft55]: https://gitlab.com/explore/catalog/components/dependency-scanning
-[ft56]: https://gitlab.com/explore/catalog/components/sast
-[ft57]: https://gitlab.com/explore/catalog/components/secret-detection
-[ft58]: https://github.com/marketplace/actions/first-interaction
-[ft59]: https://gitlab.com/explore/catalog/to-be-continuous/renovate
-[ft60]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/release-drafter.yml
-[ft61]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/changelog_config.yml
-[ft62]: https://gitlab.com/explore/catalog/galactipy/components/versioning
-[ft63]: https://docs.gitlab.com/ee/ci/testing/unit_test_reports.html
-[ft64]: https://docs.gitlab.com/ee/ci/jobs/job_rules.html#compare-a-variable-to-a-regular-expression
-[ft65]: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+[cookie]: https://github.com/cookiecutter/cookiecutter
 
-[htu1]: http://ivantomic.com/projects/ospnc/
-[htu2]: #gitlab-vs-github-features
-[htu3]: https://python-poetry.org/docs/
-[htu4]: https://python-poetry.org/docs/cli/#commands
-[htu5]: https://docs.pypi.org/trusted-publishers/
-[htu6]: https://git-scm.com/book/en/v2/Git-Basics-Tagging
-[htu7]: https://test.pypi.org/
-[htu8]: https://tidyfirst.substack.com/p/canon-tdd
-[htu9]: https://pytest-bdd.readthedocs.io/en/latest/
-[htu10]: https://cucumber.io/docs/gherkin/reference
-[htu11]: https://cucumber.io/docs
+[ft1]: https://typer.tiangolo.com/
+[ft2]: https://textual.textualize.io/
+[ft3]: https://gitlab.com/galactipy/orbittings
+[ft4]: https://gitlab.com/galactipy/nebulog
+[ft5]: https://github.com/liviuschera/noctis
+[ft6]: https://python-poetry.org/
+[ft7]: https://github.com/mtkennerly/poetry-dynamic-versioning
+[ft8]: https://github.com/python-poetry/poetry-plugin-bundle
+[ft9]: https://github.com/python-poetry/poetry-plugin-export
+[ft10]: https://github.com/MousaZeidBaker/poetry-plugin-up
+[ft11]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/pyproject.toml
+[ft12]: https://pre-commit.com/
+[ft13]: https://mypy.readthedocs.io
+[ft14]: https://bandit.readthedocs.io/en/latest/
+[ft15]: https://docs.pytest.org/en/latest/
+[ft16]: https://cucumber.io/
+[ft17]: #how-to-handle-the-development-cycle-with-bdd
+[ft18]: https://coveralls.io/
+[ft19]: https://www.codacy.com/
+[ft20]: https://docs.pyinvoke.org/en/stable/
+[ft21]: #invoke-usage
+[ft22]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.vscode/settings.json
+[ft23]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.editorconfig
+[ft24]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.dockerignore
+[ft25]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.gitignore
+
+[tl1]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/.gitlab-ci.yml
+[tl2]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/workflows/build.yml
+[tl3]: https://pypi.org/
+[tl4]: https://docs.gitlab.com/user/project/pages/
+[tl5]: https://docs.github.com/en/pages
+[tl6]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/docker/Dockerfile
+[tl7]: https://docs.gitlab.com/ee/user/project/changelogs.html
+[tl8]: https://github.com/marketplace/actions/release-drafter
+[tl9]: https://docs.renovatebot.com/
+[tl10]: https://docs.github.com/en/code-security/dependabot
+
+[mgmt1]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/merge_request_templates/default.md
+[mgmt2]: https://gitlab.com/galactipy/galactipy/-/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/issue_templates
+[mgmt3]: https://gitlab.com/explore/catalog/components/gitlab-triage
+[mgmt4]: https://github.com/marketplace/actions/close-stale-issues
+[mgmt5]: https://www.conventionalcommits.org/en/v1.0.0/
+
+[cmty1]: https://zensical.org/
+[cmty2]: https://shields.io/
+
+[vs1]: https://github.com/TezRomacH/python-package-template
+[vs2]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/using-query-parameters-to-create-a-pull-request
+[vs3]: https://github.com/marketplace/actions/pypi-publish
+[vs4]: https://docs.pypi.org/api/upload/
+[vs5]: https://docs.pypi.org/trusted-publishers/
+[vs6]: https://gitlab.com/explore/catalog/components/slsa
+[vs7]: https://hub.docker.com/
+[vs8]: https://docs.gitlab.com/ee/user/packages/container_registry/
+[vs9]: https://gitlab.com/explore/catalog/to-be-continuous/docker
+[vs10]: https://github.com/hadolint/hadolint
+[vs11]: http://trivy.dev/latest/
+[vs12]: https://cyclonedx.org/
+[vs13]: https://gitlab.com/explore/catalog/components/dependency-scanning
+[vs14]: https://gitlab.com/explore/catalog/components/sast
+[vs15]: https://gitlab.com/explore/catalog/components/secret-detection
+[vs16]: https://github.com/marketplace/actions/first-interaction
+[vs17]: https://gitlab.com/explore/catalog/to-be-continuous/renovate
+[vs18]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/release-drafter.yml
+[vs19]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/changelog_config.yml
+[vs20]: https://gitlab.com/explore/catalog/galactipy/components/versioning
+[vs21]: https://docs.gitlab.com/ee/ci/testing/unit_test_reports.html
+[vs22]: https://docs.gitlab.com/ee/ci/jobs/job_rules.html#compare-a-variable-to-a-regular-expression
+[vs23]: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+
+[htu1]: https://docs.gitlab.com/user/reserved_names/
+[htu2]: https://packaging.python.org/en/latest/specifications/name-normalization/
+[htu3]: http://ivantomic.com/projects/ospnc/
+[htu4]: https://docs.python.org/3/reference/lexical_analysis.html#names-identifiers-and-keywords
+[htu5]: #gitlab-vs-github-features
+[htu6]: https://datatracker.ietf.org/doc/html/rfc5322#section-3.4
+[htu7]: https://commitizen-tools.github.io/commitizen/
+[htu8]: https://python-poetry.org/docs/
+[htu9]: https://python-poetry.org/docs/cli/#commands
+[htu10]: https://docs.pypi.org/trusted-publishers/
+[htu11]: https://git-scm.com/book/en/v2/Git-Basics-Tagging
+[htu12]: https://test.pypi.org/
+[htu13]: https://tidyfirst.substack.com/p/canon-tdd
+[htu14]: https://pytest-bdd.readthedocs.io/en/latest/
+[htu15]: https://cucumber.io/docs/gherkin/reference
+[htu16]: https://cucumber.io/docs
 
 [wn1]: https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
 [wn2]: https://github.com/willmcgugan/rich
@@ -1038,25 +1066,27 @@ any of the following:
 [wn12]: https://github.com/locustio/locust
 [wn13]: https://github.com/ijl/orjson
 [wn14]: https://github.com/lark-parser/lark
-[wn15]: https://shields.io/badges/static-badge
-[wn16]: https://badges.pages.dev/
-[wn17]: https://github.com/badges/awesome-badges
-[wn18]: https://www.bestpractices.dev/en
-[wn19]: https://ossrank.com/
-[wn20]: https://liberapay.com/
-[wn21]: https://opencollective.com/
-[wn22]: https://ko-fi.com/
-[wn23]: https://github.com/sponsors
-[wn24]: https://nesbitt.io/2024/06/24/from-zerover-to-semver-a-comprehensive-list-of-versioning-schemes-in-open-source.html
-[wn25]: https://opensource.guide/
-[wn26]: https://github.com/nayafia/lemonade-stand
-[wn27]: https://docs.gitlab.com/ee/ci/
-[wn28]: https://help.github.com/en/actions
-[wn29]: https://pytest-with-eric.com/introduction/types-of-software-testing/
-[wn30]: https://eli.thegreenplace.net/2008/08/21/robust-exception-handling/
-[wn31]: https://nedbatchelder.com/blog/201908/why_your_mock_doesnt_work.html
-[wn32]: https://medium.com/babylon-engineering/todo-find-a-title-for-the-article-fee79708ca15
-[wn33]: https://towardsdatascience.com/the-importance-of-layered-thinking-in-data-engineering-a09f685edc71
+
+[nl1]: https://shields.io/badges/static-badge
+[nl2]: https://badges.pages.dev/
+[nl3]: https://github.com/badges/awesome-badges
+[nl4]: https://www.bestpractices.dev/en
+[nl5]: https://ossrank.com/
+[nl6]: https://liberapay.com/
+[nl7]: https://opencollective.com/
+[nl8]: https://ko-fi.com/
+[nl9]: https://github.com/sponsors
+[nl10]: https://nesbitt.io/2024/06/24/from-zerover-to-semver-a-comprehensive-list-of-versioning-schemes-in-open-source.html
+
+[res1]: https://opensource.guide/
+[res2]: https://github.com/nayafia/lemonade-stand
+[res3]: https://docs.gitlab.com/ee/ci/
+[res4]: https://help.github.com/en/actions
+[res5]: https://pytest-with-eric.com/introduction/types-of-software-testing/
+[res6]: https://eli.thegreenplace.net/2008/08/21/robust-exception-handling/
+[res7]: https://nedbatchelder.com/blog/201908/why_your_mock_doesnt_work.html
+[res8]: https://medium.com/babylon-engineering/todo-find-a-title-for-the-article-fee79708ca15
+[res9]: https://towardsdatascience.com/the-importance-of-layered-thinking-in-data-engineering-a09f685edc71
 
 [r1]: https://gitlab.com/galactipy/galactipy/-/releases
 [r2]: https://romversioning.github.io/romver/

@@ -64,19 +64,24 @@
 > :reminder_ribbon: **Contribution control**
 >
 > - [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][9] or the Related Issues section;
-> - [ ] I have revised the [`ROADMAP.md`][10] and updated the information on development status;
+> - [ ] I have revised the [roadmap][10]{% if cookiecutter.create_docs %}, along with its  [counterpart][10a] in the formal docs,{% endif %} and updated the material on development progression;
 > - [ ] This is my first contribution, I have included my information in the `authors` section of `pyproject.toml` and `CITATION.cff`.
 
-[1]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
-[2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#book-our-philosophy
-[3]: {{ cookiecutter.__scm_link_url }}/labels
-[4]: {{ cookiecutter.__scm_link_url }}/projects
-[5]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#commit-customs
-[6]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#say-why-not-just-what
-[7]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#git-trailers
-[8]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#styling
+[1]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
+[2]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#book-our-philosophy
+[3]: {{ cookiecutter.__scm_repo_latch }}/labels
+[4]: {{ cookiecutter.__scm_repo_latch }}/projects
+[5]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#commit-customs
+[6]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#say-why-not-just-what
+[7]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#git-trailers
+[8]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#styling
 [9]: https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue
-[10]: {{ cookiecutter.__scm_link_url }}/blob/master/ROADMAP.md
+[10]: {{ cookiecutter.__scm_repo_latch }}/blob/master/ROADMAP.md
+{%- if cookiecutter.create_docs and cookiecutter.licence != 'nos' %}
+[10a]: {{ cookiecutter.__pages_url }}/development/roadmap
+{%- elif cookiecutter.create_docs %}
+[10a]: {{ cookiecutter.__pages_url }}/noticeboard/roadmap
+{%- endif %}
 
 ## Reviewer Checklist
 
@@ -112,6 +117,6 @@
 > - [ ] We have covered all the edge cases we could come up with;
 > - [ ] We have found [opportunities][13] for future development and have created work items to take action on later.
 
-[11]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
+[11]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
 [12]: https://www.teachfloor.com/elearning-glossary/institutional-knowledge
-[13]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
+[13]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress

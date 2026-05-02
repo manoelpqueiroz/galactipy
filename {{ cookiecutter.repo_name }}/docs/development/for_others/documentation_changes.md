@@ -73,9 +73,9 @@ to our docs.
 <!-- Anchors -->
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
 
-[1]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Improvement
+[1]: {{ cookiecutter.__scm_repo_latch }}/issues/new?description_template=Request%20for%20Improvement
 {%- else %}
 
-[1]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-improvement
+[1]: {{ cookiecutter.__scm_repo_latch }}/discussions/new?category=requests-for-improvement
 {%- endif %}
 [2]: ../for_developers/documentation/index.md

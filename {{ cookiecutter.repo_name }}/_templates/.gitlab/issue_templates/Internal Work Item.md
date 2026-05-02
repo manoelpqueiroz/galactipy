@@ -12,7 +12,7 @@ Please read the [`CONTRIBUTING`][1] guide for best practices when opening issues
 :no_entry: ***DO NOT use this template if you do not have a Developer role in this project.***
 >>>
 
-[1]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md
+[1]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md
 
 ## :thinking: Circumstances and Context
 
@@ -45,15 +45,15 @@ Please read the [`CONTRIBUTING`][1] guide for best practices when opening issues
 - [ ] I attest that the **acceptance criteria** are well-defined and encompass all expected development for this issue.
 {%- endif %}
 
-[2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#start-with-a-merge-request
+[2]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#start-with-a-merge-request
 {% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
-[3]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#work-item-tracking
+[3]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#work-item-tracking
 [4]: https://docs.gitlab.com/user/project/issues/design_management/
-[5]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#tasks-are-used-as-acceptance-criteria-for-issues
+[5]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#tasks-are-used-as-acceptance-criteria-for-issues
 [6]: https://docs.gitlab.com/user/work_items/status/#status-categories
 {%- else -%}
 [3]: https://docs.gitlab.com/user/project/issues/design_management/
-[4]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#tasks-are-used-as-acceptance-criteria-for-issues
+[4]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#tasks-are-used-as-acceptance-criteria-for-issues
 {%- endif %}
 
 /assign me

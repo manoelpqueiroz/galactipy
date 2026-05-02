@@ -246,9 +246,9 @@ will reach out to you.
 [3]: https://simonsinek.com/stories/the-right-way-to-stand-up-for-yourself-at-work/
 [4]: ../philosophy.md#operate-with-a-bias-for-action
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[5]: {{ cookiecutter.__scm_link_url }}/merge_requests/new?issuable_template=Internal%2520Improvements
+[5]: {{ cookiecutter.__scm_repo_latch }}/merge_requests/new?issuable_template=Internal%2520Improvements
 {%- else %}
-[5]: {{ cookiecutter.__scm_link_url }}/pulls/compare?template=internal_improvements.md
+[5]: {{ cookiecutter.__scm_repo_latch }}/pulls/compare?template=internal_improvements.md
 {%- endif %}
 [6]: ./behave.md
 [7]: ./roles.md#the-responsibility-of-the-reviewer

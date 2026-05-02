@@ -124,6 +124,7 @@ def removal_tree(tmp_path):
         workflows=[
             "release-drafter.yml",
             "docker.yml",
+            "docs.yml",
             "test.yml",
             "test_template.yml",
             "pypi-test.yml",
@@ -387,6 +388,7 @@ def removal_tree(tmp_path):
         "docs": {
             "root": docs_directory,
             "config": tmp_path / "zensical.toml",
+            "github_workflow": tmp_path / "github" / "workflows" / "docs.yml",
             "getting_started": {
                 "tutorials": docs_directory / "getting_started" / "tutorials.md",
                 "overview": docs_directory / "getting_started" / "overview.md",

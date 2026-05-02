@@ -188,11 +188,11 @@ inside [`.{{ cookiecutter.__scm_platform_lc }}`][5] and [`CHANGELOG.md`][6].
 [1a]: https://sphinx-rtd-tutorial.readthedocs.io/en/latest/docstrings.html
 {%- endif %}
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[2]: {{ cookiecutter.__scm_link_url }}/merge_requests/new?issuable_template=Project%2520Policies
+[2]: {{ cookiecutter.__scm_repo_latch }}/merge_requests/new?issuable_template=Project%2520Policies
 {%- else %}
-[2]: {{ cookiecutter.__scm_link_url }}/pulls/compare?template=project_policies.md
+[2]: {{ cookiecutter.__scm_repo_latch }}/pulls/compare?template=project_policies.md
 {%- endif %}
 [3]: https://sembr.org/
 [4]: https://sive.rs/1s
-[5]: {{ cookiecutter.__scm_link_url }}/tree/master/.{{ cookiecutter.__scm_platform_lc }}
-[6]: {{ cookiecutter.__scm_link_url }}/blob/master/CHANGELOG.md
+[5]: {{ cookiecutter.__scm_repo_latch }}/tree/master/.{{ cookiecutter.__scm_platform_lc }}
+[6]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CHANGELOG.md

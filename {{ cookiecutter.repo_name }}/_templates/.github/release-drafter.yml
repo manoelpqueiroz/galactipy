@@ -6,11 +6,11 @@ tag-template: "v$NEXT_PATCH_VERSION"
 categories:
 {%- if cookiecutter.app_type != 'bare_repo' %}
   # 1. Changes that users directly face
-  - title: ":satellite_orbital: Command-line Interface" # specifically the CLI API that bridges the interface to the actual program
+  - title: ":satellite_orbital: Command-line Interface Changes" # specifically the CLI API that bridges the interface to the actual program
     labels:
       - cli-arch
       - cli-commands
-  - title: ":keyboard: CLI Usage" # developments that change how the user interacts with the CLI, like options and arguments
+  - title: ":keyboard: CLI Conveniences" # developments that change how the user interacts with the CLI, like options and arguments
     labels:
       - cli-options
 {%- if cookiecutter.__app_group == 'tui' %}
@@ -81,7 +81,7 @@ categories:
   - title: ":up: Dependencies Updates"
     labels:
       - maintenance-dependencies
-  - title: ":comet: Build & Release Optimisation" # how the project is set up for compilation
+  - title: ":airplane_departure: Release Cycle Optimisation" # how the project is set up for compilation
     labels:
       - ci-build
 {%- if cookiecutter.create_docker %}
@@ -107,7 +107,7 @@ categories:
       - policies-roadmap
       - policies-rules
       - policies-templates
-  - title: ":gem: Lean Practices Gains" # Internal improvements to detect and report issues, targeting CI/CD maturity
+  - title: ":gem: Continuous Improvements Feats" # Internal improvements to detect and report issues, targeting CI/CD maturity
     labels:
       - maintenance-toolset
 {%- else %}

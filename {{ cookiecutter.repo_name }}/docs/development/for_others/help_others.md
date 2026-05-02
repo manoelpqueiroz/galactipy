@@ -286,14 +286,14 @@ for your kindness and dedication!
 
 [1]: https://img.shields.io/badge/requests_for_support-ed9121?style=for-the-badge
 {% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
-[2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=request%3A%3Asupport&type%5B%5D=issue
+[2]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=request%3A%3Asupport&type%5B%5D=issue
 {% elif cookiecutter.__scm_platform_group == 'glab-free' -%}
-[2]: {{ cookiecutter.__scm_link_url }}/issues?state=opened&label_name%5B%5D=rfs&type%5B%5D=issue
+[2]: {{ cookiecutter.__scm_repo_latch }}/issues?state=opened&label_name%5B%5D=rfs&type%5B%5D=issue
 {% else -%}
-[2]: {{ cookiecutter.__scm_link_url }}/discussions/categories/requests-for-support
+[2]: {{ cookiecutter.__scm_repo_latch }}/discussions/categories/requests-for-support
 {% endif -%}
 [3]: https://typer.tiangolo.com/help-typer/#help-others-with-questions-in-github
 [4]: https://www.blockchain-council.org/ai/collective-intelligence-framework/
-[5]: {{ cookiecutter.__scm_link_url }}/blob/master/CODE_OF_CONDUCT.md
+[5]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CODE_OF_CONDUCT.md
 [6]: https://stackoverflow.com/help/minimal-reproducible-example
 [7]: ../philosophy.md#operate-with-a-bias-for-action

@@ -24,27 +24,44 @@ Please run through all items under the **`Applicant Checklist`** section and pro
   <!-- List all searches you have performed -->
   - `...`
   - `...`
+{%- if cookiecutter.create_docs %}
+- [ ] I have looked at {{ cookiecutter.project_name }}'s [documentation][2] for information on my topic of interest;
+{%- else %}
 - [ ] I have looked at {{ cookiecutter.project_name }}'s [`README`][2] for information on my topic of interest;
-- [ ] I have read the [`CONTRIBUTING`][3] guide and I have understood how to improve communication between me and the development team;
+{%- endif %}
+- [ ] I have read the [Contributing Guide][3] and I have understood how to improve communication between me and the development team;
 - [ ] I provided a concise and clear title for this discussion;
 - [ ] I am confident this discussion does not fall in another category.
 
-[1]: {{ cookiecutter.__scm_link_url }}/issues/?state=all&type%5B%5D=issue
-[2]: {{ cookiecutter.__scm_link_url }}/blob/master/README.md
-[3]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contributing-through-user-requests
+[1]: {{ cookiecutter.__scm_repo_latch }}/issues/?state=all&type%5B%5D=issue
+{%- if cookiecutter.create_docs %}
+[2]: {{ cookiecutter.__pages_url }}/user_guide
+[3]: {{ cookiecutter.__pages_url }}/development/for_others/user_requests
+{%- else %}
+[2]: {{ cookiecutter.__scm_repo_latch }}/blob/master/README.md
+[3]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#contributing-through-user-requests
+{%- endif %}
 
 ### Commitment to Project Support
 
-After reading the [Commitment to Help][4] section of the `CONTRIBUTING` guide and submitting this request, I commit to one of:
+After reading the [Commitment to Help][4] section of the Contributing Guide and submitting this request, I commit to one of:
 
 - [ ] Read [open discussions][5] until I find **2** where I can help someone and add a comment to help there;
 - [ ] Hit the ["Watch"][6] button in this repository to receive notifications about the project and help **2** people that ask questions in the future;
 - [ ] Review **1** Merge Request by cloning the project and following the [review process][7].
 
-[4]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#commitment-to-help
-[5]: {{ cookiecutter.__scm_link_url }}/issues/?type%5B%5D=issue
+{% if cookiecutter.create_docs -%}
+[4]: {{ cookiecutter.__pages_url }}/development/for_others/help_others
+{% else -%}
+[4]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#commitment-to-help
+{% endif -%}
+[5]: {{ cookiecutter.__scm_repo_latch }}/issues/?type%5B%5D=issue
 [6]: https://gitlab.com/gitlab-org/gitlab-foss/-/issues/234#note_17497758
-[7]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contributing-by-reviewing-changes
+{%- if cookiecutter.create_docs %}
+[7]: {{ cookiecutter.__pages_url }}/development/for_others/review_changes
+{%- else %}
+[7]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#contributing-by-reviewing-changes
+{%- endif %}
 
 ## :speech_balloon: Context
 

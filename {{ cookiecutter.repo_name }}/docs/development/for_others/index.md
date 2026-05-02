@@ -120,5 +120,5 @@ what we are doing matters!
 {%- else %}
 
 [1]: https://docs.github.com/en/subscriptions-and-notifications/get-started/configuring-notifications#about-participating-and-watching-notifications
-[2]: {{ cookiecutter.__scm_base_url }}
+[2]: {{ cookiecutter.__scm_repo_url }}
 {%- endif %}

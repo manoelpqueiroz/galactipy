@@ -873,18 +873,23 @@ class TestVersioningSchemas:
 
 
 class TestDocsGeneration:
-    def test_docs_removal(self, removal_tree):
+    @pytest.mark.parametrize("remove_gitlab", [True, False])
+    def test_docs_removal(self, removal_tree, remove_gitlab):
         docs = removal_tree["docs"]["root"]
         zensical = removal_tree["docs"]["config"]
+        github_workflow = removal_tree["docs"]["github_workflow"]
 
         config = ProjectFlags(
-            False, False, False, True, True, True, "semver-like", "tui"
+            remove_gitlab, False, False, True, True, True, "semver-like", "tui"
         )
 
         remove_unused_files(removal_tree["root"], removal_tree["package_name"], config)
 
         assert not docs.exists()
         assert not zensical.exists()
+
+        # The workflow shouldn't exist no matter the platform
+        assert not github_workflow.exists()
 
     def test_oss_licence(self, removal_tree):
         getting_started = removal_tree["docs"]["getting_started"]

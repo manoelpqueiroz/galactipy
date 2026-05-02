@@ -271,29 +271,29 @@ via [GitHub Discussions][7]
 so the team can help
 with clarifications.
 
-[contributing]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md
+[contributing]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md
 
 {% endif -%}
 {% if cookiecutter.__scm_platform_group == 'glab-paid' -%}
-[1]: {{ cookiecutter.__gitlab_org }}/epics
+[1]: {{ cookiecutter.__gitlab_org_latch }}/epics
 {% elif cookiecutter.__scm_platform_group == 'glab-free' -%}
-[1]: {{ cookiecutter.__scm_link_url }}/milestones
+[1]: {{ cookiecutter.__scm_repo_latch }}/milestones
 {% else -%}
-[1]: {{ cookiecutter.__scm_link_url }}/projects
+[1]: {{ cookiecutter.__scm_repo_latch }}/projects
 {% endif -%}
-[2]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#start-with-a-{{ cookiecutter.__mr_term_slug }}
-[3]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#roadmap-management
+[2]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#start-with-a-{{ cookiecutter.__mr_term_slug }}
+[3]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#roadmap-management
 [4]: https://img.shields.io/pypi/status/{{ cookiecutter.repo_name }}?style=for-the-badge&logo=theplanetarysociety&label=stage
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[5]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Improvement
+[5]: {{ cookiecutter.__scm_repo_latch }}/issues/new?description_template=Request%20for%20Improvement
 {%- else %}
-[5]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-improvement
+[5]: {{ cookiecutter.__scm_repo_latch }}/discussions/new?category=requests-for-improvement
 {%- endif %}
 {%- if cookiecutter.licence != 'nos' %}
-[6]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
+[6]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
 {%- if cookiecutter.__scm_platform_lc == 'gitlab' %}
-[7]: {{ cookiecutter.__scm_link_url }}/issues/new?description_template=Request%20for%20Support
+[7]: {{ cookiecutter.__scm_repo_latch }}/issues/new?description_template=Request%20for%20Support
 {%- else %}
-[7]: {{ cookiecutter.__scm_link_url }}/discussions/new?category=requests-for-support
+[7]: {{ cookiecutter.__scm_repo_latch }}/discussions/new?category=requests-for-support
 {%- endif %}
 {%- endif %}

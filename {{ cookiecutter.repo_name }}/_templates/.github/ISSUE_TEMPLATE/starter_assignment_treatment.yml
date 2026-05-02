@@ -8,18 +8,18 @@ body:
         > [!CAUTION]
         > :compass: For contributors writing the work item's scope:
         >
-        > - Provide clear steps for resolution, following the [`CONTRIBUTING`]({{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#fostering-an-inviting-community) guidelines. Use the HTML comments to orient yourself with the more relevant topics;
+        > - Provide clear steps for resolution, following the [`CONTRIBUTING`]({{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#fostering-an-inviting-community) guidelines. Use the HTML comments to orient yourself with the more relevant topics;
         > - Be available to follow up with further guidance once a new contributor picks this work item. Ensure issue notifications are on for you after creating this item;
-        > - Check the [Responsibilities of the Reviewer]({{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#the-responsibility-of-the-reviewer) as they provide useful information to better handle the development cycle for starter assignments;
+        > - Check the [Responsibilities of the Reviewer]({{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#the-responsibility-of-the-reviewer) as they provide useful information to better handle the development cycle for starter assignments;
         > - Remember your intentions and conceived solution when you wrote this item's delivery steps may not always be [clear](https://engineerinclusion.com/barriers-and-bridges-to-effective-communication/) to someone unfamiliar with the project;
         > - Use this opportunity to teach, learn and be a bridge to welcome people to our community.
         >
         > :raising_hand: For newcomers picking this work item as their first contribution:
         >
-        > - Make sure to read the [`CONTRIBUTING`]({{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md) guide and the [`CODE OF CONDUCT`]({{ cookiecutter.__scm_link_url }}/blob/master/CODE_OF_CONDUCT.md) to become familiar with our procedures before you start working on the solution. If you have any questions about unclear guidelines, leave a comment so an active contributor can clarify them;
+        > - Make sure to read the [`CONTRIBUTING`]({{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md) guide and the [`CODE OF CONDUCT`]({{ cookiecutter.__scm_repo_latch }}/blob/master/CODE_OF_CONDUCT.md) to become familiar with our procedures before you start working on the solution. If you have any questions about unclear guidelines, leave a comment so an active contributor can clarify them;
         > - Raise your hand whenever you feel stuck. While the team has put a lot of effort to make your contribution the most straightforward possible, it is always hard to account for all possible [nuances](https://engineerinclusion.com/barriers-and-bridges-to-effective-communication/) any communication brings, let alone online interactions;
-        > - Understand our [submission guidelines]({{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer) before opening a Pull Request to increase the chances of your changes being merged. Access your mentor for guidance;
-        > - Make sure to [track progress]({{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#work-item-tracking) consistently to keep yourself and your mentor updated on your contribution's status. Keep communication with your mentor and development updates flowing.
+        > - Understand our [submission guidelines]({{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer) before opening a Pull Request to increase the chances of your changes being merged. Access your mentor for guidance;
+        > - Make sure to [track progress]({{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#work-item-tracking) consistently to keep yourself and your mentor updated on your contribution's status. Keep communication with your mentor and development updates flowing.
   - type: markdown
     attributes:
       value: |
@@ -87,4 +87,4 @@ body:
 
         - Comment on this thread mentioning you would like to work on this starter assignment;
         - Assign the work item to you by clicking on the _"assign yourself"_ link at the right panel;
-        - Read the [`CONTRIBUTING`]({{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md) guide to become familiar with our procedures before you start working on the solution.
+        - Read the [`CONTRIBUTING`]({{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md) guide to become familiar with our procedures before you start working on the solution.

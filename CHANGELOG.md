@@ -1,3 +1,129 @@
+## 3.3.0 (2026-05-02)
+
+### :milky_way: Components (1 change)
+
+- [:sparkles: Enable documentation publishing to GitHub Pages](galactipy/galactipy@8714c6c59f78b550257267b34c377c6d1aa5cbbe) ([merge request](galactipy/galactipy!214))
+
+### :metro: Components Configuration (1 change)
+
+- [:wrench: Reorganise Poetry dependency groups for the template](galactipy/galactipy@c688401bca5708ffe4a399247d4eb13cbc071cfe)
+
+### :newspaper2: Utility Files (1 change)
+
+- [:wrench: Update issue and MR templates with documentation URLs](galactipy/galactipy@3304288ca5b5735ee7527b26235359e84ade5859) ([merge request](galactipy/galactipy!214))
+
+### :hatching_chick: Template Generation (2 changes)
+
+- [:shinto_shrine: Allow documentation-related content to be rendered for GitHub projects](galactipy/galactipy@1774061e6be253c4be4ccfc9be94e51fe4c9af4a) ([merge request](galactipy/galactipy!214))
+- [:hammer: Update post-gen hooks with docs workflow removal for GitHub](galactipy/galactipy@e41af1695fc301ee50cc25079fd034981fcdc75e) ([merge request](galactipy/galactipy!214))
+
+### :toolbox: Fixes (1 change)
+
+- [:pencil2: Replace hardcoded EffVer reference with schema cipher variable](galactipy/galactipy@cf0aa4a51cf9405f56969176c898d94e157933e2) ([merge request](galactipy/galactipy!214))
+
+### :gear: Project Internals (1 change)
+
+- [:wrench: Reorganise Poetry dependency groups for the project](galactipy/galactipy@50c3eb52363d77b39a1fc85c9f60c80075dc2a37)
+
+### :gear: project internals (1 change)
+
+- [:arrow_up: Update project dependencies](galactipy/galactipy@e0995eee5c76efc501e1c2a697dd3f530861a54d)
+
+### :100: Template Cohesion (2 changes)
+
+- [:white_check_mark: Update file removal tests for GitHub docs workflow](galactipy/galactipy@c318a81598fb84ea18b3299099f5c193697fe972) ([merge request](galactipy/galactipy!214))
+- [:white_check_mark: Add missing test for e-mail validation](galactipy/galactipy@a4a169175770492c1ce84e70d293f389d9b58330)
+
+### :pouring_liquid: Nits (3 changes)
+
+- [:pencil2: Fix minor aspects of template hard policy files](galactipy/galactipy@f773321d36b1ac1a8b3b6b5a8f78a5adb90b80bf) ([merge request](galactipy/galactipy!214))
+- [:pencil2: Fix template `README.md` badge anchors order](galactipy/galactipy@594c806dd53b81da24f2bdf8ad066b0d74fe09eb) ([merge request](galactipy/galactipy!214))
+- [:pencil2: Improve minor aspects of GitHub workflows](galactipy/galactipy@e33b4eb1ca0a12559cbd2bebe28ff0406869011c) ([merge request](galactipy/galactipy!214))
+
+### :frame_photo: Project Presentation (1 change)
+
+- [:pencil: Update project `README.md` with documentation features](galactipy/galactipy@09591bb97e07b7ef4b5ead7d5a8a704700b3f402) ([merge request](galactipy/galactipy!214))
+
+## 3.2.4 (2026-04-29)
+
+### :hatching_chick: Template Generation (1 change)
+
+- [:hammer: Reinforce pre-gen validations for namespaces](galactipy/galactipy@5de3845b2996bb8d7b362712bf2062bbfe093a10)
+
+### :100: Template Cohesion (1 change)
+
+- [:white_check_mark: Update unit tests with subgroup restrictions](galactipy/galactipy@01fc37e7a155353f30645c8e1bd4a5021931f889)
+
+### :pouring_liquid: Nits (1 change)
+
+- [:technologist: Improve hooks documentation and error messages](galactipy/galactipy@84fe6437ae248b6a5de102fe13e9b80b0c930fe3)
+
+## 3.2.3 (2026-04-28)
+
+### :ballot_box: Settings & Options (1 change)
+
+- [:wrench: Modify Changelog categories for the template](galactipy/galactipy@7f2b9eb3d0844b7dd3d443fade9ab93921698b8e)
+
+### :newspaper2: Utility Files (1 change)
+
+- [:pencil: Update committing guidelines with modified changelog categories](galactipy/galactipy@8230056b693eed30677a17358d24eb9696a21fa3)
+
+### :scroll: Project Policies (2 changes)
+
+- [:pencil: Update Git Trailers section on project `CONTRIBUTING.md`](galactipy/galactipy@3c9ab89bc978f95b4e39a1af123da517297672e9)
+- [:wrench: Modify project GitLab Changelog categories](galactipy/galactipy@56b68eae9a84bef343d2aa24f0dbc3ce81da0b61)
+
+## 3.2.2 (2026-04-28)
+
+### :metro: Template Internals (1 change)
+
+- [:wrench: Improve project URLs section in template `pyproject.toml`](galactipy/galactipy@d8e6ba92e079186108b8cd74145714ea8a5687d7) ([merge request](galactipy/galactipy!213))
+
+### :ballot_box: Settings & Options (2 changes)
+
+- [:shinto_shrine: Replace hardcoded PyPI URLs with Cookiecutter variable](galactipy/galactipy@d08e754a63a8f5c136543e5fcd4184af29f1f522) ([merge request](galactipy/galactipy!213))
+- [:cookie: Add hidden Cookiecutter variable for PyPI project URL](galactipy/galactipy@237da9bce20484660fb8196c498c80f609feb859) ([merge request](galactipy/galactipy!213))
+
+### :factory_worker: Template Maintenance (2 changes)
+
+- [:shinto_shrine: Update Jinja statements with refactored variables](galactipy/galactipy@d485304907b2662e6748a8959a547192ef020cb2) ([merge request](galactipy/galactipy!213))
+- [:cookie: Refactor hidden Cookiecutter variables related to source control](galactipy/galactipy@850815facf8886916f267214ed45cfc4191481d9) ([merge request](galactipy/galactipy!213))
+
+### :gear: Project Internals (2 changes)
+
+- [:hammer: Add e-mail validation to pre-gen hooks](galactipy/galactipy@3b0b35fa31b7a1153848682862365092579983d5) ([merge request](galactipy/galactipy!213))
+- [:hammer: Improve pre-gen validations](galactipy/galactipy@001d1a1713ecbeacf0e25d2999df2f6c5a68679f) ([merge request](galactipy/galactipy!213))
+
+### :repeat: Design & Validation (2 changes)
+
+- [:white_check_mark: Revalidate repository and package name tests](galactipy/galactipy@35b8719a06318d81895cec48ef8c5e021b3cbb63) ([merge request](galactipy/galactipy!213))
+- [:white_check_mark: Add unit tests for e-mail validation](galactipy/galactipy@7820919a190b9cf74b7643022db522aee3dc1d58) ([merge request](galactipy/galactipy!213))
+
+### :pouring_liquid: Nits (2 changes)
+
+- [:bulb: Refine instructions for `cookiecutter-config-file.yml`](galactipy/galactipy@b8c88b2870c8816a23c9e95860f9c59c91e3943a) ([merge request](galactipy/galactipy!213))
+- [:bulb: Add reference URL for pre-commit update configuration](galactipy/galactipy@af6d8839c97b576d21f98d2f5764315091e369fe)
+
+### :books: Documentation (3 changes)
+
+- [:pencil: Update input variables table in project `README.md`](galactipy/galactipy@2be246ad72ff809895ed3a05ed063a69066505ff) ([merge request](galactipy/galactipy!213))
+- [:pencil: Split release info content for each versioning schema in docs](galactipy/galactipy@315b6c3dc155a9df49f21896fd8b3c43ed0b947b) ([merge request](galactipy/galactipy!213))
+- [:pencil: Improve template `CONTRIBUTING.md` wording](galactipy/galactipy@5bcef6f30c6c77488d40ff1817ee19e63664f150) ([merge request](galactipy/galactipy!213))
+
+### :scroll: Project Policies (1 change)
+
+- [:pencil: Refine version update conditions](galactipy/galactipy@03da0287f48b5037dee646a4f5e7c9e3c57c7ecf) ([merge request](galactipy/galactipy!213))
+
+## 3.2.1 (2026-04-23)
+
+### :toolbox: Fixes (1 change)
+
+- [:ambulance: Fix malformed Cookiecutter variable for base URL](galactipy/galactipy@4f89c2b4784c58ad8fb6a9c5d9fa9226df6ac963)
+
+### :books: Documentation (1 change)
+
+- [:pencil: Update input variables table with default coverage service](galactipy/galactipy@fdf397757a7f0dac7a74889f5e2e1d716214f2b9)
+
 ## 3.2.0 (2026-04-22)
 
 ### :ballot_box: Settings & Options (3 changes)

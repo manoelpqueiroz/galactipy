@@ -42,10 +42,10 @@ This template should be used to propose changes resolving a major issue with the
 - [ ] I have added the proper [labels][4] to start this discussion.
 >>>
 
-[1]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
-[2]: {{ cookiecutter.__scm_link_url }}/blob/master/SECURITY.md
-[3]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#book-our-philosophy
-[4]: {{ cookiecutter.__scm_link_url }}/labels
+[1]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#speaking_head-proposing-changes-as-a-developer
+[2]: {{ cookiecutter.__scm_repo_latch }}/blob/master/SECURITY.md
+[3]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#book-our-philosophy
+[4]: {{ cookiecutter.__scm_repo_latch }}/labels
 
 ## Assignee Checklist
 
@@ -68,10 +68,10 @@ This template should be used to propose changes resolving a major issue with the
 - [ ] I have marked issues to be resolved with this proposal either in [commit descriptions][9] or the Related Issues section.
 >>>
 
-[5]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#commit-customs
-[6]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#say-why-not-just-what
-[7]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#git-trailers
-[8]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#styling
+[5]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#commit-customs
+[6]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#say-why-not-just-what
+[7]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#git-trailers
+[8]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#styling
 [9]: https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically
 
 ## Reviewer Checklist
@@ -94,7 +94,7 @@ I attest that the proposed change meets the [Contribution Acceptance Criteria][1
 - [ ] The commit descriptions sufficiently explain design choices;
 - [ ] Issues marked for automatic closing are accurate;
 - [ ] Issues requiring manual check have been addressed;
-- [ ] The proposed {{ cookiecutter.project_name }} version adheres to our view on [EffVer][11].
+- [ ] The proposed {{ cookiecutter.project_name }} version adheres to our view on [{{ cookiecutter.__schema_cipher }}][11].
 >>>
 
 >>> [!tip] :pen_fountain: Discretionary
@@ -107,6 +107,6 @@ I attest that during this development, the following interactions have taken pla
 - [ ] We have found [opportunities][12] for future development and have created work items to take action on later.
 >>>
 
-[10]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
-[11]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#versioning-customs
-[12]: {{ cookiecutter.__scm_link_url }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
+[10]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#contribution-acceptance-criteria
+[11]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#versioning-customs
+[12]: {{ cookiecutter.__scm_repo_latch }}/blob/master/CONTRIBUTING.md#sharing-insights-drives-progress
