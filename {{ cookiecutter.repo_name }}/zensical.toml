@@ -1,9 +1,9 @@
 [project]
 site_name = "{{ cookiecutter.project_name }} Documentation"
+site_url = "{{ cookiecutter.__pages_url }}"
 copyright = "Copyright &copy; {% now 'local', '%Y' %} {{ cookiecutter.copyright }}"
 
 nav = [
-  { "Home" = "index.md" },
   { "Getting Started" = [
     "getting_started/index.md",
     "getting_started/install.md",
