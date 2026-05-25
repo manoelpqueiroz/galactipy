@@ -178,7 +178,7 @@ include:
       stage: maintenance
 
   # Galactipy components
-  - component: $CI_SERVER_FQDN/galactipy/components/versioning/vars@0.8.1
+  - component: $CI_SERVER_FQDN/galactipy/components/release/vars@0.9.0
 {%- if cookiecutter.__schema_group != 'semver-like' %}
     inputs:
       schema: {{ cookiecutter.__schema_group }}
@@ -191,7 +191,7 @@ include:
   # {{ cookiecutter.__scm_repo_latch }}/pipeline_schedules/new
   # TODO Set a ENABLE_TRUNKVER_CHANGELOG variable to "true" when creating the pipeline
 {%- endif %}
-  - component: $CI_SERVER_FQDN/galactipy/components/versioning/release@0.8.1
+  - component: $CI_SERVER_FQDN/galactipy/components/release/assemble@0.9.0
     inputs:
 {%- if cookiecutter.__schema_group != 'semver-like' %}
       schema: {{ cookiecutter.__schema_group }}
@@ -607,7 +607,7 @@ publish-pages:
 {%- if cookiecutter.version_schema == 'calver-auto' %}
 
 # UPDATEME with your preferred release schedule, see available environment variables at:
-# https://gitlab.com/galactipy/components/versioning/-/blob/master/README.md#outputs
+# https://gitlab.com/galactipy/components/release/-/blob/master/README.md#outputs
 # TODO Create a scheduled pipeline to enable this job:
 # {{ cookiecutter.__scm_repo_latch }}/pipeline_schedules/new
 push-weekly-release-tag:
