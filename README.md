@@ -142,7 +142,7 @@ and best development practices for Python.
   and production repositories;
 - Automatic documentation deployment to
   [**GitLab Pages**][tl4]
-  and [**GitHub Pages**][tl5]
+  and [**GitHub Pages**][tl5];
 - A [`Dockerfile`][tl6] for your package,
   with CI/CD workflows
   to publish your image
@@ -1018,7 +1018,7 @@ any of the following:
 [vs17]: https://gitlab.com/explore/catalog/to-be-continuous/renovate
 [vs18]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.github/release-drafter.yml
 [vs19]: https://gitlab.com/galactipy/galactipy/-/blob/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/_templates/.gitlab/changelog_config.yml
-[vs20]: https://gitlab.com/explore/catalog/galactipy/components/versioning
+[vs20]: https://gitlab.com/explore/catalog/galactipy/components/release
 [vs21]: https://docs.gitlab.com/ee/ci/testing/unit_test_reports.html
 [vs22]: https://docs.gitlab.com/ee/ci/jobs/job_rules.html#compare-a-variable-to-a-regular-expression
 [vs23]: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
